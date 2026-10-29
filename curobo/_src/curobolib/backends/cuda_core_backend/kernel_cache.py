@@ -261,7 +261,7 @@ typedef unsigned long long uint64_t;
         for f in source_files:
             if f.exists():
                 source += f"\n// ===== {f.name} =====\n"
-                source += f.read_text()
+                source += f.read_text(encoding="utf-8")
             else:
                 log_and_raise(f"Source file not found: {f}")
                 raise FileNotFoundError(f"Kernel source file not found: {f}")
