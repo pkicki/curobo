@@ -59,3 +59,34 @@ def test_invalid_inputs_are_rejected():
     solver=JointTimeOracle(limits(1),Boundary.rest(np.array([0.]),np.array([1.])),dynamics)
     with pytest.raises(ValueError):
         solver._seed(np.zeros((15,1)),0.)
+
+
+def test_collision_slack_is_not_accepted_as_a_feasible_solution():
+    cfg=OracleConfig(controls=10,samples_per_span=2,audit_samples_per_span=6,
+                     maxiter=12,attempts=1,trust_radius=.6)
+    # Positive cost represents collision at every trajectory sample.
+    def impossible_collision(q):
+        return q[:,0]*0 + 0.05
+    solver=JointTimeOracle(
+        limits(1),Boundary.rest(np.array([0.]),np.array([1.])),
+        dynamics,collision=impossible_collision,config=cfg)
+    z=solver._seed(np.linspace(0,1,40)[:,None],5.)
+    assert not solver.audit(z)["feasible"]
+    out=solver.solve(np.linspace(0,1,40)[:,None],5.)
+    assert out["best"] is None
+    assert out["global_lower_bound"] is None
+
+
+def test_zero_collision_cost_allows_feasible_solution_and_gradients():
+    cfg=OracleConfig(controls=10,samples_per_span=2,audit_samples_per_span=6,
+                     maxiter=80,attempts=1,trust_radius=1.)
+    def free_space(q):
+        return q[:,0]*0
+    solver=JointTimeOracle(
+        limits(1),Boundary.rest(np.array([0.]),np.array([1.])),
+        dynamics,collision=free_space,config=cfg)
+    z=solver._seed(np.linspace(0,1,50)[:,None],5.)
+    jac=solver._evaluate(z,True)
+    assert jac.shape==(6,len(z))
+    assert jac[-1,-2]==pytest.approx(1.)
+    assert solver.audit(z)["feasible"]
