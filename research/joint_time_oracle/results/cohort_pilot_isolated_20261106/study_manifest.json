@@ -1,0 +1,22 @@
+{
+  "task_source": "deterministic generated endpoints; not a representative benchmark",
+  "runner_provenance_note": "Execution used working-tree scripts; the current runner adds a post-run geometry assertion and the validator adds an input option, so their checksums are not exact executed-code checksums.",
+  "git_parent": "0d6e542ab93e0b6571a04b116b6ecb71085ce6d9",
+  "planner_gpu": "NVIDIA GeForce RTX 3090",
+  "cuda_shim": "results/device_property_compat.py",
+  "task_count": 20,
+  "input_sha256": {
+    "curobo/content/configs/robot/franka.yml": "91d48371b9cd2358b0b5594bb5e93d7abbd05af436b2c28d05c41b5667e65e55",
+    "curobo/content/assets/robot/franka_description/franka_panda.urdf": "8f4d6768e7587ca6bbc1356007af48f26b91faa82025d21d2cadc9b22a1c4802",
+    "curobo/content/configs/scene/collision_test.yml": "b6128b145773a0b3090d13af6ba89d628660010743d7991d3b7dd18388895e8f",
+    "curobo/content/configs/scene/collision_primitives_3d.yml": "71105b285473f6361f34bdc66f8ef8c46b7b3c19a6e57944abd76722c3cd0e42",
+    "research/joint_time_oracle/cohort_explore.py": "9290d54bd52a6b2941078250022c193059ffade114c6491c9e100704bbf25e17",
+    "research/joint_time_oracle/cohort_validate.py": "6a357ce77e9af9462bc28852ff80c1860086b6fbfaf8fbc85afd8d92a40f5a41"
+  },
+  "qualification": "blocked: no adaptive checks, B/C/D executor or qualified paired comparisons",
+  "sample_counts": {
+    "independent_checked": 40,
+    "physical_and_collision": 40,
+    "scaled95_and_collision": 13
+  }
+}

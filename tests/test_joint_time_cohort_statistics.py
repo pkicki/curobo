@@ -89,3 +89,31 @@ def test_invalid_duration_rejected(tmp_path):
     inp.write_text(json.dumps(bad))
     with pytest.raises(ValueError,match="invalid B duration"):
         read_records(inp)
+
+
+def test_direct_analysis_rejects_invalid_duration_and_counts_missing() -> None:
+    """Unknown or invalid records cannot enter paired summaries."""
+    from research.joint_time_oracle.cohort_statistics import analyze, qualified
+    flags = {k: True for k in ('physical', 'scaled95', 'endpoint', 'dense',
+                                 'collision_independent', 'dynamics_independent')}
+    assert not qualified({'duration_s': float('nan'), 'verification': flags}, 'physical')
+    rows = [{'case_id': 'a', 'cohort': 'pilot', 'population': 'free',
+             'methods': {'A10': {'duration_s': 1., 'verification': flags}}}]
+    pair = analyze(rows)['groups']['pilot']['comparisons']['physical:A10->A40']
+    assert pair['eligible_pairs'] == 0
+    assert pair['exclusion_reasons'] == {'A40:missing_method': 1}
+    assert pair['improved_fraction'] is None
+
+
+def test_absolute_duration_difference_preserves_negative_savings() -> None:
+    """Absolute duration difference is distinct from signed time saved."""
+    from research.joint_time_oracle.cohort_statistics import analyze
+    flags = {k: True for k in ('physical', 'scaled95', 'endpoint', 'dense',
+                                 'collision_independent', 'dynamics_independent')}
+    rows = [{'case_id': 'a', 'cohort': 'pilot', 'population': 'free', 'methods': {
+        'B': {'duration_s': 1., 'verification': flags},
+        'D': {'duration_s': 1.2, 'verification': flags}}}]
+    pair = analyze(rows)['groups']['pilot']['comparisons']['physical:B->D']
+    assert abs(pair['median_signed_saving_ms'] + 200.) < 1e-8
+    assert abs(pair['median_absolute_difference_ms'] - 200.) < 1e-8
+    assert pair['slower_fraction'] == 1.

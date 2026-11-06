@@ -1,0 +1,23 @@
+{
+  "pilot.jsonl": "f6b889ee538479c483f65733a60c801824745730384afbcb6f15c9881b5df12f",
+  "endpoint_proposals.json": "f5d611b7a04f8f38bd1474319cdb4e1b51e44bc3c75ec8532ef4cc8061f3b657",
+  "tasks.json": "db5c4e996ea230114efc1d219e5e2d5dbf4a396dd794f805c2a06cd95b4aea8c",
+  "pilot_table_00/a10_interpolated.npz": "dd94a6f3ea61cae63ab1ecaf2ca9d6ceba532f87aa2a886c96ddae11e444c33c",
+  "pilot_table_00/a10_buffers.npz": "58263ac13242472bb91ed32496ef476bbcbd623a676c4a5d3b90c88a76c1783c",
+  "pilot_table_00/native_input.npz": "87e63cec2d4b34a4ec22ab828be218ff3ab5d391a69e2aaa73eb625d9c06b3e5",
+  "pilot_table_00/a40_buffers.npz": "e1840f6534ebe550bf7b7bbe46bcb95a4fd66bf3ef763ef65511b1c25b7db01a",
+  "pilot_table_00/a40_dense.npz": "64aa95528aecce661e923381cca82f9c1da0a4f7793f86dd9d58369ad1e0eea7",
+  "pilot_table_00/a10_dense.npz": "552e9aa9f6ca6bf4e7410c3c9ab94817cb51a355667ce2b82bd20041a213f8b8",
+  "pilot_free_00/a10_interpolated.npz": "264969ca81c3b14daedccbbebd63609347ab9147be32044fb2ddee83a9cce6ce",
+  "pilot_free_00/a10_buffers.npz": "d80aa321e51cba890e055bf9374336383d022d575bd07a1c2e124f123df6f8ab",
+  "pilot_free_00/native_input.npz": "0769b9f90568fd866aa79fdd7f0129b059aa76f2bbe3a57ecd314787f4679958",
+  "pilot_free_00/a40_buffers.npz": "773c15f159510d36be114ad79d4e8735235ed080b25c6367159f77577ea5400a",
+  "pilot_free_00/a40_dense.npz": "786531af783db905ec71112877ca244b26b2538c172267283192a6e331a4f238",
+  "pilot_free_00/a10_dense.npz": "422cd8d19faffdc76ba56e827c70c60fdd4b4c277e153ef8a1cc4c7c9bf5ef01",
+  "pilot_cluttered_00/a10_interpolated.npz": "02db47d4a0d04d6510a14bc19b2b7108cee3bf6ee72d2b293d8ca13e3eb0c05f",
+  "pilot_cluttered_00/a10_buffers.npz": "d02b731018c467de28b9d1250e84f5d5b9045927adb4d6e5e69ad53d71e02386",
+  "pilot_cluttered_00/native_input.npz": "6ed1add7e6091d34543619b7dd69b022b36b70cd6de585ce4de0b6e48c0c1ac0",
+  "pilot_cluttered_00/a40_buffers.npz": "2e3d55c637ec624de72d44397e7ce02f3cbc0eab5771647c744aa3536e6804ba",
+  "pilot_cluttered_00/a40_dense.npz": "9f4dd6f785cffd08950277e018c11b66e5feebc27b2f289c0ae5af078de753f1",
+  "pilot_cluttered_00/a10_dense.npz": "9cc2480e3ed67ce0267f08d0f0555a7322d3c7944e297640dfdc2b56c96e14ce"
+}

@@ -40,6 +40,14 @@ def main() -> None:
     pin_dense = json.loads((current_dir / "pinocchio_dense.json").read_text())
     self_midpoints = json.loads((current_dir / "self_midpoints.json").read_text())
     cases = current["cases"]
+    pilot = root / "research/joint_time_oracle/results/cohort_pilot_isolated_20261106/pilot.jsonl"
+    cohort_notice = ""
+    if pilot.exists():
+        pilot_count = sum(bool(line.strip()) for line in pilot.read_text().splitlines())
+        cohort_notice = (f'<h2>Multi-problem exploratory pilot</h2><p class="warn">'
+                         f'{pilot_count} pilot tasks attempted. B, C and D and adaptive qualification '
+                         'remain incomplete; confirmation was not launched. '
+                         '<a href="cohort/index.html">View pilot results and per-task diagnostics</a>.</p>')
     timing = json.loads((current_dir / "timing_research_summary.json").read_text())
     jacobian = json.loads((current_dir / "pointwise_jacobian.json").read_text())
     def dump(value: object) -> str:
@@ -48,6 +56,7 @@ def main() -> None:
 <title>Joint path and time: debugging evidence</title>
 <style>body{{font:16px system-ui;max-width:1000px;margin:3em auto;padding:0 1em;line-height:1.5}}pre{{overflow:auto;background:#f3f4f5;padding:1em}}.warn{{border-left:5px solid #b43;padding:1em;background:#fff2ee}}</style>
 <h1>Joint path and time: debugging and qualification evidence</h1>
+{cohort_notice}
 <p class="warn"><strong>Pilot decision: BLOCKED.</strong> The exact historical baseline
 has been reconstructed, and A, B and C satisfy the physical limits on the sampled grids.
 The 95%-scaled limits and joint-oracle derivative checks still need resolution, self collision has no

@@ -291,3 +291,42 @@ run optimization. The historical single-task artifacts are not part of the new
 holdout. CPU-only aggregation tests are in
 `tests/test_joint_time_cohort_statistics.py`. No cohort improvements are
 claimed until real GPU runs and independent validation complete.
+
+## Exploratory cohort execution (blocked)
+
+`results/cohort_pilot_exploratory_20261106` records 20 frozen generated pilot
+problems (six free, eight `collision_test.yml`, six `collision_primitives_3d.yml`)
+and all 23 endpoint proposals. The first run exposed an error from changing the
+planner-owned retimer's sampling shape; `cohort_pilot_retry_20261106` records a
+second failed attempt that reset a sampler inside the planner's captured graph.
+`cohort_pilot_isolated_20261106` preserves a third run using an independent
+replay instance. The task definitions are identical across these runs. Each
+successful native attempt stores the selected lane, input knots, timing buffers,
+8193 native physical-time samples, and A40 output from the same input.
+
+`cohort_validate` evaluates the saved samples with aligned Pinocchio dynamics,
+robot spheres, the configured table/cuboids/spheres/capsules, and independent
+sphere-pair distances with configured ignore masks and padding. These are sampled
+checks. They do not establish swept or continuous collision safety, cover exact
+adaptive peaks, or qualify a method for the cohort protocol. None of the
+trajectory `verification` flags is set to true. The exploratory scripts were
+modified in the working tree around the run; the manifest identifies this
+provenance limitation. The checked-in generated tasks are not a representative
+benchmark, and source-disjoint confirmation tasks have not been generated.
+
+`cohort_geometry` exposes exact native cubic and oracle quintic path evaluation,
+including an explicit leading/trailing stationary-span trimming operation. It is
+not yet wired into the IPOPT retimer. In particular, the artificial speed-control
+bound remains unresolved, the matched B/D executor is missing, and C multistart,
+CUDA derivative classification, and adaptive verification are incomplete.
+Consequently, no pilot comparison or confirmation launch is qualified.
+
+With the environments described above, reproduce the independent sampled audit
+and regenerate the offline report and fail-closed statistics with:
+
+```bash
+OPENBLAS_NUM_THREADS=1 python -m research.joint_time_oracle.cohort_validate \
+  --input research/joint_time_oracle/results/cohort_pilot_isolated_20261106
+python -m research.joint_time_oracle.cohort_report
+python -m research.joint_time_oracle.generate_debug_report
+```

@@ -77,7 +77,13 @@ def read_records(path: Path) -> list[dict]:
 
 def qualified(result: dict | None, mode: str) -> bool:
     """Fail closed: a candidate cannot pass without explicit evidence flags."""
-    if not isinstance(result, dict) or result.get("duration_s") is None:
+    if mode not in ("physical", "scaled95"):
+        raise ValueError(f"unknown feasibility gate: {mode}")
+    if not isinstance(result, dict):
+        return False
+    duration = result.get("duration_s")
+    if (not isinstance(duration, (int, float)) or isinstance(duration, bool)
+            or not math.isfinite(duration) or duration <= 0):
         return False
     checks = result.get("verification")
     if not isinstance(checks, dict):
@@ -128,23 +134,39 @@ def analyze(rows: list[dict]) -> dict:
             for a, b in PAIRS:
                 reductions = []
                 abs_saved = []
+                exclusions = Counter()
                 for r in subset:
                     first, second = r["methods"].get(a), r["methods"].get(b)
                     if not qualified(first, mode) or not qualified(second, mode):
+                        for method, result in ((a, first), (b, second)):
+                            if not qualified(result, mode):
+                                reason = "missing_method" if result is None else (
+                                    "missing_duration" if result.get("duration_s") is None
+                                    else "unqualified")
+                                exclusions[f"{method}:{reason}"] += 1
                         continue
                     t1, t2 = first["duration_s"], second["duration_s"]
                     reductions.append(100 * (t1 - t2) / t1)
                     abs_saved.append(t1 - t2)
                 n = len(reductions)
                 totals["comparisons"][mode + ":" + a + "->" + b] = {
+                    "attempted_tasks": len(subset),
                     "eligible_pairs": n,
+                    "exclusion_reasons": dict(exclusions),
                     "unpaired_or_unqualified": len(subset) - n,
                     "median_improvement_pct": statistics.median(reductions) if n else None,
                     "mean_improvement_pct": statistics.mean(reductions) if n else None,
+                    "median_signed_saving_ms": 1000 * statistics.median(abs_saved) if n else None,
+                    "median_absolute_difference_ms": 1000 * statistics.median(abs(x) for x in abs_saved) if n else None,
                     "median_absolute_saving_ms": 1000 * statistics.median(abs_saved) if n else None,
                     "median_bootstrap95_pct": bootstrap_median(reductions) if n else None,
                     "improved_count": sum(x > 0 for x in reductions),
                     "slower_count": sum(x < 0 for x in reductions),
+                    "improved_fraction": sum(x > 0 for x in reductions) / n if n else None,
+                    "slower_fraction": sum(x < 0 for x in reductions) / n if n else None,
+                    "fraction_gt_1pct": sum(x > 1 for x in reductions) / n if n else None,
+                    "fraction_gt_5pct": sum(x > 5 for x in reductions) / n if n else None,
+                    "fraction_gt_10pct": sum(x > 10 for x in reductions) / n if n else None,
                     "improvement_gt_1pct": sum(x > 1 for x in reductions),
                     "improvement_gt_5pct": sum(x > 5 for x in reductions),
                     "improvement_gt_10pct": sum(x > 10 for x in reductions),
