@@ -1,0 +1,37 @@
+{
+  "method": "offline quintic spline joint-geometry/final-time SLSQP",
+  "fork": "pkicki/curobo",
+  "local_only": true,
+  "global_lower_bound": null,
+  "constraints": "position/velocity/acceleration/jerk/RNEA torque/world/self collision",
+  "robot": "franka.yml",
+  "scene": "collision_table.yml",
+  "joint_names": [
+    "panda_joint1",
+    "panda_joint2",
+    "panda_joint3",
+    "panda_joint4",
+    "panda_joint5",
+    "panda_joint6",
+    "panda_joint7"
+  ],
+  "gpu": "NVIDIA GeForce RTX 3090",
+  "torch": "2.5.1",
+  "cuda": "12.4",
+  "python": "3.11.17",
+  "parameters": {
+    "output": "/tmp/joint_time_debug2_20261106",
+    "robot": "franka.yml",
+    "scene": "collision_table.yml",
+    "tasks": "None",
+    "number": "1",
+    "seed": "14",
+    "controls": "10",
+    "attempts": "1",
+    "maxiter": "3",
+    "solver": "slsqp",
+    "limit_scale": "0.95",
+    "max_planner_attempts": "5",
+    "no_plot": "True"
+  }
+}

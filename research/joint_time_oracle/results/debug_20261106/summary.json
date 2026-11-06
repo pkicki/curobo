@@ -1,0 +1,14 @@
+{
+  "tasks_attempted": 1,
+  "baseline_succeeded": 1,
+  "oracle_sampled_feasible": 0,
+  "status_counts": {
+    "NO_VERIFIED_JOINT_SOLUTION": 1
+  },
+  "median_improvement_percent": null,
+  "median_improvement_bootstrap95_pct": null,
+  "mean_improvement_percent": null,
+  "negative_improvements": 0,
+  "no_global_lower_bound": true,
+  "interpretation": "A shorter sampled-feasible trajectory establishes a lower bound on possible time savings, not their global ceiling. Bootstrap CI is over the verified subset only; selection bias remains."
+}
