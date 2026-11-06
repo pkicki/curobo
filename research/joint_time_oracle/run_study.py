@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import hashlib
 from pathlib import Path
 import platform
 import time
@@ -160,6 +161,10 @@ def main(argv=None):
                 row["status"]="PLANNER_FAILED"
             else:
                 base=read_plan(result)
+                baseline_archive=args.output/f"{name}_fast.npz"
+                np.savez_compressed(baseline_archive,**base)
+                row["fast_trajectory_archive"]=baseline_archive.name
+                row["fast_trajectory_sha256"]=hashlib.sha256(baseline_archive.read_bytes()).hexdigest()
                 t_fast=(len(base["q"])-1)*base["dt"]
                 if result.timeopt_duration is not None:
                     t_fast=float(result.timeopt_duration.reshape(-1)[0].item())
@@ -190,6 +195,14 @@ def main(argv=None):
                     row["status"]="BASELINE_AUDIT_FAILED"
                 else:
                     row["status"]="VERIFIED_LOCAL_SOLUTION"
+                    joint_archive=args.output/f"{name}_joint.npz"
+                    np.savez_compressed(joint_archive,
+                                        position=np.asarray(local["best"]["positions"]),
+                                        velocity=np.asarray(local["best"]["velocities"]),
+                                        controls=np.asarray(local["best"]["coefficients"]),
+                                        duration=local["best"]["duration"])
+                    row["joint_trajectory_archive"]=joint_archive.name
+                    row["joint_trajectory_sha256"]=hashlib.sha256(joint_archive.read_bytes()).hexdigest()
                     row["improvement_percent"]=100*(t_fast-local["best"]["duration"])/t_fast
                     if not args.no_plot:
                         plot_profiles(args.output,base,local["best"],name)
