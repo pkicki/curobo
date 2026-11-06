@@ -1,0 +1,15 @@
+{
+  "shape": [
+    17248,
+    32
+  ],
+  "steps": [
+    0.0001,
+    1e-05,
+    1e-06
+  ],
+  "max_best_step_absolute_error": 2.3360513523584814e-10,
+  "entries_over_1e-5": 0,
+  "max_objective_error": 7.507179773658113e-12,
+  "scope": "smooth fixed-path timing NLP; not CUDA collision derivatives"
+}

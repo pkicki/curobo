@@ -19,7 +19,9 @@ def main() -> None:
     """Evaluate saved samples; fail closed because adaptive interval checks are absent."""
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--input',type=Path,default=OUT)
-    output=parser.parse_args().input
+    parser.add_argument('--extra',type=Path)
+    parser.add_argument('--methods',default='A10,A40')
+    options=parser.parse_args();output=options.input;methods=options.methods.split(',')
     cfg=yaml.safe_load((ROOT/'curobo/content/configs/robot/franka.yml').read_text())['robot_cfg']['kinematics']
     model=pin.buildModelFromUrdf(str(ROOT/'curobo/content/assets/robot/franka_description/franka_panda.urdf'))
     inertia=pin.Inertia(.01,np.zeros(3),np.eye(3)*.0001)
@@ -44,12 +46,15 @@ def main() -> None:
     bounds={name:historical[name+'_bounds'] for name in ('position','velocity','acceleration','jerk','torque')}
     tasks=json.loads((output/'tasks.json').read_text()); rows=[json.loads(line) for line in (output/'pilot.jsonl').read_text().splitlines()]
     byid={task['case_id']:task for task in tasks}; results={}
+    result_path=(options.extra/'independent_sampled.json') if options.extra else (output/'independent_sampled.json')
     for row in rows:
         task=byid[row['case_id']]; scene={}
         if task['scene']:
             scene=yaml.safe_load((ROOT/'curobo/content/configs/scene'/task['scene']).read_text())
-        for method in ('A10','A40'):
-            file=output/task['case_id']/f'{method.lower()}_dense.npz'
+        for method in methods:
+            source_dir = options.extra if method in ('B','C','D') else output
+            if source_dir is None: continue
+            file=source_dir/task['case_id']/f'{method.lower()}_dense.npz'
             if not file.exists():continue
             source=np.load(file);s={k:source[k] for k in source.files}; n=len(s['time']);tau=np.empty_like(s['q'],dtype=np.float64)
             world_min=(float('inf'),None,None);self_min=(float('inf'),None,None)
@@ -77,7 +82,7 @@ def main() -> None:
                     if distance[j]<world_min[0]:world_min=(float(distance[j]),i,name)
                 separation=np.linalg.norm(xyz[ia]-xyz[ib],axis=1)-pair_dist;j=int(np.argmin(separation))
                 if separation[j]<self_min[0]:self_min=(float(separation[j]),i,[links[ia[j]],links[ib[j]]])
-            np.savez_compressed(output/task['case_id']/f'{method.lower()}_pin_torque.npz', time=s['time'], torque=tau)
+            np.savez_compressed(source_dir/task['case_id']/f'{method.lower()}_pin_torque.npz', time=s['time'], torque=tau)
             result={'samples':n,'world_min_clearance_m':None if world_min[1] is None else world_min[0],
                     'world_min_time_s':None if world_min[1] is None else float(s['time'][world_min[1]]),
                     'world_object':world_min[2],'self_min_clearance_m':self_min[0],
@@ -96,7 +101,7 @@ def main() -> None:
                 'acceleration':float(max(np.max(abs(s['qdd'][0])),np.max(abs(s['qdd'][-1]))))}
             result['note']='Independent Pinocchio aligned model and analytic sphere primitives, sampled only; adaptive checks not run.'
             results[f"{task['case_id']}:{method}"]=result
-            (output/'independent_sampled.json').write_text(json.dumps(results,indent=2)+'\n')
+            result_path.write_text(json.dumps(results,indent=2)+'\n')
             print(task['case_id'],method,'world',result['world_min_clearance_m'],'self',self_min[0],flush=True)
 
 

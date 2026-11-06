@@ -330,3 +330,24 @@ OPENBLAS_NUM_THREADS=1 python -m research.joint_time_oracle.cohort_validate \
 python -m research.joint_time_oracle.cohort_report
 python -m research.joint_time_oracle.generate_debug_report
 ```
+
+### Exact-geometry timing pilot
+
+`cohort_retime` uses the exact captured native cubic or joint-oracle quintic
+geometry. Native geometry trims only leading and trailing cubic spans whose four
+support controls are bitwise identical; no magnitude threshold is used. It
+optimizes a positive 32-control squared-speed spline with pointwise dynamic
+inequalities, aligned Pinocchio inverse dynamics, no finite upper speed-control
+bound, and up to two bounded adaptive collocation refinements. A final uniform
+slowdown is saved separately if the dense scaled-limit audit requires it. The
+positive lower coefficient bound is numerical and its activity is reported.
+
+`cohort_joint` restores fitted baseline seeds and tries two spline resolutions
+and two starts per resolution. It retains the best native-sampled feasible seed
+or restored solver iterate and labels its origin. CUDA gradients and collision
+sampling are not independently qualified, so every candidate still requires the
+separate independent verifier. Solver status alone does not establish feasibility.
+
+The final runner `cohort_execute` records its source commit, frozen task checksum,
+iteration limits and subprocess failures before executing. The prior three-task
+experiments are exploratory and may have used different refinement settings.

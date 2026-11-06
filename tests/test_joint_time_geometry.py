@@ -22,3 +22,14 @@ def test_quintic_and_native_stationary_trim() -> None:
     assert np.allclose(trim[1],original[1]*(end-start))
     quintic=QuinticGeometry(np.zeros((10,2),dtype=np.float32))
     assert all(np.max(np.abs(value)) == 0 for value in quintic.evaluate(u))
+
+
+def test_trim_does_not_discard_nonzero_cubic_motion() -> None:
+    """Tiny but nonzero support changes remain part of the path."""
+    controls=np.zeros((1,6,2),dtype=np.float32)
+    controls[0,0,0]=np.float32(1e-12)
+    buffers={'controls':controls,'start_boundary':np.zeros((1,4,2),dtype=np.float32),
+             'goal':np.ones((1,2),dtype=np.float32)}
+    geometry=NativeGeometry(buffers,0)
+    start,_=geometry.nonstationary_interval()
+    assert start == 1 / geometry.spans

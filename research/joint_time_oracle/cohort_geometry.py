@@ -23,17 +23,16 @@ class NativeGeometry:
             raise ValueError('path progress outside [0, 1]')
         return path_at(s,self.buffers,self.lane)
 
-    def nonstationary_interval(self, tolerance: float = 1e-10) -> tuple[float, float]:
-        """Find leading and trailing exactly stationary cubic spans by derivative checks."""
-        active=[]
-        for i in range(self.spans):
-            # First derivative is quadratic; three interior nodes identify a zero polynomial.
-            samples=(i+np.array([.2113248654,.5,.7886751346]))/self.spans
-            if np.max(np.abs(self.evaluate(samples)[1]))>tolerance:
-                active.append(i)
+    def nonstationary_interval(self) -> tuple[float, float]:
+        """Trim only spans whose four cubic support controls are exactly identical."""
+        controls = self.buffers['controls'][self.lane]
+        support = np.concatenate([self.buffers['start_boundary'][self.lane], controls[:-1],
+                                  np.tile(self.buffers['goal'][self.lane], (3, 1))])
+        active = [i for i in range(self.spans)
+                  if not np.array_equal(support[i:i+4], np.broadcast_to(support[i], (4, support.shape[1])))]
         if not active:
             raise ValueError('entire path is stationary')
-        return active[0]/self.spans,(active[-1]+1)/self.spans
+        return active[0] / self.spans, (active[-1] + 1) / self.spans
 
     def evaluate_trimmed(self, progress: np.ndarray) -> tuple[np.ndarray, ...]:
         """Remove only constant end spans and apply the chain rule for the new coordinate."""
