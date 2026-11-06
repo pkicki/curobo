@@ -13,6 +13,8 @@ from curobo._src.cost.cost_self_collision import SelfCollisionCost
 from curobo._src.cost.cost_self_collision_cfg import SelfCollisionCostCfg
 from curobo._src.geom.collision.buffer_collision import CollisionBuffer
 from curobo._src.state.state_joint import JointState
+from curobo._src.robot.dynamics.dynamics import Dynamics
+from curobo._src.robot.dynamics.dynamics_cfg import DynamicsCfg
 
 from .oracle import JointLimits
 
@@ -27,10 +29,13 @@ class CuroboOracleModel:
         self.device = self.device_cfg.device
         if self.device.type != "cuda":
             raise ValueError("native cuRobo RNEA/collision requires CUDA")
-        # Reuse the SAME dynamics object, model gravity and payload as TrajOpt.
-        self.dynamics = planner.trajopt_solver.transition_model.robot_dynamics
-        if self.dynamics is None:
-            raise RuntimeError("planner lacks RNEA dynamics; refusing model substitution")
+        # TimeOpt builds RNEA even when the trajectory transition model has no dynamics.
+        # Use separate workspaces so dense auditing cannot invalidate captured graphs.
+        transition_dynamics = planner.trajopt_solver.transition_model.robot_dynamics
+        gravity = (list(transition_dynamics.config.gravity) if transition_dynamics is not None
+                   else [0.0, 0.0, -9.81])
+        self.dynamics = Dynamics(DynamicsCfg(
+            self.kinematics.config.kinematics_config, self.device_cfg, gravity))
         self.scene = planner.scene_collision_checker
         self.world_weight = torch.ones(1,device=self.device,dtype=torch.float32)
         self.activation = torch.tensor([clearance],device=self.device,dtype=torch.float32)
@@ -39,7 +44,7 @@ class CuroboOracleModel:
         if scfg is None:
             raise RuntimeError("self collision configuration required")
         self.self_cost = SelfCollisionCost(SelfCollisionCostCfg(
-            weight=1.0,device_cfg=self.device_cfg,
+            weight=1.0,device_cfg=self.device_cfg, use_grad_input=True,
             self_collision_kin_config=scfg))
         self.last_horizon = None
 
@@ -81,7 +86,7 @@ class CuroboOracleModel:
                 self.buffer.resize(spheres.shape,self.device_cfg)
             costs.append(self.scene.get_sphere_distance(
                 state,self.buffer,self.world_weight,self.activation,
-                sum_distance=False).reshape(-1))
+                sum_distance=False, return_loss=True).reshape(-1))
         self.self_cost.setup_batch_tensors(1,len(q))
         costs.append(self.self_cost.forward(spheres).reshape(-1))
         return torch.cat(costs)

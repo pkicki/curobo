@@ -23,17 +23,18 @@ from .oracle import Boundary, JointTimeOracle, OracleConfig, normalized_worst
 
 def as_numpy(x):
     a = x.detach().cpu().numpy().astype(np.float64)
-    if a.ndim == 3 and a.shape[0] == 1:
+    while a.ndim > 2 and a.shape[0] == 1:
         a = a[0]
     if a.ndim == 2 and a.shape[0] == 1:
         a = a[0]
     return a
 
 
-def read_plan(result):
+def read_plan(result, joint_names):
     trajectory = result.get_interpolated_plan()
     if trajectory is None:
         raise RuntimeError("missing interpolated TimeOpt plan")
+    trajectory = trajectory.reorder(joint_names)
     q = as_numpy(trajectory.position)
     if q.ndim != 2:
         raise RuntimeError(f"invalid joint plan shape: {q.shape}")
@@ -160,17 +161,27 @@ def main(argv=None):
             if result is None or not bool(result.success.any()):
                 row["status"]="PLANNER_FAILED"
             else:
-                base=read_plan(result)
+                base=read_plan(result, model.joint_names)
                 baseline_archive=args.output/f"{name}_fast.npz"
                 np.savez_compressed(baseline_archive,**base)
                 row["fast_trajectory_archive"]=baseline_archive.name
                 row["fast_trajectory_sha256"]=hashlib.sha256(baseline_archive.read_bytes()).hexdigest()
                 t_fast=(len(base["q"])-1)*base["dt"]
-                if result.timeopt_duration is not None:
-                    t_fast=float(result.timeopt_duration.reshape(-1)[0].item())
+                if result.timeopt_duration is None:
+                    raise RuntimeError("planner did not report a TimeOpt duration")
+                reported_duration = float(result.timeopt_duration.reshape(-1)[0].item())
+                row["timeopt_reported_duration_s"] = reported_duration
+                if not np.isclose(t_fast, reported_duration, rtol=1e-4, atol=1e-5):
+                    raise RuntimeError("saved trajectory duration differs from TimeOpt duration")
                 row["fast_duration_s"]=t_fast
                 row["fast_validation"]=audit_baseline(model,base,limits)
-                row["baseline_sampled_feasible"]=max(row["fast_validation"].values())<=.002
+                row["baseline_sampled_feasible"] = (
+                    all(np.isfinite(v) for v in row["fast_validation"].values())
+                    and max(v for k, v in row["fast_validation"].items() if k != "collision") <= .002
+                    and row["fast_validation"]["collision"] <= 1e-5
+                    and np.allclose(base["q"][0], q0, atol=1e-4, rtol=0)
+                    and np.allclose(base["q"][-1], q1, atol=1e-4, rtol=0)
+                )
                 row["fast_samples"]=len(base["q"])
                 row["planner_reported_total_time_s"]=float(result.total_time)
                 row["planner_reported_solve_time_s"]=float(result.solve_time)
@@ -190,11 +201,11 @@ def main(argv=None):
                 row["trials"]=local["trials"]
                 row["best"]=local["best"]
                 if local["best"] is None:
-                    row["status"]="NO_VERIFIED_JOINT_SOLUTION"
+                    row["status"]="NO_SAMPLED_FEASIBLE_JOINT_SOLUTION"
                 elif not row["baseline_sampled_feasible"]:
                     row["status"]="BASELINE_AUDIT_FAILED"
                 else:
-                    row["status"]="VERIFIED_LOCAL_SOLUTION"
+                    row["status"]="SAMPLED_LOCAL_SOLUTION"
                     joint_archive=args.output/f"{name}_joint.npz"
                     np.savez_compressed(joint_archive,
                                         position=np.asarray(local["best"]["positions"]),
@@ -214,7 +225,7 @@ def main(argv=None):
             print(f"{name}: ERROR {exc}",flush=True)
         rows.append(row)
         (args.output/"per_task.json").write_text(json.dumps(rows,indent=2))
-    gains=[r["improvement_percent"] for r in rows if r["status"]=="VERIFIED_LOCAL_SOLUTION"]
+    gains=[r["improvement_percent"] for r in rows if r["status"]=="SAMPLED_LOCAL_SOLUTION"]
     counts={status:sum(r["status"]==status for r in rows)
             for status in sorted({r["status"] for r in rows})}
     bootstrap_ci=None
@@ -225,13 +236,13 @@ def main(argv=None):
         bootstrap_ci=[float(x) for x in np.quantile(medians,[.025,.975])]
     summary=dict(tasks_attempted=len(rows),
                  baseline_succeeded=sum("fast_duration_s" in r for r in rows),
-                 oracle_verified=len(gains),status_counts=counts,
+                 oracle_sampled_feasible=len(gains),status_counts=counts,
                  median_improvement_percent=float(np.median(gains)) if gains else None,
                  median_improvement_bootstrap95_pct=bootstrap_ci,
                  mean_improvement_percent=float(np.mean(gains)) if gains else None,
                  negative_improvements=sum(v<0 for v in gains),
                  no_global_lower_bound=True,
-                 interpretation="A shorter sampled-feasible trajectory establishes a lower bound on possible time savings, not their global ceiling. Bootstrap CI is over the verified subset only; selection bias remains.")
+                 interpretation="Sampled checks are not independent qualification; no global optimality claim is warranted. Bootstrap CI is over the sampled-feasible subset only; selection bias remains.")
     (args.output/"summary.json").write_text(json.dumps(summary,indent=2))
     print(json.dumps(summary,indent=2))
     planner.destroy()

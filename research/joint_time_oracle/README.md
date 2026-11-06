@@ -131,3 +131,34 @@ fifth family would change the problem and must be studied separately.
 **Status:** implementation committed as a research experiment; CPU
 mathematical smoke tests run locally. No GPU experiment, collision-gradient
 qualification, 100-path cohort, or numerical gain claim has been completed.
+
+## Debugging evidence, 2026-11-06
+
+`results/debug_20261106` and `results/debug_long_20261106` preserve two
+attempts on the same generated Franka/table task. The first used three SLSQP
+iterations. In the second, SLSQP reported success after 43 iterations, but the
+much denser sampled audit rejected the result (maximum normalized violation
+approximately 0.043). Neither is an independently feasible comparison.
+`python -m research.joint_time_oracle.generate_debug_report` renders the
+corresponding preliminary report without rerunning optimization.
+
+The available PyTorch 2.5.1 environment is missing the
+`shared_memory_per_block` device property expected by the current planner.
+These debugging runs used a temporary Python compatibility shim returning
+49152 bytes for that property; the shim is recorded in the evidence directory.
+This changes kernel selection, so these runs must not be used for latency
+comparisons. The source base was `adda90b0e2f9f66ca4daba904c180b112ffdca6f`
+with the experimental changes in this commit applied; result files predate
+subsequent status-label edits. The manifest's GPU is the selected PyTorch
+GPU; CUDA device ordering can differ from `nvidia-smi` ordering.
+
+Native collision backward operators require upstream gradient scaling. The
+adapter now requests it for both world and self collision, but native CUDA
+collision and RNEA gradients still require finite-difference qualification.
+The baseline audit checks only stored samples, not a dense or swept path.
+The oracle audit uses cuRobo's own models and point samples; it is not
+independent verification or a continuous collision certificate. A fixed
+95% dynamic limit scaling can conflict with nonzero endpoint derivatives
+at physical limits. IPOPT, independent dynamics, adaptive refinement, and
+representative multistart experiments remain unqualified. Do not interpret
+sampled status labels in historical JSON as independent verification.

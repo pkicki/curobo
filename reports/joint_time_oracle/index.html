@@ -1,0 +1,399 @@
+<!doctype html><html lang="en"><meta charset="utf-8">
+<title>Joint path and time: debugging evidence</title>
+<style>body{font:16px system-ui;max-width:1000px;margin:3em auto;padding:0 1em;line-height:1.5}pre{overflow:auto;background:#f3f4f5;padding:1em}.warn{border-left:5px solid #b43;padding:1em;background:#fff2ee}</style>
+<h1>Joint path and time: debugging evidence</h1>
+<p class="warn"><strong>Not qualified.</strong> This is a single debugging attempt with a
+three-iteration solver budget and a second longer run on the same task, not the requested benchmark. No independently validated
+pair exists, so no conclusion about potential time savings can be drawn.</p>
+<h2>Research Implications: Is Joint Path-and-Time Optimization Worth Pursuing?</h2>
+<p>Unknown. First qualify native CUDA derivatives and independent dynamics and collision
+validation, then run a frozen, representative multistart benchmark. A local solver does
+not provide a global optimality certificate.</p>
+<h2>Summary</h2><pre>{
+  &quot;tasks_attempted&quot;: 1,
+  &quot;baseline_succeeded&quot;: 1,
+  &quot;oracle_sampled_feasible&quot;: 0,
+  &quot;status_counts&quot;: {
+    &quot;NO_VERIFIED_JOINT_SOLUTION&quot;: 1
+  },
+  &quot;median_improvement_percent&quot;: null,
+  &quot;median_improvement_bootstrap95_pct&quot;: null,
+  &quot;mean_improvement_percent&quot;: null,
+  &quot;negative_improvements&quot;: 0,
+  &quot;no_global_lower_bound&quot;: true,
+  &quot;interpretation&quot;: &quot;A shorter sampled-feasible trajectory establishes a lower bound on possible time savings, not their global ceiling. Bootstrap CI is over the verified subset only; selection bias remains.&quot;
+}</pre>
+<h2>Task and solver results</h2><p>The longer solve returned solver success at 43 iterations, but dense sampled validation rejected it. The largest normalized constraint violation was approximately 0.043. These runs concern the same generated task and do not form a representative cohort.</p><h3>Short run</h3><pre>[
+  {
+    &quot;task_id&quot;: &quot;task_0000&quot;,
+    &quot;start&quot;: [
+      0.0,
+      -1.2999999523162842,
+      0.0,
+      -2.5,
+      0.0,
+      1.5,
+      0.800000011920929
+    ],
+    &quot;goal&quot;: [
+      0.3971799826669338,
+      -1.4668639521151763,
+      0.24328716669846584,
+      -2.0678574560168865,
+      0.16958097694579755,
+      1.5580358505759766,
+      1.114776118958361
+    ],
+    &quot;status&quot;: &quot;NO_VERIFIED_JOINT_SOLUTION&quot;,
+    &quot;planner_wall_s&quot;: 0.011650662985630333,
+    &quot;fast_trajectory_archive&quot;: &quot;task_0000_fast.npz&quot;,
+    &quot;fast_trajectory_sha256&quot;: &quot;ef2d6a795acc71180c8907e1be4acf8c55441e14765eaf75a85077382da244e0&quot;,
+    &quot;timeopt_reported_duration_s&quot;: 0.4128432273864746,
+    &quot;fast_duration_s&quot;: 0.4128432236611843,
+    &quot;fast_validation&quot;: {
+      &quot;position&quot;: 0.0,
+      &quot;velocity&quot;: 0.0,
+      &quot;acceleration&quot;: 0.0,
+      &quot;jerk&quot;: 0.0,
+      &quot;torque&quot;: 0.0,
+      &quot;collision&quot;: 0.0
+    },
+    &quot;baseline_sampled_feasible&quot;: true,
+    &quot;fast_samples&quot;: 18,
+    &quot;planner_reported_total_time_s&quot;: 0.010851103782653809,
+    &quot;planner_reported_solve_time_s&quot;: 0.005287936091423035,
+    &quot;oracle_wall_s&quot;: 0.9837243549991399,
+    &quot;oracle_status&quot;: &quot;NO_VERIFIED_CANDIDATE&quot;,
+    &quot;trials&quot;: [
+      {
+        &quot;attempt&quot;: 0,
+        &quot;solver_success&quot;: false,
+        &quot;verified&quot;: false,
+        &quot;duration&quot;: 0.2823317348957062,
+        &quot;max_violation&quot;: 3.4633593559265137,
+        &quot;message&quot;: &quot;Iteration limit reached&quot;,
+        &quot;iterations&quot;: 3,
+        &quot;nfev&quot;: 4,
+        &quot;coefficients&quot;: [
+          [
+            0.0,
+            -1.3000000715255737,
+            0.0,
+            -2.500000238418579,
+            0.0,
+            1.5,
+            0.800000011920929
+          ],
+          [
+            0.0,
+            -1.3000000715255737,
+            0.0,
+            -2.500000238418579,
+            0.0,
+            1.5,
+            0.800000011920929
+          ],
+          [
+            0.0,
+            -1.3000000715255737,
+            0.0,
+            -2.500000238418579,
+            0.0,
+            1.5,
+            0.800000011920929
+          ],
+          [
+            0.03226356953382492,
+            -1.3050000667572021,
+            0.007493489421904087,
+            -2.4618303775787354,
+            0.00554285105317831,
+            1.5006242990493774,
+            0.818793773651123
+          ],
+          [
+            0.16744573414325714,
+            -1.3321117162704468,
+            0.0648161843419075,
+            -2.2915282249450684,
+            0.03475949168205261,
+            1.512048602104187,
+            0.8709231615066528
+          ],
+          [
+            0.2343142330646515,
+            -1.4137743711471558,
+            0.18330438435077667,
+            -2.2607645988464355,
+            0.11510125547647476,
+            1.5395512580871582,
+            1.0160177946090698
+          ],
+          [
+            0.37597647309303284,
+            -1.4573798179626465,
+            0.234673410654068,
+            -2.0917391777038574,
+            0.1599361002445221,
+            1.5538007020950317,
+            1.0972659587860107
+          ],
+          [
+            0.3971800208091736,
+            -1.4668641090393066,
+            0.24328717589378357,
+            -2.067857503890991,
+            0.16958098113536835,
+            1.5580358505249023,
+            1.1147761344909668
+          ],
+          [
+            0.3971800208091736,
+            -1.4668641090393066,
+            0.24328717589378357,
+            -2.067857503890991,
+            0.16958098113536835,
+            1.5580358505249023,
+            1.1147761344909668
+          ],
+          [
+            0.3971800208091736,
+            -1.4668641090393066,
+            0.24328717589378357,
+            -2.067857503890991,
+            0.16958098113536835,
+            1.5580358505249023,
+            1.1147761344909668
+          ]
+        ]
+      }
+    ],
+    &quot;best&quot;: null
+  }
+]</pre><h3>Longer run</h3><pre>[
+  {
+    &quot;task_id&quot;: &quot;task_0000&quot;,
+    &quot;start&quot;: [
+      0.0,
+      -1.2999999523162842,
+      0.0,
+      -2.5,
+      0.0,
+      1.5,
+      0.800000011920929
+    ],
+    &quot;goal&quot;: [
+      0.3971799826669338,
+      -1.4668639521151763,
+      0.24328716669846584,
+      -2.0678574560168865,
+      0.16958097694579755,
+      1.5580358505759766,
+      1.114776118958361
+    ],
+    &quot;status&quot;: &quot;NO_VERIFIED_JOINT_SOLUTION&quot;,
+    &quot;planner_wall_s&quot;: 0.011604867002461106,
+    &quot;fast_trajectory_archive&quot;: &quot;task_0000_fast.npz&quot;,
+    &quot;fast_trajectory_sha256&quot;: &quot;ef2d6a795acc71180c8907e1be4acf8c55441e14765eaf75a85077382da244e0&quot;,
+    &quot;timeopt_reported_duration_s&quot;: 0.4128432273864746,
+    &quot;fast_duration_s&quot;: 0.4128432236611843,
+    &quot;fast_validation&quot;: {
+      &quot;position&quot;: 0.0,
+      &quot;velocity&quot;: 0.0,
+      &quot;acceleration&quot;: 0.0,
+      &quot;jerk&quot;: 0.0,
+      &quot;torque&quot;: 0.0,
+      &quot;collision&quot;: 0.0
+    },
+    &quot;baseline_sampled_feasible&quot;: true,
+    &quot;fast_samples&quot;: 18,
+    &quot;planner_reported_total_time_s&quot;: 0.010805855751037598,
+    &quot;planner_reported_solve_time_s&quot;: 0.005305344104766846,
+    &quot;oracle_wall_s&quot;: 3.8297175370098557,
+    &quot;oracle_status&quot;: &quot;NO_VERIFIED_CANDIDATE&quot;,
+    &quot;trials&quot;: [
+      {
+        &quot;attempt&quot;: 0,
+        &quot;solver_success&quot;: true,
+        &quot;verified&quot;: false,
+        &quot;duration&quot;: 0.40069466829299927,
+        &quot;max_violation&quot;: 0.042814355343580246,
+        &quot;message&quot;: &quot;Optimization terminated successfully&quot;,
+        &quot;iterations&quot;: 43,
+        &quot;nfev&quot;: 148,
+        &quot;coefficients&quot;: [
+          [
+            0.0,
+            -1.3000000715255737,
+            0.0,
+            -2.500000238418579,
+            0.0,
+            1.5,
+            0.800000011920929
+          ],
+          [
+            0.0,
+            -1.3000000715255737,
+            0.0,
+            -2.500000238418579,
+            0.0,
+            1.5,
+            0.800000011920929
+          ],
+          [
+            0.0,
+            -1.3000000715255737,
+            0.0,
+            -2.500000238418579,
+            0.0,
+            1.5,
+            0.800000011920929
+          ],
+          [
+            0.02385423518717289,
+            -1.3160251379013062,
+            0.024236178025603294,
+            -2.475553512573242,
+            0.01446699257940054,
+            1.500253677368164,
+            0.7961122989654541
+          ],
+          [
+            0.11039920896291733,
+            -1.332155466079712,
+            0.12787756323814392,
+            -2.3850655555725098,
+            0.03614220395684242,
+            1.5116450786590576,
+            0.8863341212272644
+          ],
+          [
+            0.30462172627449036,
+            -1.4384331703186035,
+            0.20623649656772614,
+            -2.1827945709228516,
+            0.12025901675224304,
+            1.5398895740509033,
+            1.0105938911437988
+          ],
+          [
+            0.3804733455181122,
+            -1.4679460525512695,
+            0.2492484301328659,
+            -2.0923049449920654,
+            0.16602610051631927,
+            1.5534300804138184,
+            1.0903481245040894
+          ],
+          [
+            0.3971800208091736,
+            -1.4668641090393066,
+            0.24328717589378357,
+            -2.067857503890991,
+            0.16958098113536835,
+            1.5580358505249023,
+            1.1147761344909668
+          ],
+          [
+            0.3971800208091736,
+            -1.4668641090393066,
+            0.24328717589378357,
+            -2.067857503890991,
+            0.16958098113536835,
+            1.5580358505249023,
+            1.1147761344909668
+          ],
+          [
+            0.3971800208091736,
+            -1.4668641090393066,
+            0.24328717589378357,
+            -2.067857503890991,
+            0.16958098113536835,
+            1.5580358505249023,
+            1.1147761344909668
+          ]
+        ]
+      }
+    ],
+    &quot;best&quot;: null
+  }
+]</pre>
+<h2>Configuration and hardware</h2><pre>{
+  &quot;method&quot;: &quot;offline quintic spline joint-geometry/final-time SLSQP&quot;,
+  &quot;fork&quot;: &quot;pkicki/curobo&quot;,
+  &quot;local_only&quot;: true,
+  &quot;global_lower_bound&quot;: null,
+  &quot;constraints&quot;: &quot;position/velocity/acceleration/jerk/RNEA torque/world/self collision&quot;,
+  &quot;robot&quot;: &quot;franka.yml&quot;,
+  &quot;scene&quot;: &quot;collision_table.yml&quot;,
+  &quot;joint_names&quot;: [
+    &quot;panda_joint1&quot;,
+    &quot;panda_joint2&quot;,
+    &quot;panda_joint3&quot;,
+    &quot;panda_joint4&quot;,
+    &quot;panda_joint5&quot;,
+    &quot;panda_joint6&quot;,
+    &quot;panda_joint7&quot;
+  ],
+  &quot;gpu&quot;: &quot;NVIDIA GeForce RTX 3090&quot;,
+  &quot;torch&quot;: &quot;2.5.1&quot;,
+  &quot;cuda&quot;: &quot;12.4&quot;,
+  &quot;python&quot;: &quot;3.11.17&quot;,
+  &quot;parameters&quot;: {
+    &quot;output&quot;: &quot;/tmp/joint_time_debug2_20261106&quot;,
+    &quot;robot&quot;: &quot;franka.yml&quot;,
+    &quot;scene&quot;: &quot;collision_table.yml&quot;,
+    &quot;tasks&quot;: &quot;None&quot;,
+    &quot;number&quot;: &quot;1&quot;,
+    &quot;seed&quot;: &quot;14&quot;,
+    &quot;controls&quot;: &quot;10&quot;,
+    &quot;attempts&quot;: &quot;1&quot;,
+    &quot;maxiter&quot;: &quot;3&quot;,
+    &quot;solver&quot;: &quot;slsqp&quot;,
+    &quot;limit_scale&quot;: &quot;0.95&quot;,
+    &quot;max_planner_attempts&quot;: &quot;5&quot;,
+    &quot;no_plot&quot;: &quot;True&quot;
+  }
+}</pre><h3>Longer run configuration</h3><pre>{
+  &quot;method&quot;: &quot;offline quintic spline joint-geometry/final-time SLSQP&quot;,
+  &quot;fork&quot;: &quot;pkicki/curobo&quot;,
+  &quot;local_only&quot;: true,
+  &quot;global_lower_bound&quot;: null,
+  &quot;constraints&quot;: &quot;position/velocity/acceleration/jerk/RNEA torque/world/self collision&quot;,
+  &quot;robot&quot;: &quot;franka.yml&quot;,
+  &quot;scene&quot;: &quot;collision_table.yml&quot;,
+  &quot;joint_names&quot;: [
+    &quot;panda_joint1&quot;,
+    &quot;panda_joint2&quot;,
+    &quot;panda_joint3&quot;,
+    &quot;panda_joint4&quot;,
+    &quot;panda_joint5&quot;,
+    &quot;panda_joint6&quot;,
+    &quot;panda_joint7&quot;
+  ],
+  &quot;gpu&quot;: &quot;NVIDIA GeForce RTX 3090&quot;,
+  &quot;torch&quot;: &quot;2.5.1&quot;,
+  &quot;cuda&quot;: &quot;12.4&quot;,
+  &quot;python&quot;: &quot;3.11.17&quot;,
+  &quot;parameters&quot;: {
+    &quot;output&quot;: &quot;/tmp/joint_time_debug3_20261106&quot;,
+    &quot;robot&quot;: &quot;franka.yml&quot;,
+    &quot;scene&quot;: &quot;collision_table.yml&quot;,
+    &quot;tasks&quot;: &quot;None&quot;,
+    &quot;number&quot;: &quot;1&quot;,
+    &quot;seed&quot;: &quot;14&quot;,
+    &quot;controls&quot;: &quot;10&quot;,
+    &quot;attempts&quot;: &quot;1&quot;,
+    &quot;maxiter&quot;: &quot;80&quot;,
+    &quot;solver&quot;: &quot;slsqp&quot;,
+    &quot;limit_scale&quot;: &quot;0.95&quot;,
+    &quot;max_planner_attempts&quot;: &quot;5&quot;,
+    &quot;no_plot&quot;: &quot;True&quot;
+  }
+}</pre>
+<h2>Limitations</h2><p>The baseline check is sampled only; the optimizer uses cuRobo
+RNEA and collision callbacks and has not been cross-checked against an independent
+engine. This debugging run used an external PyTorch device-property compatibility
+shim and is not a performance measurement. The generated cohort, multistart,
+adaptive verification, swept validation, control retiming experiment, detailed plots,
+and pilot and main studies remain incomplete.</p></html>

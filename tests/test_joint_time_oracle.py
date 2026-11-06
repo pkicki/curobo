@@ -90,3 +90,33 @@ def test_zero_collision_cost_allows_feasible_solution_and_gradients():
     assert jac.shape==(6,len(z))
     assert jac[-1,-2]==pytest.approx(1.)
     assert solver.audit(z)["feasible"]
+
+
+def test_constraint_jacobian_matches_central_differences():
+    cfg = OracleConfig(controls=10, samples_per_span=3, audit_samples_per_span=6,
+                       attempts=1, solver="ipopt", smooth_temperature=0.01)
+    boundary = Boundary.rest(np.array([0.1, -0.2], dtype=np.float32),
+                             np.array([0.8, 0.5], dtype=np.float32))
+    def collision(q):
+        return 0.03 * q[:, 0] + 0.01 * q[:, 1]
+    solver = JointTimeOracle(limits(2), boundary, dynamics, collision, config=cfg)
+    path = np.linspace(boundary.q0, boundary.q1, 45)
+    z = solver._seed(path, 3.0)
+    z[:-2] += np.random.default_rng(12).normal(0, 0.02, len(z) - 2)
+    analytic = solver._evaluate(z, True)
+    step = 2e-3
+    numeric = np.empty_like(analytic)
+    for i in range(len(z)):
+        offset = np.zeros_like(z)
+        offset[i] = step
+        numeric[:, i] = (solver._evaluate(z + offset, False) -
+                         solver._evaluate(z - offset, False)) / (2 * step)
+    np.testing.assert_allclose(analytic, numeric, atol=4e-3, rtol=3e-2)
+    objective = lambda x: np.exp(x[-1]) + 1000 * x[-2]
+    objective_grad = np.r_[np.zeros(len(z) - 2), 1000., np.exp(z[-1])]
+    numeric_obj = np.empty_like(z)
+    for i in range(len(z)):
+        offset = np.zeros_like(z)
+        offset[i] = step
+        numeric_obj[i] = (objective(z + offset) - objective(z - offset)) / (2 * step)
+    np.testing.assert_allclose(objective_grad, numeric_obj, atol=1e-4, rtol=1e-5)
