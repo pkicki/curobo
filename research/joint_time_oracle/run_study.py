@@ -200,14 +200,23 @@ def main(argv=None):
         rows.append(row)
         (args.output/"per_task.json").write_text(json.dumps(rows,indent=2))
     gains=[r["improvement_percent"] for r in rows if r["status"]=="VERIFIED_LOCAL_SOLUTION"]
+    counts={status:sum(r["status"]==status for r in rows)
+            for status in sorted({r["status"] for r in rows})}
+    bootstrap_ci=None
+    if len(gains)>=2:
+        rng_ci=np.random.default_rng(args.seed+2001)
+        arr=np.asarray(gains,dtype=np.float64)
+        medians=np.median(rng_ci.choice(arr,size=(2000,len(arr)),replace=True),axis=1)
+        bootstrap_ci=[float(x) for x in np.quantile(medians,[.025,.975])]
     summary=dict(tasks_attempted=len(rows),
                  baseline_succeeded=sum("fast_duration_s" in r for r in rows),
-                 oracle_verified=len(gains),
+                 oracle_verified=len(gains),status_counts=counts,
                  median_improvement_percent=float(np.median(gains)) if gains else None,
+                 median_improvement_bootstrap95_pct=bootstrap_ci,
                  mean_improvement_percent=float(np.mean(gains)) if gains else None,
                  negative_improvements=sum(v<0 for v in gains),
                  no_global_lower_bound=True,
-                 interpretation="A shorter feasible trajectory establishes a lower bound on possible time savings, not their global ceiling.")
+                 interpretation="A shorter sampled-feasible trajectory establishes a lower bound on possible time savings, not their global ceiling. Bootstrap CI is over the verified subset only; selection bias remains.")
     (args.output/"summary.json").write_text(json.dumps(summary,indent=2))
     print(json.dumps(summary,indent=2))
     planner.destroy()
