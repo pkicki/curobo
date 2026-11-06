@@ -31,6 +31,8 @@ class OracleConfig:
     max_duration: float = 120.0
     limit_scale: float = 0.95
     rng_seed: int = 7
+    solver: str = "slsqp"
+    smooth_temperature: float = 0.002
 
     def __post_init__(self):
         if self.controls < 8 or self.samples_per_span < 2 or self.audit_samples_per_span < 2:
@@ -41,6 +43,8 @@ class OracleConfig:
             raise ValueError("invalid duration interval")
         if self.constraint_tol < 0 or self.trust_radius <= 0:
             raise ValueError("invalid tolerance or trust region")
+        if self.solver not in ("slsqp", "ipopt") or self.smooth_temperature < 0:
+            raise ValueError("invalid NLP solver or smoothing parameter")
 
 
 @dataclass(frozen=True)
@@ -125,13 +129,17 @@ class QuinticBasis:
         return self.B[0]@c, (self.B[1]@c)/T, (self.B[2]@c)/(T*T), (self.B[3]@c)/(T*T*T), c
 
 
-def normalized_worst(values, bounds, scale):
+def normalized_worst(values, bounds, scale, temperature=0.0):
     lo, hi = bounds[0], bounds[1]
     center = (hi+lo)*0.5
     lower = center + scale*(lo-center)
     upper = center + scale*(hi-center)
     width = torch.clamp((upper-lower)*0.5, min=1e-6)
-    return torch.minimum((values-lower)/width, (upper-values)/width).amin(dim=0)
+    margins = torch.minimum((values-lower)/width, (upper-values)/width)
+    if temperature > 0:
+        # Conservative soft minimum over collocation samples.
+        return -temperature * torch.logsumexp(-margins/temperature, dim=0)
+    return margins.amin(dim=0)
 
 
 class JointTimeOracle:
@@ -161,15 +169,17 @@ class JointTimeOracle:
         T = z[-1].exp()
         return T, basis.evaluate(interior, T, self.boundary)
 
-    def _margins(self, z, basis):
+    def _margins(self, z, basis, *, audit=False):
         T, (q, qd, qdd, qddd, _) = self._states(z, basis)
         tau = self.torque(q, qd, qdd)
         if tau.shape != q.shape:
             raise ValueError("torque callback must return [samples,dof]")
         families = (("position",q), ("velocity",qd), ("acceleration",qdd),
                     ("jerk",qddd), ("torque",tau))
+        smooth = self.cfg.smooth_temperature if (self.cfg.solver=="ipopt" and not audit) else 0.0
         rows = [normalized_worst(value,self.bounds_t[name],
-                                 1.0 if name=="position" else self.cfg.limit_scale)
+                                 1.0 if name=="position" else self.cfg.limit_scale,
+                                 temperature=smooth)
                 for name,value in families]
         if self.collision is not None:
             costs = self.collision(q).reshape(-1)
@@ -218,7 +228,7 @@ class JointTimeOracle:
         with torch.no_grad():
             z = torch.as_tensor(x, device=self.device, dtype=torch.float32)
             T,(q,qd,qdd,qddd,c) = self._states(z, self.audit_basis)
-            margins = self._margins(z, self.audit_basis)
+            margins = self._margins(z, self.audit_basis, audit=True)
             minimum = float(margins.min().item())
             collision = float(self.collision(q).amax().item()) if self.collision is not None else 0.0
             slack = float(z[-2].item())
@@ -250,12 +260,16 @@ class JointTimeOracle:
                 x[:n] = np.clip(x[:n],[v[0] for v in bounds[:n]],
                                 [v[1] for v in bounds[:n]])
                 x[-1] += np.log(1+0.12*attempt)
-            result = minimize(lambda z:float(np.exp(z[-1])+1000.0*z[-2]), x, method="SLSQP",
-                              jac=lambda z:np.r_[np.zeros(n),1000.0,np.exp(z[-1])],
-                              bounds=bounds,
-                              constraints=[dict(type="ineq",fun=lambda z:self._evaluate(z,False),
-                                                jac=lambda z:self._evaluate(z,True))],
-                              options=dict(maxiter=self.cfg.maxiter,ftol=self.cfg.ftol,disp=False))
+            if self.cfg.solver == "ipopt":
+                from .ipopt_backend import solve_ipopt
+                result = solve_ipopt(self,x,bounds)
+            else:
+                result = minimize(lambda z:float(np.exp(z[-1])+1000.0*z[-2]), x, method="SLSQP",
+                                  jac=lambda z:np.r_[np.zeros(n),1000.0,np.exp(z[-1])],
+                                  bounds=bounds,
+                                  constraints=[dict(type="ineq",fun=lambda z:self._evaluate(z,False),
+                                                    jac=lambda z:self._evaluate(z,True))],
+                                  options=dict(maxiter=self.cfg.maxiter,ftol=self.cfg.ftol,disp=False))
             report = self.audit(result.x)
             trials.append(dict(attempt=attempt,solver_success=bool(result.success),
                                verified=report["feasible"],duration=report["duration"],
