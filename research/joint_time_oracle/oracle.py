@@ -20,9 +20,9 @@ from scipy.optimize import minimize
 class OracleConfig:
     controls: int = 18
     samples_per_span: int = 3
-    audit_samples_per_span: int = 12
+    audit_samples_per_span: int = 64
     maxiter: int = 250
-    ftol: float = 2e-7
+    ftol: float = 2e-5
     attempts: int = 4
     seed_noise: float = 0.04
     trust_radius: float = 0.5
