@@ -278,3 +278,16 @@ shim documented above. Native 40/80 outputs are solver diagnostics, not independ
 qualified native trajectories. The new checksum manifest is
 `results/native_reconstruction_20261106/timing_research_checksums.json`; the original
 manifest remains unchanged.
+
+
+## Frozen multi-problem protocol (not executed)
+
+See [COHORT_PROTOCOL.md](COHORT_PROTOCOL.md) for the 20-task pilot and
+100-task source-disjoint confirmation protocol, method definitions A10/A40/B/C/D,
+independent physical and Scaled95 acceptance gates, and the task-level result
+schema. [cohort_statistics.py](cohort_statistics.py) produces fail-closed paired
+statistics and an offline HTML summary from frozen JSONL inputs; it does not
+run optimization. The historical single-task artifacts are not part of the new
+holdout. CPU-only aggregation tests are in
+`tests/test_joint_time_cohort_statistics.py`. No cohort improvements are
+claimed until real GPU runs and independent validation complete.
