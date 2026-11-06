@@ -23,8 +23,14 @@ Six boundary conditions per joint (initial/final position, velocity,
 acceleration) are eliminated analytically from the spline coefficients.
 
 The first seed is the selected cuRoboV2-Fast *retimed* trajectory at its
-retimed duration. Additional SLSQP starts perturb interior controls within
-a bounded coefficient neighborhood. The solver minimizes duration plus a
+retimed duration. Additional nonlinear-program starts perturb interior controls
+within a bounded coefficient neighborhood. The backend is selectable:
+SciPy SLSQP (default, no extra compiled dependency) or cyipopt/IPOPT
+(optional local interior-point solve with a conservative smooth approximation
+of the worst sampled dynamics margin). The IPOPT Jacobian is assembled from
+cuRobo/Torch automatic differentiation; for this small pilot it is dense,
+not yet a sparse mesh-collocation implementation. Both modes require
+an independent dense post-solve check. The solver minimizes duration plus a
 large penalty on a nonnegative collision slack; only solutions with zero
 collision slack and zero collision cost can pass the dense audit.
 
@@ -46,6 +52,11 @@ From the repository root:
       --output /tmp/joint_time_ceiling \
       --robot franka.yml --scene collision_table.yml \
       --number 8 --seed 14 --controls 18 --attempts 4 --maxiter 250
+
+    # After installing cyipopt and libipopt in a compatible CUDA environment:
+    python -m research.joint_time_oracle.run_study \
+      --output /tmp/joint_time_ipopt --solver ipopt \
+      --number 8 --seed 14 --controls 18 --attempts 4 --maxiter 400
 
 The default cohort samples deterministic goal perturbations from the robot's
 home configuration. For a fixed study cohort, write a JSON list:
