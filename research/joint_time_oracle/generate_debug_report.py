@@ -34,14 +34,63 @@ def main() -> None:
             "fail_mixed_tolerance": sum(entry["abs_error"] > 0.01 + 0.02 * abs(entry["analytic"])
                                         for entry in family_entries),
         }
+    current_dir = root / "research/joint_time_oracle/results/native_reconstruction_20261106"
+    current = json.loads((current_dir / "qualification_summary.json").read_text())
+    dense = json.loads((current_dir / "dense_validation.json").read_text())
+    pin_dense = json.loads((current_dir / "pinocchio_dense.json").read_text())
+    self_midpoints = json.loads((current_dir / "self_midpoints.json").read_text())
+    cases = current["cases"]
     def dump(value: object) -> str:
         return html.escape(json.dumps(value, indent=2))
     page = f"""<!doctype html><html lang="en"><meta charset="utf-8">
 <title>Joint path and time: debugging evidence</title>
 <style>body{{font:16px system-ui;max-width:1000px;margin:3em auto;padding:0 1em;line-height:1.5}}pre{{overflow:auto;background:#f3f4f5;padding:1em}}.warn{{border-left:5px solid #b43;padding:1em;background:#fff2ee}}</style>
-<h1>Joint path and time: debugging evidence</h1>
+<h1>Joint path and time: debugging and qualification evidence</h1>
+<p class="warn"><strong>Pilot decision: BLOCKED.</strong> The exact historical baseline
+has been reconstructed, and A, B and C satisfy the physical limits on the sampled grids.
+The 95%-scaled limits and derivative checks still need resolution, self collision has no
+continuous check, collision validation reuses cuRobo, and the independently retimed result
+reached the SLSQP iteration limit. These observations are not a qualified improvement.</p>
+<p><a href="../../research/joint_time_oracle/results/native_reconstruction_20261106/checksums.json">Raw artifacts and checksums</a></p>
+<h2>Native reconstruction and A/B/C candidates</h2>
+<p>The rerun reproduced all 18 saved states exactly. Native TimeOpt was replayed using
+captured controls, endpoint controls, timing coefficients and integrated times, with
+641, 4097, 8193 and 16385 samples. The native replay agrees exactly at the 8193
+shared points. The original geometric path was evaluated independently with maximum
+position discrepancy 4.2e-7 rad on the measured interior samples.</p>
+<table><thead><tr><th>Method</th><th>Duration (s)</th><th>Physical violations</th><th>95%-scaled violations</th></tr></thead>
+<tbody><tr><td>A Native TimeOpt</td><td>{cases["baseline"]["duration_s"]:.9f}</td><td>{dump(cases["baseline"]["physical_max_violation"])}</td><td>{dump(cases["baseline"]["scaled_95_max_violation"])}</td></tr>
+<tr><td>B Independent fixed-path timing</td><td>{cases["fixed_path"]["duration_s"]:.9f}</td><td>{dump(cases["fixed_path"]["physical_max_violation"])}</td><td>{dump(cases["fixed_path"]["scaled_95_max_violation"])}</td></tr>
+<tr><td>C Joint candidate</td><td>{cases["candidate"]["duration_s"]:.9f}</td><td>{dump(cases["candidate"]["physical_max_violation"])}</td><td>{dump(cases["candidate"]["scaled_95_max_violation"])}</td></tr></tbody></table>
+<p>B uses a 32-control cubic squared-speed law and independent SLSQP/Pinocchio calculations.
+The 800-iteration result was subsequently uniformly slowed by multiplying squared speed
+by 0.997 to restore the sampled 95% limits. It is a feasible sampled timing candidate,
+not a converged minimum. The independent retimer has not been applied to C's quintic path.</p>
+<img src="assets/comparison_profiles.png" alt="Joint position and dynamic profiles" style="max-width:100%">
+<img src="assets/constraint_utilization.png" alt="Constraint utilization profiles" style="max-width:100%">
+<img src="assets/comparison_geometry.png" alt="Joint-space and end-effector geometry" style="max-width:100%">
+<h2>Current dense and independent checks</h2>
+<p>All three cases have zero sampled physical-limit violation. Pinocchio uses explicitly
+aligned inertials and agrees with cuRobo to about 0.00002 N·m on 8193 A/C and 16439 B samples. World swept cost and
+more than 16000 discrete self-collision samples per case are zero. Sampled checking and
+swept sphere approximations are not continuous-time certificates. Endpoint acceptance
+uses 1e-5 rad, 1e-4 rad/s and 1e-3 rad/s²; the saved quintic evaluated in higher precision
+has acceleration residual approximately 1.4e-12 rad/s², whereas the earlier 0.000502 was
+float32 matrix cancellation.</p><pre>{dump(pin_dense)}</pre><pre>{dump(self_midpoints)}</pre>
+<details><summary>Per-grid, per-family detailed residuals and locations</summary><pre>{dump(dense)}</pre></details>
+<h2>CUDA derivative evidence</h2>
+<p>Full 7×21 RNEA Jacobians were swept at two trajectory states and a random state;
+collision maxima were checked in free space, near contact and penetration. Complete
+SLSQP constraint Jacobians were checked at seed and prior final spline controls. A
+0.01 + 0.02 |analytic| exploratory absolute-plus-relative threshold is used; this is
+not a complete proof. Many large central-difference discrepancies coincide with active
+sample changes, and a step 0.003 discrepancy initially missed by the heuristic was traced to a switch
+from active sample 8 to 7. Other flagged cases are not individually classified. See the
+raw entries before drawing conclusions.</p>
+<pre>{dump(current["oracle_jacobian_sweep"])}</pre>
+<details><summary>Configuration, durations and outstanding qualification gates</summary><pre>{dump(current)}</pre></details>
 <p class="warn"><strong>Not qualified.</strong> This is a single debugging attempt with a
-three-iteration solver budget and a second longer run on the same task, not the requested benchmark. No independently validated
+three-iteration solver budget and a second longer run on the same task; later dense checks are reported above. No fully qualified
 pair exists, so no conclusion about potential time savings can be drawn.</p>
 <h2>Research Implications: Is Joint Path-and-Time Optimization Worth Pursuing?</h2>
 <p>Unknown. Complete native CUDA derivative and collision qualification and the fixed-path timing control,

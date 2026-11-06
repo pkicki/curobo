@@ -1,0 +1,80 @@
+{
+  "baseline": {
+    "samples": 8193,
+    "max_difference_nm": 1.624706094105477e-05,
+    "joint": "panda_joint2",
+    "time_s": 0.38280728459358215,
+    "pinocchio_nm": 43.09176918384726,
+    "curobo_nm": 43.0917854309082,
+    "physical": {
+      "max_violation_nm": 0.0,
+      "signed_residual_nm": -7.863050211768424,
+      "joint": "panda_joint6",
+      "time_s": 0.07861761003732681,
+      "observed_nm": 4.136949788231576,
+      "lower_nm": -12.0,
+      "upper_nm": 12.0
+    },
+    "scaled_95": {
+      "max_violation_nm": 0.0,
+      "signed_residual_nm": -7.263050211768422,
+      "joint": "panda_joint6",
+      "time_s": 0.07861761003732681,
+      "observed_nm": 4.136949788231576,
+      "lower_nm": -11.399999999999999,
+      "upper_nm": 11.399999999999999
+    }
+  },
+  "candidate": {
+    "samples": 8193,
+    "max_difference_nm": 1.880840296308861e-05,
+    "joint": "panda_joint2",
+    "time_s": 0.2864621264016023,
+    "pinocchio_nm": 46.03653743549352,
+    "curobo_nm": 46.036556243896484,
+    "physical": {
+      "max_violation_nm": 0.0,
+      "signed_residual_nm": -7.903639739835685,
+      "joint": "panda_joint6",
+      "time_s": 0.06997286107070977,
+      "observed_nm": 4.096360260164315,
+      "lower_nm": -12.0,
+      "upper_nm": 12.0
+    },
+    "scaled_95": {
+      "max_violation_nm": 0.0,
+      "signed_residual_nm": -7.303639739835684,
+      "joint": "panda_joint6",
+      "time_s": 0.06997286107070977,
+      "observed_nm": 4.096360260164315,
+      "lower_nm": -11.399999999999999,
+      "upper_nm": 11.399999999999999
+    }
+  },
+  "fixed_path": {
+    "samples": 16439,
+    "max_difference_nm": 2.0593064895990665e-05,
+    "joint": "panda_joint2",
+    "time_s": 0.3759028155386983,
+    "pinocchio_nm": 43.37183609638823,
+    "curobo_nm": 43.371856689453125,
+    "physical": {
+      "max_violation_nm": 0.0,
+      "signed_residual_nm": -7.848229172531238,
+      "joint": "panda_joint6",
+      "time_s": 0.07187248558059285,
+      "observed_nm": 4.151770827468762,
+      "lower_nm": -12.0,
+      "upper_nm": 12.0
+    },
+    "scaled_95": {
+      "max_violation_nm": 0.0,
+      "signed_residual_nm": -7.248229172531237,
+      "joint": "panda_joint6",
+      "time_s": 0.07187248558059285,
+      "observed_nm": 4.151770827468762,
+      "lower_nm": -11.399999999999999,
+      "upper_nm": 11.399999999999999
+    }
+  }
+}

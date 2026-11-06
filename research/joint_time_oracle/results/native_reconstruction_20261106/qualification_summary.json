@@ -1,0 +1,295 @@
+{
+  "status": "BLOCKED",
+  "pilot": "BLOCKED",
+  "cases": {
+    "baseline": {
+      "duration_s": 0.4128432273864746,
+      "dense_samples": 16385,
+      "path_length_rad": 0.7502672672271729,
+      "physical_max_violation": {
+        "position": 0.0,
+        "velocity": 0.0,
+        "acceleration": 0.0,
+        "jerk": 0.0,
+        "torque": 0.0
+      },
+      "scaled_95_max_violation": {
+        "position": 0.0,
+        "velocity": 0.0,
+        "acceleration": 0.0,
+        "jerk": 0.066986083984375,
+        "torque": 0.0
+      },
+      "endpoint_residuals": {
+        "q0": 0.0,
+        "q1": 0.0,
+        "v0": 0.0,
+        "v1": 0.0,
+        "a0": 0.0,
+        "a1": 0.0
+      },
+      "world_swept_max_cost": 0.0,
+      "self_discrete_max_cost": 0.0,
+      "pinocchio_max_torque_difference_nm": 1.624706094105477e-05,
+      "pinocchio_physical_torque_violation_nm": 0.0
+    },
+    "fixed_path": {
+      "duration_s": 0.4025263548272324,
+      "dense_samples": 16439,
+      "path_length_rad": 0.7501676102610301,
+      "physical_max_violation": {
+        "position": 0.0,
+        "velocity": 0.0,
+        "acceleration": 0.0,
+        "jerk": 0.0,
+        "torque": 0.0
+      },
+      "scaled_95_max_violation": {
+        "position": 0.0,
+        "velocity": 0.0,
+        "acceleration": 0.0,
+        "jerk": 0.0,
+        "torque": 0.0
+      },
+      "endpoint_residuals": {
+        "q0": 2.384185795456517e-07,
+        "q1": 1.1920928955078125e-07,
+        "v0": 0.0,
+        "v1": 0.0,
+        "a0": 0.0,
+        "a1": 0.0
+      },
+      "world_swept_max_cost": 0.0,
+      "self_discrete_max_cost": 0.0,
+      "pinocchio_max_torque_difference_nm": 2.0593064895990665e-05,
+      "pinocchio_physical_torque_violation_nm": 0.0
+    },
+    "candidate": {
+      "duration_s": 0.40169423818588257,
+      "dense_samples": 16385,
+      "path_length_rad": 0.756257176399231,
+      "physical_max_violation": {
+        "position": 0.0,
+        "velocity": 0.0,
+        "acceleration": 0.0,
+        "jerk": 0.0,
+        "torque": 0.0
+      },
+      "scaled_95_max_violation": {
+        "position": 0.0,
+        "velocity": 0.0,
+        "acceleration": 0.004694938659667969,
+        "jerk": 0.003997802734375,
+        "torque": 0.0
+      },
+      "endpoint_residuals": {
+        "q0": 0.0,
+        "q1": 0.0,
+        "v0": 0.0,
+        "v1": 0.0,
+        "a0": 0.0,
+        "a1": 1.4091232521107333e-12
+      },
+      "world_swept_max_cost": 0.0,
+      "self_discrete_max_cost": 0.0,
+      "pinocchio_max_torque_difference_nm": 1.880840296308861e-05,
+      "pinocchio_physical_torque_violation_nm": 0.0
+    }
+  },
+  "reconstruction": {
+    "historical_duration_s": 0.4128432236611843,
+    "rerun_duration_s": 0.4128432273864746,
+    "selected_lane_by_position_match": 0,
+    "lane_count": 4,
+    "native_to_rerun_max_abs": {
+      "q": 5.960464477539063e-08,
+      "qd": 8.344650268554688e-07,
+      "qdd": 4.76837158203125e-06,
+      "jerk": 5.245208740234375e-05
+    },
+    "rerun_to_historical_max_abs": {
+      "q": 0.0,
+      "qd": 0.0,
+      "qdd": 0.0,
+      "jerk": 0.0
+    },
+    "historical_reconstruction_valid": true,
+    "note": "Buffers cover every retimer lane; native sampler outputs borrow internal buffers.",
+    "sha256": {
+      "native_input.npz": "d50a58be40bed1ea5a123697e58e1c3be6bea9506781e6cecfebaa32727a67a7",
+      "native_buffers.npz": "b12e0ff515bf2fc10787625d8e81ae92b4d49234b2a12d48ade1c02c851708e1",
+      "rerun_interpolated.npz": "ef2d6a795acc71180c8907e1be4acf8c55441e14765eaf75a85077382da244e0",
+      "native_641.npz": "4925b05e651ea0c98de11cc826ec8ce768157463ddb05efe180145d50a2d8a4b",
+      "native_4097.npz": "9c14e19068126bb20a2bcb960be029bb52dbf3c6c9f8afba6449987d1b26a2ed",
+      "native_8193.npz": "7cd9e05ca7ce88c788dc9b99d8947fac0f3d046a06e20b9c4e8bf72340c9846b"
+    }
+  },
+  "fixed_path_solver": {
+    "solver": "SciPy SLSQP, 32 cubic squared-speed controls; Pinocchio torque coefficients",
+    "geometry_max_error_rad": 4.197953984430569e-07,
+    "sampled_constraints": 311,
+    "maxiter": 800,
+    "solver_success": false,
+    "message": "Iteration limit reached",
+    "iterations": 800,
+    "function_evaluations": 27239,
+    "runtime_s": 9.014527021005051,
+    "native_seed_duration_integral_s": 0.4128431957919214,
+    "candidate_duration_integral_s": 0.401922111746292,
+    "initial_min_scaled_margin": 8.232042698230208e-05,
+    "final_min_scaled_margin": -2.6613221339893674e-08,
+    "qualification": "Unqualified until native-independent dense physical-time validation; minima are sampled."
+  },
+  "fixed_path_restoration": {
+    "squared_speed_scale": 0.997,
+    "duration_s": 0.4025263548272324,
+    "samples": 16439,
+    "note": "Uniform speed reduction after independent nonlinear solve; geometry unchanged."
+  },
+  "endpoint_acceptance": {
+    "position_rad": 1e-05,
+    "velocity_rad_s": 0.0001,
+    "acceleration_rad_s2": 0.001,
+    "justification": "Conservative float32 evaluation tolerance; exact saved quintic coefficients give endpoint acceleration residual near 1.4e-12 rad/s\u00b2. Physical trajectory limits are evaluated separately."
+  },
+  "oracle_jacobian_sweep": {
+    "0.01": {
+      "entries": 2160,
+      "possible_active_set_switches": 128,
+      "unflagged_outside_tolerance": 0,
+      "examples": [],
+      "max_absolute_error": 22.065228760242462
+    },
+    "0.003": {
+      "entries": 2160,
+      "possible_active_set_switches": 62,
+      "unflagged_outside_tolerance": 1,
+      "examples": [
+        {
+          "case": "seed",
+          "row": 12,
+          "column": 19,
+          "step": 0.003,
+          "analytic": -1.1467955112457275,
+          "fd": -1.1801719665527344,
+          "abs_error": 0.033376455307006836,
+          "one_sided_difference": 0.06663799285888672,
+          "possible_active_set_change": false
+        }
+      ],
+      "max_absolute_error": 20.451991999834718
+    },
+    "0.001": {
+      "entries": 2160,
+      "possible_active_set_switches": 27,
+      "unflagged_outside_tolerance": 0,
+      "examples": [],
+      "max_absolute_error": 20.45059951044459
+    }
+  },
+  "cuda_collision_cases": {
+    "world": {
+      "near_index": 924,
+      "near_cost": 0.00554511696100235,
+      "deep_index": 1001,
+      "deep_cost": 0.14754578471183777
+    },
+    "self": {
+      "near_index": 116,
+      "near_cost": 0.00018442956206854433,
+      "deep_index": 709,
+      "deep_cost": 0.015596475452184677
+    }
+  },
+  "active_sample_diagnosis": [
+    {
+      "step": 0.001,
+      "sign": -1,
+      "active_sample": 8,
+      "normalized_time": 0.5333333333333333,
+      "time_s": 0.22018307050069172,
+      "margin": 0.8916212510666155,
+      "value": 0.26872509717941284
+    },
+    {
+      "step": 0.001,
+      "sign": 0,
+      "active_sample": 8,
+      "normalized_time": 0.5333333333333333,
+      "time_s": 0.22018307050069172,
+      "margin": 0.8904743874612265,
+      "value": 0.27156874537467957
+    },
+    {
+      "step": 0.001,
+      "sign": 1,
+      "active_sample": 8,
+      "normalized_time": 0.5333333333333333,
+      "time_s": 0.22018307050069172,
+      "margin": 0.8893275358753268,
+      "value": 0.2744123637676239
+    },
+    {
+      "step": 0.003,
+      "sign": -1,
+      "active_sample": 8,
+      "normalized_time": 0.5333333333333333,
+      "time_s": 0.22018307050069172,
+      "margin": 0.8939149542384149,
+      "value": 0.26303786039352417
+    },
+    {
+      "step": 0.003,
+      "sign": 0,
+      "active_sample": 8,
+      "normalized_time": 0.5333333333333333,
+      "time_s": 0.22018307050069172,
+      "margin": 0.8904743874612265,
+      "value": 0.27156874537467957
+    },
+    {
+      "step": 0.003,
+      "sign": 1,
+      "active_sample": 7,
+      "normalized_time": 0.4666666666666667,
+      "time_s": 0.19266018668810528,
+      "margin": 0.886833912538898,
+      "value": 0.2805953025817871
+    },
+    {
+      "step": 0.01,
+      "sign": -1,
+      "active_sample": 10,
+      "normalized_time": 0.6666666666666667,
+      "time_s": 0.2752288381258647,
+      "margin": 0.8910825615975867,
+      "value": 0.27006077766418457
+    },
+    {
+      "step": 0.01,
+      "sign": 0,
+      "active_sample": 8,
+      "normalized_time": 0.5333333333333333,
+      "time_s": 0.22018307050069172,
+      "margin": 0.8904743874612265,
+      "value": 0.27156874537467957
+    },
+    {
+      "step": 0.01,
+      "sign": 1,
+      "active_sample": 7,
+      "normalized_time": 0.4666666666666667,
+      "time_s": 0.19266018668810528,
+      "margin": 0.8724525816365272,
+      "value": 0.31625381112098694
+    }
+  ],
+  "limitations": [
+    "No independently implemented world/self collision check; native swept-world and sampled self collision only.",
+    "SLSQP fixed-path solver terminated at its iteration budget; result was uniformly slowed to restore the 95% sampled limits.",
+    "Nonsmooth active-sample switches require careful handling; the representative step 0.003 discrepancy was traced to a switch from sample 8 to sample 7. Other flagged cases are not individually classified.",
+    "Native baseline and joint candidate have nonzero violations of the 95% limits despite satisfying physical limits on sampled grids.",
+    "No globally optimality or continuous-time feasibility certificate; B has not retimed the original quintic geometry."
+  ],
+  "note": "Durations are observed candidate durations, not verified optimums or a qualified improvement."
+}

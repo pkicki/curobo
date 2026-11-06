@@ -198,3 +198,56 @@ scripts use the original checked-in artifacts and do not start a benchmark.
 A complete fixed-path timing experiment, dense baseline reconstruction,
 independent collision check, further derivative testing, and pilot remain
 outstanding; do not launch the full benchmark yet.
+
+## Native reconstruction and independent timing control
+
+`results/native_reconstruction_20261106` contains the frozen task rerun,
+original action knots and knot timing, selected TimeOpt geometry and squared
+speed controls, integrated timing, native replay outputs, and SHA256 checksums.
+The rerun's 18 stored states exactly reproduce the historical archive and its
+0.412843227 s TimeOpt duration. Replaying the saved buffers reproduces the
+8193-point samples exactly. The selected original action knot interval is
+approximately 0.02680891 s. The 0.000502 rad/s² reported previously at the
+candidate endpoint is float32 matrix cancellation: evaluation of its saved
+quintic coefficients yields about 1.4e-12 rad/s². For endpoint checks we use
+1e-5 rad, 1e-4 rad/s and 1e-3 rad/s²; the latter covers the observed float32
+cancellation and is about 0.0067% of the 15 rad/s² physical limit.
+
+`fixed_path_control` analytically evaluates the native uniform cubic geometry,
+uses a cubic squared-speed spline, Pinocchio RNEA coefficients, 311 sampled
+constraints and SciPy SLSQP. The 800-iteration solve stopped at its budget;
+its candidate was slowed by multiplying squared speed by 0.997 and then
+sampled at 16439 positions, including points on both sides of geometric knots.
+The restored duration is 0.402526355 s. It is a sampled feasible timing
+candidate, not a certified or converged optimum. The analytic path matches
+native sampling within 4.2e-7 rad on the sampled interior. No timing control
+has yet been implemented for the original quintic joint candidate.
+
+On sampled physical limits, native TimeOpt, restored fixed-path timing and
+the joint candidate all passed; sampled self-collision and swept-world costs
+were zero. Their durations are approximately 0.412843, 0.402526 and 0.401694 s.
+Native TimeOpt and the joint candidate nevertheless exceed the stricter 95%
+jerk and acceleration/jerk limits by the amounts in `dense_validation.json`.
+Model-aligned Pinocchio RNEA agreed with native torque to about 2e-5 N·m.
+Collision verification still uses cuRobo and self-collision remains sampled.
+
+`cuda_derivative_sweep.json` covers RNEA full joint Jacobians at two path
+states and one random state, plus free, near-contact and penetrating collision
+maxima. `oracle_jacobian_sweep.json` contains the full SLSQP constraint
+Jacobian at the fitted seed and original final trajectory. Large differences
+at switching minima are not smooth derivatives. The initially unflagged
+0.003-step discrepancy was reproduced and traced to an active sample changing
+from 8 to 7 (`active_sample_diagnosis.json`); other flagged changes were not
+all individually examined. This evidence is not complete qualification of all
+input shapes or contact regimes.
+
+Reproduce with the same CUDA environment and compatibility shim documented
+above, running `reconstruct_baseline`, `replay_native`, `fixed_path_control`
+(in a Pinocchio/SciPy environment), `sample_fixed_control`, `validate_dense`,
+`validate_pin_dense` (Pinocchio), `validate_self_midpoints`, `export_ee`,
+`qualify_cuda_full`, `qualify_oracle_jacobian`, `investigate_switch`,
+`summarize_comparison`, `plot_comparison`, and `generate_debug_report` in that
+order. The frozen comparison remains **blocked** for the pilot pending a
+qualified treatment of nonsmooth derivatives and collision verification,
+resolution of the scaled-limit violations, and a stronger fixed-path solve.
+No full benchmark was run.

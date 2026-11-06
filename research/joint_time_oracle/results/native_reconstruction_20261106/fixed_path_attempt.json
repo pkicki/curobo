@@ -1,0 +1,16 @@
+{
+  "solver": "SciPy SLSQP, 32 cubic squared-speed controls; Pinocchio torque coefficients",
+  "geometry_max_error_rad": 4.197953984430569e-07,
+  "sampled_constraints": 311,
+  "maxiter": 800,
+  "solver_success": false,
+  "message": "Iteration limit reached",
+  "iterations": 800,
+  "function_evaluations": 27239,
+  "runtime_s": 9.014527021005051,
+  "native_seed_duration_integral_s": 0.4128431957919214,
+  "candidate_duration_integral_s": 0.401922111746292,
+  "initial_min_scaled_margin": 8.232042698230208e-05,
+  "final_min_scaled_margin": -2.6613221339893674e-08,
+  "qualification": "Unqualified until native-independent dense physical-time validation; minima are sampled."
+}

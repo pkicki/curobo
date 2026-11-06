@@ -1,0 +1,23 @@
+{
+  "baseline": {
+    "samples": 16385,
+    "max_self_collision_cost": 0.0,
+    "time_s": 0.0,
+    "element": 0,
+    "note": "Point samples, including intermediate points; no continuous self-collision certificate."
+  },
+  "fixed_path": {
+    "samples": 16439,
+    "max_self_collision_cost": 0.0,
+    "time_s": 0.0,
+    "element": 0,
+    "note": "Point samples, including intermediate points; no continuous self-collision certificate."
+  },
+  "candidate": {
+    "samples": 16397,
+    "max_self_collision_cost": 0.0,
+    "time_s": 0.0,
+    "element": 0,
+    "note": "Point samples, including intermediate points; no continuous self-collision certificate."
+  }
+}

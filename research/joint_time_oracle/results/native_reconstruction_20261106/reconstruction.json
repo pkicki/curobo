@@ -1,0 +1,28 @@
+{
+  "historical_duration_s": 0.4128432236611843,
+  "rerun_duration_s": 0.4128432273864746,
+  "selected_lane_by_position_match": 0,
+  "lane_count": 4,
+  "native_to_rerun_max_abs": {
+    "q": 5.960464477539063e-08,
+    "qd": 8.344650268554688e-07,
+    "qdd": 4.76837158203125e-06,
+    "jerk": 5.245208740234375e-05
+  },
+  "rerun_to_historical_max_abs": {
+    "q": 0.0,
+    "qd": 0.0,
+    "qdd": 0.0,
+    "jerk": 0.0
+  },
+  "historical_reconstruction_valid": true,
+  "note": "Buffers cover every retimer lane; native sampler outputs borrow internal buffers.",
+  "sha256": {
+    "native_input.npz": "d50a58be40bed1ea5a123697e58e1c3be6bea9506781e6cecfebaa32727a67a7",
+    "native_buffers.npz": "b12e0ff515bf2fc10787625d8e81ae92b4d49234b2a12d48ade1c02c851708e1",
+    "rerun_interpolated.npz": "ef2d6a795acc71180c8907e1be4acf8c55441e14765eaf75a85077382da244e0",
+    "native_641.npz": "4925b05e651ea0c98de11cc826ec8ce768157463ddb05efe180145d50a2d8a4b",
+    "native_4097.npz": "9c14e19068126bb20a2bcb960be029bb52dbf3c6c9f8afba6449987d1b26a2ed",
+    "native_8193.npz": "7cd9e05ca7ce88c788dc9b99d8947fac0f3d046a06e20b9c4e8bf72340c9846b"
+  }
+}
