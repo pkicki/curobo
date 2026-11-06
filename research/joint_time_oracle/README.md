@@ -251,3 +251,30 @@ order. The frozen comparison remains **blocked** for the pilot pending a
 qualified treatment of nonsmooth derivatives and collision verification,
 resolution of the scaled-limit violations, and a stronger fixed-path solve.
 No full benchmark was run.
+
+### Pointwise fixed-path follow-up
+
+The single-task follow-up is generated from the frozen `native_reconstruction_20261106`
+artifacts. An isolated environment with Python, NumPy, SciPy, Pinocchio, PyYAML and
+`cyipopt`/IPOPT is required; no production defaults are changed. The 2026-11-06 run
+used conda-forge IPOPT 3.14.19 and cyipopt 1.7.0. The historical 311-point
+`fixed_path_attempt.npz` supplies the path samples and aligned torque coefficients.
+
+```bash
+OPENBLAS_NUM_THREADS=1 python -m research.joint_time_oracle.qualify_pointwise
+OPENBLAS_NUM_THREADS=1 python -m research.joint_time_oracle.validate_collision_independent
+OPENBLAS_NUM_THREADS=1 python -m research.joint_time_oracle.verify_pointwise_torque
+python -m research.joint_time_oracle.summarize_timing_research
+python -m research.joint_time_oracle.generate_debug_report
+```
+
+`fixed_path_pointwise` reconstructs Pinocchio coefficients for `--grid-count`; its
+`--refine` option reads `refinement_input_2049.npz`, the dense output of the saved
+2049-grid solve. The existing attempt names preserve the bounds and options in effect
+at the time: early solves used a scaled upper bound of 100; current runs use 10000,
+which is also active. A large bound is not a proof of an unrestricted optimum. The
+native-iteration sweep requires the same cuRobo GPU environment and compatibility
+shim documented above. Native 40/80 outputs are solver diagnostics, not independently
+qualified native trajectories. The new checksum manifest is
+`results/native_reconstruction_20261106/timing_research_checksums.json`; the original
+manifest remains unchanged.

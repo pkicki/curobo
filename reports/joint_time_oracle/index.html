@@ -4,11 +4,493 @@
 <h1>Joint path and time: debugging and qualification evidence</h1>
 <p class="warn"><strong>Pilot decision: BLOCKED.</strong> The exact historical baseline
 has been reconstructed, and A, B and C satisfy the physical limits on the sampled grids.
-The 95%-scaled limits and derivative checks still need resolution, self collision has no
-continuous check, collision validation reuses cuRobo, and the independently retimed result
-reached the SLSQP iteration limit. These observations are not a qualified improvement.</p>
+The 95%-scaled limits and joint-oracle derivative checks still need resolution, self collision has no
+continuous certificate, and the independent timing solution reaches an artificial control bound. These observations are not a qualified improvement.</p>
 <p><a href="../../research/joint_time_oracle/results/native_reconstruction_20261106/checksums.json">Raw artifacts and checksums</a></p>
-<h2>Native reconstruction and A/B/C candidates</h2>
+<h2>New pointwise timing experiment</h2>
+<p>On this task the fixed-path candidate is faster than the saved jointly optimized candidate.
+This does not demonstrate a geometric improvement. The comparison is still blocked as a
+common 95%-limit qualification: A and C have small scaled-limit violations, and the
+full joint-optimizer CUDA derivative discrepancy classification is unfinished.</p>
+<p>A: 0.412843227 s; B, restored: 0.398760293 s;
+C: 0.401694238 s. A to B: 3.411%;
+B to C: -0.736% (negative means C is slower).</p>
+<img src="assets/timing_decomposition.png" alt="Durations for A, B and C; axis is truncated" style="max-width:100%">
+<img src="assets/native_iteration_sweep.png" alt="Native timing duration versus iteration budget" style="max-width:100%">
+<img src="assets/ipopt_convergence.png" alt="Pointwise IPOPT objective across iterations" style="max-width:100%">
+<img src="assets/pointwise_profiles.png" alt="A, B and C joint 4 physical-time profiles" style="max-width:100%">
+<p>The explicit pointwise IPOPT problem uses 32 cubic squared-speed controls, 2170
+path samples and separate bounds, independent Pinocchio dynamics, and local-support
+Jacobian sparsity. It converged at 0.398756298 s with stationarity
+residual 3.1e-10 for its bounded, sampled NLP. Dense checks
+found small violations of scaled acceleration and jerk; multiplying squared speed by
+0.99998 gives the displayed B candidate, which passes both sets of sampled dynamic limits.
+This restoration is not itself a stationary solution. Mild uniform time scaling of A and C yields 0.412884533 s and 0.401774577 s, respectively; these also pass 95% limits on 8193 samples, but need the full adaptive verification contract. A 1079-point solve from a different seed with tighter tolerance returned 0.398753942 s, but still used the same upper bound. The maximum normalized speed control
+is 9999.994 against an artificial upper bound of 10000: the bounded
+solver status does not establish an unconstrained fixed-path optimum. The first path
+segment is stationary, permitting large timing coefficients there. The earlier upper bound
+of 100 was also active and made the earlier 0.4016 s IPOPT solutions too restrictive.</p>
+<p>Native TimeOpt uses the same 32-control count, 512 uniform nodes plus path knots,
+95% planning scales and a default budget of 10 iterations. On the frozen input its
+reported durations decrease at larger budgets: 5, 10, 20, 40 and 80 iterations are
+shown above. The 40/80 iteration output has not been independently validated using
+native physical-time sampling, so it is evidence of iteration sensitivity, not a
+qualified faster baseline. The initial native uniform seed is 0.517661 s; independent
+IPOPT uses Gauss quadrature, an explicitly differentiated pointwise formulation, a different
+path parameterization and aligned Pinocchio dynamics. Different grids and the native
+FP32 acceptance tolerance also matter; the individual contribution of each has not been isolated.</p>
+<p>Independent Pinocchio forward kinematics and analytic sphere-box/sphere-sphere tests
+check 61 configured robot spheres, the table, configured self-ignore pairs and padding.
+All three paths have positive sampled clearance. These checks do not cover robot meshes or
+provide a continuous-time collision certificate.</p>
+<p>Pointwise derivatives were checked entry by entry over three central-difference steps at
+two profiles. The maximum best-step absolute error was 2.62e-10;
+this qualifies these smooth timing derivatives only, not the joint optimizer's CUDA collision derivatives.</p>
+<details><summary>Frozen timing, feasibility, collision and convergence data</summary><pre>{
+  &quot;pilot&quot;: &quot;BLOCKED&quot;,
+  &quot;durations_s&quot;: {
+    &quot;A_native&quot;: 0.4128432273864746,
+    &quot;B_restored&quot;: 0.3987602930961138,
+    &quot;C_joint&quot;: 0.40169423818588257
+  },
+  &quot;A_to_B_s&quot;: 0.014082934290360782,
+  &quot;A_to_B_percent&quot;: 3.41120632631266,
+  &quot;B_to_C_s&quot;: -0.0029339450897687414,
+  &quot;B_to_C_percent&quot;: -0.7357666098067512,
+  &quot;scaled_restorations&quot;: {
+    &quot;baseline&quot;: {
+      &quot;duration_s&quot;: 0.41288453340530396,
+      &quot;time_scale&quot;: 1.0001,
+      &quot;samples&quot;: 8193,
+      &quot;families&quot;: {
+        &quot;position&quot;: {
+          &quot;signed_residual&quot;: -0.29593586921691895,
+          &quot;max_violation&quot;: 0.0,
+          &quot;time_s&quot;: 0.4116748869419098,
+          &quot;joint&quot;: 2,
+          &quot;value&quot;: -1.4668641090393066,
+          &quot;lower&quot;: -1.7627999782562256,
+          &quot;upper&quot;: 1.7627999782562256
+        },
+        &quot;velocity&quot;: {
+          &quot;signed_residual&quot;: -0.03756319284439069,
+          &quot;max_violation&quot;: 0.0,
+          &quot;time_s&quot;: 0.20024295151233673,
+          &quot;joint&quot;: 4,
+          &quot;value&quot;: 2.028686761856079,
+          &quot;lower&quot;: -2.06624995470047,
+          &quot;upper&quot;: 2.06624995470047
+        },
+        &quot;acceleration&quot;: {
+          &quot;signed_residual&quot;: -0.15070819854736328,
+          &quot;max_violation&quot;: 0.0,
+          &quot;time_s&quot;: 0.07968389242887497,
+          &quot;joint&quot;: 4,
+          &quot;value&quot;: 14.099291801452637,
+          &quot;lower&quot;: -14.25,
+          &quot;upper&quot;: 14.25
+        },
+        &quot;jerk&quot;: {
+          &quot;signed_residual&quot;: -0.07550048828125,
+          &quot;max_violation&quot;: 0.0,
+          &quot;time_s&quot;: 0.40224993228912354,
+          &quot;joint&quot;: 4,
+          &quot;value&quot;: 474.92449951171875,
+          &quot;lower&quot;: -475.0,
+          &quot;upper&quot;: 475.0
+        },
+        &quot;torque&quot;: {
+          &quot;signed_residual&quot;: -7.263364696502684,
+          &quot;max_violation&quot;: 0.0,
+          &quot;time_s&quot;: 0.07862547039985657,
+          &quot;joint&quot;: 6,
+          &quot;value&quot;: 4.1366353034973145,
+          &quot;lower&quot;: -11.399999999999999,
+          &quot;upper&quot;: 11.399999999999999
+        }
+      }
+    },
+    &quot;candidate&quot;: {
+      &quot;duration_s&quot;: 0.4017745770335197,
+      &quot;time_scale&quot;: 1.0002,
+      &quot;samples&quot;: 8193,
+      &quot;families&quot;: {
+        &quot;position&quot;: {
+          &quot;signed_residual&quot;: -0.29519224166870117,
+          &quot;max_violation&quot;: 0.0,
+          &quot;time_s&quot;: 0.3555253795063458,
+          &quot;joint&quot;: 2,
+          &quot;value&quot;: -1.4676077365875244,
+          &quot;lower&quot;: -1.7627999782562256,
+          &quot;upper&quot;: 1.7627999782562256
+        },
+        &quot;velocity&quot;: {
+          &quot;signed_residual&quot;: -0.00041471719741803525,
+          &quot;max_violation&quot;: 0.0,
+          &quot;time_s&quot;: 0.20088728851675985,
+          &quot;joint&quot;: 4,
+          &quot;value&quot;: 2.0658352375030518,
+          &quot;lower&quot;: -2.06624995470047,
+          &quot;upper&quot;: 2.06624995470047
+        },
+        &quot;acceleration&quot;: {
+          &quot;signed_residual&quot;: -0.0010051727294921875,
+          &quot;max_violation&quot;: 0.0,
+          &quot;time_s&quot;: 0.06880978168677102,
+          &quot;joint&quot;: 1,
+          &quot;value&quot;: 14.248994827270508,
+          &quot;lower&quot;: -14.25,
+          &quot;upper&quot;: 14.25
+        },
+        &quot;jerk&quot;: {
+          &quot;signed_residual&quot;: -0.2808837890625,
+          &quot;max_violation&quot;: 0.0,
+          &quot;time_s&quot;: 0.4017745770335197,
+          &quot;joint&quot;: 4,
+          &quot;value&quot;: 474.7191162109375,
+          &quot;lower&quot;: -475.0,
+          &quot;upper&quot;: 475.0
+        },
+        &quot;torque&quot;: {
+          &quot;signed_residual&quot;: -7.304251575469969,
+          &quot;max_violation&quot;: 0.0,
+          &quot;time_s&quot;: 0.06998685564292391,
+          &quot;joint&quot;: 6,
+          &quot;value&quot;: 4.095748424530029,
+          &quot;lower&quot;: -11.399999999999999,
+          &quot;upper&quot;: 11.399999999999999
+        }
+      }
+    },
+    &quot;note&quot;: &quot;8193 samples, unchanged geometry, uniform time scaling; collision profiles unchanged. Dense intermediate extrema and continuous behavior require further verification.&quot;
+  },
+  &quot;fixed_path&quot;: {
+    &quot;attempt&quot;: &quot;pointwise_ipopt_native40_stride1_grid2049_refine1_tol1e-07&quot;,
+    &quot;squared_speed_scale&quot;: 0.99998,
+    &quot;duration_s&quot;: 0.3987602930961138,
+    &quot;samples&quot;: 16439,
+    &quot;min_squared_speed&quot;: 3.165719566261058,
+    &quot;families&quot;: {
+      &quot;position&quot;: {
+        &quot;physical&quot;: {
+          &quot;signed_residual&quot;: -0.2959359884262085,
+          &quot;violation&quot;: 0.0,
+          &quot;joint&quot;: 2,
+          &quot;time_s&quot;: 0.3987602930961138,
+          &quot;value&quot;: -1.466863989830017,
+          &quot;lower&quot;: -1.7627999782562256,
+          &quot;upper&quot;: 1.7627999782562256
+        },
+        &quot;scaled_95&quot;: {
+          &quot;signed_residual&quot;: -0.2959359884262085,
+          &quot;violation&quot;: 0.0,
+          &quot;joint&quot;: 2,
+          &quot;time_s&quot;: 0.3987602930961138,
+          &quot;value&quot;: -1.466863989830017,
+          &quot;lower&quot;: -1.7627999782562256,
+          &quot;upper&quot;: 1.7627999782562256
+        }
+      },
+      &quot;velocity&quot;: {
+        &quot;physical&quot;: {
+          &quot;signed_residual&quot;: -0.10877014313820776,
+          &quot;violation&quot;: 0.0,
+          &quot;joint&quot;: 4,
+          &quot;time_s&quot;: 0.19296658571080244,
+          &quot;value&quot;: 2.0662298091780764,
+          &quot;lower&quot;: -2.174999952316284,
+          &quot;upper&quot;: 2.174999952316284
+        },
+        &quot;scaled_95&quot;: {
+          &quot;signed_residual&quot;: -2.0145522393377746e-05,
+          &quot;violation&quot;: 0.0,
+          &quot;joint&quot;: 4,
+          &quot;time_s&quot;: 0.19296658571080244,
+          &quot;value&quot;: 2.0662298091780764,
+          &quot;lower&quot;: -2.06624995470047,
+          &quot;upper&quot;: 2.06624995470047
+        }
+      },
+      &quot;acceleration&quot;: {
+        &quot;physical&quot;: {
+          &quot;signed_residual&quot;: -0.7502014829783228,
+          &quot;violation&quot;: 0.0,
+          &quot;joint&quot;: 4,
+          &quot;time_s&quot;: 0.07073781481145035,
+          &quot;value&quot;: 14.249798517021677,
+          &quot;lower&quot;: -15.0,
+          &quot;upper&quot;: 15.0
+        },
+        &quot;scaled_95&quot;: {
+          &quot;signed_residual&quot;: -0.00020148297832278672,
+          &quot;violation&quot;: 0.0,
+          &quot;joint&quot;: 4,
+          &quot;time_s&quot;: 0.07073781481145035,
+          &quot;value&quot;: 14.249798517021677,
+          &quot;lower&quot;: -14.25,
+          &quot;upper&quot;: 14.25
+        }
+      },
+      &quot;jerk&quot;: {
+        &quot;physical&quot;: {
+          &quot;signed_residual&quot;: -25.013287639529892,
+          &quot;violation&quot;: 0.0,
+          &quot;joint&quot;: 4,
+          &quot;time_s&quot;: 0.17244778945698533,
+          &quot;value&quot;: -474.9867123604701,
+          &quot;lower&quot;: -500.0,
+          &quot;upper&quot;: 500.0
+        },
+        &quot;scaled_95&quot;: {
+          &quot;signed_residual&quot;: -0.013287639529892203,
+          &quot;violation&quot;: 0.0,
+          &quot;joint&quot;: 4,
+          &quot;time_s&quot;: 0.17244778945698533,
+          &quot;value&quot;: -474.9867123604701,
+          &quot;lower&quot;: -475.0,
+          &quot;upper&quot;: 475.0
+        }
+      },
+      &quot;torque&quot;: {
+        &quot;physical&quot;: {
+          &quot;signed_residual&quot;: -7.846757135594983,
+          &quot;violation&quot;: 0.0,
+          &quot;joint&quot;: 6,
+          &quot;time_s&quot;: 0.06965162711203075,
+          &quot;value&quot;: 4.153242864405017,
+          &quot;lower&quot;: -12.0,
+          &quot;upper&quot;: 12.0
+        },
+        &quot;scaled_95&quot;: {
+          &quot;signed_residual&quot;: -7.246757135594981,
+          &quot;violation&quot;: 0.0,
+          &quot;joint&quot;: 6,
+          &quot;time_s&quot;: 0.06965162711203075,
+          &quot;value&quot;: 4.153242864405017,
+          &quot;lower&quot;: -11.399999999999999,
+          &quot;upper&quot;: 11.399999999999999
+        }
+      }
+    },
+    &quot;endpoint_residuals&quot;: {
+      &quot;q0&quot;: 0.0,
+      &quot;q1&quot;: 0.0,
+      &quot;v0&quot;: 0.0,
+      &quot;v1&quot;: 0.0,
+      &quot;a0&quot;: 0.0,
+      &quot;a1&quot;: 0.0
+    }
+  },
+  &quot;solver&quot;: {
+    &quot;backend&quot;: &quot;ipopt&quot;,
+    &quot;seed&quot;: &quot;native40&quot;,
+    &quot;stride&quot;: 1,
+    &quot;tolerance&quot;: 1e-07,
+    &quot;collocation_points&quot;: 2170,
+    &quot;pointwise_inequalities&quot;: 121520,
+    &quot;duration_s&quot;: 0.3987562978175138,
+    &quot;initial_duration_s&quot;: 0.39967299637274495,
+    &quot;min_margin&quot;: -9.178711124491201e-10,
+    &quot;elapsed_s&quot;: 47.88095422901097,
+    &quot;iterations_recorded&quot;: 33,
+    &quot;status&quot;: 0,
+    &quot;message&quot;: &quot;Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).&quot;,
+    &quot;stationarity_inf&quot;: 3.102307249993031e-10,
+    &quot;history_columns&quot;: [
+      &quot;algorithm_mode&quot;,
+      &quot;iteration&quot;,
+      &quot;objective&quot;,
+      &quot;primal_infeasibility&quot;,
+      &quot;dual_infeasibility&quot;,
+      &quot;mu&quot;,
+      &quot;step_norm&quot;,
+      &quot;regularization&quot;
+    ]
+  },
+  &quot;solver_crosscheck&quot;: {
+    &quot;backend&quot;: &quot;ipopt&quot;,
+    &quot;seed&quot;: &quot;native&quot;,
+    &quot;stride&quot;: 1,
+    &quot;tolerance&quot;: 1e-09,
+    &quot;collocation_points&quot;: 1079,
+    &quot;pointwise_inequalities&quot;: 60424,
+    &quot;duration_s&quot;: 0.398753942330037,
+    &quot;initial_duration_s&quot;: 0.4128431957919214,
+    &quot;min_margin&quot;: -9.999998384913056e-09,
+    &quot;elapsed_s&quot;: 35.7586191619921,
+    &quot;iterations_recorded&quot;: 43,
+    &quot;status&quot;: 0,
+    &quot;message&quot;: &quot;Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).&quot;,
+    &quot;stationarity_inf&quot;: 1.4520946894635938e-10,
+    &quot;history_columns&quot;: [
+      &quot;algorithm_mode&quot;,
+      &quot;iteration&quot;,
+      &quot;objective&quot;,
+      &quot;primal_infeasibility&quot;,
+      &quot;dual_infeasibility&quot;,
+      &quot;mu&quot;,
+      &quot;step_norm&quot;,
+      &quot;regularization&quot;
+    ]
+  },
+  &quot;maximum_scaled_control&quot;: 9999.994054331619,
+  &quot;control_upper_bound&quot;: 10000.0,
+  &quot;native_iterations&quot;: [
+    {
+      &quot;iterations&quot;: 5,
+      &quot;duration_s&quot;: 0.4333288371562958,
+      &quot;success&quot;: true,
+      &quot;status&quot;: 0,
+      &quot;optimization_ok&quot;: true,
+      &quot;uniform_seed_duration_s&quot;: 0.5176613330841064
+    },
+    {
+      &quot;iterations&quot;: 10,
+      &quot;duration_s&quot;: 0.4128432273864746,
+      &quot;success&quot;: true,
+      &quot;status&quot;: 0,
+      &quot;optimization_ok&quot;: true,
+      &quot;uniform_seed_duration_s&quot;: 0.5176613330841064
+    },
+    {
+      &quot;iterations&quot;: 20,
+      &quot;duration_s&quot;: 0.40011903643608093,
+      &quot;success&quot;: true,
+      &quot;status&quot;: 0,
+      &quot;optimization_ok&quot;: true,
+      &quot;uniform_seed_duration_s&quot;: 0.5176613330841064
+    },
+    {
+      &quot;iterations&quot;: 40,
+      &quot;duration_s&quot;: 0.3996730148792267,
+      &quot;success&quot;: true,
+      &quot;status&quot;: 0,
+      &quot;optimization_ok&quot;: true,
+      &quot;uniform_seed_duration_s&quot;: 0.5176613330841064
+    },
+    {
+      &quot;iterations&quot;: 80,
+      &quot;duration_s&quot;: 0.3996730148792267,
+      &quot;success&quot;: true,
+      &quot;status&quot;: 0,
+      &quot;optimization_ok&quot;: true,
+      &quot;uniform_seed_duration_s&quot;: 0.5176613330841064
+    }
+  ],
+  &quot;collision&quot;: {
+    &quot;baseline&quot;: {
+      &quot;samples&quot;: 8193,
+      &quot;world_clearance_m&quot;: 0.15500000000000003,
+      &quot;world_time_s&quot;: 0.0,
+      &quot;world_link&quot;: &quot;panda_link0&quot;,
+      &quot;self_clearance_with_link_padding_m&quot;: 0.0848949405462423,
+      &quot;self_time_s&quot;: 0.0005543549195863307,
+      &quot;self_links&quot;: [
+        &quot;panda_link3&quot;,
+        &quot;panda_link5&quot;
+      ],
+      &quot;sampled_world_feasible&quot;: true,
+      &quot;sampled_self_feasible&quot;: true
+    },
+    &quot;fixed_path_historical&quot;: {
+      &quot;samples&quot;: 16439,
+      &quot;world_clearance_m&quot;: 0.15500000000000003,
+      &quot;world_time_s&quot;: 0.0,
+      &quot;world_link&quot;: &quot;panda_link0&quot;,
+      &quot;self_clearance_with_link_padding_m&quot;: 0.08489494080780072,
+      &quot;self_time_s&quot;: 2.7441111590818722e-05,
+      &quot;self_links&quot;: [
+        &quot;panda_link3&quot;,
+        &quot;panda_link5&quot;
+      ],
+      &quot;sampled_world_feasible&quot;: true,
+      &quot;sampled_self_feasible&quot;: true
+    },
+    &quot;candidate&quot;: {
+      &quot;samples&quot;: 8193,
+      &quot;world_clearance_m&quot;: 0.15500000000000003,
+      &quot;world_time_s&quot;: 0.0,
+      &quot;world_link&quot;: &quot;panda_link0&quot;,
+      &quot;self_clearance_with_link_padding_m&quot;: 0.0848949405462423,
+      &quot;self_time_s&quot;: 0.00014710482355440035,
+      &quot;self_links&quot;: [
+        &quot;panda_link3&quot;,
+        &quot;panda_link5&quot;
+      ],
+      &quot;sampled_world_feasible&quot;: true,
+      &quot;sampled_self_feasible&quot;: true
+    },
+    &quot;fixed_path_pointwise_restored&quot;: {
+      &quot;samples&quot;: 16439,
+      &quot;world_clearance_m&quot;: 0.15500000000000003,
+      &quot;world_time_s&quot;: 0.0,
+      &quot;world_link&quot;: &quot;panda_link0&quot;,
+      &quot;self_clearance_with_link_padding_m&quot;: 0.08489494080780072,
+      &quot;self_time_s&quot;: 2.744333592423033e-06,
+      &quot;self_links&quot;: [
+        &quot;panda_link3&quot;,
+        &quot;panda_link5&quot;
+      ],
+      &quot;sampled_world_feasible&quot;: true,
+      &quot;sampled_self_feasible&quot;: true
+    },
+    &quot;description&quot;: {
+      &quot;robot&quot;: &quot;61 configured Franka collision spheres, Pinocchio URDF frames, locked fingers 0.04 m&quot;,
+      &quot;world&quot;: &quot;analytic sphere versus axis-aligned table cuboid&quot;,
+      &quot;self&quot;: &quot;sphere pairs with configured ignore pairs and per-link padding&quot;,
+      &quot;limits&quot;: &quot;discrete samples only; not a swept or continuous collision certificate; excludes mesh accuracy and attached object placeholder&quot;
+    }
+  },
+  &quot;qualifications&quot;: [
+    &quot;IPOPT convergence is for a bounded sampled NLP, and its upper bound is active; unbounded fixed-path optimum is not established.&quot;,
+    &quot;B is uniformly slowed after the converged bounded solve; restoration is not a stationary solution.&quot;,
+    &quot;A and C satisfy sampled physical bounds but violate 95% scaled bounds; a common scaled comparison is not qualified.&quot;,
+    &quot;The complete joint-oracle CUDA Jacobian discrepancy classification is still open.&quot;,
+    &quot;Independent collision checks are sampled sphere checks, not continuous certificates.&quot;
+  ]
+}</pre></details>
+<details><summary>Pointwise Jacobian checks</summary><pre>{
+  &quot;native&quot;: {
+    &quot;shape&quot;: [
+      17416,
+      32
+    ],
+    &quot;steps&quot;: [
+      0.0001,
+      1e-05,
+      1e-06
+    ],
+    &quot;max_best_absolute_error&quot;: 2.459401571286435e-10,
+    &quot;max_objective_error_by_step&quot;: [
+      7.302885032811623e-11,
+      5.023049684527159e-12,
+      5.993079643662469e-11
+    ],
+    &quot;entries_over_1e-5_absolute&quot;: 0,
+    &quot;note&quot;: &quot;Errors are for smooth explicit pointwise timing constraints and analytical Pinocchio-derived torque coefficients; not CUDA collision Jacobians.&quot;
+  },
+  &quot;optimized&quot;: {
+    &quot;shape&quot;: [
+      17416,
+      32
+    ],
+    &quot;steps&quot;: [
+      0.0001,
+      1e-05,
+      1e-06
+    ],
+    &quot;max_best_absolute_error&quot;: 2.615436756059353e-10,
+    &quot;max_objective_error_by_step&quot;: [
+      1.1275021194467882e-10,
+      5.526018011237088e-12,
+      5.236522847285041e-11
+    ],
+    &quot;entries_over_1e-5_absolute&quot;: 0,
+    &quot;note&quot;: &quot;Errors are for smooth explicit pointwise timing constraints and analytical Pinocchio-derived torque coefficients; not CUDA collision Jacobians.&quot;
+  }
+}</pre></details>
+<p><a href="../../research/joint_time_oracle/results/native_reconstruction_20261106/timing_research_checksums.json">New artifacts and checksums</a></p>
+<h2>Historical reconstruction and A/B/C candidates</h2>
 <p>The rerun reproduced all 18 saved states exactly. Native TimeOpt was replayed using
 captured controls, endpoint controls, timing coefficients and integrated times, with
 641, 4097, 8193 and 16385 samples. The native replay agrees exactly at the 8193
@@ -54,7 +536,7 @@ position discrepancy 4.2e-7 rad on the measured interior samples.</p>
   &quot;jerk&quot;: 0.003997802734375,
   &quot;torque&quot;: 0.0
 }</td></tr></tbody></table>
-<p>B uses a 32-control cubic squared-speed law and independent SLSQP/Pinocchio calculations.
+<p>This historical B uses a 32-control cubic squared-speed law and independent SLSQP/Pinocchio calculations.
 The 800-iteration result was subsequently uniformly slowed by multiplying squared speed
 by 0.997 to restore the sampled 95% limits. It is a feasible sampled timing candidate,
 not a converged minimum. The independent retimer has not been applied to C's quintic path.</p>
@@ -2367,8 +2849,7 @@ produced a sampled-feasible candidate at 0.401694 s. No IPOPT comparison was run
 After matching cuRobo's default inertials and excluded link, their torques agree
 within 0.000017 N·m on the recovery grid. Native swept-world and sampled self
 collision checks report zero cost; these checks are not independent of cuRobo,
-and neither gives an analytic continuous-time certificate. The baseline has only
-18 saved samples, so its dense behavior and the comparison remain unqualified.</p>
+and neither gives an analytic continuous-time certificate. At that earlier stage, only 18 baseline samples were available; native dense reconstruction is described above.</p>
 <pre>{
   &quot;world_swept_cost_max&quot;: 0.0,
   &quot;self_discrete_cost_max&quot;: 0.0,
@@ -2868,7 +3349,7 @@ all Jacobian entries or contact regimes, and do not qualify the complete optimiz
     &quot;no_plot&quot;: &quot;True&quot;
   }
 }</pre>
-<h2>Limitations</h2><p>The baseline check is sampled only; collision checking uses cuRobo callbacks; Pinocchio dynamics were independently cross-checked only after matching the model. This debugging run used an external PyTorch device-property compatibility
+<h2>Limitations</h2><p>The baseline check is sampled only; historical collision checks used cuRobo callbacks; new independent sampled sphere checks are described above. Pinocchio dynamics were cross-checked only after matching the model. This debugging run used an external PyTorch device-property compatibility
 shim and is not a performance measurement. The generated cohort, multistart,
 adaptive verification, swept validation, control retiming experiment, detailed plots,
 and pilot and main studies remain incomplete.</p></html>

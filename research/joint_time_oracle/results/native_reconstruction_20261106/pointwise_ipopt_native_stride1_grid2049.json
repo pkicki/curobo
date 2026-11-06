@@ -1,0 +1,25 @@
+{
+  "backend": "ipopt",
+  "seed": "native",
+  "stride": 1,
+  "collocation_points": 2103,
+  "pointwise_inequalities": 117768,
+  "duration_s": 0.4015866915794067,
+  "initial_duration_s": 0.4128431957919214,
+  "min_margin": 1.5193532409973898e-07,
+  "elapsed_s": 60.648165113001596,
+  "iterations_recorded": 41,
+  "status": 0,
+  "message": "Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).",
+  "stationarity_inf": 7.796443168576473e-08,
+  "history_columns": [
+    "algorithm_mode",
+    "iteration",
+    "objective",
+    "primal_infeasibility",
+    "dual_infeasibility",
+    "mu",
+    "step_norm",
+    "regularization"
+  ]
+}

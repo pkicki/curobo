@@ -1,0 +1,117 @@
+{
+  "attempt": "pointwise_ipopt_native_stride1_grid2049",
+  "squared_speed_scale": 1.0,
+  "duration_s": 0.4015866916092888,
+  "samples": 16439,
+  "min_squared_speed": 2.8483575607974823,
+  "families": {
+    "position": {
+      "physical": {
+        "signed_residual": -0.2959359884262085,
+        "violation": 0.0,
+        "joint": 2,
+        "time_s": 0.4015866916092888,
+        "value": -1.466863989830017,
+        "lower": -1.7627999782562256,
+        "upper": 1.7627999782562256
+      },
+      "scaled_95": {
+        "signed_residual": -0.2959359884262085,
+        "violation": 0.0,
+        "joint": 2,
+        "time_s": 0.4015866916092888,
+        "value": -1.466863989830017,
+        "lower": -1.7627999782562256,
+        "upper": 1.7627999782562256
+      }
+    },
+    "velocity": {
+      "physical": {
+        "signed_residual": -0.10875016744974797,
+        "violation": 0.0,
+        "joint": 4,
+        "time_s": 0.19575298217248888,
+        "value": 2.066249784866536,
+        "lower": -2.174999952316284,
+        "upper": 2.174999952316284
+      },
+      "scaled_95": {
+        "signed_residual": -1.6983393358316334e-07,
+        "violation": 0.0,
+        "joint": 4,
+        "time_s": 0.19575298217248888,
+        "value": 2.066249784866536,
+        "lower": -2.06624995470047,
+        "upper": 2.06624995470047
+      }
+    },
+    "acceleration": {
+      "physical": {
+        "signed_residual": -0.7499240928193309,
+        "violation": 0.0,
+        "joint": 4,
+        "time_s": 0.07353800461045856,
+        "value": 14.250075907180669,
+        "lower": -15.0,
+        "upper": 15.0
+      },
+      "scaled_95": {
+        "signed_residual": 7.590718066907698e-05,
+        "violation": 7.590718066907698e-05,
+        "joint": 4,
+        "time_s": 0.07353800461045856,
+        "value": 14.250075907180669,
+        "lower": -14.25,
+        "upper": 14.25
+      }
+    },
+    "jerk": {
+      "physical": {
+        "signed_residual": -24.97470718727658,
+        "violation": 0.0,
+        "joint": 4,
+        "time_s": 0.023085893264954693,
+        "value": 475.0252928127234,
+        "lower": -500.0,
+        "upper": 500.0
+      },
+      "scaled_95": {
+        "signed_residual": 0.02529281272342132,
+        "violation": 0.02529281272342132,
+        "joint": 4,
+        "time_s": 0.023085893264954693,
+        "value": 475.0252928127234,
+        "lower": -475.0,
+        "upper": 475.0
+      }
+    },
+    "torque": {
+      "physical": {
+        "signed_residual": -7.846430390549128,
+        "violation": 0.0,
+        "joint": 6,
+        "time_s": 0.0724220505136728,
+        "value": 4.153569609450872,
+        "lower": -12.0,
+        "upper": 12.0
+      },
+      "scaled_95": {
+        "signed_residual": -7.2464303905491265,
+        "violation": 0.0,
+        "joint": 6,
+        "time_s": 0.0724220505136728,
+        "value": 4.153569609450872,
+        "lower": -11.399999999999999,
+        "upper": 11.399999999999999
+      }
+    }
+  },
+  "endpoint_residuals": {
+    "q0": 0.0,
+    "q1": 0.0,
+    "v0": 0.0,
+    "v1": 0.0,
+    "a0": 0.0,
+    "a1": 0.0
+  }
+}

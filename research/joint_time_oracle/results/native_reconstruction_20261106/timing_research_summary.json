@@ -1,0 +1,403 @@
+{
+  "pilot": "BLOCKED",
+  "durations_s": {
+    "A_native": 0.4128432273864746,
+    "B_restored": 0.3987602930961138,
+    "C_joint": 0.40169423818588257
+  },
+  "A_to_B_s": 0.014082934290360782,
+  "A_to_B_percent": 3.41120632631266,
+  "B_to_C_s": -0.0029339450897687414,
+  "B_to_C_percent": -0.7357666098067512,
+  "scaled_restorations": {
+    "baseline": {
+      "duration_s": 0.41288453340530396,
+      "time_scale": 1.0001,
+      "samples": 8193,
+      "families": {
+        "position": {
+          "signed_residual": -0.29593586921691895,
+          "max_violation": 0.0,
+          "time_s": 0.4116748869419098,
+          "joint": 2,
+          "value": -1.4668641090393066,
+          "lower": -1.7627999782562256,
+          "upper": 1.7627999782562256
+        },
+        "velocity": {
+          "signed_residual": -0.03756319284439069,
+          "max_violation": 0.0,
+          "time_s": 0.20024295151233673,
+          "joint": 4,
+          "value": 2.028686761856079,
+          "lower": -2.06624995470047,
+          "upper": 2.06624995470047
+        },
+        "acceleration": {
+          "signed_residual": -0.15070819854736328,
+          "max_violation": 0.0,
+          "time_s": 0.07968389242887497,
+          "joint": 4,
+          "value": 14.099291801452637,
+          "lower": -14.25,
+          "upper": 14.25
+        },
+        "jerk": {
+          "signed_residual": -0.07550048828125,
+          "max_violation": 0.0,
+          "time_s": 0.40224993228912354,
+          "joint": 4,
+          "value": 474.92449951171875,
+          "lower": -475.0,
+          "upper": 475.0
+        },
+        "torque": {
+          "signed_residual": -7.263364696502684,
+          "max_violation": 0.0,
+          "time_s": 0.07862547039985657,
+          "joint": 6,
+          "value": 4.1366353034973145,
+          "lower": -11.399999999999999,
+          "upper": 11.399999999999999
+        }
+      }
+    },
+    "candidate": {
+      "duration_s": 0.4017745770335197,
+      "time_scale": 1.0002,
+      "samples": 8193,
+      "families": {
+        "position": {
+          "signed_residual": -0.29519224166870117,
+          "max_violation": 0.0,
+          "time_s": 0.3555253795063458,
+          "joint": 2,
+          "value": -1.4676077365875244,
+          "lower": -1.7627999782562256,
+          "upper": 1.7627999782562256
+        },
+        "velocity": {
+          "signed_residual": -0.00041471719741803525,
+          "max_violation": 0.0,
+          "time_s": 0.20088728851675985,
+          "joint": 4,
+          "value": 2.0658352375030518,
+          "lower": -2.06624995470047,
+          "upper": 2.06624995470047
+        },
+        "acceleration": {
+          "signed_residual": -0.0010051727294921875,
+          "max_violation": 0.0,
+          "time_s": 0.06880978168677102,
+          "joint": 1,
+          "value": 14.248994827270508,
+          "lower": -14.25,
+          "upper": 14.25
+        },
+        "jerk": {
+          "signed_residual": -0.2808837890625,
+          "max_violation": 0.0,
+          "time_s": 0.4017745770335197,
+          "joint": 4,
+          "value": 474.7191162109375,
+          "lower": -475.0,
+          "upper": 475.0
+        },
+        "torque": {
+          "signed_residual": -7.304251575469969,
+          "max_violation": 0.0,
+          "time_s": 0.06998685564292391,
+          "joint": 6,
+          "value": 4.095748424530029,
+          "lower": -11.399999999999999,
+          "upper": 11.399999999999999
+        }
+      }
+    },
+    "note": "8193 samples, unchanged geometry, uniform time scaling; collision profiles unchanged. Dense intermediate extrema and continuous behavior require further verification."
+  },
+  "fixed_path": {
+    "attempt": "pointwise_ipopt_native40_stride1_grid2049_refine1_tol1e-07",
+    "squared_speed_scale": 0.99998,
+    "duration_s": 0.3987602930961138,
+    "samples": 16439,
+    "min_squared_speed": 3.165719566261058,
+    "families": {
+      "position": {
+        "physical": {
+          "signed_residual": -0.2959359884262085,
+          "violation": 0.0,
+          "joint": 2,
+          "time_s": 0.3987602930961138,
+          "value": -1.466863989830017,
+          "lower": -1.7627999782562256,
+          "upper": 1.7627999782562256
+        },
+        "scaled_95": {
+          "signed_residual": -0.2959359884262085,
+          "violation": 0.0,
+          "joint": 2,
+          "time_s": 0.3987602930961138,
+          "value": -1.466863989830017,
+          "lower": -1.7627999782562256,
+          "upper": 1.7627999782562256
+        }
+      },
+      "velocity": {
+        "physical": {
+          "signed_residual": -0.10877014313820776,
+          "violation": 0.0,
+          "joint": 4,
+          "time_s": 0.19296658571080244,
+          "value": 2.0662298091780764,
+          "lower": -2.174999952316284,
+          "upper": 2.174999952316284
+        },
+        "scaled_95": {
+          "signed_residual": -2.0145522393377746e-05,
+          "violation": 0.0,
+          "joint": 4,
+          "time_s": 0.19296658571080244,
+          "value": 2.0662298091780764,
+          "lower": -2.06624995470047,
+          "upper": 2.06624995470047
+        }
+      },
+      "acceleration": {
+        "physical": {
+          "signed_residual": -0.7502014829783228,
+          "violation": 0.0,
+          "joint": 4,
+          "time_s": 0.07073781481145035,
+          "value": 14.249798517021677,
+          "lower": -15.0,
+          "upper": 15.0
+        },
+        "scaled_95": {
+          "signed_residual": -0.00020148297832278672,
+          "violation": 0.0,
+          "joint": 4,
+          "time_s": 0.07073781481145035,
+          "value": 14.249798517021677,
+          "lower": -14.25,
+          "upper": 14.25
+        }
+      },
+      "jerk": {
+        "physical": {
+          "signed_residual": -25.013287639529892,
+          "violation": 0.0,
+          "joint": 4,
+          "time_s": 0.17244778945698533,
+          "value": -474.9867123604701,
+          "lower": -500.0,
+          "upper": 500.0
+        },
+        "scaled_95": {
+          "signed_residual": -0.013287639529892203,
+          "violation": 0.0,
+          "joint": 4,
+          "time_s": 0.17244778945698533,
+          "value": -474.9867123604701,
+          "lower": -475.0,
+          "upper": 475.0
+        }
+      },
+      "torque": {
+        "physical": {
+          "signed_residual": -7.846757135594983,
+          "violation": 0.0,
+          "joint": 6,
+          "time_s": 0.06965162711203075,
+          "value": 4.153242864405017,
+          "lower": -12.0,
+          "upper": 12.0
+        },
+        "scaled_95": {
+          "signed_residual": -7.246757135594981,
+          "violation": 0.0,
+          "joint": 6,
+          "time_s": 0.06965162711203075,
+          "value": 4.153242864405017,
+          "lower": -11.399999999999999,
+          "upper": 11.399999999999999
+        }
+      }
+    },
+    "endpoint_residuals": {
+      "q0": 0.0,
+      "q1": 0.0,
+      "v0": 0.0,
+      "v1": 0.0,
+      "a0": 0.0,
+      "a1": 0.0
+    }
+  },
+  "solver": {
+    "backend": "ipopt",
+    "seed": "native40",
+    "stride": 1,
+    "tolerance": 1e-07,
+    "collocation_points": 2170,
+    "pointwise_inequalities": 121520,
+    "duration_s": 0.3987562978175138,
+    "initial_duration_s": 0.39967299637274495,
+    "min_margin": -9.178711124491201e-10,
+    "elapsed_s": 47.88095422901097,
+    "iterations_recorded": 33,
+    "status": 0,
+    "message": "Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).",
+    "stationarity_inf": 3.102307249993031e-10,
+    "history_columns": [
+      "algorithm_mode",
+      "iteration",
+      "objective",
+      "primal_infeasibility",
+      "dual_infeasibility",
+      "mu",
+      "step_norm",
+      "regularization"
+    ]
+  },
+  "solver_crosscheck": {
+    "backend": "ipopt",
+    "seed": "native",
+    "stride": 1,
+    "tolerance": 1e-09,
+    "collocation_points": 1079,
+    "pointwise_inequalities": 60424,
+    "duration_s": 0.398753942330037,
+    "initial_duration_s": 0.4128431957919214,
+    "min_margin": -9.999998384913056e-09,
+    "elapsed_s": 35.7586191619921,
+    "iterations_recorded": 43,
+    "status": 0,
+    "message": "Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).",
+    "stationarity_inf": 1.4520946894635938e-10,
+    "history_columns": [
+      "algorithm_mode",
+      "iteration",
+      "objective",
+      "primal_infeasibility",
+      "dual_infeasibility",
+      "mu",
+      "step_norm",
+      "regularization"
+    ]
+  },
+  "maximum_scaled_control": 9999.994054331619,
+  "control_upper_bound": 10000.0,
+  "native_iterations": [
+    {
+      "iterations": 5,
+      "duration_s": 0.4333288371562958,
+      "success": true,
+      "status": 0,
+      "optimization_ok": true,
+      "uniform_seed_duration_s": 0.5176613330841064
+    },
+    {
+      "iterations": 10,
+      "duration_s": 0.4128432273864746,
+      "success": true,
+      "status": 0,
+      "optimization_ok": true,
+      "uniform_seed_duration_s": 0.5176613330841064
+    },
+    {
+      "iterations": 20,
+      "duration_s": 0.40011903643608093,
+      "success": true,
+      "status": 0,
+      "optimization_ok": true,
+      "uniform_seed_duration_s": 0.5176613330841064
+    },
+    {
+      "iterations": 40,
+      "duration_s": 0.3996730148792267,
+      "success": true,
+      "status": 0,
+      "optimization_ok": true,
+      "uniform_seed_duration_s": 0.5176613330841064
+    },
+    {
+      "iterations": 80,
+      "duration_s": 0.3996730148792267,
+      "success": true,
+      "status": 0,
+      "optimization_ok": true,
+      "uniform_seed_duration_s": 0.5176613330841064
+    }
+  ],
+  "collision": {
+    "baseline": {
+      "samples": 8193,
+      "world_clearance_m": 0.15500000000000003,
+      "world_time_s": 0.0,
+      "world_link": "panda_link0",
+      "self_clearance_with_link_padding_m": 0.0848949405462423,
+      "self_time_s": 0.0005543549195863307,
+      "self_links": [
+        "panda_link3",
+        "panda_link5"
+      ],
+      "sampled_world_feasible": true,
+      "sampled_self_feasible": true
+    },
+    "fixed_path_historical": {
+      "samples": 16439,
+      "world_clearance_m": 0.15500000000000003,
+      "world_time_s": 0.0,
+      "world_link": "panda_link0",
+      "self_clearance_with_link_padding_m": 0.08489494080780072,
+      "self_time_s": 2.7441111590818722e-05,
+      "self_links": [
+        "panda_link3",
+        "panda_link5"
+      ],
+      "sampled_world_feasible": true,
+      "sampled_self_feasible": true
+    },
+    "candidate": {
+      "samples": 8193,
+      "world_clearance_m": 0.15500000000000003,
+      "world_time_s": 0.0,
+      "world_link": "panda_link0",
+      "self_clearance_with_link_padding_m": 0.0848949405462423,
+      "self_time_s": 0.00014710482355440035,
+      "self_links": [
+        "panda_link3",
+        "panda_link5"
+      ],
+      "sampled_world_feasible": true,
+      "sampled_self_feasible": true
+    },
+    "fixed_path_pointwise_restored": {
+      "samples": 16439,
+      "world_clearance_m": 0.15500000000000003,
+      "world_time_s": 0.0,
+      "world_link": "panda_link0",
+      "self_clearance_with_link_padding_m": 0.08489494080780072,
+      "self_time_s": 2.744333592423033e-06,
+      "self_links": [
+        "panda_link3",
+        "panda_link5"
+      ],
+      "sampled_world_feasible": true,
+      "sampled_self_feasible": true
+    },
+    "description": {
+      "robot": "61 configured Franka collision spheres, Pinocchio URDF frames, locked fingers 0.04 m",
+      "world": "analytic sphere versus axis-aligned table cuboid",
+      "self": "sphere pairs with configured ignore pairs and per-link padding",
+      "limits": "discrete samples only; not a swept or continuous collision certificate; excludes mesh accuracy and attached object placeholder"
+    }
+  },
+  "qualifications": [
+    "IPOPT convergence is for a bounded sampled NLP, and its upper bound is active; unbounded fixed-path optimum is not established.",
+    "B is uniformly slowed after the converged bounded solve; restoration is not a stationary solution.",
+    "A and C satisfy sampled physical bounds but violate 95% scaled bounds; a common scaled comparison is not qualified.",
+    "The complete joint-oracle CUDA Jacobian discrepancy classification is still open.",
+    "Independent collision checks are sampled sphere checks, not continuous certificates."
+  ]
+}

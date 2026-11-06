@@ -1,0 +1,64 @@
+{
+  "baseline": {
+    "samples": 8193,
+    "world_clearance_m": 0.15500000000000003,
+    "world_time_s": 0.0,
+    "world_link": "panda_link0",
+    "self_clearance_with_link_padding_m": 0.0848949405462423,
+    "self_time_s": 0.0005543549195863307,
+    "self_links": [
+      "panda_link3",
+      "panda_link5"
+    ],
+    "sampled_world_feasible": true,
+    "sampled_self_feasible": true
+  },
+  "fixed_path_historical": {
+    "samples": 16439,
+    "world_clearance_m": 0.15500000000000003,
+    "world_time_s": 0.0,
+    "world_link": "panda_link0",
+    "self_clearance_with_link_padding_m": 0.08489494080780072,
+    "self_time_s": 2.7441111590818722e-05,
+    "self_links": [
+      "panda_link3",
+      "panda_link5"
+    ],
+    "sampled_world_feasible": true,
+    "sampled_self_feasible": true
+  },
+  "candidate": {
+    "samples": 8193,
+    "world_clearance_m": 0.15500000000000003,
+    "world_time_s": 0.0,
+    "world_link": "panda_link0",
+    "self_clearance_with_link_padding_m": 0.0848949405462423,
+    "self_time_s": 0.00014710482355440035,
+    "self_links": [
+      "panda_link3",
+      "panda_link5"
+    ],
+    "sampled_world_feasible": true,
+    "sampled_self_feasible": true
+  },
+  "fixed_path_pointwise_restored": {
+    "samples": 16439,
+    "world_clearance_m": 0.15500000000000003,
+    "world_time_s": 0.0,
+    "world_link": "panda_link0",
+    "self_clearance_with_link_padding_m": 0.08489494080780072,
+    "self_time_s": 2.744333592423033e-06,
+    "self_links": [
+      "panda_link3",
+      "panda_link5"
+    ],
+    "sampled_world_feasible": true,
+    "sampled_self_feasible": true
+  },
+  "description": {
+    "robot": "61 configured Franka collision spheres, Pinocchio URDF frames, locked fingers 0.04 m",
+    "world": "analytic sphere versus axis-aligned table cuboid",
+    "self": "sphere pairs with configured ignore pairs and per-link padding",
+    "limits": "discrete samples only; not a swept or continuous collision certificate; excludes mesh accuracy and attached object placeholder"
+  }
+}

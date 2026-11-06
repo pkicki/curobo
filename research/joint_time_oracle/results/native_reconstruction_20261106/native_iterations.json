@@ -1,0 +1,42 @@
+[
+  {
+    "iterations": 5,
+    "duration_s": 0.4333288371562958,
+    "success": true,
+    "status": 0,
+    "optimization_ok": true,
+    "uniform_seed_duration_s": 0.5176613330841064
+  },
+  {
+    "iterations": 10,
+    "duration_s": 0.4128432273864746,
+    "success": true,
+    "status": 0,
+    "optimization_ok": true,
+    "uniform_seed_duration_s": 0.5176613330841064
+  },
+  {
+    "iterations": 20,
+    "duration_s": 0.40011903643608093,
+    "success": true,
+    "status": 0,
+    "optimization_ok": true,
+    "uniform_seed_duration_s": 0.5176613330841064
+  },
+  {
+    "iterations": 40,
+    "duration_s": 0.3996730148792267,
+    "success": true,
+    "status": 0,
+    "optimization_ok": true,
+    "uniform_seed_duration_s": 0.5176613330841064
+  },
+  {
+    "iterations": 80,
+    "duration_s": 0.3996730148792267,
+    "success": true,
+    "status": 0,
+    "optimization_ok": true,
+    "uniform_seed_duration_s": 0.5176613330841064
+  }
+]

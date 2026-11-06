@@ -1,0 +1,107 @@
+{
+  "baseline": {
+    "duration_s": 0.41288453340530396,
+    "time_scale": 1.0001,
+    "samples": 8193,
+    "families": {
+      "position": {
+        "signed_residual": -0.29593586921691895,
+        "max_violation": 0.0,
+        "time_s": 0.4116748869419098,
+        "joint": 2,
+        "value": -1.4668641090393066,
+        "lower": -1.7627999782562256,
+        "upper": 1.7627999782562256
+      },
+      "velocity": {
+        "signed_residual": -0.03756319284439069,
+        "max_violation": 0.0,
+        "time_s": 0.20024295151233673,
+        "joint": 4,
+        "value": 2.028686761856079,
+        "lower": -2.06624995470047,
+        "upper": 2.06624995470047
+      },
+      "acceleration": {
+        "signed_residual": -0.15070819854736328,
+        "max_violation": 0.0,
+        "time_s": 0.07968389242887497,
+        "joint": 4,
+        "value": 14.099291801452637,
+        "lower": -14.25,
+        "upper": 14.25
+      },
+      "jerk": {
+        "signed_residual": -0.07550048828125,
+        "max_violation": 0.0,
+        "time_s": 0.40224993228912354,
+        "joint": 4,
+        "value": 474.92449951171875,
+        "lower": -475.0,
+        "upper": 475.0
+      },
+      "torque": {
+        "signed_residual": -7.263364696502684,
+        "max_violation": 0.0,
+        "time_s": 0.07862547039985657,
+        "joint": 6,
+        "value": 4.1366353034973145,
+        "lower": -11.399999999999999,
+        "upper": 11.399999999999999
+      }
+    }
+  },
+  "candidate": {
+    "duration_s": 0.4017745770335197,
+    "time_scale": 1.0002,
+    "samples": 8193,
+    "families": {
+      "position": {
+        "signed_residual": -0.29519224166870117,
+        "max_violation": 0.0,
+        "time_s": 0.3555253795063458,
+        "joint": 2,
+        "value": -1.4676077365875244,
+        "lower": -1.7627999782562256,
+        "upper": 1.7627999782562256
+      },
+      "velocity": {
+        "signed_residual": -0.00041471719741803525,
+        "max_violation": 0.0,
+        "time_s": 0.20088728851675985,
+        "joint": 4,
+        "value": 2.0658352375030518,
+        "lower": -2.06624995470047,
+        "upper": 2.06624995470047
+      },
+      "acceleration": {
+        "signed_residual": -0.0010051727294921875,
+        "max_violation": 0.0,
+        "time_s": 0.06880978168677102,
+        "joint": 1,
+        "value": 14.248994827270508,
+        "lower": -14.25,
+        "upper": 14.25
+      },
+      "jerk": {
+        "signed_residual": -0.2808837890625,
+        "max_violation": 0.0,
+        "time_s": 0.4017745770335197,
+        "joint": 4,
+        "value": 474.7191162109375,
+        "lower": -475.0,
+        "upper": 475.0
+      },
+      "torque": {
+        "signed_residual": -7.304251575469969,
+        "max_violation": 0.0,
+        "time_s": 0.06998685564292391,
+        "joint": 6,
+        "value": 4.095748424530029,
+        "lower": -11.399999999999999,
+        "upper": 11.399999999999999
+      }
+    }
+  },
+  "note": "8193 samples, unchanged geometry, uniform time scaling; collision profiles unchanged. Dense intermediate extrema and continuous behavior require further verification."
+}

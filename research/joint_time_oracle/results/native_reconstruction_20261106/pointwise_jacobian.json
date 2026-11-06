@@ -1,0 +1,40 @@
+{
+  "native": {
+    "shape": [
+      17416,
+      32
+    ],
+    "steps": [
+      0.0001,
+      1e-05,
+      1e-06
+    ],
+    "max_best_absolute_error": 2.459401571286435e-10,
+    "max_objective_error_by_step": [
+      7.302885032811623e-11,
+      5.023049684527159e-12,
+      5.993079643662469e-11
+    ],
+    "entries_over_1e-5_absolute": 0,
+    "note": "Errors are for smooth explicit pointwise timing constraints and analytical Pinocchio-derived torque coefficients; not CUDA collision Jacobians."
+  },
+  "optimized": {
+    "shape": [
+      17416,
+      32
+    ],
+    "steps": [
+      0.0001,
+      1e-05,
+      1e-06
+    ],
+    "max_best_absolute_error": 2.615436756059353e-10,
+    "max_objective_error_by_step": [
+      1.1275021194467882e-10,
+      5.526018011237088e-12,
+      5.236522847285041e-11
+    ],
+    "entries_over_1e-5_absolute": 0,
+    "note": "Errors are for smooth explicit pointwise timing constraints and analytical Pinocchio-derived torque coefficients; not CUDA collision Jacobians."
+  }
+}

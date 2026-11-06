@@ -1,0 +1,7 @@
+{
+  "samples": 16439,
+  "max_difference_nm": 2.421110423256323e-09,
+  "joint": 2,
+  "time_s": 6.500427105032638e-05,
+  "note": "Direct aligned Pinocchio RNEA compared to the affine path-dynamics coefficients, not a second independent dynamics implementation."
+}
