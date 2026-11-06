@@ -6,10 +6,652 @@
 three-iteration solver budget and a second longer run on the same task, not the requested benchmark. No independently validated
 pair exists, so no conclusion about potential time savings can be drawn.</p>
 <h2>Research Implications: Is Joint Path-and-Time Optimization Worth Pursuing?</h2>
-<p>Unknown. First qualify native CUDA derivatives and independent dynamics and collision
-validation, then run a frozen, representative multistart benchmark. A local solver does
+<p>Unknown. Complete native CUDA derivative and collision qualification and the fixed-path timing control,
+then run a frozen pilot. A local solver does
 not provide a global optimality certificate.</p>
-<h2>Summary</h2><pre>{
+<h2>Original failure diagnosis</h2>
+<p>The largest original residual is Panda joint 7 acceleration at 0.09266 s:
+14.8601 rad/s² against the optimizer's 95%-scaled 14.25 rad/s² limit. Its
+normalized residual is 0.042814. This peak falls between optimizer samples;
+the physical limit is 15 rad/s², which this peak does not exceed. The initial
+fit itself exceeded the physical acceleration and jerk limits. The table below
+also records endpoint residuals, collision costs, locations, limits, and both grids.</p>
+<img src="assets/acceleration.png" alt="Acceleration peak between optimizer samples" style="max-width:100%">
+<pre>{
+  &quot;seed_collocation&quot;: {
+    &quot;position&quot;: {
+      &quot;normalized_residual&quot;: -0.1678783031922095,
+      &quot;violation&quot;: 0.0,
+      &quot;joint&quot;: &quot;panda_joint2&quot;,
+      &quot;time_s&quot;: 0.412843257188797,
+      &quot;span&quot;: 4,
+      &quot;observed&quot;: -1.4668641090393066,
+      &quot;scaled_limit&quot;: -1.7627999782562256,
+      &quot;physical_limit&quot;: -1.7627999782562256
+    },
+    &quot;velocity&quot;: {
+      &quot;normalized_residual&quot;: -0.006875045797858952,
+      &quot;violation&quot;: 0.0,
+      &quot;joint&quot;: &quot;panda_joint4&quot;,
+      &quot;time_s&quot;: 0.22018307050069172,
+      &quot;span&quot;: 2,
+      &quot;observed&quot;: 2.05204439163208,
+      &quot;scaled_limit&quot;: 2.06624995470047,
+      &quot;physical_limit&quot;: 2.174999952316284
+    },
+    &quot;acceleration&quot;: {
+      &quot;normalized_residual&quot;: 0.0894200509054619,
+      &quot;violation&quot;: 0.0894200509054619,
+      &quot;joint&quot;: &quot;panda_joint4&quot;,
+      &quot;time_s&quot;: 0.11009153525034586,
+      &quot;span&quot;: 1,
+      &quot;observed&quot;: 15.524235725402832,
+      &quot;scaled_limit&quot;: 14.25,
+      &quot;physical_limit&quot;: 15.0
+    },
+    &quot;jerk&quot;: {
+      &quot;normalized_residual&quot;: 0.10395546361019736,
+      &quot;violation&quot;: 0.10395546361019736,
+      &quot;joint&quot;: &quot;panda_joint4&quot;,
+      &quot;time_s&quot;: 0.412843257188797,
+      &quot;span&quot;: 4,
+      &quot;observed&quot;: 524.3788452148438,
+      &quot;scaled_limit&quot;: 475.0,
+      &quot;physical_limit&quot;: 500.0
+    },
+    &quot;torque&quot;: {
+      &quot;normalized_residual&quot;: -0.4422241967876824,
+      &quot;violation&quot;: 0.0,
+      &quot;joint&quot;: &quot;panda_joint2&quot;,
+      &quot;time_s&quot;: 0.357797489563624,
+      &quot;span&quot;: 4,
+      &quot;observed&quot;: 46.10017013549805,
+      &quot;scaled_limit&quot;: 82.64999999999999,
+      &quot;physical_limit&quot;: 87.0
+    },
+    &quot;world_collision&quot;: {
+      &quot;cost&quot;: 0.0,
+      &quot;time_s&quot;: 0.0,
+      &quot;span&quot;: 0,
+      &quot;element&quot;: 0,
+      &quot;limit&quot;: 0.0
+    },
+    &quot;self_collision&quot;: {
+      &quot;cost&quot;: 0.0,
+      &quot;time_s&quot;: 0.0,
+      &quot;span&quot;: 0,
+      &quot;element&quot;: 0,
+      &quot;limit&quot;: 0.0
+    },
+    &quot;endpoints_max_abs&quot;: {
+      &quot;q0&quot;: 0.0,
+      &quot;q1&quot;: 0.0,
+      &quot;v0&quot;: 4.331278887548251e-06,
+      &quot;v1&quot;: 3.465023155513336e-06,
+      &quot;a0&quot;: 0.00010491340071894228,
+      &quot;a1&quot;: 0.0004756074049510062
+    },
+    &quot;duration_s&quot;: 0.412843257188797,
+    &quot;samples&quot;: 16
+  },
+  &quot;seed_dense&quot;: {
+    &quot;position&quot;: {
+      &quot;normalized_residual&quot;: -0.1678783031922095,
+      &quot;violation&quot;: 0.0,
+      &quot;joint&quot;: &quot;panda_joint2&quot;,
+      &quot;time_s&quot;: 0.412843257188797,
+      &quot;span&quot;: 4,
+      &quot;observed&quot;: -1.4668641090393066,
+      &quot;scaled_limit&quot;: -1.7627999782562256,
+      &quot;physical_limit&quot;: -1.7627999782562256
+    },
+    &quot;velocity&quot;: {
+      &quot;normalized_residual&quot;: -0.004491494583594112,
+      &quot;violation&quot;: 0.0,
+      &quot;joint&quot;: &quot;panda_joint4&quot;,
+      &quot;time_s&quot;: 0.21416243966668846,
+      &quot;span&quot;: 2,
+      &quot;observed&quot;: 2.056969404220581,
+      &quot;scaled_limit&quot;: 2.06624995470047,
+      &quot;physical_limit&quot;: 2.174999952316284
+    },
+    &quot;acceleration&quot;: {
+      &quot;normalized_residual&quot;: 0.08973486381664611,
+      &quot;violation&quot;: 0.08973486381664611,
+      &quot;joint&quot;: &quot;panda_joint4&quot;,
+      &quot;time_s&quot;: 0.11224176054820417,
+      &quot;span&quot;: 1,
+      &quot;observed&quot;: 15.528721809387207,
+      &quot;scaled_limit&quot;: 14.25,
+      &quot;physical_limit&quot;: 15.0
+    },
+    &quot;jerk&quot;: {
+      &quot;normalized_residual&quot;: 0.10395546361019736,
+      &quot;violation&quot;: 0.10395546361019736,
+      &quot;joint&quot;: &quot;panda_joint4&quot;,
+      &quot;time_s&quot;: 0.412843257188797,
+      &quot;span&quot;: 4,
+      &quot;observed&quot;: 524.3788452148438,
+      &quot;scaled_limit&quot;: 475.0,
+      &quot;physical_limit&quot;: 500.0
+    },
+    &quot;torque&quot;: {
+      &quot;normalized_residual&quot;: -0.4410969110524661,
+      &quot;violation&quot;: 0.0,
+      &quot;joint&quot;: &quot;panda_joint2&quot;,
+      &quot;time_s&quot;: 0.3534970389679074,
+      &quot;span&quot;: 4,
+      &quot;observed&quot;: 46.19334030151367,
+      &quot;scaled_limit&quot;: 82.64999999999999,
+      &quot;physical_limit&quot;: 87.0
+    },
+    &quot;world_collision&quot;: {
+      &quot;cost&quot;: 0.0,
+      &quot;time_s&quot;: 0.0,
+      &quot;span&quot;: 0,
+      &quot;element&quot;: 0,
+      &quot;limit&quot;: 0.0
+    },
+    &quot;self_collision&quot;: {
+      &quot;cost&quot;: 0.0,
+      &quot;time_s&quot;: 0.0,
+      &quot;span&quot;: 0,
+      &quot;element&quot;: 0,
+      &quot;limit&quot;: 0.0
+    },
+    &quot;endpoints_max_abs&quot;: {
+      &quot;q0&quot;: 0.0,
+      &quot;q1&quot;: 0.0,
+      &quot;v0&quot;: 4.331278887548251e-06,
+      &quot;v1&quot;: 3.465023155513336e-06,
+      &quot;a0&quot;: 0.00010491340071894228,
+      &quot;a1&quot;: 0.0004756074049510062
+    },
+    &quot;duration_s&quot;: 0.412843257188797,
+    &quot;samples&quot;: 321
+  },
+  &quot;final_collocation&quot;: {
+    &quot;position&quot;: {
+      &quot;normalized_residual&quot;: -0.1678783031922095,
+      &quot;violation&quot;: 0.0,
+      &quot;joint&quot;: &quot;panda_joint2&quot;,
+      &quot;time_s&quot;: 0.40069469809532166,
+      &quot;span&quot;: 4,
+      &quot;observed&quot;: -1.4668641090393066,
+      &quot;scaled_limit&quot;: -1.7627999782562256,
+      &quot;physical_limit&quot;: -1.7627999782562256
+    },
+    &quot;velocity&quot;: {
+      &quot;normalized_residual&quot;: -0.008740508957127949,
+      &quot;violation&quot;: 0.0,
+      &quot;joint&quot;: &quot;panda_joint4&quot;,
+      &quot;time_s&quot;: 0.21370383898417156,
+      &quot;span&quot;: 2,
+      &quot;observed&quot;: 2.048189878463745,
+      &quot;scaled_limit&quot;: 2.06624995470047,
+      &quot;physical_limit&quot;: 2.174999952316284
+    },
+    &quot;acceleration&quot;: {
+      &quot;normalized_residual&quot;: 4.149319832785088e-06,
+      &quot;violation&quot;: 4.149319832785088e-06,
+      &quot;joint&quot;: &quot;panda_joint4&quot;,
+      &quot;time_s&quot;: 0.32055575847625734,
+      &quot;span&quot;: 4,
+      &quot;observed&quot;: -14.250059127807617,
+      &quot;scaled_limit&quot;: -14.25,
+      &quot;physical_limit&quot;: -15.0
+    },
+    &quot;jerk&quot;: {
+      &quot;normalized_residual&quot;: 9.444387335526315e-06,
+      &quot;violation&quot;: 9.444387335526315e-06,
+      &quot;joint&quot;: &quot;panda_joint4&quot;,
+      &quot;time_s&quot;: 0.40069469809532166,
+      &quot;span&quot;: 4,
+      &quot;observed&quot;: 475.0044860839844,
+      &quot;scaled_limit&quot;: 475.0,
+      &quot;physical_limit&quot;: 500.0
+    },
+    &quot;torque&quot;: {
+      &quot;normalized_residual&quot;: -0.43305503074429064,
+      &quot;violation&quot;: 0.0,
+      &quot;joint&quot;: &quot;panda_joint2&quot;,
+      &quot;time_s&quot;: 0.2938427786032359,
+      &quot;span&quot;: 3,
+      &quot;observed&quot;: 46.858001708984375,
+      &quot;scaled_limit&quot;: 82.64999999999999,
+      &quot;physical_limit&quot;: 87.0
+    },
+    &quot;world_collision&quot;: {
+      &quot;cost&quot;: 0.0,
+      &quot;time_s&quot;: 0.0,
+      &quot;span&quot;: 0,
+      &quot;element&quot;: 0,
+      &quot;limit&quot;: 0.0
+    },
+    &quot;self_collision&quot;: {
+      &quot;cost&quot;: 0.0,
+      &quot;time_s&quot;: 0.0,
+      &quot;span&quot;: 0,
+      &quot;element&quot;: 0,
+      &quot;limit&quot;: 0.0
+    },
+    &quot;endpoints_max_abs&quot;: {
+      &quot;q0&quot;: 0.0,
+      &quot;q1&quot;: 0.0,
+      &quot;v0&quot;: 4.462598099053139e-06,
+      &quot;v1&quot;: 3.570078433767776e-06,
+      &quot;a0&quot;: 0.00011137152614537627,
+      &quot;a1&quot;: 0.0005048842285759747
+    },
+    &quot;duration_s&quot;: 0.40069469809532166,
+    &quot;samples&quot;: 16
+  },
+  &quot;final_dense&quot;: {
+    &quot;position&quot;: {
+      &quot;normalized_residual&quot;: -0.167876747817979,
+      &quot;violation&quot;: 0.0,
+      &quot;joint&quot;: &quot;panda_joint2&quot;,
+      &quot;time_s&quot;: 0.3856686469167471,
+      &quot;span&quot;: 4,
+      &quot;observed&quot;: -1.4668668508529663,
+      &quot;scaled_limit&quot;: -1.7627999782562256,
+      &quot;physical_limit&quot;: -1.7627999782562256
+    },
+    &quot;velocity&quot;: {
+      &quot;normalized_residual&quot;: 0.002563503157732358,
+      &quot;violation&quot;: 0.002563503157732358,
+      &quot;joint&quot;: &quot;panda_joint4&quot;,
+      &quot;time_s&quot;: 0.20034734904766083,
+      &quot;span&quot;: 2,
+      &quot;observed&quot;: 2.071546792984009,
+      &quot;scaled_limit&quot;: 2.06624995470047,
+      &quot;physical_limit&quot;: 2.174999952316284
+    },
+    &quot;acceleration&quot;: {
+      &quot;normalized_residual&quot;: 0.04281415437397204,
+      &quot;violation&quot;: 0.04281415437397204,
+      &quot;joint&quot;: &quot;panda_joint7&quot;,
+      &quot;time_s&quot;: 0.09266064893454314,
+      &quot;span&quot;: 1,
+      &quot;observed&quot;: 14.860101699829102,
+      &quot;scaled_limit&quot;: 14.25,
+      &quot;physical_limit&quot;: 15.0
+    },
+    &quot;jerk&quot;: {
+      &quot;normalized_residual&quot;: 9.444387335526315e-06,
+      &quot;violation&quot;: 9.444387335526315e-06,
+      &quot;joint&quot;: &quot;panda_joint4&quot;,
+      &quot;time_s&quot;: 0.40069469809532166,
+      &quot;span&quot;: 4,
+      &quot;observed&quot;: 475.0044860839844,
+      &quot;scaled_limit&quot;: 475.0,
+      &quot;physical_limit&quot;: 500.0
+    },
+    &quot;torque&quot;: {
+      &quot;normalized_residual&quot;: -0.42778184063421615,
+      &quot;violation&quot;: 0.0,
+      &quot;joint&quot;: &quot;panda_joint2&quot;,
+      &quot;time_s&quot;: 0.3042775363661349,
+      &quot;span&quot;: 3,
+      &quot;observed&quot;: 47.29383087158203,
+      &quot;scaled_limit&quot;: 82.64999999999999,
+      &quot;physical_limit&quot;: 87.0
+    },
+    &quot;world_collision&quot;: {
+      &quot;cost&quot;: 0.0,
+      &quot;time_s&quot;: 0.0,
+      &quot;span&quot;: 0,
+      &quot;element&quot;: 0,
+      &quot;limit&quot;: 0.0
+    },
+    &quot;self_collision&quot;: {
+      &quot;cost&quot;: 0.0,
+      &quot;time_s&quot;: 0.0,
+      &quot;span&quot;: 0,
+      &quot;element&quot;: 0,
+      &quot;limit&quot;: 0.0
+    },
+    &quot;endpoints_max_abs&quot;: {
+      &quot;q0&quot;: 0.0,
+      &quot;q1&quot;: 0.0,
+      &quot;v0&quot;: 4.462598099053139e-06,
+      &quot;v1&quot;: 3.570078433767776e-06,
+      &quot;a0&quot;: 0.00011137152614537627,
+      &quot;a1&quot;: 0.0005048842285759747
+    },
+    &quot;duration_s&quot;: 0.40069469809532166,
+    &quot;samples&quot;: 321
+  },
+  &quot;stretched_seed_dense&quot;: {
+    &quot;position&quot;: {
+      &quot;normalized_residual&quot;: -0.1678783031922095,
+      &quot;violation&quot;: 0.0,
+      &quot;joint&quot;: &quot;panda_joint2&quot;,
+      &quot;time_s&quot;: 0.4314008355140686,
+      &quot;span&quot;: 4,
+      &quot;observed&quot;: -1.4668641090393066,
+      &quot;scaled_limit&quot;: -1.7627999782562256,
+      &quot;physical_limit&quot;: -1.7627999782562256
+    },
+    &quot;velocity&quot;: {
+      &quot;normalized_residual&quot;: -0.047315280103124135,
+      &quot;violation&quot;: 0.0,
+      &quot;joint&quot;: &quot;panda_joint4&quot;,
+      &quot;time_s&quot;: 0.22378918342292312,
+      &quot;span&quot;: 2,
+      &quot;observed&quot;: 1.9684847593307495,
+      &quot;scaled_limit&quot;: 2.06624995470047,
+      &quot;physical_limit&quot;: 2.174999952316284
+    },
+    &quot;acceleration&quot;: {
+      &quot;normalized_residual&quot;: -0.002002916837993421,
+      &quot;violation&quot;: 0.0,
+      &quot;joint&quot;: &quot;panda_joint4&quot;,
+      &quot;time_s&quot;: 0.11728710215538739,
+      &quot;span&quot;: 1,
+      &quot;observed&quot;: 14.221458435058594,
+      &quot;scaled_limit&quot;: 14.25,
+      &quot;physical_limit&quot;: 15.0
+    },
+    &quot;jerk&quot;: {
+      &quot;normalized_residual&quot;: -0.03247057462993421,
+      &quot;violation&quot;: 0.0,
+      &quot;joint&quot;: &quot;panda_joint4&quot;,
+      &quot;time_s&quot;: 0.4314008355140686,
+      &quot;span&quot;: 4,
+      &quot;observed&quot;: 459.57647705078125,
+      &quot;scaled_limit&quot;: 475.0,
+      &quot;physical_limit&quot;: 500.0
+    },
+    &quot;torque&quot;: {
+      &quot;normalized_residual&quot;: -0.46642280850926815,
+      &quot;violation&quot;: 0.0,
+      &quot;joint&quot;: &quot;panda_joint2&quot;,
+      &quot;time_s&quot;: 0.36938696540892124,
+      &quot;span&quot;: 4,
+      &quot;observed&quot;: 44.100154876708984,
+      &quot;scaled_limit&quot;: 82.64999999999999,
+      &quot;physical_limit&quot;: 87.0
+    },
+    &quot;world_collision&quot;: {
+      &quot;cost&quot;: 0.0,
+      &quot;time_s&quot;: 0.0,
+      &quot;span&quot;: 0,
+      &quot;element&quot;: 0,
+      &quot;limit&quot;: 0.0
+    },
+    &quot;self_collision&quot;: {
+      &quot;cost&quot;: 0.0,
+      &quot;time_s&quot;: 0.0,
+      &quot;span&quot;: 0,
+      &quot;element&quot;: 0,
+      &quot;limit&quot;: 0.0
+    },
+    &quot;endpoints_max_abs&quot;: {
+      &quot;q0&quot;: 0.0,
+      &quot;q1&quot;: 0.0,
+      &quot;v0&quot;: 4.1449602576904e-06,
+      &quot;v1&quot;: 3.315968342576525e-06,
+      &quot;a0&quot;: 9.60814140853472e-05,
+      &quot;a1&quot;: 0.0004355690907686949
+    },
+    &quot;duration_s&quot;: 0.4314008355140686,
+    &quot;samples&quot;: 321
+  },
+  &quot;fit_max_abs_error_rad&quot;: 0.0012000246880954357,
+  &quot;fit_max_joint_norm_error_rad&quot;: 0.0021415097628434622
+}</pre>
+<h2>Recovery and fixed-geometry control</h2>
+<p>The fitted seed has maximum absolute joint error of approximately 0.0012 rad at
+saved baseline samples. Uniformly scaling its time produced a sampled-feasible seed
+at approximately 0.4314 s. This preserves the fitted geometry because the saved
+endpoint derivatives are zero; it is not a general fixed-path timing optimizer and
+is not directly comparable to native TimeOpt. A denser-collocation SLSQP run
+produced a sampled-feasible candidate at 0.401694 s. No IPOPT comparison was run.</p>
+<pre>{
+  &quot;baseline&quot;: {
+    &quot;samples&quot;: 18,
+    &quot;duration_s&quot;: 0.4128432236611843,
+    &quot;joint_space_path_length_rad&quot;: 0.7501676082611084,
+    &quot;position&quot;: {
+      &quot;max_physical_violation&quot;: 0.0,
+      &quot;max_residual&quot;: -0.29593586921691895,
+      &quot;joint&quot;: 2,
+      &quot;time_s&quot;: 0.4128432236611843,
+      &quot;value&quot;: -1.4668641090393066,
+      &quot;lower_limit&quot;: -1.7627999782562256,
+      &quot;upper_limit&quot;: 1.7627999782562256
+    },
+    &quot;velocity&quot;: {
+      &quot;max_physical_violation&quot;: 0.0,
+      &quot;max_residual&quot;: -0.15289020538330078,
+      &quot;joint&quot;: 4,
+      &quot;time_s&quot;: 0.19427916407585144,
+      &quot;value&quot;: 2.0221097469329834,
+      &quot;lower_limit&quot;: -2.174999952316284,
+      &quot;upper_limit&quot;: 2.174999952316284
+    },
+    &quot;acceleration&quot;: {
+      &quot;max_physical_violation&quot;: 0.0,
+      &quot;max_residual&quot;: -1.0457935333251953,
+      &quot;joint&quot;: 4,
+      &quot;time_s&quot;: 0.09713958203792572,
+      &quot;value&quot;: 13.954206466674805,
+      &quot;lower_limit&quot;: -15.0,
+      &quot;upper_limit&quot;: 15.0
+    },
+    &quot;jerk&quot;: {
+      &quot;max_physical_violation&quot;: 0.0,
+      &quot;max_residual&quot;: -25.27984619140625,
+      &quot;joint&quot;: 4,
+      &quot;time_s&quot;: 0.4128432236611843,
+      &quot;value&quot;: 474.72015380859375,
+      &quot;lower_limit&quot;: -500.0,
+      &quot;upper_limit&quot;: 500.0
+    },
+    &quot;torque&quot;: {
+      &quot;max_physical_violation&quot;: 0.0,
+      &quot;max_residual&quot;: -7.909439563751221,
+      &quot;joint&quot;: 6,
+      &quot;time_s&quot;: 0.07285468652844429,
+      &quot;value&quot;: 4.090560436248779,
+      &quot;lower_limit&quot;: -12.0,
+      &quot;upper_limit&quot;: 12.0
+    },
+    &quot;endpoint_max_abs_residuals&quot;: {
+      &quot;q0&quot;: 0.0,
+      &quot;q1&quot;: 0.0,
+      &quot;v0&quot;: 0.0,
+      &quot;v1&quot;: 0.0,
+      &quot;a0&quot;: 0.0,
+      &quot;a1&quot;: 0.0
+    }
+  },
+  &quot;recovery&quot;: {
+    &quot;samples&quot;: 641,
+    &quot;duration_s&quot;: 0.40169423818588257,
+    &quot;joint_space_path_length_rad&quot;: 0.7562501430511475,
+    &quot;position&quot;: {
+      &quot;max_physical_violation&quot;: 0.0,
+      &quot;max_residual&quot;: -0.29519224166870117,
+      &quot;joint&quot;: 2,
+      &quot;time_s&quot;: 0.3558759891428054,
+      &quot;value&quot;: -1.4676077365875244,
+      &quot;lower_limit&quot;: -1.7627999782562256,
+      &quot;upper_limit&quot;: 1.7627999782562256
+    },
+    &quot;velocity&quot;: {
+      &quot;max_physical_violation&quot;: 0.0,
+      &quot;max_residual&quot;: -0.10875105857849121,
+      &quot;joint&quot;: 4,
+      &quot;time_s&quot;: 0.20084711909294128,
+      &quot;value&quot;: 2.066248893737793,
+      &quot;lower_limit&quot;: -2.174999952316284,
+      &quot;upper_limit&quot;: 2.174999952316284
+    },
+    &quot;acceleration&quot;: {
+      &quot;max_physical_violation&quot;: 0.0,
+      &quot;max_residual&quot;: -0.7454242706298828,
+      &quot;joint&quot;: 1,
+      &quot;time_s&quot;: 0.06904119718819857,
+      &quot;value&quot;: 14.254575729370117,
+      &quot;lower_limit&quot;: -15.0,
+      &quot;upper_limit&quot;: 15.0
+    },
+    &quot;jerk&quot;: {
+      &quot;max_physical_violation&quot;: 0.0,
+      &quot;max_residual&quot;: -24.991943359375,
+      &quot;joint&quot;: 4,
+      &quot;time_s&quot;: 0.40169423818588257,
+      &quot;value&quot;: 475.008056640625,
+      &quot;lower_limit&quot;: -500.0,
+      &quot;upper_limit&quot;: 500.0
+    },
+    &quot;torque&quot;: {
+      &quot;max_physical_violation&quot;: 0.0,
+      &quot;max_residual&quot;: -7.903657913208008,
+      &quot;joint&quot;: 6,
+      &quot;time_s&quot;: 0.07029649168252944,
+      &quot;value&quot;: 4.096342086791992,
+      &quot;lower_limit&quot;: -12.0,
+      &quot;upper_limit&quot;: 12.0
+    },
+    &quot;endpoint_max_abs_residuals&quot;: {
+      &quot;q0&quot;: 0.0,
+      &quot;q1&quot;: 0.0,
+      &quot;v0&quot;: 4.451493623491842e-06,
+      &quot;v1&quot;: 3.561194944268209e-06,
+      &quot;a0&quot;: 0.00011081795673817396,
+      &quot;a1&quot;: 0.0005023747216910124
+    }
+  },
+  &quot;status&quot;: &quot;Unqualified comparison: baseline represented by 18 stored samples; fixed-path TimeOpt control and complete derivative qualification missing.&quot;
+}</pre>
+<h2>Independent dynamics and collision checks</h2>
+<p>Pinocchio and cuRobo initially differed because their model inertials differed.
+After matching cuRobo's default inertials and excluded link, their torques agree
+within 0.000017 N·m on the recovery grid. Native swept-world and sampled self
+collision checks report zero cost; these checks are not independent of cuRobo,
+and neither gives an analytic continuous-time certificate. The baseline has only
+18 saved samples, so its dense behavior and the comparison remain unqualified.</p>
+<pre>{
+  &quot;world_swept_cost_max&quot;: 0.0,
+  &quot;self_discrete_cost_max&quot;: 0.0,
+  &quot;samples&quot;: 641,
+  &quot;duration_s&quot;: 0.40169423818588257,
+  &quot;baseline_world_swept_cost_max&quot;: 0.0,
+  &quot;baseline_self_discrete_cost_max&quot;: 0.0,
+  &quot;baseline_samples&quot;: 18,
+  &quot;note&quot;: &quot;Swept spheres approximate FK arcs; self collision remains sampled.&quot;
+}</pre><h3>Recovery dynamics</h3><pre>{
+  &quot;pinocchio_version&quot;: &quot;4.1.0&quot;,
+  &quot;urdf&quot;: &quot;curobo/content/assets/robot/franka_description/franka_panda.urdf&quot;,
+  &quot;sample_count&quot;: 641,
+  &quot;max_abs_difference_nm&quot;: 0.25700841303766,
+  &quot;worst_joint&quot;: &quot;panda_joint4&quot;,
+  &quot;worst_time_s&quot;: 0.10230650128796698,
+  &quot;pinocchio_nm&quot;: 33.17928995732367,
+  &quot;curobo_nm&quot;: 33.43629837036133,
+  &quot;max_abs_pinocchio_torque_nm_by_joint&quot;: [
+    11.324505532992939,
+    54.419859502679955,
+    18.942108766505342,
+    33.180056835373,
+    2.481684025680508,
+    4.040383795402944,
+    0.015016442743439811
+  ],
+  &quot;note&quot;: &quot;URDF inertials and 0.04 m locked fingers; must establish model parity before qualification.&quot;,
+  &quot;aligned_max_abs_difference_nm&quot;: 1.6685711869968145e-05,
+  &quot;aligned_worst_joint&quot;: &quot;panda_joint2&quot;,
+  &quot;aligned_worst_time_s&quot;: 0.3131959763355553,
+  &quot;aligned_max_torque_utilization&quot;: 0.6274353689450286,
+  &quot;aligned_torque_within_physical_limits&quot;: true,
+  &quot;model_alignment&quot;: &quot;Added cuRobo default 0.01 kg inertials at link8, both fingers and attached_object at hand; removed URDF right_gripper inertia.&quot;
+}</pre>
+<h3>Baseline dynamics</h3><pre>{
+  &quot;pinocchio_version&quot;: &quot;4.1.0&quot;,
+  &quot;urdf&quot;: &quot;curobo/content/assets/robot/franka_description/franka_panda.urdf&quot;,
+  &quot;sample_count&quot;: 18,
+  &quot;max_abs_difference_nm&quot;: 0.24853482820364547,
+  &quot;worst_joint&quot;: &quot;panda_joint4&quot;,
+  &quot;worst_time_s&quot;: 0.09713958203792572,
+  &quot;pinocchio_nm&quot;: 32.0946887435737,
+  &quot;curobo_nm&quot;: 32.343223571777344,
+  &quot;max_abs_pinocchio_torque_nm_by_joint&quot;: [
+    9.587382442661825,
+    44.36549355621896,
+    15.738487026359465,
+    32.0946887435737,
+    2.139913212825255,
+    4.0344908148715986,
+    0.011707148894518443
+  ],
+  &quot;note&quot;: &quot;URDF inertials and 0.04 m locked fingers; must establish model parity before qualification.&quot;,
+  &quot;aligned_max_abs_difference_nm&quot;: 1.2648720726815554e-05,
+  &quot;aligned_worst_joint&quot;: &quot;panda_joint2&quot;,
+  &quot;aligned_worst_time_s&quot;: 0.3157036416232586,
+  &quot;aligned_max_torque_utilization&quot;: 0.511459926543151,
+  &quot;aligned_torque_within_physical_limits&quot;: true,
+  &quot;model_alignment&quot;: &quot;Added cuRobo default 0.01 kg inertials at link8, both fingers and attached_object at hand; removed URDF right_gripper inertia.&quot;
+}</pre>
+<h2>Derivative sweeps</h2>
+<p>Selected VJP entries were compared using float32 central-difference steps 0.01,
+0.003, and 0.001. The exploratory mixed check is absolute error ≤ 0.01 + 0.02 ×
+|analytic|, in each weighted output's units. Relative error can be large near zero.
+The entries and all step sizes are in derivatives.json. These tests do not cover
+all Jacobian entries or contact regimes, and do not qualify the complete optimizer.</p>
+<pre>{
+  &quot;acceleration&quot;: {
+    &quot;entries_including_step_sweep&quot;: 15,
+    &quot;max_absolute_error&quot;: 0.038599650065123114,
+    &quot;max_relative_error&quot;: 0.0001614490161001789,
+    &quot;fail_mixed_tolerance&quot;: 0
+  },
+  &quot;duration_objective&quot;: {
+    &quot;entries_including_step_sweep&quot;: 3,
+    &quot;max_absolute_error&quot;: 6.8247318267822266e-06,
+    &quot;max_relative_error&quot;: 1.6530775033476625e-05,
+    &quot;fail_mixed_tolerance&quot;: 0
+  },
+  &quot;jerk&quot;: {
+    &quot;entries_including_step_sweep&quot;: 15,
+    &quot;max_absolute_error&quot;: 1.47412109375,
+    &quot;max_relative_error&quot;: 0.00024220301249523656,
+    &quot;fail_mixed_tolerance&quot;: 0
+  },
+  &quot;position&quot;: {
+    &quot;entries_including_step_sweep&quot;: 15,
+    &quot;max_absolute_error&quot;: 0.0009734630584716797,
+    &quot;max_relative_error&quot;: 0.002314516947331843,
+    &quot;fail_mixed_tolerance&quot;: 0
+  },
+  &quot;rnea&quot;: {
+    &quot;entries_including_step_sweep&quot;: 189,
+    &quot;max_absolute_error&quot;: 0.007443428039550781,
+    &quot;max_relative_error&quot;: 1.0,
+    &quot;fail_mixed_tolerance&quot;: 0
+  },
+  &quot;self_collision&quot;: {
+    &quot;entries_including_step_sweep&quot;: 21,
+    &quot;max_absolute_error&quot;: 2.3515895009040833e-07,
+    &quot;max_relative_error&quot;: 0.02328342227769786,
+    &quot;fail_mixed_tolerance&quot;: 0
+  },
+  &quot;velocity&quot;: {
+    &quot;entries_including_step_sweep&quot;: 15,
+    &quot;max_absolute_error&quot;: 0.0012509152293205261,
+    &quot;max_relative_error&quot;: 0.017906889931740614,
+    &quot;fail_mixed_tolerance&quot;: 0
+  },
+  &quot;world_collision&quot;: {
+    &quot;entries_including_step_sweep&quot;: 21,
+    &quot;max_absolute_error&quot;: 0.031184713045755874,
+    &quot;max_relative_error&quot;: 0.019135315310899244,
+    &quot;fail_mixed_tolerance&quot;: 0
+  }
+}</pre>
+<h2>Original short-run summary</h2><pre>{
   &quot;tasks_attempted&quot;: 1,
   &quot;baseline_succeeded&quot;: 1,
   &quot;oracle_sampled_feasible&quot;: 0,
@@ -391,9 +1033,7 @@ not provide a global optimality certificate.</p>
     &quot;no_plot&quot;: &quot;True&quot;
   }
 }</pre>
-<h2>Limitations</h2><p>The baseline check is sampled only; the optimizer uses cuRobo
-RNEA and collision callbacks and has not been cross-checked against an independent
-engine. This debugging run used an external PyTorch device-property compatibility
+<h2>Limitations</h2><p>The baseline check is sampled only; collision checking uses cuRobo callbacks; Pinocchio dynamics were independently cross-checked only after matching the model. This debugging run used an external PyTorch device-property compatibility
 shim and is not a performance measurement. The generated cohort, multistart,
 adaptive verification, swept validation, control retiming experiment, detailed plots,
 and pilot and main studies remain incomplete.</p></html>

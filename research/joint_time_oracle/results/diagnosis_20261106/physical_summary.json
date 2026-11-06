@@ -1,0 +1,119 @@
+{
+  "baseline": {
+    "samples": 18,
+    "duration_s": 0.4128432236611843,
+    "joint_space_path_length_rad": 0.7501676082611084,
+    "position": {
+      "max_physical_violation": 0.0,
+      "max_residual": -0.29593586921691895,
+      "joint": 2,
+      "time_s": 0.4128432236611843,
+      "value": -1.4668641090393066,
+      "lower_limit": -1.7627999782562256,
+      "upper_limit": 1.7627999782562256
+    },
+    "velocity": {
+      "max_physical_violation": 0.0,
+      "max_residual": -0.15289020538330078,
+      "joint": 4,
+      "time_s": 0.19427916407585144,
+      "value": 2.0221097469329834,
+      "lower_limit": -2.174999952316284,
+      "upper_limit": 2.174999952316284
+    },
+    "acceleration": {
+      "max_physical_violation": 0.0,
+      "max_residual": -1.0457935333251953,
+      "joint": 4,
+      "time_s": 0.09713958203792572,
+      "value": 13.954206466674805,
+      "lower_limit": -15.0,
+      "upper_limit": 15.0
+    },
+    "jerk": {
+      "max_physical_violation": 0.0,
+      "max_residual": -25.27984619140625,
+      "joint": 4,
+      "time_s": 0.4128432236611843,
+      "value": 474.72015380859375,
+      "lower_limit": -500.0,
+      "upper_limit": 500.0
+    },
+    "torque": {
+      "max_physical_violation": 0.0,
+      "max_residual": -7.909439563751221,
+      "joint": 6,
+      "time_s": 0.07285468652844429,
+      "value": 4.090560436248779,
+      "lower_limit": -12.0,
+      "upper_limit": 12.0
+    },
+    "endpoint_max_abs_residuals": {
+      "q0": 0.0,
+      "q1": 0.0,
+      "v0": 0.0,
+      "v1": 0.0,
+      "a0": 0.0,
+      "a1": 0.0
+    }
+  },
+  "recovery": {
+    "samples": 641,
+    "duration_s": 0.40169423818588257,
+    "joint_space_path_length_rad": 0.7562501430511475,
+    "position": {
+      "max_physical_violation": 0.0,
+      "max_residual": -0.29519224166870117,
+      "joint": 2,
+      "time_s": 0.3558759891428054,
+      "value": -1.4676077365875244,
+      "lower_limit": -1.7627999782562256,
+      "upper_limit": 1.7627999782562256
+    },
+    "velocity": {
+      "max_physical_violation": 0.0,
+      "max_residual": -0.10875105857849121,
+      "joint": 4,
+      "time_s": 0.20084711909294128,
+      "value": 2.066248893737793,
+      "lower_limit": -2.174999952316284,
+      "upper_limit": 2.174999952316284
+    },
+    "acceleration": {
+      "max_physical_violation": 0.0,
+      "max_residual": -0.7454242706298828,
+      "joint": 1,
+      "time_s": 0.06904119718819857,
+      "value": 14.254575729370117,
+      "lower_limit": -15.0,
+      "upper_limit": 15.0
+    },
+    "jerk": {
+      "max_physical_violation": 0.0,
+      "max_residual": -24.991943359375,
+      "joint": 4,
+      "time_s": 0.40169423818588257,
+      "value": 475.008056640625,
+      "lower_limit": -500.0,
+      "upper_limit": 500.0
+    },
+    "torque": {
+      "max_physical_violation": 0.0,
+      "max_residual": -7.903657913208008,
+      "joint": 6,
+      "time_s": 0.07029649168252944,
+      "value": 4.096342086791992,
+      "lower_limit": -12.0,
+      "upper_limit": 12.0
+    },
+    "endpoint_max_abs_residuals": {
+      "q0": 0.0,
+      "q1": 0.0,
+      "v0": 4.451493623491842e-06,
+      "v1": 3.561194944268209e-06,
+      "a0": 0.00011081795673817396,
+      "a1": 0.0005023747216910124
+    }
+  },
+  "status": "Unqualified comparison: baseline represented by 18 stored samples; fixed-path TimeOpt control and complete derivative qualification missing."
+}

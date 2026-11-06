@@ -162,3 +162,39 @@ independent verification or a continuous collision certificate. A fixed
 at physical limits. IPOPT, independent dynamics, adaptive refinement, and
 representative multistart experiments remain unqualified. Do not interpret
 sampled status labels in historical JSON as independent verification.
+
+## Recovery diagnosis, 2026-11-06
+
+The original final spline's worst normalized residual, 0.042814, was Panda
+joint 7 acceleration between collocation points. At 0.09266 s it reached
+14.8601 rad/s², exceeding the 95%-scaled 14.25 limit but not the physical
+15 rad/s² limit. The original fitted spline did exceed physical acceleration
+and jerk limits. The diagnostic records each family, grid, endpoint residual,
+physical limit, and location in `results/diagnosis_20261106/diagnosis.json`.
+
+The fitted path uniformly stretched to 0.4314 s passed the sampled check.
+A fixed-budget, 16-samples-per-span SLSQP recovery reached 0.401694 s and
+passed a 641-point sampled physical-limit check and native swept-world
+collision check. Its maximum endpoint acceleration residual was approximately
+0.000502 rad/s²; self collision was checked only at samples. This is a local
+candidate, not a continuous-time safety certificate. The original baseline
+archive contains only 18 samples and cannot independently establish its
+behavior between samples. Uniform time scaling is not an equivalent control
+for TimeOpt's variable timing law. No IPOPT solve was performed.
+
+Pinocchio 4.1.0 torques match cuRobo within 1.7e-5 N·m on the recovery grid
+after matching the models. cuRobo gives four retained, otherwise massless
+links default 0.01 kg inertials and excludes the off-chain `right_gripper`;
+the raw URDF model differs by up to 0.257 N·m. Both aligned and unaligned
+results are retained. Derivative sweeps and all selected VJP entries are in
+`derivatives.json`; they are not exhaustive CUDA Jacobian qualification.
+
+To regenerate, use the same CUDA environment and device-property shim described
+above, then run the `diagnose`, `qualify_derivatives`, `recover`, and
+`export_validation` modules. Run `verify_pinocchio recovery` and
+`verify_pinocchio baseline` in a separate Pinocchio environment, followed by
+`summarize_recovery`, `plot_diagnosis`, and `generate_debug_report`. These
+scripts use the original checked-in artifacts and do not start a benchmark.
+A complete fixed-path timing experiment, dense baseline reconstruction,
+independent collision check, further derivative testing, and pilot remain
+outstanding; do not launch the full benchmark yet.

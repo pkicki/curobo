@@ -1,0 +1,32 @@
+{
+  "source_commit": "0bb4b32",
+  "original_checksums_valid": true,
+  "gpu": "NVIDIA GeForce RTX 3090",
+  "python": "3.11.17",
+  "torch": "2.5.1 CUDA 12.4",
+  "pinocchio": "4.1.0 in isolated Python 3.12 environment",
+  "native_configuration": "CUDA_VISIBLE_DEVICES=1; device-property shim in results/device_property_compat.py",
+  "seed": 2718,
+  "derivative_step_sizes": [
+    0.01,
+    0.003,
+    0.001
+  ],
+  "derivative_tolerance": "abs error <= 0.01 + 0.02*abs(analytic); selected weighted VJP entries only",
+  "endpoint_acceleration_residual_rad_s2": 0.0005023747216910124,
+  "sha256": {
+    "diagnosis.json": "b8b39935fec4864af0950e0b1f2ec4992a75db5482a373e97a14de7983fa0e58",
+    "states.npz": "2e85b933fb22d20919e3715941cda5d7bc2b87c558e4a903f84a3569af613972",
+    "derivatives.json": "fd8af7c1dcd4309c19317a876e1b994d9874cff36a1850d939b60f5fe2f7ec34",
+    "recovery.json": "b791c9d8acdd807ec1b3aa9ff961dfc0dbb73a79b4fe8e4439a6811b8d040e5e",
+    "recovery_dense.npz": "660c4cd2eb2cd71dc0c352ce3d184488390c09d2d6ac45bc116d7788b6dddeec",
+    "baseline_samples.npz": "27162b95edda6ce73ca439d83b04d8cba948a9a3118c903aba24f6a8aa9ca77a",
+    "native_validation.json": "eaa042e097a0c2b78455ede01fcaad1f19acbf5f7cf80e10ab14452a31d0231e",
+    "curobo_inertials.json": "4804a6c1a923aa3ff3c8fa61ffe91969897df492d0b756bfa60d12498e4662c4",
+    "baseline_pinocchio_torques.npz": "9bf7432091b2a27138a56055982b58c195dd21233da6b671595b1f9602a4c1a9",
+    "baseline_pinocchio_validation.json": "44f4ceb1dbc3caa40c8ffb6a6701fd6bbfad5e182aac7c9091d2a5d0443e2eb5",
+    "recovery_pinocchio_torques.npz": "448b79e671e6f416134797aae3ed9b46e517c976936e31a616f3cfde315260b3",
+    "recovery_pinocchio_validation.json": "1ca5c435a8b62d7b2a38f2ed34f94135add83742feb145a28334d6a4186093b1",
+    "physical_summary.json": "4a70ea3e010679e686b8361a8c4560208fd0fdbd153bfa5988dbc865f138c56f"
+  }
+}

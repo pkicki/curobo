@@ -1,0 +1,26 @@
+{
+  "pinocchio_version": "4.1.0",
+  "urdf": "curobo/content/assets/robot/franka_description/franka_panda.urdf",
+  "sample_count": 18,
+  "max_abs_difference_nm": 0.24853482820364547,
+  "worst_joint": "panda_joint4",
+  "worst_time_s": 0.09713958203792572,
+  "pinocchio_nm": 32.0946887435737,
+  "curobo_nm": 32.343223571777344,
+  "max_abs_pinocchio_torque_nm_by_joint": [
+    9.587382442661825,
+    44.36549355621896,
+    15.738487026359465,
+    32.0946887435737,
+    2.139913212825255,
+    4.0344908148715986,
+    0.011707148894518443
+  ],
+  "note": "URDF inertials and 0.04 m locked fingers; must establish model parity before qualification.",
+  "aligned_max_abs_difference_nm": 1.2648720726815554e-05,
+  "aligned_worst_joint": "panda_joint2",
+  "aligned_worst_time_s": 0.3157036416232586,
+  "aligned_max_torque_utilization": 0.511459926543151,
+  "aligned_torque_within_physical_limits": true,
+  "model_alignment": "Added cuRobo default 0.01 kg inertials at link8, both fingers and attached_object at hand; removed URDF right_gripper inertia."
+}

@@ -1,0 +1,10 @@
+{
+  "world_swept_cost_max": 0.0,
+  "self_discrete_cost_max": 0.0,
+  "samples": 641,
+  "duration_s": 0.40169423818588257,
+  "baseline_world_swept_cost_max": 0.0,
+  "baseline_self_discrete_cost_max": 0.0,
+  "baseline_samples": 18,
+  "note": "Swept spheres approximate FK arcs; self collision remains sampled."
+}

@@ -1,0 +1,384 @@
+{
+  "seed_collocation": {
+    "position": {
+      "normalized_residual": -0.1678783031922095,
+      "violation": 0.0,
+      "joint": "panda_joint2",
+      "time_s": 0.412843257188797,
+      "span": 4,
+      "observed": -1.4668641090393066,
+      "scaled_limit": -1.7627999782562256,
+      "physical_limit": -1.7627999782562256
+    },
+    "velocity": {
+      "normalized_residual": -0.006875045797858952,
+      "violation": 0.0,
+      "joint": "panda_joint4",
+      "time_s": 0.22018307050069172,
+      "span": 2,
+      "observed": 2.05204439163208,
+      "scaled_limit": 2.06624995470047,
+      "physical_limit": 2.174999952316284
+    },
+    "acceleration": {
+      "normalized_residual": 0.0894200509054619,
+      "violation": 0.0894200509054619,
+      "joint": "panda_joint4",
+      "time_s": 0.11009153525034586,
+      "span": 1,
+      "observed": 15.524235725402832,
+      "scaled_limit": 14.25,
+      "physical_limit": 15.0
+    },
+    "jerk": {
+      "normalized_residual": 0.10395546361019736,
+      "violation": 0.10395546361019736,
+      "joint": "panda_joint4",
+      "time_s": 0.412843257188797,
+      "span": 4,
+      "observed": 524.3788452148438,
+      "scaled_limit": 475.0,
+      "physical_limit": 500.0
+    },
+    "torque": {
+      "normalized_residual": -0.4422241967876824,
+      "violation": 0.0,
+      "joint": "panda_joint2",
+      "time_s": 0.357797489563624,
+      "span": 4,
+      "observed": 46.10017013549805,
+      "scaled_limit": 82.64999999999999,
+      "physical_limit": 87.0
+    },
+    "world_collision": {
+      "cost": 0.0,
+      "time_s": 0.0,
+      "span": 0,
+      "element": 0,
+      "limit": 0.0
+    },
+    "self_collision": {
+      "cost": 0.0,
+      "time_s": 0.0,
+      "span": 0,
+      "element": 0,
+      "limit": 0.0
+    },
+    "endpoints_max_abs": {
+      "q0": 0.0,
+      "q1": 0.0,
+      "v0": 4.331278887548251e-06,
+      "v1": 3.465023155513336e-06,
+      "a0": 0.00010491340071894228,
+      "a1": 0.0004756074049510062
+    },
+    "duration_s": 0.412843257188797,
+    "samples": 16
+  },
+  "seed_dense": {
+    "position": {
+      "normalized_residual": -0.1678783031922095,
+      "violation": 0.0,
+      "joint": "panda_joint2",
+      "time_s": 0.412843257188797,
+      "span": 4,
+      "observed": -1.4668641090393066,
+      "scaled_limit": -1.7627999782562256,
+      "physical_limit": -1.7627999782562256
+    },
+    "velocity": {
+      "normalized_residual": -0.004491494583594112,
+      "violation": 0.0,
+      "joint": "panda_joint4",
+      "time_s": 0.21416243966668846,
+      "span": 2,
+      "observed": 2.056969404220581,
+      "scaled_limit": 2.06624995470047,
+      "physical_limit": 2.174999952316284
+    },
+    "acceleration": {
+      "normalized_residual": 0.08973486381664611,
+      "violation": 0.08973486381664611,
+      "joint": "panda_joint4",
+      "time_s": 0.11224176054820417,
+      "span": 1,
+      "observed": 15.528721809387207,
+      "scaled_limit": 14.25,
+      "physical_limit": 15.0
+    },
+    "jerk": {
+      "normalized_residual": 0.10395546361019736,
+      "violation": 0.10395546361019736,
+      "joint": "panda_joint4",
+      "time_s": 0.412843257188797,
+      "span": 4,
+      "observed": 524.3788452148438,
+      "scaled_limit": 475.0,
+      "physical_limit": 500.0
+    },
+    "torque": {
+      "normalized_residual": -0.4410969110524661,
+      "violation": 0.0,
+      "joint": "panda_joint2",
+      "time_s": 0.3534970389679074,
+      "span": 4,
+      "observed": 46.19334030151367,
+      "scaled_limit": 82.64999999999999,
+      "physical_limit": 87.0
+    },
+    "world_collision": {
+      "cost": 0.0,
+      "time_s": 0.0,
+      "span": 0,
+      "element": 0,
+      "limit": 0.0
+    },
+    "self_collision": {
+      "cost": 0.0,
+      "time_s": 0.0,
+      "span": 0,
+      "element": 0,
+      "limit": 0.0
+    },
+    "endpoints_max_abs": {
+      "q0": 0.0,
+      "q1": 0.0,
+      "v0": 4.331278887548251e-06,
+      "v1": 3.465023155513336e-06,
+      "a0": 0.00010491340071894228,
+      "a1": 0.0004756074049510062
+    },
+    "duration_s": 0.412843257188797,
+    "samples": 321
+  },
+  "final_collocation": {
+    "position": {
+      "normalized_residual": -0.1678783031922095,
+      "violation": 0.0,
+      "joint": "panda_joint2",
+      "time_s": 0.40069469809532166,
+      "span": 4,
+      "observed": -1.4668641090393066,
+      "scaled_limit": -1.7627999782562256,
+      "physical_limit": -1.7627999782562256
+    },
+    "velocity": {
+      "normalized_residual": -0.008740508957127949,
+      "violation": 0.0,
+      "joint": "panda_joint4",
+      "time_s": 0.21370383898417156,
+      "span": 2,
+      "observed": 2.048189878463745,
+      "scaled_limit": 2.06624995470047,
+      "physical_limit": 2.174999952316284
+    },
+    "acceleration": {
+      "normalized_residual": 4.149319832785088e-06,
+      "violation": 4.149319832785088e-06,
+      "joint": "panda_joint4",
+      "time_s": 0.32055575847625734,
+      "span": 4,
+      "observed": -14.250059127807617,
+      "scaled_limit": -14.25,
+      "physical_limit": -15.0
+    },
+    "jerk": {
+      "normalized_residual": 9.444387335526315e-06,
+      "violation": 9.444387335526315e-06,
+      "joint": "panda_joint4",
+      "time_s": 0.40069469809532166,
+      "span": 4,
+      "observed": 475.0044860839844,
+      "scaled_limit": 475.0,
+      "physical_limit": 500.0
+    },
+    "torque": {
+      "normalized_residual": -0.43305503074429064,
+      "violation": 0.0,
+      "joint": "panda_joint2",
+      "time_s": 0.2938427786032359,
+      "span": 3,
+      "observed": 46.858001708984375,
+      "scaled_limit": 82.64999999999999,
+      "physical_limit": 87.0
+    },
+    "world_collision": {
+      "cost": 0.0,
+      "time_s": 0.0,
+      "span": 0,
+      "element": 0,
+      "limit": 0.0
+    },
+    "self_collision": {
+      "cost": 0.0,
+      "time_s": 0.0,
+      "span": 0,
+      "element": 0,
+      "limit": 0.0
+    },
+    "endpoints_max_abs": {
+      "q0": 0.0,
+      "q1": 0.0,
+      "v0": 4.462598099053139e-06,
+      "v1": 3.570078433767776e-06,
+      "a0": 0.00011137152614537627,
+      "a1": 0.0005048842285759747
+    },
+    "duration_s": 0.40069469809532166,
+    "samples": 16
+  },
+  "final_dense": {
+    "position": {
+      "normalized_residual": -0.167876747817979,
+      "violation": 0.0,
+      "joint": "panda_joint2",
+      "time_s": 0.3856686469167471,
+      "span": 4,
+      "observed": -1.4668668508529663,
+      "scaled_limit": -1.7627999782562256,
+      "physical_limit": -1.7627999782562256
+    },
+    "velocity": {
+      "normalized_residual": 0.002563503157732358,
+      "violation": 0.002563503157732358,
+      "joint": "panda_joint4",
+      "time_s": 0.20034734904766083,
+      "span": 2,
+      "observed": 2.071546792984009,
+      "scaled_limit": 2.06624995470047,
+      "physical_limit": 2.174999952316284
+    },
+    "acceleration": {
+      "normalized_residual": 0.04281415437397204,
+      "violation": 0.04281415437397204,
+      "joint": "panda_joint7",
+      "time_s": 0.09266064893454314,
+      "span": 1,
+      "observed": 14.860101699829102,
+      "scaled_limit": 14.25,
+      "physical_limit": 15.0
+    },
+    "jerk": {
+      "normalized_residual": 9.444387335526315e-06,
+      "violation": 9.444387335526315e-06,
+      "joint": "panda_joint4",
+      "time_s": 0.40069469809532166,
+      "span": 4,
+      "observed": 475.0044860839844,
+      "scaled_limit": 475.0,
+      "physical_limit": 500.0
+    },
+    "torque": {
+      "normalized_residual": -0.42778184063421615,
+      "violation": 0.0,
+      "joint": "panda_joint2",
+      "time_s": 0.3042775363661349,
+      "span": 3,
+      "observed": 47.29383087158203,
+      "scaled_limit": 82.64999999999999,
+      "physical_limit": 87.0
+    },
+    "world_collision": {
+      "cost": 0.0,
+      "time_s": 0.0,
+      "span": 0,
+      "element": 0,
+      "limit": 0.0
+    },
+    "self_collision": {
+      "cost": 0.0,
+      "time_s": 0.0,
+      "span": 0,
+      "element": 0,
+      "limit": 0.0
+    },
+    "endpoints_max_abs": {
+      "q0": 0.0,
+      "q1": 0.0,
+      "v0": 4.462598099053139e-06,
+      "v1": 3.570078433767776e-06,
+      "a0": 0.00011137152614537627,
+      "a1": 0.0005048842285759747
+    },
+    "duration_s": 0.40069469809532166,
+    "samples": 321
+  },
+  "stretched_seed_dense": {
+    "position": {
+      "normalized_residual": -0.1678783031922095,
+      "violation": 0.0,
+      "joint": "panda_joint2",
+      "time_s": 0.4314008355140686,
+      "span": 4,
+      "observed": -1.4668641090393066,
+      "scaled_limit": -1.7627999782562256,
+      "physical_limit": -1.7627999782562256
+    },
+    "velocity": {
+      "normalized_residual": -0.047315280103124135,
+      "violation": 0.0,
+      "joint": "panda_joint4",
+      "time_s": 0.22378918342292312,
+      "span": 2,
+      "observed": 1.9684847593307495,
+      "scaled_limit": 2.06624995470047,
+      "physical_limit": 2.174999952316284
+    },
+    "acceleration": {
+      "normalized_residual": -0.002002916837993421,
+      "violation": 0.0,
+      "joint": "panda_joint4",
+      "time_s": 0.11728710215538739,
+      "span": 1,
+      "observed": 14.221458435058594,
+      "scaled_limit": 14.25,
+      "physical_limit": 15.0
+    },
+    "jerk": {
+      "normalized_residual": -0.03247057462993421,
+      "violation": 0.0,
+      "joint": "panda_joint4",
+      "time_s": 0.4314008355140686,
+      "span": 4,
+      "observed": 459.57647705078125,
+      "scaled_limit": 475.0,
+      "physical_limit": 500.0
+    },
+    "torque": {
+      "normalized_residual": -0.46642280850926815,
+      "violation": 0.0,
+      "joint": "panda_joint2",
+      "time_s": 0.36938696540892124,
+      "span": 4,
+      "observed": 44.100154876708984,
+      "scaled_limit": 82.64999999999999,
+      "physical_limit": 87.0
+    },
+    "world_collision": {
+      "cost": 0.0,
+      "time_s": 0.0,
+      "span": 0,
+      "element": 0,
+      "limit": 0.0
+    },
+    "self_collision": {
+      "cost": 0.0,
+      "time_s": 0.0,
+      "span": 0,
+      "element": 0,
+      "limit": 0.0
+    },
+    "endpoints_max_abs": {
+      "q0": 0.0,
+      "q1": 0.0,
+      "v0": 4.1449602576904e-06,
+      "v1": 3.315968342576525e-06,
+      "a0": 9.60814140853472e-05,
+      "a1": 0.0004355690907686949
+    },
+    "duration_s": 0.4314008355140686,
+    "samples": 321
+  },
+  "fit_max_abs_error_rad": 0.0012000246880954357,
+  "fit_max_joint_norm_error_rad": 0.0021415097628434622
+}

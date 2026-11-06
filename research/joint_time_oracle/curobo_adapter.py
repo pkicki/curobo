@@ -73,7 +73,7 @@ class CuroboOracleModel:
             self.last_horizon = len(q)
         return self.dynamics.compute_inverse_dynamics(self._state(q,qd,qdd))[0]
 
-    def collision(self,q):
+    def collision_components(self, q):
         state = self.kinematics.compute_kinematics(self._state(q))
         spheres = state.robot_spheres
         if spheres is None:
@@ -89,4 +89,7 @@ class CuroboOracleModel:
                 sum_distance=False, return_loss=True).reshape(-1))
         self.self_cost.setup_batch_tensors(1,len(q))
         costs.append(self.self_cost.forward(spheres).reshape(-1))
-        return torch.cat(costs)
+        return costs
+
+    def collision(self, q):
+        return torch.cat(self.collision_components(q))
