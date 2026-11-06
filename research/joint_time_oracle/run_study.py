@@ -95,6 +95,8 @@ def main(argv=None):
     parser.add_argument("--controls",type=int,default=18)
     parser.add_argument("--attempts",type=int,default=4)
     parser.add_argument("--maxiter",type=int,default=250)
+    parser.add_argument("--solver",choices=("slsqp","ipopt"),default="slsqp",
+                        help="offline local NLP backend; IPOPT requires cyipopt and libipopt")
     parser.add_argument("--limit-scale",type=float,default=.95)
     parser.add_argument("--max-planner-attempts",type=int,default=5)
     parser.add_argument("--no-plot",action="store_true")
@@ -171,7 +173,7 @@ def main(argv=None):
                             base["qdd"][0],base["qdd"][-1])
                 ocfg=OracleConfig(controls=args.controls,attempts=args.attempts,
                                   maxiter=args.maxiter,limit_scale=args.limit_scale,
-                                  rng_seed=args.seed+i)
+                                  solver=args.solver,rng_seed=args.seed+i)
                 solver=JointTimeOracle(limits,bc,model.torque,model.collision,
                                       config=ocfg,device=str(model.device))
                 torch.cuda.synchronize()
