@@ -69,7 +69,7 @@ def test_io_and_report(tmp_path):
     assert len(rows)==3
     content=html_report(rows,analyze(rows))
     assert "pilot_free_0" in content
-    assert "B-&gt;C" not in content  # contrast shown as literal B-&gt;C is not a requirement
+    assert "B-&gt;C" in content
     assert "Physical and 95%-scaled" in content
     assert "0.420000" in content
 
