@@ -157,7 +157,7 @@ class JointTimeOracle:
         self._cache_x = self._cache_f = self._cache_j = None
 
     def _states(self, z, basis):
-        interior = z[:-1].reshape(basis.variable_count, self.dof)
+        interior = z[:basis.variable_count*self.dof].reshape(basis.variable_count, self.dof)
         T = z[-1].exp()
         return T, basis.evaluate(interior, T, self.boundary)
 
@@ -175,7 +175,7 @@ class JointTimeOracle:
             costs = self.collision(q).reshape(-1)
             if not costs.numel():
                 raise ValueError("collision callback must return at least one value")
-            rows.append(-costs.amax().reshape(1))
+            rows.append((z[-2]-costs.amax()).reshape(1))
         return torch.cat(rows)
 
     def _evaluate(self, x, jac):
@@ -212,7 +212,7 @@ class JointTimeOracle:
         H = M[:,b.interior_indices]-M[:,b.boundary_indices]@inv@e[:,b.interior_indices]
         off = M[:,b.boundary_indices]@inv@rhs
         interior = np.linalg.lstsq(H,q-off,rcond=None)[0]
-        return np.r_[interior.reshape(-1),np.log(duration)]
+        return np.r_[interior.reshape(-1), 0.0, np.log(duration)]
 
     def audit(self, x):
         with torch.no_grad():
@@ -220,8 +220,14 @@ class JointTimeOracle:
             T,(q,qd,qdd,qddd,c) = self._states(z, self.audit_basis)
             margins = self._margins(z, self.audit_basis)
             minimum = float(margins.min().item())
-            return dict(duration=float(T.item()), max_violation=max(0.,-minimum),
-                        feasible=bool(torch.isfinite(margins).all() and minimum>=-self.cfg.constraint_tol),
+            collision = float(self.collision(q).amax().item()) if self.collision is not None else 0.0
+            slack = float(z[-2].item())
+            violation = max(0.,-minimum,collision)
+            return dict(duration=float(T.item()), max_violation=violation,
+                        feasible=bool(torch.isfinite(margins).all() and
+                                      minimum>=-self.cfg.constraint_tol and
+                                      collision<=1e-5 and abs(slack)<=1e-5),
+                        collision_cost=collision,collision_slack=slack,
                         min_margin=minimum, samples=len(q),
                         coefficients=c.cpu().numpy().tolist(),
                         positions=q.cpu().numpy().tolist(),
@@ -233,6 +239,7 @@ class JointTimeOracle:
         n = self.basis.variable_count*self.dof
         bounds = [(float(v-self.cfg.trust_radius),float(v+self.cfg.trust_radius))
                   for v in seed[:-1]]
+        bounds.append((0.0, 0.20))  # nonnegative collision slack (penalized in objective)
         bounds.append((np.log(self.cfg.min_duration),np.log(self.cfg.max_duration)))
         best, best_duration, trials = None, np.inf, []
         for attempt in range(self.cfg.attempts):
@@ -243,8 +250,8 @@ class JointTimeOracle:
                 x[:-1] = np.clip(x[:-1],[v[0] for v in bounds[:-1]],
                                 [v[1] for v in bounds[:-1]])
                 x[-1] += np.log(1+0.12*attempt)
-            result = minimize(lambda z:float(np.exp(z[-1])), x, method="SLSQP",
-                              jac=lambda z:np.r_[np.zeros(n),np.exp(z[-1])],
+            result = minimize(lambda z:float(np.exp(z[-1])+1000.0*z[-2]), x, method="SLSQP",
+                              jac=lambda z:np.r_[np.zeros(n),1000.0,np.exp(z[-1])],
                               bounds=bounds,
                               constraints=[dict(type="ineq",fun=lambda z:self._evaluate(z,False),
                                                 jac=lambda z:self._evaluate(z,True))],
