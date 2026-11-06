@@ -238,7 +238,7 @@ class JointTimeOracle:
         rng = np.random.default_rng(self.cfg.rng_seed)
         n = self.basis.variable_count*self.dof
         bounds = [(float(v-self.cfg.trust_radius),float(v+self.cfg.trust_radius))
-                  for v in seed[:-1]]
+                  for v in seed[:-2]]
         bounds.append((0.0, 0.20))  # nonnegative collision slack (penalized in objective)
         bounds.append((np.log(self.cfg.min_duration),np.log(self.cfg.max_duration)))
         best, best_duration, trials = None, np.inf, []
@@ -246,9 +246,9 @@ class JointTimeOracle:
             self._cache_x = self._cache_f = self._cache_j = None
             x = seed.copy()
             if attempt:
-                x[:-1] += rng.normal(0,self.cfg.seed_noise,n)
-                x[:-1] = np.clip(x[:-1],[v[0] for v in bounds[:-1]],
-                                [v[1] for v in bounds[:-1]])
+                x[:n] += rng.normal(0,self.cfg.seed_noise,n)
+                x[:n] = np.clip(x[:n],[v[0] for v in bounds[:n]],
+                                [v[1] for v in bounds[:n]])
                 x[-1] += np.log(1+0.12*attempt)
             result = minimize(lambda z:float(np.exp(z[-1])+1000.0*z[-2]), x, method="SLSQP",
                               jac=lambda z:np.r_[np.zeros(n),1000.0,np.exp(z[-1])],
