@@ -77,6 +77,8 @@ Results:
 - summary.json: the reported paired statistics on **mutually verified**
   baselines and local solutions, with exclusions counted separately.
 - task_NNNN.png: joint profiles versus normalized physical time.
+- task_NNNN_fast.npz / task_NNNN_joint.npz: original and optimized joint
+  trajectories; SHA256 hashes are recorded per task for independent replay.
 
 Treat results as **NOT QUALIFIED** until CUDA runs and an independent
 dynamics/collision checker confirm them. A dense sampled cuRobo check is not
