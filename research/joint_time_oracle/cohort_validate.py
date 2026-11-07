@@ -104,7 +104,10 @@ def main() -> None:
             for family,values in [('position',s['q']),('velocity',s['qd']),('acceleration',s['qdd']),('jerk',s['jerk']),('torque',tau)]:
                 low,high=case_bounds[family];center=(low+high)/2;result['families'][family]={}
                 for label,scale in [('physical',1.),('scaled95',1. if family=='position' else .95)]:
-                    lower=center+scale*(low-center);upper=center+scale*(high-center)
+                    if family=='torque':
+                        lower=low*scale;upper=high*scale
+                    else:
+                        lower=center+scale*(low-center);upper=center+scale*(high-center)
                     residual=np.maximum(lower-values,values-upper);i,j=np.unravel_index(np.argmax(residual),residual.shape)
                     result['families'][family][label]={'violation':float(max(0,residual[i,j])),
                         'signed_residual':float(residual[i,j]),'joint':int(j+1),'time_s':float(s['time'][i]),
