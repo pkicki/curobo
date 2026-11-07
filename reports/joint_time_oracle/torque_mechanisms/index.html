@@ -16,9 +16,10 @@ when its entire geometric planner is rebuilt with the derated effort limits.</p>
 <td>Not run</td><td>Pinocchio re-evaluation on frozen B/D paths; joint/time torque profile diagnostics</td></tr>
 <tr><td>Native full-planner search: 1, 4, 16, 32 restarts</td>
 <td>Not run</td><td>Fresh planner built with derated torque limits; all valid internal lanes retained</td></tr>
+<tr><td>Matched IPOPT retiming (Full-R) on fresh native planner geometries</td><td>Not run</td><td>Exactly preserve every native geometric path; match the B/D timing solver before comparing geometries</td></tr>
 <tr><td>Independent candidate validation</td>
 <td>Not run</td><td>Dense + adaptive Pinocchio/sphere audits, replay parity and SHA-linked receipts</td></tr>
-<tr><td>Full native planner versus D</td><td>N/A</td>
+<tr><td>Primary comparison: independently retimed Full-R versus D</td><td>N/A</td>
 <td>Best independently qualified native candidate at each frozen restart budget</td></tr>
 </tbody></table>
 <p>Existing torque-stress results remain historical and unchanged.
