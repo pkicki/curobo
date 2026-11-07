@@ -37,7 +37,7 @@ def best_native(candidates:dict, diagnostics:dict, receipts:dict, profile:dict,
             continue
         if restart>=budget:
             continue
-        if not isinstance(candidate,dict) or candidate.get("status")!="SUCCESS":
+        if not isinstance(candidate,dict) or candidate.get("status")!=("COMPLETE" if prefix=="R" else "SUCCESS"):
             continue
         if candidate.get("restart",restart)!=restart:
             continue
