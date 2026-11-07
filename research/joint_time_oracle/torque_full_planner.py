@@ -115,6 +115,8 @@ def captured_candidate(planner: MotionPlanner, result, task: dict,
     lane=int(np.argmin(error))
     if float(error[lane])>2e-5:
         raise ValueError(f"native selected-lane mismatch: {float(error[lane])}")
+    # The independent replay is reused only after clearing its sampled-shape graph.
+    replay.reset_cuda_graph()
     duration=float(buffers["integrated_times"][lane,-1])
     if not np.isfinite(duration) or duration<=0 or not bool(buffers["success"][lane]):
         raise ValueError("selected retimed lane is invalid")
