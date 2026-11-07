@@ -112,13 +112,15 @@ Generate original-source torque stress cases with **independent Pinocchio**:
     "$PIN_PY" -m research.joint_time_oracle.cohort_torque_prepare \
       --source "$SOURCE" --output "$TORQUE_OUT"
 
-Run a three-source-case preflight in one regime (CUDA setup first):
+Run a representative preflight across all three populations (CUDA setup first):
 
-    "$CUDA_PY" -m research.joint_time_oracle.cohort_torque_execute \
-      --regime moderate --output "$TORQUE_OUT" --source "$SOURCE" \
-      --cuda-python "$CUDA_PY" --pin-python "$PIN_PY" \
-      --cuda-visible-devices 1 --shim-dir /tmp/joint_oracle_compat \
-      --max-cases 3
+    for CASE in pilot_free_00 pilot_table_00 pilot_cluttered_00; do
+      "$CUDA_PY" -m research.joint_time_oracle.cohort_torque_execute \
+        --regime moderate --output "$TORQUE_OUT" --source "$SOURCE" \
+        --cuda-python "$CUDA_PY" --pin-python "$PIN_PY" \
+        --cuda-visible-devices 1 --shim-dir /tmp/joint_oracle_compat \
+        --case "$CASE" --resume
+    done
 
 The device number and compatibility shim must be verified for the target
 workstation; do not treat shim-based runs as latency comparisons.
