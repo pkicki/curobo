@@ -258,3 +258,18 @@ Also report a joint-wise jerk/acceleration/velocity minimum-time lower bound
 on fixed-endpoint tasks where the chosen boundary conditions admit one. This
 helps distinguish genuinely small headroom from an inadequately globalized
 geometric optimizer.
+
+## Offline report publication
+
+After generating per-regime torque_summary.json and index.html, publish the
+combined report without rerunning any solver:
+
+    python -m research.joint_time_oracle.cohort_torque_publish \
+      --source /absolute/path/to/stress_results \
+      --report reports/joint_time_oracle/torque_active
+
+This writes reports/joint_time_oracle/torque_active/index.html and per-regime
+child index.html files, all generated from saved JSON evidence. Unexecuted
+regimes are labeled NOT_EXECUTED; missing adaptive receipts yield zero
+qualified comparisons rather than fabricated values. Preserve source hashes
+and commit reasonably sized HTML artifacts, not large trajectory archives.
