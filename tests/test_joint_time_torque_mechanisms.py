@@ -135,11 +135,11 @@ def test_matched_full_r_uses_same_restarter_budget_and_strict_receipts():
                                 "endpoint":True,"collision":True,
                                 "torque_profile_sha256":p["profile_sha256"]}}
     v=best_native(records,diag,receipts,p,"task",1,
-                  scaled95=False,strict=True,prefix="R")
+                  scaled95=False,strict=True,prefix="RF")
     assert v["method"]=="RF000L02"
     v2=best_native(records,diag,receipts,p,"task",2,
-                   scaled95=False,strict=True,prefix="R")
+                   scaled95=False,strict=True,prefix="RF")
     assert v2["method"]=="RF000L02"
     u=best_native(records,diag,receipts,p,"task",2,
-                  scaled95=False,strict=False,prefix="R")
+                  scaled95=False,strict=False,prefix="RF")
     assert u["method"]=="RF001"
