@@ -58,6 +58,9 @@ def main() -> None:
             profile=read_profile(options.torque_profile_dir/task['case_id']/'torque_profile.json')
             if profile['source_case_id']!=task['case_id']:
                 raise ValueError('case/profile mismatch: '+task['case_id'])
+            expected_nominal=np.stack((profile['nominal_effort_lower'],profile['nominal_effort_upper']))
+            if not np.allclose(case_bounds['torque'],expected_nominal,rtol=1e-5,atol=1e-5):
+                raise ValueError('frozen nominal effort model mismatch')
             case_bounds['torque']=np.stack((profile['effort_lower'],profile['effort_upper']))
         if task['scene']:
             scene=yaml.safe_load((ROOT/'curobo/content/configs/scene'/task['scene']).read_text())
