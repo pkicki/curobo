@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+from .torque_active import read_profile
 from pathlib import Path
 import numpy as np
 import pinocchio as pin
@@ -22,6 +23,8 @@ def main() -> None:
     parser.add_argument('--extra',type=Path)
     parser.add_argument('--methods',default='A10,A40')
     parser.add_argument('--report',default='independent_sampled.json')
+    parser.add_argument('--torque-profile-dir',type=Path,
+                        help='Per-task directory containing frozen torque_profile.json files')
     options=parser.parse_args();output=options.input;methods=options.methods.split(',')
     cfg=yaml.safe_load((ROOT/'curobo/content/configs/robot/franka.yml').read_text())['robot_cfg']['kinematics']
     model=pin.buildModelFromUrdf(str(ROOT/'curobo/content/assets/robot/franka_description/franka_panda.urdf'))
@@ -50,6 +53,12 @@ def main() -> None:
     result_path=(options.extra/options.report) if options.extra else (output/options.report)
     for row in rows:
         task=byid[row['case_id']]; scene={}
+        case_bounds={key:np.array(value,copy=True) for key,value in bounds.items()}
+        if options.torque_profile_dir:
+            profile=read_profile(options.torque_profile_dir/task['case_id']/'torque_profile.json')
+            if profile['source_case_id']!=task['case_id']:
+                raise ValueError('case/profile mismatch: '+task['case_id'])
+            case_bounds['torque']=np.stack((profile['effort_lower'],profile['effort_upper']))
         if task['scene']:
             scene=yaml.safe_load((ROOT/'curobo/content/configs/scene'/task['scene']).read_text())
         for method in methods:
@@ -93,7 +102,7 @@ def main() -> None:
                     'world_object':world_min[2],'self_min_clearance_m':self_min[0],
                     'self_min_time_s':float(s['time'][self_min[1]]),'self_pair':self_min[2], 'families':{}}
             for family,values in [('position',s['q']),('velocity',s['qd']),('acceleration',s['qdd']),('jerk',s['jerk']),('torque',tau)]:
-                low,high=bounds[family];center=(low+high)/2;result['families'][family]={}
+                low,high=case_bounds[family];center=(low+high)/2;result['families'][family]={}
                 for label,scale in [('physical',1.),('scaled95',1. if family=='position' else .95)]:
                     lower=center+scale*(low-center);upper=center+scale*(high-center)
                     residual=np.maximum(lower-values,values-upper);i,j=np.unravel_index(np.argmax(residual),residual.shape)
@@ -105,6 +114,8 @@ def main() -> None:
                 'velocity':float(max(np.max(abs(s['qd'][0])),np.max(abs(s['qd'][-1])))),
                 'acceleration':float(max(np.max(abs(s['qdd'][0])),np.max(abs(s['qdd'][-1]))))}
             result['note']='Independent Pinocchio aligned model and analytic sphere primitives, sampled only; adaptive checks not run.'
+            if options.torque_profile_dir:
+                result['torque_profile_sha256']=profile['profile_sha256']
             results[f"{task['case_id']}:{method}"]=result
             result_path.write_text(json.dumps(results,indent=2)+'\n')
             print(task['case_id'],method,'world',result['world_min_clearance_m'],'self',self_min[0],flush=True)
