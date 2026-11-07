@@ -86,6 +86,7 @@ def test_zero_collision_cost_allows_feasible_solution_and_gradients():
     cfg=OracleConfig(controls=10,samples_per_span=2,audit_samples_per_span=6,
                      maxiter=80,attempts=1,trust_radius=1.)
     def free_space(q):
+        assert q.dtype == torch.float32
         return q[:,0]*0
     solver=JointTimeOracle(
         limits(1),Boundary.rest(np.array([0.]),np.array([1.])),

@@ -240,7 +240,8 @@ class JointTimeOracle:
             T,(q,qd,qdd,qddd,c) = self._states(z, self.audit_basis)
             margins = self._margins(z, self.audit_basis, audit=True)
             minimum = float(margins.min().item())
-            collision = float(self.collision(q).amax().item()) if self.collision is not None else 0.0
+            collision = (float(self.collision(q.to(dtype=torch.float32)).amax().item())
+                         if self.collision is not None else 0.0)
             slack = float(z[-2].item())
             violation = max(0.,-minimum,collision)
             return dict(duration=float(T.item()), max_violation=violation,
