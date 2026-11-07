@@ -351,3 +351,35 @@ separate independent verifier. Solver status alone does not establish feasibilit
 The final runner `cohort_execute` records its source commit, frozen task checksum,
 iteration limits and subprocess failures before executing. The prior three-task
 experiments are exploratory and may have used different refinement settings.
+
+## Completed frozen 20-task exploratory pilot (2026-11-07)
+
+`results/cohort_joint_final_20261106/` contains the end-to-end A10/A40/B/C/D
+rerun for all 20 tasks frozen in `cohort_pilot_isolated_20261106/tasks.json`.
+The task checksum and pre-rerun implementation commit are in
+`frozen_config.json`. B and D use the same pointwise IPOPT speed-law NLP and
+exact captured cubic/quintic geometry, respectively; no finite arbitrary upper
+bound is imposed on squared-speed controls. This remains a small generated
+exploratory cohort, not the 100-task confirmation study.
+
+Run `cohort_analyze` to rebuild physical and Scaled95 records from stored
+trajectories and independent validation JSON. Run `cohort_joint_report` to
+regenerate `reports/joint_time_oracle/cohort/index.html` and per-task plots.
+`cohort_restore` writes separate time-stretched Scaled95 trajectories and
+`cohort_validate` independently evaluates Pinocchio torque and analytical
+sphere/scene clearance. The adaptive collision pass samples neighborhoods
+around identified clearance minima; it does not certify continuous-time
+collision avoidance. Dynamic adaptive samples include spline knots and
+identified constraint extrema. The report explicitly distinguishes these
+sampled checks from continuous-time certification.
+
+The frozen pointwise solves use 257 base progress samples, up to two adaptive
+passes, 32 cubic squared-speed controls, IPOPT tolerance 1e-7 and a 150-iteration
+cap for B/D. C used 10 and 14 quintic controls, two starts per resolution, and a
+40-iteration cap. A separate 513-sample check on one free, one table, and one
+cluttered case is saved under `mesh_checks/`; it is a convergence sensitivity
+check, not a post-hoc retuning of the 20-task cohort. `checksums.json` lists
+SHA256 for stored evidence. Local solvers provide no global optimality
+certificate, and CUDA collision-gradient/continuous swept-collision
+qualification remains incomplete. Do not start the confirmation cohort from
+this exploratory result without resolving those gates.

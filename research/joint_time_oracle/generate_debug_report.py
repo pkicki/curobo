@@ -44,10 +44,25 @@ def main() -> None:
     cohort_notice = ""
     if pilot.exists():
         pilot_count = sum(bool(line.strip()) for line in pilot.read_text().splitlines())
-        cohort_notice = (f'<h2>Multi-problem exploratory pilot</h2><p class="warn">'
-                         f'{pilot_count} pilot tasks attempted. B, C and D and adaptive qualification '
-                         'remain incomplete; confirmation was not launched. '
-                         '<a href="cohort/index.html">View pilot results and per-task diagnostics</a>.</p>')
+        result_dir = root / "research/joint_time_oracle/results/cohort_joint_final_20261106"
+        summary_file = result_dir / "physical_statistics.json"
+        if summary_file.exists():
+            stats = json.loads(summary_file.read_text())
+            comparison = stats["groups"]["pilot"]["comparisons"]["physical:B->D"]
+            cohort_notice = (f'<h2>Completed exploratory cohort (supersedes historical status below)</h2>'
+                f'<p class="warn">{pilot_count} frozen tasks ran through A10/A40/B/C/D. '
+                f'All 20 have sampled physical-feasible outputs and paired B–D checks; median B→D '
+                f'improvement {comparison["median_improvement_pct"]:.3f}% '
+                f'(paired bootstrap 95% CI {comparison["median_bootstrap95_pct"][0]:.3f}% to '
+                f'{comparison["median_bootstrap95_pct"][1]:.3f}%). This is exploratory sampled evidence, '
+                'not a continuous-time or global-optimality certificate; CUDA collision-gradient '
+                'qualification remains incomplete. No confirmation cohort was run. '
+                '<a href="cohort/index.html">View completed pilot results and per-task diagnostics</a>.</p>')
+        else:
+            cohort_notice = (f'<h2>Multi-problem exploratory pilot</h2><p class="warn">'
+                f'{pilot_count} pilot tasks attempted. B, C and D and adaptive qualification '
+                'remain incomplete; confirmation was not launched. '
+                '<a href="cohort/index.html">View pilot results and per-task diagnostics</a>.</p>')
     timing = json.loads((current_dir / "timing_research_summary.json").read_text())
     jacobian = json.loads((current_dir / "pointwise_jacobian.json").read_text())
     def dump(value: object) -> str:
@@ -57,7 +72,8 @@ def main() -> None:
 <style>body{{font:16px system-ui;max-width:1000px;margin:3em auto;padding:0 1em;line-height:1.5}}pre{{overflow:auto;background:#f3f4f5;padding:1em}}.warn{{border-left:5px solid #b43;padding:1em;background:#fff2ee}}</style>
 <h1>Joint path and time: debugging and qualification evidence</h1>
 {cohort_notice}
-<p class="warn"><strong>Pilot decision: BLOCKED.</strong> The exact historical baseline
+<h2>Historical single-task qualification record</h2>
+<p class="warn"><strong>Historical task decision: BLOCKED.</strong> The exact historical baseline
 has been reconstructed, and A, B and C satisfy the physical limits on the sampled grids.
 The 95%-scaled limits and joint-oracle derivative checks still need resolution, self collision has no
 continuous certificate, and the independent timing solution reaches an artificial control bound. These observations are not a qualified improvement.</p>

@@ -90,12 +90,15 @@ def solve(p: PointwiseTiming, initial: np.ndarray, maxiter: int) -> tuple[np.nda
     return x*p.scale,info
 
 
-def states(geometry,controls: np.ndarray,count: int=8193, knots: np.ndarray | None=None) -> dict:
+def states(geometry,controls: np.ndarray,count: int=8193, knots: np.ndarray | None=None,
+           extra: np.ndarray | None=None) -> dict:
     """Reconstruct the exact geometry and variable timing at dense path samples."""
     s=np.linspace(0,1,count)
     if knots is not None:
         interior=knots[(knots>1e-9)&(knots<1-1e-9)]
         s=np.unique(np.r_[s,interior-1e-9,interior,interior+1e-9])
+    if extra is not None:
+        s=np.unique(np.r_[s,np.clip(extra,0,1)])
     basis=BSpline(np.r_[np.zeros(3),np.linspace(0,1,30),np.ones(3)],controls,3)
     def evaluate(progress):
         path=np.asarray(geometry(progress));x,dx,ddx=(basis(progress,nu=i) for i in range(3))

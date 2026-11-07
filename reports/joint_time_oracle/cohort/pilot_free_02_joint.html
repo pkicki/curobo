@@ -1,0 +1,1442 @@
+<!doctype html><meta charset="utf-8"><title>pilot_free_02</title><h1>pilot_free_02</h1><p>Exploratory independently sampled results; no continuous-time certification.</p><img style="max-width:100%" src="assets/pilot_free_02_joint.png"><img style="max-width:100%" src="assets/pilot_free_02_geometry.png"><pre>{
+  &quot;case_id&quot;: &quot;pilot_free_02&quot;,
+  &quot;cohort&quot;: &quot;pilot&quot;,
+  &quot;population&quot;: &quot;free&quot;,
+  &quot;task_sha256&quot;: &quot;54a2aa606cc1755795d9bafeda8a750c3e9efafa54e870d531a85069384f3678&quot;,
+  &quot;methods&quot;: {
+    &quot;A10&quot;: {
+      &quot;duration_s&quot;: 0.5018298029899597,
+      &quot;verification&quot;: {
+        &quot;physical&quot;: true,
+        &quot;scaled95&quot;: true,
+        &quot;endpoint&quot;: true,
+        &quot;dense&quot;: true,
+        &quot;collision_independent&quot;: true,
+        &quot;dynamics_independent&quot;: true
+      },
+      &quot;adaptive_collision_checked&quot;: true,
+      &quot;adaptive_collision_diagnostics&quot;: {
+        &quot;samples&quot;: 7,
+        &quot;world_clearance_m&quot;: null,
+        &quot;self_clearance_m&quot;: 0.06844413041666225,
+        &quot;path_match_error_rad&quot;: 2.384185786574733e-07,
+        &quot;qualified&quot;: true,
+        &quot;note&quot;: &quot;Sampled neighborhoods of detected minima only; not a swept or continuous certificate.&quot;
+      },
+      &quot;adaptive_dynamic_checked&quot;: true,
+      &quot;adaptive_dynamic_diagnostics&quot;: {
+        &quot;samples&quot;: 117,
+        &quot;world_min_clearance_m&quot;: null,
+        &quot;world_min_time_s&quot;: null,
+        &quot;world_object&quot;: null,
+        &quot;self_min_clearance_m&quot;: 0.0684440569202879,
+        &quot;self_min_time_s&quot;: 0.002021531108766794,
+        &quot;self_pair&quot;: [
+          &quot;panda_link1&quot;,
+          &quot;panda_leftfinger&quot;
+        ],
+        &quot;families&quot;: {
+          &quot;position&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.11999988555908203,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.5013397336006165,
+              &quot;value&quot;: -1.6428000926971436,
+              &quot;lower&quot;: -1.7627999782562256,
+              &quot;upper&quot;: 1.7627999782562256
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.11999988555908203,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.5013397336006165,
+              &quot;value&quot;: -1.6428000926971436,
+              &quot;lower&quot;: -1.7627999782562256,
+              &quot;upper&quot;: 1.7627999782562256
+            }
+          },
+          &quot;velocity&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.10915279388427734,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.19760467112064362,
+              &quot;value&quot;: -2.065847158432007,
+              &quot;lower&quot;: -2.174999952316284,
+              &quot;upper&quot;: 2.174999952316284
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.00040279626846295713,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.19760467112064362,
+              &quot;value&quot;: -2.065847158432007,
+              &quot;lower&quot;: -2.06624995470047,
+              &quot;upper&quot;: 2.06624995470047
+            }
+          },
+          &quot;acceleration&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.7515630722045898,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.08850324898958206,
+              &quot;value&quot;: -14.24843692779541,
+              &quot;lower&quot;: -15.0,
+              &quot;upper&quot;: 15.0
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.0015630722045898438,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.08850324898958206,
+              &quot;value&quot;: -14.24843692779541,
+              &quot;lower&quot;: -14.25,
+              &quot;upper&quot;: 14.25
+            }
+          },
+          &quot;jerk&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -25.202789306640625,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.4979092478752136,
+              &quot;value&quot;: -474.7972106933594,
+              &quot;lower&quot;: -500.0,
+              &quot;upper&quot;: 500.0
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.202789306640625,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.4979092478752136,
+              &quot;value&quot;: -474.7972106933594,
+              &quot;lower&quot;: -475.0,
+              &quot;upper&quot;: 475.0
+            }
+          },
+          &quot;torque&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -8.61525396808862,
+              &quot;joint&quot;: 6,
+              &quot;time_s&quot;: 0.04912241920828819,
+              &quot;value&quot;: 3.38474603191138,
+              &quot;lower&quot;: -12.0,
+              &quot;upper&quot;: 12.0
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -8.015253968088619,
+              &quot;joint&quot;: 6,
+              &quot;time_s&quot;: 0.04912241920828819,
+              &quot;value&quot;: 3.38474603191138,
+              &quot;lower&quot;: -11.399999999999999,
+              &quot;upper&quot;: 11.399999999999999
+            }
+          }
+        },
+        &quot;endpoints&quot;: {
+          &quot;position_start&quot;: 1.6519706469431128e-07,
+          &quot;position_goal&quot;: 1.1744103201039024e-07,
+          &quot;velocity&quot;: 0.0,
+          &quot;acceleration&quot;: 0.0
+        },
+        &quot;note&quot;: &quot;Independent Pinocchio aligned model and analytic sphere primitives, sampled only; adaptive checks not run.&quot;
+      },
+      &quot;continuous_certified&quot;: false,
+      &quot;restored&quot;: false,
+      &quot;diagnostic_key&quot;: &quot;pilot_free_02:A10&quot;,
+      &quot;geometry_metrics&quot;: {
+        &quot;joint_path_length_rad&quot;: 1.1405714036768644,
+        &quot;joint_total_turning_rad&quot;: 0.07290612288559749,
+        &quot;end_effector_path_length_m&quot;: 0.4942148047871078,
+        &quot;arc_aligned_deviation_max_rad&quot;: 0.0,
+        &quot;arc_aligned_deviation_rms_rad&quot;: 0.0
+      },
+      &quot;constraint_diagnostics&quot;: {
+        &quot;samples&quot;: 8193,
+        &quot;world_min_clearance_m&quot;: null,
+        &quot;world_min_time_s&quot;: null,
+        &quot;world_object&quot;: null,
+        &quot;self_min_clearance_m&quot;: 0.0684440569202879,
+        &quot;self_min_time_s&quot;: 0.002021531108766794,
+        &quot;self_pair&quot;: [
+          &quot;panda_link1&quot;,
+          &quot;panda_leftfinger&quot;
+        ],
+        &quot;families&quot;: {
+          &quot;position&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.11999988555908203,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.5013397336006165,
+              &quot;value&quot;: -1.6428000926971436,
+              &quot;lower&quot;: -1.7627999782562256,
+              &quot;upper&quot;: 1.7627999782562256
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.11999988555908203,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.5013397336006165,
+              &quot;value&quot;: -1.6428000926971436,
+              &quot;lower&quot;: -1.7627999782562256,
+              &quot;upper&quot;: 1.7627999782562256
+            }
+          },
+          &quot;velocity&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.10915279388427734,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.1976199895143509,
+              &quot;value&quot;: -2.065847158432007,
+              &quot;lower&quot;: -2.174999952316284,
+              &quot;upper&quot;: 2.174999952316284
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.00040279626846295713,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.1976199895143509,
+              &quot;value&quot;: -2.065847158432007,
+              &quot;lower&quot;: -2.06624995470047,
+              &quot;upper&quot;: 2.06624995470047
+            }
+          },
+          &quot;acceleration&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.7515659332275391,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.08851855993270874,
+              &quot;value&quot;: -14.248434066772461,
+              &quot;lower&quot;: -15.0,
+              &quot;upper&quot;: 15.0
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.0015659332275390625,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.08851855993270874,
+              &quot;value&quot;: -14.248434066772461,
+              &quot;lower&quot;: -14.25,
+              &quot;upper&quot;: 14.25
+            }
+          },
+          &quot;jerk&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -25.202789306640625,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.4979092478752136,
+              &quot;value&quot;: -474.7972106933594,
+              &quot;lower&quot;: -500.0,
+              &quot;upper&quot;: 500.0
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.202789306640625,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.4979092478752136,
+              &quot;value&quot;: -474.7972106933594,
+              &quot;lower&quot;: -475.0,
+              &quot;upper&quot;: 475.0
+            }
+          },
+          &quot;torque&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -8.615343584808413,
+              &quot;joint&quot;: 6,
+              &quot;time_s&quot;: 0.04912933334708214,
+              &quot;value&quot;: 3.3846564151915874,
+              &quot;lower&quot;: -12.0,
+              &quot;upper&quot;: 12.0
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -8.015343584808411,
+              &quot;joint&quot;: 6,
+              &quot;time_s&quot;: 0.04912933334708214,
+              &quot;value&quot;: 3.3846564151915874,
+              &quot;lower&quot;: -11.399999999999999,
+              &quot;upper&quot;: 11.399999999999999
+            }
+          }
+        },
+        &quot;endpoints&quot;: {
+          &quot;position_start&quot;: 1.6519706469431128e-07,
+          &quot;position_goal&quot;: 1.1744103201039024e-07,
+          &quot;velocity&quot;: 0.0,
+          &quot;acceleration&quot;: 0.0
+        },
+        &quot;note&quot;: &quot;Independent Pinocchio aligned model and analytic sphere primitives, sampled only; adaptive checks not run.&quot;
+      },
+      &quot;constraint_utilization&quot;: {
+        &quot;velocity&quot;: 0.9498148063092902,
+        &quot;acceleration&quot;: 0.9498956044514973,
+        &quot;jerk&quot;: 0.9495944213867188,
+        &quot;torque&quot;: 0.6606575954725106
+      },
+      &quot;solver_converged&quot;: false
+    },
+    &quot;A40&quot;: {
+      &quot;duration_s&quot;: 0.49795567989349365,
+      &quot;verification&quot;: {
+        &quot;physical&quot;: true,
+        &quot;scaled95&quot;: false,
+        &quot;endpoint&quot;: true,
+        &quot;dense&quot;: true,
+        &quot;collision_independent&quot;: true,
+        &quot;dynamics_independent&quot;: true
+      },
+      &quot;adaptive_collision_checked&quot;: true,
+      &quot;adaptive_collision_diagnostics&quot;: {
+        &quot;samples&quot;: 7,
+        &quot;world_clearance_m&quot;: null,
+        &quot;self_clearance_m&quot;: 0.06844413041666225,
+        &quot;path_match_error_rad&quot;: 2.384185786574733e-07,
+        &quot;qualified&quot;: true,
+        &quot;note&quot;: &quot;Sampled neighborhoods of detected minima only; not a swept or continuous certificate.&quot;
+      },
+      &quot;adaptive_dynamic_checked&quot;: true,
+      &quot;adaptive_dynamic_diagnostics&quot;: {
+        &quot;samples&quot;: 117,
+        &quot;world_min_clearance_m&quot;: null,
+        &quot;world_min_time_s&quot;: null,
+        &quot;world_object&quot;: null,
+        &quot;self_min_clearance_m&quot;: 0.06844405929036251,
+        &quot;self_min_time_s&quot;: 0.012400263920426369,
+        &quot;self_pair&quot;: [
+          &quot;panda_link1&quot;,
+          &quot;panda_leftfinger&quot;
+        ],
+        &quot;families&quot;: {
+          &quot;position&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.11999988555908203,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.4970894753932953,
+              &quot;value&quot;: -1.6428000926971436,
+              &quot;lower&quot;: -1.7627999782562256,
+              &quot;upper&quot;: 1.7627999782562256
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.11999988555908203,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.4970894753932953,
+              &quot;value&quot;: -1.6428000926971436,
+              &quot;lower&quot;: -1.7627999782562256,
+              &quot;upper&quot;: 1.7627999782562256
+            }
+          },
+          &quot;velocity&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.10874104499816895,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.1940428465604782,
+              &quot;value&quot;: -2.0662589073181152,
+              &quot;lower&quot;: -2.174999952316284,
+              &quot;upper&quot;: 2.174999952316284
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 8.952617645441308e-06,
+              &quot;signed_residual&quot;: 8.952617645441308e-06,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.1940428465604782,
+              &quot;value&quot;: -2.0662589073181152,
+              &quot;lower&quot;: -2.06624995470047,
+              &quot;upper&quot;: 2.06624995470047
+            }
+          },
+          &quot;acceleration&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.7483272552490234,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.08499347418546677,
+              &quot;value&quot;: -14.251672744750977,
+              &quot;lower&quot;: -15.0,
+              &quot;upper&quot;: 15.0
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.0016727447509765625,
+              &quot;signed_residual&quot;: 0.0016727447509765625,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.08499347418546677,
+              &quot;value&quot;: -14.251672744750977,
+              &quot;lower&quot;: -14.25,
+              &quot;upper&quot;: 14.25
+            }
+          },
+          &quot;jerk&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -24.850372314453125,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.02572750858962536,
+              &quot;value&quot;: -475.1496276855469,
+              &quot;lower&quot;: -500.0,
+              &quot;upper&quot;: 500.0
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.149627685546875,
+              &quot;signed_residual&quot;: 0.149627685546875,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.02572750858962536,
+              &quot;value&quot;: -475.1496276855469,
+              &quot;lower&quot;: -475.0,
+              &quot;upper&quot;: 475.0
+            }
+          },
+          &quot;torque&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -8.614310795194392,
+              &quot;joint&quot;: 6,
+              &quot;time_s&quot;: 0.04543714597821236,
+              &quot;value&quot;: 3.385689204805609,
+              &quot;lower&quot;: -12.0,
+              &quot;upper&quot;: 12.0
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -8.01431079519439,
+              &quot;joint&quot;: 6,
+              &quot;time_s&quot;: 0.04543714597821236,
+              &quot;value&quot;: 3.385689204805609,
+              &quot;lower&quot;: -11.399999999999999,
+              &quot;upper&quot;: 11.399999999999999
+            }
+          }
+        },
+        &quot;endpoints&quot;: {
+          &quot;position_start&quot;: 1.6519706469431128e-07,
+          &quot;position_goal&quot;: 1.1744103201039024e-07,
+          &quot;velocity&quot;: 0.0,
+          &quot;acceleration&quot;: 0.0
+        },
+        &quot;note&quot;: &quot;Independent Pinocchio aligned model and analytic sphere primitives, sampled only; adaptive checks not run.&quot;
+      },
+      &quot;continuous_certified&quot;: false,
+      &quot;restored&quot;: false,
+      &quot;diagnostic_key&quot;: &quot;pilot_free_02:A40&quot;,
+      &quot;geometry_metrics&quot;: {
+        &quot;joint_path_length_rad&quot;: 1.1405714036768644,
+        &quot;joint_total_turning_rad&quot;: 0.07290612288559749,
+        &quot;end_effector_path_length_m&quot;: 0.4942112140941938,
+        &quot;arc_aligned_deviation_max_rad&quot;: 0.0,
+        &quot;arc_aligned_deviation_rms_rad&quot;: 0.0
+      },
+      &quot;constraint_diagnostics&quot;: {
+        &quot;samples&quot;: 8193,
+        &quot;world_min_clearance_m&quot;: null,
+        &quot;world_min_time_s&quot;: null,
+        &quot;world_object&quot;: null,
+        &quot;self_min_clearance_m&quot;: 0.06844405929036251,
+        &quot;self_min_time_s&quot;: 0.012400263920426369,
+        &quot;self_pair&quot;: [
+          &quot;panda_link1&quot;,
+          &quot;panda_leftfinger&quot;
+        ],
+        &quot;families&quot;: {
+          &quot;position&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.11999988555908203,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.497104674577713,
+              &quot;value&quot;: -1.6428000926971436,
+              &quot;lower&quot;: -1.7627999782562256,
+              &quot;upper&quot;: 1.7627999782562256
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.11999988555908203,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.497104674577713,
+              &quot;value&quot;: -1.6428000926971436,
+              &quot;lower&quot;: -1.7627999782562256,
+              &quot;upper&quot;: 1.7627999782562256
+            }
+          },
+          &quot;velocity&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.10874128341674805,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.19402764737606049,
+              &quot;value&quot;: -2.066258668899536,
+              &quot;lower&quot;: -2.174999952316284,
+              &quot;upper&quot;: 2.174999952316284
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 8.714199066339745e-06,
+              &quot;signed_residual&quot;: 8.714199066339745e-06,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.19402764737606049,
+              &quot;value&quot;: -2.066258668899536,
+              &quot;lower&quot;: -2.06624995470047,
+              &quot;upper&quot;: 2.06624995470047
+            }
+          },
+          &quot;acceleration&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.7483291625976562,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.08497827500104904,
+              &quot;value&quot;: -14.251670837402344,
+              &quot;lower&quot;: -15.0,
+              &quot;upper&quot;: 15.0
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.00167083740234375,
+              &quot;signed_residual&quot;: 0.00167083740234375,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.08497827500104904,
+              &quot;value&quot;: -14.251670837402344,
+              &quot;lower&quot;: -14.25,
+              &quot;upper&quot;: 14.25
+            }
+          },
+          &quot;jerk&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -24.85052490234375,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.025712311267852783,
+              &quot;value&quot;: -475.14947509765625,
+              &quot;lower&quot;: -500.0,
+              &quot;upper&quot;: 500.0
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.14947509765625,
+              &quot;signed_residual&quot;: 0.14947509765625,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.025712311267852783,
+              &quot;value&quot;: -475.14947509765625,
+              &quot;lower&quot;: -475.0,
+              &quot;upper&quot;: 475.0
+            }
+          },
+          &quot;torque&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -8.61470371872835,
+              &quot;joint&quot;: 6,
+              &quot;time_s&quot;: 0.04546763375401497,
+              &quot;value&quot;: 3.3852962812716507,
+              &quot;lower&quot;: -12.0,
+              &quot;upper&quot;: 12.0
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -8.014703718728349,
+              &quot;joint&quot;: 6,
+              &quot;time_s&quot;: 0.04546763375401497,
+              &quot;value&quot;: 3.3852962812716507,
+              &quot;lower&quot;: -11.399999999999999,
+              &quot;upper&quot;: 11.399999999999999
+            }
+          }
+        },
+        &quot;endpoints&quot;: {
+          &quot;position_start&quot;: 1.6519706469431128e-07,
+          &quot;position_goal&quot;: 1.1744103201039024e-07,
+          &quot;velocity&quot;: 0.0,
+          &quot;acceleration&quot;: 0.0
+        },
+        &quot;note&quot;: &quot;Independent Pinocchio aligned model and analytic sphere primitives, sampled only; adaptive checks not run.&quot;
+      },
+      &quot;constraint_utilization&quot;: {
+        &quot;velocity&quot;: 0.9500040065283941,
+        &quot;acceleration&quot;: 0.9501113891601562,
+        &quot;jerk&quot;: 0.9502989501953125,
+        &quot;torque&quot;: 0.6616057198889311
+      },
+      &quot;solver_converged&quot;: false
+    },
+    &quot;B&quot;: {
+      &quot;duration_s&quot;: 0.4839567090007281,
+      &quot;verification&quot;: {
+        &quot;physical&quot;: true,
+        &quot;scaled95&quot;: false,
+        &quot;endpoint&quot;: true,
+        &quot;dense&quot;: true,
+        &quot;collision_independent&quot;: true,
+        &quot;dynamics_independent&quot;: true
+      },
+      &quot;adaptive_collision_checked&quot;: true,
+      &quot;adaptive_collision_diagnostics&quot;: {
+        &quot;samples&quot;: 4,
+        &quot;world_clearance_m&quot;: null,
+        &quot;self_clearance_m&quot;: 0.06844413041666236,
+        &quot;path_match_error_rad&quot;: 0.0,
+        &quot;qualified&quot;: true,
+        &quot;note&quot;: &quot;Sampled neighborhoods of detected minima only; not a swept or continuous certificate.&quot;
+      },
+      &quot;adaptive_dynamic_checked&quot;: true,
+      &quot;adaptive_dynamic_diagnostics&quot;: {
+        &quot;samples&quot;: 8343,
+        &quot;world_min_clearance_m&quot;: null,
+        &quot;world_min_time_s&quot;: null,
+        &quot;world_object&quot;: null,
+        &quot;self_min_clearance_m&quot;: 0.06844413041666236,
+        &quot;self_min_time_s&quot;: 0.0,
+        &quot;self_pair&quot;: [
+          &quot;panda_link1&quot;,
+          &quot;panda_leftfinger&quot;
+        ],
+        &quot;families&quot;: {
+          &quot;position&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.12000000476837203,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.4839567090007282,
+              &quot;value&quot;: -1.6427999734878536,
+              &quot;lower&quot;: -1.7627999782562256,
+              &quot;upper&quot;: 1.7627999782562256
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.12000000476837203,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.4839567090007282,
+              &quot;value&quot;: -1.6427999734878536,
+              &quot;lower&quot;: -1.7627999782562256,
+              &quot;upper&quot;: 1.7627999782562256
+            }
+          },
+          &quot;velocity&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.10874418384417206,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.2729123174671275,
+              &quot;value&quot;: -2.066255768472112,
+              &quot;lower&quot;: -2.174999952316284,
+              &quot;upper&quot;: 2.174999952316284
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 5.8137716423267705e-06,
+              &quot;signed_residual&quot;: 5.8137716423267705e-06,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.2729123174671275,
+              &quot;value&quot;: -2.066255768472112,
+              &quot;lower&quot;: -2.06624995470047,
+              &quot;upper&quot;: 2.06624995470047
+            }
+          },
+          &quot;acceleration&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.7494614999657454,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.3556891198997987,
+              &quot;value&quot;: 14.250538500034255,
+              &quot;lower&quot;: -15.0,
+              &quot;upper&quot;: 15.0
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.0005385000342545965,
+              &quot;signed_residual&quot;: 0.0005385000342545965,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.3556891198997987,
+              &quot;value&quot;: 14.250538500034255,
+              &quot;lower&quot;: -14.25,
+              &quot;upper&quot;: 14.25
+            }
+          },
+          &quot;jerk&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -24.94035448812565,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.16131867100268457,
+              &quot;value&quot;: 475.05964551187435,
+              &quot;lower&quot;: -500.0,
+              &quot;upper&quot;: 500.0
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.05964551187435063,
+              &quot;signed_residual&quot;: 0.05964551187435063,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.16131867100268457,
+              &quot;value&quot;: 475.05964551187435,
+              &quot;lower&quot;: -475.0,
+              &quot;upper&quot;: 475.0
+            }
+          },
+          &quot;torque&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -8.613188723650802,
+              &quot;joint&quot;: 6,
+              &quot;time_s&quot;: 0.031963132937909304,
+              &quot;value&quot;: 3.3868112763491975,
+              &quot;lower&quot;: -12.0,
+              &quot;upper&quot;: 12.0
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -8.013188723650801,
+              &quot;joint&quot;: 6,
+              &quot;time_s&quot;: 0.031963132937909304,
+              &quot;value&quot;: 3.3868112763491975,
+              &quot;lower&quot;: -11.399999999999999,
+              &quot;upper&quot;: 11.399999999999999
+            }
+          }
+        },
+        &quot;endpoints&quot;: {
+          &quot;position_start&quot;: 7.791044431826322e-08,
+          &quot;position_goal&quot;: 1.1744103201039024e-07,
+          &quot;velocity&quot;: 0.0,
+          &quot;acceleration&quot;: 0.0
+        },
+        &quot;note&quot;: &quot;Independent Pinocchio aligned model and analytic sphere primitives, sampled only; adaptive checks not run.&quot;
+      },
+      &quot;continuous_certified&quot;: false,
+      &quot;restored&quot;: false,
+      &quot;diagnostic_key&quot;: &quot;pilot_free_02:B&quot;,
+      &quot;geometry_metrics&quot;: {
+        &quot;joint_path_length_rad&quot;: 1.1405714036768644,
+        &quot;joint_total_turning_rad&quot;: 0.07290612288559749,
+        &quot;end_effector_path_length_m&quot;: 0.4941944207410862,
+        &quot;arc_aligned_deviation_max_rad&quot;: 0.0,
+        &quot;arc_aligned_deviation_rms_rad&quot;: 0.0,
+        &quot;exact_replay_max_error_rad&quot;: 0.0
+      },
+      &quot;constraint_diagnostics&quot;: {
+        &quot;samples&quot;: 8330,
+        &quot;world_min_clearance_m&quot;: null,
+        &quot;world_min_time_s&quot;: null,
+        &quot;world_object&quot;: null,
+        &quot;self_min_clearance_m&quot;: 0.06844413041666236,
+        &quot;self_min_time_s&quot;: 0.0,
+        &quot;self_pair&quot;: [
+          &quot;panda_link1&quot;,
+          &quot;panda_leftfinger&quot;
+        ],
+        &quot;families&quot;: {
+          &quot;position&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.12000000476837203,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.4839567090007281,
+              &quot;value&quot;: -1.6427999734878536,
+              &quot;lower&quot;: -1.7627999782562256,
+              &quot;upper&quot;: 1.7627999782562256
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.12000000476837203,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.4839567090007281,
+              &quot;value&quot;: -1.6427999734878536,
+              &quot;lower&quot;: -1.7627999782562256,
+              &quot;upper&quot;: 1.7627999782562256
+            }
+          },
+          &quot;velocity&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.10874418384417206,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.27291231746712746,
+              &quot;value&quot;: -2.066255768472112,
+              &quot;lower&quot;: -2.174999952316284,
+              &quot;upper&quot;: 2.174999952316284
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 5.8137716423267705e-06,
+              &quot;signed_residual&quot;: 5.8137716423267705e-06,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.27291231746712746,
+              &quot;value&quot;: -2.066255768472112,
+              &quot;lower&quot;: -2.06624995470047,
+              &quot;upper&quot;: 2.06624995470047
+            }
+          },
+          &quot;acceleration&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.7494614999657454,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.3556891198997986,
+              &quot;value&quot;: 14.250538500034255,
+              &quot;lower&quot;: -15.0,
+              &quot;upper&quot;: 15.0
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.0005385000342545965,
+              &quot;signed_residual&quot;: 0.0005385000342545965,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.3556891198997986,
+              &quot;value&quot;: 14.250538500034255,
+              &quot;lower&quot;: -14.25,
+              &quot;upper&quot;: 14.25
+            }
+          },
+          &quot;jerk&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -24.94035448812565,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.16131867100268454,
+              &quot;value&quot;: 475.05964551187435,
+              &quot;lower&quot;: -500.0,
+              &quot;upper&quot;: 500.0
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.05964551187435063,
+              &quot;signed_residual&quot;: 0.05964551187435063,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.16131867100268454,
+              &quot;value&quot;: 475.05964551187435,
+              &quot;lower&quot;: -475.0,
+              &quot;upper&quot;: 475.0
+            }
+          },
+          &quot;torque&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -8.613188723650802,
+              &quot;joint&quot;: 6,
+              &quot;time_s&quot;: 0.031963132937909304,
+              &quot;value&quot;: 3.3868112763491975,
+              &quot;lower&quot;: -12.0,
+              &quot;upper&quot;: 12.0
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -8.013188723650801,
+              &quot;joint&quot;: 6,
+              &quot;time_s&quot;: 0.031963132937909304,
+              &quot;value&quot;: 3.3868112763491975,
+              &quot;lower&quot;: -11.399999999999999,
+              &quot;upper&quot;: 11.399999999999999
+            }
+          }
+        },
+        &quot;endpoints&quot;: {
+          &quot;position_start&quot;: 7.791044431826322e-08,
+          &quot;position_goal&quot;: 1.1744103201039024e-07,
+          &quot;velocity&quot;: 0.0,
+          &quot;acceleration&quot;: 0.0
+        },
+        &quot;note&quot;: &quot;Independent Pinocchio aligned model and analytic sphere primitives, sampled only; adaptive checks not run.&quot;
+      },
+      &quot;constraint_utilization&quot;: {
+        &quot;velocity&quot;: 0.9500026729985147,
+        &quot;acceleration&quot;: 0.9500359000022837,
+        &quot;jerk&quot;: 0.9501192910237487,
+        &quot;torque&quot;: 0.6616074972500194
+      },
+      &quot;solver_converged&quot;: true,
+      &quot;control_bound_active&quot;: false,
+      &quot;stationarity_inf&quot;: 2.269289232464875e-08,
+      &quot;collocation_points&quot;: 413,
+      &quot;primal_min_margin&quot;: 1.2294338991303277e-08,
+      &quot;geometry_replay_sampled_ok&quot;: true
+    },
+    &quot;C&quot;: {
+      &quot;duration_s&quot;: 0.5098002552986145,
+      &quot;verification&quot;: {
+        &quot;physical&quot;: true,
+        &quot;scaled95&quot;: true,
+        &quot;endpoint&quot;: true,
+        &quot;dense&quot;: true,
+        &quot;collision_independent&quot;: true,
+        &quot;dynamics_independent&quot;: true
+      },
+      &quot;adaptive_collision_checked&quot;: true,
+      &quot;adaptive_collision_diagnostics&quot;: {
+        &quot;samples&quot;: 4,
+        &quot;world_clearance_m&quot;: null,
+        &quot;self_clearance_m&quot;: 0.06844413041666239,
+        &quot;path_match_error_rad&quot;: 0.0,
+        &quot;qualified&quot;: true,
+        &quot;note&quot;: &quot;Sampled neighborhoods of detected minima only; not a swept or continuous certificate.&quot;
+      },
+      &quot;adaptive_dynamic_checked&quot;: true,
+      &quot;adaptive_dynamic_diagnostics&quot;: {
+        &quot;samples&quot;: 41,
+        &quot;world_min_clearance_m&quot;: null,
+        &quot;world_min_time_s&quot;: null,
+        &quot;world_object&quot;: null,
+        &quot;self_min_clearance_m&quot;: 0.06844413041666239,
+        &quot;self_min_time_s&quot;: 0.0,
+        &quot;self_pair&quot;: [
+          &quot;panda_link1&quot;,
+          &quot;panda_leftfinger&quot;
+        ],
+        &quot;families&quot;: {
+          &quot;position&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.12000000476837158,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.5098002552986145,
+              &quot;value&quot;: -1.642799973487854,
+              &quot;lower&quot;: -1.7627999782562256,
+              &quot;upper&quot;: 1.7627999782562256
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.12000000476837158,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.5098002552986145,
+              &quot;value&quot;: -1.642799973487854,
+              &quot;lower&quot;: -1.7627999782562256,
+              &quot;upper&quot;: 1.7627999782562256
+            }
+          },
+          &quot;velocity&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.11903023067220397,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.25490012764930725,
+              &quot;value&quot;: -2.05596972164408,
+              &quot;lower&quot;: -2.174999952316284,
+              &quot;upper&quot;: 2.174999952316284
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.010280233056389587,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.25490012764930725,
+              &quot;value&quot;: -2.05596972164408,
+              &quot;lower&quot;: -2.06624995470047,
+              &quot;upper&quot;: 2.06624995470047
+            }
+          },
+          &quot;acceleration&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.8456602614348245,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.43849854112522735,
+              &quot;value&quot;: 14.154339738565175,
+              &quot;lower&quot;: -15.0,
+              &quot;upper&quot;: 15.0
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.09566026143482453,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.43849854112522735,
+              &quot;value&quot;: 14.154339738565175,
+              &quot;lower&quot;: -14.25,
+              &quot;upper&quot;: 14.25
+            }
+          },
+          &quot;jerk&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -32.05509816728886,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.5098002552986145,
+              &quot;value&quot;: -467.94490183271114,
+              &quot;lower&quot;: -500.0,
+              &quot;upper&quot;: 500.0
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -7.055098167288861,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.5098002552986145,
+              &quot;value&quot;: -467.94490183271114,
+              &quot;lower&quot;: -475.0,
+              &quot;upper&quot;: 475.0
+            }
+          },
+          &quot;torque&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -8.684881124247475,
+              &quot;joint&quot;: 6,
+              &quot;time_s&quot;: 0.08430809275705542,
+              &quot;value&quot;: 3.3151188757525243,
+              &quot;lower&quot;: -12.0,
+              &quot;upper&quot;: 12.0
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -8.084881124247474,
+              &quot;joint&quot;: 6,
+              &quot;time_s&quot;: 0.08430809275705542,
+              &quot;value&quot;: 3.3151188757525243,
+              &quot;lower&quot;: -11.399999999999999,
+              &quot;upper&quot;: 11.399999999999999
+            }
+          }
+        },
+        &quot;endpoints&quot;: {
+          &quot;position_start&quot;: 7.791044431826322e-08,
+          &quot;position_goal&quot;: 1.1744103201039024e-07,
+          &quot;velocity&quot;: 0.0,
+          &quot;acceleration&quot;: 8.748630710731839e-13
+        },
+        &quot;note&quot;: &quot;Independent Pinocchio aligned model and analytic sphere primitives, sampled only; adaptive checks not run.&quot;
+      },
+      &quot;continuous_certified&quot;: false,
+      &quot;restored&quot;: false,
+      &quot;diagnostic_key&quot;: &quot;pilot_free_02:C&quot;,
+      &quot;geometry_metrics&quot;: {
+        &quot;joint_path_length_rad&quot;: 1.1640071463680899,
+        &quot;joint_total_turning_rad&quot;: 1.7695332575993257,
+        &quot;end_effector_path_length_m&quot;: 0.4953720211871886,
+        &quot;arc_aligned_deviation_max_rad&quot;: 0.057401313678424846,
+        &quot;arc_aligned_deviation_rms_rad&quot;: 0.04288816745444544
+      },
+      &quot;constraint_diagnostics&quot;: {
+        &quot;samples&quot;: 8275,
+        &quot;world_min_clearance_m&quot;: null,
+        &quot;world_min_time_s&quot;: null,
+        &quot;world_object&quot;: null,
+        &quot;self_min_clearance_m&quot;: 0.06844413041666239,
+        &quot;self_min_time_s&quot;: 0.0,
+        &quot;self_pair&quot;: [
+          &quot;panda_link1&quot;,
+          &quot;panda_leftfinger&quot;
+        ],
+        &quot;families&quot;: {
+          &quot;position&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.12000000476837158,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.5098002552986145,
+              &quot;value&quot;: -1.642799973487854,
+              &quot;lower&quot;: -1.7627999782562256,
+              &quot;upper&quot;: 1.7627999782562256
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.12000000476837158,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.5098002552986145,
+              &quot;value&quot;: -1.642799973487854,
+              &quot;lower&quot;: -1.7627999782562256,
+              &quot;upper&quot;: 1.7627999782562256
+            }
+          },
+          &quot;velocity&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.11903023067220397,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.25490012764930725,
+              &quot;value&quot;: -2.05596972164408,
+              &quot;lower&quot;: -2.174999952316284,
+              &quot;upper&quot;: 2.174999952316284
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.010280233056389587,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.25490012764930725,
+              &quot;value&quot;: -2.05596972164408,
+              &quot;lower&quot;: -2.06624995470047,
+              &quot;upper&quot;: 2.06624995470047
+            }
+          },
+          &quot;acceleration&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.8456603969149175,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.4384829832561081,
+              &quot;value&quot;: 14.154339603085083,
+              &quot;lower&quot;: -15.0,
+              &quot;upper&quot;: 15.0
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.09566039691491746,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.4384829832561081,
+              &quot;value&quot;: 14.154339603085083,
+              &quot;lower&quot;: -14.25,
+              &quot;upper&quot;: 14.25
+            }
+          },
+          &quot;jerk&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -32.05509816728886,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.5098002552986145,
+              &quot;value&quot;: -467.94490183271114,
+              &quot;lower&quot;: -500.0,
+              &quot;upper&quot;: 500.0
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -7.055098167288861,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.5098002552986145,
+              &quot;value&quot;: -467.94490183271114,
+              &quot;lower&quot;: -475.0,
+              &quot;upper&quot;: 475.0
+            }
+          },
+          &quot;torque&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -8.6848811532602,
+              &quot;joint&quot;: 6,
+              &quot;time_s&quot;: 0.08432365062617464,
+              &quot;value&quot;: 3.315118846739801,
+              &quot;lower&quot;: -12.0,
+              &quot;upper&quot;: 12.0
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -8.084881153260199,
+              &quot;joint&quot;: 6,
+              &quot;time_s&quot;: 0.08432365062617464,
+              &quot;value&quot;: 3.315118846739801,
+              &quot;lower&quot;: -11.399999999999999,
+              &quot;upper&quot;: 11.399999999999999
+            }
+          }
+        },
+        &quot;endpoints&quot;: {
+          &quot;position_start&quot;: 7.791044431826322e-08,
+          &quot;position_goal&quot;: 1.1744103201039024e-07,
+          &quot;velocity&quot;: 0.0,
+          &quot;acceleration&quot;: 8.748630710731839e-13
+        },
+        &quot;note&quot;: &quot;Independent Pinocchio aligned model and analytic sphere primitives, sampled only; adaptive checks not run.&quot;
+      },
+      &quot;constraint_utilization&quot;: {
+        &quot;velocity&quot;: 0.9452734559624051,
+        &quot;acceleration&quot;: 0.9436226402056722,
+        &quot;jerk&quot;: 0.9358898036654223,
+        &quot;torque&quot;: 0.6433687679811718
+      },
+      &quot;candidate_origin&quot;: &quot;restored_joint_solver_iterate&quot;,
+      &quot;solver_converged&quot;: false,
+      &quot;attempt_count&quot;: 4,
+      &quot;successful_solver_statuses&quot;: 2
+    },
+    &quot;D&quot;: {
+      &quot;duration_s&quot;: 0.4881653240917074,
+      &quot;verification&quot;: {
+        &quot;physical&quot;: true,
+        &quot;scaled95&quot;: false,
+        &quot;endpoint&quot;: true,
+        &quot;dense&quot;: true,
+        &quot;collision_independent&quot;: true,
+        &quot;dynamics_independent&quot;: true
+      },
+      &quot;adaptive_collision_checked&quot;: true,
+      &quot;adaptive_collision_diagnostics&quot;: {
+        &quot;samples&quot;: 4,
+        &quot;world_clearance_m&quot;: null,
+        &quot;self_clearance_m&quot;: 0.06844413041666239,
+        &quot;path_match_error_rad&quot;: 0.0,
+        &quot;qualified&quot;: true,
+        &quot;note&quot;: &quot;Sampled neighborhoods of detected minima only; not a swept or continuous certificate.&quot;
+      },
+      &quot;adaptive_dynamic_checked&quot;: true,
+      &quot;adaptive_dynamic_diagnostics&quot;: {
+        &quot;samples&quot;: 8321,
+        &quot;world_min_clearance_m&quot;: null,
+        &quot;world_min_time_s&quot;: null,
+        &quot;world_object&quot;: null,
+        &quot;self_min_clearance_m&quot;: 0.06844413041666239,
+        &quot;self_min_time_s&quot;: 0.0,
+        &quot;self_pair&quot;: [
+          &quot;panda_link1&quot;,
+          &quot;panda_leftfinger&quot;
+        ],
+        &quot;families&quot;: {
+          &quot;position&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.12000000476837158,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.48816532409170743,
+              &quot;value&quot;: -1.642799973487854,
+              &quot;lower&quot;: -1.7627999782562256,
+              &quot;upper&quot;: 1.7627999782562256
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.12000000476837158,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.48816532409170743,
+              &quot;value&quot;: -1.642799973487854,
+              &quot;lower&quot;: -1.7627999782562256,
+              &quot;upper&quot;: 1.7627999782562256
+            }
+          },
+          &quot;velocity&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.10874650320361345,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.27955936750140764,
+              &quot;value&quot;: -2.0662534491126707,
+              &quot;lower&quot;: -2.174999952316284,
+              &quot;upper&quot;: 2.174999952316284
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 3.4944122009328282e-06,
+              &quot;signed_residual&quot;: 3.4944122009328282e-06,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.27955936750140764,
+              &quot;value&quot;: -2.0662534491126707,
+              &quot;lower&quot;: -2.06624995470047,
+              &quot;upper&quot;: 2.06624995470047
+            }
+          },
+          &quot;acceleration&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.7496286243291816,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.06249373017474336,
+              &quot;value&quot;: -14.250371375670818,
+              &quot;lower&quot;: -15.0,
+              &quot;upper&quot;: 15.0
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.00037137567081835243,
+              &quot;signed_residual&quot;: 0.00037137567081835243,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.06249373017474336,
+              &quot;value&quot;: -14.250371375670818,
+              &quot;lower&quot;: -14.25,
+              &quot;upper&quot;: 14.25
+            }
+          },
+          &quot;jerk&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -24.991534335818812,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.01694168241581322,
+              &quot;value&quot;: -475.0084656641812,
+              &quot;lower&quot;: -500.0,
+              &quot;upper&quot;: 500.0
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.008465664181187549,
+              &quot;signed_residual&quot;: 0.008465664181187549,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.01694168241581322,
+              &quot;value&quot;: -475.0084656641812,
+              &quot;lower&quot;: -475.0,
+              &quot;upper&quot;: 475.0
+            }
+          },
+          &quot;torque&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -8.593764691142864,
+              &quot;joint&quot;: 6,
+              &quot;time_s&quot;: 0.09393231354758473,
+              &quot;value&quot;: 3.406235308857136,
+              &quot;lower&quot;: -12.0,
+              &quot;upper&quot;: 12.0
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -7.993764691142863,
+              &quot;joint&quot;: 6,
+              &quot;time_s&quot;: 0.09393231354758473,
+              &quot;value&quot;: 3.406235308857136,
+              &quot;lower&quot;: -11.399999999999999,
+              &quot;upper&quot;: 11.399999999999999
+            }
+          }
+        },
+        &quot;endpoints&quot;: {
+          &quot;position_start&quot;: 7.791044431826322e-08,
+          &quot;position_goal&quot;: 1.1744103201039024e-07,
+          &quot;velocity&quot;: 0.0,
+          &quot;acceleration&quot;: 8.836186582938408e-13
+        },
+        &quot;note&quot;: &quot;Independent Pinocchio aligned model and analytic sphere primitives, sampled only; adaptive checks not run.&quot;
+      },
+      &quot;continuous_certified&quot;: false,
+      &quot;restored&quot;: false,
+      &quot;diagnostic_key&quot;: &quot;pilot_free_02:D&quot;,
+      &quot;geometry_metrics&quot;: {
+        &quot;joint_path_length_rad&quot;: 1.1640071463680899,
+        &quot;joint_total_turning_rad&quot;: 1.7695332575993257,
+        &quot;end_effector_path_length_m&quot;: 0.4953720211875334,
+        &quot;arc_aligned_deviation_max_rad&quot;: 0.057401313678424846,
+        &quot;arc_aligned_deviation_rms_rad&quot;: 0.04288816745444544,
+        &quot;c_to_d_arc_deviation_max_rad&quot;: 5.351335277716053e-09,
+        &quot;exact_replay_max_error_rad&quot;: 0.0
+      },
+      &quot;constraint_diagnostics&quot;: {
+        &quot;samples&quot;: 8300,
+        &quot;world_min_clearance_m&quot;: null,
+        &quot;world_min_time_s&quot;: null,
+        &quot;world_object&quot;: null,
+        &quot;self_min_clearance_m&quot;: 0.06844413041666239,
+        &quot;self_min_time_s&quot;: 0.0,
+        &quot;self_pair&quot;: [
+          &quot;panda_link1&quot;,
+          &quot;panda_leftfinger&quot;
+        ],
+        &quot;families&quot;: {
+          &quot;position&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.12000000476837158,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.4881653240917074,
+              &quot;value&quot;: -1.642799973487854,
+              &quot;lower&quot;: -1.7627999782562256,
+              &quot;upper&quot;: 1.7627999782562256
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.12000000476837158,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.4881653240917074,
+              &quot;value&quot;: -1.642799973487854,
+              &quot;lower&quot;: -1.7627999782562256,
+              &quot;upper&quot;: 1.7627999782562256
+            }
+          },
+          &quot;velocity&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.10874650320361345,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.27955936750140764,
+              &quot;value&quot;: -2.0662534491126707,
+              &quot;lower&quot;: -2.174999952316284,
+              &quot;upper&quot;: 2.174999952316284
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 3.4944122009328282e-06,
+              &quot;signed_residual&quot;: 3.4944122009328282e-06,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.27955936750140764,
+              &quot;value&quot;: -2.0662534491126707,
+              &quot;lower&quot;: -2.06624995470047,
+              &quot;upper&quot;: 2.06624995470047
+            }
+          },
+          &quot;acceleration&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -0.7496286243291816,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.06249373017474336,
+              &quot;value&quot;: -14.250371375670818,
+              &quot;lower&quot;: -15.0,
+              &quot;upper&quot;: 15.0
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.00037137567081835243,
+              &quot;signed_residual&quot;: 0.00037137567081835243,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.06249373017474336,
+              &quot;value&quot;: -14.250371375670818,
+              &quot;lower&quot;: -14.25,
+              &quot;upper&quot;: 14.25
+            }
+          },
+          &quot;jerk&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -24.991534335818812,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.01694168241581322,
+              &quot;value&quot;: -475.0084656641812,
+              &quot;lower&quot;: -500.0,
+              &quot;upper&quot;: 500.0
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.008465664181187549,
+              &quot;signed_residual&quot;: 0.008465664181187549,
+              &quot;joint&quot;: 2,
+              &quot;time_s&quot;: 0.01694168241581322,
+              &quot;value&quot;: -475.0084656641812,
+              &quot;lower&quot;: -475.0,
+              &quot;upper&quot;: 475.0
+            }
+          },
+          &quot;torque&quot;: {
+            &quot;physical&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -8.593764691142864,
+              &quot;joint&quot;: 6,
+              &quot;time_s&quot;: 0.09393231354758473,
+              &quot;value&quot;: 3.406235308857136,
+              &quot;lower&quot;: -12.0,
+              &quot;upper&quot;: 12.0
+            },
+            &quot;scaled95&quot;: {
+              &quot;violation&quot;: 0.0,
+              &quot;signed_residual&quot;: -7.993764691142863,
+              &quot;joint&quot;: 6,
+              &quot;time_s&quot;: 0.09393231354758473,
+              &quot;value&quot;: 3.406235308857136,
+              &quot;lower&quot;: -11.399999999999999,
+              &quot;upper&quot;: 11.399999999999999
+            }
+          }
+        },
+        &quot;endpoints&quot;: {
+          &quot;position_start&quot;: 7.791044431826322e-08,
+          &quot;position_goal&quot;: 1.1744103201039024e-07,
+          &quot;velocity&quot;: 0.0,
+          &quot;acceleration&quot;: 8.836186582938408e-13
+        },
+        &quot;note&quot;: &quot;Independent Pinocchio aligned model and analytic sphere primitives, sampled only; adaptive checks not run.&quot;
+      },
+      &quot;constraint_utilization&quot;: {
+        &quot;velocity&quot;: 0.9500016066263344,
+        &quot;acceleration&quot;: 0.9500247583780546,
+        &quot;jerk&quot;: 0.9500169313283624,
+        &quot;torque&quot;: 0.6698417068343208
+      },
+      &quot;solver_converged&quot;: true,
+      &quot;control_bound_active&quot;: false,
+      &quot;stationarity_inf&quot;: 2.343029913681647e-08,
+      &quot;collocation_points&quot;: 376,
+      &quot;primal_min_margin&quot;: 4.6566762601507605e-07,
+      &quot;geometry_replay_sampled_ok&quot;: true
+    }
+  },
+  &quot;execution&quot;: {
+    &quot;B&quot;: {
+      &quot;returncode&quot;: 0,
+      &quot;wall_s&quot;: 18.151403162017232,
+      &quot;status&quot;: &quot;completed&quot;
+    },
+    &quot;C&quot;: {
+      &quot;returncode&quot;: 0,
+      &quot;wall_s&quot;: 14.140868855989538,
+      &quot;status&quot;: &quot;completed&quot;
+    },
+    &quot;D&quot;: {
+      &quot;returncode&quot;: 0,
+      &quot;wall_s&quot;: 23.374323408992495,
+      &quot;status&quot;: &quot;completed&quot;
+    }
+  },
+  &quot;qualification_note&quot;: &quot;Exploratory independent sampled checks only; adaptive collision and continuous-time certification incomplete.&quot;
+}</pre>

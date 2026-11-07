@@ -21,6 +21,7 @@ def main() -> None:
     parser.add_argument('--input',type=Path,default=OUT)
     parser.add_argument('--extra',type=Path)
     parser.add_argument('--methods',default='A10,A40')
+    parser.add_argument('--report',default='independent_sampled.json')
     options=parser.parse_args();output=options.input;methods=options.methods.split(',')
     cfg=yaml.safe_load((ROOT/'curobo/content/configs/robot/franka.yml').read_text())['robot_cfg']['kinematics']
     model=pin.buildModelFromUrdf(str(ROOT/'curobo/content/assets/robot/franka_description/franka_panda.urdf'))
@@ -46,21 +47,23 @@ def main() -> None:
     bounds={name:historical[name+'_bounds'] for name in ('position','velocity','acceleration','jerk','torque')}
     tasks=json.loads((output/'tasks.json').read_text()); rows=[json.loads(line) for line in (output/'pilot.jsonl').read_text().splitlines()]
     byid={task['case_id']:task for task in tasks}; results={}
-    result_path=(options.extra/'independent_sampled.json') if options.extra else (output/'independent_sampled.json')
+    result_path=(options.extra/options.report) if options.extra else (output/options.report)
     for row in rows:
         task=byid[row['case_id']]; scene={}
         if task['scene']:
             scene=yaml.safe_load((ROOT/'curobo/content/configs/scene'/task['scene']).read_text())
         for method in methods:
-            source_dir = options.extra if method in ('B','C','D') else output
+            source_dir = options.extra if method in ('B','C','D') or method.endswith('_scaled') or method.endswith('_adaptive') else output
             if source_dir is None: continue
             file=source_dir/task['case_id']/f'{method.lower()}_dense.npz'
             if not file.exists():continue
             source=np.load(file);s={k:source[k] for k in source.files}; n=len(s['time']);tau=np.empty_like(s['q'],dtype=np.float64)
             world_min=(float('inf'),None,None);self_min=(float('inf'),None,None)
+            ee=np.empty((n,3));hand=model.getFrameId('panda_hand',pin.BODY)
             for i in range(n):
                 q[qi]=s['q'][i];v[vi]=s['qd'][i];a[vi]=s['qdd'][i]
                 tau[i]=pin.rnea(model,data,q,v,a)[vi];pin.framesForwardKinematics(model,data,q)
+                ee[i]=data.oMf[hand].translation
                 xyz=np.empty_like(local)
                 for ids,frame_id in grouped.values():
                     placement=data.oMf[frame_id];xyz[ids]=local[ids]@placement.rotation.T+placement.translation
@@ -82,7 +85,9 @@ def main() -> None:
                     if distance[j]<world_min[0]:world_min=(float(distance[j]),i,name)
                 separation=np.linalg.norm(xyz[ia]-xyz[ib],axis=1)-pair_dist;j=int(np.argmin(separation))
                 if separation[j]<self_min[0]:self_min=(float(separation[j]),i,[links[ia[j]],links[ib[j]]])
-            np.savez_compressed(source_dir/task['case_id']/f'{method.lower()}_pin_torque.npz', time=s['time'], torque=tau)
+            dest_dir=(options.extra if options.extra else source_dir)/task['case_id']
+            dest_dir.mkdir(parents=True,exist_ok=True)
+            np.savez_compressed(dest_dir/f'{method.lower()}_pin_torque.npz', time=s['time'], torque=tau, end_effector=ee)
             result={'samples':n,'world_min_clearance_m':None if world_min[1] is None else world_min[0],
                     'world_min_time_s':None if world_min[1] is None else float(s['time'][world_min[1]]),
                     'world_object':world_min[2],'self_min_clearance_m':self_min[0],
