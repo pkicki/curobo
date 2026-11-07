@@ -53,13 +53,18 @@ def publish(source:Path,output:Path) -> dict:
                 sections.append("<h4>"+qualification+"</h4><table><thead><tr>"
                                 "<th>Restarts</th><th>Verified pairs</th>"
                                 "<th>Median Full→D (%)</th><th>Median B→Full (%)</th>"
-                                "</tr></thead><tbody>")
+                                "<th>Matched Full-R/D pairs</th><th>Matched Full-R→D (%)</th>"
+                                "<th>Median Full→Full-R timing (%)</th></tr></thead><tbody>")
                 for budget in (1,4,16,32):
                     result=groups["all:"+str(budget)]
                     a,b=result["native_to_D"],result["B_to_native"]
+                    m,mf=result["matched_to_D"],result["native_to_matched"]
                     sections.append(f"<tr><td>{budget}</td><td>{a['paired_n']}/{a['attempted_n']}</td>"
                                     "<td>"+_fmt(a["median_pct"])+"</td>"
-                                    "<td>"+_fmt(b["median_pct"])+"</td></tr>")
+                                    "<td>"+_fmt(b["median_pct"])+"</td>"
+                                    "<td>"+str(m["paired_n"])+"/"+str(m["attempted_n"])+"</td>"
+                                    "<td>"+_fmt(m["median_pct"])+"</td>"
+                                    "<td>"+_fmt(mf["median_pct"])+"</td></tr>")
                 sections.append("</tbody></table>")
         else:
             sections.append("<p><strong>Full native rerun: NOT EXECUTED or results not published.</strong></p>")
