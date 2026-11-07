@@ -64,6 +64,9 @@ def problem(geometry, knots: np.ndarray, grid_count: int, initial: np.ndarray, e
     profile_path=os.environ.get('ORACLE_TORQUE_PROFILE')
     if profile_path:
         profile=read_profile(profile_path)
+        expected_nominal=np.stack((profile['nominal_effort_lower'],profile['nominal_effort_upper']))
+        if not np.allclose(raw[3],expected_nominal,rtol=1e-5,atol=1e-5):
+            raise ValueError('frozen nominal effort limits differ from current Pinocchio reference')
         raw[3]=np.stack((profile['effort_lower'],profile['effort_upper']))
     p.center=(raw[:,1]+raw[:,0])/2;p.width=(raw[:,1]-raw[:,0])*.475
     # TimeOpt scales asymmetric torque bounds toward zero; the other families are symmetric.
