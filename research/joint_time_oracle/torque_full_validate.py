@@ -38,7 +38,7 @@ def prepare(arm:Path) -> tuple[Path,int]:
         rows.append({"case_id":case,"cohort":"pilot","population":task["population"],
                      "task_sha256":task["task_sha256"],"methods":methods})
     (source/"pilot.jsonl").write_text("".join(json.dumps(row)+"\n" for row in rows))
-    return source, len(all_restart_ids)
+    return source, (max(int(x[1:]) for x in all_restart_ids)+1) if all_restart_ids else 0
 
 
 def main():
