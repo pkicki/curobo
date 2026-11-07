@@ -146,7 +146,7 @@ def execute(arm: Path, *, case_filter: str | None, max_restarts: int,
     out.mkdir(parents=True,exist_ok=True)
     source_hash=sha(arm/"tasks.json")
     contract={"schema":1,"source_tasks_sha256":source_hash,
-              "max_restarts":max_restarts,"lanes_per_restart":lanes,
+              "maximum_restarts_allowed":32,"lanes_per_restart":lanes,
               "max_planner_attempts":max_attempts,"warmup_iterations":warmup,
               "use_cuda_graph":use_cuda_graph,
               "role":"full native replanning under frozen derated effort limits",
