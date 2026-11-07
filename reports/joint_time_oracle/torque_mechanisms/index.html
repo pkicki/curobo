@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><title>Torque mechanisms and full-planner rerun — Not executed</title>
+<style>body{font:16px/1.55 system-ui;max-width:980px;margin:2rem auto;padding:0 1rem;color:#203044}
+.note{padding:1rem;background:#fff0d8;border-left:5px solid #b66c00}
+table{border-collapse:collapse;width:100%}th,td{border-bottom:1px solid #ddd;padding:.6rem;text-align:left}</style>
+<h1>Torque-limited geometric planning: mechanisms and full native baseline</h1>
+<aside class="note"><strong>NOT EXECUTED.</strong> The implementation is committed but the
+new independent physics and full-planner experiments have not yet run.
+No new duration effect sizes, confidence intervals, or fully validated trajectory outcomes are available.</aside>
+<p>This follow-up investigates why the frozen severe torque-stress B→D comparison
+was positive, and tests whether native cuRoboV2-Fast can recover the gains
+when its entire geometric planner is rebuilt with the derated effort limits.</p>
+<h2>Pending experiments</h2>
+<table><thead><tr><th>Study</th><th>Status</th><th>Required evidence</th></tr></thead><tbody>
+<tr><td>Independent RNEA gravity / inertia / velocity-bias decomposition</td>
+<td>Not run</td><td>Pinocchio re-evaluation on frozen B/D paths; joint/time torque profile diagnostics</td></tr>
+<tr><td>Native full-planner search: 1, 4, 16, 32 restarts</td>
+<td>Not run</td><td>Fresh planner built with derated torque limits; all valid internal lanes retained</td></tr>
+<tr><td>Independent candidate validation</td>
+<td>Not run</td><td>Dense + adaptive Pinocchio/sphere audits, replay parity and SHA-linked receipts</td></tr>
+<tr><td>Full native planner versus D</td><td>N/A</td>
+<td>Best independently qualified native candidate at each frozen restart budget</td></tr>
+</tbody></table>
+<p>Existing torque-stress results remain historical and unchanged.
+The new report is regenerated from raw JSON/NPZ evidence only by
+<code>python -m research.joint_time_oracle.torque_followup_report</code>.
+Sampled validation does not prove continuous-time feasibility; finite multistart search
+does not establish global optimality.</p>
+</html>
