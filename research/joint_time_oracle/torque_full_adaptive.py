@@ -50,9 +50,13 @@ def replay(arm:Path,*,case_filter:str|None=None) -> dict:
             try:
                 with np.load(source) as a:
                     original={k:np.asarray(a[k]) for k in ("time","q","qd","qdd","jerk")}
-                with np.load(folder/(name.lower()+"_buffers.npz")) as a:
+                # Additional lanes share their parent restart's timing buffers.
+                parent=str(entry.get("parent_restart_tag",name))
+                if not parent.startswith("F") or len(parent)!=4:
+                    raise ValueError("invalid native candidate parent restart tag")
+                with np.load(folder/(parent.lower()+"_buffers.npz")) as a:
                     frozen={k:np.asarray(a[k]) for k in a.files}
-                with np.load(folder/(name.lower()+"_native_input.npz")) as a:
+                with np.load(folder/(parent.lower()+"_native_input.npz")) as a:
                     native_input={k:np.asarray(a[k]) for k in a.files}
                 duration=float(original["time"][-1])
                 query=_near_times(diag,duration,np.asarray(original["time"],dtype=np.float64))
