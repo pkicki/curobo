@@ -25,10 +25,20 @@ BUDGETS=(1,4,16,32)
 def best_native(candidates:dict, diagnostics:dict, receipts:dict, profile:dict,
                 case:str, budget:int, *, scaled95:bool, strict:bool) -> dict | None:
     valid=[]
-    for restart in range(budget):
-        method=f"F{restart:03d}"
-        candidate=candidates.get(method)
+    for method,candidate in sorted(candidates.items()):
+        # F000 is the native selected lane; F000L02 is an additional internally
+        # accepted lane from the same planner restart. Both consume one restart.
+        if not method.startswith("F") or len(method)<4:
+            continue
+        try:
+            restart=int(method[1:4])
+        except ValueError:
+            continue
+        if restart>=budget:
+            continue
         if not isinstance(candidate,dict) or candidate.get("status")!="SUCCESS":
+            continue
+        if candidate.get("restart",restart)!=restart:
             continue
         if candidate.get("torque_profile_sha256")!=profile["profile_sha256"]:
             continue
