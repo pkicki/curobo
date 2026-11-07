@@ -61,13 +61,56 @@ def latest_duration(arm: Path, case: str, method: str, native: dict) -> float | 
 
 
 def torque_ratio(arm: Path, case: str, method: str, profile: dict) -> float | None:
-    file=arm/case/(method.lower()+"_pin_torque.npz")
+    adaptive=arm/case/(method.lower()+"_adaptive_pin_torque.npz")
+    file=adaptive if adaptive.exists() else arm/case/(method.lower()+"_pin_torque.npz")
     if not file.exists():
         return None
     with np.load(file) as data:
         tau=np.asarray(data["torque"])
     bound=np.stack((profile["effort_lower"],profile["effort_upper"]))
     return float(np.max(torque_utilization(tau,bound)))
+
+
+def _max_utilization(values: np.ndarray, bounds: np.ndarray) -> float:
+    """Compute maximum signed-side utilization for asymmetric bounds."""
+    x=np.asarray(values,dtype=np.float64);low,high=np.asarray(bounds,dtype=np.float64)
+    center=(low+high)/2
+    utilization=np.where(x>=center,(x-center)/(high-center),(center-x)/(center-low))
+    return float(np.max(utilization))
+
+
+def trajectory_metrics(arm: Path, case: str, method: str, profile: dict,
+                       torque_util: float | None, diag: dict | None) -> dict:
+    """Measure sampled dynamics utilization and path geometry from exact saved traces."""
+    folder=arm/case;path=folder/(method.lower()+"_adaptive_dense.npz")
+    if not path.exists():path=folder/(method.lower()+"_dense.npz")
+    if not path.exists():return {}
+    with np.load(path) as data:states={k:np.asarray(data[k]) for k in data.files}
+    bounds_file=ROOT/"research/joint_time_oracle/results/native_reconstruction_20261106/baseline_validation_states.npz"
+    with np.load(bounds_file) as limits:
+        utilization={family:_max_utilization(states[key],limits[family+"_bounds"])
+                     for family,key in (("position","q"),("velocity","qd"),
+                                        ("acceleration","qdd"),("jerk","jerk"))}
+    utilization["torque"]=torque_util
+    q=states["q"];dq=np.diff(q,axis=0);arc=np.r_[0.,np.cumsum(np.linalg.norm(dq,axis=1))]
+    length=float(arc[-1]);curvature=None
+    if len(q)>3 and arc[-1]>1e-9:
+        s=arc/arc[-1]
+        unique=np.r_[True,np.diff(s)>1e-10]
+        if unique.sum()>3:
+            first=np.gradient(q[unique],s[unique],axis=0,edge_order=2)
+            second=np.gradient(first,s[unique],axis=0,edge_order=2)
+            curvature=float(np.quantile(np.linalg.norm(second,axis=1),.95))
+    end_effector=None;ee_length=None
+    torque_file=folder/(method.lower()+"_adaptive_pin_torque.npz")
+    if not torque_file.exists():torque_file=folder/(method.lower()+"_pin_torque.npz")
+    if torque_file.exists():
+        with np.load(torque_file) as values:end_effector=np.asarray(values["end_effector"])
+        ee_length=float(np.linalg.norm(np.diff(end_effector,axis=0),axis=1).sum())
+    return {"max_utilization":utilization,"joint_path_length_rad":length,
+            "joint_path_curvature_p95":curvature,"end_effector_path_length_m":ee_length,
+            "world_clearance_m":None if not diag else diag.get("world_min_clearance_m"),
+            "self_clearance_m":None if not diag else diag.get("self_min_clearance_m")}
 
 
 def report(arm: Path, *, adaptive_receipts: Path | None = None) -> dict:
@@ -123,6 +166,8 @@ def report(arm: Path, *, adaptive_receipts: Path | None = None) -> dict:
             use=torque_ratio(arm,case,method,p)
             details["methods"][method]={"duration_s":duration,
                                         "torque_utilization":use,
+                                        **trajectory_metrics(arm,case,method,p,use,
+                                            diagnostics.get(case+":"+method+"_adaptive") or diag),
                                         "sampled_physical":phys,
                                         "sampled_scaled95":scaled,
                                         "adaptive_qualified":bool(adaptive_phys),
@@ -131,6 +176,9 @@ def report(arm: Path, *, adaptive_receipts: Path | None = None) -> dict:
             if use is not None:
                 utilization.append({"case_id":case,"regime":p["regime"],
                                     "method":method,"max_torque_utilization":use,
+                                    "max_velocity_utilization":details["methods"][method].get("max_utilization",{}).get("velocity"),
+                                    "max_acceleration_utilization":details["methods"][method].get("max_utilization",{}).get("acceleration"),
+                                    "max_jerk_utilization":details["methods"][method].get("max_utilization",{}).get("jerk"),
                                     "torque_ge_85pct":use>=.85,
                                     "torque_ge_95pct":use>=.95})
         strict_rows.append(row);sample_rows.append(sample_row);detailed.append(details)
