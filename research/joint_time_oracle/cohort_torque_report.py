@@ -37,7 +37,8 @@ def sampled_acceptance(diag: dict | None, profile: dict, *, scaled: bool) -> tup
     if (world is not None and world < -1e-7) or self_clear is None or self_clear < -1e-7:
         return False, "sampled world/self collision clearance violation"
     for key,tolerance in ENDPOINT_TOL.items():
-        if not np.isfinite(diag.get("endpoints",{}).get(key, float("nan"))) or diag["endpoints"][key]>tolerance:
+        value=diag.get("endpoints",{}).get(key)
+        if not isinstance(value,(int,float)) or not np.isfinite(value) or abs(value)>tolerance:
             return False, f"endpoint: {key}"
     regime="scaled95" if scaled else "physical"
     for family,tolerance in TOLERANCES.items():
