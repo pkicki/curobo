@@ -52,6 +52,12 @@ def prepare(source: Path, output: Path, *, targets=REGIMES) -> dict:
                "model": "existing model-aligned Pinocchio Panda; NO payload change",
                "independence": "both regimes reuse the SAME source tasks; do not pool as independent observations",
                "selection": "calibrated exclusively from historical A40 sampled torque and endpoint static gravity"}
+    existing = output / "manifest.json"
+    if existing.exists():
+        frozen = json.loads(existing.read_text())
+        if (frozen.get("source_tasks_sha256") != summary["source_tasks_sha256"]
+                or frozen.get("nominal_bounds_sha256") != summary["nominal_bounds_sha256"]):
+            raise RuntimeError("refusing to overwrite a frozen stress cohort from another source")
     output.mkdir(parents=True, exist_ok=True)
     for regime, target in targets:
         out = output / regime
