@@ -12,7 +12,8 @@ import torch
 from scipy.interpolate import BSpline
 from curobo.motion_planner import MotionPlanner, MotionPlannerCfg
 from .curobo_adapter import CuroboOracleModel
-from .oracle import Boundary, JointTimeOracle, OracleConfig
+from .oracle import Boundary, JointTimeOracle, OracleConfig, JointLimits
+from .torque_active import read_profile
 
 ROOT=Path(__file__).resolve().parents[2]
 PILOT=ROOT/'research/joint_time_oracle/results/cohort_pilot_isolated_20261106'
@@ -28,11 +29,20 @@ def main() -> None:
     planner=MotionPlanner(MotionPlannerCfg.create(robot='franka.yml',scene_model=task['scene'],
                           graph_planner_algorithm='rrt',enable_timeopt=True,use_cuda_graph=True))
     model=CuroboOracleModel(planner); boundary=Boundary.rest(task['start'],task['goal'])
+    limits=model.limits()
+    profile_path=os.environ.get('ORACLE_TORQUE_PROFILE')
+    if profile_path:
+        profile=read_profile(profile_path)
+        if profile['source_case_id']!=args.case:
+            raise ValueError('torque profile/source task mismatch')
+        limits=JointLimits(position=limits.position,velocity=limits.velocity,
+                           acceleration=limits.acceleration,jerk=limits.jerk,
+                           torque=np.stack((profile['effort_lower'],profile['effort_upper'])))
     dest=RESULTS/args.case;dest.mkdir(parents=True,exist_ok=True);attempts=[];best=None
     for resolution in (10,14):
         cfg=OracleConfig(controls=resolution,samples_per_span=8,audit_samples_per_span=64,
                          maxiter=args.maxiter,attempts=2,rng_seed=task['seed'],constraint_tol=1e-4)
-        oracle=JointTimeOracle(model.limits(),boundary,model.torque,model.collision,config=cfg,device=str(model.device))
+        oracle=JointTimeOracle(limits,boundary,model.torque,model.collision,config=cfg,device=str(model.device))
         restoration=[];seed_duration=duration
         for factor in (1.,1.2,1.5,2.,3.):
             seed_duration=duration*factor; seed=oracle._seed(base['q'],seed_duration);audit=oracle.audit(seed)
@@ -67,6 +77,8 @@ def main() -> None:
              'note':'Native sampled checks only; independent validation and adaptive refinement required.'},indent=2)+'\n')
         print(args.case,'resolution',resolution,'status',result['status'],'wall',attempts[-1]['wall_s'],flush=True)
     if best is not None:
+        if profile_path:
+            best['torque_profile_sha256']=profile['profile_sha256']
         (dest/'c_best.json').write_text(json.dumps(best,indent=2)+'\n')
         controls=np.asarray(best['coefficients']);n=len(controls);T=best['duration']
         spline=BSpline(np.r_[np.zeros(5),np.linspace(0,1,n-4),np.ones(5)],controls,5)
