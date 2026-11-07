@@ -28,17 +28,19 @@ def validate_adaptive_candidate(arm:Path,case:str,method:str,
                                 diagnostics:dict) -> dict:
     source=arm/"native_full"/case
     profile=read_profile(arm/case/"torque_profile.json")
-    recordfile=source/"native_candidates.json"
+    matched=method.startswith("R")
+    recordfile=source/("matched_retime_candidates.json" if matched else "native_candidates.json")
     record=json.loads(recordfile.read_text()).get(method,{}) if recordfile.exists() else {}
     base=source/(method.lower()+"_dense.npz")
     adaptive=source/(method.lower()+"_adaptive_dense.npz")
     diag=diagnostics.get(case+":"+method+"_adaptive")
     reason=[]
-    replay_file=source/"native_adaptive_replay.json"
+    replay_file=source/("matched_adaptive_replay.json" if matched else "native_adaptive_replay.json")
     replay=json.loads(replay_file.read_text()).get(method,{}) if replay_file.exists() else {}
     if replay.get("status")!="REPLAYED":
         reason.append("independent adaptive native replay did not pass")
-    if record.get("status")!="SUCCESS":reason.append("native restart not successful")
+    if record.get("status")!=("COMPLETE" if matched else "SUCCESS"):
+        reason.append("native/matched retiming candidate not successful")
     if not base.exists():reason.append("native base trajectory missing")
     if not adaptive.exists():reason.append("native adaptive replay missing")
     if not isinstance(diag,dict):reason.append("independent adaptive diagnostic missing")
@@ -99,6 +101,9 @@ def generate(arm:Path) -> dict:
         case=task["case_id"]
         candidates=native/case/"native_candidates.json"
         rows=json.loads(candidates.read_text()) if candidates.exists() else {}
+        matched=native/case/"matched_retime_candidates.json"
+        if matched.exists():
+            rows.update(json.loads(matched.read_text()))
         for method in sorted(rows):
             out[case+":"+method]=validate_adaptive_candidate(arm,case,method,diagnostics)
     (native/"adaptive_receipts.json").write_text(json.dumps(out,indent=2)+"\n")
