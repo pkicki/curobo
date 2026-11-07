@@ -92,7 +92,19 @@ def solve(p: PointwiseTiming, initial: np.ndarray, maxiter: int) -> tuple[np.nda
     for key,value in [('hessian_approximation','limited-memory'),('max_iter',maxiter),('tol',1e-7),('print_level',0)]:engine.add_option(key,value)
     stamp=time.perf_counter();x,r=engine.solve(x0);elapsed=time.perf_counter()-stamp
     jac=p.values_jac(x)[1];stationarity=p.gradient(x)+jac.T@r['mult_g']-r['mult_x_L']+r['mult_x_U']
-    info={'status':int(r['status']),'message':r['status_msg'].decode(errors='replace'),
+    # Pointwise constraints are [lower(velocity,accel,jerk,torque), upper(...)]
+    # with each family comprising len(grid) x 7 entries. Save summary multipliers,
+    # not large full Jacobians, for subsequent active-constraint analysis.
+    if np.asarray(r['mult_g']).size != 2*4*len(p.grid)*7:
+        raise ValueError('unexpected IPOPT multiplier ordering/size')
+    dual=np.abs(np.asarray(r['mult_g'],dtype=np.float64)).reshape(2,4,len(p.grid),7)
+    names=('velocity','acceleration','jerk','torque')
+    dual_summary={name:{'max_abs':float(dual[:,i].max()),
+                        'sum_abs':float(dual[:,i].sum()),
+                        'count_gt_1e_5':int(np.sum(dual[:,i]>1e-5))}
+                  for i,name in enumerate(names)}
+    info={'constraint_multipliers':dual_summary,
+          'status':int(r['status']),'message':r['status_msg'].decode(errors='replace'),
           'solver_converged':int(r['status'])==0,'iterations':len(history),'duration_s':p.objective(x),
           'primal_min_margin':float(p.values_jac(x)[0].min()), 'collocation_points':len(p.grid),'stationarity_inf':float(np.max(np.abs(stationarity))),
           'max_scaled_control':float(x.max()),'upper_control_bound':None,'lower_control_bound':1e-8,
