@@ -113,9 +113,12 @@ scaled effort limits both reflect the new values.
 
 A new planning restart calls plan_cspace from the exact frozen endpoints,
 scene and graph planner with a distinct deterministic random seed.
-Retain all failures. Save the selected lane's entire native spline
-geometry and timing buffers, the exact 8193-sample physical-time
-reconstruction and checksums. Store setup/warmup time separately from
+Retain all failures. Save the selected lane AND every alternate lane
+passing native path, collision and dynamic validity masks, with their entire
+spline geometry, exact 8193-sample physical-time reconstruction and checksums.
+Alternate lanes are named F000L02 etc., share the parent F000 timing
+buffers, and count as part of the same planner restart. Missing internal
+validity masks fail closed for alternate lanes. Store setup/warmup time separately from
 planning wall time. These are offline timing observations, not an online
 latency benchmark.
 
