@@ -436,3 +436,10 @@ A10/A40/B/C/D evidence. It adds:
 **Unexecuted:** no new GPU experiments or new independent verification
 outcomes are claimed by this implementation. Run the documented tests and
 GPU qualification chain before interpreting full-planner comparisons.
+
+The principal new comparison is **Full-R versus D**, where Full-R independently
+retimes every internally valid native full-planner geometric candidate using
+the *same IPOPT fixed-path solver* as B and D. Native Full versus D is retained
+as a separate practical, mixed-timing-solver comparison. Run
+torque_full_retime.py and torque_full_retime_adaptive.py before issuing strict
+native-full receipts and selecting the best validated matched trajectory.
