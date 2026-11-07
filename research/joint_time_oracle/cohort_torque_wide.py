@@ -26,9 +26,9 @@ OLD = ROOT / "research/joint_time_oracle/results/cohort_pilot_isolated_20261106/
 
 def endpoint_pair_separation(start, goal, historical) -> float:
     """Max of start/goal Euclidean distances under unchanged endpoint order."""
-    return min(max(float(np.linalg.norm(start-np.asarray(x["start"]))),
-                   float(np.linalg.norm(goal-np.asarray(x["goal"]))))
-               for x in historical) if historical else float("inf")
+    return min(min(float(np.linalg.norm(start-np.asarray(x[key]))),
+                   float(np.linalg.norm(goal-np.asarray(x[key]))))
+               for x in historical for key in ("start","goal")) if historical else float("inf")
 
 
 def generate(output: Path, *, seed: int = 270711, per_population: int = 10,
