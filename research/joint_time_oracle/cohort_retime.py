@@ -66,6 +66,8 @@ def problem(geometry, knots: np.ndarray, grid_count: int, initial: np.ndarray, e
         profile=read_profile(profile_path)
         raw[3]=np.stack((profile['effort_lower'],profile['effort_upper']))
     p.center=(raw[:,1]+raw[:,0])/2;p.width=(raw[:,1]-raw[:,0])*.475
+    # TimeOpt scales asymmetric torque bounds toward zero; the other families are symmetric.
+    p.center[3]*=.95
     return p
 
 
