@@ -64,7 +64,8 @@ def execute(args):
     manifest={"implementation_commit":git,"regime":args.regime,
               "task_inventory_sha256":checksum(arm/"tasks.json"),
               "profile_inventory_sha256":checksum(arm/"all_profiles.json"),
-              "native_geometry_source":"cohort_pilot_isolated_20261106",
+              "native_geometry_source":str(args.source.resolve()),
+              "source_inventory_sha256":checksum(args.source/"tasks.json"),
               "torque_model":"same Panda model; explicit derated asymmetric torque limits",
               "limits":"0.95 optimizer scale; physical independent audit required",
               "C":{"resolutions":args.resolutions,"attempts":args.attempts,
@@ -88,7 +89,8 @@ def execute(args):
                               "profile_sha256":profile["profile_sha256"],
                               "stages":{}})
         env=os.environ.copy()
-        env.update({"ORACLE_COHORT_RESULTS":str(arm),
+        env.update({"ORACLE_COHORT_SOURCE":str(args.source.resolve()),
+                    "ORACLE_COHORT_RESULTS":str(arm),
                     "ORACLE_TORQUE_PROFILE":str(dest/"torque_profile.json"),
                     "OPENBLAS_NUM_THREADS":"1","OMP_NUM_THREADS":"1"})
         if args.cuda_visible_devices is not None:
@@ -124,6 +126,7 @@ def execute(args):
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--regime",choices=("moderate","severe"),required=True)
+    parser.add_argument("--source",type=Path,default=ROOT/"research/joint_time_oracle/results/cohort_pilot_isolated_20261106")
     parser.add_argument("--output",type=Path,default=DEFAULT_ROOT)
     parser.add_argument("--cuda-python",default=sys.executable)
     parser.add_argument("--pin-python",default=sys.executable)
