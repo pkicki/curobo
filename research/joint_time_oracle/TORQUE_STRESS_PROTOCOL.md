@@ -237,3 +237,24 @@ Do not manufacture measured improvements or globally optimality claims.
 - tests/test_joint_time_torque_active.py: CPU-only smoke tests.
 
 No PR. No production defaults changed. No full confirm cohort launched.
+
+## Important fairness and limit-contract notes
+
+Native TimeOpt scales asymmetric effort bounds about **zero**, i.e.
+scaled bounds are (0.95 * lower, 0.95 * upper), not about their interval
+midpoint. The experimental B/C and independent sampled validator now use the
+same convention. Add a regression test when introducing a new robot.
+
+A10/A40 here replay the frozen geometric paths under modified effort limits;
+this controls for geometry and isolates timing. They are NOT a complete new
+cuRoboV2-Fast planning run under the modified robot. For publication-grade
+planner comparisons, add a separate **A-full** arm: give the entire native
+planner the same derated effort limits, generate and score all geometric seeds
+under those limits, and compare its best verified feasible trajectory with B
+and the globalized geometry search. Do not silently substitute the original
+selected geometry for A-full.
+
+Also report a joint-wise jerk/acceleration/velocity minimum-time lower bound
+on fixed-endpoint tasks where the chosen boundary conditions admit one. This
+helps distinguish genuinely small headroom from an inadequately globalized
+geometric optimizer.
