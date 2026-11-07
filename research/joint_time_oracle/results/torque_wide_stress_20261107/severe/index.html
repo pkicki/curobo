@@ -1,0 +1,387 @@
+<!doctype html><html lang="en"><meta charset="utf-8">
+<title>Joint time-oracle: cohort comparison</title>
+<style>
+body{font:15px/1.5 system-ui,sans-serif;background:#f7f8fb;color:#1a2431;margin:0}
+main{max-width:1300px;margin:0 auto;padding:2rem}
+h1,h2{letter-spacing:-.03em} .warn{background:#fff1db;border-left:5px solid #b66900;padding:1rem}
+table{border-collapse:collapse;width:100%;background:white;margin:1rem 0}
+th,td{border-bottom:1px solid #e0e4e9;padding:.55rem;text-align:left}
+thead{background:#e7edf5} .scroll{overflow-x:auto}
+.pill{display:inline-block;padding:.12rem .5rem;background:#e7ebf0;border-radius:10px}
+small{color:#526073} .bad{color:#9b2525}.good{color:#12623b}
+</style><main>
+<h1>Joint path-and-time optimization: frozen cohort</h1>
+<p class="warn"><strong>Interpretation gate:</strong> candidates are local, not globally optimal.
+Comparisons require explicit dense and independent validation flags for both trajectories.
+Physical and 95%-scaled limits are analyzed separately. Missing, failed, or
+unqualified trajectories never count as zero improvement.</p>
+<p><strong>30</strong> frozen task records. This page summarizes provided results; it does not run or certify experiments.</p>
+<section><h2>all <small>(30 attempted)</small></h2>
+<div class='scroll'><table><thead><tr><th>Method</th><th>Recorded</th><th>With duration</th><th>Physical-qualified</th><th>Scaled95-qualified</th><th>Converged</th><th>At control bound</th></tr></thead><tbody>
+<tr><td>A10 — cuRoboV2-Fast TimeOpt default (10 iterations)</td><td>30</td><td>29</td><td>29</td><td>24</td><td>0</td><td>0</td></tr>
+<tr><td>A40 — cuRoboV2-Fast TimeOpt 40 iterations</td><td>30</td><td>29</td><td>29</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>B — Independent timing on original cuRobo path</td><td>30</td><td>30</td><td>30</td><td>4</td><td>30</td><td>0</td></tr>
+<tr><td>C — Joint path and time</td><td>30</td><td>30</td><td>29</td><td>28</td><td>0</td><td>0</td></tr>
+<tr><td>D — Independent retiming of joint optimizer geometry</td><td>30</td><td>30</td><td>29</td><td>2</td><td>30</td><td>0</td></tr>
+</tbody></table></div>
+<div class='scroll'><table><thead><tr><th>Feasibility</th><th>Contrast</th><th>Paired / attempted</th><th>Median (%)</th><th>Bootstrap 95% CI (%)</th><th>Mean (%)</th><th>Faster / slower</th><th>&gt;5% faster</th></tr></thead><tbody>
+<tr><td>physical</td><td>A10-&gt;A40</td><td>29 / 30</td><td>1.355</td><td>[0.92, 2.82]</td><td>2.243</td><td>29 / 0</td><td>3</td></tr>
+<tr><td>physical</td><td>A40-&gt;B</td><td>29 / 30</td><td>1.751</td><td>[1.60, 1.86]</td><td>1.761</td><td>29 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>B-&gt;C</td><td>29 / 30</td><td>1.314</td><td>[0.76, 2.31]</td><td>2.104</td><td>24 / 5</td><td>2</td></tr>
+<tr><td>physical</td><td>B-&gt;D</td><td>29 / 30</td><td>3.466</td><td>[2.79, 3.83]</td><td>3.991</td><td>28 / 1</td><td>6</td></tr>
+<tr><td>physical</td><td>A10-&gt;C</td><td>28 / 30</td><td>5.145</td><td>[3.73, 6.90]</td><td>5.330</td><td>28 / 0</td><td>15</td></tr>
+<tr><td>physical</td><td>A40-&gt;C</td><td>28 / 30</td><td>2.998</td><td>[2.65, 4.12]</td><td>3.226</td><td>26 / 2</td><td>5</td></tr>
+<tr><td>scaled95</td><td>A10-&gt;A40</td><td>0 / 30</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A40-&gt;B</td><td>0 / 30</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>B-&gt;C</td><td>3 / 30</td><td>0.344</td><td>[-2.37, 1.31]</td><td>-0.237</td><td>2 / 1</td><td>0</td></tr>
+<tr><td>scaled95</td><td>B-&gt;D</td><td>0 / 30</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A10-&gt;C</td><td>22 / 30</td><td>6.032</td><td>[4.36, 7.31]</td><td>5.849</td><td>22 / 0</td><td>14</td></tr>
+<tr><td>scaled95</td><td>A40-&gt;C</td><td>0 / 30</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+</tbody></table></div></section>
+<section><h2>pilot <small>(30 attempted)</small></h2>
+<div class='scroll'><table><thead><tr><th>Method</th><th>Recorded</th><th>With duration</th><th>Physical-qualified</th><th>Scaled95-qualified</th><th>Converged</th><th>At control bound</th></tr></thead><tbody>
+<tr><td>A10 — cuRoboV2-Fast TimeOpt default (10 iterations)</td><td>30</td><td>29</td><td>29</td><td>24</td><td>0</td><td>0</td></tr>
+<tr><td>A40 — cuRoboV2-Fast TimeOpt 40 iterations</td><td>30</td><td>29</td><td>29</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>B — Independent timing on original cuRobo path</td><td>30</td><td>30</td><td>30</td><td>4</td><td>30</td><td>0</td></tr>
+<tr><td>C — Joint path and time</td><td>30</td><td>30</td><td>29</td><td>28</td><td>0</td><td>0</td></tr>
+<tr><td>D — Independent retiming of joint optimizer geometry</td><td>30</td><td>30</td><td>29</td><td>2</td><td>30</td><td>0</td></tr>
+</tbody></table></div>
+<div class='scroll'><table><thead><tr><th>Feasibility</th><th>Contrast</th><th>Paired / attempted</th><th>Median (%)</th><th>Bootstrap 95% CI (%)</th><th>Mean (%)</th><th>Faster / slower</th><th>&gt;5% faster</th></tr></thead><tbody>
+<tr><td>physical</td><td>A10-&gt;A40</td><td>29 / 30</td><td>1.355</td><td>[0.92, 2.82]</td><td>2.243</td><td>29 / 0</td><td>3</td></tr>
+<tr><td>physical</td><td>A40-&gt;B</td><td>29 / 30</td><td>1.751</td><td>[1.60, 1.86]</td><td>1.761</td><td>29 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>B-&gt;C</td><td>29 / 30</td><td>1.314</td><td>[0.76, 2.31]</td><td>2.104</td><td>24 / 5</td><td>2</td></tr>
+<tr><td>physical</td><td>B-&gt;D</td><td>29 / 30</td><td>3.466</td><td>[2.79, 3.83]</td><td>3.991</td><td>28 / 1</td><td>6</td></tr>
+<tr><td>physical</td><td>A10-&gt;C</td><td>28 / 30</td><td>5.145</td><td>[3.73, 6.90]</td><td>5.330</td><td>28 / 0</td><td>15</td></tr>
+<tr><td>physical</td><td>A40-&gt;C</td><td>28 / 30</td><td>2.998</td><td>[2.65, 4.12]</td><td>3.226</td><td>26 / 2</td><td>5</td></tr>
+<tr><td>scaled95</td><td>A10-&gt;A40</td><td>0 / 30</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A40-&gt;B</td><td>0 / 30</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>B-&gt;C</td><td>3 / 30</td><td>0.344</td><td>[-2.37, 1.31]</td><td>-0.237</td><td>2 / 1</td><td>0</td></tr>
+<tr><td>scaled95</td><td>B-&gt;D</td><td>0 / 30</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A10-&gt;C</td><td>22 / 30</td><td>6.032</td><td>[4.36, 7.31]</td><td>5.849</td><td>22 / 0</td><td>14</td></tr>
+<tr><td>scaled95</td><td>A40-&gt;C</td><td>0 / 30</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+</tbody></table></div></section>
+<section><h2>population:cluttered <small>(10 attempted)</small></h2>
+<div class='scroll'><table><thead><tr><th>Method</th><th>Recorded</th><th>With duration</th><th>Physical-qualified</th><th>Scaled95-qualified</th><th>Converged</th><th>At control bound</th></tr></thead><tbody>
+<tr><td>A10 — cuRoboV2-Fast TimeOpt default (10 iterations)</td><td>10</td><td>10</td><td>10</td><td>10</td><td>0</td><td>0</td></tr>
+<tr><td>A40 — cuRoboV2-Fast TimeOpt 40 iterations</td><td>10</td><td>10</td><td>10</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>B — Independent timing on original cuRobo path</td><td>10</td><td>10</td><td>10</td><td>2</td><td>10</td><td>0</td></tr>
+<tr><td>C — Joint path and time</td><td>10</td><td>10</td><td>10</td><td>9</td><td>0</td><td>0</td></tr>
+<tr><td>D — Independent retiming of joint optimizer geometry</td><td>10</td><td>10</td><td>10</td><td>0</td><td>10</td><td>0</td></tr>
+</tbody></table></div>
+<div class='scroll'><table><thead><tr><th>Feasibility</th><th>Contrast</th><th>Paired / attempted</th><th>Median (%)</th><th>Bootstrap 95% CI (%)</th><th>Mean (%)</th><th>Faster / slower</th><th>&gt;5% faster</th></tr></thead><tbody>
+<tr><td>physical</td><td>A10-&gt;A40</td><td>10 / 10</td><td>2.708</td><td>[0.78, 3.91]</td><td>2.731</td><td>10 / 0</td><td>1</td></tr>
+<tr><td>physical</td><td>A40-&gt;B</td><td>10 / 10</td><td>1.575</td><td>[1.51, 1.84]</td><td>1.638</td><td>10 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>B-&gt;C</td><td>10 / 10</td><td>2.572</td><td>[1.31, 4.66]</td><td>2.585</td><td>9 / 1</td><td>1</td></tr>
+<tr><td>physical</td><td>B-&gt;D</td><td>10 / 10</td><td>3.878</td><td>[2.80, 6.91]</td><td>4.505</td><td>10 / 0</td><td>4</td></tr>
+<tr><td>physical</td><td>A10-&gt;C</td><td>10 / 10</td><td>6.897</td><td>[5.09, 8.93]</td><td>6.782</td><td>10 / 0</td><td>8</td></tr>
+<tr><td>physical</td><td>A40-&gt;C</td><td>10 / 10</td><td>4.228</td><td>[3.01, 6.14]</td><td>4.182</td><td>9 / 1</td><td>4</td></tr>
+<tr><td>scaled95</td><td>A10-&gt;A40</td><td>0 / 10</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A40-&gt;B</td><td>0 / 10</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>B-&gt;C</td><td>2 / 10</td><td>-0.527</td><td>[-2.37, 1.31]</td><td>-0.527</td><td>1 / 1</td><td>0</td></tr>
+<tr><td>scaled95</td><td>B-&gt;D</td><td>0 / 10</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A10-&gt;C</td><td>9 / 10</td><td>6.937</td><td>[5.09, 9.57]</td><td>7.172</td><td>9 / 0</td><td>8</td></tr>
+<tr><td>scaled95</td><td>A40-&gt;C</td><td>0 / 10</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+</tbody></table></div></section>
+<section><h2>population:free <small>(10 attempted)</small></h2>
+<div class='scroll'><table><thead><tr><th>Method</th><th>Recorded</th><th>With duration</th><th>Physical-qualified</th><th>Scaled95-qualified</th><th>Converged</th><th>At control bound</th></tr></thead><tbody>
+<tr><td>A10 — cuRoboV2-Fast TimeOpt default (10 iterations)</td><td>10</td><td>9</td><td>9</td><td>7</td><td>0</td><td>0</td></tr>
+<tr><td>A40 — cuRoboV2-Fast TimeOpt 40 iterations</td><td>10</td><td>9</td><td>9</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>B — Independent timing on original cuRobo path</td><td>10</td><td>10</td><td>10</td><td>2</td><td>10</td><td>0</td></tr>
+<tr><td>C — Joint path and time</td><td>10</td><td>10</td><td>9</td><td>9</td><td>0</td><td>0</td></tr>
+<tr><td>D — Independent retiming of joint optimizer geometry</td><td>10</td><td>10</td><td>9</td><td>0</td><td>10</td><td>0</td></tr>
+</tbody></table></div>
+<div class='scroll'><table><thead><tr><th>Feasibility</th><th>Contrast</th><th>Paired / attempted</th><th>Median (%)</th><th>Bootstrap 95% CI (%)</th><th>Mean (%)</th><th>Faster / slower</th><th>&gt;5% faster</th></tr></thead><tbody>
+<tr><td>physical</td><td>A10-&gt;A40</td><td>9 / 10</td><td>0.924</td><td>[0.81, 5.25]</td><td>2.668</td><td>9 / 0</td><td>2</td></tr>
+<tr><td>physical</td><td>A40-&gt;B</td><td>9 / 10</td><td>1.731</td><td>[1.57, 1.84]</td><td>1.718</td><td>9 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>B-&gt;C</td><td>9 / 10</td><td>0.344</td><td>[-1.39, 2.52]</td><td>2.327</td><td>5 / 4</td><td>1</td></tr>
+<tr><td>physical</td><td>B-&gt;D</td><td>9 / 10</td><td>1.373</td><td>[0.55, 4.54]</td><td>3.956</td><td>8 / 1</td><td>1</td></tr>
+<tr><td>physical</td><td>A10-&gt;C</td><td>8 / 10</td><td>2.415</td><td>[1.45, 8.07]</td><td>4.374</td><td>8 / 0</td><td>3</td></tr>
+<tr><td>physical</td><td>A40-&gt;C</td><td>8 / 10</td><td>1.608</td><td>[0.55, 3.86]</td><td>1.917</td><td>7 / 1</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A10-&gt;A40</td><td>0 / 10</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A40-&gt;B</td><td>0 / 10</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>B-&gt;C</td><td>1 / 10</td><td>0.344</td><td>—</td><td>0.344</td><td>1 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>B-&gt;D</td><td>0 / 10</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A10-&gt;C</td><td>6 / 10</td><td>4.838</td><td>[0.89, 9.45]</td><td>5.057</td><td>6 / 0</td><td>3</td></tr>
+<tr><td>scaled95</td><td>A40-&gt;C</td><td>0 / 10</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+</tbody></table></div></section>
+<section><h2>population:table <small>(10 attempted)</small></h2>
+<div class='scroll'><table><thead><tr><th>Method</th><th>Recorded</th><th>With duration</th><th>Physical-qualified</th><th>Scaled95-qualified</th><th>Converged</th><th>At control bound</th></tr></thead><tbody>
+<tr><td>A10 — cuRoboV2-Fast TimeOpt default (10 iterations)</td><td>10</td><td>10</td><td>10</td><td>7</td><td>0</td><td>0</td></tr>
+<tr><td>A40 — cuRoboV2-Fast TimeOpt 40 iterations</td><td>10</td><td>10</td><td>10</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>B — Independent timing on original cuRobo path</td><td>10</td><td>10</td><td>10</td><td>0</td><td>10</td><td>0</td></tr>
+<tr><td>C — Joint path and time</td><td>10</td><td>10</td><td>10</td><td>10</td><td>0</td><td>0</td></tr>
+<tr><td>D — Independent retiming of joint optimizer geometry</td><td>10</td><td>10</td><td>10</td><td>2</td><td>10</td><td>0</td></tr>
+</tbody></table></div>
+<div class='scroll'><table><thead><tr><th>Feasibility</th><th>Contrast</th><th>Paired / attempted</th><th>Median (%)</th><th>Bootstrap 95% CI (%)</th><th>Mean (%)</th><th>Faster / slower</th><th>&gt;5% faster</th></tr></thead><tbody>
+<tr><td>physical</td><td>A10-&gt;A40</td><td>10 / 10</td><td>1.166</td><td>[0.96, 1.76]</td><td>1.373</td><td>10 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>A40-&gt;B</td><td>10 / 10</td><td>1.955</td><td>[1.80, 2.07]</td><td>1.922</td><td>10 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>B-&gt;C</td><td>10 / 10</td><td>1.061</td><td>[0.61, 2.23]</td><td>1.422</td><td>10 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>B-&gt;D</td><td>10 / 10</td><td>3.399</td><td>[2.79, 4.08]</td><td>3.510</td><td>10 / 0</td><td>1</td></tr>
+<tr><td>physical</td><td>A10-&gt;C</td><td>10 / 10</td><td>4.422</td><td>[3.82, 5.29]</td><td>4.644</td><td>10 / 0</td><td>4</td></tr>
+<tr><td>physical</td><td>A40-&gt;C</td><td>10 / 10</td><td>2.835</td><td>[2.64, 4.14]</td><td>3.316</td><td>10 / 0</td><td>1</td></tr>
+<tr><td>scaled95</td><td>A10-&gt;A40</td><td>0 / 10</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A40-&gt;B</td><td>0 / 10</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>B-&gt;C</td><td>0 / 10</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>B-&gt;D</td><td>0 / 10</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A10-&gt;C</td><td>7 / 10</td><td>4.688</td><td>[4.04, 5.39]</td><td>4.826</td><td>7 / 0</td><td>3</td></tr>
+<tr><td>scaled95</td><td>A40-&gt;C</td><td>0 / 10</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+</tbody></table></div></section>
+<section><h2>pilot/cluttered <small>(10 attempted)</small></h2>
+<div class='scroll'><table><thead><tr><th>Method</th><th>Recorded</th><th>With duration</th><th>Physical-qualified</th><th>Scaled95-qualified</th><th>Converged</th><th>At control bound</th></tr></thead><tbody>
+<tr><td>A10 — cuRoboV2-Fast TimeOpt default (10 iterations)</td><td>10</td><td>10</td><td>10</td><td>10</td><td>0</td><td>0</td></tr>
+<tr><td>A40 — cuRoboV2-Fast TimeOpt 40 iterations</td><td>10</td><td>10</td><td>10</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>B — Independent timing on original cuRobo path</td><td>10</td><td>10</td><td>10</td><td>2</td><td>10</td><td>0</td></tr>
+<tr><td>C — Joint path and time</td><td>10</td><td>10</td><td>10</td><td>9</td><td>0</td><td>0</td></tr>
+<tr><td>D — Independent retiming of joint optimizer geometry</td><td>10</td><td>10</td><td>10</td><td>0</td><td>10</td><td>0</td></tr>
+</tbody></table></div>
+<div class='scroll'><table><thead><tr><th>Feasibility</th><th>Contrast</th><th>Paired / attempted</th><th>Median (%)</th><th>Bootstrap 95% CI (%)</th><th>Mean (%)</th><th>Faster / slower</th><th>&gt;5% faster</th></tr></thead><tbody>
+<tr><td>physical</td><td>A10-&gt;A40</td><td>10 / 10</td><td>2.708</td><td>[0.78, 3.91]</td><td>2.731</td><td>10 / 0</td><td>1</td></tr>
+<tr><td>physical</td><td>A40-&gt;B</td><td>10 / 10</td><td>1.575</td><td>[1.51, 1.84]</td><td>1.638</td><td>10 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>B-&gt;C</td><td>10 / 10</td><td>2.572</td><td>[1.31, 4.66]</td><td>2.585</td><td>9 / 1</td><td>1</td></tr>
+<tr><td>physical</td><td>B-&gt;D</td><td>10 / 10</td><td>3.878</td><td>[2.80, 6.91]</td><td>4.505</td><td>10 / 0</td><td>4</td></tr>
+<tr><td>physical</td><td>A10-&gt;C</td><td>10 / 10</td><td>6.897</td><td>[5.09, 8.93]</td><td>6.782</td><td>10 / 0</td><td>8</td></tr>
+<tr><td>physical</td><td>A40-&gt;C</td><td>10 / 10</td><td>4.228</td><td>[3.01, 6.14]</td><td>4.182</td><td>9 / 1</td><td>4</td></tr>
+<tr><td>scaled95</td><td>A10-&gt;A40</td><td>0 / 10</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A40-&gt;B</td><td>0 / 10</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>B-&gt;C</td><td>2 / 10</td><td>-0.527</td><td>[-2.37, 1.31]</td><td>-0.527</td><td>1 / 1</td><td>0</td></tr>
+<tr><td>scaled95</td><td>B-&gt;D</td><td>0 / 10</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A10-&gt;C</td><td>9 / 10</td><td>6.937</td><td>[5.09, 9.57]</td><td>7.172</td><td>9 / 0</td><td>8</td></tr>
+<tr><td>scaled95</td><td>A40-&gt;C</td><td>0 / 10</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+</tbody></table></div></section>
+<section><h2>pilot/free <small>(10 attempted)</small></h2>
+<div class='scroll'><table><thead><tr><th>Method</th><th>Recorded</th><th>With duration</th><th>Physical-qualified</th><th>Scaled95-qualified</th><th>Converged</th><th>At control bound</th></tr></thead><tbody>
+<tr><td>A10 — cuRoboV2-Fast TimeOpt default (10 iterations)</td><td>10</td><td>9</td><td>9</td><td>7</td><td>0</td><td>0</td></tr>
+<tr><td>A40 — cuRoboV2-Fast TimeOpt 40 iterations</td><td>10</td><td>9</td><td>9</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>B — Independent timing on original cuRobo path</td><td>10</td><td>10</td><td>10</td><td>2</td><td>10</td><td>0</td></tr>
+<tr><td>C — Joint path and time</td><td>10</td><td>10</td><td>9</td><td>9</td><td>0</td><td>0</td></tr>
+<tr><td>D — Independent retiming of joint optimizer geometry</td><td>10</td><td>10</td><td>9</td><td>0</td><td>10</td><td>0</td></tr>
+</tbody></table></div>
+<div class='scroll'><table><thead><tr><th>Feasibility</th><th>Contrast</th><th>Paired / attempted</th><th>Median (%)</th><th>Bootstrap 95% CI (%)</th><th>Mean (%)</th><th>Faster / slower</th><th>&gt;5% faster</th></tr></thead><tbody>
+<tr><td>physical</td><td>A10-&gt;A40</td><td>9 / 10</td><td>0.924</td><td>[0.81, 5.25]</td><td>2.668</td><td>9 / 0</td><td>2</td></tr>
+<tr><td>physical</td><td>A40-&gt;B</td><td>9 / 10</td><td>1.731</td><td>[1.57, 1.84]</td><td>1.718</td><td>9 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>B-&gt;C</td><td>9 / 10</td><td>0.344</td><td>[-1.39, 2.52]</td><td>2.327</td><td>5 / 4</td><td>1</td></tr>
+<tr><td>physical</td><td>B-&gt;D</td><td>9 / 10</td><td>1.373</td><td>[0.55, 4.54]</td><td>3.956</td><td>8 / 1</td><td>1</td></tr>
+<tr><td>physical</td><td>A10-&gt;C</td><td>8 / 10</td><td>2.415</td><td>[1.45, 8.07]</td><td>4.374</td><td>8 / 0</td><td>3</td></tr>
+<tr><td>physical</td><td>A40-&gt;C</td><td>8 / 10</td><td>1.608</td><td>[0.55, 3.86]</td><td>1.917</td><td>7 / 1</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A10-&gt;A40</td><td>0 / 10</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A40-&gt;B</td><td>0 / 10</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>B-&gt;C</td><td>1 / 10</td><td>0.344</td><td>—</td><td>0.344</td><td>1 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>B-&gt;D</td><td>0 / 10</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A10-&gt;C</td><td>6 / 10</td><td>4.838</td><td>[0.89, 9.45]</td><td>5.057</td><td>6 / 0</td><td>3</td></tr>
+<tr><td>scaled95</td><td>A40-&gt;C</td><td>0 / 10</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+</tbody></table></div></section>
+<section><h2>pilot/table <small>(10 attempted)</small></h2>
+<div class='scroll'><table><thead><tr><th>Method</th><th>Recorded</th><th>With duration</th><th>Physical-qualified</th><th>Scaled95-qualified</th><th>Converged</th><th>At control bound</th></tr></thead><tbody>
+<tr><td>A10 — cuRoboV2-Fast TimeOpt default (10 iterations)</td><td>10</td><td>10</td><td>10</td><td>7</td><td>0</td><td>0</td></tr>
+<tr><td>A40 — cuRoboV2-Fast TimeOpt 40 iterations</td><td>10</td><td>10</td><td>10</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>B — Independent timing on original cuRobo path</td><td>10</td><td>10</td><td>10</td><td>0</td><td>10</td><td>0</td></tr>
+<tr><td>C — Joint path and time</td><td>10</td><td>10</td><td>10</td><td>10</td><td>0</td><td>0</td></tr>
+<tr><td>D — Independent retiming of joint optimizer geometry</td><td>10</td><td>10</td><td>10</td><td>2</td><td>10</td><td>0</td></tr>
+</tbody></table></div>
+<div class='scroll'><table><thead><tr><th>Feasibility</th><th>Contrast</th><th>Paired / attempted</th><th>Median (%)</th><th>Bootstrap 95% CI (%)</th><th>Mean (%)</th><th>Faster / slower</th><th>&gt;5% faster</th></tr></thead><tbody>
+<tr><td>physical</td><td>A10-&gt;A40</td><td>10 / 10</td><td>1.166</td><td>[0.96, 1.76]</td><td>1.373</td><td>10 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>A40-&gt;B</td><td>10 / 10</td><td>1.955</td><td>[1.80, 2.07]</td><td>1.922</td><td>10 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>B-&gt;C</td><td>10 / 10</td><td>1.061</td><td>[0.61, 2.23]</td><td>1.422</td><td>10 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>B-&gt;D</td><td>10 / 10</td><td>3.399</td><td>[2.79, 4.08]</td><td>3.510</td><td>10 / 0</td><td>1</td></tr>
+<tr><td>physical</td><td>A10-&gt;C</td><td>10 / 10</td><td>4.422</td><td>[3.82, 5.29]</td><td>4.644</td><td>10 / 0</td><td>4</td></tr>
+<tr><td>physical</td><td>A40-&gt;C</td><td>10 / 10</td><td>2.835</td><td>[2.64, 4.14]</td><td>3.316</td><td>10 / 0</td><td>1</td></tr>
+<tr><td>scaled95</td><td>A10-&gt;A40</td><td>0 / 10</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A40-&gt;B</td><td>0 / 10</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>B-&gt;C</td><td>0 / 10</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>B-&gt;D</td><td>0 / 10</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A10-&gt;C</td><td>7 / 10</td><td>4.688</td><td>[4.04, 5.39]</td><td>4.826</td><td>7 / 0</td><td>3</td></tr>
+<tr><td>scaled95</td><td>A40-&gt;C</td><td>0 / 10</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+</tbody></table></div></section>
+<h2>Per-case evidence</h2><div class='scroll'><table><thead><tr><th>ID</th><th>Cohort</th><th>Population</th><th>A10 (s)</th><th>A40 (s)</th><th>B (s)</th><th>C (s)</th><th>D (s)</th><th>Physical-qualified B→C (%)</th><th>Scaled95-qualified B→C (%)</th></tr></thead><tbody>
+<tr><td>severe::wide_free_00</td><td>pilot</td><td>free</td><td>1.305032 <small>(P)</small></td><td>1.292980 <small>(P)</small></td><td>1.272479 <small>(P)</small></td><td>1.268102 <small>(P)</small></td><td>1.255008 <small>(P)</small></td><td>0.344</td><td>0.344</td></tr>
+<tr><td>severe::wide_free_01</td><td>pilot</td><td>free</td><td>1.171394 <small>(P)</small></td><td>1.109930 <small>(P)</small></td><td>1.090854 <small>(P)</small></td><td>1.076818 <small>(P)</small></td><td>1.056903 <small>(P)</small></td><td>1.287</td><td>—</td></tr>
+<tr><td>severe::wide_free_02</td><td>pilot</td><td>free</td><td>0.901618 <small>(P)</small></td><td>0.869185 <small>(P)</small></td><td>0.853963 <small>(P)</small></td><td>0.832415 <small>(P)</small></td><td>0.815157 <small>(P)</small></td><td>2.523</td><td>—</td></tr>
+<tr><td>severe::wide_free_03</td><td>pilot</td><td>free</td><td>1.112492 <small>(P)</small></td><td>1.031969 <small>(P)</small></td><td>1.014104 <small>(P)</small></td><td>0.992137 <small>(P)</small></td><td>0.978954 <small>(P)</small></td><td>2.166</td><td>—</td></tr>
+<tr><td>severe::wide_free_04</td><td>pilot</td><td>free</td><td>1.020153 <small>(P)</small></td><td>1.011639 <small>(P)</small></td><td>0.992994 <small>(P)</small></td><td>1.001587 <small>(P)</small></td><td>0.987297 <small>(P)</small></td><td>-0.865</td><td>—</td></tr>
+<tr><td>severe::wide_free_05</td><td>pilot</td><td>free</td><td>1.220602 <small>(P)</small></td><td>1.211838 <small>(P)</small></td><td>1.192776 <small>(P)</small></td><td>1.196182 <small>(P)</small></td><td>1.182493 <small>(P)</small></td><td>-0.285</td><td>—</td></tr>
+<tr><td>severe::wide_free_06</td><td>pilot</td><td>free</td><td>—</td><td>—</td><td>1.098952 <small>(P)</small></td><td>0.884534 <small>(P)</small></td><td>0.864840 <small>(P)</small></td><td>19.511</td><td>—</td></tr>
+<tr><td>severe::wide_free_07</td><td>pilot</td><td>free</td><td>1.168777 <small>(P)</small></td><td>1.125182 <small>(P)</small></td><td>1.107869 <small>(P)</small></td><td>1.033809 <small>(unqualified)</small></td><td>1.021682 <small>(unqualified)</small></td><td>—</td><td>—</td></tr>
+<tr><td>severe::wide_free_08</td><td>pilot</td><td>free</td><td>1.255022 <small>(P)</small></td><td>1.244820 <small>(P)</small></td><td>1.222309 <small>(P)</small></td><td>1.251030 <small>(P)</small></td><td>1.224557 <small>(P)</small></td><td>-2.350</td><td>—</td></tr>
+<tr><td>severe::wide_free_09</td><td>pilot</td><td>free</td><td>1.097363 <small>(P)</small></td><td>1.087364 <small>(P)</small></td><td>1.066557 <small>(P)</small></td><td>1.081400 <small>(P)</small></td><td>1.060682 <small>(P)</small></td><td>-1.392</td><td>—</td></tr>
+<tr><td>severe::wide_table_00</td><td>pilot</td><td>table</td><td>0.742896 <small>(P)</small></td><td>0.732718 <small>(P)</small></td><td>0.716246 <small>(P)</small></td><td>0.712877 <small>(P)</small></td><td>0.696244 <small>(P)</small></td><td>0.470</td><td>—</td></tr>
+<tr><td>severe::wide_table_01</td><td>pilot</td><td>table</td><td>0.918503 <small>(P)</small></td><td>0.906057 <small>(P)</small></td><td>0.887451 <small>(P)</small></td><td>0.882054 <small>(P)</small></td><td>0.855650 <small>(P)</small></td><td>0.608</td><td>—</td></tr>
+<tr><td>severe::wide_table_02</td><td>pilot</td><td>table</td><td>1.213050 <small>(P)</small></td><td>1.178822 <small>(P)</small></td><td>1.161907 <small>(P)</small></td><td>1.147670 <small>(P)</small></td><td>1.132092 <small>(P)</small></td><td>1.225</td><td>—</td></tr>
+<tr><td>severe::wide_table_03</td><td>pilot</td><td>table</td><td>0.767558 <small>(P)</small></td><td>0.759590 <small>(P)</small></td><td>0.744241 <small>(P)</small></td><td>0.727654 <small>(P)</small></td><td>0.719939 <small>(P)</small></td><td>2.229</td><td>—</td></tr>
+<tr><td>severe::wide_table_04</td><td>pilot</td><td>table</td><td>0.796384 <small>(P)</small></td><td>0.786590 <small>(P)</small></td><td>0.770192 <small>(P)</small></td><td>0.763293 <small>(P)</small></td><td>0.742985 <small>(P)</small></td><td>0.896</td><td>—</td></tr>
+<tr><td>severe::wide_table_05</td><td>pilot</td><td>table</td><td>0.750126 <small>(P)</small></td><td>0.741857 <small>(P)</small></td><td>0.728033 <small>(P)</small></td><td>0.711133 <small>(P)</small></td><td>0.694688 <small>(P)</small></td><td>2.321</td><td>—</td></tr>
+<tr><td>severe::wide_table_06</td><td>pilot</td><td>table</td><td>0.873479 <small>(P)</small></td><td>0.866639 <small>(P)</small></td><td>0.850265 <small>(P)</small></td><td>0.845809 <small>(P)</small></td><td>0.822712 <small>(P)</small></td><td>0.524</td><td>—</td></tr>
+<tr><td>severe::wide_table_07</td><td>pilot</td><td>table</td><td>0.844627 <small>(P)</small></td><td>0.836501 <small>(P)</small></td><td>0.822050 <small>(P)</small></td><td>0.805029 <small>(P)</small></td><td>0.790595 <small>(P)</small></td><td>2.071</td><td>—</td></tr>
+<tr><td>severe::wide_table_08</td><td>pilot</td><td>table</td><td>0.861689 <small>(P)</small></td><td>0.842970 <small>(P)</small></td><td>0.825833 <small>(P)</small></td><td>0.800125 <small>(P)</small></td><td>0.780696 <small>(P)</small></td><td>3.113</td><td>—</td></tr>
+<tr><td>severe::wide_table_09</td><td>pilot</td><td>table</td><td>1.066463 <small>(P)</small></td><td>1.056872 <small>(P)</small></td><td>1.037171 <small>(P)</small></td><td>1.029301 <small>(P)</small></td><td>1.013860 <small>(P)</small></td><td>0.759</td><td>—</td></tr>
+<tr><td>severe::wide_cluttered_00</td><td>pilot</td><td>cluttered</td><td>1.061427 <small>(P)</small></td><td>1.025125 <small>(P)</small></td><td>1.006229 <small>(P)</small></td><td>0.983011 <small>(P)</small></td><td>0.969788 <small>(P)</small></td><td>2.307</td><td>—</td></tr>
+<tr><td>severe::wide_cluttered_01</td><td>pilot</td><td>cluttered</td><td>1.329477 <small>(P)</small></td><td>1.309911 <small>(P)</small></td><td>1.290700 <small>(P)</small></td><td>1.238319 <small>(P)</small></td><td>1.210472 <small>(P)</small></td><td>4.058</td><td>—</td></tr>
+<tr><td>severe::wide_cluttered_02</td><td>pilot</td><td>cluttered</td><td>0.969992 <small>(P)</small></td><td>0.962441 <small>(P)</small></td><td>0.947484 <small>(P)</small></td><td>0.920605 <small>(P)</small></td><td>0.908316 <small>(P)</small></td><td>2.837</td><td>—</td></tr>
+<tr><td>severe::wide_cluttered_03</td><td>pilot</td><td>cluttered</td><td>1.081655 <small>(P)</small></td><td>1.037999 <small>(P)</small></td><td>1.020024 <small>(P)</small></td><td>1.006624 <small>(P)</small></td><td>0.984574 <small>(P)</small></td><td>1.314</td><td>1.314</td></tr>
+<tr><td>severe::wide_cluttered_04</td><td>pilot</td><td>cluttered</td><td>1.317299 <small>(P)</small></td><td>1.222778 <small>(P)</small></td><td>1.203848 <small>(P)</small></td><td>1.147720 <small>(P)</small></td><td>1.115259 <small>(P)</small></td><td>4.662</td><td>—</td></tr>
+<tr><td>severe::wide_cluttered_05</td><td>pilot</td><td>cluttered</td><td>1.327203 <small>(P)</small></td><td>1.286539 <small>(P)</small></td><td>1.261934 <small>(P)</small></td><td>1.200227 <small>(P)</small></td><td>1.167725 <small>(P)</small></td><td>4.890</td><td>—</td></tr>
+<tr><td>severe::wide_cluttered_06</td><td>pilot</td><td>cluttered</td><td>1.702761 <small>(P)</small></td><td>1.638454 <small>(P)</small></td><td>1.616943 <small>(P)</small></td><td>1.589106 <small>(P)</small></td><td>1.571672 <small>(P)</small></td><td>1.722</td><td>—</td></tr>
+<tr><td>severe::wide_cluttered_07</td><td>pilot</td><td>cluttered</td><td>1.234239 <small>(P)</small></td><td>1.227049 <small>(P)</small></td><td>1.208327 <small>(P)</small></td><td>1.193802 <small>(P)</small></td><td>1.179304 <small>(P)</small></td><td>1.202</td><td>—</td></tr>
+<tr><td>severe::wide_cluttered_08</td><td>pilot</td><td>cluttered</td><td>1.016964 <small>(P)</small></td><td>0.993053 <small>(P)</small></td><td>0.977211 <small>(P)</small></td><td>0.926141 <small>(P)</small></td><td>0.909716 <small>(P)</small></td><td>5.226</td><td>—</td></tr>
+<tr><td>severe::wide_cluttered_09</td><td>pilot</td><td>cluttered</td><td>0.953459 <small>(P)</small></td><td>0.947218 <small>(P)</small></td><td>0.929293 <small>(P)</small></td><td>0.951299 <small>(P)</small></td><td>0.923106 <small>(P)</small></td><td>-2.368</td><td>-2.368</td></tr>
+</tbody></table></div><p><small>Positive percentages mean the second method is faster. P = passed the explicit physical checks. A10/A40 compare iteration budgets on the original geometry; B is independent timing on original geometry; C optimizes geometry and time; D independently retimes C geometry, controlling for timing-law quality. B→C alone does not isolate a causal geometric gain.</small></p>
+<section><h2>Exploratory independently sampled diagnostics — NOT QUALIFIED</h2>
+<p>Only this section reports physical-time sampled results without the adaptive qualification receipt. All durations are local feasible incumbents, never global minimum-time guarantees.</p>
+<p>physical:A10-&gt;A40 — 29/30 pairs; median 1.3550361484656541% (sampled only)</p>
+<p>physical:A40-&gt;B — 29/30 pairs; median 1.7512847441560162% (sampled only)</p>
+<p>physical:B-&gt;C — 29/30 pairs; median 1.313700288727769% (sampled only)</p>
+<p>physical:B-&gt;D — 29/30 pairs; median 3.466138181796202% (sampled only)</p>
+<p>scaled95:A10-&gt;A40 — 0/30 pairs; median None% (sampled only)</p>
+<p>scaled95:A40-&gt;B — 0/30 pairs; median None% (sampled only)</p>
+<p>scaled95:B-&gt;C — 3/30 pairs; median 0.343946629380552% (sampled only)</p>
+<p>scaled95:B-&gt;D — 0/30 pairs; median None% (sampled only)</p>
+<h2>Torque activity by source task</h2>
+<table><thead><tr><th>Case</th><th>Method</th><th>Max utilization of derated torque limit</th></tr></thead><tbody>
+<tr><td>wide_free_00</td><td>A10</td><td>95.00%</td></tr>
+<tr><td>wide_free_00</td><td>A40</td><td>95.00%</td></tr>
+<tr><td>wide_free_00</td><td>B</td><td>95.00%</td></tr>
+<tr><td>wide_free_00</td><td>C</td><td>94.89%</td></tr>
+<tr><td>wide_free_00</td><td>D</td><td>95.00%</td></tr>
+<tr><td>wide_free_01</td><td>A10</td><td>94.98%</td></tr>
+<tr><td>wide_free_01</td><td>A40</td><td>95.01%</td></tr>
+<tr><td>wide_free_01</td><td>B</td><td>95.00%</td></tr>
+<tr><td>wide_free_01</td><td>C</td><td>93.29%</td></tr>
+<tr><td>wide_free_01</td><td>D</td><td>94.15%</td></tr>
+<tr><td>wide_free_02</td><td>A10</td><td>94.99%</td></tr>
+<tr><td>wide_free_02</td><td>A40</td><td>95.01%</td></tr>
+<tr><td>wide_free_02</td><td>B</td><td>95.00%</td></tr>
+<tr><td>wide_free_02</td><td>C</td><td>94.58%</td></tr>
+<tr><td>wide_free_02</td><td>D</td><td>95.00%</td></tr>
+<tr><td>wide_free_03</td><td>A10</td><td>94.97%</td></tr>
+<tr><td>wide_free_03</td><td>A40</td><td>95.00%</td></tr>
+<tr><td>wide_free_03</td><td>B</td><td>95.00%</td></tr>
+<tr><td>wide_free_03</td><td>C</td><td>94.72%</td></tr>
+<tr><td>wide_free_03</td><td>D</td><td>95.00%</td></tr>
+<tr><td>wide_free_04</td><td>A10</td><td>92.24%</td></tr>
+<tr><td>wide_free_04</td><td>A40</td><td>92.27%</td></tr>
+<tr><td>wide_free_04</td><td>B</td><td>92.27%</td></tr>
+<tr><td>wide_free_04</td><td>C</td><td>94.03%</td></tr>
+<tr><td>wide_free_04</td><td>D</td><td>94.58%</td></tr>
+<tr><td>wide_free_05</td><td>A10</td><td>94.98%</td></tr>
+<tr><td>wide_free_05</td><td>A40</td><td>95.02%</td></tr>
+<tr><td>wide_free_05</td><td>B</td><td>95.00%</td></tr>
+<tr><td>wide_free_05</td><td>C</td><td>93.41%</td></tr>
+<tr><td>wide_free_05</td><td>D</td><td>95.00%</td></tr>
+<tr><td>wide_free_06</td><td>B</td><td>95.00%</td></tr>
+<tr><td>wide_free_06</td><td>C</td><td>94.67%</td></tr>
+<tr><td>wide_free_06</td><td>D</td><td>95.00%</td></tr>
+<tr><td>wide_free_07</td><td>A10</td><td>94.79%</td></tr>
+<tr><td>wide_free_07</td><td>A40</td><td>95.02%</td></tr>
+<tr><td>wide_free_07</td><td>B</td><td>95.00%</td></tr>
+<tr><td>wide_free_07</td><td>C</td><td>94.98%</td></tr>
+<tr><td>wide_free_07</td><td>D</td><td>95.00%</td></tr>
+<tr><td>wide_free_08</td><td>A10</td><td>94.21%</td></tr>
+<tr><td>wide_free_08</td><td>A40</td><td>94.26%</td></tr>
+<tr><td>wide_free_08</td><td>B</td><td>94.27%</td></tr>
+<tr><td>wide_free_08</td><td>C</td><td>93.32%</td></tr>
+<tr><td>wide_free_08</td><td>D</td><td>93.70%</td></tr>
+<tr><td>wide_free_09</td><td>A10</td><td>93.00%</td></tr>
+<tr><td>wide_free_09</td><td>A40</td><td>93.03%</td></tr>
+<tr><td>wide_free_09</td><td>B</td><td>92.92%</td></tr>
+<tr><td>wide_free_09</td><td>C</td><td>93.04%</td></tr>
+<tr><td>wide_free_09</td><td>D</td><td>94.27%</td></tr>
+<tr><td>wide_table_00</td><td>A10</td><td>94.97%</td></tr>
+<tr><td>wide_table_00</td><td>A40</td><td>95.01%</td></tr>
+<tr><td>wide_table_00</td><td>B</td><td>95.00%</td></tr>
+<tr><td>wide_table_00</td><td>C</td><td>94.24%</td></tr>
+<tr><td>wide_table_00</td><td>D</td><td>95.00%</td></tr>
+<tr><td>wide_table_01</td><td>A10</td><td>94.98%</td></tr>
+<tr><td>wide_table_01</td><td>A40</td><td>95.00%</td></tr>
+<tr><td>wide_table_01</td><td>B</td><td>95.00%</td></tr>
+<tr><td>wide_table_01</td><td>C</td><td>94.99%</td></tr>
+<tr><td>wide_table_01</td><td>D</td><td>95.00%</td></tr>
+<tr><td>wide_table_02</td><td>A10</td><td>94.95%</td></tr>
+<tr><td>wide_table_02</td><td>A40</td><td>95.00%</td></tr>
+<tr><td>wide_table_02</td><td>B</td><td>95.00%</td></tr>
+<tr><td>wide_table_02</td><td>C</td><td>94.18%</td></tr>
+<tr><td>wide_table_02</td><td>D</td><td>94.54%</td></tr>
+<tr><td>wide_table_03</td><td>A10</td><td>94.97%</td></tr>
+<tr><td>wide_table_03</td><td>A40</td><td>95.00%</td></tr>
+<tr><td>wide_table_03</td><td>B</td><td>95.00%</td></tr>
+<tr><td>wide_table_03</td><td>C</td><td>93.89%</td></tr>
+<tr><td>wide_table_03</td><td>D</td><td>94.33%</td></tr>
+<tr><td>wide_table_04</td><td>A10</td><td>94.99%</td></tr>
+<tr><td>wide_table_04</td><td>A40</td><td>95.01%</td></tr>
+<tr><td>wide_table_04</td><td>B</td><td>95.00%</td></tr>
+<tr><td>wide_table_04</td><td>C</td><td>94.44%</td></tr>
+<tr><td>wide_table_04</td><td>D</td><td>95.00%</td></tr>
+<tr><td>wide_table_05</td><td>A10</td><td>94.98%</td></tr>
+<tr><td>wide_table_05</td><td>A40</td><td>95.00%</td></tr>
+<tr><td>wide_table_05</td><td>B</td><td>95.00%</td></tr>
+<tr><td>wide_table_05</td><td>C</td><td>94.09%</td></tr>
+<tr><td>wide_table_05</td><td>D</td><td>95.00%</td></tr>
+<tr><td>wide_table_06</td><td>A10</td><td>94.96%</td></tr>
+<tr><td>wide_table_06</td><td>A40</td><td>95.01%</td></tr>
+<tr><td>wide_table_06</td><td>B</td><td>95.00%</td></tr>
+<tr><td>wide_table_06</td><td>C</td><td>92.44%</td></tr>
+<tr><td>wide_table_06</td><td>D</td><td>95.00%</td></tr>
+<tr><td>wide_table_07</td><td>A10</td><td>95.00%</td></tr>
+<tr><td>wide_table_07</td><td>A40</td><td>95.00%</td></tr>
+<tr><td>wide_table_07</td><td>B</td><td>95.00%</td></tr>
+<tr><td>wide_table_07</td><td>C</td><td>95.01%</td></tr>
+<tr><td>wide_table_07</td><td>D</td><td>95.00%</td></tr>
+<tr><td>wide_table_08</td><td>A10</td><td>94.87%</td></tr>
+<tr><td>wide_table_08</td><td>A40</td><td>95.00%</td></tr>
+<tr><td>wide_table_08</td><td>B</td><td>95.00%</td></tr>
+<tr><td>wide_table_08</td><td>C</td><td>92.35%</td></tr>
+<tr><td>wide_table_08</td><td>D</td><td>95.00%</td></tr>
+<tr><td>wide_table_09</td><td>A10</td><td>94.97%</td></tr>
+<tr><td>wide_table_09</td><td>A40</td><td>95.01%</td></tr>
+<tr><td>wide_table_09</td><td>B</td><td>95.00%</td></tr>
+<tr><td>wide_table_09</td><td>C</td><td>94.94%</td></tr>
+<tr><td>wide_table_09</td><td>D</td><td>95.00%</td></tr>
+<tr><td>wide_cluttered_00</td><td>A10</td><td>94.28%</td></tr>
+<tr><td>wide_cluttered_00</td><td>A40</td><td>95.00%</td></tr>
+<tr><td>wide_cluttered_00</td><td>B</td><td>95.00%</td></tr>
+<tr><td>wide_cluttered_00</td><td>C</td><td>94.17%</td></tr>
+<tr><td>wide_cluttered_00</td><td>D</td><td>95.00%</td></tr>
+<tr><td>wide_cluttered_01</td><td>A10</td><td>95.00%</td></tr>
+<tr><td>wide_cluttered_01</td><td>A40</td><td>95.01%</td></tr>
+<tr><td>wide_cluttered_01</td><td>B</td><td>95.00%</td></tr>
+<tr><td>wide_cluttered_01</td><td>C</td><td>94.28%</td></tr>
+<tr><td>wide_cluttered_01</td><td>D</td><td>95.00%</td></tr>
+<tr><td>wide_cluttered_02</td><td>A10</td><td>94.99%</td></tr>
+<tr><td>wide_cluttered_02</td><td>A40</td><td>95.00%</td></tr>
+<tr><td>wide_cluttered_02</td><td>B</td><td>95.00%</td></tr>
+<tr><td>wide_cluttered_02</td><td>C</td><td>94.47%</td></tr>
+<tr><td>wide_cluttered_02</td><td>D</td><td>95.00%</td></tr>
+<tr><td>wide_cluttered_03</td><td>A10</td><td>94.97%</td></tr>
+<tr><td>wide_cluttered_03</td><td>A40</td><td>95.01%</td></tr>
+<tr><td>wide_cluttered_03</td><td>B</td><td>95.00%</td></tr>
+<tr><td>wide_cluttered_03</td><td>C</td><td>94.57%</td></tr>
+<tr><td>wide_cluttered_03</td><td>D</td><td>95.00%</td></tr>
+<tr><td>wide_cluttered_04</td><td>A10</td><td>94.97%</td></tr>
+<tr><td>wide_cluttered_04</td><td>A40</td><td>95.00%</td></tr>
+<tr><td>wide_cluttered_04</td><td>B</td><td>95.00%</td></tr>
+<tr><td>wide_cluttered_04</td><td>C</td><td>94.90%</td></tr>
+<tr><td>wide_cluttered_04</td><td>D</td><td>95.00%</td></tr>
+<tr><td>wide_cluttered_05</td><td>A10</td><td>94.95%</td></tr>
+<tr><td>wide_cluttered_05</td><td>A40</td><td>95.00%</td></tr>
+<tr><td>wide_cluttered_05</td><td>B</td><td>95.00%</td></tr>
+<tr><td>wide_cluttered_05</td><td>C</td><td>94.83%</td></tr>
+<tr><td>wide_cluttered_05</td><td>D</td><td>95.00%</td></tr>
+<tr><td>wide_cluttered_06</td><td>A10</td><td>94.26%</td></tr>
+<tr><td>wide_cluttered_06</td><td>A40</td><td>95.00%</td></tr>
+<tr><td>wide_cluttered_06</td><td>B</td><td>95.00%</td></tr>
+<tr><td>wide_cluttered_06</td><td>C</td><td>94.16%</td></tr>
+<tr><td>wide_cluttered_06</td><td>D</td><td>95.00%</td></tr>
+<tr><td>wide_cluttered_07</td><td>A10</td><td>94.98%</td></tr>
+<tr><td>wide_cluttered_07</td><td>A40</td><td>95.00%</td></tr>
+<tr><td>wide_cluttered_07</td><td>B</td><td>95.00%</td></tr>
+<tr><td>wide_cluttered_07</td><td>C</td><td>94.39%</td></tr>
+<tr><td>wide_cluttered_07</td><td>D</td><td>94.09%</td></tr>
+<tr><td>wide_cluttered_08</td><td>A10</td><td>95.00%</td></tr>
+<tr><td>wide_cluttered_08</td><td>A40</td><td>95.00%</td></tr>
+<tr><td>wide_cluttered_08</td><td>B</td><td>95.00%</td></tr>
+<tr><td>wide_cluttered_08</td><td>C</td><td>94.98%</td></tr>
+<tr><td>wide_cluttered_08</td><td>D</td><td>95.00%</td></tr>
+<tr><td>wide_cluttered_09</td><td>A10</td><td>93.47%</td></tr>
+<tr><td>wide_cluttered_09</td><td>A40</td><td>93.46%</td></tr>
+<tr><td>wide_cluttered_09</td><td>B</td><td>93.49%</td></tr>
+<tr><td>wide_cluttered_09</td><td>C</td><td>94.81%</td></tr>
+<tr><td>wide_cluttered_09</td><td>D</td><td>94.97%</td></tr>
+</tbody></table></section></main></html>

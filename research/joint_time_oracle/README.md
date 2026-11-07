@@ -387,12 +387,33 @@ this exploratory result without resolving those gates.
 
 ## Torque-active stress extensions (2026-11-07)
 
-See [TORQUE_STRESS_PROTOCOL.md](TORQUE_STRESS_PROTOCOL.md). This branch adds
-frozen task-dependent effort-limit derating (moderate/severe), aligned native
-A10/A40 reruns, matched B/C/D constraints, a source-disjoint wider-excursion
-task generator, independent sampled torque/collision audit extensions, and a
-fail-closed separate sampled-versus-adaptive-qualified HTML report. It does
-**not** change Panda inertials or production limits. Derating simulates a
-lower-capacity actuator, **not** an actual payload. The GPU study and
-adaptive qualification have **not** been executed in this branch; no new
-trajectory quality gains are claimed.
+See [TORQUE_STRESS_PROTOCOL.md](TORQUE_STRESS_PROTOCOL.md). The completed
+frozen exploratory study has separate reports for the historical 20-task
+cohort and the generated 30-task wider-excursion cohort:
+
+- `reports/joint_time_oracle/torque_active/index.html`
+- `reports/joint_time_oracle/torque_active_wide/index.html`
+
+Raw artifacts are under `results/torque_stress_final_20261107/` and
+`results/torque_wide_stress_20261107/`; source-disjoint wide task definitions
+are under `results/torque_wide_source_20261107/`. `.npz` trajectory archives
+are kept outside Git because the raw cohorts exceed 3 GB. The report artifact
+manifests list exact paths, sizes, and SHA-256 hashes.
+
+On the original 20 tasks, severe derating produced a median +5.46% B→D gain
+(paired bootstrap 95% CI +1.79% to +7.39%); moderate derating produced no
+demonstrated geometry gain (median −0.39%). The wider cohort reproduced a
+smaller positive severe-regime gain (+3.47%, 29 pairs; CI +2.79% to +3.83%)
+and a small moderate gain (+0.44%, 27 pairs; CI +0.33% to +0.53%). The original
+20-task severe gain was larger in table and cluttered populations than in free
+space. In these improved groups D's median joint path was longer than B's, so
+path shortening alone does not explain the duration reduction.
+
+Claims are limited to independently sampled physical checks; this is not a
+continuous-time certificate. C is a local multistart search: individual SLSQP
+starts terminated successfully in 77/480 trials on the original cohort and
+218/684 trials on the wider cohort. Feasible nonconverged incumbents remain
+distinct from converged local solutions. A full geometric planner rerun under
+the derated effort constraints and exhaustive homotopy exploration were not
+completed. Derating simulates a lower-capacity actuator, **not** an actual
+payload; Panda inertials and production limits were not changed.

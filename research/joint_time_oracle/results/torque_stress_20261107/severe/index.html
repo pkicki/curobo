@@ -1,0 +1,244 @@
+<!doctype html><html lang="en"><meta charset="utf-8">
+<title>Joint time-oracle: cohort comparison</title>
+<style>
+body{font:15px/1.5 system-ui,sans-serif;background:#f7f8fb;color:#1a2431;margin:0}
+main{max-width:1300px;margin:0 auto;padding:2rem}
+h1,h2{letter-spacing:-.03em} .warn{background:#fff1db;border-left:5px solid #b66900;padding:1rem}
+table{border-collapse:collapse;width:100%;background:white;margin:1rem 0}
+th,td{border-bottom:1px solid #e0e4e9;padding:.55rem;text-align:left}
+thead{background:#e7edf5} .scroll{overflow-x:auto}
+.pill{display:inline-block;padding:.12rem .5rem;background:#e7ebf0;border-radius:10px}
+small{color:#526073} .bad{color:#9b2525}.good{color:#12623b}
+</style><main>
+<h1>Joint path-and-time optimization: frozen cohort</h1>
+<p class="warn"><strong>Interpretation gate:</strong> candidates are local, not globally optimal.
+Comparisons require explicit dense and independent validation flags for both trajectories.
+Physical and 95%-scaled limits are analyzed separately. Missing, failed, or
+unqualified trajectories never count as zero improvement.</p>
+<p><strong>20</strong> frozen task records. This page summarizes provided results; it does not run or certify experiments.</p>
+<section><h2>all <small>(20 attempted)</small></h2>
+<div class='scroll'><table><thead><tr><th>Method</th><th>Recorded</th><th>With duration</th><th>Physical-qualified</th><th>Scaled95-qualified</th><th>Converged</th><th>At control bound</th></tr></thead><tbody>
+<tr><td>A10 — cuRoboV2-Fast TimeOpt default (10 iterations)</td><td>20</td><td>3</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>A40 — cuRoboV2-Fast TimeOpt 40 iterations</td><td>20</td><td>3</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>B — Independent timing on original cuRobo path</td><td>20</td><td>3</td><td>0</td><td>0</td><td>3</td><td>0</td></tr>
+<tr><td>C — Joint path and time</td><td>20</td><td>3</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>D — Independent retiming of joint optimizer geometry</td><td>20</td><td>3</td><td>0</td><td>0</td><td>3</td><td>0</td></tr>
+</tbody></table></div>
+<div class='scroll'><table><thead><tr><th>Feasibility</th><th>Contrast</th><th>Paired / attempted</th><th>Median (%)</th><th>Bootstrap 95% CI (%)</th><th>Mean (%)</th><th>Faster / slower</th><th>&gt;5% faster</th></tr></thead><tbody>
+<tr><td>physical</td><td>A10-&gt;A40</td><td>0 / 20</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>A40-&gt;B</td><td>0 / 20</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>B-&gt;C</td><td>0 / 20</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>B-&gt;D</td><td>0 / 20</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>A10-&gt;C</td><td>0 / 20</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>A40-&gt;C</td><td>0 / 20</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A10-&gt;A40</td><td>0 / 20</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A40-&gt;B</td><td>0 / 20</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>B-&gt;C</td><td>0 / 20</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>B-&gt;D</td><td>0 / 20</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A10-&gt;C</td><td>0 / 20</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A40-&gt;C</td><td>0 / 20</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+</tbody></table></div></section>
+<section><h2>pilot <small>(20 attempted)</small></h2>
+<div class='scroll'><table><thead><tr><th>Method</th><th>Recorded</th><th>With duration</th><th>Physical-qualified</th><th>Scaled95-qualified</th><th>Converged</th><th>At control bound</th></tr></thead><tbody>
+<tr><td>A10 — cuRoboV2-Fast TimeOpt default (10 iterations)</td><td>20</td><td>3</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>A40 — cuRoboV2-Fast TimeOpt 40 iterations</td><td>20</td><td>3</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>B — Independent timing on original cuRobo path</td><td>20</td><td>3</td><td>0</td><td>0</td><td>3</td><td>0</td></tr>
+<tr><td>C — Joint path and time</td><td>20</td><td>3</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>D — Independent retiming of joint optimizer geometry</td><td>20</td><td>3</td><td>0</td><td>0</td><td>3</td><td>0</td></tr>
+</tbody></table></div>
+<div class='scroll'><table><thead><tr><th>Feasibility</th><th>Contrast</th><th>Paired / attempted</th><th>Median (%)</th><th>Bootstrap 95% CI (%)</th><th>Mean (%)</th><th>Faster / slower</th><th>&gt;5% faster</th></tr></thead><tbody>
+<tr><td>physical</td><td>A10-&gt;A40</td><td>0 / 20</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>A40-&gt;B</td><td>0 / 20</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>B-&gt;C</td><td>0 / 20</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>B-&gt;D</td><td>0 / 20</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>A10-&gt;C</td><td>0 / 20</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>A40-&gt;C</td><td>0 / 20</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A10-&gt;A40</td><td>0 / 20</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A40-&gt;B</td><td>0 / 20</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>B-&gt;C</td><td>0 / 20</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>B-&gt;D</td><td>0 / 20</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A10-&gt;C</td><td>0 / 20</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A40-&gt;C</td><td>0 / 20</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+</tbody></table></div></section>
+<section><h2>population:cluttered <small>(6 attempted)</small></h2>
+<div class='scroll'><table><thead><tr><th>Method</th><th>Recorded</th><th>With duration</th><th>Physical-qualified</th><th>Scaled95-qualified</th><th>Converged</th><th>At control bound</th></tr></thead><tbody>
+<tr><td>A10 — cuRoboV2-Fast TimeOpt default (10 iterations)</td><td>6</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>A40 — cuRoboV2-Fast TimeOpt 40 iterations</td><td>6</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>B — Independent timing on original cuRobo path</td><td>6</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>C — Joint path and time</td><td>6</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>D — Independent retiming of joint optimizer geometry</td><td>6</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+</tbody></table></div>
+<div class='scroll'><table><thead><tr><th>Feasibility</th><th>Contrast</th><th>Paired / attempted</th><th>Median (%)</th><th>Bootstrap 95% CI (%)</th><th>Mean (%)</th><th>Faster / slower</th><th>&gt;5% faster</th></tr></thead><tbody>
+<tr><td>physical</td><td>A10-&gt;A40</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>A40-&gt;B</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>B-&gt;C</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>B-&gt;D</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>A10-&gt;C</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>A40-&gt;C</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A10-&gt;A40</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A40-&gt;B</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>B-&gt;C</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>B-&gt;D</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A10-&gt;C</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A40-&gt;C</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+</tbody></table></div></section>
+<section><h2>population:free <small>(6 attempted)</small></h2>
+<div class='scroll'><table><thead><tr><th>Method</th><th>Recorded</th><th>With duration</th><th>Physical-qualified</th><th>Scaled95-qualified</th><th>Converged</th><th>At control bound</th></tr></thead><tbody>
+<tr><td>A10 — cuRoboV2-Fast TimeOpt default (10 iterations)</td><td>6</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>A40 — cuRoboV2-Fast TimeOpt 40 iterations</td><td>6</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>B — Independent timing on original cuRobo path</td><td>6</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>C — Joint path and time</td><td>6</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>D — Independent retiming of joint optimizer geometry</td><td>6</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+</tbody></table></div>
+<div class='scroll'><table><thead><tr><th>Feasibility</th><th>Contrast</th><th>Paired / attempted</th><th>Median (%)</th><th>Bootstrap 95% CI (%)</th><th>Mean (%)</th><th>Faster / slower</th><th>&gt;5% faster</th></tr></thead><tbody>
+<tr><td>physical</td><td>A10-&gt;A40</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>A40-&gt;B</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>B-&gt;C</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>B-&gt;D</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>A10-&gt;C</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>A40-&gt;C</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A10-&gt;A40</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A40-&gt;B</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>B-&gt;C</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>B-&gt;D</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A10-&gt;C</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A40-&gt;C</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+</tbody></table></div></section>
+<section><h2>population:table <small>(8 attempted)</small></h2>
+<div class='scroll'><table><thead><tr><th>Method</th><th>Recorded</th><th>With duration</th><th>Physical-qualified</th><th>Scaled95-qualified</th><th>Converged</th><th>At control bound</th></tr></thead><tbody>
+<tr><td>A10 — cuRoboV2-Fast TimeOpt default (10 iterations)</td><td>8</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>A40 — cuRoboV2-Fast TimeOpt 40 iterations</td><td>8</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>B — Independent timing on original cuRobo path</td><td>8</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>C — Joint path and time</td><td>8</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>D — Independent retiming of joint optimizer geometry</td><td>8</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+</tbody></table></div>
+<div class='scroll'><table><thead><tr><th>Feasibility</th><th>Contrast</th><th>Paired / attempted</th><th>Median (%)</th><th>Bootstrap 95% CI (%)</th><th>Mean (%)</th><th>Faster / slower</th><th>&gt;5% faster</th></tr></thead><tbody>
+<tr><td>physical</td><td>A10-&gt;A40</td><td>0 / 8</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>A40-&gt;B</td><td>0 / 8</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>B-&gt;C</td><td>0 / 8</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>B-&gt;D</td><td>0 / 8</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>A10-&gt;C</td><td>0 / 8</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>A40-&gt;C</td><td>0 / 8</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A10-&gt;A40</td><td>0 / 8</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A40-&gt;B</td><td>0 / 8</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>B-&gt;C</td><td>0 / 8</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>B-&gt;D</td><td>0 / 8</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A10-&gt;C</td><td>0 / 8</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A40-&gt;C</td><td>0 / 8</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+</tbody></table></div></section>
+<section><h2>pilot/cluttered <small>(6 attempted)</small></h2>
+<div class='scroll'><table><thead><tr><th>Method</th><th>Recorded</th><th>With duration</th><th>Physical-qualified</th><th>Scaled95-qualified</th><th>Converged</th><th>At control bound</th></tr></thead><tbody>
+<tr><td>A10 — cuRoboV2-Fast TimeOpt default (10 iterations)</td><td>6</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>A40 — cuRoboV2-Fast TimeOpt 40 iterations</td><td>6</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>B — Independent timing on original cuRobo path</td><td>6</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>C — Joint path and time</td><td>6</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>D — Independent retiming of joint optimizer geometry</td><td>6</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+</tbody></table></div>
+<div class='scroll'><table><thead><tr><th>Feasibility</th><th>Contrast</th><th>Paired / attempted</th><th>Median (%)</th><th>Bootstrap 95% CI (%)</th><th>Mean (%)</th><th>Faster / slower</th><th>&gt;5% faster</th></tr></thead><tbody>
+<tr><td>physical</td><td>A10-&gt;A40</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>A40-&gt;B</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>B-&gt;C</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>B-&gt;D</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>A10-&gt;C</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>A40-&gt;C</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A10-&gt;A40</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A40-&gt;B</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>B-&gt;C</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>B-&gt;D</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A10-&gt;C</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A40-&gt;C</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+</tbody></table></div></section>
+<section><h2>pilot/free <small>(6 attempted)</small></h2>
+<div class='scroll'><table><thead><tr><th>Method</th><th>Recorded</th><th>With duration</th><th>Physical-qualified</th><th>Scaled95-qualified</th><th>Converged</th><th>At control bound</th></tr></thead><tbody>
+<tr><td>A10 — cuRoboV2-Fast TimeOpt default (10 iterations)</td><td>6</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>A40 — cuRoboV2-Fast TimeOpt 40 iterations</td><td>6</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>B — Independent timing on original cuRobo path</td><td>6</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>C — Joint path and time</td><td>6</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>D — Independent retiming of joint optimizer geometry</td><td>6</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+</tbody></table></div>
+<div class='scroll'><table><thead><tr><th>Feasibility</th><th>Contrast</th><th>Paired / attempted</th><th>Median (%)</th><th>Bootstrap 95% CI (%)</th><th>Mean (%)</th><th>Faster / slower</th><th>&gt;5% faster</th></tr></thead><tbody>
+<tr><td>physical</td><td>A10-&gt;A40</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>A40-&gt;B</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>B-&gt;C</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>B-&gt;D</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>A10-&gt;C</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>A40-&gt;C</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A10-&gt;A40</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A40-&gt;B</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>B-&gt;C</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>B-&gt;D</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A10-&gt;C</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A40-&gt;C</td><td>0 / 6</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+</tbody></table></div></section>
+<section><h2>pilot/table <small>(8 attempted)</small></h2>
+<div class='scroll'><table><thead><tr><th>Method</th><th>Recorded</th><th>With duration</th><th>Physical-qualified</th><th>Scaled95-qualified</th><th>Converged</th><th>At control bound</th></tr></thead><tbody>
+<tr><td>A10 — cuRoboV2-Fast TimeOpt default (10 iterations)</td><td>8</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>A40 — cuRoboV2-Fast TimeOpt 40 iterations</td><td>8</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>B — Independent timing on original cuRobo path</td><td>8</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>C — Joint path and time</td><td>8</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>D — Independent retiming of joint optimizer geometry</td><td>8</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+</tbody></table></div>
+<div class='scroll'><table><thead><tr><th>Feasibility</th><th>Contrast</th><th>Paired / attempted</th><th>Median (%)</th><th>Bootstrap 95% CI (%)</th><th>Mean (%)</th><th>Faster / slower</th><th>&gt;5% faster</th></tr></thead><tbody>
+<tr><td>physical</td><td>A10-&gt;A40</td><td>0 / 8</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>A40-&gt;B</td><td>0 / 8</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>B-&gt;C</td><td>0 / 8</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>B-&gt;D</td><td>0 / 8</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>A10-&gt;C</td><td>0 / 8</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>physical</td><td>A40-&gt;C</td><td>0 / 8</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A10-&gt;A40</td><td>0 / 8</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A40-&gt;B</td><td>0 / 8</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>B-&gt;C</td><td>0 / 8</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>B-&gt;D</td><td>0 / 8</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A10-&gt;C</td><td>0 / 8</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+<tr><td>scaled95</td><td>A40-&gt;C</td><td>0 / 8</td><td>—</td><td>—</td><td>—</td><td>0 / 0</td><td>0</td></tr>
+</tbody></table></div></section>
+<h2>Per-case evidence</h2><div class='scroll'><table><thead><tr><th>ID</th><th>Cohort</th><th>Population</th><th>A10 (s)</th><th>A40 (s)</th><th>B (s)</th><th>C (s)</th><th>D (s)</th><th>Physical-qualified B→C (%)</th><th>Scaled95-qualified B→C (%)</th></tr></thead><tbody>
+<tr><td>severe::pilot_free_00</td><td>pilot</td><td>free</td><td>0.501551 <small>(unqualified)</small></td><td>0.491699 <small>(unqualified)</small></td><td>0.480291 <small>(unqualified)</small></td><td>0.686926 <small>(unqualified)</small></td><td>0.480729 <small>(unqualified)</small></td><td>—</td><td>—</td></tr>
+<tr><td>severe::pilot_free_01</td><td>pilot</td><td>free</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>severe::pilot_free_02</td><td>pilot</td><td>free</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>severe::pilot_free_03</td><td>pilot</td><td>free</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>severe::pilot_free_04</td><td>pilot</td><td>free</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>severe::pilot_free_05</td><td>pilot</td><td>free</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>severe::pilot_table_00</td><td>pilot</td><td>table</td><td>0.655761 <small>(unqualified)</small></td><td>0.619549 <small>(unqualified)</small></td><td>0.604503 <small>(unqualified)</small></td><td>0.845517 <small>(unqualified)</small></td><td>0.601030 <small>(unqualified)</small></td><td>—</td><td>—</td></tr>
+<tr><td>severe::pilot_table_01</td><td>pilot</td><td>table</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>severe::pilot_table_02</td><td>pilot</td><td>table</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>severe::pilot_table_03</td><td>pilot</td><td>table</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>severe::pilot_table_04</td><td>pilot</td><td>table</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>severe::pilot_table_05</td><td>pilot</td><td>table</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>severe::pilot_table_06</td><td>pilot</td><td>table</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>severe::pilot_table_07</td><td>pilot</td><td>table</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>severe::pilot_cluttered_00</td><td>pilot</td><td>cluttered</td><td>0.613252 <small>(unqualified)</small></td><td>0.601662 <small>(unqualified)</small></td><td>0.588975 <small>(unqualified)</small></td><td>1.796189 <small>(unqualified)</small></td><td>0.586645 <small>(unqualified)</small></td><td>—</td><td>—</td></tr>
+<tr><td>severe::pilot_cluttered_01</td><td>pilot</td><td>cluttered</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>severe::pilot_cluttered_02</td><td>pilot</td><td>cluttered</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>severe::pilot_cluttered_03</td><td>pilot</td><td>cluttered</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>severe::pilot_cluttered_04</td><td>pilot</td><td>cluttered</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>severe::pilot_cluttered_05</td><td>pilot</td><td>cluttered</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+</tbody></table></div><p><small>Positive percentages mean the second method is faster. P = passed the explicit physical checks. A10/A40 compare iteration budgets on the original geometry; B is independent timing on original geometry; C optimizes geometry and time; D independently retimes C geometry, controlling for timing-law quality. B→C alone does not isolate a causal geometric gain.</small></p>
+<section><h2>Exploratory independently sampled diagnostics — NOT QUALIFIED</h2>
+<p>Only this section reports physical-time sampled results without the adaptive qualification receipt. All durations are local feasible incumbents, never global minimum-time guarantees.</p>
+<p>physical:A10-&gt;A40 — 3/20 pairs; median 1.9644343498637373% (sampled only)</p>
+<p>physical:A40-&gt;B — 3/20 pairs; median 2.3199940488077413% (sampled only)</p>
+<p>physical:B-&gt;C — 0/20 pairs; median None% (sampled only)</p>
+<p>physical:B-&gt;D — 0/20 pairs; median None% (sampled only)</p>
+<p>scaled95:A10-&gt;A40 — 0/20 pairs; median None% (sampled only)</p>
+<p>scaled95:A40-&gt;B — 0/20 pairs; median None% (sampled only)</p>
+<p>scaled95:B-&gt;C — 0/20 pairs; median None% (sampled only)</p>
+<p>scaled95:B-&gt;D — 0/20 pairs; median None% (sampled only)</p>
+<h2>Torque activity by source task</h2>
+<table><thead><tr><th>Case</th><th>Method</th><th>Max utilization of derated torque limit</th></tr></thead><tbody>
+<tr><td>pilot_free_00</td><td>A10</td><td>94.99%</td></tr>
+<tr><td>pilot_free_00</td><td>A40</td><td>95.00%</td></tr>
+<tr><td>pilot_free_00</td><td>B</td><td>95.00%</td></tr>
+<tr><td>pilot_free_00</td><td>C</td><td>88.21%</td></tr>
+<tr><td>pilot_free_00</td><td>D</td><td>95.00%</td></tr>
+<tr><td>pilot_table_00</td><td>A10</td><td>94.98%</td></tr>
+<tr><td>pilot_table_00</td><td>A40</td><td>95.00%</td></tr>
+<tr><td>pilot_table_00</td><td>B</td><td>95.00%</td></tr>
+<tr><td>pilot_table_00</td><td>C</td><td>93.68%</td></tr>
+<tr><td>pilot_table_00</td><td>D</td><td>95.00%</td></tr>
+<tr><td>pilot_cluttered_00</td><td>A10</td><td>94.94%</td></tr>
+<tr><td>pilot_cluttered_00</td><td>A40</td><td>95.00%</td></tr>
+<tr><td>pilot_cluttered_00</td><td>B</td><td>95.00%</td></tr>
+<tr><td>pilot_cluttered_00</td><td>C</td><td>94.82%</td></tr>
+<tr><td>pilot_cluttered_00</td><td>D</td><td>95.00%</td></tr>
+</tbody></table></section></main></html>

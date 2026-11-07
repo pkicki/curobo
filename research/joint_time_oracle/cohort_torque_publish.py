@@ -128,8 +128,12 @@ def _series_page(arm: Path, task: dict, output: Path) -> dict:
         item=profile_diag[m];torque_use=float(np.max(torque_utilization(torques[m],np.stack((profile['effort_lower'],profile['effort_upper'])))))
         receipt=receipts.get(f'{case}:{m}',{})
         status='physical + Scaled95' if receipt.get('scaled95') else ('physical' if receipt.get('physical') else 'unqualified')
-        rows.append(f'<tr><td>{m}</td><td>{duration:.6f}</td><td>{100*torque_use:.2f}%</td><td>{item.get("world_min_clearance_m")}</td><td>{item.get("self_min_clearance_m")}</td><td>{item.get("samples")}</td><td>{status}</td></tr>')
-    page='''<!doctype html><html lang="en"><meta charset="utf-8"><title>''' + html.escape(case) + ''' — torque stress</title><style>body{font:14px/1.45 system-ui;max-width:1050px;margin:2rem auto;padding:0 1rem;color:#1c2938}svg{width:100%;height:auto;margin:.7rem 0 1.5rem;background:white}table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid #ddd;padding:.45rem;text-align:left}</style><a href="../../index.html">← report</a><h1>''' + html.escape(case) + '''</h1><p>''' + html.escape(task['population']) + ''' population; ''' + html.escape(profile['regime']) + ''' actuator derating (synthetic). Endpoint, Pinocchio torque, and primitive collision checks use the adaptive sampled replay. This is not a continuous-time certificate.</p><table><thead><tr><th>Method</th><th>Duration (s)</th><th>Torque utilization</th><th>World clearance (m)</th><th>Self clearance (m)</th><th>Samples</th><th>Independent audit</th></tr></thead><tbody>''' + ''.join(rows) + '''</tbody></table>''' + ''.join(sections) + '''</html>'''
+        residuals={family:float(item.get('families',{}).get(family,{}).get('physical',{}).get('violation',0.)) for family in item.get('families',{})}
+        worst_family=max(residuals,key=residuals.get) if residuals else 'n/a'
+        worst=f'{worst_family}: {residuals[worst_family]:.3g}' if residuals else 'n/a'
+        joint_length=float(np.linalg.norm(np.diff(trajectories[m]['q'],axis=0),axis=1).sum())
+        rows.append(f'<tr><td>{m}</td><td>{duration:.6f}</td><td>{joint_length:.4f}</td><td>{100*torque_use:.2f}%</td><td>{item.get("world_min_clearance_m")}</td><td>{item.get("self_min_clearance_m")}</td><td>{item.get("samples")}</td><td>{worst}</td><td>{status}</td></tr>')
+    page='''<!doctype html><html lang="en"><meta charset="utf-8"><title>''' + html.escape(case) + ''' — torque stress</title><style>body{font:14px/1.45 system-ui;max-width:1050px;margin:2rem auto;padding:0 1rem;color:#1c2938}svg{width:100%;height:auto;margin:.7rem 0 1.5rem;background:white}table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid #ddd;padding:.45rem;text-align:left}</style><a href="../../index.html">← report</a><h1>''' + html.escape(case) + '''</h1><p>''' + html.escape(task['population']) + ''' population; ''' + html.escape(profile['regime']) + ''' actuator derating (synthetic). Endpoint, Pinocchio torque, and primitive collision checks use the adaptive sampled replay. This is not a continuous-time certificate.</p><table><thead><tr><th>Method</th><th>Duration (s)</th><th>Joint path length (rad)</th><th>Torque utilization</th><th>World clearance (m)</th><th>Self clearance (m)</th><th>Samples</th><th>Worst physical residual</th><th>Independent audit</th></tr></thead><tbody>''' + ''.join(rows) + '''</tbody></table>''' + ''.join(sections) + '''</html>'''
     output.write_text(page,encoding='utf-8')
     return {'case_id':case,'population':task['population'],'regime':profile['regime'],'durations_s':durations}
 
@@ -139,7 +143,7 @@ def publish(source: Path, destination: Path) -> dict:
     destination.mkdir(parents=True, exist_ok=True)
     summary={"status":"sampled adaptive verification; not continuous-time certification",
              "raw_results":str(source.resolve()),"regimes":{}}
-    artifact_rows=[];case_rows=[];overview_rows=[];conclusions=[];threshold_rows=[];manifests={}
+    artifact_rows=[];case_rows=[];overview_rows=[];conclusions=[];population_rows=[];threshold_rows=[];manifests={}
     method_names=tuple(COLORS)
     for regime in ("moderate", "severe"):
         arm=source/regime;summary_path=arm/"torque_summary.json"
@@ -183,6 +187,22 @@ def publish(source: Path, destination: Path) -> dict:
              "torque_threshold_counts_by_method":threshold_counts,
              "A10_A40_B_C_D_physical_receipts":{m:sum(receipts.get(f"{t['case_id']}:{m}",{}).get("physical") is True for t in tasks) for m in method_names},
              "A10_A40_B_C_D_scaled95_receipts":{m:sum(receipts.get(f"{t['case_id']}:{m}",{}).get("scaled95") is True for t in tasks) for m in method_names}}
+        population_comparisons={}
+        for population in ("free", "table", "cluttered"):
+            group=record["adaptive_qualified"]["groups"].get("population:"+population,{})
+            contrast=group.get("comparisons",{}).get("physical:B->D",{})
+            ci=contrast.get("median_bootstrap95_pct")
+            population_comparisons[population]={
+                "attempted_tasks":contrast.get("attempted_tasks",0),
+                "qualified_pairs":contrast.get("eligible_pairs",0),
+                "median_improvement_pct":contrast.get("median_improvement_pct"),
+                "mean_improvement_pct":contrast.get("mean_improvement_pct"),
+                "median_bootstrap95_pct":ci,
+                "improved_count":contrast.get("improved_count",0),
+                "slower_count":contrast.get("slower_count",0)}
+            ci_text="not available" if ci is None else f"[{ci[0]:.2f}%, {ci[1]:.2f}%]"
+            population_rows.append(f"<tr><td>{regime}</td><td>{population}</td><td>{contrast.get('eligible_pairs',0)}/{contrast.get('attempted_tasks',0)}</td><td>{fmt(contrast.get('median_improvement_pct'))}</td><td>{fmt(contrast.get('mean_improvement_pct'))}</td><td>{ci_text}</td><td>{contrast.get('improved_count',0)}/{contrast.get('slower_count',0)}</td></tr>")
+        out["population_BD_comparisons"]=population_comparisons
         summary["regimes"][regime]=out
         overview_rows.append("<tr><td>"+regime+"</td>"+
             f"<td>{out['attempted_source_tasks']}</td><td>{primary['eligible_pairs']}</td>"+
@@ -202,14 +222,15 @@ def publish(source: Path, destination: Path) -> dict:
             durations={m:(native.get(m,{}).get("duration_s") if m in ("A10","A40") else detail.get(m,{}).get("duration_s")) for m in method_names}
             b,d=durations.get("B"),durations.get("D")
             bd=100*(b-d)/b if b and d else None
-            case_rows.append({**page_meta,"detail":f"cases/{regime}/{case}.html",
+            case_metrics={m:{k:detail.get(m,{}).get(k) for k in ("joint_path_length_rad","joint_path_curvature_p95","end_effector_path_length_m","max_utilization","world_clearance_m","self_clearance_m")} for m in method_names}
+            case_rows.append({**page_meta,"detail":f"cases/{regime}/{case}.html", "metrics":case_metrics,
                 "source_task_sha256":task["task_sha256"],"torque_profile_sha256":read_profile(arm/case/"torque_profile.json")["profile_sha256"],
                 "durations_s":durations,"B_to_D_pct":bd,
                 "physical":{m:receipts.get(f"{case}:{m}",{}).get("physical") is True for m in method_names},
                 "scaled95":{m:receipts.get(f"{case}:{m}",{}).get("scaled95") is True for m in method_names}})
         manifests[regime]=json.loads((arm/"execution_manifest.json").read_text()) if (arm/"execution_manifest.json").exists() else None
         for file in arm.rglob("*"):
-            if file.is_file() and file.suffix in (".json", ".jsonl", ".npz"):
+            if file.is_file() and file.suffix in (".json", ".jsonl", ".npz", ".log", ".yaml", ".yml"):
                 artifact_rows.append({"path":str(file.relative_to(source)),"sha256":hashlib.sha256(file.read_bytes()).hexdigest(),"bytes":file.stat().st_size})
     # Static duration and improvement profiles are derived only from saved task rows.
     duration_panels=[];gain_panels=[]
@@ -232,18 +253,52 @@ def publish(source: Path, destination: Path) -> dict:
             f"<td>{fmt(row['B_to_D_pct'])}</td></tr>")
     c_attempts=[]
     for regime in ("moderate","severe"):
-        for attempt_file in (source/regime).glob("pilot_*/c_attempts.json"):
+        for attempt_file in (source/regime).glob("*/c_attempts.json"):
             c_attempts.extend(json.loads(attempt_file.read_text()).get("attempts",[]))
     c_trials=[trial for attempt in c_attempts
-              for resolution in attempt.get("resolutions", [])
-              for trial in resolution.get("result", {}).get("trials", [])]
+              for trial in attempt.get("result", {}).get("trials", [])]
     c_converged=sum(trial.get("solver_success") is True for trial in c_trials)
+    source_manifest=json.loads((source/"manifest.json").read_text()) if (source/"manifest.json").exists() else {}
+    source_task_count=int(source_manifest.get("source_task_count", len(case_rows)))
     page="""<!doctype html><html lang='en'><meta charset='utf-8'><title>Torque-active joint geometry study</title>
 <style>body{font:15px/1.5 system-ui;max-width:1250px;margin:2rem auto;padding:0 1rem;color:#1d2938}table{border-collapse:collapse;width:100%;margin:.8rem 0}td,th{border-bottom:1px solid #dce2e8;padding:.45rem;text-align:left}.note{background:#fff1e4;border-left:5px solid #bd6e14;padding:1rem}.scroll{overflow-x:auto}svg{width:100%;height:auto;background:white}</style>
 <h1>Joint path-and-time optimization with active torque limits</h1>
-<p class='note'><b>Scope and qualification.</b> Torque stress is synthetic uniform derating of asymmetric Panda actuator limits; it is not a physical payload experiment. The same 20 source tasks are tested in correlated moderate/severe profiles, not 40 independent tasks. Independent checks use aligned Pinocchio RNEA and analytic collision sphere primitives. Added samples surround observed extrema; no continuous-time collision or dynamic certificate is claimed. C results are feasible incumbents from a local optimizer and are not global optima.</p>
+<p class='note'><b>Scope and qualification.</b> Torque stress is synthetic uniform derating of asymmetric Panda actuator limits; it is not a physical payload experiment. This source inventory contains {source_task_count} tasks; moderate/severe deratings are correlated observations of shared source tasks, not independent tasks. Independent checks use aligned Pinocchio RNEA and analytic collision sphere primitives. Added samples surround observed extrema; no continuous-time collision or dynamic certificate is claimed. C is a local optimizer; only individually marked candidates pass sampled physical checks, and no global optimum is claimed.</p>
 <p>Methods: A10/A40 native TimeOpt on the frozen cuRobo geometry and modified effort limits (10/40 iterations); B pointwise IPOPT timing on the original geometry; C SLSQP joint path/time with 14/22/34 controls and four starts per resolution; D the same IPOPT timing solver on C's exact quintic geometry. Primary geometry contrast: B versus D.</p>
-<h2>Duration distributions and paired geometry effect</h2>"""+duration_svg+"<h2>B→D paired task improvements</h2>"+gain_svg+"<h2>Adaptive sampled qualification</h2><table><thead><tr><th>Regime</th><th>Attempted</th><th>Qualified B-D pairs</th><th>Median improvement</th><th>Paired bootstrap 95% CI</th><th>Median B torque utilization</th><th>B >=85%</th></tr></thead><tbody>"+"".join(overview_rows)+"</tbody></table><h2>Torque activity by method</h2><p>Counts are trajectory counts per 20-task regime, using maximum Pinocchio torque divided by the derated asymmetric effort limit.</p><div class='scroll'><table><thead><tr><th>Regime</th><th>Method</th><th>Audited</th><th>>=80%</th><th>>=85%</th><th>>=90%</th><th>>=95%</th></tr></thead><tbody>"+"".join(threshold_rows)+"</tbody></table></div><h2>Paired effects</h2><div class='scroll'><table><thead><tr><th>Regime</th><th>Comparison</th><th>Qualified / attempted</th><th>Median (%)</th><th>Mean (%)</th><th>Paired bootstrap 95% CI</th><th>Improved / slower</th></tr></thead><tbody>"+"".join(conclusions)+"</tbody></table></div><h2>Searchable task results</h2><input id='filter' type='search' oninput='filterRows()' placeholder='Filter task, population, regime'><div class='scroll'><table><thead><tr><th>Task</th><th>Regime</th><th>Population</th><th>A10 (s)</th><th>A40 (s)</th><th>B (s)</th><th>C (s)</th><th>D (s)</th><th>B→D (%)</th></tr></thead><tbody>"+"".join(table_rows)+"</tbody></table></div><h2>Solver diagnostics</h2><p>C converged for "+str(c_converged)+" of "+str(len(c_trials))+" multistart attempts across "+str(len(c_attempts))+" task-regime cases. Nonconverged but independently feasible candidates remain visible; independent feasibility does not establish local stationarity. B/D use the same fixed-path IPOPT implementation and 513 collocation points with adaptive refinements. The per-task pages show all seven joint position, velocity, acceleration, jerk and torque profiles, normalized geometric path profiles, and end-effector path projections.</p><h2>Research interpretation</h2><p>Moderate and severe results are summarized separately. The severe regime is the critical test: a positive B→D effect means a changed C geometry retimed by the same fixed-path solver improved on B's original geometry. Gains do not establish that broad geometry search is exhausted. C nonconvergence, limited homotopy exploration, source-task representativeness, finite sampling, and omission of a full planner rerun under derated torque remain material limitations. No global optimality claim is made.</p><p>Raw results: <code>"+html.escape(str(source.resolve()))+"</code>. Frozen method manifests and full artifact SHA-256 inventory are linked below.</p><p><a href='summary.json'>aggregate summary</a> · <a href='case_index.json'>case index</a> · <a href='execution_manifests.json'>execution manifests</a> · <a href='artifact_manifest.json'>artifact checksums</a></p><script>function filterRows(){let q=document.getElementById('filter').value.toLowerCase();document.querySelectorAll('tbody tr[data-search]').forEach(r=>r.style.display=r.dataset.search.includes(q)?'':'none')}</script></html>"
+<h2>Duration distributions and paired geometry effect</h2>"""+duration_svg+"<h2>B→D paired task improvements</h2>"+gain_svg+"<h2>Adaptive sampled qualification</h2><table><thead><tr><th>Regime</th><th>Attempted</th><th>Qualified B-D pairs</th><th>Median improvement</th><th>Paired bootstrap 95% CI</th><th>Median B torque utilization</th><th>B >=85%</th></tr></thead><tbody>"+"".join(overview_rows)+"</tbody></table><h2>Torque activity by method</h2><p>Counts are trajectory counts per admitted task and regime, using maximum Pinocchio torque divided by the derated asymmetric effort limit.</p><div class='scroll'><table><thead><tr><th>Regime</th><th>Method</th><th>Audited</th><th>>=80%</th><th>>=85%</th><th>>=90%</th><th>>=95%</th></tr></thead><tbody>"+"".join(threshold_rows)+"</tbody></table></div><h2>Paired effects</h2><div class='scroll'><table><thead><tr><th>Regime</th><th>Comparison</th><th>Qualified / attempted</th><th>Median (%)</th><th>Mean (%)</th><th>Paired bootstrap 95% CI</th><th>Improved / slower</th></tr></thead><tbody>"+"".join(conclusions)+"</tbody></table></div><h2>Searchable task results</h2><input id='filter' type='search' oninput='filterRows()' placeholder='Filter task, population, regime'><div class='scroll'><table><thead><tr><th>Task</th><th>Regime</th><th>Population</th><th>A10 (s)</th><th>A40 (s)</th><th>B (s)</th><th>C (s)</th><th>D (s)</th><th>B→D (%)</th></tr></thead><tbody>"+"".join(table_rows)+"</tbody></table></div><h2>Solver diagnostics</h2><p>C converged for "+str(c_converged)+" of "+str(len(c_trials))+" multistart attempts across "+str(len(c_attempts))+" task-regime solver reports. Nonconverged but independently feasible candidates remain visible; independent feasibility does not establish local stationarity. B/D use the same fixed-path IPOPT implementation and 513 collocation points with adaptive refinements. The per-task pages show all seven joint position, velocity, acceleration, jerk and torque profiles, normalized geometric path profiles, and end-effector path projections.</p><h2>Research interpretation</h2><p>Moderate and severe results are summarized separately. The severe regime is the critical test: a positive B→D effect means a changed C geometry retimed by the same fixed-path solver improved on B's original geometry. Gains do not establish that broad geometry search is exhausted. C convergence is incomplete despite multistart, homotopy exploration is limited, and finite sampling and omission of a full planner rerun under derated torque remain material limitations. No global optimality claim is made.</p><p>Raw results: <code>"+html.escape(str(source.resolve()))+"</code>. Frozen method manifests and full artifact SHA-256 inventory are linked below.</p><p><a href='summary.json'>aggregate summary</a> · <a href='case_index.json'>case index</a> · <a href='execution_manifests.json'>execution manifests</a> · <a href='artifact_manifest.json'>artifact checksums</a></p><script>function filterRows(){let q=document.getElementById('filter').value.toLowerCase();document.querySelectorAll('tbody tr[data-search]').forEach(r=>r.style.display=r.dataset.search.includes(q)?'':'none')}</script></html>"
+    page=page.replace("{source_task_count}", str(source_task_count))
+    implication_rows=[]
+    for regime in ("moderate", "severe"):
+        value=summary["regimes"].get(regime,{})
+        if value.get("physical_qualified_BD_pairs") is None: continue
+        ci=value.get("physical_BD_bootstrap95_pct")
+        ci_text="not available" if ci is None else f"[{ci[0]:.2f}%, {ci[1]:.2f}%]"
+        implication_rows.append(f"<li><b>{regime.title()}.</b> B→D median duration change was {value['physical_BD_median_pct']:.2f}% across {value['physical_qualified_BD_pairs']} verified pairs (paired bootstrap 95% CI {ci_text}); positive values mean the changed geometry retimed faster.</li>")
+    implications=("<h2>Research Implications</h2><p>These local-search results show whether geometry added value after matched fixed-path timing; they do not establish a global minimum.</p><ul>"+"".join(implication_rows)+"</ul><p>Per-task geometry metrics and plots distinguish path length changes from duration. Where D is faster despite a longer joint-space path, shortening the path alone cannot explain the gain. Similar peak constraint utilization indicates a different feasible path can use the same active limits more effectively; the data do not isolate a unique dynamic mechanism.</p><p>Only A10/A40 fixed-geometry timing was rerun under derated effort. The geometric planner itself was not rerun with actuator limits, so superiority over a fully torque-aware cuRoboV2-Fast planner is not established.</p>")
+    population_section="<h2>B→D geometry effect by population</h2><p>Paired, independently sampled physical-feasibility results; moderate and severe are shown separately because they reuse source tasks.</p><div class='scroll'><table><thead><tr><th>Regime</th><th>Population</th><th>Pairs / attempted</th><th>Median gain</th><th>Mean gain</th><th>Paired bootstrap 95% CI</th><th>Improved / slower</th></tr></thead><tbody>"+"".join(population_rows)+"</tbody></table></div>"
+    page=page.replace("<h2>Research interpretation</h2>",population_section+implications+"<h2>Research interpretation</h2>")
+    lane_reports=[]
+    for regime in ("moderate", "severe"):
+        lane_file=source/regime/"geometric_lane_search.json"
+        if not lane_file.exists(): continue
+        lane_data=json.loads(lane_file.read_text())
+        for case,entry in lane_data.get("cases", {}).items():
+            b_file=source/regime/case/"b_attempt.json"
+            if not b_file.exists(): continue
+            baseline=json.loads(b_file.read_text()).get("dense_duration_s")
+            lanes=[x.get("duration_s") for x in entry.get("lanes", [])
+                   if x.get("source_success") and x.get("duration_s") is not None]
+            if baseline and lanes:
+                improvement=100*(baseline-min(lanes))/baseline
+                lane_reports.append((regime,case,len(lanes),improvement))
+    if lane_reports:
+        lane_rows="".join(f"<tr><td>{r}</td><td>{html.escape(c)}</td><td>{n}</td><td>{g:.4f}%</td></tr>" for r,c,n,g in lane_reports)
+        lane_median=float(np.median([x[3] for x in lane_reports]))
+        lane_section=("<h2>Additional cuRobo geometric candidates</h2><p>Four saved planner lanes were fixed-path retimed on "+str(len({x[1] for x in lane_reports}))+" distinct task geometries (up to three per regime), yielding "+str(len(lane_reports))+" successful task-regime checks. The median best-lane gain over B was "+f"{lane_median:.4f}%"+". These lanes provide limited route diversity and do not constitute exhaustive homotopy exploration or CEM/CMA-ES.</p><table><thead><tr><th>Regime</th><th>Task</th><th>Valid lanes</th><th>Best lane gain vs B</th></tr></thead><tbody>"+lane_rows+"</tbody></table>")
+        page=page.replace("<h2>Research interpretation</h2>",lane_section+"<h2>Research interpretation</h2>")
+    wider_index=destination.parent/"torque_active_wide"/"index.html"
+    if destination.name != "torque_active_wide" and wider_index.exists():
+        page=page.replace("<h2>Research interpretation</h2>","<p><a href='../torque_active_wide/index.html'>Open the separate source-disjoint wider-excursion cohort report</a>.</p><h2>Research interpretation</h2>")
     (destination/"index.html").write_text(page,encoding="utf-8")
     (destination/"summary.json").write_text(json.dumps(summary,indent=2)+"\n")
     (destination/"case_index.json").write_text(json.dumps(case_rows,indent=2)+"\n")

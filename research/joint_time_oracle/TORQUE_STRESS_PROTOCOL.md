@@ -1,8 +1,19 @@
 # Torque-active joint path-and-time study
 
-**Implementation status:** experimental code committed; GPU campaigns **not run in
-this branch**. No performance/feasibility improvement is claimed. Historic
-20-task pilot remains unchanged.
+**Study status (2026-11-07):** the frozen 20-task stress cohort and generated
+30-task wider-excursion cohort were executed. The wider cohort was source-disjoint
+from the 20-task cohort. These are exploratory synthetic actuator-derating
+experiments; no production defaults were changed, and no global optimality claim
+is made. Machine-readable results are under
+`results/torque_stress_final_20261107/` and
+`results/torque_wide_stress_20261107/`; sampled comparison reports are at
+`reports/joint_time_oracle/torque_active/` and
+`reports/joint_time_oracle/torque_active_wide/`.
+
+The original 20-task cohort admits 20 tasks in both regimes. The wider cohort
+admits 27/30 tasks under moderate derating (three fail the frozen endpoint
+static-gravity reserve) and 30/30 under severe derating. All comparisons remain
+paired by source task; moderate/severe are not independent observations.
 
 ## Scientific objective and design
 
@@ -172,7 +183,16 @@ model-aligned Pinocchio torques, independently computed sphere/scene
 clearance and endpoint residuals. These are NOT continuous-time certificates
 and must not be counted as fully qualified by default.
 
-The coding agent must extend the existing adaptive validation scripts to:
+The adaptive sampled validation completed for available trajectories. The
+original cohort has 200/200 physical-limit receipts; Scaled95 receipts are
+reported separately. The wider cohort has 135/135 moderate physical receipts
+and 146/148 severe receipts. Two severe wide C/D candidates fail joint-position
+limits; one severe wide task also has no A10/A40 result because native TimeOpt
+failed under the modified effort limits. These are retained as failures, not
+removed from the task inventory. The one-pass extrema neighborhoods plus dense
+samples are not a continuous-time certificate.
+
+The adaptive validator was extended to:
 
 - accept task-specific derated torque profiles and output directories;
 - include all spline knots, active dynamic peaks, near-contact points and
@@ -186,6 +206,53 @@ The coding agent must extend the existing adaptive validation scripts to:
 Only pass --adaptive-receipts to cohort_torque_report once those receipts
 have been generated from real validation. Missing evidence fails closed.
 Do not call sampled checks a continuous-time proof.
+
+## Completed torque-stress findings (2026-11-07)
+
+The execution implementation is frozen at commit `3693857`; A10/A40/B/C/D
+outputs and separate validation receipts are stored under the two result roots
+listed above. The 30 wide source tasks have inventory SHA256
+`14f9c3dd90b441a350bcb96e213ceac2ae09234a2df0b0d910477c7c3295e106` and are
+source-disjoint from the original 20 task IDs.
+
+| Cohort / stress | B→D verified pairs | Median B→D | Paired bootstrap 95% CI | Interpretation |
+|---|---:|---:|---:|---|
+| Original 20 / moderate | 20 | −0.39% | [−0.60%, 0.00%] | No demonstrated gain |
+| Original 20 / severe | 20 | +5.46% | [+1.79%, +7.39%] | Geometry often helps |
+| Wider / moderate | 27 | +0.44% | [+0.33%, +0.53%] | Small gain |
+| Wider / severe | 29 | +3.47% | [+2.79%, +3.83%] | Gain replicated on longer motions |
+
+In the original severe cohort the median B→D effect was +2.02% for free-space,
++5.82% for table/simple obstacles, and +7.77% for cluttered cases. In both
+severe cohorts D's median joint path was longer than B's (+5.11% original,
++4.17% wider) while executing faster. Shorter path length alone therefore
+does not explain the timing improvement. Peak velocity, acceleration, and jerk
+utilization remained near their 95% planning scale; torque was also near 95%
+in severe B trajectories. These measurements are consistent with geometry
+changing the distribution of dynamic difficulty, but do not isolate one unique
+causal mechanism.
+
+The original cohort's B median torque utilization was 90.0% moderate and 95.0%
+severe; the wider cohort was 90.0% and 95.0%. Original severe B reached 95% of
+derated effort on 17/20 trajectories; wider severe B did so on 26/30. Thus the
+severe stress was torque-active in the retimed solutions.
+
+Individual C SLSQP starts terminated successfully in 77/480 attempts for the
+original cohort and 218/684 for the wider cohort. Task-level method records
+still mark local convergence separately from feasible incumbents. No optimizer
+has a global-optimality certificate. Four alternative cuRobo lanes were
+retimed on representative original tasks; across five successful task-regime
+checks the best lane gain over B had median 0.0012%, providing little extra
+route diversity evidence. CEM/CMA-ES and an exhaustive homotopy search were not
+run.
+
+Limitations: two wide severe C/D trajectories fail sampled position limits;
+native A10/A40 failed on one wide severe task; three wide moderate profiles
+were rejected by the frozen static-gravity reserve. The full geometric planner
+was not rerun with derated effort constraints. Pinocchio/sphere audits are
+dense and adaptive sampled checks, not continuous-time certificates. Raw NPZ
+archives exceed Git-friendly size; manifests in the HTML reports record their
+paths and SHA256 hashes.
 
 A solver termination status and a feasible incumbent are distinct. Collect
 IPOPT primal/dual/KKT residuals, arbitrary speed coefficient bound activity,
