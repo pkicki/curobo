@@ -383,3 +383,16 @@ SHA256 for stored evidence. Local solvers provide no global optimality
 certificate, and CUDA collision-gradient/continuous swept-collision
 qualification remains incomplete. Do not start the confirmation cohort from
 this exploratory result without resolving those gates.
+
+
+## Torque-active stress extensions (2026-11-07)
+
+See [TORQUE_STRESS_PROTOCOL.md](TORQUE_STRESS_PROTOCOL.md). This branch adds
+frozen task-dependent effort-limit derating (moderate/severe), aligned native
+A10/A40 reruns, matched B/C/D constraints, a source-disjoint wider-excursion
+task generator, independent sampled torque/collision audit extensions, and a
+fail-closed separate sampled-versus-adaptive-qualified HTML report. It does
+**not** change Panda inertials or production limits. Derating simulates a
+lower-capacity actuator, **not** an actual payload. The GPU study and
+adaptive qualification have **not** been executed in this branch; no new
+trajectory quality gains are claimed.
