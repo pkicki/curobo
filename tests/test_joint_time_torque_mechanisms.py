@@ -101,3 +101,20 @@ def test_signed_summary_tracks_negative_improvements():
     assert x["slower_count"]==1
     assert x["improved_gt_1pct"]==2
     assert x["paired_bootstrap95_median_pct"] is not None
+
+
+
+def test_internal_native_seed_lanes_count_within_same_restart_budget():
+    p=profile()
+    candidates={
+        "F000":{"status":"SUCCESS","duration_s":.45,"restart":0,
+                "torque_profile_sha256":p["profile_sha256"]},
+        "F000L02":{"status":"SUCCESS","duration_s":.40,"restart":0,
+                   "torque_profile_sha256":p["profile_sha256"]},
+        "F001":{"status":"SUCCESS","duration_s":.30,"restart":1,
+                "torque_profile_sha256":p["profile_sha256"]}}
+    diagnostics={"task:"+name:valid_diag() for name in candidates}
+    first=best_native(candidates,diagnostics,{},p,"task",1,scaled95=False,strict=False)
+    assert first["method"]=="F000L02"
+    first_two=best_native(candidates,diagnostics,{},p,"task",2,scaled95=False,strict=False)
+    assert first_two["method"]=="F001"
