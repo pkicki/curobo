@@ -70,7 +70,7 @@ def execute(args):
               "limits":"0.95 optimizer scale; physical independent audit required",
               "C":{"resolutions":args.resolutions,"attempts":args.attempts,
                    "trust_radius":args.trust_radius,"seed_noise":args.seed_noise,
-                   "maxiter":args.c_maxiter},
+                   "maxiter":args.c_maxiter,"solver":args.c_solver},
               "B_D":{"grid":args.grid,"maxiter":args.ipopt_maxiter},
               "wall_clock_not_latency":True}
     if (arm/"execution_manifest.json").exists():
@@ -105,7 +105,7 @@ def execute(args):
             ("C",[args.cuda_python,"-m","research.joint_time_oracle.cohort_joint",
                   case,"--maxiter",str(args.c_maxiter),"--resolutions",args.resolutions,
                   "--attempts",str(args.attempts),"--trust-radius",str(args.trust_radius),
-                  "--seed-noise",str(args.seed_noise)]),
+                  "--seed-noise",str(args.seed_noise),"--solver",args.c_solver]),
             ("D",[args.pin_python,"-m","research.joint_time_oracle.cohort_retime",
                   case,"D","--grid",str(args.grid),"--maxiter",str(args.ipopt_maxiter)]),
         )
@@ -139,6 +139,7 @@ def main():
     parser.add_argument("--grid",type=int,default=513)
     parser.add_argument("--ipopt-maxiter",type=int,default=500)
     parser.add_argument("--c-maxiter",type=int,default=300)
+    parser.add_argument("--c-solver",choices=("slsqp","ipopt"),default="slsqp")
     parser.add_argument("--resolutions",default="14,22,34")
     parser.add_argument("--attempts",type=int,default=4)
     parser.add_argument("--trust-radius",type=float,default=1.5)

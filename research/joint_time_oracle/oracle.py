@@ -102,15 +102,17 @@ class QuinticBasis:
         # Include interior knots; spline has sufficient continuity for jerk.
         self.points = np.unique(np.asarray(points))
         self.B = [torch.as_tensor(self.spline(self.points, nu=d).copy(),
-                                   device=device, dtype=torch.float32) for d in range(4)]
+                                   device=device, dtype=torch.float64) for d in range(4)]
         self.boundary_indices = np.r_[np.arange(3), np.arange(controls - 3, controls)]
         self.interior_indices = np.arange(3, controls - 3)
         e = np.vstack([self.spline([0], nu=d)[0] for d in range(3)] +
                       [self.spline([1], nu=d)[0] for d in range(3)])
-        inv = np.linalg.inv(e[:, self.boundary_indices])
-        self.endpoint_inv = torch.as_tensor(inv.copy(), device=device, dtype=torch.float32)
-        self.endpoint_int = torch.as_tensor(e[:, self.interior_indices].copy(),
-                                            device=device, dtype=torch.float32)
+        self.endpoint_matrix = torch.as_tensor(
+            e[:, self.boundary_indices].copy(), device=device, dtype=torch.float64
+        )
+        self.endpoint_int = torch.as_tensor(
+            e[:, self.interior_indices].copy(), device=device, dtype=torch.float64
+        )
 
     @property
     def variable_count(self):
@@ -118,15 +120,22 @@ class QuinticBasis:
 
     def coefficients(self, interior, T, boundary):
         def vec(x):
-            return torch.as_tensor(x, device=self.device, dtype=torch.float32)
-        rhs = torch.stack([vec(boundary.q0), T * vec(boundary.v0), T*T*vec(boundary.a0),
-                           vec(boundary.q1), T*vec(boundary.v1), T*T*vec(boundary.a1)])
-        bc = self.endpoint_inv @ (rhs - self.endpoint_int @ interior)
-        return torch.cat([bc[:3], interior, bc[3:]], dim=0)
+            return torch.as_tensor(x, device=self.device, dtype=torch.float64)
+        duration = T.to(dtype=torch.float64)
+        rhs64 = torch.stack([vec(boundary.q0), duration * vec(boundary.v0),
+                             duration*duration * vec(boundary.a0), vec(boundary.q1),
+                             duration * vec(boundary.v1), duration*duration * vec(boundary.a1)])
+        interior64 = interior.to(dtype=torch.float64)
+        bc = torch.linalg.solve(self.endpoint_matrix,
+                                rhs64 - self.endpoint_int @ interior64)
+        return torch.cat([bc[:3], interior64, bc[3:]], dim=0)
 
     def evaluate(self, interior, T, boundary):
         c = self.coefficients(interior, T, boundary)
-        return self.B[0]@c, (self.B[1]@c)/T, (self.B[2]@c)/(T*T), (self.B[3]@c)/(T*T*T), c
+        duration = T.to(dtype=torch.float64)
+        return (self.B[0]@c, (self.B[1]@c)/duration,
+                (self.B[2]@c)/(duration*duration),
+                (self.B[3]@c)/(duration*duration*duration), c)
 
 
 def normalized_worst(values, bounds, scale, temperature=0.0, scale_about_zero=False):
@@ -171,7 +180,8 @@ class JointTimeOracle:
 
     def _margins(self, z, basis, *, audit=False):
         T, (q, qd, qdd, qddd, _) = self._states(z, basis)
-        tau = self.torque(q, qd, qdd)
+        tau = self.torque(q.to(dtype=torch.float32), qd.to(dtype=torch.float32),
+                          qdd.to(dtype=torch.float32))
         if tau.shape != q.shape:
             raise ValueError("torque callback must return [samples,dof]")
         families = (("position",q), ("velocity",qd), ("acceleration",qdd),
@@ -182,7 +192,7 @@ class JointTimeOracle:
                                  temperature=smooth, scale_about_zero=(name=="torque"))
                 for name,value in families]
         if self.collision is not None:
-            costs = self.collision(q).reshape(-1)
+            costs = self.collision(q.to(dtype=torch.float32)).reshape(-1)
             if not costs.numel():
                 raise ValueError("collision callback must return at least one value")
             rows.append((z[-2]-costs.amax()).reshape(1))
@@ -271,11 +281,36 @@ class JointTimeOracle:
                                                     jac=lambda z:self._evaluate(z,True))],
                                   options=dict(maxiter=self.cfg.maxiter,ftol=self.cfg.ftol,disp=False))
             report = self.audit(result.x)
-            trials.append(dict(attempt=attempt,solver_success=bool(result.success),
+            trial = dict(attempt=attempt, solver_success=bool(result.success),
                                verified=report["feasible"],duration=report["duration"],
                                max_violation=report["max_violation"],message=str(result.message),
-                               iterations=int(result.nit),nfev=int(result.nfev),
-                               coefficients=report["coefficients"]))
+                               iterations=int(result.nit), nfev=int(result.nfev),
+                               coefficients=report["coefficients"])
+            if hasattr(result, "ipopt_info"):
+                info = result.ipopt_info
+                jac = self._evaluate(result.x, True)
+                stationarity = (
+                    np.r_[np.zeros(n), 1000.0, np.exp(result.x[-1])]
+                    + jac.T @ info["mult_g"]
+                    - info["mult_x_L"] + info["mult_x_U"]
+                )
+                trial.update({
+                    "ipopt_status": int(info["status"]),
+                    "ipopt_constraint_violation": float(
+                        max(0.0, -np.min(self._evaluate(result.x, False)))
+                    ),
+                    "ipopt_dual_infeasibility": (
+                        float(result.ipopt_history[-1][3])
+                        if result.ipopt_history else None
+                    ),
+                    "ipopt_complementarity": (
+                        float(info["compl_inf"]) if "compl_inf" in info else None
+                    ),
+                    "constraint_evaluations": int(result.constraint_evaluations),
+                    "stationarity_inf": float(np.max(np.abs(stationarity))),
+                    "iteration_history": result.ipopt_history,
+                })
+            trials.append(trial)
             if report["feasible"] and report["duration"] < best_duration:
                 best,best_duration = result.x.copy(),report["duration"]
         return dict(best=self.audit(best) if best is not None else None,

@@ -26,8 +26,10 @@ def solve_ipopt(oracle, x0: np.ndarray, bounds):
     lb,ub = (np.asarray([b[i] for b in bounds],dtype=np.float64) for i in (0,1))
     nonzero_i,nonzero_j = np.indices((m,n),dtype=np.int32)
     class NLP:
-        n_obj=0
-        n_con=0
+        def __init__(self):
+            self.n_obj = 0
+            self.n_con = 0
+            self.history = []
 
         def objective(self,z):
             self.n_obj+=1
@@ -46,6 +48,12 @@ def solve_ipopt(oracle, x0: np.ndarray, bounds):
         def jacobianstructure(self):
             return nonzero_i.ravel(),nonzero_j.ravel()
 
+        def intermediate(self, algorithm_mode, iteration, objective, primal_inf,
+                         dual_inf, barrier, step_norm, regularization,
+                         alpha_dual, alpha_primal, line_search_trials):
+            self.history.append((int(iteration), float(objective), float(primal_inf),
+                                 float(dual_inf), float(barrier), float(step_norm)))
+
     nlp=NLP()
     problem=cyipopt.Problem(n=n,m=m,problem_obj=nlp,
                            lb=lb,ub=ub,cl=np.zeros(m),cu=np.full(m,1e19))
@@ -61,6 +69,7 @@ def solve_ipopt(oracle, x0: np.ndarray, bounds):
     message=info.get("status_msg","")
     if isinstance(message,bytes):
         message=message.decode(errors="replace")
-    return SimpleNamespace(x=np.asarray(x),success=status in (0,1),
-                           nit=int(info.get("iter_count",0)),nfev=nlp.n_obj,
-                           message=f"IPOPT {status}: {message}")
+    return SimpleNamespace(x=np.asarray(x), success=status in (0, 1),
+                           nit=len(nlp.history), nfev=nlp.n_obj,
+                           message=f"IPOPT {status}: {message}", ipopt_info=info,
+                           ipopt_history=nlp.history, constraint_evaluations=nlp.n_con)

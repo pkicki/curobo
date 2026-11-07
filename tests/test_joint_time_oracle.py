@@ -21,8 +21,9 @@ def dynamics(q, qd, qdd):
 
 def test_endpoint_constraints_hold_with_moving_boundaries():
     boundary=Boundary(
-        np.array([.1,.2]),np.array([1.,-.4]),np.array([.2,-.1]),
-        np.array([.05,.03]),np.array([.3,.1]),np.array([-.2,.04]))
+        np.array([.1,.2],dtype=np.float32),np.array([1.,-.4],dtype=np.float32),
+        np.array([.2,-.1],dtype=np.float32),np.array([.05,.03],dtype=np.float32),
+        np.array([.3,.1],dtype=np.float32),np.array([-.2,.04],dtype=np.float32))
     basis=QuinticBasis(15,4,device=torch.device("cpu"))
     interior=torch.randn(basis.variable_count,2,requires_grad=True)
     T=torch.tensor(3.,requires_grad=True)
@@ -31,6 +32,10 @@ def test_endpoint_constraints_hold_with_moving_boundaries():
                               (v[0],boundary.v0),(v[-1],boundary.v1),
                               (a[0],boundary.a0),(a[-1],boundary.a1)]:
         np.testing.assert_allclose(observed.detach().numpy(),expected,atol=2e-4)
+    assert max(float(torch.max(torch.abs(observed.detach() - torch.as_tensor(expected))))
+               for observed, expected in [(q[0], boundary.q0), (q[-1], boundary.q1),
+                                          (v[0], boundary.v0), (v[-1], boundary.v1),
+                                          (a[0], boundary.a0), (a[-1], boundary.a1)]) < 2e-5
     q.square().sum().backward()
     assert torch.isfinite(interior.grad).all()
     assert torch.isfinite(T.grad)
