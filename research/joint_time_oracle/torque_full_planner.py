@@ -86,6 +86,12 @@ def captured_candidate(planner: MotionPlanner, result, task: dict,
     native=planner.trajopt_solver._result_processor.get_interpolation_input()
     inputs={k:getattr(native,k).detach().cpu().numpy().copy() for k in ("knot","knot_dt","position")}
     retimer=planner.trajopt_solver._timeopt.optimizer
+    # The complete planner must use the frozen derated effort constraints,
+    # including the 0.95 native planning scale, not just in a post-hoc retimer.
+    for arr,expected in ((retimer._limits[-2],np.asarray(profile["effort_lower"])*.95),
+                         (retimer._limits[-1],np.asarray(profile["effort_upper"])*.95)):
+        if not np.allclose(arr.detach().cpu().numpy(),expected,rtol=1e-5,atol=1e-5):
+            raise ValueError("native full TimeOpt is not using the frozen scaled torque bounds")
     buffers={key:getattr(retimer,attr).detach().cpu().numpy().copy() for key,attr in
              (("controls","_controls"),("start_boundary","_start_boundary"),("goal","_goal"),
               ("timing","_timing"),("integrated_times","_times"),
