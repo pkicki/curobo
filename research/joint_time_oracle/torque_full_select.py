@@ -167,16 +167,20 @@ def build(arm:Path, *, strict_receipts:Path|None=None) -> dict:
         for status in ("adaptive_qualified","sampled"):
             title=status+":"+mode
             sections.append("<h2>"+html.escape(title)+"</h2>")
-            sections.append("<table><thead><tr><th>Budget (restarts)</th><th>Valid / attempted</th><th>Median Full→D</th><th>95% paired CI</th><th>Median B→Full</th></tr></thead><tbody>")
+            sections.append("<table><thead><tr><th>Budget (restarts)</th><th>Full/D pairs</th><th>Median Full→D</th><th>95% paired CI</th><th>Median B→Full</th><th>Full-R/D pairs</th><th>Median Full-R→D</th><th>Median B→Full-R</th><th>Median Full→Full-R</th></tr></thead><tbody>")
             groups=data["results"][title]["groups"]
             for budget in BUDGETS:
                 result=groups["all:"+str(budget)]
                 a,b=result["native_to_D"],result["B_to_native"]
+                m,mb,mf=(result["matched_to_D"],result["B_to_matched"],result["native_to_matched"])
                 fmt=lambda x: "N/A" if x is None else f"{x:.3f}%"
                 ci="N/A" if a["paired_bootstrap95_median_pct"] is None else str(a["paired_bootstrap95_median_pct"])
                 sections.append(f"<tr><td>{budget}</td><td>{a['paired_n']}/{a['attempted_n']}</td><td>"+
                                 fmt(a["median_pct"])+"</td><td>"+html.escape(ci)+"</td><td>"+
-                                fmt(b["median_pct"])+"</td></tr>")
+                                fmt(b["median_pct"])+"</td><td>"+str(m["paired_n"])+"/"+str(m["attempted_n"])+
+                                "</td><td>"+fmt(m["median_pct"])+
+                                "</td><td>"+fmt(mb["median_pct"])+
+                                "</td><td>"+fmt(mf["median_pct"])+"</td></tr>")
             sections.append("</tbody></table>")
     page="""<!doctype html><html lang="en"><meta charset="utf-8">
 <title>Full native torque-aware planning comparison</title><style>
@@ -186,7 +190,7 @@ aside{background:#fff0d8;padding:1rem;border-left:5px solid #b96c00}</style>
 <h1>Replanning cuRobo under derated torque limits</h1>
 <aside>Candidate budgets count independent planner restarts; each restart contains
 multiple internal seeds. All results require explicit independent validation.
-Sampled evidence is NOT a continuous-time certificate. A positive Full→D
+Sampled evidence is NOT a continuous-time certificate. Full-R is the independent IPOPT retiming of Full geometry, matching B and D. A positive Full→D
 percentage means D is faster than the best validated native full-planner candidate
 within that budget. Missing results are not treated as zero improvements.</aside>"""
     page+="\n".join(sections)+"</html>"
