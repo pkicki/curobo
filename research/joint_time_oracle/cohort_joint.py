@@ -23,6 +23,10 @@ RESULTS=Path(os.environ.get('ORACLE_COHORT_RESULTS', ROOT/'research/joint_time_o
 def main() -> None:
     """Restore fitted seeds, run two spline resolutions and retain each trial."""
     parser=argparse.ArgumentParser();parser.add_argument('case');parser.add_argument('--maxiter',type=int,default=40)
+    parser.add_argument('--resolutions',default='10,14')
+    parser.add_argument('--attempts',type=int,default=2)
+    parser.add_argument('--trust-radius',type=float,default=0.5)
+    parser.add_argument('--seed-noise',type=float,default=0.04)
     args=parser.parse_args();task=next(t for t in json.loads((PILOT/'tasks.json').read_text()) if t['case_id']==args.case)
     archive=np.load(PILOT/args.case/'a10_interpolated.npz');base={k:archive[k] for k in archive.files}
     duration=float(base['dt'])*(len(base['q'])-1)
@@ -39,9 +43,16 @@ def main() -> None:
                            acceleration=limits.acceleration,jerk=limits.jerk,
                            torque=np.stack((profile['effort_lower'],profile['effort_upper'])))
     dest=RESULTS/args.case;dest.mkdir(parents=True,exist_ok=True);attempts=[];best=None
-    for resolution in (10,14):
+    resolutions=tuple(int(x) for x in args.resolutions.split(','))
+    if not resolutions or any(x<8 for x in resolutions):
+        raise ValueError('invalid quintic resolutions')
+    if args.attempts<1 or args.maxiter<1:
+        raise ValueError('invalid optimizer budget')
+    for resolution in resolutions:
         cfg=OracleConfig(controls=resolution,samples_per_span=8,audit_samples_per_span=64,
-                         maxiter=args.maxiter,attempts=2,rng_seed=task['seed'],constraint_tol=1e-4)
+                         maxiter=args.maxiter,attempts=args.attempts,rng_seed=task['seed'],
+                          trust_radius=args.trust_radius,seed_noise=args.seed_noise,
+                          constraint_tol=1e-4)
         oracle=JointTimeOracle(limits,boundary,model.torque,model.collision,config=cfg,device=str(model.device))
         restoration=[];seed_duration=duration
         for factor in (1.,1.2,1.5,2.,3.):
