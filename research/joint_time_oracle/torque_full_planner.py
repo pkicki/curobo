@@ -120,8 +120,46 @@ def captured_candidate(planner: MotionPlanner, result, task: dict,
     duration=float(buffers["integrated_times"][lane,-1])
     if not np.isfinite(duration) or duration<=0 or not bool(buffers["success"][lane]):
         raise ValueError("selected retimed lane is invalid")
-    dense=sample(replay,lane,duration,8193)
+    # Replay every internally valid native candidate, not just the selected
+    # lane. A lane must pass the native collision/path/dynamic validation masks;
+    # the independent Pinocchio/sphere audit remains a separate hard gate.
+    validity=getattr(planner.trajopt_solver._timeopt,"validation_masks",None)
+    mask_available=isinstance(validity,dict) and all(
+        key in validity for key in ("path_valid","collision_valid","limits_and_dynamics_valid"))
+    accepted=np.asarray(buffers["success"],dtype=bool).reshape(-1).copy()
+    if mask_available:
+        for key in ("path_valid","collision_valid","limits_and_dynamics_valid"):
+            v=validity[key].detach().cpu().numpy().reshape(-1)
+            if len(v)!=count:
+                raise ValueError("native seed mask shape mismatch")
+            accepted &= v.astype(bool)
+    else:
+        accepted[:]=False
+        accepted[lane]=True
+    durations=np.asarray(buffers["integrated_times"][:,-1],dtype=float)
+    stable=np.where(np.isfinite(durations)&(durations>0),durations,duration)
+    unit=torch.linspace(0,1,8193,device=planner.default_joint_state.position.device)
+    time_grid=(torch.as_tensor(stable,device=unit.device,dtype=unit.dtype)[:,None]*unit[None,:]).contiguous()
+    state=replay.sample(time_grid)
+    times=time_grid.detach().cpu().numpy()
+    def lane_states(idx):
+        return dict(time=times[idx].copy(),
+                    q=state.position[idx].detach().cpu().numpy().copy(),
+                    qd=state.velocity[idx].detach().cpu().numpy().copy(),
+                    qdd=state.acceleration[idx].detach().cpu().numpy().copy(),
+                    jerk=state.jerk[idx].detach().cpu().numpy().copy())
+    dense=lane_states(lane)
+    alternates=[]
+    for internal in range(count):
+        if internal==lane or not accepted[internal] or not np.isfinite(durations[internal]) or durations[internal]<=0:
+            continue
+        alternates.append({"lane":internal,"duration_s":float(durations[internal]),
+                           "trajectory":lane_states(internal),
+                           "native_validation_masks":{key:bool(validity[key].reshape(-1)[internal].item())
+                                                      for key in ("path_valid","collision_valid","limits_and_dynamics_valid")}})
     metadata={"duration_s":duration,"lane":lane,
+              "alternate_accepted_lanes":len(alternates),
+              "native_mask_available":mask_available,
               "lane_position_replay_error_rad":float(error[lane]),
               "native_success":bool(buffers["success"][lane]),
               "num_native_lanes":count,
@@ -129,7 +167,7 @@ def captured_candidate(planner: MotionPlanner, result, task: dict,
               "effective_effort_upper":profile["effort_upper"],
               "task_sha256":task["task_sha256"],
               "torque_profile_sha256":profile["profile_sha256"]}
-    return dense,metadata,{"native":inputs,"retimer":buffers}
+    return dense,metadata,{"native":inputs,"retimer":buffers,"alternates":alternates}
 
 
 def execute(arm: Path, *, case_filter: str | None, max_restarts: int,
