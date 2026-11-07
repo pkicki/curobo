@@ -16,7 +16,7 @@ ROOT=Path(__file__).resolve().parents[2]
 STRESS=ROOT/"research/joint_time_oracle/results/torque_stress_final_20261107"
 
 
-def prepare(arm:Path) -> tuple[Path,int]:
+def prepare(arm:Path) -> tuple[Path,list[str]]:
     source=arm/"native_full"
     tasks=json.loads((arm/"tasks.json").read_text())
     (source/"tasks.json").write_text(json.dumps(tasks,indent=2)+"\n")
@@ -38,7 +38,7 @@ def prepare(arm:Path) -> tuple[Path,int]:
         rows.append({"case_id":case,"cohort":"pilot","population":task["population"],
                      "task_sha256":task["task_sha256"],"methods":methods})
     (source/"pilot.jsonl").write_text("".join(json.dumps(row)+"\n" for row in rows))
-    return source, (max(int(x[1:]) for x in all_restart_ids)+1) if all_restart_ids else 0
+    return source, sorted(all_restart_ids)
 
 
 def main():
@@ -48,12 +48,12 @@ def main():
     parser.add_argument("--adaptive",action="store_true",help="audit Fxxx_adaptive_dense.npz")
     args=parser.parse_args()
     arm=args.root/args.regime
-    source,count=prepare(arm)
-    if not count:
+    source,names=prepare(arm)
+    if not names:
         print("NO_CANDIDATES: no native full-planner trajectories to validate")
         return
-    methods=",".join(f"F{k:03d}"+("_adaptive" if args.adaptive else "")
-                     for k in range(count))
+    methods=",".join(name+("_adaptive" if args.adaptive else "")
+                     for name in names)
     command=[sys.executable,"-m","research.joint_time_oracle.cohort_validate",
              "--input",str(source),"--extra",str(source),"--methods",methods,
              "--torque-profile-dir",str(arm),
