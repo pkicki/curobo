@@ -106,3 +106,16 @@ def test_sampled_acceptance_requires_matching_profile_and_dense_check():
 def test_reject_nonfinite_torques():
     with pytest.raises(ValueError,match="nonfinite"):
         torque_utilization(np.array([float("nan"),1.]), np.array([[-2.,-2.],[2.,2.]]))
+
+
+def test_asymmetric_torque_scaled_about_zero_like_native_timeopt():
+    import torch
+    from research.joint_time_oracle.oracle import normalized_worst
+
+    bounds=torch.tensor([[-10.],[20.]],dtype=torch.float64)
+    upper=torch.tensor([[19.]],dtype=torch.float64)
+    lower=torch.tensor([[-9.5]],dtype=torch.float64)
+    assert abs(float(normalized_worst(upper,bounds,.95,scale_about_zero=True)[0]))<1e-12
+    assert abs(float(normalized_worst(lower,bounds,.95,scale_about_zero=True)[0]))<1e-12
+    # The old midpoint-scaled convention gave +0.25 Nm extra upper headroom.
+    assert float(normalized_worst(upper,bounds,.95)[0])>0
