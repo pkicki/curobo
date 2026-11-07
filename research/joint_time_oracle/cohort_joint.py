@@ -16,7 +16,7 @@ from .oracle import Boundary, JointTimeOracle, OracleConfig, JointLimits
 from .torque_active import read_profile
 
 ROOT=Path(__file__).resolve().parents[2]
-PILOT=ROOT/'research/joint_time_oracle/results/cohort_pilot_isolated_20261106'
+PILOT=Path(os.environ.get('ORACLE_COHORT_SOURCE', ROOT/'research/joint_time_oracle/results/cohort_pilot_isolated_20261106'))
 RESULTS=Path(os.environ.get('ORACLE_COHORT_RESULTS', ROOT/'research/joint_time_oracle/results/cohort_joint_pilot_20261106'))
 
 
