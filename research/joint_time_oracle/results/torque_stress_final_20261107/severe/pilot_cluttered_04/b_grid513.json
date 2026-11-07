@@ -1,0 +1,270 @@
+{
+  "status": 0,
+  "message": "Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).",
+  "solver_converged": true,
+  "iterations": 16,
+  "duration_s": 0.5151355911099932,
+  "primal_min_margin": 3.53106387462887e-08,
+  "collocation_points": 676,
+  "stationarity_inf": 1.2908090044542147e-10,
+  "max_scaled_control": 1.5325380774087998,
+  "upper_control_bound": null,
+  "lower_control_bound": 1e-08,
+  "lower_control_bound_active": false,
+  "elapsed_s": 7.4210740140406415,
+  "history": [
+    [
+      0,
+      0,
+      0.5151354563627618,
+      0.010048523285281538,
+      0.04972895163017199,
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0,
+      1,
+      0.5175372298069327,
+      8.57233399256252e-05,
+      0.6958853970104537,
+      1.0001703936975988e-06,
+      0.019008513676940824,
+      0.0
+    ],
+    [
+      0,
+      2,
+      0.5175280083727077,
+      1.4444709872662997e-09,
+      0.009878830399760452,
+      4.128371038483482e-07,
+      8.725808055157576e-05,
+      0.0
+    ],
+    [
+      0,
+      3,
+      0.5170176264793183,
+      3.2021681861671425e-06,
+      0.0002325850669401084,
+      4.351414394827078e-09,
+      0.003826108329436613,
+      0.0
+    ],
+    [
+      0,
+      4,
+      0.5159680909449154,
+      2.117967057713166e-05,
+      0.002701049867159966,
+      7.620459872062398e-07,
+      0.014655842988528876,
+      0.0
+    ],
+    [
+      0,
+      5,
+      0.5155089013072198,
+      0.00020069677772016625,
+      0.0010601673902740777,
+      8.043631995242531e-07,
+      0.1253737830510283,
+      0.0
+    ],
+    [
+      0,
+      6,
+      0.5152569266263046,
+      5.557072266260121e-05,
+      3.496566851698274e-05,
+      4.5546411376605604e-07,
+      0.03684676466028511,
+      0.0
+    ],
+    [
+      0,
+      7,
+      0.5151764957682092,
+      4.184613501578838e-05,
+      7.632232486324755e-06,
+      2.0697528762259002e-07,
+      0.05298851045215865,
+      0.0
+    ],
+    [
+      0,
+      8,
+      0.5151492360729563,
+      8.44340418926226e-06,
+      2.283838263521517e-06,
+      8.699674322700858e-08,
+      0.025720532598242044,
+      0.0
+    ],
+    [
+      0,
+      9,
+      0.5151441102553398,
+      2.942211132506145e-06,
+      0.00018160041924886877,
+      5.323305625409332e-08,
+      0.017055113223120155,
+      0.0
+    ],
+    [
+      0,
+      10,
+      0.5151426356854152,
+      1.012226686691875e-06,
+      5.496160435739146e-06,
+      4.550119294287415e-08,
+      0.010295562207669792,
+      0.0
+    ],
+    [
+      0,
+      11,
+      0.5151380018814397,
+      1.9128892556619093e-06,
+      0.0006530702371967591,
+      1.854828596273987e-08,
+      0.015352483069890384,
+      0.0
+    ],
+    [
+      0,
+      12,
+      0.5151365116591238,
+      1.9572752353314016e-06,
+      3.138269139277915e-07,
+      1.0264173127193158e-08,
+      0.014272358159905296,
+      0.0
+    ],
+    [
+      0,
+      13,
+      0.5151359524744746,
+      1.2951183780973707e-07,
+      0.006887380736782502,
+      5.58473456669504e-09,
+      0.0037172439975133144,
+      0.0
+    ],
+    [
+      0,
+      14,
+      0.5151357005199991,
+      3.573384388388945e-08,
+      0.0015755461582722778,
+      2.943418815984954e-09,
+      0.001684972716754205,
+      0.0
+    ],
+    [
+      0,
+      15,
+      0.5151355911099932,
+      3.0243247906014403e-09,
+      1.6030962922089186e-10,
+      2.15312799431221e-09,
+      0.0004441933710334464,
+      0.0
+    ]
+  ],
+  "trim_interval": [
+    0.05263157894736842,
+    1.0
+  ],
+  "seed_squared_speed_fit_max_abs": 0.27207609269593913,
+  "torque_profile_sha256": "409b28e05e785109738ed47ddedb0ce5c566c44c4308ec1cf7a6ee09a189cee5",
+  "dense_duration_s": 0.5151355911125299,
+  "dense_samples": 8322,
+  "dense_min_margin": -5.8452139595210895e-05,
+  "refinement": 2,
+  "refinement_passes": [
+    {
+      "status": 0,
+      "message": "Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).",
+      "solver_converged": true,
+      "iterations": 35,
+      "duration_s": 0.5151252989365497,
+      "primal_min_margin": 1.2339372790215464e-07,
+      "collocation_points": 564,
+      "stationarity_inf": 6.565495780011838e-11,
+      "max_scaled_control": 1.212531145939623,
+      "upper_control_bound": null,
+      "lower_control_bound": 1e-08,
+      "lower_control_bound_active": false,
+      "elapsed_s": 13.677581381984055,
+      "trim_interval": [
+        0.05263157894736842,
+        1.0
+      ],
+      "seed_squared_speed_fit_max_abs": 0.27207609269593913,
+      "torque_profile_sha256": "409b28e05e785109738ed47ddedb0ce5c566c44c4308ec1cf7a6ee09a189cee5",
+      "dense_duration_s": 0.5151252989390622,
+      "dense_samples": 8324,
+      "dense_min_margin": -0.00020379072643361695,
+      "refinement": 0
+    },
+    {
+      "status": 0,
+      "message": "Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).",
+      "solver_converged": true,
+      "iterations": 16,
+      "duration_s": 0.5151354563627618,
+      "primal_min_margin": 1.5403985353934502e-07,
+      "collocation_points": 628,
+      "stationarity_inf": 3.381482537750408e-08,
+      "max_scaled_control": 1.532564652269561,
+      "upper_control_bound": null,
+      "lower_control_bound": 1e-08,
+      "lower_control_bound_active": false,
+      "elapsed_s": 6.7719800809863955,
+      "trim_interval": [
+        0.05263157894736842,
+        1.0
+      ],
+      "seed_squared_speed_fit_max_abs": 0.27207609269593913,
+      "torque_profile_sha256": "409b28e05e785109738ed47ddedb0ce5c566c44c4308ec1cf7a6ee09a189cee5",
+      "dense_duration_s": 0.5151354563652806,
+      "dense_samples": 8324,
+      "dense_min_margin": -4.8533229873193307e-05,
+      "refinement": 1
+    },
+    {
+      "status": 0,
+      "message": "Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).",
+      "solver_converged": true,
+      "iterations": 16,
+      "duration_s": 0.5151355911099932,
+      "primal_min_margin": 3.53106387462887e-08,
+      "collocation_points": 676,
+      "stationarity_inf": 1.2908090044542147e-10,
+      "max_scaled_control": 1.5325380774087998,
+      "upper_control_bound": null,
+      "lower_control_bound": 1e-08,
+      "lower_control_bound_active": false,
+      "elapsed_s": 7.4210740140406415,
+      "trim_interval": [
+        0.05263157894736842,
+        1.0
+      ],
+      "seed_squared_speed_fit_max_abs": 0.27207609269593913,
+      "torque_profile_sha256": "409b28e05e785109738ed47ddedb0ce5c566c44c4308ec1cf7a6ee09a189cee5",
+      "dense_duration_s": 0.5151355911125299,
+      "dense_samples": 8322,
+      "dense_min_margin": -5.8452139595210895e-05,
+      "refinement": 2
+    }
+  ],
+  "restoration": {
+    "time_factor": 1.0001194856152829,
+    "dense_min_margin": 5.573389090807179e-05,
+    "duration_s": 0.5151971424055861,
+    "sampled_scaled_feasible": true
+  }
+}

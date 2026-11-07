@@ -1,0 +1,422 @@
+{
+  "pilot_free_00:F000": {
+    "physical": true,
+    "scaled95": false,
+    "collision": true,
+    "endpoint": true,
+    "torque_profile_sha256": "537174e3571a5971894b5b03e3f43e501d6073e259f2dc246f32e9197f81fd86",
+    "base_trajectory_sha256": "4ba15702b7f060105849044647dcaffb361931175407dec058d5807ed1090ef4",
+    "adaptive_trajectory_sha256": "a906353e84b277ff2804dc2f5215c048e12a27ea15901480bc8b3fdae5633ccd",
+    "independent_adaptive_samples": 8210,
+    "added_samples": 17,
+    "family_checks": {
+      "physical": {
+        "position": true,
+        "velocity": true,
+        "acceleration": true,
+        "jerk": true,
+        "torque": true
+      },
+      "scaled95": {
+        "position": true,
+        "velocity": true,
+        "acceleration": true,
+        "jerk": false,
+        "torque": true
+      }
+    },
+    "endpoint_checks": {
+      "position_start": true,
+      "position_goal": true,
+      "velocity": true,
+      "acceleration": true
+    },
+    "reasons": [],
+    "scope": "dense and adaptive independently sampled; not a continuous-time certificate"
+  },
+  "pilot_free_00:RF000": {
+    "physical": true,
+    "scaled95": false,
+    "collision": true,
+    "endpoint": true,
+    "torque_profile_sha256": "537174e3571a5971894b5b03e3f43e501d6073e259f2dc246f32e9197f81fd86",
+    "base_trajectory_sha256": "6b836038faea1cfd8d1db696867512b20b5ac5a5cecd34f7708648751eab22bf",
+    "adaptive_trajectory_sha256": "d165e1f2da4b03ceb7654fc6f2c5f35e4d4f646fae6f24c8069cad3a407ea4df",
+    "independent_adaptive_samples": 8376,
+    "added_samples": 39,
+    "family_checks": {
+      "physical": {
+        "position": true,
+        "velocity": true,
+        "acceleration": true,
+        "jerk": true,
+        "torque": true
+      },
+      "scaled95": {
+        "position": true,
+        "velocity": true,
+        "acceleration": true,
+        "jerk": false,
+        "torque": true
+      }
+    },
+    "endpoint_checks": {
+      "position_start": true,
+      "position_goal": true,
+      "velocity": true,
+      "acceleration": true
+    },
+    "reasons": [],
+    "scope": "dense and adaptive independently sampled; not a continuous-time certificate"
+  },
+  "pilot_free_01:F000": {
+    "physical": true,
+    "scaled95": true,
+    "collision": true,
+    "endpoint": true,
+    "torque_profile_sha256": "7c891f091a6c5886c44140b6c16acbebcc990e58c7df369faa22e67232dd6f0a",
+    "base_trajectory_sha256": "237426c2df46711b12cdf1ce7c889f407c0ad2e80656881a7ffe5be64eab99cf",
+    "adaptive_trajectory_sha256": "563da5624e6b82a18b401f06222eddec475e52046491246da44441ddd91e03e1",
+    "independent_adaptive_samples": 8210,
+    "added_samples": 17,
+    "family_checks": {
+      "physical": {
+        "position": true,
+        "velocity": true,
+        "acceleration": true,
+        "jerk": true,
+        "torque": true
+      },
+      "scaled95": {
+        "position": true,
+        "velocity": true,
+        "acceleration": true,
+        "jerk": true,
+        "torque": true
+      }
+    },
+    "endpoint_checks": {
+      "position_start": true,
+      "position_goal": true,
+      "velocity": true,
+      "acceleration": true
+    },
+    "reasons": [],
+    "scope": "dense and adaptive independently sampled; not a continuous-time certificate"
+  },
+  "pilot_free_01:RF000": {
+    "physical": true,
+    "scaled95": true,
+    "collision": true,
+    "endpoint": true,
+    "torque_profile_sha256": "7c891f091a6c5886c44140b6c16acbebcc990e58c7df369faa22e67232dd6f0a",
+    "base_trajectory_sha256": "99d8e2757206df7902f812f5a04656a5f5fb1c4baeaf2f333fba745374e5bf79",
+    "adaptive_trajectory_sha256": "945bbf5c510ce78521244bf7348924565166848dca7d593c2cc421a6662134c3",
+    "independent_adaptive_samples": 8378,
+    "added_samples": 50,
+    "family_checks": {
+      "physical": {
+        "position": true,
+        "velocity": true,
+        "acceleration": true,
+        "jerk": true,
+        "torque": true
+      },
+      "scaled95": {
+        "position": true,
+        "velocity": true,
+        "acceleration": true,
+        "jerk": true,
+        "torque": true
+      }
+    },
+    "endpoint_checks": {
+      "position_start": true,
+      "position_goal": true,
+      "velocity": true,
+      "acceleration": true
+    },
+    "reasons": [],
+    "scope": "dense and adaptive independently sampled; not a continuous-time certificate"
+  },
+  "pilot_table_00:F000": {
+    "physical": true,
+    "scaled95": false,
+    "collision": true,
+    "endpoint": true,
+    "torque_profile_sha256": "d1e92052f5b23cdf31f1a42702868a48903df573cfeb519d980388e4135712b0",
+    "base_trajectory_sha256": "41eea97400a7c91bec6cc0a48be78633122a8f42c70caa14424e52969f74dd41",
+    "adaptive_trajectory_sha256": "b559780719f14b8ca1c5945b24ecf5e1d57ebc44253d893a5309c41d674f9a86",
+    "independent_adaptive_samples": 8211,
+    "added_samples": 18,
+    "family_checks": {
+      "physical": {
+        "position": true,
+        "velocity": true,
+        "acceleration": true,
+        "jerk": true,
+        "torque": true
+      },
+      "scaled95": {
+        "position": true,
+        "velocity": true,
+        "acceleration": true,
+        "jerk": false,
+        "torque": true
+      }
+    },
+    "endpoint_checks": {
+      "position_start": true,
+      "position_goal": true,
+      "velocity": true,
+      "acceleration": true
+    },
+    "reasons": [],
+    "scope": "dense and adaptive independently sampled; not a continuous-time certificate"
+  },
+  "pilot_table_00:RF000": {
+    "physical": true,
+    "scaled95": false,
+    "collision": true,
+    "endpoint": true,
+    "torque_profile_sha256": "d1e92052f5b23cdf31f1a42702868a48903df573cfeb519d980388e4135712b0",
+    "base_trajectory_sha256": "ddf136dd1bf3697463315c86f560ec7942b4eb4dca88777844a3b2a5debd9499",
+    "adaptive_trajectory_sha256": "48b7b62ca9b951e68b38dc0a98dbe9ef3236fd39dc153629faa98daa1dc418d2",
+    "independent_adaptive_samples": 8369,
+    "added_samples": 51,
+    "family_checks": {
+      "physical": {
+        "position": true,
+        "velocity": true,
+        "acceleration": true,
+        "jerk": true,
+        "torque": true
+      },
+      "scaled95": {
+        "position": true,
+        "velocity": true,
+        "acceleration": true,
+        "jerk": false,
+        "torque": true
+      }
+    },
+    "endpoint_checks": {
+      "position_start": true,
+      "position_goal": true,
+      "velocity": true,
+      "acceleration": true
+    },
+    "reasons": [],
+    "scope": "dense and adaptive independently sampled; not a continuous-time certificate"
+  },
+  "pilot_table_01:F000": {
+    "physical": true,
+    "scaled95": true,
+    "collision": true,
+    "endpoint": true,
+    "torque_profile_sha256": "0b36cd4298dc97d1382bb711d6c2798b34f3102f7e1c594988279e3a0d1024c2",
+    "base_trajectory_sha256": "060255d7816e2b9658de3798a5f46f1312eec7b076cf9001bf8068f811da227c",
+    "adaptive_trajectory_sha256": "058ffbf9d3a20af50b84f02402a11c08217bb2e919fbbafee2587a08a4a2155d",
+    "independent_adaptive_samples": 8203,
+    "added_samples": 10,
+    "family_checks": {
+      "physical": {
+        "position": true,
+        "velocity": true,
+        "acceleration": true,
+        "jerk": true,
+        "torque": true
+      },
+      "scaled95": {
+        "position": true,
+        "velocity": true,
+        "acceleration": true,
+        "jerk": true,
+        "torque": true
+      }
+    },
+    "endpoint_checks": {
+      "position_start": true,
+      "position_goal": true,
+      "velocity": true,
+      "acceleration": true
+    },
+    "reasons": [],
+    "scope": "dense and adaptive independently sampled; not a continuous-time certificate"
+  },
+  "pilot_table_01:RF000": {
+    "physical": true,
+    "scaled95": false,
+    "collision": true,
+    "endpoint": true,
+    "torque_profile_sha256": "0b36cd4298dc97d1382bb711d6c2798b34f3102f7e1c594988279e3a0d1024c2",
+    "base_trajectory_sha256": "e9b5401d9be94675972f5f29f5e0379f60e141a5a25863deb9e5ecbe32a78244",
+    "adaptive_trajectory_sha256": "0623895e8eb09d4db419a42e46a04724f8bd5f208380dd0247caa8e43f9006f7",
+    "independent_adaptive_samples": 8384,
+    "added_samples": 55,
+    "family_checks": {
+      "physical": {
+        "position": true,
+        "velocity": true,
+        "acceleration": true,
+        "jerk": true,
+        "torque": true
+      },
+      "scaled95": {
+        "position": true,
+        "velocity": true,
+        "acceleration": false,
+        "jerk": false,
+        "torque": true
+      }
+    },
+    "endpoint_checks": {
+      "position_start": true,
+      "position_goal": true,
+      "velocity": true,
+      "acceleration": true
+    },
+    "reasons": [],
+    "scope": "dense and adaptive independently sampled; not a continuous-time certificate"
+  },
+  "pilot_cluttered_00:F000": {
+    "physical": true,
+    "scaled95": false,
+    "collision": true,
+    "endpoint": true,
+    "torque_profile_sha256": "5c1f2e0866fa2d16a6ed2baf0dc59bc794a5a59b368d4d4d620cac6e687f3718",
+    "base_trajectory_sha256": "0b8343480482bc4628497a234cec693dd145c64f340aa9e760a4daf04d65b93f",
+    "adaptive_trajectory_sha256": "2677695a23a8c2d5f436a748098d91e7007a13c4292340d5c95fc4af1ee09312",
+    "independent_adaptive_samples": 8211,
+    "added_samples": 18,
+    "family_checks": {
+      "physical": {
+        "position": true,
+        "velocity": true,
+        "acceleration": true,
+        "jerk": true,
+        "torque": true
+      },
+      "scaled95": {
+        "position": true,
+        "velocity": true,
+        "acceleration": true,
+        "jerk": false,
+        "torque": true
+      }
+    },
+    "endpoint_checks": {
+      "position_start": true,
+      "position_goal": true,
+      "velocity": true,
+      "acceleration": true
+    },
+    "reasons": [],
+    "scope": "dense and adaptive independently sampled; not a continuous-time certificate"
+  },
+  "pilot_cluttered_00:RF000": {
+    "physical": true,
+    "scaled95": false,
+    "collision": true,
+    "endpoint": true,
+    "torque_profile_sha256": "5c1f2e0866fa2d16a6ed2baf0dc59bc794a5a59b368d4d4d620cac6e687f3718",
+    "base_trajectory_sha256": "ce1c69ae9967462c8a6f5f2548679c7fcd0649313b03cef1431048661ecd2525",
+    "adaptive_trajectory_sha256": "903967d1128ef5941594fd24f3fb5dd30c6d2cdbf81a958202c6a03b0d627b8a",
+    "independent_adaptive_samples": 8378,
+    "added_samples": 51,
+    "family_checks": {
+      "physical": {
+        "position": true,
+        "velocity": true,
+        "acceleration": true,
+        "jerk": true,
+        "torque": true
+      },
+      "scaled95": {
+        "position": true,
+        "velocity": true,
+        "acceleration": true,
+        "jerk": false,
+        "torque": true
+      }
+    },
+    "endpoint_checks": {
+      "position_start": true,
+      "position_goal": true,
+      "velocity": true,
+      "acceleration": true
+    },
+    "reasons": [],
+    "scope": "dense and adaptive independently sampled; not a continuous-time certificate"
+  },
+  "pilot_cluttered_01:F000": {
+    "physical": true,
+    "scaled95": false,
+    "collision": true,
+    "endpoint": true,
+    "torque_profile_sha256": "ad7bac5f333e1232d01f8fe14485d5bd1e0c728980907d7c7eb9e298bec47834",
+    "base_trajectory_sha256": "4048cb27cf5afcaf9fdba1b2f6bb1b278e37f7218027f0ef94a80e1e2552d9b9",
+    "adaptive_trajectory_sha256": "53c13e69628c97af0f2fc1b9a2a6a8b81f53f6f562048054048f302460e3ecac",
+    "independent_adaptive_samples": 8211,
+    "added_samples": 18,
+    "family_checks": {
+      "physical": {
+        "position": true,
+        "velocity": true,
+        "acceleration": true,
+        "jerk": true,
+        "torque": true
+      },
+      "scaled95": {
+        "position": true,
+        "velocity": true,
+        "acceleration": true,
+        "jerk": false,
+        "torque": true
+      }
+    },
+    "endpoint_checks": {
+      "position_start": true,
+      "position_goal": true,
+      "velocity": true,
+      "acceleration": true
+    },
+    "reasons": [],
+    "scope": "dense and adaptive independently sampled; not a continuous-time certificate"
+  },
+  "pilot_cluttered_01:RF000": {
+    "physical": true,
+    "scaled95": false,
+    "collision": true,
+    "endpoint": true,
+    "torque_profile_sha256": "ad7bac5f333e1232d01f8fe14485d5bd1e0c728980907d7c7eb9e298bec47834",
+    "base_trajectory_sha256": "ccf5bc12718542d127c86fb87f68d14d9810f305c2684dadd3b036f51b89a727",
+    "adaptive_trajectory_sha256": "3f383fc9037e342245a8aac39780f11ed6c4c1dd80ffe2363242103b881bb1ff",
+    "independent_adaptive_samples": 8380,
+    "added_samples": 51,
+    "family_checks": {
+      "physical": {
+        "position": true,
+        "velocity": true,
+        "acceleration": true,
+        "jerk": true,
+        "torque": true
+      },
+      "scaled95": {
+        "position": true,
+        "velocity": true,
+        "acceleration": true,
+        "jerk": false,
+        "torque": true
+      }
+    },
+    "endpoint_checks": {
+      "position_start": true,
+      "position_goal": true,
+      "velocity": true,
+      "acceleration": true
+    },
+    "reasons": [],
+    "scope": "dense and adaptive independently sampled; not a continuous-time certificate"
+  }
+}

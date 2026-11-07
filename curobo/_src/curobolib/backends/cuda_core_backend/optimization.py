@@ -22,6 +22,9 @@ from curobo._src.curobolib.backends.cuda_core_backend.optimization_config import
     LineSearchLaunchCfg,
     OptimizationKernelCfg,
 )
+from curobo._src.curobolib.backends.cuda_core_backend.util import (
+    get_device_max_shared_memory,
+)
 from curobo._src.util.logging import log_and_raise, log_warn
 
 
@@ -106,7 +109,8 @@ def launch_line_search(
 
     # Get or compile kernel
     kernel_files = [
-        kernel_config.kernel_dir / f for f in kernel_config.get_kernel_files("line_search")
+        kernel_config.kernel_dir / f
+        for f in kernel_config.get_kernel_files("line_search")
     ]
     kernel = cache.get_or_compile_kernel(
         source_files=kernel_files,
@@ -221,20 +225,20 @@ def launch_lbfgs_step(
     if batch_size * history_m * v_dim > np.iinfo(np.int32).max:
         log_and_raise("L-BFGS history must contain at most INT_MAX elements")
 
-    properties = torch.cuda.get_device_properties(step_vec.device)
-    device_max_shared_memory = int(
-        getattr(properties, "shared_memory_per_block_optin", 0)
-        or properties.shared_memory_per_block
-    )
-    config, use_shared_buffers_actual, dynamic_shared_memory = LBFGSLaunchCfg.calculate_config(
-        batch_size,
-        v_dim,
-        history_m,
-        use_shared_buffers,
-        device_max_shared_memory,
+    device_max_shared_memory = get_device_max_shared_memory(step_vec.device)
+    config, use_shared_buffers_actual, dynamic_shared_memory = (
+        LBFGSLaunchCfg.calculate_config(
+            batch_size,
+            v_dim,
+            history_m,
+            use_shared_buffers,
+            device_max_shared_memory,
+        )
     )
 
-    items_per_thread, threads_per_block = LBFGSLaunchCfg.calculate_items_and_threads(v_dim)
+    items_per_thread, threads_per_block = LBFGSLaunchCfg.calculate_items_and_threads(
+        v_dim
+    )
     shared_specialization = str(use_shared_buffers_actual).lower()
     geometric_specialization = str(use_geometric_scaling).lower()
     fixed_history = history_m if history_m <= 31 else -1
@@ -245,7 +249,9 @@ def launch_lbfgs_step(
     )
 
     # Get or compile kernel
-    kernel_files = [kernel_config.kernel_dir / f for f in kernel_config.get_kernel_files("lbfgs")]
+    kernel_files = [
+        kernel_config.kernel_dir / f for f in kernel_config.get_kernel_files("lbfgs")
+    ]
     kernel = cache.get_or_compile_kernel(
         source_files=kernel_files,
         kernel_name=kernel_name,
@@ -256,7 +262,10 @@ def launch_lbfgs_step(
     # Configure extended shared memory if needed (Volta+)
     # This is equivalent to cudaFuncSetAttribute in the C++ version
     static_shared_memory = (2 * LBFGSLaunchCfg.SCRATCH_HISTORY + 1) * 4
-    if use_shared_buffers_actual and dynamic_shared_memory + static_shared_memory > 48000:
+    if (
+        use_shared_buffers_actual
+        and dynamic_shared_memory + static_shared_memory > 48000
+    ):
         # Use cuda-python to configure max dynamic shared memory size
         import cuda.bindings.runtime as cudart
 
@@ -398,11 +407,7 @@ def launch_lbfgs_compact_step(
     Returns:
         Mutated L-BFGS tensors, matching :func:`launch_lbfgs_step`.
     """
-    properties = torch.cuda.get_device_properties(step_vec.device)
-    device_max_shared_memory = int(
-        getattr(properties, "shared_memory_per_block_optin", 0)
-        or properties.shared_memory_per_block
-    )
+    device_max_shared_memory = get_device_max_shared_memory(step_vec.device)
     compact_config = LBFGSCompactLaunchCfg.calculate_config(
         batch_size,
         v_dim,
@@ -423,7 +428,10 @@ def launch_lbfgs_compact_step(
     if inverse_r_buffer.numel() != batch_size * history_m * history_m:
         log_and_raise("Compact L-BFGS inverse-R buffer has an invalid shape")
     required_workspace_elements = batch_size * workspace_elements
-    if required_workspace_elements > 0 and matrix_workspace.numel() < required_workspace_elements:
+    if (
+        required_workspace_elements > 0
+        and matrix_workspace.numel() < required_workspace_elements
+    ):
         log_and_raise(
             "Compact L-BFGS matrix workspace is too small: "
             f"expected {required_workspace_elements}, got {matrix_workspace.numel()}"
@@ -440,7 +448,8 @@ def launch_lbfgs_compact_step(
         f"{geometric_specialization}>"
     )
     kernel_files = [
-        kernel_config.kernel_dir / f for f in kernel_config.get_kernel_files("lbfgs_compact")
+        kernel_config.kernel_dir / f
+        for f in kernel_config.get_kernel_files("lbfgs_compact")
     ]
     include_dirs = kernel_config.get_include_dirs()
     compiler_include = pathfinder.find_nvidia_header_directory("nvcc")

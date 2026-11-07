@@ -1,6 +1,6 @@
 # Mechanisms of torque-aware geometric gains and a full native cuRobo baseline
 
-**Status: IMPLEMENTED, NOT YET EXECUTED.** The parent torque-stress study
+**Status: severe 20-task cohort executed; partial wider and moderate controls executed.** The parent torque-stress study
 is frozen at bcbb85a709f06b2a934f8ba141137c33379c0450.
 Do not overwrite or revise its original B, C, D results, trajectory NPZ
 archives, independent validation receipts, or prior HTML reports.
@@ -265,8 +265,58 @@ Do not merge into main and NEVER create a PR.
 - tests/test_joint_time_torque_mechanisms.py and
   tests/test_joint_time_torque_full_receipts.py: CPU regression tests.
 
-**No new GPU experiments or end-to-end test suite have been run by the
-assistant.** Do not claim otherwise; the coding agent must run them.
+## Execution record (2026-11-08)
+
+Results are under
+`research/joint_time_oracle/results/torque_stress_final_20261107/` and the
+separate additional subsets under
+`research/joint_time_oracle/results/torque_mechanisms_additional_20261108/`.
+The severe original cohort is complete for one restart on all 20 source tasks;
+the nine preflight cases additionally reached 4/16/32 restarts. There are 407
+independently audited Full geometries and 407 matched Full-R candidates.
+All 814 adaptive receipts pass physical limits; 362 pass Scaled95. The
+primary Full-R→D physical comparison is 20/20 pairs, +5.58% median, paired
+bootstrap 95% CI [+1.81%, +7.35%], with D faster on 19/20 tasks. At restart
+budgets 4, 16 and 32 the preflight comparison is 9/9; the 32-restart median
+is +7.15% (95% CI [+0.92%, +10.79%]). No severe adaptive Scaled95 pairs
+qualified.
+
+At restart budget one, B→Full-R is −0.0023% median (near parity), while
+Full→Full-R is +5.04% median, separating native timing performance from path
+choice. The nine-case diversity audit found one unique arc-aligned route in
+eight tasks and four routes in one table task, despite up to 32 restarts.
+This does not prove that conventional geometric search is globally
+exhaustive. The fresh native planner under derated limits still uses its
+existing objective and is not a torque-aware geometric objective.
+
+An additional frozen wide severe subset (10 source-disjoint cases: 4 free,
+3 table, 3 cluttered) has 10/10 native successes, 10/10 Full-R solutions, and
+20/20 physical adaptive receipts. Full-R→D is +3.48% median (paired 95% CI
+[+2.79%, +4.13%], 10/10 D faster). A separate six-task moderate control
+(2/population) has 6/6 Full-R/D physical pairs, median −0.092% (95% CI
+[−0.527%, +0.346%], 3 faster and 3 slower). Neither additional group has
+adaptive Scaled95 pairs. The other 20 wide and 14 moderate tasks were not
+replanned by the fresh native planner; CEM/CMA-ES geometric exploration was
+not run. These subsets are exploratory, not confirmation evidence.
+
+Independent Pinocchio decomposition matches historical audits to at most
+1.42e−6 Nm; gravity + acceleration inertia + velocity-bias identity closure
+is about 3e−13 Nm. On the original severe B/D cohort, D's path is longer by
+5.11% median, gravity RMS has no consistent decrease, and inertia-driven
+acceleration torque RMS increases on all 20 cases. This points to demand
+redistribution along the path and across joints; component differences are
+descriptive and not a causal proof. Eight separate B/D multiplier reruns
+reproduced historical duration and geometry, with stationarity residual at
+most 8.3e−8 and primal residual at most 9e−8. Multipliers are interpreted
+only after pointwise constraint scaling and are local sensitivities.
+
+The report `reports/joint_time_oracle/torque_mechanisms/index.html` is built
+from the stored JSON/NPZ results and includes the severe, additional wide,
+and moderate comparisons. Evidence is finite dense/adaptive sampling against
+the configured sphere collision model, not continuous-time collision or
+dynamics certification. IPOPT and multistart planner results are local and
+budget-limited; no global optimality claim is made. The severe synthetic
+derating is not a payload experiment.
 
 
 ## Matched-retimer software additions

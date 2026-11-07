@@ -21,6 +21,9 @@ from typing import Any, List, Optional
 import torch
 import torch.autograd.profiler as profiler
 
+from curobo._src.curobolib.backends.cuda_core_backend.util import (
+    get_device_max_shared_memory,
+)
 from curobo._src.curobolib.cuda_ops.optimization import LBFGSCompactCu, LBFGScu
 from curobo._src.optim.components.gradient_opt_core import GradientOptCore
 from curobo._src.optim.components.quasi_newton_buffers import QuasiNewtonBuffers
@@ -217,7 +220,9 @@ class LBFGSOpt:
         self, iteration_state: OptimizationIterationState
     ) -> torch.Tensor:
         """Write the next trial points and return the limited L-BFGS direction."""
-        q = iteration_state.exploration_action.reshape(-1, self._core.opt_dim).contiguous()
+        q = iteration_state.exploration_action.reshape(
+            -1, self._core.opt_dim
+        ).contiguous()
         grad_q = iteration_state.exploration_gradient.reshape(
             -1, 1, self._core.opt_dim
         ).contiguous()
@@ -289,10 +294,18 @@ class LBFGSOpt:
     ) -> None:
         """Prepare the first candidates and reset the quasi-Newton reference point."""
         context = self._core._line_search_context
-        scales = context.beta.view(-1, 1, 1, 1) * context.get_line_search_scale().view(1, -1, 1, 1)
-        iteration_state.search_actions = self._core._line_search_strategy.jit_get_x_set(
-            iteration_state.step_direction, iteration_state.exploration_action, scales
-        ).reshape(context.num_problems, context.n_linesearch, context.opt_dim).detach()
+        scales = context.beta.view(-1, 1, 1, 1) * context.get_line_search_scale().view(
+            1, -1, 1, 1
+        )
+        iteration_state.search_actions = (
+            self._core._line_search_strategy.jit_get_x_set(
+                iteration_state.step_direction,
+                iteration_state.exploration_action,
+                scales,
+            )
+            .reshape(context.num_problems, context.n_linesearch, context.opt_dim)
+            .detach()
+        )
         self._qn.set_reference(
             iteration_state.exploration_action.view(-1, self._core.opt_dim, 1),
             iteration_state.exploration_gradient.view(-1, self._core.opt_dim, 1),
@@ -304,7 +317,9 @@ class LBFGSOpt:
         self._compact_shared_matrix_count = (
             compact_layout[0] if compact_layout is not None else None
         )
-        compact_workspace_elements = compact_layout[1] if compact_layout is not None else 0
+        compact_workspace_elements = (
+            compact_layout[1] if compact_layout is not None else 0
+        )
         self._qn.resize(
             num_problems,
             self._core.opt_dim,
@@ -330,11 +345,7 @@ class LBFGSOpt:
             LBFGSCompactLaunchCfg,
         )
 
-        properties = torch.cuda.get_device_properties(device)
-        shared_memory = int(
-            getattr(properties, "shared_memory_per_block_optin", 0)
-            or properties.shared_memory_per_block
-        )
+        shared_memory = get_device_max_shared_memory(device)
         compact_config = LBFGSCompactLaunchCfg.calculate_config(
             num_problems,
             opt_dim,
@@ -345,7 +356,8 @@ class LBFGSOpt:
             return None
         history_supported = _COMPACT_MIN_HISTORY <= history <= _COMPACT_MAX_HISTORY
         dimension_supported = opt_dim <= _COMPACT_FAST_MAX_OPT_DIM or (
-            history >= _COMPACT_LARGE_DIM_MIN_HISTORY and opt_dim <= _COMPACT_MAX_OPT_DIM
+            history >= _COMPACT_LARGE_DIM_MIN_HISTORY
+            and opt_dim <= _COMPACT_MAX_OPT_DIM
         )
         if not history_supported or not dimension_supported:
             return None
@@ -468,9 +480,13 @@ class LBFGSOpt:
         """Continue the last solve without resetting its iterate or L-BFGS history."""
         return self._core.continue_optimization()
 
-    def reinitialize(self, action, mask=None, clear_optimizer_state=True, reset_num_iters=False):
+    def reinitialize(
+        self, action, mask=None, clear_optimizer_state=True, reset_num_iters=False
+    ):
         """Reset optimizer state and seed with new actions before a fresh solve."""
-        return self._core.reinitialize(action, mask, clear_optimizer_state, reset_num_iters)
+        return self._core.reinitialize(
+            action, mask, clear_optimizer_state, reset_num_iters
+        )
 
     def shift(self, shift_steps=0):
         return self._core.shift(shift_steps)

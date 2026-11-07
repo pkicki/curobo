@@ -433,9 +433,44 @@ A10/A40/B/C/D evidence. It adds:
 - a deterministic N/A-aware HTML report at
   reports/joint_time_oracle/torque_mechanisms/index.html.
 
-**Unexecuted:** no new GPU experiments or new independent verification
-outcomes are claimed by this implementation. Run the documented tests and
-GPU qualification chain before interpreting full-planner comparisons.
+**Executed severe full-planner study:** all 20 original severe tasks were
+replanned under derated actuator limits. The nine predefined preflight tasks
+were run at 1/4/16/32 restarts; the other eleven were run at one restart.
+Across 407 native Full and matched Full-R candidates, sampled audits and
+adaptive receipts establish physical feasibility for all 814 trajectory
+receipts. 362/814 also pass Scaled95. For the primary Full-R-to-D comparison,
+20/20 physical pairs show a median +5.58% (paired bootstrap 95% CI
++1.81% to +7.35%; 19/20 positive); Scaled95 has no qualified pairs. At the
+32-restart cap, the nine preflight tasks show +7.15% median (95% CI +0.92% to
++10.79%). B-to-Full-R is near parity (−0.0023% median), while native Full
+versus Full-R indicates a +5.04% median timing gain from independent retiming.
+At 32 restarts, eight of nine tasks had one unique arc-aligned path and the
+remaining table task had four. Thus this is evidence against the sampled
+conventional planner search finding the same paths, but not a global-search
+comparison. The remaining 20 of 30 wide tasks and 14 of 20 moderate tasks
+have no full-planner runs; the tested subsets are listed below. See the report
+and raw manifests for exact provenance and separate physical/Scaled95 results.
+
+Additional frozen subsets were also run with one fresh planner restart and
+four internal seeds: 10 source-disjoint wide-excursion severe tasks (4 free,
+3 table, 3 cluttered) and six original moderate controls (2 per population).
+All 10 wide and 6 moderate tasks produced a native Full and independently
+retimed Full-R trajectory; all 20/20 and 12/12 respective adaptive trajectory
+receipts passed physical limits. Wide-severe Full-R→D was +3.48% median
+(10/10 improved; paired bootstrap 95% CI +2.79% to +4.13%). The moderate
+negative control was −0.092% median (3/6 improved, 3/6 slower; 95% CI
+−0.527% to +0.346%). Neither subset had any adaptive Scaled95-qualified pairs.
+These small selected subsets are exploratory, not confirmation cohorts.
+
+The independent Pinocchio decomposition agrees with the historical torque
+audits to 1.42e−6 Nm, and its gravity + inertial + velocity-bias identity
+closes to about 3e−13 Nm. Across the original 20 severe B/D pairs, D paths
+were longer (median +5.11%) and gravity RMS did not consistently decrease;
+inertial acceleration torque RMS increased in all 20. The measured evidence
+therefore supports redistribution of torque and dynamic demand across the
+curve, not a simple reduction in gravity or total torque magnitude. Solver
+multipliers are local, constraint-scaled sensitivities and do not certify a
+global optimum. The report and manifest preserve these distinctions.
 
 The principal new comparison is **Full-R versus D**, where Full-R independently
 retimes every internally valid native full-planner geometric candidate using

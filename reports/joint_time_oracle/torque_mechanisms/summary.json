@@ -1,0 +1,54 @@
+{
+  "status": "EXPLORATORY_OFFLINE_ANALYSIS",
+  "source_root": "research/joint_time_oracle/results/torque_stress_final_20261107",
+  "regimes": {
+    "moderate": {
+      "decomposition_attempted": 0,
+      "decomposition_complete": 0,
+      "native_full_comparison": false
+    },
+    "severe": {
+      "decomposition_attempted": 20,
+      "decomposition_complete": 20,
+      "native_full_comparison": true
+    }
+  },
+  "additional_cohorts": {
+    "severe": {
+      "source_task_count": 10,
+      "physical_adaptive_pairs": 10,
+      "median_fullr_to_d_pct": 3.479895766818517,
+      "paired_bootstrap95_median_pct": [
+        2.7946436245022515,
+        4.134281690446457
+      ],
+      "d_faster_count": 10,
+      "d_slower_count": 0,
+      "scaled95_adaptive_pairs": 0
+    },
+    "moderate": {
+      "source_task_count": 6,
+      "physical_adaptive_pairs": 6,
+      "median_fullr_to_d_pct": -0.09185148970211263,
+      "paired_bootstrap95_median_pct": [
+        -0.527390137348906,
+        0.34614221416099195
+      ],
+      "d_faster_count": 3,
+      "d_slower_count": 3,
+      "scaled95_adaptive_pairs": 0
+    }
+  },
+  "additional_runtime": {
+    "severe": {
+      "setup_s_median": 1.4091032214928418,
+      "plan_s_median": 0.20427993801422417,
+      "retime_s_median": 25.57099090545671
+    },
+    "moderate": {
+      "setup_s_median": 1.4583588119712658,
+      "plan_s_median": 0.2041299439733848,
+      "retime_s_median": 26.578678501478862
+    }
+  }
+}

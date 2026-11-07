@@ -1,0 +1,2175 @@
+{
+  "duration_tolerance_s": 1e-09,
+  "geometry_tolerance_rad": 1e-08,
+  "cases": [
+    {
+      "case_id": "pilot_free_00",
+      "methods": {
+        "B": {
+          "historical_duration_s": 0.4802913603589309,
+          "rerun_duration_s": 0.4802913603589309,
+          "duration_abs_difference_s": 0.0,
+          "geometry_max_abs_difference_rad": 5.551115123125783e-17,
+          "ipopt_status": 0,
+          "solver_converged": true,
+          "stationarity_inf": 2.2397373376057242e-11,
+          "primal_min_margin": -6.523918294476516e-09,
+          "constraint_multipliers": {
+            "velocity": {
+              "max_abs": 0.009395948542711384,
+              "sum_abs": 0.06414308314898014,
+              "signed_sum": -0.06414308314898014,
+              "lower_side_sum_abs": 2.8941833341482554e-06,
+              "upper_side_sum_abs": 0.064140188965646,
+              "lower_side_signed_sum": -2.8941833341482554e-06,
+              "upper_side_signed_sum": -0.064140188965646,
+              "count_gt_1e_5": 28
+            },
+            "acceleration": {
+              "max_abs": 0.00811137840593336,
+              "sum_abs": 0.01723073392428207,
+              "signed_sum": -0.01723073392428207,
+              "lower_side_sum_abs": 0.0027970118925529338,
+              "upper_side_sum_abs": 0.014433722031729136,
+              "lower_side_signed_sum": -0.0027970118925529338,
+              "upper_side_signed_sum": -0.014433722031729136,
+              "count_gt_1e_5": 19
+            },
+            "jerk": {
+              "max_abs": 0.005144818681017955,
+              "sum_abs": 0.016348387826071953,
+              "signed_sum": -0.016348387826071953,
+              "lower_side_sum_abs": 0.015815397373859556,
+              "upper_side_sum_abs": 0.0005329904522123961,
+              "lower_side_signed_sum": -0.015815397373859556,
+              "upper_side_signed_sum": -0.0005329904522123961,
+              "count_gt_1e_5": 19
+            },
+            "torque": {
+              "max_abs": 0.09779929884918868,
+              "sum_abs": 0.7127233123293842,
+              "signed_sum": -0.7127233123293842,
+              "lower_side_sum_abs": 2.023851446110805e-06,
+              "upper_side_sum_abs": 0.7127212884779381,
+              "lower_side_signed_sum": -2.023851446110805e-06,
+              "upper_side_signed_sum": -0.7127212884779381,
+              "count_gt_1e_5": 57
+            }
+          },
+          "refinement_passes": [
+            {
+              "constraint_multipliers": {
+                "velocity": {
+                  "max_abs": 0.03140023709246829,
+                  "sum_abs": 0.06395004593491484,
+                  "signed_sum": -0.06395004593491484,
+                  "lower_side_sum_abs": 2.0137413257005944e-07,
+                  "upper_side_sum_abs": 0.06394984456078226,
+                  "lower_side_signed_sum": -2.0137413257005944e-07,
+                  "upper_side_signed_sum": -0.06394984456078226,
+                  "count_gt_1e_5": 3
+                },
+                "acceleration": {
+                  "max_abs": 0.008001331294474561,
+                  "sum_abs": 0.017184674237717364,
+                  "signed_sum": -0.017184674237717364,
+                  "lower_side_sum_abs": 0.002758006187883943,
+                  "upper_side_sum_abs": 0.014426668049833417,
+                  "lower_side_signed_sum": -0.002758006187883943,
+                  "upper_side_signed_sum": -0.014426668049833417,
+                  "count_gt_1e_5": 7
+                },
+                "jerk": {
+                  "max_abs": 0.005316842943779393,
+                  "sum_abs": 0.016308189109512865,
+                  "signed_sum": -0.016308189109512865,
+                  "lower_side_sum_abs": 0.015769538941525146,
+                  "upper_side_sum_abs": 0.00053865016798772,
+                  "lower_side_signed_sum": -0.015769538941525146,
+                  "upper_side_signed_sum": -0.00053865016798772,
+                  "count_gt_1e_5": 9
+                },
+                "torque": {
+                  "max_abs": 0.12425795657207564,
+                  "sum_abs": 0.7135765844030877,
+                  "signed_sum": -0.7135765844030877,
+                  "lower_side_sum_abs": 1.486469586772196e-07,
+                  "upper_side_sum_abs": 0.713576435756129,
+                  "lower_side_signed_sum": -1.486469586772196e-07,
+                  "upper_side_signed_sum": -0.713576435756129,
+                  "count_gt_1e_5": 24
+                }
+              },
+              "multiplier_contract": {
+                "constraint_order": "lower then upper; velocity, acceleration, jerk, torque",
+                "constraint_scaling": "dimensionless pointwise margins normalized by 0.95 half-range",
+                "reported_sign": "raw IPOPT mult_g sign retained; absolute summaries aid magnitude comparison",
+                "interpretation": "local sensitivity only; multipliers are not global optimality evidence"
+              },
+              "status": 0,
+              "message": "Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).",
+              "solver_converged": true,
+              "iterations": 40,
+              "duration_s": 0.48028567619313667,
+              "primal_min_margin": -9.977212389600254e-09,
+              "collocation_points": 564,
+              "stationarity_inf": 6.52832441220203e-12,
+              "max_scaled_control": 1.4314147238666564,
+              "upper_control_bound": null,
+              "lower_control_bound": 1e-08,
+              "lower_control_bound_active": false,
+              "elapsed_s": 27.22770694299834,
+              "trim_interval": [
+                0.05263157894736842,
+                1.0
+              ],
+              "seed_squared_speed_fit_max_abs": 0.2765411466019563,
+              "torque_profile_sha256": "14d64648c00a1ab80ca4e415c6d49f53b2f085895f9bb1b9080a39e23d266605",
+              "dense_duration_s": 0.4802856761965681,
+              "dense_samples": 8335,
+              "dense_min_margin": -0.0008776492603546071,
+              "refinement": 0
+            },
+            {
+              "constraint_multipliers": {
+                "velocity": {
+                  "max_abs": 0.009312411110617796,
+                  "sum_abs": 0.06418003769631328,
+                  "signed_sum": -0.06418003769631328,
+                  "lower_side_sum_abs": 5.73962063374303e-05,
+                  "upper_side_sum_abs": 0.06412264148997585,
+                  "lower_side_signed_sum": -5.73962063374303e-05,
+                  "upper_side_signed_sum": -0.06412264148997585,
+                  "count_gt_1e_5": 44
+                },
+                "acceleration": {
+                  "max_abs": 0.008506696590699869,
+                  "sum_abs": 0.017296128623970456,
+                  "signed_sum": -0.017296128623970456,
+                  "lower_side_sum_abs": 0.002798892081124099,
+                  "upper_side_sum_abs": 0.014497236542846357,
+                  "lower_side_signed_sum": -0.002798892081124099,
+                  "upper_side_signed_sum": -0.014497236542846357,
+                  "count_gt_1e_5": 36
+                },
+                "jerk": {
+                  "max_abs": 0.005566608021875306,
+                  "sum_abs": 0.016416845212988487,
+                  "signed_sum": -0.016416845212988487,
+                  "lower_side_sum_abs": 0.01585032186170958,
+                  "upper_side_sum_abs": 0.0005665233512789095,
+                  "lower_side_signed_sum": -0.01585032186170958,
+                  "upper_side_signed_sum": -0.0005665233512789095,
+                  "count_gt_1e_5": 18
+                },
+                "torque": {
+                  "max_abs": 0.047660205950995904,
+                  "sum_abs": 0.7127978797928317,
+                  "signed_sum": -0.7127978797928317,
+                  "lower_side_sum_abs": 4.0534084401281965e-05,
+                  "upper_side_sum_abs": 0.7127573457084304,
+                  "lower_side_signed_sum": -4.0534084401281965e-05,
+                  "upper_side_signed_sum": -0.7127573457084304,
+                  "count_gt_1e_5": 137
+                }
+              },
+              "multiplier_contract": {
+                "constraint_order": "lower then upper; velocity, acceleration, jerk, torque",
+                "constraint_scaling": "dimensionless pointwise margins normalized by 0.95 half-range",
+                "reported_sign": "raw IPOPT mult_g sign retained; absolute summaries aid magnitude comparison",
+                "interpretation": "local sensitivity only; multipliers are not global optimality evidence"
+              },
+              "status": 0,
+              "message": "Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).",
+              "solver_converged": true,
+              "iterations": 14,
+              "duration_s": 0.4802907799561327,
+              "primal_min_margin": 1.4599370756762653e-07,
+              "collocation_points": 626,
+              "stationarity_inf": 8.258537358835237e-08,
+              "max_scaled_control": 1.7867612764328726,
+              "upper_control_bound": null,
+              "lower_control_bound": 1e-08,
+              "lower_control_bound_active": false,
+              "elapsed_s": 8.533906381984707,
+              "trim_interval": [
+                0.05263157894736842,
+                1.0
+              ],
+              "seed_squared_speed_fit_max_abs": 0.2765411466019563,
+              "torque_profile_sha256": "14d64648c00a1ab80ca4e415c6d49f53b2f085895f9bb1b9080a39e23d266605",
+              "dense_duration_s": 0.4802907799595918,
+              "dense_samples": 8335,
+              "dense_min_margin": -0.0002041775944638946,
+              "refinement": 1
+            },
+            {
+              "constraint_multipliers": {
+                "velocity": {
+                  "max_abs": 0.009395948542711384,
+                  "sum_abs": 0.06414308314898014,
+                  "signed_sum": -0.06414308314898014,
+                  "lower_side_sum_abs": 2.8941833341482554e-06,
+                  "upper_side_sum_abs": 0.064140188965646,
+                  "lower_side_signed_sum": -2.8941833341482554e-06,
+                  "upper_side_signed_sum": -0.064140188965646,
+                  "count_gt_1e_5": 28
+                },
+                "acceleration": {
+                  "max_abs": 0.00811137840593336,
+                  "sum_abs": 0.01723073392428207,
+                  "signed_sum": -0.01723073392428207,
+                  "lower_side_sum_abs": 0.0027970118925529338,
+                  "upper_side_sum_abs": 0.014433722031729136,
+                  "lower_side_signed_sum": -0.0027970118925529338,
+                  "upper_side_signed_sum": -0.014433722031729136,
+                  "count_gt_1e_5": 19
+                },
+                "jerk": {
+                  "max_abs": 0.005144818681017955,
+                  "sum_abs": 0.016348387826071953,
+                  "signed_sum": -0.016348387826071953,
+                  "lower_side_sum_abs": 0.015815397373859556,
+                  "upper_side_sum_abs": 0.0005329904522123961,
+                  "lower_side_signed_sum": -0.015815397373859556,
+                  "upper_side_signed_sum": -0.0005329904522123961,
+                  "count_gt_1e_5": 19
+                },
+                "torque": {
+                  "max_abs": 0.09779929884918868,
+                  "sum_abs": 0.7127233123293842,
+                  "signed_sum": -0.7127233123293842,
+                  "lower_side_sum_abs": 2.023851446110805e-06,
+                  "upper_side_sum_abs": 0.7127212884779381,
+                  "lower_side_signed_sum": -2.023851446110805e-06,
+                  "upper_side_signed_sum": -0.7127212884779381,
+                  "count_gt_1e_5": 57
+                }
+              },
+              "multiplier_contract": {
+                "constraint_order": "lower then upper; velocity, acceleration, jerk, torque",
+                "constraint_scaling": "dimensionless pointwise margins normalized by 0.95 half-range",
+                "reported_sign": "raw IPOPT mult_g sign retained; absolute summaries aid magnitude comparison",
+                "interpretation": "local sensitivity only; multipliers are not global optimality evidence"
+              },
+              "status": 0,
+              "message": "Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).",
+              "solver_converged": true,
+              "iterations": 17,
+              "duration_s": 0.4802913603589309,
+              "primal_min_margin": -6.523918294476516e-09,
+              "collocation_points": 676,
+              "stationarity_inf": 2.2397373376057242e-11,
+              "max_scaled_control": 1.7868057832801718,
+              "upper_control_bound": null,
+              "lower_control_bound": 1e-08,
+              "lower_control_bound_active": false,
+              "elapsed_s": 12.540102261002176,
+              "trim_interval": [
+                0.05263157894736842,
+                1.0
+              ],
+              "seed_squared_speed_fit_max_abs": 0.2765411466019563,
+              "torque_profile_sha256": "14d64648c00a1ab80ca4e415c6d49f53b2f085895f9bb1b9080a39e23d266605",
+              "dense_duration_s": 0.48029136036240133,
+              "dense_samples": 8337,
+              "dense_min_margin": -5.090321913137075e-05,
+              "refinement": 2
+            }
+          ],
+          "parity_pass": true
+        },
+        "D": {
+          "historical_duration_s": 0.4447118694465208,
+          "rerun_duration_s": 0.4447118694465208,
+          "duration_abs_difference_s": 0.0,
+          "geometry_max_abs_difference_rad": 0.0,
+          "ipopt_status": 0,
+          "solver_converged": true,
+          "stationarity_inf": 3.492254236991251e-11,
+          "primal_min_margin": -8.162279963030983e-09,
+          "constraint_multipliers": {
+            "velocity": {
+              "max_abs": 0.012867753728962459,
+              "sum_abs": 0.04861707596187185,
+              "signed_sum": -0.04861707596187185,
+              "lower_side_sum_abs": 0.04861664292841115,
+              "upper_side_sum_abs": 4.330334607026467e-07,
+              "lower_side_signed_sum": -0.04861664292841115,
+              "upper_side_signed_sum": -4.330334607026467e-07,
+              "count_gt_1e_5": 7
+            },
+            "acceleration": {
+              "max_abs": 0.013528106995575485,
+              "sum_abs": 0.07573028699984008,
+              "signed_sum": -0.07573028699984008,
+              "lower_side_sum_abs": 0.044467976272933175,
+              "upper_side_sum_abs": 0.031262310726906904,
+              "lower_side_signed_sum": -0.044467976272933175,
+              "upper_side_signed_sum": -0.031262310726906904,
+              "count_gt_1e_5": 42
+            },
+            "jerk": {
+              "max_abs": 0.006132820068758635,
+              "sum_abs": 0.04686464564037418,
+              "signed_sum": -0.04686464551774615,
+              "lower_side_sum_abs": 0.030435862564261028,
+              "upper_side_sum_abs": 0.01642878307611315,
+              "lower_side_signed_sum": -0.030435862501471345,
+              "upper_side_signed_sum": -0.016428783016274807,
+              "count_gt_1e_5": 28
+            },
+            "torque": {
+              "max_abs": 0.02860579039495477,
+              "sum_abs": 0.19064940489646015,
+              "signed_sum": -0.19064940489646015,
+              "lower_side_sum_abs": 0.022541029108674886,
+              "upper_side_sum_abs": 0.16810837578778526,
+              "lower_side_signed_sum": -0.022541029108674886,
+              "upper_side_signed_sum": -0.16810837578778526,
+              "count_gt_1e_5": 16
+            }
+          },
+          "refinement_passes": [
+            {
+              "constraint_multipliers": {
+                "velocity": {
+                  "max_abs": 0.040886052942704844,
+                  "sum_abs": 0.047988893645433114,
+                  "signed_sum": -0.047988893645433114,
+                  "lower_side_sum_abs": 0.04798883256535873,
+                  "upper_side_sum_abs": 6.108007439004477e-08,
+                  "lower_side_signed_sum": -0.04798883256535873,
+                  "upper_side_signed_sum": -6.108007439004477e-08,
+                  "count_gt_1e_5": 2
+                },
+                "acceleration": {
+                  "max_abs": 0.014257442212551907,
+                  "sum_abs": 0.07654137872113809,
+                  "signed_sum": -0.07654137872113809,
+                  "lower_side_sum_abs": 0.0446297815648594,
+                  "upper_side_sum_abs": 0.0319115971562787,
+                  "lower_side_signed_sum": -0.0446297815648594,
+                  "upper_side_signed_sum": -0.0319115971562787,
+                  "count_gt_1e_5": 13
+                },
+                "jerk": {
+                  "max_abs": 0.015497499825837067,
+                  "sum_abs": 0.04649870605016858,
+                  "signed_sum": -0.04649870605016858,
+                  "lower_side_sum_abs": 0.030332265988785898,
+                  "upper_side_sum_abs": 0.016166440061382684,
+                  "lower_side_signed_sum": -0.030332265988785898,
+                  "upper_side_signed_sum": -0.016166440061382684,
+                  "count_gt_1e_5": 12
+                },
+                "torque": {
+                  "max_abs": 0.08703332584463945,
+                  "sum_abs": 0.19084006900150657,
+                  "signed_sum": -0.19084006900150657,
+                  "lower_side_sum_abs": 0.022535828363164093,
+                  "upper_side_sum_abs": 0.16830424063834248,
+                  "lower_side_signed_sum": -0.022535828363164093,
+                  "upper_side_signed_sum": -0.16830424063834248,
+                  "count_gt_1e_5": 5
+                }
+              },
+              "multiplier_contract": {
+                "constraint_order": "lower then upper; velocity, acceleration, jerk, torque",
+                "constraint_scaling": "dimensionless pointwise margins normalized by 0.95 half-range",
+                "reported_sign": "raw IPOPT mult_g sign retained; absolute summaries aid magnitude comparison",
+                "interpretation": "local sensitivity only; multipliers are not global optimality evidence"
+              },
+              "status": 0,
+              "message": "Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).",
+              "solver_converged": true,
+              "iterations": 21,
+              "duration_s": 0.4446957220044351,
+              "primal_min_margin": -9.885108509521956e-09,
+              "collocation_points": 537,
+              "stationarity_inf": 3.705098457297771e-12,
+              "max_scaled_control": 1.2099925421843036,
+              "upper_control_bound": null,
+              "lower_control_bound": 1e-08,
+              "lower_control_bound_active": false,
+              "elapsed_s": 12.720546612981707,
+              "geometry": "exact quintic controls",
+              "torque_profile_sha256": "14d64648c00a1ab80ca4e415c6d49f53b2f085895f9bb1b9080a39e23d266605",
+              "dense_duration_s": 0.4446957220047067,
+              "dense_samples": 8328,
+              "dense_min_margin": -0.013386510202794355,
+              "refinement": 0
+            },
+            {
+              "constraint_multipliers": {
+                "velocity": {
+                  "max_abs": 0.031109918840156407,
+                  "sum_abs": 0.04796445265094451,
+                  "signed_sum": -0.04796445265094451,
+                  "lower_side_sum_abs": 0.0479553498086884,
+                  "upper_side_sum_abs": 9.102842256110066e-06,
+                  "lower_side_signed_sum": -0.0479553498086884,
+                  "upper_side_signed_sum": -9.102842256110066e-06,
+                  "count_gt_1e_5": 7
+                },
+                "acceleration": {
+                  "max_abs": 0.013308441388500444,
+                  "sum_abs": 0.07651510327397038,
+                  "signed_sum": -0.07651510327397038,
+                  "lower_side_sum_abs": 0.04460766873297579,
+                  "upper_side_sum_abs": 0.031907434540994595,
+                  "lower_side_signed_sum": -0.04460766873297579,
+                  "upper_side_signed_sum": -0.031907434540994595,
+                  "count_gt_1e_5": 46
+                },
+                "jerk": {
+                  "max_abs": 0.015500300633881449,
+                  "sum_abs": 0.04657864783865158,
+                  "signed_sum": -0.04657864783865158,
+                  "lower_side_sum_abs": 0.02984441275024266,
+                  "upper_side_sum_abs": 0.01673423508840892,
+                  "lower_side_signed_sum": -0.02984441275024266,
+                  "upper_side_signed_sum": -0.01673423508840892,
+                  "count_gt_1e_5": 25
+                },
+                "torque": {
+                  "max_abs": 0.0656955224246147,
+                  "sum_abs": 0.19068208673929488,
+                  "signed_sum": -0.19068208673929488,
+                  "lower_side_sum_abs": 0.022548967934708404,
+                  "upper_side_sum_abs": 0.16813311880458648,
+                  "lower_side_signed_sum": -0.022548967934708404,
+                  "upper_side_signed_sum": -0.16813311880458648,
+                  "count_gt_1e_5": 16
+                }
+              },
+              "multiplier_contract": {
+                "constraint_order": "lower then upper; velocity, acceleration, jerk, torque",
+                "constraint_scaling": "dimensionless pointwise margins normalized by 0.95 half-range",
+                "reported_sign": "raw IPOPT mult_g sign retained; absolute summaries aid magnitude comparison",
+                "interpretation": "local sensitivity only; multipliers are not global optimality evidence"
+              },
+              "status": 0,
+              "message": "Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).",
+              "solver_converged": true,
+              "iterations": 16,
+              "duration_s": 0.44470842358748275,
+              "primal_min_margin": -9.140703749466184e-09,
+              "collocation_points": 617,
+              "stationarity_inf": 5.086620192560716e-08,
+              "max_scaled_control": 1.1520264326515952,
+              "upper_control_bound": null,
+              "lower_control_bound": 1e-08,
+              "lower_control_bound_active": false,
+              "elapsed_s": 10.244420286966488,
+              "geometry": "exact quintic controls",
+              "torque_profile_sha256": "14d64648c00a1ab80ca4e415c6d49f53b2f085895f9bb1b9080a39e23d266605",
+              "dense_duration_s": 0.4447084235877652,
+              "dense_samples": 8329,
+              "dense_min_margin": -0.0002607309953921444,
+              "refinement": 1
+            },
+            {
+              "constraint_multipliers": {
+                "velocity": {
+                  "max_abs": 0.012867753728962459,
+                  "sum_abs": 0.04861707596187185,
+                  "signed_sum": -0.04861707596187185,
+                  "lower_side_sum_abs": 0.04861664292841115,
+                  "upper_side_sum_abs": 4.330334607026467e-07,
+                  "lower_side_signed_sum": -0.04861664292841115,
+                  "upper_side_signed_sum": -4.330334607026467e-07,
+                  "count_gt_1e_5": 7
+                },
+                "acceleration": {
+                  "max_abs": 0.013528106995575485,
+                  "sum_abs": 0.07573028699984008,
+                  "signed_sum": -0.07573028699984008,
+                  "lower_side_sum_abs": 0.044467976272933175,
+                  "upper_side_sum_abs": 0.031262310726906904,
+                  "lower_side_signed_sum": -0.044467976272933175,
+                  "upper_side_signed_sum": -0.031262310726906904,
+                  "count_gt_1e_5": 42
+                },
+                "jerk": {
+                  "max_abs": 0.006132820068758635,
+                  "sum_abs": 0.04686464564037418,
+                  "signed_sum": -0.04686464551774615,
+                  "lower_side_sum_abs": 0.030435862564261028,
+                  "upper_side_sum_abs": 0.01642878307611315,
+                  "lower_side_signed_sum": -0.030435862501471345,
+                  "upper_side_signed_sum": -0.016428783016274807,
+                  "count_gt_1e_5": 28
+                },
+                "torque": {
+                  "max_abs": 0.02860579039495477,
+                  "sum_abs": 0.19064940489646015,
+                  "signed_sum": -0.19064940489646015,
+                  "lower_side_sum_abs": 0.022541029108674886,
+                  "upper_side_sum_abs": 0.16810837578778526,
+                  "lower_side_signed_sum": -0.022541029108674886,
+                  "upper_side_signed_sum": -0.16810837578778526,
+                  "count_gt_1e_5": 16
+                }
+              },
+              "multiplier_contract": {
+                "constraint_order": "lower then upper; velocity, acceleration, jerk, torque",
+                "constraint_scaling": "dimensionless pointwise margins normalized by 0.95 half-range",
+                "reported_sign": "raw IPOPT mult_g sign retained; absolute summaries aid magnitude comparison",
+                "interpretation": "local sensitivity only; multipliers are not global optimality evidence"
+              },
+              "status": 0,
+              "message": "Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).",
+              "solver_converged": true,
+              "iterations": 19,
+              "duration_s": 0.4447118694465208,
+              "primal_min_margin": -8.162279963030983e-09,
+              "collocation_points": 683,
+              "stationarity_inf": 3.492254236991251e-11,
+              "max_scaled_control": 1.1518004164860325,
+              "upper_control_bound": null,
+              "lower_control_bound": 1e-08,
+              "lower_control_bound_active": false,
+              "elapsed_s": 14.018437114020344,
+              "geometry": "exact quintic controls",
+              "torque_profile_sha256": "14d64648c00a1ab80ca4e415c6d49f53b2f085895f9bb1b9080a39e23d266605",
+              "dense_duration_s": 0.4447118694468182,
+              "dense_samples": 8329,
+              "dense_min_margin": -9.231013884325456e-05,
+              "refinement": 2
+            }
+          ],
+          "parity_pass": true
+        }
+      },
+      "parity_pass": true
+    },
+    {
+      "case_id": "pilot_table_03",
+      "methods": {
+        "B": {
+          "historical_duration_s": 0.5721546927880087,
+          "rerun_duration_s": 0.5721546927880088,
+          "duration_abs_difference_s": 1.1102230246251565e-16,
+          "geometry_max_abs_difference_rad": 0.0,
+          "ipopt_status": 0,
+          "solver_converged": true,
+          "stationarity_inf": 2.3133598986090407e-11,
+          "primal_min_margin": -9.865367411876491e-09,
+          "constraint_multipliers": {
+            "velocity": {
+              "max_abs": 0.02921852574055118,
+              "sum_abs": 0.1475176735043483,
+              "signed_sum": -0.1475176735043483,
+              "lower_side_sum_abs": 0.14751753895911746,
+              "upper_side_sum_abs": 1.3454523083445483e-07,
+              "lower_side_signed_sum": -0.14751753895911746,
+              "upper_side_signed_sum": -1.3454523083445483e-07,
+              "count_gt_1e_5": 24
+            },
+            "acceleration": {
+              "max_abs": 0.021218643318605603,
+              "sum_abs": 0.06935650887972848,
+              "signed_sum": -0.06935650887972848,
+              "lower_side_sum_abs": 0.06935636077354719,
+              "upper_side_sum_abs": 1.481061812854016e-07,
+              "lower_side_signed_sum": -0.06935636077354719,
+              "upper_side_signed_sum": -1.481061812854016e-07,
+              "count_gt_1e_5": 15
+            },
+            "jerk": {
+              "max_abs": 0.004362005871331927,
+              "sum_abs": 0.01749812829481887,
+              "signed_sum": -0.01749812829481887,
+              "lower_side_sum_abs": 0.017088146892587443,
+              "upper_side_sum_abs": 0.0004099814022314258,
+              "lower_side_signed_sum": -0.017088146892587443,
+              "upper_side_signed_sum": -0.0004099814022314258,
+              "count_gt_1e_5": 10
+            },
+            "torque": {
+              "max_abs": 0.10973592437076433,
+              "sum_abs": 0.5643259306130232,
+              "signed_sum": -0.5643259306130232,
+              "lower_side_sum_abs": 1.2659345965697328e-07,
+              "upper_side_sum_abs": 0.5643258040195636,
+              "lower_side_signed_sum": -1.2659345965697328e-07,
+              "upper_side_signed_sum": -0.5643258040195636,
+              "count_gt_1e_5": 23
+            }
+          },
+          "refinement_passes": [
+            {
+              "constraint_multipliers": {
+                "velocity": {
+                  "max_abs": 0.029278529299982793,
+                  "sum_abs": 0.14748723632566121,
+                  "signed_sum": -0.14748723632566121,
+                  "lower_side_sum_abs": 0.14748694924275196,
+                  "upper_side_sum_abs": 2.870829092508176e-07,
+                  "lower_side_signed_sum": -0.14748694924275196,
+                  "upper_side_signed_sum": -2.870829092508176e-07,
+                  "count_gt_1e_5": 15
+                },
+                "acceleration": {
+                  "max_abs": 0.017622344972482634,
+                  "sum_abs": 0.06924572237550305,
+                  "signed_sum": -0.06924572221650165,
+                  "lower_side_sum_abs": 0.0692453982809879,
+                  "upper_side_sum_abs": 3.2409451515494817e-07,
+                  "lower_side_signed_sum": -0.06924539812198649,
+                  "upper_side_signed_sum": -3.2409451515494817e-07,
+                  "count_gt_1e_5": 11
+                },
+                "jerk": {
+                  "max_abs": 0.006709839393080331,
+                  "sum_abs": 0.01761674708180836,
+                  "signed_sum": -0.017616745622040558,
+                  "lower_side_sum_abs": 0.017204014050318784,
+                  "upper_side_sum_abs": 0.00041273303148957883,
+                  "lower_side_signed_sum": -0.01720401271432418,
+                  "upper_side_signed_sum": -0.0004127329077163809,
+                  "count_gt_1e_5": 6
+                },
+                "torque": {
+                  "max_abs": 0.13872131649419203,
+                  "sum_abs": 0.564029252604396,
+                  "signed_sum": -0.564029252604396,
+                  "lower_side_sum_abs": 2.7326923167008784e-07,
+                  "upper_side_sum_abs": 0.5640289793351643,
+                  "lower_side_signed_sum": -2.7326923167008784e-07,
+                  "upper_side_signed_sum": -0.5640289793351643,
+                  "count_gt_1e_5": 23
+                }
+              },
+              "multiplier_contract": {
+                "constraint_order": "lower then upper; velocity, acceleration, jerk, torque",
+                "constraint_scaling": "dimensionless pointwise margins normalized by 0.95 half-range",
+                "reported_sign": "raw IPOPT mult_g sign retained; absolute summaries aid magnitude comparison",
+                "interpretation": "local sensitivity only; multipliers are not global optimality evidence"
+              },
+              "status": 0,
+              "message": "Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).",
+              "solver_converged": true,
+              "iterations": 37,
+              "duration_s": 0.5721419438131065,
+              "primal_min_margin": -9.888281082837125e-09,
+              "collocation_points": 564,
+              "stationarity_inf": 1.6595860428394682e-10,
+              "max_scaled_control": 1.258096203804562,
+              "upper_control_bound": null,
+              "lower_control_bound": 1e-08,
+              "lower_control_bound_active": false,
+              "elapsed_s": 22.42777880805079,
+              "trim_interval": [
+                0.05263157894736842,
+                1.0
+              ],
+              "seed_squared_speed_fit_max_abs": 0.27617145465917625,
+              "torque_profile_sha256": "99fb0465ff4469be410c97638f9d0bee59ab3dc1fb820f2dfd6fed29bcac7f6a",
+              "dense_duration_s": 0.572141943814507,
+              "dense_samples": 8316,
+              "dense_min_margin": -0.004189454942350679,
+              "refinement": 0
+            },
+            {
+              "constraint_multipliers": {
+                "velocity": {
+                  "max_abs": 0.029240945993397185,
+                  "sum_abs": 0.1475166703081706,
+                  "signed_sum": -0.1475166703081706,
+                  "lower_side_sum_abs": 0.14751660306189393,
+                  "upper_side_sum_abs": 6.724627666848959e-08,
+                  "lower_side_signed_sum": -0.14751660306189393,
+                  "upper_side_signed_sum": -6.724627666848959e-08,
+                  "count_gt_1e_5": 16
+                },
+                "acceleration": {
+                  "max_abs": 0.02153793693394155,
+                  "sum_abs": 0.06935445371064626,
+                  "signed_sum": -0.06935445371064626,
+                  "lower_side_sum_abs": 0.06935438053233306,
+                  "upper_side_sum_abs": 7.317831320734791e-08,
+                  "lower_side_signed_sum": -0.06935438053233306,
+                  "upper_side_signed_sum": -7.317831320734791e-08,
+                  "count_gt_1e_5": 13
+                },
+                "jerk": {
+                  "max_abs": 0.005473882389638714,
+                  "sum_abs": 0.017512596682740467,
+                  "signed_sum": -0.017512596672346163,
+                  "lower_side_sum_abs": 0.01710268363225459,
+                  "upper_side_sum_abs": 0.0004099130504858788,
+                  "lower_side_signed_sum": -0.017102683621860286,
+                  "upper_side_signed_sum": -0.0004099130504858788,
+                  "count_gt_1e_5": 10
+                },
+                "torque": {
+                  "max_abs": 0.1387991111346655,
+                  "sum_abs": 0.5642135358628292,
+                  "signed_sum": -0.5642135358628292,
+                  "lower_side_sum_abs": 6.216118128002507e-08,
+                  "upper_side_sum_abs": 0.5642134737016479,
+                  "lower_side_signed_sum": -6.216118128002507e-08,
+                  "upper_side_signed_sum": -0.5642134737016479,
+                  "count_gt_1e_5": 19
+                }
+              },
+              "multiplier_contract": {
+                "constraint_order": "lower then upper; velocity, acceleration, jerk, torque",
+                "constraint_scaling": "dimensionless pointwise margins normalized by 0.95 half-range",
+                "reported_sign": "raw IPOPT mult_g sign retained; absolute summaries aid magnitude comparison",
+                "interpretation": "local sensitivity only; multipliers are not global optimality evidence"
+              },
+              "status": 0,
+              "message": "Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).",
+              "solver_converged": true,
+              "iterations": 24,
+              "duration_s": 0.572151477868836,
+              "primal_min_margin": -9.996782290855322e-09,
+              "collocation_points": 615,
+              "stationarity_inf": 2.2056390070939426e-11,
+              "max_scaled_control": 1.4934990087979276,
+              "upper_control_bound": null,
+              "lower_control_bound": 1e-08,
+              "lower_control_bound_active": false,
+              "elapsed_s": 16.814366875973064,
+              "trim_interval": [
+                0.05263157894736842,
+                1.0
+              ],
+              "seed_squared_speed_fit_max_abs": 0.27617145465917625,
+              "torque_profile_sha256": "99fb0465ff4469be410c97638f9d0bee59ab3dc1fb820f2dfd6fed29bcac7f6a",
+              "dense_duration_s": 0.572151477870328,
+              "dense_samples": 8315,
+              "dense_min_margin": -0.0004569060085075627,
+              "refinement": 1
+            },
+            {
+              "constraint_multipliers": {
+                "velocity": {
+                  "max_abs": 0.02921852574055118,
+                  "sum_abs": 0.1475176735043483,
+                  "signed_sum": -0.1475176735043483,
+                  "lower_side_sum_abs": 0.14751753895911746,
+                  "upper_side_sum_abs": 1.3454523083445483e-07,
+                  "lower_side_signed_sum": -0.14751753895911746,
+                  "upper_side_signed_sum": -1.3454523083445483e-07,
+                  "count_gt_1e_5": 24
+                },
+                "acceleration": {
+                  "max_abs": 0.021218643318605603,
+                  "sum_abs": 0.06935650887972848,
+                  "signed_sum": -0.06935650887972848,
+                  "lower_side_sum_abs": 0.06935636077354719,
+                  "upper_side_sum_abs": 1.481061812854016e-07,
+                  "lower_side_signed_sum": -0.06935636077354719,
+                  "upper_side_signed_sum": -1.481061812854016e-07,
+                  "count_gt_1e_5": 15
+                },
+                "jerk": {
+                  "max_abs": 0.004362005871331927,
+                  "sum_abs": 0.01749812829481887,
+                  "signed_sum": -0.01749812829481887,
+                  "lower_side_sum_abs": 0.017088146892587443,
+                  "upper_side_sum_abs": 0.0004099814022314258,
+                  "lower_side_signed_sum": -0.017088146892587443,
+                  "upper_side_signed_sum": -0.0004099814022314258,
+                  "count_gt_1e_5": 10
+                },
+                "torque": {
+                  "max_abs": 0.10973592437076433,
+                  "sum_abs": 0.5643259306130232,
+                  "signed_sum": -0.5643259306130232,
+                  "lower_side_sum_abs": 1.2659345965697328e-07,
+                  "upper_side_sum_abs": 0.5643258040195636,
+                  "lower_side_signed_sum": -1.2659345965697328e-07,
+                  "upper_side_signed_sum": -0.5643258040195636,
+                  "count_gt_1e_5": 23
+                }
+              },
+              "multiplier_contract": {
+                "constraint_order": "lower then upper; velocity, acceleration, jerk, torque",
+                "constraint_scaling": "dimensionless pointwise margins normalized by 0.95 half-range",
+                "reported_sign": "raw IPOPT mult_g sign retained; absolute summaries aid magnitude comparison",
+                "interpretation": "local sensitivity only; multipliers are not global optimality evidence"
+              },
+              "status": 0,
+              "message": "Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).",
+              "solver_converged": true,
+              "iterations": 24,
+              "duration_s": 0.5721546927880088,
+              "primal_min_margin": -9.865367411876491e-09,
+              "collocation_points": 648,
+              "stationarity_inf": 2.3133598986090407e-11,
+              "max_scaled_control": 1.4935588071026589,
+              "upper_control_bound": null,
+              "lower_control_bound": 1e-08,
+              "lower_control_bound_active": false,
+              "elapsed_s": 17.618716195982415,
+              "trim_interval": [
+                0.05263157894736842,
+                1.0
+              ],
+              "seed_squared_speed_fit_max_abs": 0.27617145465917625,
+              "torque_profile_sha256": "99fb0465ff4469be410c97638f9d0bee59ab3dc1fb820f2dfd6fed29bcac7f6a",
+              "dense_duration_s": 0.5721546927895466,
+              "dense_samples": 8316,
+              "dense_min_margin": -0.00011163136874703383,
+              "refinement": 2
+            }
+          ],
+          "parity_pass": true
+        },
+        "D": {
+          "historical_duration_s": 0.5310508005101467,
+          "rerun_duration_s": 0.5310508005101467,
+          "duration_abs_difference_s": 0.0,
+          "geometry_max_abs_difference_rad": 0.0,
+          "ipopt_status": 0,
+          "solver_converged": true,
+          "stationarity_inf": 8.256530357532679e-08,
+          "primal_min_margin": 3.44357975468057e-09,
+          "constraint_multipliers": {
+            "velocity": {
+              "max_abs": 0.05633461652467704,
+              "sum_abs": 0.12115264261193177,
+              "signed_sum": -0.12115264261193177,
+              "lower_side_sum_abs": 0.1211447708012581,
+              "upper_side_sum_abs": 7.87181067367938e-06,
+              "lower_side_signed_sum": -0.1211447708012581,
+              "upper_side_signed_sum": -7.87181067367938e-06,
+              "count_gt_1e_5": 30
+            },
+            "acceleration": {
+              "max_abs": 0.015134393760313971,
+              "sum_abs": 0.10037295999780241,
+              "signed_sum": -0.10037295999780241,
+              "lower_side_sum_abs": 0.06594903609021087,
+              "upper_side_sum_abs": 0.03442392390759154,
+              "lower_side_signed_sum": -0.06594903609021087,
+              "upper_side_signed_sum": -0.03442392390759154,
+              "count_gt_1e_5": 31
+            },
+            "jerk": {
+              "max_abs": 0.00281043066938651,
+              "sum_abs": 0.02450568286152603,
+              "signed_sum": -0.02450568286152603,
+              "lower_side_sum_abs": 0.02439826779478126,
+              "upper_side_sum_abs": 0.00010741506674476933,
+              "lower_side_signed_sum": -0.02439826779478126,
+              "upper_side_signed_sum": -0.00010741506674476933,
+              "count_gt_1e_5": 18
+            },
+            "torque": {
+              "max_abs": 0.12125247864521574,
+              "sum_abs": 0.31490065915232063,
+              "signed_sum": -0.31490065915232063,
+              "lower_side_sum_abs": 7.245637722993661e-06,
+              "upper_side_sum_abs": 0.31489341351459765,
+              "lower_side_signed_sum": -7.245637722993661e-06,
+              "upper_side_signed_sum": -0.31489341351459765,
+              "count_gt_1e_5": 122
+            }
+          },
+          "refinement_passes": [
+            {
+              "constraint_multipliers": {
+                "velocity": {
+                  "max_abs": 0.07436932510310694,
+                  "sum_abs": 0.12047074420091806,
+                  "signed_sum": -0.12047074420091806,
+                  "lower_side_sum_abs": 0.12046737405704451,
+                  "upper_side_sum_abs": 3.3701438735482204e-06,
+                  "lower_side_signed_sum": -0.12046737405704451,
+                  "upper_side_signed_sum": -3.3701438735482204e-06,
+                  "count_gt_1e_5": 20
+                },
+                "acceleration": {
+                  "max_abs": 0.01851172675963267,
+                  "sum_abs": 0.10085464860740045,
+                  "signed_sum": -0.10085464860740045,
+                  "lower_side_sum_abs": 0.06599883288839292,
+                  "upper_side_sum_abs": 0.03485581571900753,
+                  "lower_side_signed_sum": -0.06599883288839292,
+                  "upper_side_signed_sum": -0.03485581571900753,
+                  "count_gt_1e_5": 11
+                },
+                "jerk": {
+                  "max_abs": 0.009117775133922593,
+                  "sum_abs": 0.024412141899559082,
+                  "signed_sum": -0.024412141899559082,
+                  "lower_side_sum_abs": 0.02439284934078087,
+                  "upper_side_sum_abs": 1.929255877821018e-05,
+                  "lower_side_signed_sum": -0.02439284934078087,
+                  "upper_side_signed_sum": -1.929255877821018e-05,
+                  "count_gt_1e_5": 7
+                },
+                "torque": {
+                  "max_abs": 0.12602635605699306,
+                  "sum_abs": 0.3148270090963148,
+                  "signed_sum": -0.3148270090963148,
+                  "lower_side_sum_abs": 3.0562088386570593e-06,
+                  "upper_side_sum_abs": 0.31482395288747606,
+                  "lower_side_signed_sum": -3.0562088386570593e-06,
+                  "upper_side_signed_sum": -0.31482395288747606,
+                  "count_gt_1e_5": 81
+                }
+              },
+              "multiplier_contract": {
+                "constraint_order": "lower then upper; velocity, acceleration, jerk, torque",
+                "constraint_scaling": "dimensionless pointwise margins normalized by 0.95 half-range",
+                "reported_sign": "raw IPOPT mult_g sign retained; absolute summaries aid magnitude comparison",
+                "interpretation": "local sensitivity only; multipliers are not global optimality evidence"
+              },
+              "status": 0,
+              "message": "Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).",
+              "solver_converged": true,
+              "iterations": 47,
+              "duration_s": 0.5310460782068094,
+              "primal_min_margin": -3.083077126930789e-09,
+              "collocation_points": 537,
+              "stationarity_inf": 5.328560263392616e-11,
+              "max_scaled_control": 1.2912450355607434,
+              "upper_control_bound": null,
+              "lower_control_bound": 1e-08,
+              "lower_control_bound_active": false,
+              "elapsed_s": 33.289111500023864,
+              "geometry": "exact quintic controls",
+              "torque_profile_sha256": "99fb0465ff4469be410c97638f9d0bee59ab3dc1fb820f2dfd6fed29bcac7f6a",
+              "dense_duration_s": 0.5310460782066125,
+              "dense_samples": 8334,
+              "dense_min_margin": -0.0066256954860273165,
+              "refinement": 0
+            },
+            {
+              "constraint_multipliers": {
+                "velocity": {
+                  "max_abs": 0.02438967368149489,
+                  "sum_abs": 0.12060930494853593,
+                  "signed_sum": -0.12060930494853593,
+                  "lower_side_sum_abs": 0.12050529042493999,
+                  "upper_side_sum_abs": 0.00010401452359593904,
+                  "lower_side_signed_sum": -0.12050529042493999,
+                  "upper_side_signed_sum": -0.00010401452359593904,
+                  "count_gt_1e_5": 60
+                },
+                "acceleration": {
+                  "max_abs": 0.014370832778807468,
+                  "sum_abs": 0.10065587176663202,
+                  "signed_sum": -0.10065587176663202,
+                  "lower_side_sum_abs": 0.06602137869679035,
+                  "upper_side_sum_abs": 0.03463449306984166,
+                  "lower_side_signed_sum": -0.06602137869679035,
+                  "upper_side_signed_sum": -0.03463449306984166,
+                  "count_gt_1e_5": 48
+                },
+                "jerk": {
+                  "max_abs": 0.009075698339022817,
+                  "sum_abs": 0.02472737468182588,
+                  "signed_sum": -0.02472737468182588,
+                  "lower_side_sum_abs": 0.02453559745361144,
+                  "upper_side_sum_abs": 0.00019177722821444167,
+                  "lower_side_signed_sum": -0.02453559745361144,
+                  "upper_side_signed_sum": -0.00019177722821444167,
+                  "count_gt_1e_5": 21
+                },
+                "torque": {
+                  "max_abs": 0.12165617129826106,
+                  "sum_abs": 0.31592436785394595,
+                  "signed_sum": -0.31592436785394595,
+                  "lower_side_sum_abs": 9.482094479567848e-05,
+                  "upper_side_sum_abs": 0.31582954690915027,
+                  "lower_side_signed_sum": -9.482094479567848e-05,
+                  "upper_side_signed_sum": -0.31582954690915027,
+                  "count_gt_1e_5": 193
+                }
+              },
+              "multiplier_contract": {
+                "constraint_order": "lower then upper; velocity, acceleration, jerk, torque",
+                "constraint_scaling": "dimensionless pointwise margins normalized by 0.95 half-range",
+                "reported_sign": "raw IPOPT mult_g sign retained; absolute summaries aid magnitude comparison",
+                "interpretation": "local sensitivity only; multipliers are not global optimality evidence"
+              },
+              "status": 0,
+              "message": "Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).",
+              "solver_converged": true,
+              "iterations": 51,
+              "duration_s": 0.5310506323471151,
+              "primal_min_margin": 1.8032868376316458e-07,
+              "collocation_points": 619,
+              "stationarity_inf": 9.986309662563269e-08,
+              "max_scaled_control": 1.2812547285942013,
+              "upper_control_bound": null,
+              "lower_control_bound": 1e-08,
+              "lower_control_bound_active": false,
+              "elapsed_s": 41.615336510003544,
+              "geometry": "exact quintic controls",
+              "torque_profile_sha256": "99fb0465ff4469be410c97638f9d0bee59ab3dc1fb820f2dfd6fed29bcac7f6a",
+              "dense_duration_s": 0.5310506323468871,
+              "dense_samples": 8332,
+              "dense_min_margin": -0.00014148153114579287,
+              "refinement": 1
+            },
+            {
+              "constraint_multipliers": {
+                "velocity": {
+                  "max_abs": 0.05633461652467704,
+                  "sum_abs": 0.12115264261193177,
+                  "signed_sum": -0.12115264261193177,
+                  "lower_side_sum_abs": 0.1211447708012581,
+                  "upper_side_sum_abs": 7.87181067367938e-06,
+                  "lower_side_signed_sum": -0.1211447708012581,
+                  "upper_side_signed_sum": -7.87181067367938e-06,
+                  "count_gt_1e_5": 30
+                },
+                "acceleration": {
+                  "max_abs": 0.015134393760313971,
+                  "sum_abs": 0.10037295999780241,
+                  "signed_sum": -0.10037295999780241,
+                  "lower_side_sum_abs": 0.06594903609021087,
+                  "upper_side_sum_abs": 0.03442392390759154,
+                  "lower_side_signed_sum": -0.06594903609021087,
+                  "upper_side_signed_sum": -0.03442392390759154,
+                  "count_gt_1e_5": 31
+                },
+                "jerk": {
+                  "max_abs": 0.00281043066938651,
+                  "sum_abs": 0.02450568286152603,
+                  "signed_sum": -0.02450568286152603,
+                  "lower_side_sum_abs": 0.02439826779478126,
+                  "upper_side_sum_abs": 0.00010741506674476933,
+                  "lower_side_signed_sum": -0.02439826779478126,
+                  "upper_side_signed_sum": -0.00010741506674476933,
+                  "count_gt_1e_5": 18
+                },
+                "torque": {
+                  "max_abs": 0.12125247864521574,
+                  "sum_abs": 0.31490065915232063,
+                  "signed_sum": -0.31490065915232063,
+                  "lower_side_sum_abs": 7.245637722993661e-06,
+                  "upper_side_sum_abs": 0.31489341351459765,
+                  "lower_side_signed_sum": -7.245637722993661e-06,
+                  "upper_side_signed_sum": -0.31489341351459765,
+                  "count_gt_1e_5": 122
+                }
+              },
+              "multiplier_contract": {
+                "constraint_order": "lower then upper; velocity, acceleration, jerk, torque",
+                "constraint_scaling": "dimensionless pointwise margins normalized by 0.95 half-range",
+                "reported_sign": "raw IPOPT mult_g sign retained; absolute summaries aid magnitude comparison",
+                "interpretation": "local sensitivity only; multipliers are not global optimality evidence"
+              },
+              "status": 0,
+              "message": "Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).",
+              "solver_converged": true,
+              "iterations": 47,
+              "duration_s": 0.5310508005101467,
+              "primal_min_margin": 3.44357975468057e-09,
+              "collocation_points": 676,
+              "stationarity_inf": 8.256530357532679e-08,
+              "max_scaled_control": 1.2827260326971917,
+              "upper_control_bound": null,
+              "lower_control_bound": 1e-08,
+              "lower_control_bound_active": false,
+              "elapsed_s": 38.82606419199146,
+              "geometry": "exact quintic controls",
+              "torque_profile_sha256": "99fb0465ff4469be410c97638f9d0bee59ab3dc1fb820f2dfd6fed29bcac7f6a",
+              "dense_duration_s": 0.53105080050993,
+              "dense_samples": 8333,
+              "dense_min_margin": -3.491421128321015e-05,
+              "refinement": 2
+            }
+          ],
+          "parity_pass": true
+        }
+      },
+      "parity_pass": true
+    },
+    {
+      "case_id": "pilot_cluttered_03",
+      "methods": {
+        "B": {
+          "historical_duration_s": 0.6598503945419532,
+          "rerun_duration_s": 0.659850394543979,
+          "duration_abs_difference_s": 2.025823953033523e-12,
+          "geometry_max_abs_difference_rad": 0.0,
+          "ipopt_status": 0,
+          "solver_converged": true,
+          "stationarity_inf": 5.0729796702912256e-08,
+          "primal_min_margin": 1.5054248403423287e-08,
+          "constraint_multipliers": {
+            "velocity": {
+              "max_abs": 0.006386802084138576,
+              "sum_abs": 0.06354346651401496,
+              "signed_sum": -0.06354346651401496,
+              "lower_side_sum_abs": 1.8267675372564453e-05,
+              "upper_side_sum_abs": 0.0635251988386424,
+              "lower_side_signed_sum": -1.8267675372564453e-05,
+              "upper_side_signed_sum": -0.0635251988386424,
+              "count_gt_1e_5": 29
+            },
+            "acceleration": {
+              "max_abs": 0.006732598454289976,
+              "sum_abs": 0.05802937421142621,
+              "signed_sum": -0.05802937421142621,
+              "lower_side_sum_abs": 2.244934633225684e-05,
+              "upper_side_sum_abs": 0.058006924865093956,
+              "lower_side_signed_sum": -2.244934633225684e-05,
+              "upper_side_signed_sum": -0.058006924865093956,
+              "count_gt_1e_5": 47
+            },
+            "jerk": {
+              "max_abs": 0.006516553811808667,
+              "sum_abs": 0.020867357329160206,
+              "signed_sum": -0.020867357329160206,
+              "lower_side_sum_abs": 0.00030122978838862215,
+              "upper_side_sum_abs": 0.020566127540771584,
+              "lower_side_signed_sum": -0.00030122978838862215,
+              "upper_side_signed_sum": -0.020566127540771584,
+              "count_gt_1e_5": 8
+            },
+            "torque": {
+              "max_abs": 0.18760382520290217,
+              "sum_abs": 1.7327255767950698,
+              "signed_sum": -1.7327255767950698,
+              "lower_side_sum_abs": 1.8529967883950008e-05,
+              "upper_side_sum_abs": 1.732707046827186,
+              "lower_side_signed_sum": -1.8529967883950008e-05,
+              "upper_side_signed_sum": -1.732707046827186,
+              "count_gt_1e_5": 216
+            }
+          },
+          "refinement_passes": [
+            {
+              "constraint_multipliers": {
+                "velocity": {
+                  "max_abs": 0.02845964594190265,
+                  "sum_abs": 0.06375255835182563,
+                  "signed_sum": -0.06375255835182563,
+                  "lower_side_sum_abs": 3.024658095178264e-05,
+                  "upper_side_sum_abs": 0.06372231177087384,
+                  "lower_side_signed_sum": -3.024658095178264e-05,
+                  "upper_side_signed_sum": -0.06372231177087384,
+                  "count_gt_1e_5": 23
+                },
+                "acceleration": {
+                  "max_abs": 0.019935731450820855,
+                  "sum_abs": 0.05819925341589623,
+                  "signed_sum": -0.05819925341589623,
+                  "lower_side_sum_abs": 3.756292459416519e-05,
+                  "upper_side_sum_abs": 0.05816169049130206,
+                  "lower_side_signed_sum": -3.756292459416519e-05,
+                  "upper_side_signed_sum": -0.05816169049130206,
+                  "count_gt_1e_5": 46
+                },
+                "jerk": {
+                  "max_abs": 0.00666062311597118,
+                  "sum_abs": 0.020843788789695034,
+                  "signed_sum": -0.020843788789695034,
+                  "lower_side_sum_abs": 0.0003291743065823826,
+                  "upper_side_sum_abs": 0.020514614483112655,
+                  "lower_side_signed_sum": -0.0003291743065823826,
+                  "upper_side_signed_sum": -0.020514614483112655,
+                  "count_gt_1e_5": 6
+                },
+                "torque": {
+                  "max_abs": 0.3309918345392388,
+                  "sum_abs": 1.7335290094880635,
+                  "signed_sum": -1.7335290094880635,
+                  "lower_side_sum_abs": 3.081303151238445e-05,
+                  "upper_side_sum_abs": 1.7334981964565512,
+                  "lower_side_signed_sum": -3.081303151238445e-05,
+                  "upper_side_signed_sum": -1.7334981964565512,
+                  "count_gt_1e_5": 222
+                }
+              },
+              "multiplier_contract": {
+                "constraint_order": "lower then upper; velocity, acceleration, jerk, torque",
+                "constraint_scaling": "dimensionless pointwise margins normalized by 0.95 half-range",
+                "reported_sign": "raw IPOPT mult_g sign retained; absolute summaries aid magnitude comparison",
+                "interpretation": "local sensitivity only; multipliers are not global optimality evidence"
+              },
+              "status": 0,
+              "message": "Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).",
+              "solver_converged": true,
+              "iterations": 35,
+              "duration_s": 0.6598302853838284,
+              "primal_min_margin": 1.6206793573836364e-08,
+              "collocation_points": 564,
+              "stationarity_inf": 3.956897295224841e-10,
+              "max_scaled_control": 1.2723823630088067,
+              "upper_control_bound": null,
+              "lower_control_bound": 1e-08,
+              "lower_control_bound_active": false,
+              "elapsed_s": 20.464465860044584,
+              "trim_interval": [
+                0.05263157894736842,
+                1.0
+              ],
+              "seed_squared_speed_fit_max_abs": 0.21641822837406322,
+              "torque_profile_sha256": "c1d75f4f095c75a74e346095f50a4c60ead02eaa5c26f0b8afab52ce18e7efbd",
+              "dense_duration_s": 0.6598302853814992,
+              "dense_samples": 8291,
+              "dense_min_margin": -0.010859495768950955,
+              "refinement": 0
+            },
+            {
+              "constraint_multipliers": {
+                "velocity": {
+                  "max_abs": 0.013766251427912454,
+                  "sum_abs": 0.06368874680842132,
+                  "signed_sum": -0.06368874680842132,
+                  "lower_side_sum_abs": 1.948178159348215e-05,
+                  "upper_side_sum_abs": 0.06366926502682783,
+                  "lower_side_signed_sum": -1.948178159348215e-05,
+                  "upper_side_signed_sum": -0.06366926502682783,
+                  "count_gt_1e_5": 23
+                },
+                "acceleration": {
+                  "max_abs": 0.011283618892557459,
+                  "sum_abs": 0.05803887330016025,
+                  "signed_sum": -0.05803887330016025,
+                  "lower_side_sum_abs": 2.4052072718167214e-05,
+                  "upper_side_sum_abs": 0.05801482122744208,
+                  "lower_side_signed_sum": -2.4052072718167214e-05,
+                  "upper_side_signed_sum": -0.05801482122744208,
+                  "count_gt_1e_5": 42
+                },
+                "jerk": {
+                  "max_abs": 0.0065139861222406675,
+                  "sum_abs": 0.020869621527626347,
+                  "signed_sum": -0.020869621527626347,
+                  "lower_side_sum_abs": 0.0002980009445318432,
+                  "upper_side_sum_abs": 0.020571620583094502,
+                  "lower_side_signed_sum": -0.0002980009445318432,
+                  "upper_side_signed_sum": -0.020571620583094502,
+                  "count_gt_1e_5": 8
+                },
+                "torque": {
+                  "max_abs": 0.19258327547087947,
+                  "sum_abs": 1.7321070767832036,
+                  "signed_sum": -1.7321070767832036,
+                  "lower_side_sum_abs": 1.980429053160031e-05,
+                  "upper_side_sum_abs": 1.7320872724926721,
+                  "lower_side_signed_sum": -1.980429053160031e-05,
+                  "upper_side_signed_sum": -1.7320872724926721,
+                  "count_gt_1e_5": 214
+                }
+              },
+              "multiplier_contract": {
+                "constraint_order": "lower then upper; velocity, acceleration, jerk, torque",
+                "constraint_scaling": "dimensionless pointwise margins normalized by 0.95 half-range",
+                "reported_sign": "raw IPOPT mult_g sign retained; absolute summaries aid magnitude comparison",
+                "interpretation": "local sensitivity only; multipliers are not global optimality evidence"
+              },
+              "status": 0,
+              "message": "Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).",
+              "solver_converged": true,
+              "iterations": 18,
+              "duration_s": 0.6598483915421696,
+              "primal_min_margin": 1.7298399823673094e-08,
+              "collocation_points": 603,
+              "stationarity_inf": 5.365197279929132e-08,
+              "max_scaled_control": 1.8504403219343808,
+              "upper_control_bound": null,
+              "lower_control_bound": 1e-08,
+              "lower_control_bound_active": false,
+              "elapsed_s": 12.074615283985622,
+              "trim_interval": [
+                0.05263157894736842,
+                1.0
+              ],
+              "seed_squared_speed_fit_max_abs": 0.21641822837406322,
+              "torque_profile_sha256": "c1d75f4f095c75a74e346095f50a4c60ead02eaa5c26f0b8afab52ce18e7efbd",
+              "dense_duration_s": 0.6598483915398327,
+              "dense_samples": 8292,
+              "dense_min_margin": -0.008400538324047968,
+              "refinement": 1
+            },
+            {
+              "constraint_multipliers": {
+                "velocity": {
+                  "max_abs": 0.006386802084138576,
+                  "sum_abs": 0.06354346651401496,
+                  "signed_sum": -0.06354346651401496,
+                  "lower_side_sum_abs": 1.8267675372564453e-05,
+                  "upper_side_sum_abs": 0.0635251988386424,
+                  "lower_side_signed_sum": -1.8267675372564453e-05,
+                  "upper_side_signed_sum": -0.0635251988386424,
+                  "count_gt_1e_5": 29
+                },
+                "acceleration": {
+                  "max_abs": 0.006732598454289976,
+                  "sum_abs": 0.05802937421142621,
+                  "signed_sum": -0.05802937421142621,
+                  "lower_side_sum_abs": 2.244934633225684e-05,
+                  "upper_side_sum_abs": 0.058006924865093956,
+                  "lower_side_signed_sum": -2.244934633225684e-05,
+                  "upper_side_signed_sum": -0.058006924865093956,
+                  "count_gt_1e_5": 47
+                },
+                "jerk": {
+                  "max_abs": 0.006516553811808667,
+                  "sum_abs": 0.020867357329160206,
+                  "signed_sum": -0.020867357329160206,
+                  "lower_side_sum_abs": 0.00030122978838862215,
+                  "upper_side_sum_abs": 0.020566127540771584,
+                  "lower_side_signed_sum": -0.00030122978838862215,
+                  "upper_side_signed_sum": -0.020566127540771584,
+                  "count_gt_1e_5": 8
+                },
+                "torque": {
+                  "max_abs": 0.18760382520290217,
+                  "sum_abs": 1.7327255767950698,
+                  "signed_sum": -1.7327255767950698,
+                  "lower_side_sum_abs": 1.8529967883950008e-05,
+                  "upper_side_sum_abs": 1.732707046827186,
+                  "lower_side_signed_sum": -1.8529967883950008e-05,
+                  "upper_side_signed_sum": -1.732707046827186,
+                  "count_gt_1e_5": 216
+                }
+              },
+              "multiplier_contract": {
+                "constraint_order": "lower then upper; velocity, acceleration, jerk, torque",
+                "constraint_scaling": "dimensionless pointwise margins normalized by 0.95 half-range",
+                "reported_sign": "raw IPOPT mult_g sign retained; absolute summaries aid magnitude comparison",
+                "interpretation": "local sensitivity only; multipliers are not global optimality evidence"
+              },
+              "status": 0,
+              "message": "Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).",
+              "solver_converged": true,
+              "iterations": 35,
+              "duration_s": 0.659850394543979,
+              "primal_min_margin": 1.5054248403423287e-08,
+              "collocation_points": 633,
+              "stationarity_inf": 5.0729796702912256e-08,
+              "max_scaled_control": 1.850341945923095,
+              "upper_control_bound": null,
+              "lower_control_bound": 1e-08,
+              "lower_control_bound_active": false,
+              "elapsed_s": 26.508719603007194,
+              "trim_interval": [
+                0.05263157894736842,
+                1.0
+              ],
+              "seed_squared_speed_fit_max_abs": 0.21641822837406322,
+              "torque_profile_sha256": "c1d75f4f095c75a74e346095f50a4c60ead02eaa5c26f0b8afab52ce18e7efbd",
+              "dense_duration_s": 0.6598503945416432,
+              "dense_samples": 8292,
+              "dense_min_margin": -0.0047404065209666335,
+              "refinement": 2
+            }
+          ],
+          "parity_pass": true
+        },
+        "D": {
+          "historical_duration_s": 0.5530315829186393,
+          "rerun_duration_s": 0.5530315829186393,
+          "duration_abs_difference_s": 0.0,
+          "geometry_max_abs_difference_rad": 0.0,
+          "ipopt_status": 0,
+          "solver_converged": true,
+          "stationarity_inf": 4.1213925772818885e-08,
+          "primal_min_margin": 8.541394702632488e-09,
+          "constraint_multipliers": {
+            "velocity": {
+              "max_abs": 0.030872235466782243,
+              "sum_abs": 0.13051004306318847,
+              "signed_sum": -0.13051004306318847,
+              "lower_side_sum_abs": 1.2440349291035699e-05,
+              "upper_side_sum_abs": 0.13049760271389743,
+              "lower_side_signed_sum": -1.2440349291035699e-05,
+              "upper_side_signed_sum": -0.13049760271389743,
+              "count_gt_1e_5": 15
+            },
+            "acceleration": {
+              "max_abs": 0.019786929719915178,
+              "sum_abs": 0.09196032548418236,
+              "signed_sum": -0.09196032548418236,
+              "lower_side_sum_abs": 0.04181043449709231,
+              "upper_side_sum_abs": 0.050149890987090044,
+              "lower_side_signed_sum": -0.04181043449709231,
+              "upper_side_signed_sum": -0.050149890987090044,
+              "count_gt_1e_5": 53
+            },
+            "jerk": {
+              "max_abs": 0.007327910630757863,
+              "sum_abs": 0.03421952605077559,
+              "signed_sum": -0.03421952605077559,
+              "lower_side_sum_abs": 0.008772039990863695,
+              "upper_side_sum_abs": 0.025447486059911893,
+              "lower_side_signed_sum": -0.008772039990863695,
+              "upper_side_signed_sum": -0.025447486059911893,
+              "count_gt_1e_5": 24
+            },
+            "torque": {
+              "max_abs": 0.1519002274514136,
+              "sum_abs": 0.4608266690119744,
+              "signed_sum": -0.4608266690119744,
+              "lower_side_sum_abs": 1.699223940410764e-05,
+              "upper_side_sum_abs": 0.4608096767725703,
+              "lower_side_signed_sum": -1.699223940410764e-05,
+              "upper_side_signed_sum": -0.4608096767725703,
+              "count_gt_1e_5": 137
+            }
+          },
+          "refinement_passes": [
+            {
+              "constraint_multipliers": {
+                "velocity": {
+                  "max_abs": 0.079809873147689,
+                  "sum_abs": 0.12991564795908056,
+                  "signed_sum": -0.12991564795908056,
+                  "lower_side_sum_abs": 2.8729377353440476e-05,
+                  "upper_side_sum_abs": 0.12988691858172713,
+                  "lower_side_signed_sum": -2.8729377353440476e-05,
+                  "upper_side_signed_sum": -0.12988691858172713,
+                  "count_gt_1e_5": 17
+                },
+                "acceleration": {
+                  "max_abs": 0.019600817324776264,
+                  "sum_abs": 0.09205351674054227,
+                  "signed_sum": -0.09205351674054227,
+                  "lower_side_sum_abs": 0.04175002469964861,
+                  "upper_side_sum_abs": 0.05030349204089367,
+                  "lower_side_signed_sum": -0.04175002469964861,
+                  "upper_side_signed_sum": -0.05030349204089367,
+                  "count_gt_1e_5": 46
+                },
+                "jerk": {
+                  "max_abs": 0.009372336155191447,
+                  "sum_abs": 0.03405790243820003,
+                  "signed_sum": -0.03405790243820003,
+                  "lower_side_sum_abs": 0.008648682106629129,
+                  "upper_side_sum_abs": 0.025409220331570906,
+                  "lower_side_signed_sum": -0.008648682106629129,
+                  "upper_side_signed_sum": -0.025409220331570906,
+                  "count_gt_1e_5": 8
+                },
+                "torque": {
+                  "max_abs": 0.20558137161128118,
+                  "sum_abs": 0.4638667361088903,
+                  "signed_sum": -0.4638667361088903,
+                  "lower_side_sum_abs": 3.7354375938068295e-05,
+                  "upper_side_sum_abs": 0.4638293817329522,
+                  "lower_side_signed_sum": -3.7354375938068295e-05,
+                  "upper_side_signed_sum": -0.4638293817329522,
+                  "count_gt_1e_5": 159
+                }
+              },
+              "multiplier_contract": {
+                "constraint_order": "lower then upper; velocity, acceleration, jerk, torque",
+                "constraint_scaling": "dimensionless pointwise margins normalized by 0.95 half-range",
+                "reported_sign": "raw IPOPT mult_g sign retained; absolute summaries aid magnitude comparison",
+                "interpretation": "local sensitivity only; multipliers are not global optimality evidence"
+              },
+              "status": 0,
+              "message": "Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).",
+              "solver_converged": true,
+              "iterations": 23,
+              "duration_s": 0.5530244476222507,
+              "primal_min_margin": 2.949267008389711e-08,
+              "collocation_points": 537,
+              "stationarity_inf": 2.408938511387601e-10,
+              "max_scaled_control": 1.222724991588979,
+              "upper_control_bound": null,
+              "lower_control_bound": 1e-08,
+              "lower_control_bound_active": false,
+              "elapsed_s": 13.995147450012155,
+              "geometry": "exact quintic controls",
+              "torque_profile_sha256": "c1d75f4f095c75a74e346095f50a4c60ead02eaa5c26f0b8afab52ce18e7efbd",
+              "dense_duration_s": 0.5530244476236321,
+              "dense_samples": 8321,
+              "dense_min_margin": -0.00044144841068738394,
+              "refinement": 0
+            },
+            {
+              "constraint_multipliers": {
+                "velocity": {
+                  "max_abs": 0.03692281788140444,
+                  "sum_abs": 0.1303481532440315,
+                  "signed_sum": -0.1303481532440315,
+                  "lower_side_sum_abs": 8.239698457597843e-06,
+                  "upper_side_sum_abs": 0.13033991354557392,
+                  "lower_side_signed_sum": -8.239698457597843e-06,
+                  "upper_side_signed_sum": -0.13033991354557392,
+                  "count_gt_1e_5": 12
+                },
+                "acceleration": {
+                  "max_abs": 0.020657910149983055,
+                  "sum_abs": 0.09203644378910567,
+                  "signed_sum": -0.09203644378910567,
+                  "lower_side_sum_abs": 0.04182615339304944,
+                  "upper_side_sum_abs": 0.05021029039605622,
+                  "lower_side_signed_sum": -0.04182615339304944,
+                  "upper_side_signed_sum": -0.05021029039605622,
+                  "count_gt_1e_5": 39
+                },
+                "jerk": {
+                  "max_abs": 0.008355949973751869,
+                  "sum_abs": 0.03416701808889184,
+                  "signed_sum": -0.03416701808889184,
+                  "lower_side_sum_abs": 0.00872346125265063,
+                  "upper_side_sum_abs": 0.025443556836241207,
+                  "lower_side_signed_sum": -0.00872346125265063,
+                  "upper_side_signed_sum": -0.025443556836241207,
+                  "count_gt_1e_5": 15
+                },
+                "torque": {
+                  "max_abs": 0.18759295398458112,
+                  "sum_abs": 0.46079593748753617,
+                  "signed_sum": -0.46079593748753617,
+                  "lower_side_sum_abs": 1.1051652094747486e-05,
+                  "upper_side_sum_abs": 0.4607848858354414,
+                  "lower_side_signed_sum": -1.1051652094747486e-05,
+                  "upper_side_signed_sum": -0.4607848858354414,
+                  "count_gt_1e_5": 116
+                }
+              },
+              "multiplier_contract": {
+                "constraint_order": "lower then upper; velocity, acceleration, jerk, torque",
+                "constraint_scaling": "dimensionless pointwise margins normalized by 0.95 half-range",
+                "reported_sign": "raw IPOPT mult_g sign retained; absolute summaries aid magnitude comparison",
+                "interpretation": "local sensitivity only; multipliers are not global optimality evidence"
+              },
+              "status": 0,
+              "message": "Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).",
+              "solver_converged": true,
+              "iterations": 43,
+              "duration_s": 0.5530295486091829,
+              "primal_min_margin": 7.05300928771635e-10,
+              "collocation_points": 617,
+              "stationarity_inf": 4.426622234852865e-08,
+              "max_scaled_control": 1.2007741969341346,
+              "upper_control_bound": null,
+              "lower_control_bound": 1e-08,
+              "lower_control_bound_active": false,
+              "elapsed_s": 29.850727926008403,
+              "geometry": "exact quintic controls",
+              "torque_profile_sha256": "c1d75f4f095c75a74e346095f50a4c60ead02eaa5c26f0b8afab52ce18e7efbd",
+              "dense_duration_s": 0.5530295486105632,
+              "dense_samples": 8322,
+              "dense_min_margin": -0.00010204691324977588,
+              "refinement": 1
+            },
+            {
+              "constraint_multipliers": {
+                "velocity": {
+                  "max_abs": 0.030872235466782243,
+                  "sum_abs": 0.13051004306318847,
+                  "signed_sum": -0.13051004306318847,
+                  "lower_side_sum_abs": 1.2440349291035699e-05,
+                  "upper_side_sum_abs": 0.13049760271389743,
+                  "lower_side_signed_sum": -1.2440349291035699e-05,
+                  "upper_side_signed_sum": -0.13049760271389743,
+                  "count_gt_1e_5": 15
+                },
+                "acceleration": {
+                  "max_abs": 0.019786929719915178,
+                  "sum_abs": 0.09196032548418236,
+                  "signed_sum": -0.09196032548418236,
+                  "lower_side_sum_abs": 0.04181043449709231,
+                  "upper_side_sum_abs": 0.050149890987090044,
+                  "lower_side_signed_sum": -0.04181043449709231,
+                  "upper_side_signed_sum": -0.050149890987090044,
+                  "count_gt_1e_5": 53
+                },
+                "jerk": {
+                  "max_abs": 0.007327910630757863,
+                  "sum_abs": 0.03421952605077559,
+                  "signed_sum": -0.03421952605077559,
+                  "lower_side_sum_abs": 0.008772039990863695,
+                  "upper_side_sum_abs": 0.025447486059911893,
+                  "lower_side_signed_sum": -0.008772039990863695,
+                  "upper_side_signed_sum": -0.025447486059911893,
+                  "count_gt_1e_5": 24
+                },
+                "torque": {
+                  "max_abs": 0.1519002274514136,
+                  "sum_abs": 0.4608266690119744,
+                  "signed_sum": -0.4608266690119744,
+                  "lower_side_sum_abs": 1.699223940410764e-05,
+                  "upper_side_sum_abs": 0.4608096767725703,
+                  "lower_side_signed_sum": -1.699223940410764e-05,
+                  "upper_side_signed_sum": -0.4608096767725703,
+                  "count_gt_1e_5": 137
+                }
+              },
+              "multiplier_contract": {
+                "constraint_order": "lower then upper; velocity, acceleration, jerk, torque",
+                "constraint_scaling": "dimensionless pointwise margins normalized by 0.95 half-range",
+                "reported_sign": "raw IPOPT mult_g sign retained; absolute summaries aid magnitude comparison",
+                "interpretation": "local sensitivity only; multipliers are not global optimality evidence"
+              },
+              "status": 0,
+              "message": "Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).",
+              "solver_converged": true,
+              "iterations": 44,
+              "duration_s": 0.5530315829186393,
+              "primal_min_margin": 8.541394702632488e-09,
+              "collocation_points": 671,
+              "stationarity_inf": 4.1213925772818885e-08,
+              "max_scaled_control": 1.199449491677171,
+              "upper_control_bound": null,
+              "lower_control_bound": 1e-08,
+              "lower_control_bound_active": false,
+              "elapsed_s": 33.715052321960684,
+              "geometry": "exact quintic controls",
+              "torque_profile_sha256": "c1d75f4f095c75a74e346095f50a4c60ead02eaa5c26f0b8afab52ce18e7efbd",
+              "dense_duration_s": 0.5530315829200165,
+              "dense_samples": 8322,
+              "dense_min_margin": -2.5367430833034277e-05,
+              "refinement": 2
+            }
+          ],
+          "parity_pass": true
+        }
+      },
+      "parity_pass": true
+    },
+    {
+      "case_id": "pilot_table_07",
+      "methods": {
+        "B": {
+          "historical_duration_s": 0.5816581786149821,
+          "rerun_duration_s": 0.5816581786149824,
+          "duration_abs_difference_s": 2.220446049250313e-16,
+          "geometry_max_abs_difference_rad": 0.0,
+          "ipopt_status": 0,
+          "solver_converged": true,
+          "stationarity_inf": 3.1717512198795584e-10,
+          "primal_min_margin": 2.606834970109162e-08,
+          "constraint_multipliers": {
+            "velocity": {
+              "max_abs": 0.03206239720928987,
+              "sum_abs": 0.2525674345139521,
+              "signed_sum": -0.2525674345139521,
+              "lower_side_sum_abs": 0.2525600320636101,
+              "upper_side_sum_abs": 7.4024503419745834e-06,
+              "lower_side_signed_sum": -0.2525600320636101,
+              "upper_side_signed_sum": -7.4024503419745834e-06,
+              "count_gt_1e_5": 189
+            },
+            "acceleration": {
+              "max_abs": 0.019293991026182847,
+              "sum_abs": 0.1338877680433876,
+              "signed_sum": -0.1338877680433876,
+              "lower_side_sum_abs": 0.06691509729975083,
+              "upper_side_sum_abs": 0.06697267074363676,
+              "lower_side_signed_sum": -0.06691509729975083,
+              "upper_side_signed_sum": -0.06697267074363676,
+              "count_gt_1e_5": 25
+            },
+            "jerk": {
+              "max_abs": 0.0039091424007044575,
+              "sum_abs": 0.02046636850947714,
+              "signed_sum": -0.02046636850947714,
+              "lower_side_sum_abs": 0.01931973928103562,
+              "upper_side_sum_abs": 0.0011466292284415171,
+              "lower_side_signed_sum": -0.01931973928103562,
+              "upper_side_signed_sum": -0.0011466292284415171,
+              "count_gt_1e_5": 14
+            },
+            "torque": {
+              "max_abs": 2.0307401468132395e-08,
+              "sum_abs": 2.5287417326509332e-05,
+              "signed_sum": -2.5287417326509332e-05,
+              "lower_side_sum_abs": 5.954613654521443e-06,
+              "upper_side_sum_abs": 1.933280367198789e-05,
+              "lower_side_signed_sum": -5.954613654521443e-06,
+              "upper_side_signed_sum": -1.933280367198789e-05,
+              "count_gt_1e_5": 0
+            }
+          },
+          "refinement_passes": [
+            {
+              "constraint_multipliers": {
+                "velocity": {
+                  "max_abs": 0.02767252307074877,
+                  "sum_abs": 0.25294754865846975,
+                  "signed_sum": -0.25294754865846975,
+                  "lower_side_sum_abs": 0.2528623717051968,
+                  "upper_side_sum_abs": 8.517695327290064e-05,
+                  "lower_side_signed_sum": -0.2528623717051968,
+                  "upper_side_signed_sum": -8.517695327290064e-05,
+                  "count_gt_1e_5": 220
+                },
+                "acceleration": {
+                  "max_abs": 0.019202058042329377,
+                  "sum_abs": 0.13387065260908448,
+                  "signed_sum": -0.13387065260908448,
+                  "lower_side_sum_abs": 0.06691485385172688,
+                  "upper_side_sum_abs": 0.06695579875735758,
+                  "lower_side_signed_sum": -0.06691485385172688,
+                  "upper_side_signed_sum": -0.06695579875735758,
+                  "count_gt_1e_5": 65
+                },
+                "jerk": {
+                  "max_abs": 0.0039148928869878205,
+                  "sum_abs": 0.020642570714589293,
+                  "signed_sum": -0.020642570714589293,
+                  "lower_side_sum_abs": 0.01940536105257716,
+                  "upper_side_sum_abs": 0.0012372096620121304,
+                  "lower_side_signed_sum": -0.01940536105257716,
+                  "upper_side_signed_sum": -0.0012372096620121304,
+                  "count_gt_1e_5": 12
+                },
+                "torque": {
+                  "max_abs": 2.8292964853156553e-07,
+                  "sum_abs": 0.0002910320838178852,
+                  "signed_sum": -0.0002910320838178852,
+                  "lower_side_sum_abs": 6.885082962546627e-05,
+                  "upper_side_sum_abs": 0.0002221812541924189,
+                  "lower_side_signed_sum": -6.885082962546627e-05,
+                  "upper_side_signed_sum": -0.0002221812541924189,
+                  "count_gt_1e_5": 0
+                }
+              },
+              "multiplier_contract": {
+                "constraint_order": "lower then upper; velocity, acceleration, jerk, torque",
+                "constraint_scaling": "dimensionless pointwise margins normalized by 0.95 half-range",
+                "reported_sign": "raw IPOPT mult_g sign retained; absolute summaries aid magnitude comparison",
+                "interpretation": "local sensitivity only; multipliers are not global optimality evidence"
+              },
+              "status": 0,
+              "message": "Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).",
+              "solver_converged": true,
+              "iterations": 36,
+              "duration_s": 0.5816494253534286,
+              "primal_min_margin": 7.229159667554441e-07,
+              "collocation_points": 564,
+              "stationarity_inf": 1.7811964517793004e-10,
+              "max_scaled_control": 1.3177862536866385,
+              "upper_control_bound": null,
+              "lower_control_bound": 1e-08,
+              "lower_control_bound_active": false,
+              "elapsed_s": 21.368812304979656,
+              "trim_interval": [
+                0.05263157894736842,
+                1.0
+              ],
+              "seed_squared_speed_fit_max_abs": 0.21963408191147282,
+              "torque_profile_sha256": "3809d4bf67ae897a5f9bbed78a8c500cd861b29ec39c11730f3fb831bfea6043",
+              "dense_duration_s": 0.581649425355583,
+              "dense_samples": 8322,
+              "dense_min_margin": -0.006867362929576792,
+              "refinement": 0
+            },
+            {
+              "constraint_multipliers": {
+                "velocity": {
+                  "max_abs": 0.02740700737966484,
+                  "sum_abs": 0.2525765315847029,
+                  "signed_sum": -0.2525765315847029,
+                  "lower_side_sum_abs": 0.25256503969620303,
+                  "upper_side_sum_abs": 1.1491888499848575e-05,
+                  "lower_side_signed_sum": -0.25256503969620303,
+                  "upper_side_signed_sum": -1.1491888499848575e-05,
+                  "count_gt_1e_5": 175
+                },
+                "acceleration": {
+                  "max_abs": 0.019287406645141964,
+                  "sum_abs": 0.1338865393792306,
+                  "signed_sum": -0.1338865393792306,
+                  "lower_side_sum_abs": 0.06692100470399048,
+                  "upper_side_sum_abs": 0.06696553467524011,
+                  "lower_side_signed_sum": -0.06692100470399048,
+                  "upper_side_signed_sum": -0.06696553467524011,
+                  "count_gt_1e_5": 27
+                },
+                "jerk": {
+                  "max_abs": 0.003910899233792808,
+                  "sum_abs": 0.020478943079531887,
+                  "signed_sum": -0.020478943079531887,
+                  "lower_side_sum_abs": 0.019329593129193787,
+                  "upper_side_sum_abs": 0.0011493499503381006,
+                  "lower_side_signed_sum": -0.019329593129193787,
+                  "upper_side_signed_sum": -0.0011493499503381006,
+                  "count_gt_1e_5": 12
+                },
+                "torque": {
+                  "max_abs": 3.445237251815669e-08,
+                  "sum_abs": 3.928245515804032e-05,
+                  "signed_sum": -3.928245515804032e-05,
+                  "lower_side_sum_abs": 9.266907054879834e-06,
+                  "upper_side_sum_abs": 3.0015548103160487e-05,
+                  "lower_side_signed_sum": -9.266907054879834e-06,
+                  "upper_side_signed_sum": -3.0015548103160487e-05,
+                  "count_gt_1e_5": 0
+                }
+              },
+              "multiplier_contract": {
+                "constraint_order": "lower then upper; velocity, acceleration, jerk, torque",
+                "constraint_scaling": "dimensionless pointwise margins normalized by 0.95 half-range",
+                "reported_sign": "raw IPOPT mult_g sign retained; absolute summaries aid magnitude comparison",
+                "interpretation": "local sensitivity only; multipliers are not global optimality evidence"
+              },
+              "status": 0,
+              "message": "Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).",
+              "solver_converged": true,
+              "iterations": 21,
+              "duration_s": 0.5816561968669314,
+              "primal_min_margin": 6.779946959412086e-08,
+              "collocation_points": 624,
+              "stationarity_inf": 3.429555772008038e-11,
+              "max_scaled_control": 1.3133917021489394,
+              "upper_control_bound": null,
+              "lower_control_bound": 1e-08,
+              "lower_control_bound_active": false,
+              "elapsed_s": 14.729252541030291,
+              "trim_interval": [
+                0.05263157894736842,
+                1.0
+              ],
+              "seed_squared_speed_fit_max_abs": 0.21963408191147282,
+              "torque_profile_sha256": "3809d4bf67ae897a5f9bbed78a8c500cd861b29ec39c11730f3fb831bfea6043",
+              "dense_duration_s": 0.5816561968690932,
+              "dense_samples": 8323,
+              "dense_min_margin": -0.0001703225850442358,
+              "refinement": 1
+            },
+            {
+              "constraint_multipliers": {
+                "velocity": {
+                  "max_abs": 0.03206239720928987,
+                  "sum_abs": 0.2525674345139521,
+                  "signed_sum": -0.2525674345139521,
+                  "lower_side_sum_abs": 0.2525600320636101,
+                  "upper_side_sum_abs": 7.4024503419745834e-06,
+                  "lower_side_signed_sum": -0.2525600320636101,
+                  "upper_side_signed_sum": -7.4024503419745834e-06,
+                  "count_gt_1e_5": 189
+                },
+                "acceleration": {
+                  "max_abs": 0.019293991026182847,
+                  "sum_abs": 0.1338877680433876,
+                  "signed_sum": -0.1338877680433876,
+                  "lower_side_sum_abs": 0.06691509729975083,
+                  "upper_side_sum_abs": 0.06697267074363676,
+                  "lower_side_signed_sum": -0.06691509729975083,
+                  "upper_side_signed_sum": -0.06697267074363676,
+                  "count_gt_1e_5": 25
+                },
+                "jerk": {
+                  "max_abs": 0.0039091424007044575,
+                  "sum_abs": 0.02046636850947714,
+                  "signed_sum": -0.02046636850947714,
+                  "lower_side_sum_abs": 0.01931973928103562,
+                  "upper_side_sum_abs": 0.0011466292284415171,
+                  "lower_side_signed_sum": -0.01931973928103562,
+                  "upper_side_signed_sum": -0.0011466292284415171,
+                  "count_gt_1e_5": 14
+                },
+                "torque": {
+                  "max_abs": 2.0307401468132395e-08,
+                  "sum_abs": 2.5287417326509332e-05,
+                  "signed_sum": -2.5287417326509332e-05,
+                  "lower_side_sum_abs": 5.954613654521443e-06,
+                  "upper_side_sum_abs": 1.933280367198789e-05,
+                  "lower_side_signed_sum": -5.954613654521443e-06,
+                  "upper_side_signed_sum": -1.933280367198789e-05,
+                  "count_gt_1e_5": 0
+                }
+              },
+              "multiplier_contract": {
+                "constraint_order": "lower then upper; velocity, acceleration, jerk, torque",
+                "constraint_scaling": "dimensionless pointwise margins normalized by 0.95 half-range",
+                "reported_sign": "raw IPOPT mult_g sign retained; absolute summaries aid magnitude comparison",
+                "interpretation": "local sensitivity only; multipliers are not global optimality evidence"
+              },
+              "status": 0,
+              "message": "Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).",
+              "solver_converged": true,
+              "iterations": 19,
+              "duration_s": 0.5816581786149824,
+              "primal_min_margin": 2.606834970109162e-08,
+              "collocation_points": 681,
+              "stationarity_inf": 3.1717512198795584e-10,
+              "max_scaled_control": 1.3132517862254196,
+              "upper_control_bound": null,
+              "lower_control_bound": 1e-08,
+              "lower_control_bound_active": false,
+              "elapsed_s": 15.132725045958068,
+              "trim_interval": [
+                0.05263157894736842,
+                1.0
+              ],
+              "seed_squared_speed_fit_max_abs": 0.21963408191147282,
+              "torque_profile_sha256": "3809d4bf67ae897a5f9bbed78a8c500cd861b29ec39c11730f3fb831bfea6043",
+              "dense_duration_s": 0.5816581786171682,
+              "dense_samples": 8324,
+              "dense_min_margin": -0.00016986639973781692,
+              "refinement": 2
+            }
+          ],
+          "parity_pass": true
+        },
+        "D": {
+          "historical_duration_s": 0.5870541316916112,
+          "rerun_duration_s": 0.5870541316915998,
+          "duration_abs_difference_s": 1.1435297153639112e-14,
+          "geometry_max_abs_difference_rad": 0.0,
+          "ipopt_status": 0,
+          "solver_converged": true,
+          "stationarity_inf": 8.122164971211126e-08,
+          "primal_min_margin": 8.86156984458708e-08,
+          "constraint_multipliers": {
+            "velocity": {
+              "max_abs": 0.010321769721759202,
+              "sum_abs": 0.2204180685554598,
+              "signed_sum": -0.2204180685554598,
+              "lower_side_sum_abs": 0.22037760794396927,
+              "upper_side_sum_abs": 4.0460611490535984e-05,
+              "lower_side_signed_sum": -0.22037760794396927,
+              "upper_side_signed_sum": -4.0460611490535984e-05,
+              "count_gt_1e_5": 205
+            },
+            "acceleration": {
+              "max_abs": 0.013124775838091712,
+              "sum_abs": 0.09301827053491508,
+              "signed_sum": -0.09301827053491508,
+              "lower_side_sum_abs": 0.0411851915873443,
+              "upper_side_sum_abs": 0.05183307894757078,
+              "lower_side_signed_sum": -0.0411851915873443,
+              "upper_side_signed_sum": -0.05183307894757078,
+              "count_gt_1e_5": 58
+            },
+            "jerk": {
+              "max_abs": 0.0074584635211510895,
+              "sum_abs": 0.015604444600936188,
+              "signed_sum": -0.015604444600936188,
+              "lower_side_sum_abs": 0.014581227753255377,
+              "upper_side_sum_abs": 0.0010232168476808111,
+              "lower_side_signed_sum": -0.014581227753255377,
+              "upper_side_signed_sum": -0.0010232168476808111,
+              "count_gt_1e_5": 16
+            },
+            "torque": {
+              "max_abs": 0.0823400381475933,
+              "sum_abs": 0.19847944033484624,
+              "signed_sum": -0.19847944033484624,
+              "lower_side_sum_abs": 3.532799200693387e-05,
+              "upper_side_sum_abs": 0.19844411234283932,
+              "lower_side_signed_sum": -3.532799200693387e-05,
+              "upper_side_signed_sum": -0.19844411234283932,
+              "count_gt_1e_5": 24
+            }
+          },
+          "refinement_passes": [
+            {
+              "constraint_multipliers": {
+                "velocity": {
+                  "max_abs": 0.03596852723676886,
+                  "sum_abs": 0.22025934685802184,
+                  "signed_sum": -0.22025934685802184,
+                  "lower_side_sum_abs": 0.22024561292075334,
+                  "upper_side_sum_abs": 1.3733937268503468e-05,
+                  "lower_side_signed_sum": -0.22024561292075334,
+                  "upper_side_signed_sum": -1.3733937268503468e-05,
+                  "count_gt_1e_5": 176
+                },
+                "acceleration": {
+                  "max_abs": 0.017705261063486,
+                  "sum_abs": 0.09314759116539055,
+                  "signed_sum": -0.09314759116539055,
+                  "lower_side_sum_abs": 0.04129981604486124,
+                  "upper_side_sum_abs": 0.051847775120529314,
+                  "lower_side_signed_sum": -0.04129981604486124,
+                  "upper_side_signed_sum": -0.051847775120529314,
+                  "count_gt_1e_5": 35
+                },
+                "jerk": {
+                  "max_abs": 0.007638000809649748,
+                  "sum_abs": 0.015402155176556917,
+                  "signed_sum": -0.015402155176556917,
+                  "lower_side_sum_abs": 0.014520901830083414,
+                  "upper_side_sum_abs": 0.0008812533464735005,
+                  "lower_side_signed_sum": -0.014520901830083414,
+                  "upper_side_signed_sum": -0.0008812533464735005,
+                  "count_gt_1e_5": 5
+                },
+                "torque": {
+                  "max_abs": 0.11449334040165181,
+                  "sum_abs": 0.198517468591449,
+                  "signed_sum": -0.198517468591449,
+                  "lower_side_sum_abs": 1.1914064382621289e-05,
+                  "upper_side_sum_abs": 0.19850555452706642,
+                  "lower_side_signed_sum": -1.1914064382621289e-05,
+                  "upper_side_signed_sum": -0.19850555452706642,
+                  "count_gt_1e_5": 6
+                }
+              },
+              "multiplier_contract": {
+                "constraint_order": "lower then upper; velocity, acceleration, jerk, torque",
+                "constraint_scaling": "dimensionless pointwise margins normalized by 0.95 half-range",
+                "reported_sign": "raw IPOPT mult_g sign retained; absolute summaries aid magnitude comparison",
+                "interpretation": "local sensitivity only; multipliers are not global optimality evidence"
+              },
+              "status": 0,
+              "message": "Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).",
+              "solver_converged": true,
+              "iterations": 29,
+              "duration_s": 0.5870424446197763,
+              "primal_min_margin": 1.9213951985008748e-08,
+              "collocation_points": 537,
+              "stationarity_inf": 9.121815230569053e-10,
+              "max_scaled_control": 1.1567800909615382,
+              "upper_control_bound": null,
+              "lower_control_bound": 1e-08,
+              "lower_control_bound_active": false,
+              "elapsed_s": 18.006620739994105,
+              "geometry": "exact quintic controls",
+              "torque_profile_sha256": "3809d4bf67ae897a5f9bbed78a8c500cd861b29ec39c11730f3fb831bfea6043",
+              "dense_duration_s": 0.5870424446179016,
+              "dense_samples": 8329,
+              "dense_min_margin": -0.0005133641456258609,
+              "refinement": 0
+            },
+            {
+              "constraint_multipliers": {
+                "velocity": {
+                  "max_abs": 0.0257318275701839,
+                  "sum_abs": 0.22012662029743427,
+                  "signed_sum": -0.22012662029743427,
+                  "lower_side_sum_abs": 0.2201083103084882,
+                  "upper_side_sum_abs": 1.8309988946049493e-05,
+                  "lower_side_signed_sum": -0.2201083103084882,
+                  "upper_side_signed_sum": -1.8309988946049493e-05,
+                  "count_gt_1e_5": 194
+                },
+                "acceleration": {
+                  "max_abs": 0.013257184146733922,
+                  "sum_abs": 0.09309714977765121,
+                  "signed_sum": -0.09309714977765121,
+                  "lower_side_sum_abs": 0.04125928545099346,
+                  "upper_side_sum_abs": 0.051837864326657754,
+                  "lower_side_signed_sum": -0.04125928545099346,
+                  "upper_side_signed_sum": -0.051837864326657754,
+                  "count_gt_1e_5": 42
+                },
+                "jerk": {
+                  "max_abs": 0.0076614426030408855,
+                  "sum_abs": 0.015487856210671771,
+                  "signed_sum": -0.015487856210671771,
+                  "lower_side_sum_abs": 0.014558695651206679,
+                  "upper_side_sum_abs": 0.0009291605594650927,
+                  "lower_side_signed_sum": -0.014558695651206679,
+                  "upper_side_signed_sum": -0.0009291605594650927,
+                  "count_gt_1e_5": 10
+                },
+                "torque": {
+                  "max_abs": 0.10323454237407453,
+                  "sum_abs": 0.198593742358284,
+                  "signed_sum": -0.198593742358284,
+                  "lower_side_sum_abs": 1.603325735001514e-05,
+                  "upper_side_sum_abs": 0.19857770910093397,
+                  "lower_side_signed_sum": -1.603325735001514e-05,
+                  "upper_side_signed_sum": -0.19857770910093397,
+                  "count_gt_1e_5": 16
+                }
+              },
+              "multiplier_contract": {
+                "constraint_order": "lower then upper; velocity, acceleration, jerk, torque",
+                "constraint_scaling": "dimensionless pointwise margins normalized by 0.95 half-range",
+                "reported_sign": "raw IPOPT mult_g sign retained; absolute summaries aid magnitude comparison",
+                "interpretation": "local sensitivity only; multipliers are not global optimality evidence"
+              },
+              "status": 0,
+              "message": "Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).",
+              "solver_converged": true,
+              "iterations": 47,
+              "duration_s": 0.5870520097262909,
+              "primal_min_margin": 2.778561425387238e-08,
+              "collocation_points": 616,
+              "stationarity_inf": 1.2168629206369614e-10,
+              "max_scaled_control": 1.127508913414351,
+              "upper_control_bound": null,
+              "lower_control_bound": 1e-08,
+              "lower_control_bound_active": false,
+              "elapsed_s": 34.59012900298694,
+              "geometry": "exact quintic controls",
+              "torque_profile_sha256": "3809d4bf67ae897a5f9bbed78a8c500cd861b29ec39c11730f3fb831bfea6043",
+              "dense_duration_s": 0.5870520097242166,
+              "dense_samples": 8331,
+              "dense_min_margin": -0.00027699308340278783,
+              "refinement": 1
+            },
+            {
+              "constraint_multipliers": {
+                "velocity": {
+                  "max_abs": 0.010321769721759202,
+                  "sum_abs": 0.2204180685554598,
+                  "signed_sum": -0.2204180685554598,
+                  "lower_side_sum_abs": 0.22037760794396927,
+                  "upper_side_sum_abs": 4.0460611490535984e-05,
+                  "lower_side_signed_sum": -0.22037760794396927,
+                  "upper_side_signed_sum": -4.0460611490535984e-05,
+                  "count_gt_1e_5": 205
+                },
+                "acceleration": {
+                  "max_abs": 0.013124775838091712,
+                  "sum_abs": 0.09301827053491508,
+                  "signed_sum": -0.09301827053491508,
+                  "lower_side_sum_abs": 0.0411851915873443,
+                  "upper_side_sum_abs": 0.05183307894757078,
+                  "lower_side_signed_sum": -0.0411851915873443,
+                  "upper_side_signed_sum": -0.05183307894757078,
+                  "count_gt_1e_5": 58
+                },
+                "jerk": {
+                  "max_abs": 0.0074584635211510895,
+                  "sum_abs": 0.015604444600936188,
+                  "signed_sum": -0.015604444600936188,
+                  "lower_side_sum_abs": 0.014581227753255377,
+                  "upper_side_sum_abs": 0.0010232168476808111,
+                  "lower_side_signed_sum": -0.014581227753255377,
+                  "upper_side_signed_sum": -0.0010232168476808111,
+                  "count_gt_1e_5": 16
+                },
+                "torque": {
+                  "max_abs": 0.0823400381475933,
+                  "sum_abs": 0.19847944033484624,
+                  "signed_sum": -0.19847944033484624,
+                  "lower_side_sum_abs": 3.532799200693387e-05,
+                  "upper_side_sum_abs": 0.19844411234283932,
+                  "lower_side_signed_sum": -3.532799200693387e-05,
+                  "upper_side_signed_sum": -0.19844411234283932,
+                  "count_gt_1e_5": 24
+                }
+              },
+              "multiplier_contract": {
+                "constraint_order": "lower then upper; velocity, acceleration, jerk, torque",
+                "constraint_scaling": "dimensionless pointwise margins normalized by 0.95 half-range",
+                "reported_sign": "raw IPOPT mult_g sign retained; absolute summaries aid magnitude comparison",
+                "interpretation": "local sensitivity only; multipliers are not global optimality evidence"
+              },
+              "status": 0,
+              "message": "Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).",
+              "solver_converged": true,
+              "iterations": 20,
+              "duration_s": 0.5870541316915998,
+              "primal_min_margin": 8.86156984458708e-08,
+              "collocation_points": 655,
+              "stationarity_inf": 8.122164971211126e-08,
+              "max_scaled_control": 1.1290597351441707,
+              "upper_control_bound": null,
+              "lower_control_bound": 1e-08,
+              "lower_control_bound_active": false,
+              "elapsed_s": 13.648414901981596,
+              "geometry": "exact quintic controls",
+              "torque_profile_sha256": "3809d4bf67ae897a5f9bbed78a8c500cd861b29ec39c11730f3fb831bfea6043",
+              "dense_duration_s": 0.5870541316895297,
+              "dense_samples": 8330,
+              "dense_min_margin": -0.00015739643278345206,
+              "refinement": 2
+            }
+          ],
+          "parity_pass": true
+        }
+      },
+      "parity_pass": true
+    }
+  ],
+  "all_parity_pass": true
+}

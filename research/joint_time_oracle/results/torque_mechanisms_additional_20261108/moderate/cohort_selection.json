@@ -1,0 +1,13 @@
+{
+  "source_root": "research/joint_time_oracle/results/torque_stress_final_20261107/moderate",
+  "selection_rule": "predeclared lexical first cases; wide 4 free + 3 table + 3 cluttered; moderate 2 per population",
+  "case_ids": [
+    "pilot_free_00",
+    "pilot_free_01",
+    "pilot_table_00",
+    "pilot_table_01",
+    "pilot_cluttered_00",
+    "pilot_cluttered_01"
+  ],
+  "task_inventory_sha256": "a526bca9af7766dd7822548d01b2b6ea725d02ae903dcb9d8e4def6fc6c22797"
+}

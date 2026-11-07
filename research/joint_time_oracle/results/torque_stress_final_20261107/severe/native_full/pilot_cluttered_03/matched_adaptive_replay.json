@@ -1,0 +1,266 @@
+{
+  "RF000": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF000L01": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF000L02": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF000L03": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF001": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF001L01": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF001L02": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF001L03": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF002": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF002L01": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF002L02": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF002L03": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF003": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF003L01": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF003L02": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF003L03": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF004": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF005": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF006": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF007": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF008": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF009": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF010": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF011": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF012": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF013": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF014": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF015": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF016": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF017": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF018": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF019": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF020": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF021": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF022": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF023": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF024": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF025": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF026": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF027": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF028": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF029": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF030": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  },
+  "RF031": {
+    "status": "REPLAYED",
+    "samples": 8344,
+    "added_samples": 49,
+    "position_replay_error_rad": 1.255922921217234e-09
+  }
+}

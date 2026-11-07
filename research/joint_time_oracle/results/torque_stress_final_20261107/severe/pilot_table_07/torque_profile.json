@@ -1,0 +1,52 @@
+{
+  "case_id": "severe::pilot_table_07",
+  "source_case_id": "pilot_table_07",
+  "regime": "severe",
+  "target_baseline_utilization": 1.1,
+  "derate": 0.2667729118597915,
+  "nominal_effort_lower": [
+    -87.0,
+    -87.0,
+    -87.0,
+    -87.0,
+    -12.0,
+    -12.0,
+    -12.0
+  ],
+  "nominal_effort_upper": [
+    87.0,
+    87.0,
+    87.0,
+    87.0,
+    12.0,
+    12.0,
+    12.0
+  ],
+  "effort_lower": [
+    -23.20924333180186,
+    -23.20924333180186,
+    -23.20924333180186,
+    -23.20924333180186,
+    -3.2012749423174984,
+    -3.2012749423174984,
+    -3.2012749423174984
+  ],
+  "effort_upper": [
+    23.20924333180186,
+    23.20924333180186,
+    23.20924333180186,
+    23.20924333180186,
+    3.2012749423174984,
+    3.2012749423174984,
+    3.2012749423174984
+  ],
+  "observed_baseline_utilization": 0.2349916387354769,
+  "endpoint_gravity_utilization": 0.2267569750808228,
+  "expected_reference_utilization": 0.880867690415967,
+  "static_reserve_fraction": 0.85,
+  "admitted": true,
+  "rejection_reason": null,
+  "source_task_sha256": "a881414364a46e72593a9b7d4ad29d1e4eb67aed827f8973ecdefb0c564a8efc",
+  "source_torque_sha256": "be901713376fc557793da130c203093341ebbf1e363e0c71d381baa8976f006f",
+  "profile_sha256": "3809d4bf67ae897a5f9bbed78a8c500cd861b29ec39c11730f3fb831bfea6043"
+}

@@ -1,0 +1,474 @@
+[
+  {
+    "case_id": "pilot_free_00",
+    "cohort": "pilot",
+    "population": "free",
+    "robot": "franka.yml",
+    "scene": null,
+    "start": [
+      -0.21068824687624899,
+      -1.216295704458984,
+      -0.12410644065666929,
+      -2.446965611458861,
+      0.20637717592588595,
+      1.4434455622447484,
+      1.0741383702795386
+    ],
+    "goal": [
+      -0.042982985520112704,
+      -1.219205786023834,
+      0.37738061687030966,
+      -2.1053343687461656,
+      0.380044475341614,
+      0.8688049832305877,
+      0.7864282534983273
+    ],
+    "joint_names": [
+      "panda_joint1",
+      "panda_joint2",
+      "panda_joint3",
+      "panda_joint4",
+      "panda_joint5",
+      "panda_joint6",
+      "panda_joint7"
+    ],
+    "initial_velocity": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "initial_acceleration": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "terminal_velocity": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "terminal_acceleration": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "payload": null,
+    "dynamic_limit_scale": 0.95,
+    "seed": 771214,
+    "max_planner_attempts": 5,
+    "endpoint_native_costs": [
+      0.0
+    ],
+    "task_sha256": "ce6e52f29e248ad748fadb59ed3bd0b10bd50f6943ea2784e23347e2d19f7f20"
+  },
+  {
+    "case_id": "pilot_free_01",
+    "cohort": "pilot",
+    "population": "free",
+    "robot": "franka.yml",
+    "scene": null,
+    "start": [
+      -0.11956853846162063,
+      -0.9834540953546009,
+      -0.3025732211679423,
+      -2.2720485583278225,
+      0.1468524123595143,
+      1.451133772172919,
+      1.0318178890090786
+    ],
+    "goal": [
+      0.15159613542578432,
+      -1.306710867110609,
+      -0.05202459867106868,
+      -2.898624577251399,
+      0.0674292461259337,
+      1.622782913425168,
+      1.0972512709888682
+    ],
+    "joint_names": [
+      "panda_joint1",
+      "panda_joint2",
+      "panda_joint3",
+      "panda_joint4",
+      "panda_joint5",
+      "panda_joint6",
+      "panda_joint7"
+    ],
+    "initial_velocity": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "initial_acceleration": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "terminal_velocity": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "terminal_acceleration": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "payload": null,
+    "dynamic_limit_scale": 0.95,
+    "seed": 771215,
+    "max_planner_attempts": 5,
+    "endpoint_native_costs": [
+      0.0
+    ],
+    "task_sha256": "7ff74ce2a6a4034d95e199676c4e2f164f3deaaf0759b006ba973da0dc77b344"
+  },
+  {
+    "case_id": "pilot_table_00",
+    "cohort": "pilot",
+    "population": "table",
+    "robot": "franka.yml",
+    "scene": "collision_test.yml",
+    "start": [
+      0.1681806895360895,
+      -1.5051989258115923,
+      -0.12699945589993383,
+      -2.4429360508488225,
+      0.2199995374997174,
+      1.2813928997002648,
+      0.5281256861968365
+    ],
+    "goal": [
+      0.3533076641612948,
+      -1.5625966254997887,
+      -0.4438365967181396,
+      -2.018641952059971,
+      -0.6021552628514428,
+      1.0474733061402688,
+      0.8732508024585819
+    ],
+    "joint_names": [
+      "panda_joint1",
+      "panda_joint2",
+      "panda_joint3",
+      "panda_joint4",
+      "panda_joint5",
+      "panda_joint6",
+      "panda_joint7"
+    ],
+    "initial_velocity": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "initial_acceleration": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "terminal_velocity": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "terminal_acceleration": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "payload": null,
+    "dynamic_limit_scale": 0.95,
+    "seed": 771220,
+    "max_planner_attempts": 5,
+    "endpoint_native_costs": [
+      0.0,
+      0.0
+    ],
+    "task_sha256": "c97edcbee70ab49a6f8b86e64bf9901c7c07fd0ad3b6c1929266a11d931e7dfd"
+  },
+  {
+    "case_id": "pilot_table_01",
+    "cohort": "pilot",
+    "population": "table",
+    "robot": "franka.yml",
+    "scene": "collision_test.yml",
+    "start": [
+      -0.13526444439275126,
+      -1.4104326875843658,
+      0.02186563943918679,
+      -2.356834076820531,
+      0.07418672374814927,
+      1.4345722265983032,
+      0.49543985814495284
+    ],
+    "goal": [
+      -0.31142519539702246,
+      -1.6427999782562255,
+      0.007124618396947446,
+      -2.706362533597489,
+      -0.3709568723248647,
+      1.2289587317453305,
+      0.5916702923721671
+    ],
+    "joint_names": [
+      "panda_joint1",
+      "panda_joint2",
+      "panda_joint3",
+      "panda_joint4",
+      "panda_joint5",
+      "panda_joint6",
+      "panda_joint7"
+    ],
+    "initial_velocity": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "initial_acceleration": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "terminal_velocity": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "terminal_acceleration": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "payload": null,
+    "dynamic_limit_scale": 0.95,
+    "seed": 771221,
+    "max_planner_attempts": 5,
+    "endpoint_native_costs": [
+      0.0,
+      0.0
+    ],
+    "task_sha256": "b79a17114486a96ea76e19368203ee34a925f3c444544c80deab2470e280c392"
+  },
+  {
+    "case_id": "pilot_cluttered_00",
+    "cohort": "pilot",
+    "population": "cluttered",
+    "robot": "franka.yml",
+    "scene": "collision_primitives_3d.yml",
+    "start": [
+      -0.17762776384504242,
+      -1.302762980118501,
+      -0.31515306602829213,
+      -2.2522504024197723,
+      0.2101470245187344,
+      1.7896031027867747,
+      0.9998332558479011
+    ],
+    "goal": [
+      0.23759887000384583,
+      -1.3558819214956301,
+      -0.035529471506143384,
+      -2.1722490466918862,
+      -0.5681880071691741,
+      0.8714471824942458,
+      1.3901775257527995
+    ],
+    "joint_names": [
+      "panda_joint1",
+      "panda_joint2",
+      "panda_joint3",
+      "panda_joint4",
+      "panda_joint5",
+      "panda_joint6",
+      "panda_joint7"
+    ],
+    "initial_velocity": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "initial_acceleration": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "terminal_velocity": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "terminal_acceleration": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "payload": null,
+    "dynamic_limit_scale": 0.95,
+    "seed": 771228,
+    "max_planner_attempts": 5,
+    "endpoint_native_costs": [
+      0.0,
+      0.0
+    ],
+    "task_sha256": "2c768f81f0c2690e52d888648416d978f604b7058971cc64c660331c6077c686"
+  },
+  {
+    "case_id": "pilot_cluttered_01",
+    "cohort": "pilot",
+    "population": "cluttered",
+    "robot": "franka.yml",
+    "scene": "collision_primitives_3d.yml",
+    "start": [
+      0.1433185885576308,
+      -1.1847395801153249,
+      -0.2675263468224883,
+      -2.2304502131663084,
+      -0.29092752692475193,
+      1.7948012258556276,
+      0.7216743233141669
+    ],
+    "goal": [
+      0.03986498391941129,
+      -1.0207773962078543,
+      0.4751631237141384,
+      -2.393554650424191,
+      0.3443833690721445,
+      1.5911544493922007,
+      0.723661467201932
+    ],
+    "joint_names": [
+      "panda_joint1",
+      "panda_joint2",
+      "panda_joint3",
+      "panda_joint4",
+      "panda_joint5",
+      "panda_joint6",
+      "panda_joint7"
+    ],
+    "initial_velocity": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "initial_acceleration": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "terminal_velocity": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "terminal_acceleration": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "payload": null,
+    "dynamic_limit_scale": 0.95,
+    "seed": 771229,
+    "max_planner_attempts": 5,
+    "endpoint_native_costs": [
+      0.0,
+      0.0
+    ],
+    "task_sha256": "457c8011b6996f9167e63d04c9e5799d6a7a3e2dda6006f5f81498615868c5c9"
+  }
+]

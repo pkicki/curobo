@@ -16,13 +16,22 @@ from cuda.core import LaunchConfig
 
 # CuRobo
 from curobo._src.context import get_runtime
-from curobo._src.curobolib.backends.cuda_core_backend.geometry_config import GeometryKernelCfg
+from curobo._src.curobolib.backends.cuda_core_backend.geometry_config import (
+    GeometryKernelCfg,
+)
 from curobo._src.curobolib.backends.cuda_core_backend.launch_helper import launch_kernel
-from curobo._src.curobolib.backends.cuda_core_backend.util import ceil_div
+from curobo._src.curobolib.backends.cuda_core_backend.util import (
+    ceil_div,
+)
+from curobo._src.curobolib.backends.cuda_core_backend.util import (
+    get_device_max_shared_memory as _get_device_max_shared_memory,
+)
 from curobo._src.util.logging import log_and_raise
 
 COLLISION_PAIR_SIZE = 8  # sizeof(CollisionPair): float(4) + int16(2) + int16(2)
-STATIC_SMEM_OVERHEAD = COLLISION_PAIR_SIZE * 33  # block_reduce_shared_data[32] + reduced_max_d
+STATIC_SMEM_OVERHEAD = (
+    COLLISION_PAIR_SIZE * 33
+)  # block_reduce_shared_data[32] + reduced_max_d
 SPHERE_SIZE = 16  # sizeof(float4)
 
 
@@ -41,7 +50,11 @@ def get_self_collision_shared_memory_size(
     """
     return (
         SPHERE_SIZE
-        * (num_spheres + 2 * num_collision_links + (num_spheres if sum_collisions else 0))
+        * (
+            num_spheres
+            + 2 * num_collision_links
+            + (num_spheres if sum_collisions else 0)
+        )
         + (8 * num_spheres if per_sphere_max_collisions else 0)
         + STATIC_SMEM_OVERHEAD
     )
@@ -49,9 +62,7 @@ def get_self_collision_shared_memory_size(
 
 def get_device_max_shared_memory(device: torch.device) -> int:
     """Return the opt-in shared-memory limit per block for a CUDA device."""
-    properties = torch.cuda.get_device_properties(device)
-    optin_limit = getattr(properties, "shared_memory_per_block_optin", 0)
-    return int(optin_limit or properties.shared_memory_per_block)
+    return _get_device_max_shared_memory(device)
 
 
 def _validate_and_configure_shared_memory(
@@ -109,7 +120,9 @@ def self_collision_distance(
     if sum_collisions and per_sphere_max_collisions:
         log_and_raise("Select only one self-collision reduction mode")
     if store_pair_distance and (sum_collisions or per_sphere_max_collisions):
-        log_and_raise("Pair-distance storage is supported only for global-max self collision")
+        log_and_raise(
+            "Pair-distance storage is supported only for global-max self collision"
+        )
 
     runtime = get_runtime()
     cache = runtime.get_cuda_core_cache()
@@ -126,7 +139,8 @@ def self_collision_distance(
         f"{num_threads_per_block}>"
     )
     kernel_files = [
-        kernel_config.kernel_dir / f for f in kernel_config.get_kernel_files("self_collision")
+        kernel_config.kernel_dir / f
+        for f in kernel_config.get_kernel_files("self_collision")
     ]
     kernel = cache.get_or_compile_kernel(
         source_files=kernel_files,
@@ -194,7 +208,8 @@ def self_collision_distance_link_aabb(
     cache = runtime.get_cuda_core_cache()
     kernel_config = GeometryKernelCfg()
     kernel_files = [
-        kernel_config.kernel_dir / f for f in kernel_config.get_kernel_files("self_collision")
+        kernel_config.kernel_dir / f
+        for f in kernel_config.get_kernel_files("self_collision")
     ]
     include_dirs = kernel_config.get_include_dirs()
     compile_flags = kernel_config.get_compile_flags()

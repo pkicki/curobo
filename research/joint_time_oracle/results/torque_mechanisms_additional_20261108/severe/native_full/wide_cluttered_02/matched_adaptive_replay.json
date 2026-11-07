@@ -1,0 +1,8 @@
+{
+  "RF000": {
+    "status": "REPLAYED",
+    "samples": 8366,
+    "added_samples": 49,
+    "position_replay_error_rad": 0.0
+  }
+}

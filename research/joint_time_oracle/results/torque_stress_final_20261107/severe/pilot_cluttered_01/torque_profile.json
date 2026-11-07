@@ -1,0 +1,52 @@
+{
+  "case_id": "severe::pilot_cluttered_01",
+  "source_case_id": "pilot_cluttered_01",
+  "regime": "severe",
+  "target_baseline_utilization": 1.1,
+  "derate": 0.27297101254471057,
+  "nominal_effort_lower": [
+    -87.0,
+    -87.0,
+    -87.0,
+    -87.0,
+    -12.0,
+    -12.0,
+    -12.0
+  ],
+  "nominal_effort_upper": [
+    87.0,
+    87.0,
+    87.0,
+    87.0,
+    12.0,
+    12.0,
+    12.0
+  ],
+  "effort_lower": [
+    -23.74847809138982,
+    -23.74847809138982,
+    -23.74847809138982,
+    -23.74847809138982,
+    -3.275652150536527,
+    -3.275652150536527,
+    -3.275652150536527
+  ],
+  "effort_upper": [
+    23.74847809138982,
+    23.74847809138982,
+    23.74847809138982,
+    23.74847809138982,
+    3.275652150536527,
+    3.275652150536527,
+    3.275652150536527
+  ],
+  "observed_baseline_utilization": 0.28206913641615433,
+  "endpoint_gravity_utilization": 0.23202536066300397,
+  "expected_reference_utilization": 1.0333300000854617,
+  "static_reserve_fraction": 0.85,
+  "admitted": true,
+  "rejection_reason": null,
+  "source_task_sha256": "457c8011b6996f9167e63d04c9e5799d6a7a3e2dda6006f5f81498615868c5c9",
+  "source_torque_sha256": "24c574f1a5ca71ddb2d1a476ba2b7d8eda20c1f7f28aacabc100bfa4b90daed9",
+  "profile_sha256": "9f1180d3c70a30657d54c47db8592400da3c2c079416da495c8dc72c282efc20"
+}

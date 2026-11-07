@@ -1,0 +1,29 @@
+{
+  "case_id": "wide_free_01",
+  "regime": "severe",
+  "torque_profile_sha256": "be3f61d83279da87bcc05e54302168832e4b6df485662fb014656887d5fb59c7",
+  "native_candidate_count": 1,
+  "independent_restart_count": 1,
+  "exact_geometry_count": 1,
+  "arc_aligned_unique_geometry_count": 1,
+  "geometric_diversity_tolerance_rad": 0.0001,
+  "candidates": [
+    {
+      "candidate": "F000",
+      "restart": 0,
+      "lane": 0,
+      "parent_restart_tag": "F000",
+      "duration_s": 1.1704202890396118,
+      "geometry_sha256": "1f5f996dd5c358cfd4d8bd75359061ed7cca01772484865e2ae2a6e35bbb6d31",
+      "joint_path_length_rad": 3.080485228972404
+    }
+  ],
+  "pairwise_deviation": [],
+  "clusters": [
+    [
+      "F000"
+    ]
+  ],
+  "metric": "RMS/max joint-position deviation after uniform joint-space arc-length alignment",
+  "task_sha256": "ca667df4dcafd20e8e4418a199603a564ce04fd3e68730f27acce51fb643485c"
+}

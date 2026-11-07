@@ -1,0 +1,29 @@
+{
+  "case_id": "pilot_free_05",
+  "regime": "severe",
+  "torque_profile_sha256": "288f542fb79b53f6f7d9f91b292aa683810d75a23ce937e0adc730ec1c6fcfe3",
+  "native_candidate_count": 1,
+  "independent_restart_count": 1,
+  "exact_geometry_count": 1,
+  "arc_aligned_unique_geometry_count": 1,
+  "geometric_diversity_tolerance_rad": 0.0001,
+  "candidates": [
+    {
+      "candidate": "F000",
+      "restart": 0,
+      "lane": 0,
+      "parent_restart_tag": "F000",
+      "duration_s": 0.49757277965545654,
+      "geometry_sha256": "1dbdbe4d7cca610e2fe0ccb8d7fbbb4049aa61ed692c320f509a290b9a8d8c28",
+      "joint_path_length_rad": 0.9697125061689799
+    }
+  ],
+  "pairwise_deviation": [],
+  "clusters": [
+    [
+      "F000"
+    ]
+  ],
+  "metric": "RMS/max joint-position deviation after uniform joint-space arc-length alignment",
+  "task_sha256": "792118a1bc87be300cf4e8d6959562d07c554a13a9efd2cda9a38efc7ed4fd5b"
+}

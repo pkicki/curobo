@@ -1,0 +1,205 @@
+{
+  "regime": "severe",
+  "cases": [
+    {
+      "case_id": "pilot_free_00",
+      "B_to_D_improvement_pct": 7.407897341467261,
+      "path_length_increase_pct": 2.572165657331915,
+      "peak_torque_utilization_delta_D_minus_B": -3.0921725531207755e-06,
+      "gravity_rms_delta_Nm": 0.05504789171314339,
+      "inertia_rms_delta_Nm": 0.8039341633151569,
+      "velocity_bias_rms_delta_Nm": 0.020905702231748702,
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "pilot_free_01",
+      "B_to_D_improvement_pct": 7.36986584429752,
+      "path_length_increase_pct": 8.644620038330908,
+      "peak_torque_utilization_delta_D_minus_B": 8.539247193795063e-07,
+      "gravity_rms_delta_Nm": -0.0646587517479782,
+      "inertia_rms_delta_Nm": 2.526714779852584,
+      "velocity_bias_rms_delta_Nm": 0.20820809518965522,
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "pilot_free_02",
+      "B_to_D_improvement_pct": 0.9329382577263544,
+      "path_length_increase_pct": 5.221589184351005,
+      "peak_torque_utilization_delta_D_minus_B": -0.0013034637623114964,
+      "gravity_rms_delta_Nm": -0.005833106070628702,
+      "inertia_rms_delta_Nm": 0.48896904050860535,
+      "velocity_bias_rms_delta_Nm": 0.2884714721042325,
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "pilot_free_03",
+      "B_to_D_improvement_pct": 2.36292631376534,
+      "path_length_increase_pct": 1.5590727837120344,
+      "peak_torque_utilization_delta_D_minus_B": 2.0663943867127443e-07,
+      "gravity_rms_delta_Nm": -0.007123662264916675,
+      "inertia_rms_delta_Nm": 1.2920298120258495,
+      "velocity_bias_rms_delta_Nm": 0.4421780666890198,
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "pilot_free_04",
+      "B_to_D_improvement_pct": 1.5987493501897887,
+      "path_length_increase_pct": 1.458940874519854,
+      "peak_torque_utilization_delta_D_minus_B": -1.5496598024467012e-05,
+      "gravity_rms_delta_Nm": -0.018490863760909804,
+      "inertia_rms_delta_Nm": 0.3145637778666477,
+      "velocity_bias_rms_delta_Nm": -0.10274580212842377,
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "pilot_free_05",
+      "B_to_D_improvement_pct": 1.6770452744124411,
+      "path_length_increase_pct": 2.7347103214613533,
+      "peak_torque_utilization_delta_D_minus_B": 8.41558473263504e-06,
+      "gravity_rms_delta_Nm": 0.01469285912855156,
+      "inertia_rms_delta_Nm": 0.3557812505966105,
+      "velocity_bias_rms_delta_Nm": -0.0020977202916081517,
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "pilot_table_00",
+      "B_to_D_improvement_pct": 9.961643821214748,
+      "path_length_increase_pct": 4.991124475085296,
+      "peak_torque_utilization_delta_D_minus_B": 4.011954830351883e-06,
+      "gravity_rms_delta_Nm": 0.08296131750415192,
+      "inertia_rms_delta_Nm": 2.041386121135106,
+      "velocity_bias_rms_delta_Nm": 0.19346063200299468,
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "pilot_table_01",
+      "B_to_D_improvement_pct": 7.701403443128615,
+      "path_length_increase_pct": 8.05830815436539,
+      "peak_torque_utilization_delta_D_minus_B": -2.1965264507262106e-06,
+      "gravity_rms_delta_Nm": -0.028961933779751092,
+      "inertia_rms_delta_Nm": 1.5276020889035493,
+      "velocity_bias_rms_delta_Nm": 0.3427024676570173,
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "pilot_table_02",
+      "B_to_D_improvement_pct": 6.77056806417239,
+      "path_length_increase_pct": 3.3746201090621764,
+      "peak_torque_utilization_delta_D_minus_B": -2.0825625914877577e-06,
+      "gravity_rms_delta_Nm": -0.01216682811226022,
+      "inertia_rms_delta_Nm": 0.7792155149965758,
+      "velocity_bias_rms_delta_Nm": 0.2137138560935281,
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "pilot_table_03",
+      "B_to_D_improvement_pct": 7.184052284743767,
+      "path_length_increase_pct": 8.850683702525686,
+      "peak_torque_utilization_delta_D_minus_B": 3.95966553878857e-06,
+      "gravity_rms_delta_Nm": 0.03785394748694415,
+      "inertia_rms_delta_Nm": 1.0794822680245364,
+      "velocity_bias_rms_delta_Nm": 0.3420588005896342,
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "pilot_table_04",
+      "B_to_D_improvement_pct": 3.124940896072493,
+      "path_length_increase_pct": 8.793657401188426,
+      "peak_torque_utilization_delta_D_minus_B": 1.0938849501984649e-05,
+      "gravity_rms_delta_Nm": -0.021445449737527156,
+      "inertia_rms_delta_Nm": 0.8969005857638921,
+      "velocity_bias_rms_delta_Nm": 0.11982177866408361,
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "pilot_table_05",
+      "B_to_D_improvement_pct": 0.005842214769740512,
+      "path_length_increase_pct": 3.6038579637521995,
+      "peak_torque_utilization_delta_D_minus_B": 0.0018364520905463921,
+      "gravity_rms_delta_Nm": 0.01591617643112997,
+      "inertia_rms_delta_Nm": 0.41324440061209566,
+      "velocity_bias_rms_delta_Nm": 0.06746469432157792,
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "pilot_table_06",
+      "B_to_D_improvement_pct": 4.859812185331981,
+      "path_length_increase_pct": 7.7425859197422175,
+      "peak_torque_utilization_delta_D_minus_B": -6.302364784604997e-06,
+      "gravity_rms_delta_Nm": 0.03531462846965372,
+      "inertia_rms_delta_Nm": 1.3744834535197752,
+      "velocity_bias_rms_delta_Nm": 0.5065907553645939,
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "pilot_table_07",
+      "B_to_D_improvement_pct": -0.9276845526697379,
+      "path_length_increase_pct": 8.30632088539398,
+      "peak_torque_utilization_delta_D_minus_B": 0.06897319945965819,
+      "gravity_rms_delta_Nm": 0.0025425930685791798,
+      "inertia_rms_delta_Nm": 2.452303627147371,
+      "velocity_bias_rms_delta_Nm": 0.3515686015117826,
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "pilot_cluttered_00",
+      "B_to_D_improvement_pct": 0.7823435258450371,
+      "path_length_increase_pct": 3.553155475756453,
+      "peak_torque_utilization_delta_D_minus_B": -1.7985303735201796e-07,
+      "gravity_rms_delta_Nm": 0.08567337777063688,
+      "inertia_rms_delta_Nm": 2.493701361869394,
+      "velocity_bias_rms_delta_Nm": 0.1356167742120007,
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "pilot_cluttered_01",
+      "B_to_D_improvement_pct": 1.9020201187245684,
+      "path_length_increase_pct": 7.05477169033335,
+      "peak_torque_utilization_delta_D_minus_B": 6.934118169654724e-07,
+      "gravity_rms_delta_Nm": -0.002072838501311125,
+      "inertia_rms_delta_Nm": 1.230062788491474,
+      "velocity_bias_rms_delta_Nm": 0.11052059031921857,
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "pilot_cluttered_02",
+      "B_to_D_improvement_pct": 9.492025087979494,
+      "path_length_increase_pct": 4.200225121253887,
+      "peak_torque_utilization_delta_D_minus_B": 5.0198181760219285e-06,
+      "gravity_rms_delta_Nm": -0.025260683010801976,
+      "inertia_rms_delta_Nm": 1.7383389834187275,
+      "velocity_bias_rms_delta_Nm": 0.24341688727778477,
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "pilot_cluttered_03",
+      "B_to_D_improvement_pct": 16.18833791773801,
+      "path_length_increase_pct": 5.413283550552306,
+      "peak_torque_utilization_delta_D_minus_B": 6.54361831387007e-07,
+      "gravity_rms_delta_Nm": -0.053470707959691666,
+      "inertia_rms_delta_Nm": 2.2038833553051735,
+      "velocity_bias_rms_delta_Nm": 0.26801312571242675,
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "pilot_cluttered_04",
+      "B_to_D_improvement_pct": 6.057945834656181,
+      "path_length_increase_pct": 8.066392652052667,
+      "peak_torque_utilization_delta_D_minus_B": 3.8186419570873653e-07,
+      "gravity_rms_delta_Nm": -0.04393051515478863,
+      "inertia_rms_delta_Nm": 0.6860124284534641,
+      "velocity_bias_rms_delta_Nm": 0.18188482599190658,
+      "status": "COMPLETE"
+    },
+    {
+      "case_id": "pilot_cluttered_05",
+      "B_to_D_improvement_pct": 10.761395034810903,
+      "path_length_increase_pct": 4.18955882155414,
+      "peak_torque_utilization_delta_D_minus_B": -1.2209344663061117e-06,
+      "gravity_rms_delta_Nm": 0.08820235638519769,
+      "inertia_rms_delta_Nm": 0.9174540778579758,
+      "velocity_bias_rms_delta_Nm": -0.013494658563491857,
+      "status": "COMPLETE"
+    }
+  ]
+}

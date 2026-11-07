@@ -20,6 +20,9 @@ import torch
 from curobo._src.curobolib.backends.cuda_core_backend.optimization_config import (
     LBFGSCompactLaunchCfg,
 )
+from curobo._src.curobolib.backends.cuda_core_backend.util import (
+    get_device_max_shared_memory,
+)
 from curobo._src.curobolib.cuda_ops.optimization import LBFGSCompactCu, LBFGScu
 from curobo._src.optim.components.action_bounds import ActionBounds
 from curobo._src.optim.components.quasi_newton_buffers import QuasiNewtonBuffers
@@ -38,8 +41,12 @@ from curobo._src.util.sampling.sample_buffer import SampleBuffer
 def _candidate_arguments(direction: torch.Tensor) -> tuple[torch.Tensor, ...]:
     """Allocate mandatory trial outputs for direct kernel tests."""
     batch, dimension = direction.shape
-    scales = torch.tensor([0.1, 0.5, 1.0], device=direction.device, dtype=direction.dtype)
-    candidates = torch.empty((batch, 3, dimension), device=direction.device, dtype=direction.dtype)
+    scales = torch.tensor(
+        [0.1, 0.5, 1.0], device=direction.device, dtype=direction.dtype
+    )
+    candidates = torch.empty(
+        (batch, 3, dimension), device=direction.device, dtype=direction.dtype
+    )
     beta = torch.ones(batch, device=direction.device, dtype=direction.dtype)
     return candidates, scales, beta
 
@@ -49,9 +56,8 @@ def test_backtracking_preserves_direction_and_history_in_graph(compact: bool) ->
     """Rejected problems retain every quasi-Newton buffer during graph replay."""
     device_cfg = DeviceCfg()
     batch, dimension, history = 2, 64, 16
-    properties = torch.cuda.get_device_properties(device_cfg.device)
     layout = LBFGSCompactLaunchCfg.calculate_config(
-        batch, dimension, history, properties.shared_memory_per_block_optin
+        batch, dimension, history, get_device_max_shared_memory(device_cfg.device)
     )
     assert layout is not None
     _, shared_matrices, workspace = layout
@@ -71,7 +77,9 @@ def test_backtracking_preserves_direction_and_history_in_graph(compact: bool) ->
         if compact:
             LBFGSCompactCu.apply(
                 step,
-                candidates, scales, beta,
+                candidates,
+                scales,
+                beta,
                 buffers.rho,
                 buffers.y,
                 buffers.s,
@@ -94,7 +102,9 @@ def test_backtracking_preserves_direction_and_history_in_graph(compact: bool) ->
         else:
             LBFGScu.apply(
                 step,
-                candidates, scales, beta,
+                candidates,
+                scales,
+                beta,
                 buffers.rho,
                 buffers.y,
                 buffers.s,
@@ -136,17 +146,23 @@ def test_backtracking_preserves_direction_and_history_in_graph(compact: bool) ->
             torch.testing.assert_close(actual[:, 0], original[:, 0], rtol=0, atol=0)
         else:
             torch.testing.assert_close(actual[0], original[0], rtol=0, atol=0)
-    expected = q[:, None, :] + (beta[:, None, None] * scales[None, :, None]) * step[:, None, :]
+    expected = (
+        q[:, None, :] + (beta[:, None, None] * scales[None, :, None]) * step[:, None, :]
+    )
     torch.testing.assert_close(candidates, expected, rtol=1e-6, atol=1e-6)
     beta[0] = 0.01
     graph.replay()
     torch.cuda.synchronize()
-    expected = q[:, None, :] + (beta[:, None, None] * scales[None, :, None]) * step[:, None, :]
+    expected = (
+        q[:, None, :] + (beta[:, None, None] * scales[None, :, None]) * step[:, None, :]
+    )
     torch.testing.assert_close(candidates, expected, rtol=1e-6, atol=1e-6)
     assert buffers.history_count[1].item() == 1
     torch.testing.assert_close(step[1], -q[1], rtol=2.0e-3, atol=1.0e-5)
     if compact:
-        torch.testing.assert_close(buffers.compact_inverse_r[0], torch.eye(history, device="cuda"))
+        torch.testing.assert_close(
+            buffers.compact_inverse_r[0], torch.eye(history, device="cuda")
+        )
 
 
 def pytest_generate_tests(metafunc):
@@ -197,9 +213,15 @@ def _reference_update_buffers(
     rho = torch.where(valid, 1.0 / curvature, torch.zeros_like(curvature))
 
     valid_history = valid.unsqueeze(0)
-    s_buffer.copy_(torch.where(valid_history, torch.roll(s_buffer, -1, dims=0), s_buffer))
-    y_buffer.copy_(torch.where(valid_history, torch.roll(y_buffer, -1, dims=0), y_buffer))
-    rho_buffer.copy_(torch.where(valid_history, torch.roll(rho_buffer, -1, dims=0), rho_buffer))
+    s_buffer.copy_(
+        torch.where(valid_history, torch.roll(s_buffer, -1, dims=0), s_buffer)
+    )
+    y_buffer.copy_(
+        torch.where(valid_history, torch.roll(y_buffer, -1, dims=0), y_buffer)
+    )
+    rho_buffer.copy_(
+        torch.where(valid_history, torch.roll(rho_buffer, -1, dims=0), rho_buffer)
+    )
     s_buffer[-1].copy_(torch.where(valid, s, s_buffer[-1]))
     y_buffer[-1].copy_(torch.where(valid, y, y_buffer[-1]))
     rho_buffer[-1].copy_(torch.where(valid, rho, rho_buffer[-1]))
@@ -239,7 +261,9 @@ def _reference_step_direction(
         & torch.isfinite(rho_buffer[-1])
         & (rho_buffer[-1] > 0.0)
     )
-    gamma = torch.where(valid_scale, candidate_scale, torch.full_like(candidate_scale, epsilon))
+    gamma = torch.where(
+        valid_scale, candidate_scale, torch.full_like(candidate_scale, epsilon)
+    )
     result = gamma * work
     rho_y = rho_buffer * y_buffer.transpose(-1, -2)
     for index in range(history):
@@ -395,7 +419,9 @@ class MockRollout:
 
     def _compute_costs_and_constraints_impl(self, state, **kwargs):
         costs = cost_fn(state)
-        costs = CostCollection(values=[costs], names=["cost"], weights=[1.0], sq_weights=[1.0])
+        costs = CostCollection(
+            values=[costs], names=["cost"], weights=[1.0], sq_weights=[1.0]
+        )
         return CostsAndConstraints(costs=costs)
 
 
@@ -565,9 +591,13 @@ def test_optimizer_consumes_emitted_candidates(
         state = optimizer._core._opt_step(state)
         direction = state.step_direction.reshape(2, 1, 56)
         origin = state.exploration_action.reshape(2, 1, 56)
-        scales = context.beta[:, None, None] * context.get_line_search_scale()[None, :, None]
+        scales = (
+            context.beta[:, None, None] * context.get_line_search_scale()[None, :, None]
+        )
         torch.testing.assert_close(state.search_actions, origin + scales * direction)
-        assert torch.all(direction.abs() <= optimizer._core.action_horizon_step_max + 1e-6)
+        assert torch.all(
+            direction.abs() <= optimizer._core.action_horizon_step_max + 1e-6
+        )
 
 
 def test_optimize_without_timing_matches_timed_solve(optimizer_setup):
@@ -609,7 +639,9 @@ def test_optimize_without_timing_matches_timed_solve(optimizer_setup):
 
 
 @pytest.mark.skipif(not torch.cuda.is_available(), reason="CUDA is required")
-def test_50_then_25_iterations_reuse_cuda_graph(monkeypatch: pytest.MonkeyPatch) -> None:
+def test_50_then_25_iterations_reuse_cuda_graph(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     """Replay one 25-step graph twice initially and once while retaining finetune history."""
     config = LBFGSOptCfg(
         num_problems=2,
@@ -622,8 +654,12 @@ def test_50_then_25_iterations_reuse_cuda_graph(monkeypatch: pytest.MonkeyPatch)
     graph_rollout = MockRollout(num_dof=7, action_horizon=4, batch_size=2)
     eager_rollout = MockRollout(num_dof=7, action_horizon=4, batch_size=2)
     optimizer = LBFGSOpt(config, [graph_rollout, graph_rollout], use_cuda_graph=True)
-    eager = LBFGSOpt(replace(config), [eager_rollout, eager_rollout], use_cuda_graph=False)
-    seed = torch.linspace(-0.3, 0.3, 56, device="cuda", dtype=torch.float32).view(2, 4, 7)
+    eager = LBFGSOpt(
+        replace(config), [eager_rollout, eager_rollout], use_cuda_graph=False
+    )
+    seed = torch.linspace(-0.3, 0.3, 56, device="cuda", dtype=torch.float32).view(
+        2, 4, 7
+    )
     optimizer.reinitialize(seed)
     optimizer.optimize(seed)
     executor = optimizer._core._executors["_opt_iters"]
@@ -812,7 +848,9 @@ def test_curvature_mask_advances_reference_without_inserting_pair() -> None:
     reference_gradient = torch.zeros_like(reference_position)
     history_head = torch.zeros(batch_size, dtype=torch.int32, device=device)
     history_count = torch.zeros_like(history_head)
-    curvature_update_valid = torch.tensor([True, False], dtype=torch.bool, device=device)
+    curvature_update_valid = torch.tensor(
+        [True, False], dtype=torch.bool, device=device
+    )
 
     LBFGScu.apply(
         torch.zeros_like(position),
@@ -835,8 +873,12 @@ def test_curvature_mask_advances_reference_without_inserting_pair() -> None:
         curvature_update_valid,
     )
 
-    assert torch.equal(history_count, torch.tensor([1, 0], dtype=torch.int32, device=device))
-    assert torch.equal(history_head, torch.tensor([1, 0], dtype=torch.int32, device=device))
+    assert torch.equal(
+        history_count, torch.tensor([1, 0], dtype=torch.int32, device=device)
+    )
+    assert torch.equal(
+        history_head, torch.tensor([1, 0], dtype=torch.int32, device=device)
+    )
     torch.testing.assert_close(reference_position, position.unsqueeze(-1))
     torch.testing.assert_close(reference_gradient, gradient.transpose(-1, -2))
 
@@ -920,11 +962,7 @@ def test_compact_pair_eligibility_and_fallback_scale_guard() -> None:
     history = 32
     batch_size = 4
     opt_dim = 112
-    properties = torch.cuda.get_device_properties(device)
-    shared_memory = int(
-        getattr(properties, "shared_memory_per_block_optin", 0)
-        or properties.shared_memory_per_block
-    )
+    shared_memory = get_device_max_shared_memory(device)
     compact_config = LBFGSCompactLaunchCfg.calculate_config(
         batch_size,
         opt_dim,
@@ -958,7 +996,9 @@ def test_compact_pair_eligibility_and_fallback_scale_guard() -> None:
     s_buffer[0, 3] = 1.0
     inverse_r = torch.eye(history, device=device).expand(batch_size, -1, -1).clone()
     inverse_r[3, 0, 0] = 1.0 / opt_dim
-    workspace_shape = (batch_size, workspace_elements) if workspace_elements > 0 else (1,)
+    workspace_shape = (
+        (batch_size, workspace_elements) if workspace_elements > 0 else (1,)
+    )
 
     step = LBFGSCompactCu.apply(
         torch.zeros_like(position),
@@ -1027,11 +1067,7 @@ def test_compact_step_matches_two_loop_during_history_startup(
 
     torch.manual_seed(9012)
     batch_size = 4
-    properties = torch.cuda.get_device_properties(device)
-    shared_memory = int(
-        getattr(properties, "shared_memory_per_block_optin", 0)
-        or properties.shared_memory_per_block
-    )
+    shared_memory = get_device_max_shared_memory(device)
     compact_config = LBFGSCompactLaunchCfg.calculate_config(
         batch_size,
         opt_dim,
@@ -1058,8 +1094,12 @@ def test_compact_step_matches_two_loop_during_history_startup(
     compact_gradient = torch.zeros_like(two_loop_gradient)
     compact_head = torch.zeros_like(two_loop_head)
     compact_count = torch.zeros_like(two_loop_count)
-    compact_inverse_r = torch.eye(history, device=device).expand(batch_size, -1, -1).clone()
-    workspace_shape = (batch_size, workspace_elements) if workspace_elements > 0 else (1,)
+    compact_inverse_r = (
+        torch.eye(history, device=device).expand(batch_size, -1, -1).clone()
+    )
+    workspace_shape = (
+        (batch_size, workspace_elements) if workspace_elements > 0 else (1,)
+    )
     compact_workspace = torch.empty(workspace_shape, device=device)
     scale_step = opt_dim > 256
     step_max_value = 0.001 if scale_step else 1.0
@@ -1231,13 +1271,10 @@ def test_compact_operator_auto_selection_thresholds(history: int, opt_dim: int):
     if torch.cuda.get_device_capability(device)[0] < 8:
         pytest.skip("Compact L-BFGS requires TF32 tensor cores")
 
-    properties = torch.cuda.get_device_properties(device)
-    shared_memory = int(
-        getattr(properties, "shared_memory_per_block_optin", 0)
-        or properties.shared_memory_per_block
-    )
+    shared_memory = get_device_max_shared_memory(device)
     layout_fits = (
-        LBFGSCompactLaunchCfg.calculate_config(2, opt_dim, history, shared_memory) is not None
+        LBFGSCompactLaunchCfg.calculate_config(2, opt_dim, history, shared_memory)
+        is not None
     )
     in_history_range = 12 <= history <= 64
     in_dimension_range = opt_dim <= 64 or (history >= 30 and opt_dim <= 112)
@@ -1390,7 +1427,9 @@ def test_fused_step_scaling_matches_amax_reference():
         dim=-1,
         keepdim=True,
     ).clamp(min=1.0)
-    torch.testing.assert_close(fused_step, raw_step / normalizer, atol=2.0e-6, rtol=2.0e-5)
+    torch.testing.assert_close(
+        fused_step, raw_step / normalizer, atol=2.0e-6, rtol=2.0e-5
+    )
     torch.testing.assert_close(scaled_rho, rho)
     torch.testing.assert_close(scaled_y, y)
     torch.testing.assert_close(scaled_s, s)
@@ -1578,8 +1617,12 @@ def test_invalid_pair_does_not_modify_full_ring():
     torch.testing.assert_close(s, s_before)
     assert history_head.item() == 0
     assert history_count.item() == history
-    torch.testing.assert_close(x_0.squeeze(-1), torch.tensor([[4.0, 0.0]], device=device))
-    torch.testing.assert_close(grad_0.squeeze(-1), torch.tensor([[0.0, 0.0]], device=device))
+    torch.testing.assert_close(
+        x_0.squeeze(-1), torch.tensor([[4.0, 0.0]], device=device)
+    )
+    torch.testing.assert_close(
+        grad_0.squeeze(-1), torch.tensor([[0.0, 0.0]], device=device)
+    )
 
     LBFGScu.apply(
         step,
@@ -1600,8 +1643,12 @@ def test_invalid_pair_does_not_modify_full_ring():
     )
     assert history_head.item() == 1
     assert history_count.item() == history
-    torch.testing.assert_close(s[0, 0].squeeze(-1), torch.tensor([1.0, 0.0], device=device))
-    torch.testing.assert_close(y[0, 0].squeeze(-1), torch.tensor([2.0, 0.0], device=device))
+    torch.testing.assert_close(
+        s[0, 0].squeeze(-1), torch.tensor([1.0, 0.0], device=device)
+    )
+    torch.testing.assert_close(
+        y[0, 0].squeeze(-1), torch.tensor([2.0, 0.0], device=device)
+    )
     torch.testing.assert_close(rho[0, 0].squeeze(), torch.tensor(0.5, device=device))
 
 
@@ -1610,7 +1657,9 @@ def test_quasi_newton_clear_resets_circular_state():
     """Clear the circular indices for all problems or a selected subset."""
     buffers = QuasiNewtonBuffers(DeviceCfg(), history=7)
     buffers.resize(num_problems=3, opt_dim=16)
-    buffers.history_head.copy_(torch.tensor([1, 2, 3], dtype=torch.int32, device="cuda"))
+    buffers.history_head.copy_(
+        torch.tensor([1, 2, 3], dtype=torch.int32, device="cuda")
+    )
     buffers.history_count.fill_(7)
 
     mask = torch.tensor([True, False, True], dtype=torch.bool, device="cuda")

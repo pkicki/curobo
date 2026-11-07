@@ -1,0 +1,7082 @@
+{
+  "case_id": "pilot_free_04",
+  "regime": "severe",
+  "torque_profile_sha256": "0b1a393de7e0f8018804e56810a78603fffff6ea6772dc62bd8d438219e4d2bd",
+  "native_candidate_count": 44,
+  "independent_restart_count": 32,
+  "exact_geometry_count": 1,
+  "arc_aligned_unique_geometry_count": 1,
+  "geometric_diversity_tolerance_rad": 0.0001,
+  "candidates": [
+    {
+      "candidate": "F000",
+      "restart": 0,
+      "lane": 0,
+      "parent_restart_tag": "F000",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F000L01",
+      "restart": 0,
+      "lane": 1,
+      "parent_restart_tag": "F000",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F000L02",
+      "restart": 0,
+      "lane": 2,
+      "parent_restart_tag": "F000",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F000L03",
+      "restart": 0,
+      "lane": 3,
+      "parent_restart_tag": "F000",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F001",
+      "restart": 1,
+      "lane": 0,
+      "parent_restart_tag": "F001",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F001L01",
+      "restart": 1,
+      "lane": 1,
+      "parent_restart_tag": "F001",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F001L02",
+      "restart": 1,
+      "lane": 2,
+      "parent_restart_tag": "F001",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F001L03",
+      "restart": 1,
+      "lane": 3,
+      "parent_restart_tag": "F001",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F002",
+      "restart": 2,
+      "lane": 0,
+      "parent_restart_tag": "F002",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F002L01",
+      "restart": 2,
+      "lane": 1,
+      "parent_restart_tag": "F002",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F002L02",
+      "restart": 2,
+      "lane": 2,
+      "parent_restart_tag": "F002",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F002L03",
+      "restart": 2,
+      "lane": 3,
+      "parent_restart_tag": "F002",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F003",
+      "restart": 3,
+      "lane": 0,
+      "parent_restart_tag": "F003",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F003L01",
+      "restart": 3,
+      "lane": 1,
+      "parent_restart_tag": "F003",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F003L02",
+      "restart": 3,
+      "lane": 2,
+      "parent_restart_tag": "F003",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F003L03",
+      "restart": 3,
+      "lane": 3,
+      "parent_restart_tag": "F003",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F004",
+      "restart": 4,
+      "lane": 0,
+      "parent_restart_tag": "F004",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F005",
+      "restart": 5,
+      "lane": 0,
+      "parent_restart_tag": "F005",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F006",
+      "restart": 6,
+      "lane": 0,
+      "parent_restart_tag": "F006",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F007",
+      "restart": 7,
+      "lane": 0,
+      "parent_restart_tag": "F007",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F008",
+      "restart": 8,
+      "lane": 0,
+      "parent_restart_tag": "F008",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F009",
+      "restart": 9,
+      "lane": 0,
+      "parent_restart_tag": "F009",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F010",
+      "restart": 10,
+      "lane": 0,
+      "parent_restart_tag": "F010",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F011",
+      "restart": 11,
+      "lane": 0,
+      "parent_restart_tag": "F011",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F012",
+      "restart": 12,
+      "lane": 0,
+      "parent_restart_tag": "F012",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F013",
+      "restart": 13,
+      "lane": 0,
+      "parent_restart_tag": "F013",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F014",
+      "restart": 14,
+      "lane": 0,
+      "parent_restart_tag": "F014",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F015",
+      "restart": 15,
+      "lane": 0,
+      "parent_restart_tag": "F015",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F016",
+      "restart": 16,
+      "lane": 0,
+      "parent_restart_tag": "F016",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F017",
+      "restart": 17,
+      "lane": 0,
+      "parent_restart_tag": "F017",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F018",
+      "restart": 18,
+      "lane": 0,
+      "parent_restart_tag": "F018",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F019",
+      "restart": 19,
+      "lane": 0,
+      "parent_restart_tag": "F019",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F020",
+      "restart": 20,
+      "lane": 0,
+      "parent_restart_tag": "F020",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F021",
+      "restart": 21,
+      "lane": 0,
+      "parent_restart_tag": "F021",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F022",
+      "restart": 22,
+      "lane": 0,
+      "parent_restart_tag": "F022",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F023",
+      "restart": 23,
+      "lane": 0,
+      "parent_restart_tag": "F023",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F024",
+      "restart": 24,
+      "lane": 0,
+      "parent_restart_tag": "F024",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F025",
+      "restart": 25,
+      "lane": 0,
+      "parent_restart_tag": "F025",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F026",
+      "restart": 26,
+      "lane": 0,
+      "parent_restart_tag": "F026",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F027",
+      "restart": 27,
+      "lane": 0,
+      "parent_restart_tag": "F027",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F028",
+      "restart": 28,
+      "lane": 0,
+      "parent_restart_tag": "F028",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F029",
+      "restart": 29,
+      "lane": 0,
+      "parent_restart_tag": "F029",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F030",
+      "restart": 30,
+      "lane": 0,
+      "parent_restart_tag": "F030",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    },
+    {
+      "candidate": "F031",
+      "restart": 31,
+      "lane": 0,
+      "parent_restart_tag": "F031",
+      "duration_s": 0.5214890837669373,
+      "geometry_sha256": "aac8c9adcc077d75658891c1fa2c36b8b7f3605b99f645896ff713051ce9a4fa",
+      "joint_path_length_rad": 1.3493626493214066
+    }
+  ],
+  "pairwise_deviation": [
+    {
+      "left": "F000",
+      "right": "F000L01",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F000L02",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F000L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F001",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F001L01",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F001L02",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F001L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F002",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F002L01",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F002L02",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F002L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F003",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F003L01",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F003L02",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F003L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F004",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F005",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F006",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F007",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F008",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F009",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F010",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F011",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F012",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F013",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F014",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F015",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F016",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F017",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F018",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F019",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F020",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F021",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F022",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F023",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F000L02",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F000L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F001",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F001L01",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F001L02",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F001L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F002",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F002L01",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F002L02",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F002L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F003",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F003L01",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F003L02",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F003L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F004",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F005",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F006",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F007",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F008",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F009",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F010",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F011",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F012",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F013",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F014",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F015",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F016",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F017",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F018",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F019",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F020",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F021",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F022",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F023",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L01",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F000L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F001",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F001L01",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F001L02",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F001L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F002",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F002L01",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F002L02",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F002L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F003",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F003L01",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F003L02",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F003L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F004",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F005",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F006",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F007",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F008",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F009",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F010",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F011",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F012",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F013",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F014",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F015",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F016",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F017",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F018",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F019",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F020",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F021",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F022",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F023",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L02",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F001",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F001L01",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F001L02",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F001L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F002",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F002L01",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F002L02",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F002L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F003",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F003L01",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F003L02",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F003L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F004",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F005",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F006",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F007",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F008",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F009",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F010",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F011",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F012",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F013",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F014",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F015",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F016",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F017",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F018",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F019",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F020",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F021",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F022",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F023",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F000L03",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F001L01",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F001L02",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F001L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F002",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F002L01",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F002L02",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F002L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F003",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F003L01",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F003L02",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F003L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F004",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F005",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F006",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F007",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F008",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F009",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F010",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F011",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F012",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F013",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F014",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F015",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F016",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F017",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F018",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F019",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F020",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F021",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F022",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F023",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F001L02",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F001L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F002",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F002L01",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F002L02",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F002L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F003",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F003L01",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F003L02",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F003L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F004",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F005",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F006",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F007",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F008",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F009",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F010",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F011",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F012",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F013",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F014",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F015",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F016",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F017",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F018",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F019",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F020",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F021",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F022",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F023",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L01",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F001L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F002",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F002L01",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F002L02",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F002L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F003",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F003L01",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F003L02",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F003L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F004",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F005",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F006",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F007",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F008",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F009",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F010",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F011",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F012",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F013",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F014",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F015",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F016",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F017",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F018",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F019",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F020",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F021",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F022",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F023",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L02",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F002",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F002L01",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F002L02",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F002L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F003",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F003L01",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F003L02",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F003L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F004",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F005",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F006",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F007",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F008",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F009",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F010",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F011",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F012",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F013",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F014",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F015",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F016",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F017",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F018",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F019",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F020",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F021",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F022",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F023",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F001L03",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002",
+      "right": "F002L01",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002",
+      "right": "F002L02",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002",
+      "right": "F002L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002",
+      "right": "F003",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002",
+      "right": "F003L01",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002",
+      "right": "F003L02",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002",
+      "right": "F003L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002",
+      "right": "F004",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002",
+      "right": "F005",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002",
+      "right": "F006",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002",
+      "right": "F007",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002",
+      "right": "F008",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002",
+      "right": "F009",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002",
+      "right": "F010",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002",
+      "right": "F011",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002",
+      "right": "F012",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002",
+      "right": "F013",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002",
+      "right": "F014",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002",
+      "right": "F015",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002",
+      "right": "F016",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002",
+      "right": "F017",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002",
+      "right": "F018",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002",
+      "right": "F019",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002",
+      "right": "F020",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002",
+      "right": "F021",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002",
+      "right": "F022",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002",
+      "right": "F023",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L01",
+      "right": "F002L02",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L01",
+      "right": "F002L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L01",
+      "right": "F003",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L01",
+      "right": "F003L01",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L01",
+      "right": "F003L02",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L01",
+      "right": "F003L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L01",
+      "right": "F004",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L01",
+      "right": "F005",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L01",
+      "right": "F006",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L01",
+      "right": "F007",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L01",
+      "right": "F008",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L01",
+      "right": "F009",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L01",
+      "right": "F010",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L01",
+      "right": "F011",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L01",
+      "right": "F012",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L01",
+      "right": "F013",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L01",
+      "right": "F014",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L01",
+      "right": "F015",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L01",
+      "right": "F016",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L01",
+      "right": "F017",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L01",
+      "right": "F018",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L01",
+      "right": "F019",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L01",
+      "right": "F020",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L01",
+      "right": "F021",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L01",
+      "right": "F022",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L01",
+      "right": "F023",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L01",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L01",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L01",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L01",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L01",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L01",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L01",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L01",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L02",
+      "right": "F002L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L02",
+      "right": "F003",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L02",
+      "right": "F003L01",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L02",
+      "right": "F003L02",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L02",
+      "right": "F003L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L02",
+      "right": "F004",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L02",
+      "right": "F005",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L02",
+      "right": "F006",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L02",
+      "right": "F007",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L02",
+      "right": "F008",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L02",
+      "right": "F009",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L02",
+      "right": "F010",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L02",
+      "right": "F011",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L02",
+      "right": "F012",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L02",
+      "right": "F013",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L02",
+      "right": "F014",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L02",
+      "right": "F015",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L02",
+      "right": "F016",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L02",
+      "right": "F017",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L02",
+      "right": "F018",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L02",
+      "right": "F019",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L02",
+      "right": "F020",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L02",
+      "right": "F021",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L02",
+      "right": "F022",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L02",
+      "right": "F023",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L02",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L02",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L02",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L02",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L02",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L02",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L02",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L02",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L03",
+      "right": "F003",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L03",
+      "right": "F003L01",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L03",
+      "right": "F003L02",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L03",
+      "right": "F003L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L03",
+      "right": "F004",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L03",
+      "right": "F005",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L03",
+      "right": "F006",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L03",
+      "right": "F007",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L03",
+      "right": "F008",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L03",
+      "right": "F009",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L03",
+      "right": "F010",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L03",
+      "right": "F011",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L03",
+      "right": "F012",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L03",
+      "right": "F013",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L03",
+      "right": "F014",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L03",
+      "right": "F015",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L03",
+      "right": "F016",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L03",
+      "right": "F017",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L03",
+      "right": "F018",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L03",
+      "right": "F019",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L03",
+      "right": "F020",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L03",
+      "right": "F021",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L03",
+      "right": "F022",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L03",
+      "right": "F023",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L03",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L03",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L03",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L03",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L03",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L03",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L03",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F002L03",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003",
+      "right": "F003L01",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003",
+      "right": "F003L02",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003",
+      "right": "F003L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003",
+      "right": "F004",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003",
+      "right": "F005",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003",
+      "right": "F006",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003",
+      "right": "F007",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003",
+      "right": "F008",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003",
+      "right": "F009",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003",
+      "right": "F010",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003",
+      "right": "F011",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003",
+      "right": "F012",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003",
+      "right": "F013",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003",
+      "right": "F014",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003",
+      "right": "F015",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003",
+      "right": "F016",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003",
+      "right": "F017",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003",
+      "right": "F018",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003",
+      "right": "F019",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003",
+      "right": "F020",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003",
+      "right": "F021",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003",
+      "right": "F022",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003",
+      "right": "F023",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L01",
+      "right": "F003L02",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L01",
+      "right": "F003L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L01",
+      "right": "F004",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L01",
+      "right": "F005",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L01",
+      "right": "F006",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L01",
+      "right": "F007",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L01",
+      "right": "F008",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L01",
+      "right": "F009",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L01",
+      "right": "F010",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L01",
+      "right": "F011",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L01",
+      "right": "F012",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L01",
+      "right": "F013",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L01",
+      "right": "F014",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L01",
+      "right": "F015",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L01",
+      "right": "F016",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L01",
+      "right": "F017",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L01",
+      "right": "F018",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L01",
+      "right": "F019",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L01",
+      "right": "F020",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L01",
+      "right": "F021",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L01",
+      "right": "F022",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L01",
+      "right": "F023",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L01",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L01",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L01",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L01",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L01",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L01",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L01",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L01",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L02",
+      "right": "F003L03",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L02",
+      "right": "F004",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L02",
+      "right": "F005",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L02",
+      "right": "F006",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L02",
+      "right": "F007",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L02",
+      "right": "F008",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L02",
+      "right": "F009",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L02",
+      "right": "F010",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L02",
+      "right": "F011",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L02",
+      "right": "F012",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L02",
+      "right": "F013",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L02",
+      "right": "F014",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L02",
+      "right": "F015",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L02",
+      "right": "F016",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L02",
+      "right": "F017",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L02",
+      "right": "F018",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L02",
+      "right": "F019",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L02",
+      "right": "F020",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L02",
+      "right": "F021",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L02",
+      "right": "F022",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L02",
+      "right": "F023",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L02",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L02",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L02",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L02",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L02",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L02",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L02",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L02",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L03",
+      "right": "F004",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L03",
+      "right": "F005",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L03",
+      "right": "F006",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L03",
+      "right": "F007",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L03",
+      "right": "F008",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L03",
+      "right": "F009",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L03",
+      "right": "F010",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L03",
+      "right": "F011",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L03",
+      "right": "F012",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L03",
+      "right": "F013",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L03",
+      "right": "F014",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L03",
+      "right": "F015",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L03",
+      "right": "F016",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L03",
+      "right": "F017",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L03",
+      "right": "F018",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L03",
+      "right": "F019",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L03",
+      "right": "F020",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L03",
+      "right": "F021",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L03",
+      "right": "F022",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L03",
+      "right": "F023",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L03",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L03",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L03",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L03",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L03",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L03",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L03",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F003L03",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F004",
+      "right": "F005",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F004",
+      "right": "F006",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F004",
+      "right": "F007",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F004",
+      "right": "F008",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F004",
+      "right": "F009",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F004",
+      "right": "F010",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F004",
+      "right": "F011",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F004",
+      "right": "F012",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F004",
+      "right": "F013",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F004",
+      "right": "F014",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F004",
+      "right": "F015",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F004",
+      "right": "F016",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F004",
+      "right": "F017",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F004",
+      "right": "F018",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F004",
+      "right": "F019",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F004",
+      "right": "F020",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F004",
+      "right": "F021",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F004",
+      "right": "F022",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F004",
+      "right": "F023",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F004",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F004",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F004",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F004",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F004",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F004",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F004",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F004",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F005",
+      "right": "F006",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F005",
+      "right": "F007",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F005",
+      "right": "F008",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F005",
+      "right": "F009",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F005",
+      "right": "F010",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F005",
+      "right": "F011",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F005",
+      "right": "F012",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F005",
+      "right": "F013",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F005",
+      "right": "F014",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F005",
+      "right": "F015",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F005",
+      "right": "F016",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F005",
+      "right": "F017",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F005",
+      "right": "F018",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F005",
+      "right": "F019",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F005",
+      "right": "F020",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F005",
+      "right": "F021",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F005",
+      "right": "F022",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F005",
+      "right": "F023",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F005",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F005",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F005",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F005",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F005",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F005",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F005",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F005",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F006",
+      "right": "F007",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F006",
+      "right": "F008",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F006",
+      "right": "F009",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F006",
+      "right": "F010",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F006",
+      "right": "F011",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F006",
+      "right": "F012",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F006",
+      "right": "F013",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F006",
+      "right": "F014",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F006",
+      "right": "F015",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F006",
+      "right": "F016",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F006",
+      "right": "F017",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F006",
+      "right": "F018",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F006",
+      "right": "F019",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F006",
+      "right": "F020",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F006",
+      "right": "F021",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F006",
+      "right": "F022",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F006",
+      "right": "F023",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F006",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F006",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F006",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F006",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F006",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F006",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F006",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F006",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F007",
+      "right": "F008",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F007",
+      "right": "F009",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F007",
+      "right": "F010",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F007",
+      "right": "F011",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F007",
+      "right": "F012",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F007",
+      "right": "F013",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F007",
+      "right": "F014",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F007",
+      "right": "F015",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F007",
+      "right": "F016",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F007",
+      "right": "F017",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F007",
+      "right": "F018",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F007",
+      "right": "F019",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F007",
+      "right": "F020",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F007",
+      "right": "F021",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F007",
+      "right": "F022",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F007",
+      "right": "F023",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F007",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F007",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F007",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F007",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F007",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F007",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F007",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F007",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F008",
+      "right": "F009",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F008",
+      "right": "F010",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F008",
+      "right": "F011",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F008",
+      "right": "F012",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F008",
+      "right": "F013",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F008",
+      "right": "F014",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F008",
+      "right": "F015",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F008",
+      "right": "F016",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F008",
+      "right": "F017",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F008",
+      "right": "F018",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F008",
+      "right": "F019",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F008",
+      "right": "F020",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F008",
+      "right": "F021",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F008",
+      "right": "F022",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F008",
+      "right": "F023",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F008",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F008",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F008",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F008",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F008",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F008",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F008",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F008",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F009",
+      "right": "F010",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F009",
+      "right": "F011",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F009",
+      "right": "F012",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F009",
+      "right": "F013",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F009",
+      "right": "F014",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F009",
+      "right": "F015",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F009",
+      "right": "F016",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F009",
+      "right": "F017",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F009",
+      "right": "F018",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F009",
+      "right": "F019",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F009",
+      "right": "F020",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F009",
+      "right": "F021",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F009",
+      "right": "F022",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F009",
+      "right": "F023",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F009",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F009",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F009",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F009",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F009",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F009",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F009",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F009",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F010",
+      "right": "F011",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F010",
+      "right": "F012",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F010",
+      "right": "F013",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F010",
+      "right": "F014",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F010",
+      "right": "F015",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F010",
+      "right": "F016",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F010",
+      "right": "F017",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F010",
+      "right": "F018",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F010",
+      "right": "F019",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F010",
+      "right": "F020",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F010",
+      "right": "F021",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F010",
+      "right": "F022",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F010",
+      "right": "F023",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F010",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F010",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F010",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F010",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F010",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F010",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F010",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F010",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F011",
+      "right": "F012",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F011",
+      "right": "F013",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F011",
+      "right": "F014",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F011",
+      "right": "F015",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F011",
+      "right": "F016",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F011",
+      "right": "F017",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F011",
+      "right": "F018",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F011",
+      "right": "F019",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F011",
+      "right": "F020",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F011",
+      "right": "F021",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F011",
+      "right": "F022",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F011",
+      "right": "F023",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F011",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F011",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F011",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F011",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F011",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F011",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F011",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F011",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F012",
+      "right": "F013",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F012",
+      "right": "F014",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F012",
+      "right": "F015",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F012",
+      "right": "F016",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F012",
+      "right": "F017",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F012",
+      "right": "F018",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F012",
+      "right": "F019",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F012",
+      "right": "F020",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F012",
+      "right": "F021",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F012",
+      "right": "F022",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F012",
+      "right": "F023",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F012",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F012",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F012",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F012",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F012",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F012",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F012",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F012",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F013",
+      "right": "F014",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F013",
+      "right": "F015",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F013",
+      "right": "F016",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F013",
+      "right": "F017",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F013",
+      "right": "F018",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F013",
+      "right": "F019",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F013",
+      "right": "F020",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F013",
+      "right": "F021",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F013",
+      "right": "F022",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F013",
+      "right": "F023",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F013",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F013",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F013",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F013",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F013",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F013",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F013",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F013",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F014",
+      "right": "F015",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F014",
+      "right": "F016",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F014",
+      "right": "F017",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F014",
+      "right": "F018",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F014",
+      "right": "F019",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F014",
+      "right": "F020",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F014",
+      "right": "F021",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F014",
+      "right": "F022",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F014",
+      "right": "F023",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F014",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F014",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F014",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F014",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F014",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F014",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F014",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F014",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F015",
+      "right": "F016",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F015",
+      "right": "F017",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F015",
+      "right": "F018",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F015",
+      "right": "F019",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F015",
+      "right": "F020",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F015",
+      "right": "F021",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F015",
+      "right": "F022",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F015",
+      "right": "F023",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F015",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F015",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F015",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F015",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F015",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F015",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F015",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F015",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F016",
+      "right": "F017",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F016",
+      "right": "F018",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F016",
+      "right": "F019",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F016",
+      "right": "F020",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F016",
+      "right": "F021",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F016",
+      "right": "F022",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F016",
+      "right": "F023",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F016",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F016",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F016",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F016",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F016",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F016",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F016",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F016",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F017",
+      "right": "F018",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F017",
+      "right": "F019",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F017",
+      "right": "F020",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F017",
+      "right": "F021",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F017",
+      "right": "F022",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F017",
+      "right": "F023",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F017",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F017",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F017",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F017",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F017",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F017",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F017",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F017",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F018",
+      "right": "F019",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F018",
+      "right": "F020",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F018",
+      "right": "F021",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F018",
+      "right": "F022",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F018",
+      "right": "F023",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F018",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F018",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F018",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F018",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F018",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F018",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F018",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F018",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F019",
+      "right": "F020",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F019",
+      "right": "F021",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F019",
+      "right": "F022",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F019",
+      "right": "F023",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F019",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F019",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F019",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F019",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F019",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F019",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F019",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F019",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F020",
+      "right": "F021",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F020",
+      "right": "F022",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F020",
+      "right": "F023",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F020",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F020",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F020",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F020",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F020",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F020",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F020",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F020",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F021",
+      "right": "F022",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F021",
+      "right": "F023",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F021",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F021",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F021",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F021",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F021",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F021",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F021",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F021",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F022",
+      "right": "F023",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F022",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F022",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F022",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F022",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F022",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F022",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F022",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F022",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F023",
+      "right": "F024",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F023",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F023",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F023",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F023",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F023",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F023",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F023",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F024",
+      "right": "F025",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F024",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F024",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F024",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F024",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F024",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F024",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F025",
+      "right": "F026",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F025",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F025",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F025",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F025",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F025",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F026",
+      "right": "F027",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F026",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F026",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F026",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F026",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F027",
+      "right": "F028",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F027",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F027",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F027",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F028",
+      "right": "F029",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F028",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F028",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F029",
+      "right": "F030",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F029",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    },
+    {
+      "left": "F030",
+      "right": "F031",
+      "rms_deviation_rad": 0.0,
+      "max_deviation_rad": 0.0,
+      "same_geometry_hash": true
+    }
+  ],
+  "clusters": [
+    [
+      "F000",
+      "F000L01",
+      "F000L02",
+      "F000L03",
+      "F001",
+      "F001L01",
+      "F001L02",
+      "F001L03",
+      "F002",
+      "F002L01",
+      "F002L02",
+      "F002L03",
+      "F003",
+      "F003L01",
+      "F003L02",
+      "F003L03",
+      "F004",
+      "F005",
+      "F006",
+      "F007",
+      "F008",
+      "F009",
+      "F010",
+      "F011",
+      "F012",
+      "F013",
+      "F014",
+      "F015",
+      "F016",
+      "F017",
+      "F018",
+      "F019",
+      "F020",
+      "F021",
+      "F022",
+      "F023",
+      "F024",
+      "F025",
+      "F026",
+      "F027",
+      "F028",
+      "F029",
+      "F030",
+      "F031"
+    ]
+  ],
+  "metric": "RMS/max joint-position deviation after uniform joint-space arc-length alignment",
+  "task_sha256": "d742f686b943ee6a53ae185700104aa0b7fa43a8b2de42698281c749fde04641"
+}

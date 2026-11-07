@@ -1,0 +1,29 @@
+{
+  "case_id": "pilot_cluttered_04",
+  "regime": "severe",
+  "torque_profile_sha256": "409b28e05e785109738ed47ddedb0ce5c566c44c4308ec1cf7a6ee09a189cee5",
+  "native_candidate_count": 1,
+  "independent_restart_count": 1,
+  "exact_geometry_count": 1,
+  "arc_aligned_unique_geometry_count": 1,
+  "geometric_diversity_tolerance_rad": 0.0001,
+  "candidates": [
+    {
+      "candidate": "F000",
+      "restart": 0,
+      "lane": 0,
+      "parent_restart_tag": "F000",
+      "duration_s": 0.5337421298027039,
+      "geometry_sha256": "5da105734e1cc1256c5523441cc09fa7b70f78bf51b06f263daad9c7a3693b2f",
+      "joint_path_length_rad": 1.114620544215275
+    }
+  ],
+  "pairwise_deviation": [],
+  "clusters": [
+    [
+      "F000"
+    ]
+  ],
+  "metric": "RMS/max joint-position deviation after uniform joint-space arc-length alignment",
+  "task_sha256": "58b6b0886e05cd489a6aec75819d5c4b554f3a5491f0b82a29d7b4381df837c5"
+}

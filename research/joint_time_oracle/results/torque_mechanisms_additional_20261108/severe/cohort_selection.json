@@ -1,0 +1,17 @@
+{
+  "source_root": "research/joint_time_oracle/results/torque_wide_stress_20261107/severe",
+  "selection_rule": "predeclared lexical first cases; wide 4 free + 3 table + 3 cluttered; moderate 2 per population",
+  "case_ids": [
+    "wide_free_00",
+    "wide_free_01",
+    "wide_free_02",
+    "wide_free_03",
+    "wide_table_00",
+    "wide_table_01",
+    "wide_table_02",
+    "wide_cluttered_00",
+    "wide_cluttered_01",
+    "wide_cluttered_02"
+  ],
+  "task_inventory_sha256": "afb9048f1e66d1935dc895d21c33f021cb4b4b70a66f7ddfd10a68cf76fd42b7"
+}

@@ -1,0 +1,45 @@
+{
+  "F000": {
+    "name": "F000",
+    "restart": 0,
+    "seed": 270713,
+    "profile_sha256": "488b4e5a07b2bd1e09b16caae763c2c5664e3384909938985e62044fa7252863",
+    "status": "SUCCESS",
+    "attempt_index": 0,
+    "setup_and_warmup_wall_s": 1.2774718460277654,
+    "plan_wall_s": 0.17201959900557995,
+    "planning_attempts": 1,
+    "duration_s": 0.9025071859359741,
+    "lane": 0,
+    "geometry_sha256": "f0f52ec60acf91b34a89789f6f250b469a820c4edfd781fe1a4ef153cebc58cc",
+    "alternate_accepted_lanes": 3,
+    "native_mask_available": true,
+    "lane_position_replay_error_rad": 4.76837158203125e-07,
+    "native_success": true,
+    "num_native_lanes": 4,
+    "effective_effort_lower": [
+      -30.581284585414537,
+      -30.581284585414537,
+      -30.581284585414537,
+      -30.581284585414537,
+      -4.218108218677868,
+      -4.218108218677868,
+      -4.218108218677868
+    ],
+    "effective_effort_upper": [
+      30.581284585414537,
+      30.581284585414537,
+      30.581284585414537,
+      30.581284585414537,
+      4.218108218677868,
+      4.218108218677868,
+      4.218108218677868
+    ],
+    "task_sha256": "78c8466c9c8621d884980b3736102f73ffff64b4bcddaced50887e18afccbc63",
+    "torque_profile_sha256": "488b4e5a07b2bd1e09b16caae763c2c5664e3384909938985e62044fa7252863",
+    "dense_sha256": "d3b55da213b04f79960869d019e5e3d946f127df8d6efa7793afc3b06788602a",
+    "trajectory_source": "trajopt",
+    "reason": "KeyError('start_boundary')",
+    "traceback": "Traceback (most recent call last):\n  File \"/home/pkicki/curobo/research/joint_time_oracle/torque_full_planner.py\", line 440, in execute\n    \"geometry_sha256\": geometry_sha(buffers, extra[\"lane\"]),\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/pkicki/curobo/research/joint_time_oracle/torque_full_planner.py\", line 49, in geometry_sha\n    value = np.ascontiguousarray(buffers[key][lane])\n                                 ~~~~~~~^^^^^\nKeyError: 'start_boundary'\n"
+  }
+}

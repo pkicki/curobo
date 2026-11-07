@@ -1,0 +1,45 @@
+{
+  "F000": {
+    "name": "F000",
+    "restart": 0,
+    "seed": 771219,
+    "profile_sha256": "288f542fb79b53f6f7d9f91b292aa683810d75a23ce937e0adc730ec1c6fcfe3",
+    "status": "SUCCESS",
+    "attempt_index": 0,
+    "setup_and_warmup_wall_s": 23.193320363992825,
+    "plan_wall_s": 0.17384592100279406,
+    "planning_attempts": 1,
+    "duration_s": 0.49757277965545654,
+    "lane": 0,
+    "geometry_sha256": "1dbdbe4d7cca610e2fe0ccb8d7fbbb4049aa61ed692c320f509a290b9a8d8c28",
+    "alternate_accepted_lanes": 3,
+    "native_mask_available": true,
+    "lane_position_replay_error_rad": 2.384185791015625e-07,
+    "native_success": true,
+    "num_native_lanes": 4,
+    "effective_effort_lower": [
+      -21.630326396439898,
+      -21.630326396439898,
+      -21.630326396439898,
+      -21.630326396439898,
+      -2.9834932960606757,
+      -2.9834932960606757,
+      -2.9834932960606757
+    ],
+    "effective_effort_upper": [
+      21.630326396439898,
+      21.630326396439898,
+      21.630326396439898,
+      21.630326396439898,
+      2.9834932960606757,
+      2.9834932960606757,
+      2.9834932960606757
+    ],
+    "task_sha256": "792118a1bc87be300cf4e8d6959562d07c554a13a9efd2cda9a38efc7ed4fd5b",
+    "torque_profile_sha256": "288f542fb79b53f6f7d9f91b292aa683810d75a23ce937e0adc730ec1c6fcfe3",
+    "dense_sha256": "5e047e4aff16eac097112d41bec9eba0c0419d3f62108c6a4e8d5672c8795d77",
+    "trajectory_source": "trajopt",
+    "reason": "KeyError('start_boundary')",
+    "traceback": "Traceback (most recent call last):\n  File \"/home/pkicki/curobo/research/joint_time_oracle/torque_full_planner.py\", line 440, in execute\n    \"geometry_sha256\": geometry_sha(buffers, extra[\"lane\"]),\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/pkicki/curobo/research/joint_time_oracle/torque_full_planner.py\", line 49, in geometry_sha\n    value = np.ascontiguousarray(buffers[key][lane])\n                                 ~~~~~~~^^^^^\nKeyError: 'start_boundary'\n"
+  }
+}
