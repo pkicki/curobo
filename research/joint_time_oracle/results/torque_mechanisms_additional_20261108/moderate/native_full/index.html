@@ -1,0 +1,38 @@
+<!doctype html><html lang="en"><meta charset="utf-8">
+<title>Full native torque-aware planning comparison</title><style>
+body{font:16px/1.5 system-ui;max-width:1050px;margin:2rem auto;padding:0 1rem}
+table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid #ddd;padding:.6rem;text-align:left}
+aside{background:#fff0d8;padding:1rem;border-left:5px solid #b96c00}</style>
+<h1>Replanning cuRobo under derated torque limits</h1>
+<aside>Candidate budgets count independent planner restarts; each restart contains
+multiple internal seeds. All results require explicit independent validation.
+Sampled evidence is NOT a continuous-time certificate. Full-R is the independent IPOPT retiming of Full geometry, matching B and D. A positive Full→D
+percentage means D is faster than the best validated native full-planner candidate
+within that budget. Missing results are not treated as zero improvements.</aside><h2>adaptive_qualified:physical</h2>
+<table><thead><tr><th>Budget (restarts)</th><th>Full/D pairs</th><th>Median Full→D</th><th>95% paired CI</th><th>Median B→Full</th><th>Full-R/D pairs</th><th>Median Full-R→D</th><th>Median B→Full-R</th><th>Median Full→Full-R</th></tr></thead><tbody>
+<tr><td>1</td><td>6/6</td><td>3.636%</td><td>[2.838773825653253, 4.168979901177797]</td><td>-3.613%</td><td>6/6</td><td>-0.092%</td><td>-0.005%</td><td>3.482%</td></tr>
+<tr><td>4</td><td>0/0</td><td>N/A</td><td>N/A</td><td>N/A</td><td>0/0</td><td>N/A</td><td>N/A</td><td>N/A</td></tr>
+<tr><td>16</td><td>0/0</td><td>N/A</td><td>N/A</td><td>N/A</td><td>0/0</td><td>N/A</td><td>N/A</td><td>N/A</td></tr>
+<tr><td>32</td><td>0/0</td><td>N/A</td><td>N/A</td><td>N/A</td><td>0/0</td><td>N/A</td><td>N/A</td><td>N/A</td></tr>
+</tbody></table>
+<h2>sampled:physical</h2>
+<table><thead><tr><th>Budget (restarts)</th><th>Full/D pairs</th><th>Median Full→D</th><th>95% paired CI</th><th>Median B→Full</th><th>Full-R/D pairs</th><th>Median Full-R→D</th><th>Median B→Full-R</th><th>Median Full→Full-R</th></tr></thead><tbody>
+<tr><td>1</td><td>6/6</td><td>3.636%</td><td>[2.838773825653253, 4.168979901177797]</td><td>-3.613%</td><td>6/6</td><td>-0.092%</td><td>-0.005%</td><td>3.482%</td></tr>
+<tr><td>4</td><td>0/0</td><td>N/A</td><td>N/A</td><td>N/A</td><td>0/0</td><td>N/A</td><td>N/A</td><td>N/A</td></tr>
+<tr><td>16</td><td>0/0</td><td>N/A</td><td>N/A</td><td>N/A</td><td>0/0</td><td>N/A</td><td>N/A</td><td>N/A</td></tr>
+<tr><td>32</td><td>0/0</td><td>N/A</td><td>N/A</td><td>N/A</td><td>0/0</td><td>N/A</td><td>N/A</td><td>N/A</td></tr>
+</tbody></table>
+<h2>adaptive_qualified:scaled95</h2>
+<table><thead><tr><th>Budget (restarts)</th><th>Full/D pairs</th><th>Median Full→D</th><th>95% paired CI</th><th>Median B→Full</th><th>Full-R/D pairs</th><th>Median Full-R→D</th><th>Median B→Full-R</th><th>Median Full→Full-R</th></tr></thead><tbody>
+<tr><td>1</td><td>0/6</td><td>N/A</td><td>N/A</td><td>-3.533%</td><td>0/6</td><td>N/A</td><td>-0.006%</td><td>3.407%</td></tr>
+<tr><td>4</td><td>0/0</td><td>N/A</td><td>N/A</td><td>N/A</td><td>0/0</td><td>N/A</td><td>N/A</td><td>N/A</td></tr>
+<tr><td>16</td><td>0/0</td><td>N/A</td><td>N/A</td><td>N/A</td><td>0/0</td><td>N/A</td><td>N/A</td><td>N/A</td></tr>
+<tr><td>32</td><td>0/0</td><td>N/A</td><td>N/A</td><td>N/A</td><td>0/0</td><td>N/A</td><td>N/A</td><td>N/A</td></tr>
+</tbody></table>
+<h2>sampled:scaled95</h2>
+<table><thead><tr><th>Budget (restarts)</th><th>Full/D pairs</th><th>Median Full→D</th><th>95% paired CI</th><th>Median B→Full</th><th>Full-R/D pairs</th><th>Median Full-R→D</th><th>Median B→Full-R</th><th>Median Full→Full-R</th></tr></thead><tbody>
+<tr><td>1</td><td>0/6</td><td>N/A</td><td>N/A</td><td>-3.533%</td><td>0/6</td><td>N/A</td><td>-0.006%</td><td>3.407%</td></tr>
+<tr><td>4</td><td>0/0</td><td>N/A</td><td>N/A</td><td>N/A</td><td>0/0</td><td>N/A</td><td>N/A</td><td>N/A</td></tr>
+<tr><td>16</td><td>0/0</td><td>N/A</td><td>N/A</td><td>N/A</td><td>0/0</td><td>N/A</td><td>N/A</td><td>N/A</td></tr>
+<tr><td>32</td><td>0/0</td><td>N/A</td><td>N/A</td><td>N/A</td><td>0/0</td><td>N/A</td><td>N/A</td><td>N/A</td></tr>
+</tbody></table></html>
