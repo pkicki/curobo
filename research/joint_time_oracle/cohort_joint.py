@@ -39,6 +39,9 @@ def main() -> None:
         profile=read_profile(profile_path)
         if profile['source_case_id']!=args.case:
             raise ValueError('torque profile/source task mismatch')
+        expected_nominal=np.stack((profile['nominal_effort_lower'],profile['nominal_effort_upper']))
+        if not np.allclose(limits.torque,expected_nominal,rtol=1e-5,atol=1e-5):
+            raise ValueError('frozen nominal effort limits differ from current CUDA robot model')
         limits=JointLimits(position=limits.position,velocity=limits.velocity,
                            acceleration=limits.acceleration,jerk=limits.jerk,
                            torque=np.stack((profile['effort_lower'],profile['effort_upper'])))
