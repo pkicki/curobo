@@ -23,15 +23,16 @@ BUDGETS=(1,4,16,32)
 
 
 def best_native(candidates:dict, diagnostics:dict, receipts:dict, profile:dict,
-                case:str, budget:int, *, scaled95:bool, strict:bool) -> dict | None:
+                case:str, budget:int, *, scaled95:bool, strict:bool,
+                prefix:str="F") -> dict | None:
     valid=[]
     for method,candidate in sorted(candidates.items()):
         # F000 is the native selected lane; F000L02 is an additional internally
         # accepted lane from the same planner restart. Both consume one restart.
-        if not method.startswith("F") or len(method)<4:
+        if not method.startswith(prefix) or len(method)<len(prefix)+3:
             continue
         try:
-            restart=int(method[1:4])
+            restart=int(method[len(prefix):len(prefix)+3])
         except ValueError:
             continue
         if restart>=budget:
@@ -102,6 +103,8 @@ def build(arm:Path, *, strict_receipts:Path|None=None) -> dict:
                 profile=read_profile(arm/case/"torque_profile.json")
                 candidate_path=native/case/"native_candidates.json"
                 candidates=json.loads(candidate_path.read_text()) if candidate_path.exists() else {}
+                matched_file=native/case/"matched_retime_candidates.json"
+                matched=json.loads(matched_file.read_text()) if matched_file.exists() else {}
                 source=existing["torque_qualified" if strict else "torque_sampled"].get(case,{})
                 methods=source.get("methods",{})
                 relevant={}
@@ -117,13 +120,27 @@ def build(arm:Path, *, strict_receipts:Path|None=None) -> dict:
                                      scaled95=(mode=="scaled95"),strict=strict)
                     improvement=None
                     baseline=None
+                    matched_improvement=None
+                    matched_from_B=None
+                    retiming_difference=None
+                    matched_best=best_native(matched,diagnostics,receipts,profile,case,budget,
+                                             scaled95=(mode=="scaled95"),strict=strict,prefix="R")
                     if best and relevant["D"] is not None:
                         improvement=100*(best["duration_s"]-relevant["D"])/best["duration_s"]
                     if best and relevant["B"] is not None:
                         baseline=100*(relevant["B"]-best["duration_s"])/relevant["B"]
-                    pair[str(budget)]={"best_native":best,
+                    if matched_best and relevant["D"] is not None:
+                        matched_improvement=100*(matched_best["duration_s"]-relevant["D"])/matched_best["duration_s"]
+                    if matched_best and relevant["B"] is not None:
+                        matched_from_B=100*(relevant["B"]-matched_best["duration_s"])/relevant["B"]
+                    if matched_best and best:
+                        retiming_difference=100*(best["duration_s"]-matched_best["duration_s"])/best["duration_s"]
+                    pair[str(budget)]={"best_native":best,"best_matched":matched_best,
                                        "native_to_D_improvement_pct":improvement,
-                                       "B_to_native_improvement_pct":baseline}
+                                       "B_to_native_improvement_pct":baseline,
+                                       "matched_to_D_improvement_pct":matched_improvement,
+                                       "B_to_matched_improvement_pct":matched_from_B,
+                                       "native_to_matched_improvement_pct":retiming_difference}
                 cases[case]={"population":task["population"],"reference":relevant,
                              "budget_comparisons":pair}
             groups={}
@@ -135,7 +152,13 @@ def build(arm:Path, *, strict_receipts:Path|None=None) -> dict:
                         "native_to_D":summary([x["native_to_D_improvement_pct"] for x in records
                                                if x["native_to_D_improvement_pct"] is not None],len(records)),
                         "B_to_native":summary([x["B_to_native_improvement_pct"] for x in records
-                                               if x["B_to_native_improvement_pct"] is not None],len(records))}
+                                               if x["B_to_native_improvement_pct"] is not None],len(records)),
+                        "matched_to_D":summary([x["matched_to_D_improvement_pct"] for x in records
+                                               if x["matched_to_D_improvement_pct"] is not None],len(records)),
+                        "B_to_matched":summary([x["B_to_matched_improvement_pct"] for x in records
+                                               if x["B_to_matched_improvement_pct"] is not None],len(records)),
+                        "native_to_matched":summary([x["native_to_matched_improvement_pct"] for x in records
+                                               if x["native_to_matched_improvement_pct"] is not None],len(records))}
             data["results"][label]={"groups":groups,"cases":cases}
     native.mkdir(parents=True,exist_ok=True)
     (native/"full_planner_comparison.json").write_text(json.dumps(data,indent=2)+"\n")
