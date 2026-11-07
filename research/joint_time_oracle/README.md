@@ -417,3 +417,22 @@ distinct from converged local solutions. A full geometric planner rerun under
 the derated effort constraints and exhaustive homotopy exploration were not
 completed. Derating simulates a lower-capacity actuator, **not** an actual
 payload; Panda inertials and production limits were not changed.
+
+## Torque physics and full native replanning follow-up (2026-11-07)
+
+See [TORQUE_MECHANISM_FULLPLANNER_PROTOCOL.md](TORQUE_MECHANISM_FULLPLANNER_PROTOCOL.md)
+for the staged torque decomposition and full-planner rerun protocol.
+This experimental branch starts from frozen torque-stress commit
+bcbb85a709f06b2a934f8ba141137c33379c0450 and preserves the original
+A10/A40/B/C/D evidence. It adds:
+- independent Pinocchio RNEA gravity / inertial / velocity-bias breakdown;
+- full native cuRobo C-space planning with derated effort limits installed
+  **before** constructing the planner;
+- 1/4/16/32-restart budgeted selection across all internally valid native lanes;
+- dense and adaptive independent Pinocchio/sphere audits and SHA-linked receipts;
+- a deterministic N/A-aware HTML report at
+  reports/joint_time_oracle/torque_mechanisms/index.html.
+
+**Unexecuted:** no new GPU experiments or new independent verification
+outcomes are claimed by this implementation. Run the documented tests and
+GPU qualification chain before interpreting full-planner comparisons.
