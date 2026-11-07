@@ -26,9 +26,12 @@ def prepare(arm:Path) -> tuple[Path,list[str]]:
         case=task["case_id"]
         info=source/case/"native_candidates.json"
         candidates=json.loads(info.read_text()) if info.exists() else {}
+        matched_file=source/case/"matched_retime_candidates.json"
+        matched=json.loads(matched_file.read_text()) if matched_file.exists() else {}
+        candidates.update(matched)
         methods={}
         for key,record in candidates.items():
-            if record.get("status")=="SUCCESS":
+            if record.get("status") in ("SUCCESS","COMPLETE"):
                 path=source/case/(key.lower()+"_dense.npz")
                 if not path.exists():
                     raise ValueError("missing candidate archive " + str(path))
