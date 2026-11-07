@@ -133,8 +133,23 @@ preflight passes, increase --max-restarts to 4, 16 and finally 32.
 Escalation resumes within the same frozen configuration without
 rerunning completed restarts.
 
-The selected candidate from each restart is not yet a qualified
-duration result. In the independent Pinocchio environment, perform:
+The selected native candidate from each restart is not yet qualified.
+Before verification, independently retime **every** saved Full geometry with
+the SAME fixed-path IPOPT solver and speed parameterization used by B and D:
+
+    PIN_PY -m research.joint_time_oracle.torque_full_retime \
+      --root research/joint_time_oracle/results/torque_stress_final_20261107 \
+      --regime severe --grid 513 --maxiter 500
+
+This creates the matched Full-R arm (RF000, RF000L02, etc.). Full-R retains
+exact native cubic geometry, changes only timing, and records IPOPT
+convergence, collocation refinement and multipliers. Source hashes remain
+linked to native F candidates. An original Full-native versus D comparison
+mixes geometry and timing quality; **Full-R versus D is the primary fair
+geometric comparison**. Do not equate Full-R solver success with independent
+physical feasibility.
+
+In the independent Pinocchio environment, audit BOTH Full and Full-R:
 
     PIN_PY -m research.joint_time_oracle.torque_full_validate \
       --root research/joint_time_oracle/results/torque_stress_final_20261107 \
@@ -144,14 +159,21 @@ This writes native_full/independent_sampled.json for all successful
 candidate labels F000,F001,... . It checks exact frozen modified limits,
 aligned Pinocchio RNEA and independent sphere-model collision.
 
-Replay native time laws at extra times around independent extreme
+Replay native F time laws at extra times around independent extreme
 measurements, using exactly frozen controls/timing buffers:
 
     CUDA_PY -m research.joint_time_oracle.torque_full_adaptive \
       --root research/joint_time_oracle/results/torque_stress_final_20261107 \
       --regime severe
 
-Audit the new points independently:
+Replay matched Full-R time laws using the EXACT same geometric spline
+and IPOPT speed controls in the CPU Pinocchio environment:
+
+    PIN_PY -m research.joint_time_oracle.torque_full_retime_adaptive \
+      --root research/joint_time_oracle/results/torque_stress_final_20261107 \
+      --regime severe
+
+Audit BOTH the native and matched Full-R adaptive states independently:
 
     PIN_PY -m research.joint_time_oracle.torque_full_validate \
       --root research/joint_time_oracle/results/torque_stress_final_20261107 \
@@ -180,11 +202,16 @@ validation is NA. No silent exclusion or fabricated 0% improvement.
 For each task, regime and planning-restart budget:
 
     B_to_Full = 100 * (T_B - T_Full) / T_B
-    Full_to_D = 100 * (T_Full - T_D) / T_Full
+    Full_to_D = 100 * (T_Full - T_D) / T_Full           (solver-mixed)
+    Full_to_FullR = 100 * (T_Full - T_FullR) / T_Full     (timing only)
+    B_to_FullR = 100 * (T_B - T_FullR) / T_B             (geometry with matched timing)
+    FullR_to_D = 100 * (T_FullR - T_D) / T_FullR         (PRIMARY geometry comparison)
     B_to_D = 100 * (T_B - T_D) / T_B
 
-Positive Full-to-D indicates D remains faster than the best independently
-verified candidate obtained by fresh native replanning within that budget.
+Positive Full-R-to-D indicates D remains faster than the best independently
+verified FULL native planner geometry after it is retimed using the SAME
+IPOPT solver as D. Full-to-D (native TimeOpt) is a practical solver-mixed
+comparison, not an isolated geometric advantage.
 A native planner running with derated constraints is still NOT necessarily
 using a torque-aware geometric objective; it does use derated TimeOpt
 validation and selection. Report actual collision-free route diversity.
@@ -196,7 +223,7 @@ utilization, and offline wall time per budget. Show scene strata and
 negative cases. Paired moderate/severe versions of the same source
 are correlated and cannot be pooled naively.
 
-Use at least 10 adaptive-verified Full/D pairs across two or more scene
+Use at least 10 adaptive-verified Full-R/D pairs across two or more scene
 classes before claiming an initial exploratory effect. New disjoint
 confirmation cases are required for broad generalization. Neither
 sampled dense+adaptive evidence nor an IPOPT status is a continuous-time
@@ -240,3 +267,13 @@ Do not merge into main and NEVER create a PR.
 
 **No new GPU experiments or end-to-end test suite have been run by the
 assistant.** Do not claim otherwise; the coding agent must run them.
+
+
+## Matched-retimer software additions
+
+The follow-up includes torque_full_retime.py and
+ torque_full_retime_adaptive.py. The general independent validator,
+ SHA-linked receipt generation, full-planner budget selector and HTML
+ publisher all accept both native F and matched RF candidate labels.
+ The numerator of the primary geometry contrast is the independently
+ qualified Full-R trajectory, not the native TimeOpt trajectory.
