@@ -15,7 +15,20 @@ import numpy as np
 
 from .cohort_geometry import NativeGeometry
 from .cohort_retime import states
-from .cohort_torque_adaptive import _near_times
+def _near_times(diag:dict,duration:float,samples:np.ndarray) -> np.ndarray:
+    """Independent CPU implementation of extrema-neighborhood sample selection."""
+    centers=[]
+    for family in diag.get("families",{}).values():
+        for contract in ("physical","scaled95"):
+            t=family.get(contract,{}).get("time_s")
+            if t is not None:
+                centers.append(float(t))
+    centers.extend(float(diag[k]) for k in ("world_min_time_s","self_min_time_s")
+                   if diag.get(k) is not None)
+    offsets=np.array([-2.,-1.,-.25,0.,.25,1.,2.])*duration/8192
+    extras=[np.clip(t+offsets,0,duration) for t in centers]
+    return np.unique(np.r_[samples,*extras]) if extras else np.asarray(samples)
+
 
 ROOT=Path(__file__).resolve().parents[2]
 DEFAULT=ROOT/"research/joint_time_oracle/results/torque_stress_final_20261107"
