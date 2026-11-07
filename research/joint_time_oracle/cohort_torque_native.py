@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import os
 import time
 import traceback
 from pathlib import Path
@@ -23,7 +24,7 @@ from .cohort_explore import planner_for, sample
 from .torque_active import read_profile
 
 ROOT = Path(__file__).resolve().parents[2]
-PILOT = ROOT / "research/joint_time_oracle/results/cohort_pilot_isolated_20261106"
+PILOT = Path(os.environ.get("ORACLE_COHORT_SOURCE", ROOT / "research/joint_time_oracle/results/cohort_pilot_isolated_20261106"))
 STRESS = ROOT / "research/joint_time_oracle/results/torque_stress_20261107"
 
 
