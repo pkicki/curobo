@@ -129,11 +129,11 @@ class QuinticBasis:
         return self.B[0]@c, (self.B[1]@c)/T, (self.B[2]@c)/(T*T), (self.B[3]@c)/(T*T*T), c
 
 
-def normalized_worst(values, bounds, scale, temperature=0.0):
+def normalized_worst(values, bounds, scale, temperature=0.0, scale_about_zero=False):
     lo, hi = bounds[0], bounds[1]
     center = (hi+lo)*0.5
-    lower = center + scale*(lo-center)
-    upper = center + scale*(hi-center)
+    lower = scale*lo if scale_about_zero else center + scale*(lo-center)
+    upper = scale*hi if scale_about_zero else center + scale*(hi-center)
     width = torch.clamp((upper-lower)*0.5, min=1e-6)
     margins = torch.minimum((values-lower)/width, (upper-values)/width)
     if temperature > 0:
@@ -179,7 +179,7 @@ class JointTimeOracle:
         smooth = self.cfg.smooth_temperature if (self.cfg.solver=="ipopt" and not audit) else 0.0
         rows = [normalized_worst(value,self.bounds_t[name],
                                  1.0 if name=="position" else self.cfg.limit_scale,
-                                 temperature=smooth)
+                                 temperature=smooth, scale_about_zero=(name=="torque"))
                 for name,value in families]
         if self.collision is not None:
             costs = self.collision(q).reshape(-1)
