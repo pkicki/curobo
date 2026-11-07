@@ -15,6 +15,7 @@ from scipy.interpolate import BSpline
 from scipy.optimize import lsq_linear
 from .cohort_geometry import NativeGeometry, QuinticGeometry
 from .fixed_path_pointwise import PointwiseTiming
+from .torque_active import read_profile
 
 ROOT=Path(__file__).resolve().parents[2]
 PILOT=ROOT/'research/joint_time_oracle/results/cohort_pilot_isolated_20261106'
@@ -60,6 +61,10 @@ def problem(geometry, knots: np.ndarray, grid_count: int, initial: np.ndarray, e
     p.q=basis(quadrature.ravel())*p.scale;p.qw=np.tile(weights/(2*511),511)
     bounds=np.load(ROOT/'research/joint_time_oracle/results/native_reconstruction_20261106/baseline_validation_states.npz')
     raw=np.stack([bounds[name+'_bounds'] for name in ('velocity','acceleration','jerk','torque')])
+    profile_path=os.environ.get('ORACLE_TORQUE_PROFILE')
+    if profile_path:
+        profile=read_profile(profile_path)
+        raw[3]=np.stack((profile['effort_lower'],profile['effort_upper']))
     p.center=(raw[:,1]+raw[:,0])/2;p.width=(raw[:,1]-raw[:,0])*.475
     return p
 
@@ -123,6 +128,9 @@ def run_case(case: str, method: str, grid: int, maxiter: int) -> None:
     """Run B or D using frozen task artifacts and retain all solver evidence."""
     row=next(json.loads(line) for line in (PILOT/'pilot.jsonl').read_text().splitlines() if json.loads(line)['case_id']==case)
     folder=PILOT/case;dest=RESULTS/case;dest.mkdir(parents=True,exist_ok=True)
+    profile_path=os.environ.get('ORACLE_TORQUE_PROFILE')
+    if profile_path and read_profile(profile_path)['source_case_id']!=case:
+        raise ValueError('torque profile belongs to another source task')
     if method=='B':
         buffers=np.load(folder/'a10_buffers.npz');lane=row['methods']['A10']['lane'];geo=NativeGeometry(buffers,lane)
         start,end=geo.nonstationary_interval();fn=geo.evaluate_trimmed
@@ -138,6 +146,8 @@ def run_case(case: str, method: str, grid: int, maxiter: int) -> None:
         c=json.loads((dest/'c_best.json').read_text());geo=QuinticGeometry(np.asarray(c['coefficients']))
         fn=geo.evaluate;knots=np.unique(geo.spline.t);init=np.full(32,1/float(c['duration'])**2);metadata={'geometry':'exact quintic controls'}
     extras=np.array([]);passes=[];controls=init
+    if profile_path:
+        metadata['torque_profile_sha256']=read_profile(profile_path)['profile_sha256']
     for refinement in range(3):
         p=problem(fn,knots,grid,controls,extras)
         endpoint=np.max(np.abs(p.path[1:3,:, :][:,[0,-1],:]))
