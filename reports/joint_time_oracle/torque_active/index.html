@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8">
+<title>Torque-active joint-path/time study — not executed</title>
+<style>body{font:16px/1.6 system-ui,max-width:1050px;margin:2.5rem auto;padding:0 1rem;color:#243044}
+aside{background:#fff2d6;border-left:5px solid #b97500;padding:1rem}
+table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid #ddd;padding:.6rem;text-align:left}</style>
+<h1>Torque-active joint path-and-time optimization</h1>
+<aside><strong>NOT EXECUTED.</strong> This page documents the new experimental implementation only.
+No new GPU runs, qualified comparisons, median improvements, or confidence intervals are available.
+The existing historical 20-task experiment remains unchanged.</aside>
+<h2>Experimental arms</h2>
+<p>Each source task is tested with two torque-limit regimes: moderate (A40 reference target
+90%) and severe (A40 reference target 110%). Each case is gravity-screened at start and goal.
+The modified actuator limits are synthetic; no actual Panda payload or hardware rating is claimed.</p>
+<table><thead><tr><th>Regime</th><th>Admission</th><th>A10 / A40</th>
+<th>B / C / D</th><th>Qualified pairs</th></tr></thead><tbody>
+<tr><td>Moderate</td><td>Pending</td><td>Not run</td><td>Not run</td><td>0</td></tr>
+<tr><td>Severe</td><td>Pending</td><td>Not run</td><td>Not run</td><td>0</td></tr>
+</tbody></table>
+<h2>Research question</h2>
+<p>When actuator torque becomes limiting, can changing robot configurations reduce trajectory
+execution duration beyond the best retiming of the original geometry?</p>
+<p>The primary geometric contrast is B versus D, which uses the same independent timing
+solver on the original and jointly optimized paths. C is a local coupled optimizer, not a global oracle.</p>
+<p>Results will be published here using <code>research.joint_time_oracle.cohort_torque_publish</code>
+after the GPU and independent-validation campaigns. Source, solver, and validation checksums
+will be retained. No data from the two regimes will be treated as independent source tasks.</p>
+</html>
