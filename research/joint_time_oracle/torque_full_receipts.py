@@ -34,6 +34,10 @@ def validate_adaptive_candidate(arm:Path,case:str,method:str,
     adaptive=source/(method.lower()+"_adaptive_dense.npz")
     diag=diagnostics.get(case+":"+method+"_adaptive")
     reason=[]
+    replay_file=source/"native_adaptive_replay.json"
+    replay=json.loads(replay_file.read_text()).get(method,{}) if replay_file.exists() else {}
+    if replay.get("status")!="REPLAYED":
+        reason.append("independent adaptive native replay did not pass")
     if record.get("status")!="SUCCESS":reason.append("native restart not successful")
     if not base.exists():reason.append("native base trajectory missing")
     if not adaptive.exists():reason.append("native adaptive replay missing")
@@ -51,6 +55,8 @@ def validate_adaptive_candidate(arm:Path,case:str,method:str,
         base_times=np.asarray(data["time"],dtype=float)
     with np.load(adaptive) as data:
         t=np.asarray(data["time"],dtype=float)
+    if diag.get("samples")!=len(t):
+        reason.append("adaptive diagnostic sample-count mismatch")
     if len(t)<8193 or len(t)<len(base_times):
         reason.append("insufficient adaptive samples")
     if len(t)>1 and np.any(np.diff(t)<=0):
