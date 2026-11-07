@@ -30,7 +30,6 @@ from curobo.content import get_robot_configs_path
 from curobo._src.motion.motion_trajectory_timeopt import TrajectoryTimeOpt
 from curobo._src.motion.motion_trajectory_timeopt_cfg import TrajectoryTimeOptCfg
 
-from .cohort_explore import sample
 from .run_study import read_plan
 from .torque_active import read_profile
 
@@ -253,6 +252,20 @@ def execute(arm: Path, *, case_filter: str | None, max_restarts: int,
                     record["status"]="SUCCESS"
                     record["dense_sha256"]=sha(folder/(tag.lower()+"_dense.npz"))
                     record["trajectory_source"]=getattr(result,"trajectory_source",None)
+                    for extra in buffers["alternates"]:
+                        other_tag=f"{tag}L{extra['lane']:02d}"
+                        other_path=folder/(other_tag.lower()+"_dense.npz")
+                        np.savez_compressed(other_path,**extra["trajectory"])
+                        rows[other_tag]={
+                            "name":other_tag,"restart":restart,"seed":seed,
+                            "status":"SUCCESS","internal_candidate":True,
+                            "lane":extra["lane"],"duration_s":extra["duration_s"],
+                            "torque_profile_sha256":profile["profile_sha256"],
+                            "task_sha256":task["task_sha256"],
+                            "dense_sha256":sha(other_path),
+                            "native_validation_masks":extra["native_validation_masks"],
+                            "parent_restart_tag":tag}
+
             except Exception as exc:
                 record["reason"]=repr(exc)
                 record["traceback"]=traceback.format_exc()
