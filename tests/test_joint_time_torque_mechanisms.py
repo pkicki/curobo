@@ -118,3 +118,28 @@ def test_internal_native_seed_lanes_count_within_same_restart_budget():
     assert first["method"]=="F000L02"
     first_two=best_native(candidates,diagnostics,{},p,"task",2,scaled95=False,strict=False)
     assert first_two["method"]=="F001"
+
+
+
+def test_matched_full_r_uses_same_restarter_budget_and_strict_receipts():
+    p=profile()
+    records={
+        "RF000":{"status":"COMPLETE","duration_s":.42,"restart":0,
+                 "torque_profile_sha256":p["profile_sha256"]},
+        "RF000L02":{"status":"COMPLETE","duration_s":.39,"restart":0,
+                    "torque_profile_sha256":p["profile_sha256"]},
+        "RF001":{"status":"COMPLETE","duration_s":.31,"restart":1,
+                 "torque_profile_sha256":p["profile_sha256"]}}
+    diag={"task:"+key:valid_diag() for key in records}
+    receipts={"task:RF000L02":{"physical":True,"scaled95":True,
+                                "endpoint":True,"collision":True,
+                                "torque_profile_sha256":p["profile_sha256"]}}
+    v=best_native(records,diag,receipts,p,"task",1,
+                  scaled95=False,strict=True,prefix="R")
+    assert v["method"]=="RF000L02"
+    v2=best_native(records,diag,receipts,p,"task",2,
+                   scaled95=False,strict=True,prefix="R")
+    assert v2["method"]=="RF000L02"
+    u=best_native(records,diag,receipts,p,"task",2,
+                  scaled95=False,strict=False,prefix="R")
+    assert u["method"]=="RF001"
