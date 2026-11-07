@@ -1,0 +1,26 @@
+{
+  "implementation_commit": "2f4b1dd5d604d8f9b591a68b0695791dd0948412",
+  "pilot_tasks_sha256": "db5c4e996ea230114efc1d219e5e2d5dbf4a396dd794f805c2a06cd95b4aea8c",
+  "methods": {
+    "B": {
+      "grid": 257,
+      "maxiter": 150
+    },
+    "C": {
+      "controls": [
+        10,
+        14
+      ],
+      "attempts_per_resolution": 2,
+      "maxiter": 40
+    },
+    "D": {
+      "grid": 257,
+      "maxiter": 150
+    }
+  },
+  "per_process_timeout_s": 300,
+  "gpu": "NVIDIA GeForce RTX 3090",
+  "qualification": "exploratory sampled, not global or continuous certification",
+  "native_compilation": "GPU kernels compiled during representative setup; no cold costs used as latency comparisons"
+}

@@ -1,0 +1,802 @@
+{
+  "pilot_free_00:A10": {
+    "samples": 7,
+    "world_clearance_m": null,
+    "self_clearance_m": 0.08494999800284747,
+    "path_match_error_rad": 2.384185786574733e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_free_00:A40": {
+    "samples": 7,
+    "world_clearance_m": null,
+    "self_clearance_m": 0.08494999800284747,
+    "path_match_error_rad": 2.384185786574733e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_free_00:B": {
+    "samples": 4,
+    "world_clearance_m": null,
+    "self_clearance_m": 0.08494999800284747,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_free_00:C": {
+    "samples": 4,
+    "world_clearance_m": null,
+    "self_clearance_m": 0.08494999800284755,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_free_00:D": {
+    "samples": 4,
+    "world_clearance_m": null,
+    "self_clearance_m": 0.08494999800284755,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_free_01:A10": {
+    "samples": 5,
+    "world_clearance_m": null,
+    "self_clearance_m": 0.03917882667463618,
+    "path_match_error_rad": 2.384185786574733e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_free_01:A40": {
+    "samples": 5,
+    "world_clearance_m": null,
+    "self_clearance_m": 0.03917882667463621,
+    "path_match_error_rad": 2.384185791015625e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_free_01:B": {
+    "samples": 4,
+    "world_clearance_m": null,
+    "self_clearance_m": 0.039178826674636236,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_free_01:C": {
+    "samples": 4,
+    "world_clearance_m": null,
+    "self_clearance_m": 0.03917882667463621,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_free_01:D": {
+    "samples": 4,
+    "world_clearance_m": null,
+    "self_clearance_m": 0.03917882667463621,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_free_02:A10": {
+    "samples": 7,
+    "world_clearance_m": null,
+    "self_clearance_m": 0.06844413041666225,
+    "path_match_error_rad": 2.384185786574733e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_free_02:A40": {
+    "samples": 7,
+    "world_clearance_m": null,
+    "self_clearance_m": 0.06844413041666225,
+    "path_match_error_rad": 2.384185786574733e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_free_02:B": {
+    "samples": 4,
+    "world_clearance_m": null,
+    "self_clearance_m": 0.06844413041666236,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_free_02:C": {
+    "samples": 4,
+    "world_clearance_m": null,
+    "self_clearance_m": 0.06844413041666239,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_free_02:D": {
+    "samples": 4,
+    "world_clearance_m": null,
+    "self_clearance_m": 0.06844413041666239,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_free_03:A10": {
+    "samples": 7,
+    "world_clearance_m": null,
+    "self_clearance_m": 0.08455550734475711,
+    "path_match_error_rad": 4.768371577590358e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_free_03:A40": {
+    "samples": 7,
+    "world_clearance_m": null,
+    "self_clearance_m": 0.08455550734475711,
+    "path_match_error_rad": 4.768371577590358e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_free_03:B": {
+    "samples": 4,
+    "world_clearance_m": null,
+    "self_clearance_m": 0.0845555073447572,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_free_03:C": {
+    "samples": 4,
+    "world_clearance_m": null,
+    "self_clearance_m": 0.08455550734475717,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_free_03:D": {
+    "samples": 4,
+    "world_clearance_m": null,
+    "self_clearance_m": 0.08455550734475717,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_free_04:A10": {
+    "samples": 5,
+    "world_clearance_m": null,
+    "self_clearance_m": 0.0845705496589767,
+    "path_match_error_rad": 2.384185791015625e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_free_04:A40": {
+    "samples": 5,
+    "world_clearance_m": null,
+    "self_clearance_m": 0.0845705496589767,
+    "path_match_error_rad": 2.384185791015625e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_free_04:B": {
+    "samples": 4,
+    "world_clearance_m": null,
+    "self_clearance_m": 0.08457054965897681,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_free_04:C": {
+    "samples": 4,
+    "world_clearance_m": null,
+    "self_clearance_m": 0.08457054965897681,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_free_04:D": {
+    "samples": 4,
+    "world_clearance_m": null,
+    "self_clearance_m": 0.08457054965897681,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_free_05:A10": {
+    "samples": 7,
+    "world_clearance_m": null,
+    "self_clearance_m": 0.08493793252564916,
+    "path_match_error_rad": 4.768371577590358e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_free_05:A40": {
+    "samples": 7,
+    "world_clearance_m": null,
+    "self_clearance_m": 0.08493793252845414,
+    "path_match_error_rad": 2.4364836814783075e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_free_05:B": {
+    "samples": 4,
+    "world_clearance_m": null,
+    "self_clearance_m": 0.08493793252564913,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_free_05:C": {
+    "samples": 4,
+    "world_clearance_m": null,
+    "self_clearance_m": 0.08493793252564921,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_free_05:D": {
+    "samples": 4,
+    "world_clearance_m": null,
+    "self_clearance_m": 0.08493793252564921,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_00:A10": {
+    "samples": 14,
+    "world_clearance_m": 0.08000000000000002,
+    "self_clearance_m": 0.08495392383760633,
+    "path_match_error_rad": 4.76837158203125e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_00:A40": {
+    "samples": 14,
+    "world_clearance_m": 0.08000000000000002,
+    "self_clearance_m": 0.08495392383760633,
+    "path_match_error_rad": 2.384185786574733e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_00:B": {
+    "samples": 4,
+    "world_clearance_m": 0.08000000000000002,
+    "self_clearance_m": 0.08495392383760633,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_00:C": {
+    "samples": 4,
+    "world_clearance_m": 0.08000000000000002,
+    "self_clearance_m": 0.08495392383760639,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_00:D": {
+    "samples": 4,
+    "world_clearance_m": 0.08000000000000002,
+    "self_clearance_m": 0.08495392383760639,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_01:A10": {
+    "samples": 12,
+    "world_clearance_m": 0.08000000000000002,
+    "self_clearance_m": 0.020304475555321472,
+    "path_match_error_rad": 2.384185791015625e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_01:A40": {
+    "samples": 12,
+    "world_clearance_m": 0.08000000000000002,
+    "self_clearance_m": 0.020304475555321472,
+    "path_match_error_rad": 2.384185791015625e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_01:B": {
+    "samples": 8,
+    "world_clearance_m": 0.08000000000000002,
+    "self_clearance_m": 0.020304475555321583,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_01:C": {
+    "samples": 8,
+    "world_clearance_m": 0.08000000000000002,
+    "self_clearance_m": 0.0203044755553215,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_01:D": {
+    "samples": 8,
+    "world_clearance_m": 0.08000000000000002,
+    "self_clearance_m": 0.0203044755553215,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_02:A10": {
+    "samples": 14,
+    "world_clearance_m": 0.08000000000000002,
+    "self_clearance_m": 0.04368727912439749,
+    "path_match_error_rad": 4.768371577590358e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_02:A40": {
+    "samples": 14,
+    "world_clearance_m": 0.08000000000000002,
+    "self_clearance_m": 0.04368727912439746,
+    "path_match_error_rad": 2.384185786574733e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_02:B": {
+    "samples": 4,
+    "world_clearance_m": 0.08000000000000002,
+    "self_clearance_m": 0.04368727912439749,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_02:C": {
+    "samples": 4,
+    "world_clearance_m": 0.08000000000000002,
+    "self_clearance_m": 0.0436872791243976,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_02:D": {
+    "samples": 4,
+    "world_clearance_m": 0.08000000000000002,
+    "self_clearance_m": 0.0436872791243976,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_03:A10": {
+    "samples": 14,
+    "world_clearance_m": 0.08000000000000002,
+    "self_clearance_m": 0.08507948195208223,
+    "path_match_error_rad": 2.384185786574733e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_03:A40": {
+    "samples": 14,
+    "world_clearance_m": 0.08000000000000002,
+    "self_clearance_m": 0.08507948195209378,
+    "path_match_error_rad": 2.387388309266214e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_03:B": {
+    "samples": 4,
+    "world_clearance_m": 0.08000000000000002,
+    "self_clearance_m": 0.08507948195208226,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_03:C": {
+    "samples": 4,
+    "world_clearance_m": 0.08000000000000002,
+    "self_clearance_m": 0.08507948195208226,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_03:D": {
+    "samples": 4,
+    "world_clearance_m": 0.08000000000000002,
+    "self_clearance_m": 0.08507948195208226,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_04:A10": {
+    "samples": 14,
+    "world_clearance_m": 0.08000000000000002,
+    "self_clearance_m": 0.06357877316838423,
+    "path_match_error_rad": 4.768371577590358e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_04:A40": {
+    "samples": 14,
+    "world_clearance_m": 0.08000000000000002,
+    "self_clearance_m": 0.06357877316838423,
+    "path_match_error_rad": 4.768371577590358e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_04:B": {
+    "samples": 4,
+    "world_clearance_m": 0.08000000000000002,
+    "self_clearance_m": 0.06357877316838437,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_04:C": {
+    "samples": 4,
+    "world_clearance_m": 0.08000000000000002,
+    "self_clearance_m": 0.06357877316838437,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_04:D": {
+    "samples": 4,
+    "world_clearance_m": 0.08000000000000002,
+    "self_clearance_m": 0.06357877316838437,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_05:A10": {
+    "samples": 14,
+    "world_clearance_m": 0.08000000000000002,
+    "self_clearance_m": 0.05893789975130295,
+    "path_match_error_rad": 3.1655465715374476e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_05:A40": {
+    "samples": 14,
+    "world_clearance_m": 0.08000000000000002,
+    "self_clearance_m": 0.05893789975130295,
+    "path_match_error_rad": 2.9677105395364833e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_05:B": {
+    "samples": 4,
+    "world_clearance_m": 0.08000000000000002,
+    "self_clearance_m": 0.058937899751303174,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_05:C": {
+    "samples": 4,
+    "world_clearance_m": 0.08000000000000002,
+    "self_clearance_m": 0.058937899751303174,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_05:D": {
+    "samples": 4,
+    "world_clearance_m": 0.08000000000000002,
+    "self_clearance_m": 0.058937899751303174,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_06:A10": {
+    "samples": 14,
+    "world_clearance_m": 0.07584748888812759,
+    "self_clearance_m": 0.08484846316399658,
+    "path_match_error_rad": 2.384185786574733e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_06:A40": {
+    "samples": 14,
+    "world_clearance_m": 0.07584748888812759,
+    "self_clearance_m": 0.08484846316399663,
+    "path_match_error_rad": 2.384185791015625e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_06:B": {
+    "samples": 4,
+    "world_clearance_m": 0.0758474888881277,
+    "self_clearance_m": 0.08484846316399663,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_06:C": {
+    "samples": 11,
+    "world_clearance_m": 0.07571841839577842,
+    "self_clearance_m": 0.08484846316399669,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_06:D": {
+    "samples": 11,
+    "world_clearance_m": 0.07571841839577842,
+    "self_clearance_m": 0.08484846316399669,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_07:A10": {
+    "samples": 14,
+    "world_clearance_m": 0.08000000000000002,
+    "self_clearance_m": 0.08510542503966645,
+    "path_match_error_rad": 2.384185786574733e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_07:A40": {
+    "samples": 14,
+    "world_clearance_m": 0.08000000000000002,
+    "self_clearance_m": 0.08510542503966642,
+    "path_match_error_rad": 2.384185786574733e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_07:B": {
+    "samples": 4,
+    "world_clearance_m": 0.08000000000000002,
+    "self_clearance_m": 0.08510542503966653,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_07:C": {
+    "samples": 11,
+    "world_clearance_m": 0.06679442181022413,
+    "self_clearance_m": 0.08510542503966653,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_table_07:D": {
+    "samples": 11,
+    "world_clearance_m": 0.06679442181022413,
+    "self_clearance_m": 0.08510542503966653,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_cluttered_00:A10": {
+    "samples": 14,
+    "world_clearance_m": 0.05499999999999999,
+    "self_clearance_m": 0.08509677296571447,
+    "path_match_error_rad": 2.384185786574733e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_cluttered_00:A40": {
+    "samples": 14,
+    "world_clearance_m": 0.05499999999999999,
+    "self_clearance_m": 0.0850967729657145,
+    "path_match_error_rad": 2.384185786574733e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_cluttered_00:B": {
+    "samples": 4,
+    "world_clearance_m": 0.05499999999999999,
+    "self_clearance_m": 0.08509677296571455,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_cluttered_00:C": {
+    "samples": 11,
+    "world_clearance_m": 0.05499999999999999,
+    "self_clearance_m": 0.08509673882212404,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_cluttered_00:D": {
+    "samples": 11,
+    "world_clearance_m": 0.05499999999999999,
+    "self_clearance_m": 0.08509673882212404,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_cluttered_01:A10": {
+    "samples": 14,
+    "world_clearance_m": 0.05499999999999999,
+    "self_clearance_m": 0.08499903281317844,
+    "path_match_error_rad": 2.478557976637319e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_cluttered_01:A40": {
+    "samples": 12,
+    "world_clearance_m": 0.05499999999999999,
+    "self_clearance_m": 0.08499903280864379,
+    "path_match_error_rad": 2.384185799897409e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_cluttered_01:B": {
+    "samples": 8,
+    "world_clearance_m": 0.05499999999999999,
+    "self_clearance_m": 0.08499903280864379,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_cluttered_01:C": {
+    "samples": 11,
+    "world_clearance_m": 0.05499999999999999,
+    "self_clearance_m": 0.08499758381070355,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_cluttered_01:D": {
+    "samples": 11,
+    "world_clearance_m": 0.05499999999999999,
+    "self_clearance_m": 0.08499758381070355,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_cluttered_02:A10": {
+    "samples": 14,
+    "world_clearance_m": 0.05499999999999999,
+    "self_clearance_m": 0.08451772062252422,
+    "path_match_error_rad": 2.384185786574733e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_cluttered_02:A40": {
+    "samples": 14,
+    "world_clearance_m": 0.05499999999999999,
+    "self_clearance_m": 0.08451772062252424,
+    "path_match_error_rad": 2.384185786574733e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_cluttered_02:B": {
+    "samples": 4,
+    "world_clearance_m": 0.05499999999999999,
+    "self_clearance_m": 0.08451772062252422,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_cluttered_02:C": {
+    "samples": 4,
+    "world_clearance_m": 0.05499999999999999,
+    "self_clearance_m": 0.08451772062252427,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_cluttered_02:D": {
+    "samples": 4,
+    "world_clearance_m": 0.05499999999999999,
+    "self_clearance_m": 0.08451772062252427,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_cluttered_03:A10": {
+    "samples": 12,
+    "world_clearance_m": 0.05499999999999999,
+    "self_clearance_m": 0.08476178075703755,
+    "path_match_error_rad": 2.384185786574733e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_cluttered_03:A40": {
+    "samples": 14,
+    "world_clearance_m": 0.05499999999999999,
+    "self_clearance_m": 0.0847617807574611,
+    "path_match_error_rad": 2.4021792999207037e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_cluttered_03:B": {
+    "samples": 8,
+    "world_clearance_m": 0.05499999999999999,
+    "self_clearance_m": 0.08476178075703758,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_cluttered_03:C": {
+    "samples": 8,
+    "world_clearance_m": 0.05499999999999999,
+    "self_clearance_m": 0.08476178075703758,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_cluttered_03:D": {
+    "samples": 8,
+    "world_clearance_m": 0.05499999999999999,
+    "self_clearance_m": 0.08476178075703758,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_cluttered_04:A10": {
+    "samples": 14,
+    "world_clearance_m": 0.05499999999999999,
+    "self_clearance_m": 0.08467491193165039,
+    "path_match_error_rad": 4.768371577590358e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_cluttered_04:A40": {
+    "samples": 7,
+    "world_clearance_m": 0.05499999999999999,
+    "self_clearance_m": 0.08467491193165039,
+    "path_match_error_rad": 2.384185786574733e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_cluttered_04:B": {
+    "samples": 4,
+    "world_clearance_m": 0.05499999999999999,
+    "self_clearance_m": 0.08467491193165044,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_cluttered_04:C": {
+    "samples": 4,
+    "world_clearance_m": 0.05499999999999999,
+    "self_clearance_m": 0.08467491193165044,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_cluttered_04:D": {
+    "samples": 4,
+    "world_clearance_m": 0.05499999999999999,
+    "self_clearance_m": 0.08467491193165044,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_cluttered_05:A10": {
+    "samples": 14,
+    "world_clearance_m": 0.05499999999999999,
+    "self_clearance_m": 0.08496515026310894,
+    "path_match_error_rad": 4.768371577590358e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_cluttered_05:A40": {
+    "samples": 14,
+    "world_clearance_m": 0.05499999999999999,
+    "self_clearance_m": 0.08496515026310894,
+    "path_match_error_rad": 2.384185786574733e-07,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_cluttered_05:B": {
+    "samples": 4,
+    "world_clearance_m": 0.05499999999999999,
+    "self_clearance_m": 0.08496515026310889,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_cluttered_05:C": {
+    "samples": 4,
+    "world_clearance_m": 0.05499999999999999,
+    "self_clearance_m": 0.08496515026310902,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  },
+  "pilot_cluttered_05:D": {
+    "samples": 4,
+    "world_clearance_m": 0.05499999999999999,
+    "self_clearance_m": 0.08496515026310902,
+    "path_match_error_rad": 0.0,
+    "qualified": true,
+    "note": "Sampled neighborhoods of detected minima only; not a swept or continuous certificate."
+  }
+}

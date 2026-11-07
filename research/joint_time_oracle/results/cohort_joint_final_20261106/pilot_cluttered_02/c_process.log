@@ -1,0 +1,20 @@
+Sphere.position is deprecated, use Sphere.pose instead
+Sphere.position is deprecated, use Sphere.pose instead
+Warp 1.18.0 initialized:
+   CUDA Toolkit 12.9, Driver 12.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 3090" (24 GiB, sm_86, mempool enabled)
+   Kernel cache:
+     /home/pkicki/.cache/warp/1.18.0
+Module curobo._src.geom.transform e63256c load on device 'cuda:0' took 0.45 ms  (cached)
+Module tiled_collision_kernel_fe4a50c7 2367d4a load on device 'cuda:0' took 0.33 ms  (cached)
+Module tiled_collision_kernel_fe4a50c7 947bb5a load on device 'cuda:0' took 0.29 ms  (cached)
+Module tiled_collision_kernel_9d7a50c6 5f35c61 load on device 'cuda:0' took 0.32 ms  (cached)
+Module tiled_collision_kernel_9d7a50c6 99ba9fd load on device 'cuda:0' took 0.29 ms  (cached)
+pilot_cluttered_02 resolution 10 status NO_VERIFIED_CANDIDATE wall 6.408754013013095
+Module tiled_collision_kernel_db442da4 c47609f load on device 'cuda:0' took 0.32 ms  (cached)
+Module tiled_collision_kernel_db442da4 4e0e214 load on device 'cuda:0' took 0.29 ms  (cached)
+Module tiled_collision_kernel_b1411e91 f0cd1f8 load on device 'cuda:0' took 0.28 ms  (cached)
+Module tiled_collision_kernel_b1411e91 ca24bd6 load on device 'cuda:0' took 0.27 ms  (cached)
+pilot_cluttered_02 resolution 14 status NO_VERIFIED_CANDIDATE wall 5.916160408989526

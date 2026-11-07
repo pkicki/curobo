@@ -1,0 +1,10 @@
+Warp 1.18.0 initialized:
+   CUDA Toolkit 12.9, Driver 12.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 3090" (24 GiB, sm_86, mempool enabled)
+   Kernel cache:
+     /home/pkicki/.cache/warp/1.18.0
+Module curobo._src.geom.transform e63256c load on device 'cuda:0' took 0.45 ms  (cached)
+pilot_free_02 resolution 10 status NO_VERIFIED_CANDIDATE wall 3.1745593349915
+pilot_free_02 resolution 14 status NO_VERIFIED_CANDIDATE wall 5.564754969993373

@@ -1,0 +1,14 @@
+Warp 1.18.0 initialized:
+   CUDA Toolkit 12.9, Driver 12.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 3090" (24 GiB, sm_86, mempool enabled)
+   Kernel cache:
+     /home/pkicki/.cache/warp/1.18.0
+Module curobo._src.geom.transform e63256c load on device 'cuda:0' took 0.43 ms  (cached)
+Module tiled_collision_kernel_fe4a50c7 2367d4a load on device 'cuda:0' took 0.33 ms  (cached)
+Module tiled_collision_kernel_9d7a50c6 5f35c61 load on device 'cuda:0' took 0.34 ms  (cached)
+pilot_table_05 resolution 10 status NO_VERIFIED_CANDIDATE wall 4.9824878519866616
+Module tiled_collision_kernel_db442da4 c47609f load on device 'cuda:0' took 0.34 ms  (cached)
+Module tiled_collision_kernel_b1411e91 f0cd1f8 load on device 'cuda:0' took 0.28 ms  (cached)
+pilot_table_05 resolution 14 status NO_VERIFIED_CANDIDATE wall 5.860079879988916

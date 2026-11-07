@@ -1,0 +1,256 @@
+{
+  "status": 0,
+  "message": "Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).",
+  "solver_converged": true,
+  "iterations": 15,
+  "duration_s": 0.5377678381617543,
+  "primal_min_margin": 2.797138305421498e-07,
+  "collocation_points": 386,
+  "stationarity_inf": 4.480209026869607e-11,
+  "max_scaled_control": 1.3020949545025993,
+  "upper_control_bound": null,
+  "lower_control_bound": 1e-08,
+  "lower_control_bound_active": false,
+  "elapsed_s": 3.580126865999773,
+  "history": [
+    [
+      0,
+      0,
+      0.5377662312918843,
+      0.010179853447846929,
+      0.11329885565008802,
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0,
+      1,
+      0.54031800421557,
+      6.882201863711579e-05,
+      0.5861111208264272,
+      1.000116926385104e-06,
+      0.01821384789704995,
+      0.0
+    ],
+    [
+      0,
+      2,
+      0.5403052760224661,
+      3.4556264516538704e-09,
+      0.009762855077075416,
+      3.7193977555657387e-07,
+      0.00013536973674145778,
+      0.0
+    ],
+    [
+      0,
+      3,
+      0.5397890694491324,
+      4.1739966651910265e-06,
+      0.0005476453921845833,
+      4.488349369311002e-09,
+      0.003453099117372613,
+      0.0
+    ],
+    [
+      0,
+      4,
+      0.538510953727861,
+      6.543076941589732e-05,
+      0.00013685803507508401,
+      2.186664707334945e-06,
+      0.018459825410514327,
+      0.0
+    ],
+    [
+      0,
+      5,
+      0.5380378006903996,
+      4.6077193444071796e-05,
+      0.00030893464798033114,
+      6.594786484055447e-07,
+      0.025050549199517724,
+      0.0
+    ],
+    [
+      0,
+      6,
+      0.5378415907587232,
+      1.3890433332219843e-05,
+      0.00026245495742702185,
+      3.771809784266376e-07,
+      0.013506347160620122,
+      0.0
+    ],
+    [
+      0,
+      7,
+      0.5378006120093313,
+      3.3352870493219555e-06,
+      6.23876946477999e-05,
+      1.99295537757417e-07,
+      0.011603632901491927,
+      0.0
+    ],
+    [
+      0,
+      8,
+      0.5377818991647502,
+      1.0898139230913761e-06,
+      0.0003437425400043305,
+      9.477279383534964e-08,
+      0.00896390798698766,
+      0.0
+    ],
+    [
+      0,
+      9,
+      0.5377745834487598,
+      3.5671816300819614e-07,
+      4.421797608177196e-07,
+      5.7290866428050254e-08,
+      0.0051596404323879675,
+      0.0
+    ],
+    [
+      0,
+      10,
+      0.5377708174333793,
+      3.12742341801453e-07,
+      0.0069254942046040775,
+      7.53755432618927e-09,
+      0.0057532783406905015,
+      0.0
+    ],
+    [
+      0,
+      11,
+      0.5377693746555295,
+      2.431751448817021e-07,
+      0.004668649130596794,
+      5.431606797967679e-09,
+      0.004928080691573201,
+      0.0
+    ],
+    [
+      0,
+      12,
+      0.5377681828527616,
+      6.819873221708406e-08,
+      1.5144867921171646e-07,
+      9.977954239911432e-09,
+      0.002198127376212041,
+      0.0
+    ],
+    [
+      0,
+      13,
+      0.5377676064011304,
+      2.1606804123663892e-08,
+      0.0008748768860152301,
+      3.5692502083058114e-09,
+      0.0009231758201594715,
+      0.0
+    ],
+    [
+      0,
+      14,
+      0.5377678381617543,
+      1.4005645482349088e-09,
+      5.796937041665526e-11,
+      6.4977102855192984e-09,
+      0.00031719734546883926,
+      0.0
+    ]
+  ],
+  "trim_interval": [
+    0.05263157894736842,
+    1.0
+  ],
+  "seed_squared_speed_fit_max_abs": 0.22736232820588942,
+  "dense_duration_s": 0.5377678381632963,
+  "dense_samples": 8314,
+  "dense_min_margin": -5.770154827655638e-05,
+  "refinement": 2,
+  "refinement_passes": [
+    {
+      "status": 0,
+      "message": "Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).",
+      "solver_converged": true,
+      "iterations": 24,
+      "duration_s": 0.5377527961719407,
+      "primal_min_margin": 5.2456025634306513e-08,
+      "collocation_points": 308,
+      "stationarity_inf": 5.91693291546781e-11,
+      "max_scaled_control": 1.301969829566972,
+      "upper_control_bound": null,
+      "lower_control_bound": 1e-08,
+      "lower_control_bound_active": false,
+      "elapsed_s": 4.6997901359864045,
+      "trim_interval": [
+        0.05263157894736842,
+        1.0
+      ],
+      "seed_squared_speed_fit_max_abs": 0.22736232820588942,
+      "dense_duration_s": 0.5377527961735088,
+      "dense_samples": 8316,
+      "dense_min_margin": -0.0005952084776763567,
+      "refinement": 0
+    },
+    {
+      "status": 0,
+      "message": "Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).",
+      "solver_converged": true,
+      "iterations": 12,
+      "duration_s": 0.5377662312918842,
+      "primal_min_margin": 1.0665735962200884e-06,
+      "collocation_points": 350,
+      "stationarity_inf": 5.908481829445201e-08,
+      "max_scaled_control": 1.3021445529628126,
+      "upper_control_bound": null,
+      "lower_control_bound": 1e-08,
+      "lower_control_bound_active": false,
+      "elapsed_s": 2.3484050949919038,
+      "trim_interval": [
+        0.05263157894736842,
+        1.0
+      ],
+      "seed_squared_speed_fit_max_abs": 0.22736232820588942,
+      "dense_duration_s": 0.5377662312934037,
+      "dense_samples": 8315,
+      "dense_min_margin": -0.00017986336960773563,
+      "refinement": 1
+    },
+    {
+      "status": 0,
+      "message": "Algorithm terminated successfully at a locally optimal point, satisfying the convergence tolerances (can be specified by options).",
+      "solver_converged": true,
+      "iterations": 15,
+      "duration_s": 0.5377678381617543,
+      "primal_min_margin": 2.797138305421498e-07,
+      "collocation_points": 386,
+      "stationarity_inf": 4.480209026869607e-11,
+      "max_scaled_control": 1.3020949545025993,
+      "upper_control_bound": null,
+      "lower_control_bound": 1e-08,
+      "lower_control_bound_active": false,
+      "elapsed_s": 3.580126865999773,
+      "trim_interval": [
+        0.05263157894736842,
+        1.0
+      ],
+      "seed_squared_speed_fit_max_abs": 0.22736232820588942,
+      "dense_duration_s": 0.5377678381632963,
+      "dense_samples": 8314,
+      "dense_min_margin": -5.770154827655638e-05,
+      "refinement": 2
+    }
+  ],
+  "restoration": {
+    "time_factor": 1.0001288532430024,
+    "dense_min_margin": 0.00012726564498921622,
+    "duration_s": 0.5378371312932267,
+    "sampled_scaled_feasible": true
+  }
+}

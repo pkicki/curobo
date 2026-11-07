@@ -1,0 +1,80 @@
+[
+  {
+    "case_id": "pilot_free_00",
+    "method": "B",
+    "grid257_duration_s": 0.44089650690847015,
+    "grid513_duration_s": 0.4408992999961752,
+    "relative_duration_change_pct": 0.0006335018901944282,
+    "grid257_converged": true,
+    "grid513_converged": true,
+    "grid257_stationarity_inf": 9.420071995660276e-08,
+    "grid513_stationarity_inf": 7.779253722016018e-08,
+    "grid257_sampled_min_margin": -0.00040833700416009755,
+    "grid513_sampled_min_margin": -0.00011001470717642015
+  },
+  {
+    "case_id": "pilot_free_00",
+    "method": "D",
+    "grid257_duration_s": 0.4392968767591426,
+    "grid513_duration_s": 0.43930347395359093,
+    "relative_duration_change_pct": 0.0015017622016831448,
+    "grid257_converged": true,
+    "grid513_converged": true,
+    "grid257_stationarity_inf": 5.3490205780317185e-08,
+    "grid513_stationarity_inf": 3.142284003482246e-11,
+    "grid257_sampled_min_margin": -0.0006708553803822515,
+    "grid513_sampled_min_margin": -0.0001568236228288722
+  },
+  {
+    "case_id": "pilot_table_00",
+    "method": "B",
+    "grid257_duration_s": 0.5397883262763286,
+    "grid513_duration_s": 0.5397950985281363,
+    "relative_duration_change_pct": 0.00125461249866271,
+    "grid257_converged": true,
+    "grid513_converged": true,
+    "grid257_stationarity_inf": 5.745615367486603e-11,
+    "grid513_stationarity_inf": 1.710657227091862e-09,
+    "grid257_sampled_min_margin": -0.0007057466706432702,
+    "grid513_sampled_min_margin": -0.00014817488952845181
+  },
+  {
+    "case_id": "pilot_table_00",
+    "method": "D",
+    "grid257_duration_s": 0.5435691355379982,
+    "grid513_duration_s": 0.5435853444632426,
+    "relative_duration_change_pct": 0.0029819436359829993,
+    "grid257_converged": true,
+    "grid513_converged": true,
+    "grid257_stationarity_inf": 6.086376245101815e-10,
+    "grid513_stationarity_inf": 4.025473999537628e-12,
+    "grid257_sampled_min_margin": -0.0015174044762562566,
+    "grid513_sampled_min_margin": -0.0003237828626760919
+  },
+  {
+    "case_id": "pilot_cluttered_00",
+    "method": "B",
+    "grid257_duration_s": 0.5795712065393223,
+    "grid513_duration_s": 0.5795755135257183,
+    "relative_duration_change_pct": 0.0007431332591214886,
+    "grid257_converged": true,
+    "grid513_converged": true,
+    "grid257_stationarity_inf": 8.240934169739897e-08,
+    "grid513_stationarity_inf": 6.181793328510891e-08,
+    "grid257_sampled_min_margin": -0.00021214684173775922,
+    "grid513_sampled_min_margin": -4.7809817687927136e-05
+  },
+  {
+    "case_id": "pilot_cluttered_00",
+    "method": "D",
+    "grid257_duration_s": 0.5802298792339516,
+    "grid513_duration_s": 0.5802376063035269,
+    "relative_duration_change_pct": 0.0013317255542759283,
+    "grid257_converged": true,
+    "grid513_converged": true,
+    "grid257_stationarity_inf": 2.4094966530884035e-08,
+    "grid513_stationarity_inf": 1.2798734789208654e-08,
+    "grid257_sampled_min_margin": -0.00022717412340966803,
+    "grid513_sampled_min_margin": -0.003229553437466226
+  }
+]
