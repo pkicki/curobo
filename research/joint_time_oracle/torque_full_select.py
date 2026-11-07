@@ -37,7 +37,7 @@ def best_native(candidates:dict, diagnostics:dict, receipts:dict, profile:dict,
             continue
         if restart>=budget:
             continue
-        if not isinstance(candidate,dict) or candidate.get("status")!=("COMPLETE" if prefix=="R" else "SUCCESS"):
+        if not isinstance(candidate,dict) or candidate.get("status")!=("COMPLETE" if prefix=="RF" else "SUCCESS"):
             continue
         if candidate.get("restart",restart)!=restart:
             continue
@@ -124,7 +124,7 @@ def build(arm:Path, *, strict_receipts:Path|None=None) -> dict:
                     matched_from_B=None
                     retiming_difference=None
                     matched_best=best_native(matched,diagnostics,receipts,profile,case,budget,
-                                             scaled95=(mode=="scaled95"),strict=strict,prefix="R")
+                                             scaled95=(mode=="scaled95"),strict=strict,prefix="RF")
                     if best and relevant["D"] is not None:
                         improvement=100*(best["duration_s"]-relevant["D"])/best["duration_s"]
                     if best and relevant["B"] is not None:
