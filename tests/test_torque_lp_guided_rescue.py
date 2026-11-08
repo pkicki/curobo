@@ -147,3 +147,27 @@ def test_shared_quintic_fit_and_support_are_endpoint_preserving():
             "world_clearance_m":.1,"self_clearance_m":.1},.3)==pytest.approx(.2)
     assert score_metrics(.3,.7,{"position_violation_rad":0,
             "world_clearance_m":.1,"self_clearance_m":.1},.3)>.2
+
+
+
+def test_whole_domain_kinematic_hull_is_sufficient_and_fail_closed():
+    from research.joint_time_oracle.torque_kinematic_hull import global_kinematic_hull
+    from research.joint_time_oracle.geometry_feasibility_core import smoothstep_controls
+    from research.joint_time_oracle.cohort_geometry import QuinticGeometry
+
+    q0=np.array([0.,-.5,0.,-2.,0.,1.5,0.])
+    q1=q0+np.array([.4,.1,-.2,.2,.1,-.1,.3])
+    controls=smoothstep_controls(q0,q1,count=14)
+    wide={
+        "position":np.stack((q0-2.,q0+2.)),
+        "velocity":np.stack((-np.ones(7)*50,np.ones(7)*50)),
+        "acceleration":np.stack((-np.ones(7)*50,np.ones(7)*50)),
+        "jerk":np.stack((-np.ones(7)*50,np.ones(7)*50)),
+    }
+    verified=global_kinematic_hull(controls,10.,wide)
+    assert verified["all_four_kinematic_families_pass"]
+    narrow=dict(wide)
+    narrow["jerk"]=np.stack((-np.ones(7)*1e-4,np.ones(7)*1e-4))
+    unknown=global_kinematic_hull(controls,1.,narrow)
+    assert unknown["all_four_kinematic_families_pass"] is False
+    assert unknown["families"]["jerk"]["not_pass_interpretation"].startswith("UNKNOWN")
