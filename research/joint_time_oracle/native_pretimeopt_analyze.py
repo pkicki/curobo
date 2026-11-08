@@ -43,7 +43,6 @@ def diagnose(native_arm:Path,profile_arm:Path,*,samples:int=257)->dict:
                         "pre_snapshot_success":item.get("pre_success"),
                         "pre_snapshot_path_valid":item.get("pre_path_valid"),
                         "lanes":[]}
-                p=Path(item.get("native_cubic_geometry_file",""))
                 # use the known snapshot filename to prevent path injection
                 local=folder/(str(item["tag"])+"_native_geometry.npz")
                 if not local.exists():
