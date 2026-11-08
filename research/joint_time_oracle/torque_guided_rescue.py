@@ -236,6 +236,7 @@ def search(task:dict,profile:dict,native:NativeGeometry,*,arm:str,
         candidate_witness,trial=constructive_timing(
             QuinticGeometry(base.controls),evaluator.auditor,evaluator.bounds)
         details[0]["constructive_timing"]=trial
+        details[0]["wall_s"]=time.perf_counter()-stamps
         if candidate_witness is not None:
             chosen_index=0
             archive=base.controls.copy()
@@ -257,6 +258,7 @@ def search(task:dict,profile:dict,native:NativeGeometry,*,arm:str,
             tentative,trial=constructive_timing(
                 QuinticGeometry(new.controls),evaluator.auditor,evaluator.bounds)
             entry["constructive_timing"]=trial
+            entry["wall_s"]=time.perf_counter()-stamps
             if tentative is not None:
                 candidate_witness=tentative
                 chosen_index=iteration
@@ -278,7 +280,10 @@ def search(task:dict,profile:dict,native:NativeGeometry,*,arm:str,
             "first_witness_proposal":chosen_index,
             "witness_duration_s":float(candidate_witness["time"][-1])
                 if candidate_witness is not None else None,
-            "best_score":min(c.score for c in pool),
+            "best_score":min([c.score for c in pool]+
+                             ([float(details[-1]["score"])]
+                              if candidate_witness is not None else [])),
+            "rnea_count_scope":"pointwise LP/gradient RNEA only; construction and collision RNEA included in wall time",
             "ledger":details,
             "claim":"preliminary research screens only; requires independent adaptive validation"}
     return {"controls":archive,"report":result},candidate_witness
