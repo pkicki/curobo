@@ -14,8 +14,22 @@ from pathlib import Path
 
 import numpy as np
 
-from .cohort_explore import SCENES, digest
-from .cohort_torque_wide import endpoint_pair_separation
+import hashlib
+
+SCENES=(("free",None,6),("table","collision_test.yml",8),
+        ("cluttered","collision_primitives_3d.yml",6))
+
+
+def digest(value):
+    return hashlib.sha256(json.dumps(value,sort_keys=True,separators=(",",":")).encode()).hexdigest()
+
+
+def endpoint_pair_separation(start,goal,historical):
+    if not historical:
+        return float("inf")
+    return min(min(float(np.linalg.norm(start-np.asarray(x[key]))),
+                   float(np.linalg.norm(goal-np.asarray(x[key]))))
+               for x in historical for key in ("start","goal"))
 from .geometry_feasibility_scene import IndependentGeometryAuditor
 from .geometry_feasibility_core import sha256_file
 from .torque_active import torque_utilization
