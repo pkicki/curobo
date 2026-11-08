@@ -8,13 +8,13 @@ import pytest
 
 from research.joint_time_oracle.cohort_geometry import QuinticGeometry
 from research.joint_time_oracle.geometry_feasibility_core import (
-    CANDIDATE_CONTROLS, GRAVITY_SCALED95_TARGET, gate_l1,
+    CANDIDATE_CONTROLS, gate_l1,
     path_distance, perturb_controls, profile_from_scenario, scenarios,
     smooth_time, smoothstep_controls, timed_states,
 )
 from research.joint_time_oracle.geometry_feasibility_refine import dual_slack_certificate
 from research.joint_time_oracle.geometry_feasibility_report import classify
-from research.joint_time_oracle.torque_active import read_profile, torque_utilization
+from research.joint_time_oracle.torque_active import read_profile
 
 
 def sample_task():
