@@ -35,12 +35,14 @@ def qualified(arm:Path,case:str,row:dict)->tuple[bool,list[str]]:
         reasons.append("independent collision/endpoint qualification missing")
     if receipt.get("torque_profile_sha256")!=row.get("torque_profile_sha256"):
         reasons.append("effort-profile mismatch")
-    if (receipt.get("base_sha256")!=row.get("w_dense_sha256")
-        or receipt.get("base_sha256")!=sha256_file(arm/case/"w_dense.npz")):
-        reasons.append("alternative trajectory checksum mismatch")
-    if (receipt.get("witness_geometry_sha256") !=
-        sha256_file(arm/case/"w_geometry.json")):
-        reasons.append("geometric controls checksum mismatch")
+    basefile=arm/case/"w_dense.npz"
+    geomfile=arm/case/"w_geometry.json"
+    if not basefile.exists() or receipt.get("base_sha256")!=row.get(
+        "w_dense_sha256") or receipt.get("base_sha256")!=sha256_file(basefile):
+        reasons.append("alternative trajectory missing/checksum mismatch")
+    if not geomfile.exists() or receipt.get("witness_geometry_sha256")!=(
+        sha256_file(geomfile) if geomfile.exists() else None):
+        reasons.append("geometric controls missing/checksum mismatch")
     replay_file=arm/case/"w_adaptive_replay.json"
     replay=json.loads(replay_file.read_text()) if replay_file.exists() else {}
     if replay.get("status")!="REPLAYED":
