@@ -461,7 +461,7 @@ def execute(
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=STRESS)
-    parser.add_argument("--regime", required=True, choices=("moderate", "severe"))
+    parser.add_argument("--regime", required=True, )
     parser.add_argument("--case")
     parser.add_argument("--max-restarts", type=int, default=4)
     parser.add_argument("--lanes", type=int, default=4)
