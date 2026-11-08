@@ -73,6 +73,9 @@ def run(case:str,output:Path,*,samples:int=129)->dict:
     auditor=IndependentGeometryAuditor(task["scene"])
     rnea=AlignedPointDynamics()
     rows={}
+    # Track exact cubic geometry hashes across ALL instrumented restarts,
+    # not only within each restart's internal lanes.
+    seen=set()
     folder=output/case
     for restart in sorted(x for x in folder.glob("F???") if x.is_dir()):
         record_file=restart/"trace_summary.json"
@@ -85,7 +88,6 @@ def run(case:str,output:Path,*,samples:int=129)->dict:
                                 "trace_status":trace.get("stage_trace_status"),
                                 "audited_lanes":[]}
             continue
-        seen=set()
         for snap in sorted(restart.glob("post_timeopt_*.npz")):
             with np.load(snap) as f:
                 buffers={name:np.asarray(f[name]) for name in f.files}
