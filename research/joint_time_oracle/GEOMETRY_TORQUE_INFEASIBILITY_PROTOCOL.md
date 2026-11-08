@@ -325,3 +325,41 @@ and all production solver defaults are unchanged.
 No new numeric results or GPU tests have been run in this branch by
 the assistant. Agent must run test suite, fix failures and publish
 only source-grounded evidence. No PR; no merge to main.
+
+
+## Pilot versus extended challenge manifests
+
+A challenge plan cannot be edited after it is frozen. Use a separate
+plan filename for a three-case preflight and for later expanded eligible
+cases, preserving both as evidence. Example:
+
+    CUDA_PY -m research.joint_time_oracle.geometry_feasibility_challenge \
+      --root "$OUT" --max-cases 3 \
+      --plan-file "$OUT/native_challenge_pilot.json"
+
+After qualifying the pilot, an extended arm must be frozen separately
+without discarding the pilot:
+
+    CUDA_PY -m research.joint_time_oracle.geometry_feasibility_challenge \
+      --root "$OUT" \
+      --plan-file "$OUT/native_challenge_extended.json"
+
+Then execute each plan with the corresponding --plan-file argument and
+the registered 1/4/16/32 restart budgets. The challenge code checks the
+frozen profile, task, base+adaptive witness and refined LP receipt hashes
+before launching native planning. It refuses changed inputs.
+
+## Local NPZ evidence checksums
+
+The compact HTML/JSON report is committed, whereas large raw trajectories
+can remain local and ignored by Git. Create a SHA256 inventory including
+the source nominal files:
+
+    PIN_PY -m research.joint_time_oracle.geometry_feasibility_manifest \
+      --root "$OUT" --source "$SOURCE" \
+      --report reports/joint_time_oracle/geometry_feasibility
+
+This writes artifact_manifest.json with relative paths, sizes and SHA256.
+Rebuild after completing/scoring the campaign. Do not include the
+generated report manifest itself among its own source files. Retain
+raw NPZ archives for later reproduction.
