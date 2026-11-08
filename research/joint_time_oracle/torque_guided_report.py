@@ -6,8 +6,8 @@ physical+Scaled95 adaptive receipt with matching source task/profile SHA and
 exact analytic replay. The known offline W witnesses are NEVER counted as a
 search result or used to initialize either arm.
 
-Only 3 adversarial development tasks are provided. Do not report
-statistical generalization or significance from these 3 observations.
+One adversarial development task and two source-disjoint heldout examples are provided.
+Do not report population significance from these three selected observations.
 """
 from __future__ import annotations
 
@@ -153,7 +153,7 @@ th{background:#eff2f8}.note{padding:1rem;background:#fff0d8;border-left:5px soli
 <h1>Can torque-LP dual guidance rescue geometrically infeasible paths?</h1>
 <p class="note">Only independently reaudited physical+Scaled95 witness trajectories
 count as successes. Raw solver screens and replay-only candidates are NOT proof.
-The three source tasks were selected through an earlier adversarial discovery;
+All three tasks were selected through an earlier adversarial discovery and confirmation;
 these results do not estimate population performance. This is NOT continuous-time
 feasibility certification. All actuator constraints are synthetic joint-selective
 restrictions, not Panda manufacturer's ratings.</p>"""
