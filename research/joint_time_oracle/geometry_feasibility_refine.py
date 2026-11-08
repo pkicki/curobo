@@ -43,7 +43,7 @@ def dual_slack_certificate(a,m,g,bounds:np.ndarray)->dict:
     primal_violation=float(max(0,np.max(A@primal.x-b)))
     dual_violation=float(max(0,-np.min(lam),-reduced[0],-reduced[2],
                              abs(reduced[1])-1e-9))
-    valid=bool(dual>MIN_ORIGINAL_LP_GAP and dual_gap<1e-6
+    valid=bool(dual>MIN_ORIGINAL_LP_GAP and abs(dual_gap)<1e-6
                and primal_violation<1e-7 and dual_violation<1e-7)
     return {"status":"SOLVED","minimum_required_expansion":float(primal.fun),
             "dual_lower_bound":dual,
