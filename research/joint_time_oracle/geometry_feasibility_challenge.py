@@ -78,7 +78,23 @@ def run(root:Path,*,max_restarts:int,max_cases:int|None=None,
     outcomes={}
     for entry in config["cases"]:
         arm=root/entry["scenario"]
-        result=execute(arm,case_filter=entry["case_id"],
+        case=entry["case_id"]
+        from .torque_active import read_profile
+        profile=read_profile(arm/case/"torque_profile.json")
+        if profile["profile_sha256"]!=entry["torque_profile_sha256"] or (
+            profile["source_task_sha256"]!=entry["task_sha256"]):
+            raise ValueError("frozen challenge task/effort profile SHA mismatch")
+        wfile=arm/"w_adaptive_receipts.json"
+        lfile=arm/"refined_lp_summary.json"
+        if (sha256_file(wfile)!=entry["reference_witness_receipts_sha256"] or
+            sha256_file(lfile)!=entry["reference_lp_summary_sha256"]):
+            raise ValueError("independent feasibility/LP receipts changed after challenge freeze")
+        witness=json.loads(wfile.read_text()).get(case+":W",{})
+        if (witness.get("base_sha256")!=entry["witness_base_sha256"] or
+            witness.get("adaptive_sha256")!=entry["witness_adaptive_sha256"] or
+            witness.get("scaled95") is not True):
+            raise ValueError("frozen alternative witness no longer qualified")
+        result=execute(arm,case_filter=case,
                        max_restarts=max_restarts,
                        lanes=config["lanes_per_restart"],
                        max_attempts=config["native_max_attempts"],
