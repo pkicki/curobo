@@ -161,16 +161,20 @@ def constructive_timing(geometry,auditor,limits:np.ndarray,
 
 def discover(source:Path,reference:Path,output:Path,*,
              max_tasks:int|None=None,min_gap:float=MIN_ORIGINAL_LP_GAP,
-             lp_samples:int=65,max_candidates:int=100)->dict:
+             lp_samples:int=65,max_candidates:int=100,
+             scenario_ids:tuple[str,...]|None=None)->dict:
     source=source.resolve();output=output.resolve()
     tasks,rows=source_tasks(source)
     if max_tasks is not None:
         tasks=tasks[:max_tasks]
     if not tasks or lp_samples<17 or max_candidates<1:
         raise ValueError("empty discovery or invalid budget")
+    chosen=[x for x in scenarios() if scenario_ids is None or x["scenario_id"] in scenario_ids]
+    if not chosen or (scenario_ids is not None and len(chosen)!=len(set(scenario_ids))):
+        raise ValueError("unregistered or empty frozen scenario selection")
     cfg={"schema_version":1,"source_tasks_sha256":sha256_file(source/"tasks.json"),
          "source":str(source),"reference":str(reference.resolve()),
-         "scenarios":scenarios(),"minimum_positive_original_lp_gap":min_gap,
+         "scenarios":chosen,"minimum_positive_original_lp_gap":min_gap,
          "lp_prescreen_samples":lp_samples,"max_alternate_geometry_proposals":max_candidates,
          "duration_grid_s":list(WITNESS_TIMES_S),
          "candidate_seeds":CANDIDATE_SEEDS,
@@ -295,10 +299,13 @@ def main():
     p.add_argument("--max-tasks",type=int)
     p.add_argument("--max-candidates",type=int,default=100)
     p.add_argument("--lp-samples",type=int,default=65)
+    p.add_argument("--scenario-id",action="append",default=[],
+                   help="Prospectively frozen actuator scenario ID. Omit to scan the whole grid.")
     a=p.parse_args()
     print(json.dumps(discover(a.source,a.reference,a.output,
                               max_tasks=a.max_tasks,max_candidates=a.max_candidates,
-                              lp_samples=a.lp_samples),indent=2))
+                              lp_samples=a.lp_samples,
+                              scenario_ids=tuple(a.scenario_id) if a.scenario_id else None),indent=2))
 
 
 if __name__=="__main__":
