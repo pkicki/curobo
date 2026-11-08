@@ -274,6 +274,7 @@ def discover(source:Path,reference:Path,output:Path,*,
                                         "profile_sha256":profile["profile_sha256"],
                                         "status":"PRESCREEN_ONLY",
                                     },indent=2)+"\n")
+                                    row["witness_geometry_sha256"]=sha256_file(folder/"w_geometry.json")
                                     row["witness_sha256"]=sha256_file(path)
                                     row["witness_duration_s"]=float(witness["time"][-1])
                                     record["status"]="CONSTRUCTIVE_WITNESS_PRESCREEN"
