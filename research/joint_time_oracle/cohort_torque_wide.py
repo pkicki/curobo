@@ -33,9 +33,16 @@ def endpoint_pair_separation(start, goal, historical) -> float:
 
 def generate(output: Path, *, seed: int = 270711, per_population: int = 10,
              min_joint_distance: float = 1.5, min_gravity_utilization: float = .10,
-             source_separation: float = .35, max_attempts: int = 5000) -> dict:
+             source_separation: float = .35, max_attempts: int = 5000,
+             max_gravity_utilization: float = 1.0, case_prefix: str = "wide",
+             exclude_roots: tuple[Path,...] = ()) -> dict:
     rng=np.random.default_rng(seed)
     old=json.loads(OLD.read_text()) if OLD.exists() else []
+    for root in exclude_roots:
+        inventory=Path(root)/"tasks.json"
+        if not inventory.exists():
+            raise FileNotFoundError("source exclusion inventory missing: "+str(inventory))
+        old+=json.loads(inventory.read_text())
     tasks=[];attempts=[]
     for population,scene,_ in SCENES:
         planner=planner_for(scene);model=CuroboOracleModel(planner)
@@ -64,12 +71,14 @@ def generate(output: Path, *, seed: int = 270711, per_population: int = 10,
                         reason="start or goal collision"
                     elif stat<min_gravity_utilization:
                         reason="low static torque demand at both endpoints"
+                    elif stat>max_gravity_utilization:
+                        reason="endpoint gravity above frozen benign-endpoint quota"
                 record={"population":population,"index":index,"attempt":trial,
                         "travel_rad":travel,"source_separation_rad":disjoint,
                         "accepted":reason is None,"rejection":reason}
                 attempts.append(record)
                 if reason is None:
-                    task={"case_id":f"wide_{population}_{index:02d}","cohort":"pilot",
+                    task={"case_id":f"{case_prefix}_{population}_{index:02d}","cohort":"pilot",
                           "population":population,"scene":scene,"robot":"franka.yml",
                           "start":start.tolist(),"goal":goal.tolist(),
                           "joint_names":model.joint_names,
@@ -94,6 +103,9 @@ def generate(output: Path, *, seed: int = 270711, per_population: int = 10,
              "attempts":len(attempts),"min_joint_distance":min_joint_distance,
              "source_separation":source_separation,
              "min_endpoint_static_torque_utilization":min_gravity_utilization,
+             "max_endpoint_static_torque_utilization":max_gravity_utilization,
+             "case_prefix":case_prefix,
+             "exclusion_inventory_paths":[str(Path(p).resolve()) for p in exclude_roots],
              "historical_tasks_sha256":hashlib.sha256(OLD.read_bytes()).hexdigest() if OLD.exists() else None,
              "task_inventory_sha256":hashlib.sha256((output/"tasks.json").read_bytes()).hexdigest(),
              "note":"endpoint candidate admission only; planner/dynamics qualification remains pending"}
@@ -107,9 +119,16 @@ def main():
     parser.add_argument("--per-population",type=int,default=10)
     parser.add_argument("--seed",type=int,default=270711)
     parser.add_argument("--max-attempts",type=int,default=5000)
+    parser.add_argument("--max-gravity",type=float,default=1.)
+    parser.add_argument("--min-gravity",type=float,default=.10)
+    parser.add_argument("--prefix",default="wide")
+    parser.add_argument("--exclude-root",type=Path,action="append",default=[])
     args=parser.parse_args()
     print(json.dumps(generate(args.output,seed=args.seed,
-             per_population=args.per_population,max_attempts=args.max_attempts),indent=2))
+             per_population=args.per_population,max_attempts=args.max_attempts,
+             min_gravity_utilization=args.min_gravity,
+             max_gravity_utilization=args.max_gravity,
+             case_prefix=args.prefix,exclude_roots=tuple(args.exclude_root)),indent=2))
 
 
 if __name__=="__main__":
