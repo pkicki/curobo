@@ -391,7 +391,7 @@ within that budget. Missing results are not treated as zero improvements.</aside
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=DEFAULT)
-    parser.add_argument("--regime", required=True, choices=("moderate", "severe"))
+    parser.add_argument("--regime", required=True, )
     parser.add_argument("--adaptive-receipts", type=Path)
     args = parser.parse_args()
     data = build(args.root / args.regime, strict_receipts=args.adaptive_receipts)
