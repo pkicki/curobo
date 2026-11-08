@@ -78,6 +78,34 @@ def classify(witness:dict|None, lp:dict|None, native:dict,
             "scope":"sampled witness, numerical LP, finite planning budget; not global or continuous-time certificate"}
 
 
+def verified_nominal_native_control(source:Path,case:str)->bool:
+    rowsfile=source/"pilot.jsonl"
+    auditfile=source/"independent_sampled.json"
+    if not rowsfile.exists() or not auditfile.exists():
+        return False
+    rows={row["case_id"]:row for row in (json.loads(line) for line in
+          rowsfile.read_text().splitlines() if line.strip())}
+    native=rows.get(case,{}).get("methods",{}).get("A10",{})
+    if native.get("duration_s") is None or native.get("native_success") is False:
+        return False
+    check=json.loads(auditfile.read_text()).get(case+":A10")
+    if not isinstance(check,dict) or check.get("samples",0)<8193:
+        return False
+    if (check.get("self_min_clearance_m") is None or
+        check["self_min_clearance_m"]< -1e-7):
+        return False
+    world=check.get("world_min_clearance_m")
+    if world is not None and world< -1e-7:
+        return False
+    for family,diag in check.get("families",{}).items():
+        physical=diag.get("physical",{})
+        violation=physical.get("violation")
+        if violation is None or violation>1e-4:
+            return False
+    return all(k in check.get("families",{}) for k in
+               ("position","velocity","acceleration","jerk","torque"))
+
+
 def collect(root:Path,source:Path,*,budget:int=32)->dict:
     registration=json.loads((root/"discovery_registration.json").read_text())
     allowed={x["scenario_id"] for x in scenarios()}
@@ -123,6 +151,10 @@ def collect(root:Path,source:Path,*,budget:int=32)->dict:
                 matched={k.removeprefix(case+":"):v for k,v in nreceipts.items()
                          if k.startswith(case+":")}
                 res=classify(witnesses.get(case+":W"),lp,native,matched,budget=budget)
+                nominal_ok=verified_nominal_native_control(source,case)
+                row["original_nominal_control_verified"]=nominal_ok
+                if res["category"]=="GEOMETRY_OBSTRUCTION_NATIVE_BUDGET_FAILURE" and not nominal_ok:
+                    res["category"]="GEOMETRY_OBSTRUCTION_NATIVE_FAILURE_CONTROL_UNVERIFIED"
                 row.update(res)
                 row["refined_lp_file"]=str(refined_file) if refined_file.exists() else None
                 row["witness_receipt_file"]=str(wfile) if wfile.exists() else None
