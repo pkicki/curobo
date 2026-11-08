@@ -1,0 +1,39 @@
+<!doctype html><html lang="en"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Extreme torque: feasible alternative versus native replanning — Not executed</title>
+<style>body{font:16px/1.55 system-ui;max-width:1100px;margin:2rem auto;padding:0 1rem;color:#213044}
+.note{background:#fff0d8;border-left:5px solid #a96808;padding:1rem}
+table{border-collapse:collapse;width:100%}td,th{padding:.65rem;border-bottom:1px solid #ddd;text-align:left}</style>
+<h1>Extreme torque feasibility witnesses</h1>
+<aside class="note"><strong>NOT EXECUTED.</strong> The experimental implementation is committed, but
+no additional GPU native-planner runs, independent witness qualification or new matched
+feasibility results have been performed on this branch. No native failure claim is established.</aside>
+<p><strong>Question:</strong> Can the full native cuRoboV2-Fast planner fail to find a
+solution under extreme, but endpoint-admissible, synthetic torque limits
+while a different joint-space path demonstrably remains feasible?</p>
+<p>The protocol freezes a 20-task source population and eight increasingly severe
+actuator-limit levels, then independently constructs a time-dilated witness
+from previously verified alternative quintic geometry. It challenges the
+full native planner at nested 1/4/16/32 restart budgets, audits any native
+solutions, and optionally checks a relaxed torque-feasibility LP that can rule
+out all timings of one particular original geometric curve.</p>
+<h2>Registered candidate experiments</h2>
+<table><thead><tr><th>Stage</th><th>Status</th><th>Required evidence</th></tr></thead><tbody>
+<tr><td>Frozen torque levels and witness screening</td><td>Not run</td>
+<td>All source profile hashes, endpoint static gravity and prescreen inventory</td></tr>
+<tr><td>Independent witness feasibility</td><td>Not run</td>
+<td>Exact quintic replay, dense+adaptive Pinocchio torque, endpoint and sphere collisions</td></tr>
+<tr><td>Original fixed-path torque LP</td><td>Not run</td>
+<td>Positive relaxed LP infeasibility margin at an interior path point, if found</td></tr>
+<tr><td>Full native planner</td><td>Not run</td>
+<td>All attempted restarts, seed budgets, failure stages and independent successes</td></tr>
+<tr><td>Qualitative counterexamples</td><td>None claimed</td>
+<td>A validated alternative AND completed native failure without runtime errors</td></tr>
+</tbody></table>
+<p><strong>Safety qualification:</strong> finite dense/adaptive independent checks
+are sampled evidence, not continuous-time certificates. A finite-budget
+native failure is not mathematical impossibility of all native routes.
+The synthetic effort limits do not describe actual Panda actuator ratings.</p>
+<p>This report is rebuilt from frozen JSON results by
+<code>python -m research.joint_time_oracle.extreme_torque_report</code>.
+Do not edit case results manually.</p></html>
