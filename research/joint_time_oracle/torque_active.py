@@ -144,7 +144,17 @@ def read_profile(path) -> dict:
     bounds = checked_bounds(np.stack((profile["effort_lower"], profile["effort_upper"])))
     nominal = checked_bounds(np.stack((profile["nominal_effort_lower"],
                                       profile["nominal_effort_upper"])))
-    if not np.allclose(bounds, nominal * profile["derate"], rtol=1e-12, atol=1e-12):
+    # Historical profiles use one scalar factor. Geometry-dependent synthetic
+    # actuator studies use a frozen *per-joint* vector; these are NOT payloads.
+    factors = profile.get("actuator_scale_by_joint")
+    if factors is None:
+        scale = float(profile["derate"])
+    else:
+        scale = np.asarray(factors, dtype=np.float64)
+        if (scale.shape != (nominal.shape[1],) or not np.isfinite(scale).all()
+                or np.any(scale <= 0) or np.any(scale > 1)):
+            raise ValueError("invalid joint-selective actuator derating")
+    if not np.allclose(bounds, nominal * scale, rtol=1e-12, atol=1e-12):
         raise ValueError("inconsistent torque derating")
     profile["profile_sha256"] = signature
     return profile
