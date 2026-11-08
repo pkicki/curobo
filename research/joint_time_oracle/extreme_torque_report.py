@@ -134,6 +134,28 @@ def build(root:Path,control:Path,*,expected_restarts:int=32) -> dict:
                 original_native_control(control,case),
                 candidates,native_by_case,expected_restarts=expected_restarts)
             row.update(diagnosis)
+            lp_file=arm/case/"path_torque_lp.json"
+            lp=json.loads(lp_file.read_text()) if lp_file.exists() else {}
+            original_lp=lp.get("original_fixed_curobo",{})
+            alternative_lp=lp.get("alternative_quintic",{})
+            row["original_path_relaxed_torque_lp_infeasible"]=bool(
+                original_lp.get("strong_fixed_path_infeasibility_witness") is True)
+            row["original_path_minimum_relaxed_bound_expansion"]=original_lp.get(
+                "max_required_torque_bound_expansion")
+            row["original_path_infeasible_progress"]=original_lp.get("worst_progress")
+            row["alternative_path_lp_contradicts_witness"]=bool(
+                alternative_lp.get("strong_fixed_path_infeasibility_witness") is True
+                and diagnosis["witness_independent_scaled95"])
+            # Separate mechanism evidence from the primary finite-budget claim.
+            # A positive original-path LP gap is evidence THIS curve is
+            # infeasible for any retiming, not that all native paths are.
+            row["strong_geometric_failure_example"]=bool(
+                diagnosis["decision"]=="NATIVE_BUDGET_FAILURE_WITH_FEASIBLE_ALTERNATIVE"
+                and row["original_path_relaxed_torque_lp_infeasible"]
+                and not row["alternative_path_lp_contradicts_witness"])
+            if row["alternative_path_lp_contradicts_witness"]:
+                row["decision"]="BLOCKED_CONTRADICTORY_ALTERNATIVE_LP"
+                row["strong_geometric_failure_example"]=False
             row["witness_receipt_file"]=str(witness_file) if witness_file.exists() else None
             row["native_candidate_file"]=str(candidate_file) if candidate_file.exists() else None
             outcomes.append(row)
@@ -143,6 +165,8 @@ def build(root:Path,control:Path,*,expected_restarts:int=32) -> dict:
              "cases":outcomes,
              "decision_counts":{},
              "note":"Adversarial levels are exploratory and chosen as a frozen grid BEFORE native outcomes; selected-case examples are not unbiased population statistics."}
+    summary["strong_geometric_failure_examples"]=sum(
+        x.get("strong_geometric_failure_example") is True for x in outcomes)
     for row in outcomes:
         decision=row["decision"]
         summary["decision_counts"][decision]=summary["decision_counts"].get(decision,0)+1
@@ -177,7 +201,7 @@ prove all native geometries infeasible or any global optimality. Endpoint-
 infeasible profiles, missing restarts, planner runtime errors and native
 unverified successes are all separate categories. Analytic sphere collision
 and sampled Pinocchio checks are not continuous-time certificates.</p>"""
-    page+=f"<p><strong>{success}</strong> finite-budget native-failure-with-feasible-alternative cases.</p>"
+    page+=f"<p><strong>{success}</strong> finite-budget native-failure-with-feasible-alternative cases; "" <strong>"+str(summary["strong_geometric_failure_examples"])+"</strong> also have a strictly positive relaxed torque infeasibility LP on the ORIGINAL path.</p>"
     page+="<table><thead><tr><th>Case</th><th>Torque regime</th><th>Endpoint admitted</th>"
     page+="<th>Independent witness</th><th>Witness slowdown</th><th>Native failed restarts</th>"
     page+="<th>Decision</th></tr></thead><tbody>"+"\n".join(rows)+"</tbody></table>"
