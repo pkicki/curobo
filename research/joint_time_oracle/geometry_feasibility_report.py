@@ -80,7 +80,10 @@ def classify(witness:dict|None, lp:dict|None, native:dict,
 
 def collect(root:Path,source:Path,*,budget:int=32)->dict:
     registration=json.loads((root/"discovery_registration.json").read_text())
-    if not registration.get("scenarios") or registration["scenarios"]!=scenarios():
+    allowed={x["scenario_id"] for x in scenarios()}
+    chosen=registration.get("scenarios",[])
+    if not chosen or not all(isinstance(x,dict) and x.get("scenario_id") in allowed
+                             for x in chosen) or len({x["scenario_id"] for x in chosen})!=len(chosen):
         raise ValueError("registered scenario grid mismatch")
     summary=json.loads((root/"discovery_summary.json").read_text())
     outcomes=[]
