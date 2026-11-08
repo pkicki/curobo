@@ -1,0 +1,38 @@
+<!doctype html><html lang="en"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Torque LP-dual guided geometric rescue — NOT EXECUTED</title>
+<style>body{font:16px/1.55 system-ui;max-width:1140px;margin:2rem auto;padding:0 1rem;color:#213047}
+.note{padding:1rem;border-left:5px solid #bc7c12;background:#fff0d8}
+table{border-collapse:collapse;width:100%}th,td{padding:.65rem;border-bottom:1px solid #dce2e8;text-align:left}
+th{background:#edf2f8}</style>
+<h1>Torque-LP-dual guided geometric rescue</h1>
+<aside class="note"><strong>NOT EXECUTED.</strong> This is a committed research implementation
+and qualification protocol, not new experimental performance evidence. The LP-guided, local-random
+and global-random arms have not yet been benchmarked on the three frozen counterexamples.
+No rescue rate, runtime advantage or new native-stage attribution is established.</aside>
+<p><strong>Question:</strong> Can the active-joint/dual signal of a necessary torque LP
+obstruction guide configuration-space search to a feasible alternative faster than
+uninformed waypoint perturbations under matched computational budgets?</p>
+<p>Three qualified synthetic-actuator counterexamples from the previous frozen study form
+a development cohort. All arms begin from the SAME nominal native cubic geometry fitted
+to a quintic spline; no arm receives the previously successful W path. The LP-dual arm uses
+local finite-difference RNEA sensitivities at torque bottlenecks. Both random baselines
+share the same geometric representation, scene checks and constructive timing backend.
+True success requires independent physical+Scaled95 dense/adaptive validation.</p>
+<h2>Registered experiments</h2>
+<table><thead><tr><th>Study</th><th>Status</th><th>Required evidence</th></tr></thead><tbody>
+<tr><td>Pointwise LP dual gradient versus random geometric directions</td><td>Not run</td><td>Proposal trace, LP gap, collision/gravity screen, full cost accounting</td></tr>
+<tr><td>Rescue success at 16/32/64/128 proposals</td><td>Not run</td><td>Independent Pinocchio/scene sampled+adaptive qualification</td></tr>
+<tr><td>Actual search time including guidance overhead</td><td>Not run</td><td>Wall time, RNEA calls, true qualified-first-success time</td></tr>
+<tr><td>Opt-in native pre-TimeOpt stage recorder</td><td>Not run</td><td>Pre-TimeOpt seed snapshots, post-TimeOpt spline buffers when present, outcome replay parity</td></tr>
+<tr><td>Independent audit of rejected native geometric lanes</td><td>Not run</td><td>Path LP, joint/collision validity and geometry diversity</td></tr>
+<tr><td>Conservative continuous-time kinematic spline hull</td><td>Not run</td><td>Position, velocity, acceleration and jerk sufficient bounds; torque/collision remain unqualified continuously</td></tr>
+<tr><td>Source-disjoint confirmatory evaluation</td><td>Not run</td><td>Immutable registry and frozen method, all attempted cases retained</td></tr>
+</tbody></table>
+<p><strong>Scope:</strong> the actuator constraints are synthetic reductions relative to the Panda model,
+not manufacturer ratings. Neither an LP gradient nor a sampled feasible path is a continuous-time
+torque/collision certificate. The three development tasks were selected adversarially, so positive
+results must not be presented as general-population rescue rates.</p>
+<p>The report is regenerated from raw artifacts with
+<code>python -m research.joint_time_oracle.torque_guided_report</code>.
+Large trajectory archives remain local with SHA256 inventory.</p></html>
