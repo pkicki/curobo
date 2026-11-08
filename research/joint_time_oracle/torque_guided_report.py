@@ -17,7 +17,7 @@ import json
 from pathlib import Path
 
 from .cohort_retime import ROOT
-from .torque_guided_rescue import ARMS, BUDGETS, OUTPUT, ROOTS, SCENARIO
+from .torque_guided_rescue import ARMS, BUDGETS, OUTPUT
 from .geometry_feasibility_core import sha256_file
 
 
@@ -51,8 +51,14 @@ def qualified(arm:Path,case:str,row:dict)->tuple[bool,list[str]]:
 
 
 def summarize(root:Path)->dict:
+    first=root/ARMS[0]/"experiment_config.json"
+    if not first.exists():
+        registry={}
+    else:
+        conf=json.loads(first.read_text())
+        registry=conf.get("source_registry",{})
     cases={}
-    for case in ROOTS:
+    for case in registry:
         cases[case]={}
         for arm_name in ARMS:
             arm=root/arm_name
@@ -91,10 +97,22 @@ def summarize(root:Path)->dict:
             }
     summary={"schema_version":1,"cases":cases,
              "arms":ARMS,"proposal_budgets":BUDGETS,
-             "registered_scenario":SCENARIO,
+             "registered_source_registry":registry,
              "counts":{},
              "note":"3 adversarial examples; no population success-rate inference, no continuous-time physical certificate",
              "fairness":"same nominal-path quintic fit, proposal budget and auditor, different directional evaluation cost; wall time/RNEA must also be compared"}
+    # Every completed arm must use the same source, torque-profile and
+    # witness registry. Different registries make all cross-arm comparisons
+    # N/A, even if a few task names happen to overlap.
+    summary["registry_consistent"]=bool(registry)
+    for arm in ARMS:
+        file=root/arm/"experiment_config.json"
+        if file.exists():
+            selected=json.loads(file.read_text()).get("source_registry")
+            if selected!=registry:
+                summary["registry_consistent"]=False
+        else:
+            summary["registry_consistent"]=False
     for arm in ARMS:
         summary["counts"][arm]={
             "attempted":sum(cases[c][arm]["status"]!="NOT_RUN" for c in cases),
@@ -104,6 +122,8 @@ def summarize(root:Path)->dict:
                 str(b):sum(cases[c][arm].get("qualified_by_budget",{}).get(str(b),False)
                            for c in cases) for b in BUDGETS},
         }
+    if not summary["registry_consistent"]:
+        summary["warning"]="ARMS MISSING OR SOURCE REGISTRIES DIFFER: no controlled cross-arm comparison qualified"
     return summary
 
 
