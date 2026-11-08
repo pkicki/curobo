@@ -56,6 +56,8 @@ def freeze(source:Path,output:Path,*,factors=DEFAULT_FACTORS,
     if not tasks or len({x["case_id"] for x in tasks})!=len(tasks):
         raise ValueError("empty or duplicate source case inventory")
     source_sha=sha256_file(source/"tasks.json")
+    source_receipt_path=source/"adaptive_receipts.json"
+    source_receipts=json.loads(source_receipt_path.read_text()) if source_receipt_path.exists() else {}
     plan={"source_tasks_sha256":source_sha,
           "factor_grid":list(factors),"slowdown_grid":list(slowdowns),
           "independent_dynamics":"model-aligned Pinocchio RNEA, unchanged Panda inertials",
@@ -79,10 +81,17 @@ def freeze(source:Path,output:Path,*,factors=DEFAULT_FACTORS,
         original_profile=read_profile(source/case/"torque_profile.json")
         if original_profile["source_case_id"]!=case:
             raise ValueError("original profile/case mismatch")
+        historical_receipt=source_receipts.get(case+":D",{})
+        old_valid=(historical_receipt.get("physical") is True and
+                   historical_receipt.get("torque_profile_sha256")==original_profile["profile_sha256"])
         original_path=source/case/"d_dense.npz"
         original_audit=source/case/"d_pin_torque.npz"
         raw=None;reference_torque=None;gravity=None;source_error=None
+        if not old_valid:
+            source_error="frozen D lacks independent adaptive physical qualification receipt"
         try:
+            if source_error:
+                raise ValueError(source_error)
             with np.load(original_path) as data:
                 raw={k:np.asarray(data[k]) for k in data.files}
             reference_torque,gravity=independent_torque_and_gravity(raw)
