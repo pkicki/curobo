@@ -19,7 +19,6 @@ import json
 from pathlib import Path
 
 from .extreme_torque_core import check_manifest
-from .torque_active import read_profile
 
 ROOT=Path(__file__).resolve().parents[2]
 OUTPUT=ROOT/"research/joint_time_oracle/results/extreme_torque_witness_20261108"
