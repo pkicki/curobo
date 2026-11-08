@@ -52,8 +52,8 @@ def select(root:Path,*,max_cases:int|None=None)->list[dict]:
     return eligible
 
 
-def plan(root:Path,*,max_cases:int|None=None)->dict:
-    output=root/"native_challenge_plan.json"
+def plan(root:Path,*,max_cases:int|None=None,plan_file:Path|None=None)->dict:
+    output=plan_file or (root/"native_challenge_plan.json")
     selected=select(root,max_cases=max_cases)
     config={"schema_version":1,"cases":selected,
             "search_budget_restarts":[1,4,16,32],
@@ -69,9 +69,10 @@ def plan(root:Path,*,max_cases:int|None=None)->dict:
     return config
 
 
-def run(root:Path,*,max_restarts:int,max_cases:int|None=None):
+def run(root:Path,*,max_restarts:int,max_cases:int|None=None,
+        plan_file:Path|None=None):
     from .torque_full_planner import execute
-    config=plan(root,max_cases=max_cases)
+    config=plan(root,max_cases=max_cases,plan_file=plan_file)
     if max_restarts not in config["search_budget_restarts"]:
         raise ValueError("use only registered nested 1/4/16/32 restart budget")
     outcomes={}
@@ -94,11 +95,14 @@ def main():
     p.add_argument("--root",type=Path,default=OUT)
     p.add_argument("--max-cases",type=int)
     p.add_argument("--restarts",type=int,default=1)
+    p.add_argument("--plan-file",type=Path,
+                   help="Immutable manifest path; use separate files for pilot and full follow-up")
     p.add_argument("--run",action="store_true",
                    help="Actually run full native CUDA planning; default only freezes plan")
     a=p.parse_args()
-    info=run(a.root,max_restarts=a.restarts,max_cases=a.max_cases) if a.run else plan(
-        a.root,max_cases=a.max_cases)
+    info=run(a.root,max_restarts=a.restarts,max_cases=a.max_cases,
+             plan_file=a.plan_file) if a.run else plan(
+        a.root,max_cases=a.max_cases,plan_file=a.plan_file)
     print(json.dumps(info,indent=2))
 
 
