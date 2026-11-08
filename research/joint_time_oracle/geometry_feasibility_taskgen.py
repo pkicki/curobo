@@ -30,6 +30,7 @@ WIDE=ROOT/"research/joint_time_oracle/results/torque_wide_source_20261107"
 def generate(output:Path,*,seed:int=20261108,per_population:int=10,
              max_attempts_per_task:int=2000,
              exclusion_roots:tuple[Path,...]=(OLD,WIDE),
+             case_prefix:str="trap",
              min_travel_rad:float=1.5,
              max_endpoint_nominal_gravity:float=0.35,
              min_interior_nominal_gravity:float=0.38,
@@ -85,7 +86,7 @@ def generate(output:Path,*,seed:int=20261108,per_population:int=10,
                                  "status":"ACCEPTED" if reason is None else "REJECTED",
                                  "reason":reason})
                 if reason is None:
-                    task={"case_id":f"trap_{population}_{k:02d}","cohort":"discovery",
+                    task={"case_id":f"{case_prefix}_{population}_{k:02d}","cohort":"discovery",
                           "population":population,"scene":scene,"robot":"franka.yml",
                           "start":q0.tolist(),"goal":q1.tolist(),
                           "joint_names":[f"panda_joint{i}" for i in range(1,8)],
@@ -117,6 +118,7 @@ def generate(output:Path,*,seed:int=20261108,per_population:int=10,
     (output/"all_endpoint_proposals.json").write_text(json.dumps(attempts,indent=2)+"\n")
     summary={"schema_version":1,"seed":seed,"per_population":per_population,
              "population_admitted":acceptance,"attempts":len(attempts),
+             "case_prefix":case_prefix,
              "historical_roots":[str(Path(r).resolve()) for r in exclusion_roots],
              "historical_task_inventory_hashes":[sha256_file(Path(r)/"tasks.json") for r in exclusion_roots],
              "selection_thresholds":{"min_travel_rad":min_travel_rad,
@@ -136,10 +138,15 @@ def main():
     p.add_argument("--seed",type=int,default=20261108)
     p.add_argument("--per-population",type=int,default=10)
     p.add_argument("--max-attempts-per-task",type=int,default=2000)
+    p.add_argument("--prefix",default="trap")
+    p.add_argument("--exclude-root",type=Path,action="append",default=[],
+                   help="Additional source task inventory to exclude by endpoint distance")
     a=p.parse_args()
     print(json.dumps(generate(a.output,seed=a.seed,
           per_population=a.per_population,
-          max_attempts_per_task=a.max_attempts_per_task),indent=2))
+          max_attempts_per_task=a.max_attempts_per_task,
+          case_prefix=a.prefix,
+          exclusion_roots=(OLD,WIDE,*a.exclude_root)),indent=2))
 
 
 if __name__=="__main__":
