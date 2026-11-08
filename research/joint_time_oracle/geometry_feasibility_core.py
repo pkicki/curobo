@@ -113,6 +113,8 @@ def timed_states(geometry,T:float,*,n:int=1025,extra_u=None)->dict:
     if extra_u is not None:
         u=np.unique(np.r_[u,np.asarray(extra_u,dtype=np.float64)])
     s,su,suu,suuu=smooth_time(u)
+    # Polynomial evaluation can exceed 1 by a last-bit rounding error.
+    s=np.clip(s,0.,1.)
     q,qs,qss,qsss=geometry.evaluate(s)
     qs,qss,qsss=(np.asarray(z,dtype=float) for z in (qs,qss,qsss))
     v=su/T
