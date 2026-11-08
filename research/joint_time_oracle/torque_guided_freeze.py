@@ -40,8 +40,13 @@ def build(root:Path,*,budget:int,seed:int,registry_file:Path|None=None)->dict:
             raise ValueError("development search setting mismatch")
         if r.get("budget")!=budget or r.get("seed")!=seed:
             raise ValueError("development result setting mismatch")
+        receiptfile=root/arm/"w_adaptive_receipts.json"
+        receipts=json.loads(receiptfile.read_text()) if receiptfile.exists() else {}
+        if r.get("candidate_witness_prescreen") and (DEV+":W") not in receipts:
+            raise ValueError("development witness must be independently audited before freeze")
         cases[arm]={"development_result_sha256":sha256_file(result),
-                    "experiment_config_sha256":sha256_file(cfg)}
+                    "experiment_config_sha256":sha256_file(cfg),
+                    "development_independent_receipt":receipts.get(DEV+":W")}
     return {"schema_version":1,"development_case":DEV,
             "holdout_case_ids":["confirm_geom_table_07","confirm_geom_cluttered_02"],
             "budget":budget,"seed":seed,"implementations":implementations,
