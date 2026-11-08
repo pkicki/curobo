@@ -576,3 +576,33 @@ reports/joint_time_oracle/torque_lp_guided_rescue/index.html is explicitly
 NOT EXECUTED and makes no claims about new algorithm performance.
 Historical raw trajectory NPZ files remain local and unchanged.
 No PR, no merge to main, no production default changes.
+
+
+## Torque LP-guided geometric rescue and native pre-TimeOpt tracing (2026-11-08)
+
+See [TORQUE_GUIDED_RESCUE_PROTOCOL.md](TORQUE_GUIDED_RESCUE_PROTOCOL.md).
+This follows the three independently qualified synthetic torque-feasibility
+counterexamples at commit 591e76a. It introduces three controlled offline
+geometric searches: LP-dual sensitivity directions versus random local and
+global perturbations. All share the same nominal cubic-to-quintic starting
+path, geometric representation, feasibility screens and constructive timing.
+Every screened candidate needs independent dense+adaptive physical and
+Scaled95 qualification. Report both candidate counts and CPU wall time
+(including the potentially costly RNEA gradient).
+
+Only trap_cluttered_08 is the algorithm-development case. The two
+confirm_geom source-disjoint examples require a frozen post-development
+method manifest before being evaluated. The comparison remains a small
+case study, not a population-level performance estimate.
+
+An opt-in, research-only pre-TimeOpt native solver probe snapshots all
+geometric seeds and exact native spline controls (when available),
+including failed restarts. Independent Pinocchio post-mortem audits can
+distinguish observed LP/collision failures from unknown native stages,
+but unavailable geometry does not prove a cause. The probe adds GPU–CPU
+synchronizations and invalidates native latency measurement.
+
+Research report: reports/joint_time_oracle/torque_lp_guided_rescue/index.html.
+**Status: NOT EXECUTED.** Code and protocol were committed without a
+new CPU/GPU experiment or qualified numerical result. Historical
+experiments, production defaults and main remain unchanged.
