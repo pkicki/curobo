@@ -539,3 +539,40 @@ geometry_feasibility_manifest.py.
 tests, numerical audits, GPU planning and source-disjoint confirmation must
 be performed by the coding agent. No production defaults changed; previous
 results and reports remain frozen.
+
+
+## Torque LP-dual guided geometric rescue (2026-11-08)
+
+See [TORQUE_LP_GUIDED_RESCUE_PROTOCOL.md](TORQUE_LP_GUIDED_RESCUE_PROTOCOL.md).
+This research-only follow-up starts from the three frozen synthetic-actuator
+torque geometry counterexamples, not from new measured benchmark results.
+
+- torque_dual_guidance.py computes a checked local pointwise torque LP and
+  estimates the gradient of its optimal relaxation with respect to geometric
+  spline controls via dual multipliers and independent RNEA differences.
+- torque_guided_rescue.py evaluates identical-init 22-control quintic search
+  with LP-dual guidance, local-random and global-random baselines at the same
+  16/32/64/128 proposal budgets, saving full cost/error/provenance logs. A
+  pre-screened W is not success until an independent physical+Scaled95
+  sampled/adaptive receipt is issued.
+- torque_native_stage_trace.py wraps the native pre-TimeOpt finalization
+  stage on a REPLAY of frozen failed restarts, capturing any retained
+  geometric interpolation inputs and TimeOpt cubic paths without changing
+  the existing frozen native-failure evidence. The independent CPU
+  torque_native_stage_audit.py then checks captured path LP obstructions,
+  collision/limits and geometry diversity.
+- torque_kinematic_hull.py provides conservative sufficient whole-domain
+  spline hull bounds on position, velocity, acceleration and jerk. Torque
+  and collision remain sampled, not continuously certified.
+- torque_guided_figures.py and torque_guided_report.py produce evidence
+  figures and an explicitly receipt-gated comparison.
+- A frozen external source registry can be supplied for genuinely new
+  confirmatory tasks, separated from the three already-known development
+  examples.
+
+**Status: implementation committed, new numerical/GPU experiments NOT RUN
+by the assistant.** The report at
+reports/joint_time_oracle/torque_lp_guided_rescue/index.html is explicitly
+NOT EXECUTED and makes no claims about new algorithm performance.
+Historical raw trajectory NPZ files remain local and unchanged.
+No PR, no merge to main, no production default changes.
