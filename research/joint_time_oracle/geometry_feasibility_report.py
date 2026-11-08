@@ -19,7 +19,6 @@ from pathlib import Path
 
 from .geometry_feasibility_core import scenarios
 from .geometry_feasibility_discover import OUT, SOURCE
-from .torque_active import read_profile
 
 ROOT=Path(__file__).resolve().parents[2]
 REPORT=ROOT/"reports/joint_time_oracle/geometry_feasibility"
