@@ -515,3 +515,27 @@ certificate. Raw evidence is approximately 930 MB at
 `research/joint_time_oracle/results/extreme_torque_witness_20261108/`; its
 checksum inventory and the generated report are at
 `reports/joint_time_oracle/extreme_torque/`.
+
+## Geometry-dependent torque infeasibility (2026-11-08)
+
+See [GEOMETRY_TORQUE_INFEASIBILITY_PROTOCOL.md](GEOMETRY_TORQUE_INFEASIBILITY_PROTOCOL.md).
+This experiment is distinct from the negative uniform-derating campaign.
+It investigates original-native-cubic paths with a robustly positive
+necessary torque-feasibility LP obstruction, versus geometrically different,
+constructively timed quintic paths qualified by independent Pinocchio and
+world/self collision checks. Joint-selective synthetic actuator constraints
+are frozen before adversarial discovery. Newly generated source-disjoint tasks
+use low-gravity endpoints and a higher-interior-demand screening heuristic.
+
+The full cuRobo geometric planner is challenged separately after witness and
+LP qualification. It may succeed by discovering a different geometry even
+when the original fixed curve is impossible under any timing. Native
+finite-budget failure and fixed-geometry infeasibility have different labels.
+Fresh confirmatory tasks use prospectively frozen actuator scenarios, not
+per-case tuned profiles. Local trajectory NPZ hashes are recorded using
+geometry_feasibility_manifest.py.
+
+**Status: NOT EXECUTED by assistant.** Code and protocol are committed;
+tests, numerical audits, GPU planning and source-disjoint confirmation must
+be performed by the coding agent. No production defaults changed; previous
+results and reports remain frozen.
