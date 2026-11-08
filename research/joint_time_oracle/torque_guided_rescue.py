@@ -284,16 +284,45 @@ def search(task:dict,profile:dict,native:NativeGeometry,*,arm:str,
     return {"controls":archive,"report":result},candidate_witness
 
 
-def frozen_research_sources()->dict:
+
+
+def resolve_registry(registry_file:Path|None=None)->dict:
+    """Frozen registry for development or future source-disjoint confirmation."""
+    if registry_file is None:
+        return {case:{"source_root":ROOT/"research/joint_time_oracle/results"/source,
+                      "discovery_root":ROOT/"research/joint_time_oracle/results"/discovery,
+                      "scenario_id":SCENARIO}
+                for case,(source,discovery) in ROOTS.items()}
+    registry_file=Path(registry_file)
+    contents=json.loads(registry_file.read_text())
+    if contents.get("schema_version")!=1 or not isinstance(contents.get("cases"),list):
+        raise ValueError("invalid frozen rescue source registry")
+    def root_path(name):
+        p=Path(name)
+        return p if p.is_absolute() else ROOT/p
+    entries={}
+    for row in contents["cases"]:
+        case=row["case_id"]
+        if case in entries or not case or "/" in case or "\\" in case:
+            raise ValueError("invalid or duplicate task registry ID")
+        entries[case]={"source_root":root_path(row["source_root"]),
+                       "discovery_root":root_path(row["discovery_root"]),
+                       "scenario_id":row["scenario_id"]}
+    if not entries:
+        raise ValueError("empty source registry")
+    return entries
+
+
+def frozen_research_sources(registry:dict)->dict:
     """Bind the original geometry, torque profile, W oracle and failed-native
     receipts to the experiment BEFORE doing any controlled rescue search.
     Source W is allowed only for case admission, never as search initialization.
     """
     inventory={}
-    for case,(source_name,discovery_name) in ROOTS.items():
-        source=ROOT/"research/joint_time_oracle/results"/source_name
-        experiment=ROOT/"research/joint_time_oracle/results"/discovery_name
-        arm=experiment/SCENARIO
+    for case,details in registry.items():
+        source=details["source_root"]
+        experiment=details["discovery_root"]
+        arm=experiment/details["scenario_id"]
         frozen=arm/"native_full"/case/"native_candidates.json"
         if not frozen.exists():
             raise FileNotFoundError("missing frozen native control for "+case)
@@ -319,16 +348,22 @@ def frozen_research_sources()->dict:
 
 
 def run(root:Path,*,arm_name:str,budget:int,selected:list[str]|None=None,
-        seed:int=20261108)->dict:
+        seed:int=20261108,registry_file:Path|None=None)->dict:
     if arm_name not in ARMS:
         raise ValueError("unknown controlled search arm")
     if budget not in BUDGETS:
         raise ValueError("unregistered budget")
+    registry=resolve_registry(registry_file)
     output=root/arm_name
     output.mkdir(parents=True,exist_ok=True)
     config={"schema_version":1,"arm":arm_name,"budget":budget,
-            "seed":seed,"scenario":SCENARIO,"three_case_registry":ROOTS,
-            "immutable_source_hashes":frozen_research_sources(),
+            "seed":seed,"source_registry":{
+                case:{"source_root":str(info["source_root"]),
+                      "discovery_root":str(info["discovery_root"]),
+                      "scenario_id":info["scenario_id"]}
+                for case,info in registry.items()},
+            "source_registry_sha256":sha256_file(registry_file) if registry_file is not None else None,
+            "immutable_source_hashes":frozen_research_sources(registry),
             "count_quintic_controls":22,"lp_grid":33,"beam_size":4,
             "step_radii_rad":list(RADII),
             "initialization":"same nominal original-path quintic least-squares fit in every arm",
@@ -340,21 +375,21 @@ def run(root:Path,*,arm_name:str,budget:int,selected:list[str]|None=None,
     cfg.write_text(json.dumps(config,indent=2)+"\n")
     status={}
     tasks=[]
-    for case,(source_name,discovery_name) in ROOTS.items():
+    for case,info in registry.items():
         if selected is not None and case not in selected:
             continue
-        source=ROOT/"research/joint_time_oracle/results"/source_name
-        discovery=ROOT/"research/joint_time_oracle/results"/discovery_name
+        source=info["source_root"]
+        discovery=info["discovery_root"]
         source_tasks_list,records=source_tasks(source)
         task=next((t for t in source_tasks_list if t["case_id"]==case),None)
         if task is None:
             raise ValueError("missing frozen task: "+case)
         folder=output/case
         folder.mkdir(exist_ok=True)
-        source_profile=discovery/SCENARIO/case/"torque_profile.json"
+        source_profile=discovery/info["scenario_id"]/case/"torque_profile.json"
         profile=read_profile(source_profile)
-        ref_receipts=json.loads((discovery/SCENARIO/"w_adaptive_receipts.json").read_text())
-        ref_lp=json.loads((discovery/SCENARIO/"refined_lp_summary.json").read_text())
+        ref_receipts=json.loads((discovery/info["scenario_id"]/"w_adaptive_receipts.json").read_text())
+        ref_lp=json.loads((discovery/info["scenario_id"]/"refined_lp_summary.json").read_text())
         if (ref_receipts.get(case+":W",{}).get("scaled95") is not True or
             ref_lp.get(case,{}).get("status")!="NUMERICALLY_STRONG_ORIGINAL_PATH_INFEASIBILITY"):
             raise ValueError("registered source case is not independently qualified")
@@ -429,9 +464,11 @@ def main():
     p.add_argument("--budget",type=int,default=128,choices=BUDGETS)
     p.add_argument("--case",action="append")
     p.add_argument("--seed",type=int,default=20261108)
+    p.add_argument("--registry",type=Path,
+                   help="Frozen source-disjoint registry JSON; omission selects 3 known pilot tasks")
     a=p.parse_args()
     result=run(a.root,arm_name=a.arm,budget=a.budget,
-               selected=a.case,seed=a.seed)
+               selected=a.case,seed=a.seed,registry_file=a.registry)
     print(json.dumps({"tasks":len(result),
                       "witness_prescreens":sum(x["candidate_witness_prescreen"]
                                                for x in result.values())},indent=2))
