@@ -54,8 +54,15 @@ def issue(arm:Path)->dict:
             bfile=folder/"w_dense.npz";afile=folder/"w_adaptive_dense.npz"
             result["base_sha256"]=sha256_file(bfile)
             result["adaptive_sha256"]=sha256_file(afile)
-            if discovery["candidate_attempts"][-1].get("witness_sha256")!=result["base_sha256"]:
+            winning=discovery["candidate_attempts"][-1]
+            if winning.get("witness_sha256")!=result["base_sha256"]:
                 reasons.append("source witness SHA changed")
+            geomfile=folder/"w_geometry.json"
+            result["witness_geometry_sha256"]=sha256_file(geomfile)
+            if winning.get("witness_geometry_sha256")!=result["witness_geometry_sha256"]:
+                reasons.append("quintic controls SHA changed after candidate selection")
+            if winning.get("arc_length_aligned_geometry_deviation_rad",0.)<0.10:
+                reasons.append("selected alternative path not geometrically distinct")
             replay_file=folder/"w_adaptive_replay.json"
             replay=json.loads(replay_file.read_text()) if replay_file.exists() else {}
             if replay.get("status")!="REPLAYED":
