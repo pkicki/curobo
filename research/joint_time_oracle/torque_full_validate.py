@@ -47,7 +47,7 @@ def prepare(arm:Path) -> tuple[Path,list[str]]:
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root",type=Path,default=STRESS)
-    parser.add_argument("--regime",required=True,choices=("moderate","severe"))
+    parser.add_argument("--regime",required=True,)
     parser.add_argument("--adaptive",action="store_true",help="audit Fxxx_adaptive_dense.npz")
     args=parser.parse_args()
     arm=args.root/args.regime
