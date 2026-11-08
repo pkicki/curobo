@@ -95,11 +95,34 @@ class NativePreTimeOptProbe:
                 record["finalizer_returned"]=True
                 if getattr(out,"success",None) is not None:
                     record["result_success"]=tensor_cpu(out.success).reshape(-1).tolist()
-                validator=getattr(getattr(solver,"_timeopt",None),"validation_masks",None)
+                stage=getattr(solver,"_timeopt",None)
+                validator=getattr(stage,"validation_masks",None)
                 if isinstance(validator,dict):
                     record["timeopt_validation_masks"]={
                         key:tensor_cpu(value).reshape(-1).tolist()
                         for key,value in validator.items()}
+                # Preserve EXACT native cubic geometry even when the
+                # TimeOpt solution mask is all false. Never mark these
+                # candidate curves as feasible on capture alone.
+                optimizer=getattr(stage,"optimizer",None)
+                if optimizer is not None:
+                    pathbuf={}
+                    for key,attr in (("controls","_controls"),
+                                     ("start_boundary","_start_boundary"),
+                                     ("goal","_goal"),
+                                     ("stationary","_stationary"),
+                                     ("success","_success")):
+                        value=getattr(optimizer,attr,None)
+                        if value is not None:
+                            pathbuf[key]=tensor_cpu(value)
+                    if all(key in pathbuf for key in
+                           ("controls","start_boundary","goal")):
+                        path=probe.folder/(tag+"_native_geometry.npz")
+                        np.savez_compressed(path,**pathbuf)
+                        record["native_cubic_geometry_sha256"]=sha(path)
+                        record["native_cubic_geometry_file"]=str(path)
+                        record["native_geometry_lane_count"]=int(
+                            pathbuf["controls"].shape[0])
                 return out
             except Exception as exc:
                 record["finalizer_returned"]=False
