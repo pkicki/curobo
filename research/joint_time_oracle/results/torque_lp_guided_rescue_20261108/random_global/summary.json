@@ -1,0 +1,3988 @@
+{
+  "confirm_geom_table_07": {
+    "case_id": "confirm_geom_table_07",
+    "arm": "random_global",
+    "seed": 20261108,
+    "budget": 128,
+    "proposals_evaluated": 37,
+    "evaluation_count": 38,
+    "solver_wall_s_including_gradient_and_screen": 1.9489114740281366,
+    "rnea_calls": 3762,
+    "screening_and_timing_rnea_calls": 10185,
+    "total_counted_rnea_calls": 13947,
+    "base_fit": {
+      "maximum_same_progress_fit_deviation_rad": 0.0008455647846458585,
+      "squared_residual": 5.1116253067859986e-05,
+      "count": 22,
+      "fit_note": "approximate original path for SHARED search initialization; original LP obstruction remains on EXACT native cubic"
+    },
+    "initial_path_lp_expansion": 0.21538157387855067,
+    "initial_path_clearance": {
+      "position_violation_rad": 0.0,
+      "world_clearance_m": 0.0013562933067102628,
+      "self_clearance_m": 0.08200573610499923,
+      "sampled_acceptable": false,
+      "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+    },
+    "initial_path_gravity_utilization": 1.4179198932674357,
+    "candidate_witness_prescreen": true,
+    "first_witness_proposal": 37,
+    "selected_score": 0.0,
+    "selected_deviation_rad": 0.9250004777165165,
+    "witness_duration_s": 20.0,
+    "best_score": 0.0,
+    "rnea_count_scope": "rnea_calls counts pointwise LP/gradient; screening_and_timing_rnea_calls counts gravity/candidate checks and constructive timing; total is their sum",
+    "ledger": [
+      {
+        "proposal": 0,
+        "status": "UNQUALIFIED",
+        "score": 3.0959845436209874,
+        "lp_expansion": 0.21538157387855067,
+        "gravity_peak": 1.4179198932674357,
+        "deviation_rad": 8.916392698534035e-05,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.0013562933067102628,
+          "self_clearance_m": 0.08200573610499923,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 0.058773402008228004,
+        "rnea_calls": 99
+      },
+      {
+        "proposal": 1,
+        "parent_score": 3.0959845436209874,
+        "status": "UNQUALIFIED",
+        "score": 3.2053354241513974,
+        "lp_expansion": 0.21392684920631444,
+        "gravity_peak": 1.4489675426519968,
+        "deviation_rad": 0.18303284626087166,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.0008628344674039626,
+          "self_clearance_m": 0.0819478723320223,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 0.11494967201724648,
+        "rnea_calls": 198,
+        "bottleneck_s": 0.5631094152046783,
+        "dual_lp_expansion": 0.1962536884576565,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 2,
+        "parent_score": 3.2053354241513974,
+        "status": "UNQUALIFIED",
+        "score": 4.817649160023961,
+        "lp_expansion": 0.27298904581385386,
+        "gravity_peak": 1.5778404271507542,
+        "deviation_rad": 0.32130570929381,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.03721831913825344,
+          "self_clearance_m": 0.08200098410760098,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 0.17118744901381433,
+        "rnea_calls": 297,
+        "bottleneck_s": 0.5631094152046783,
+        "dual_lp_expansion": 0.10811985956945898,
+        "method": "random_global",
+        "radius": 0.5,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 3,
+        "parent_score": 4.817649160023961,
+        "status": "UNQUALIFIED",
+        "score": 3.7468586043223118,
+        "lp_expansion": 0.12037469109751181,
+        "gravity_peak": 1.5064525644815525,
+        "deviation_rad": 0.6860381323847633,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.014768843632681501,
+          "self_clearance_m": 0.08200573610499923,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 0.22765269502997398,
+        "rnea_calls": 396,
+        "bottleneck_s": 0.5168965517241378,
+        "dual_lp_expansion": 0.27298904581385386,
+        "method": "random_global",
+        "radius": 0.8,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 4,
+        "parent_score": 4.817649160023961,
+        "status": "UNQUALIFIED",
+        "score": 4.379263399273963,
+        "lp_expansion": 0.3291075441536683,
+        "gravity_peak": 1.5530677250867897,
+        "deviation_rad": 0.3630243076184893,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.02239268918745383,
+          "self_clearance_m": 0.08200573610499923,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 0.28391018899856135,
+        "rnea_calls": 495,
+        "bottleneck_s": 0.5506896551724138,
+        "dual_lp_expansion": 0.1955029618278177,
+        "method": "random_global",
+        "radius": 0.16,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 5,
+        "parent_score": 3.0959845436209874,
+        "status": "UNQUALIFIED",
+        "score": 3.6339810805586654,
+        "lp_expansion": 0.2646067559062761,
+        "gravity_peak": 1.4686480153509673,
+        "deviation_rad": 0.17967314218179056,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.012045369915902111,
+          "self_clearance_m": 0.08196698779929637,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 0.3404122850042768,
+        "rnea_calls": 594,
+        "bottleneck_s": 0.5506896551724138,
+        "dual_lp_expansion": 0.16711411917266705,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 6,
+        "parent_score": 3.2053354241513974,
+        "status": "UNQUALIFIED",
+        "score": 2.1531042123369124,
+        "lp_expansion": 0.18326382758468437,
+        "gravity_peak": 1.2739680769504456,
+        "deviation_rad": 0.4371532381079747,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.026216083969113103,
+          "self_clearance_m": 0.08200323953388172,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 0.3966525670257397,
+        "rnea_calls": 693,
+        "bottleneck_s": 0.5168965517241378,
+        "dual_lp_expansion": 0.21392684920631444,
+        "method": "random_global",
+        "radius": 0.5,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 7,
+        "parent_score": 3.2053354241513974,
+        "status": "UNQUALIFIED",
+        "score": 0.70649878482903,
+        "lp_expansion": 0.0,
+        "gravity_peak": 1.021299756965806,
+        "deviation_rad": 0.6065822139430742,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.04263485942676443,
+          "self_clearance_m": 0.08186189051722609,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 0.45279038505395874,
+        "rnea_calls": 792,
+        "bottleneck_s": 0.5506896551724138,
+        "dual_lp_expansion": 0.16932309999970174,
+        "method": "random_global",
+        "radius": 0.8,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 8,
+        "parent_score": 3.2053354241513974,
+        "status": "UNQUALIFIED",
+        "score": 3.9143703122357345,
+        "lp_expansion": 0.33460777386943125,
+        "gravity_peak": 1.4952884207778874,
+        "deviation_rad": 0.2287394768295259,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.01513281737907466,
+          "self_clearance_m": 0.0819123489580553,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 0.5090741190360859,
+        "rnea_calls": 891,
+        "bottleneck_s": 0.5631094152046783,
+        "dual_lp_expansion": 0.10811985956945898,
+        "method": "random_global",
+        "radius": 0.16,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 9,
+        "parent_score": 0.70649878482903,
+        "status": "UNQUALIFIED",
+        "score": 1.0093141134969623,
+        "lp_expansion": 0.0,
+        "gravity_peak": 1.0818628226993925,
+        "deviation_rad": 0.653375560604955,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.0437631481962911,
+          "self_clearance_m": 0.08196989823417733,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 0.565418487007264,
+        "rnea_calls": 990,
+        "bottleneck_s": 0.01,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 10,
+        "parent_score": 1.0093141134969623,
+        "status": "UNQUALIFIED",
+        "score": 1.330496147973443,
+        "lp_expansion": 0.0,
+        "gravity_peak": 1.1460992295946886,
+        "deviation_rad": 0.6573667775398662,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.043335914023196136,
+          "self_clearance_m": 0.08200573610499923,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 0.6215817830525339,
+        "rnea_calls": 1089,
+        "bottleneck_s": 0.04379310344827586,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.5,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 11,
+        "parent_score": 1.330496147973443,
+        "status": "UNQUALIFIED",
+        "score": 3.1756741690803585,
+        "lp_expansion": 0.0,
+        "gravity_peak": 1.3324050397344152,
+        "deviation_rad": 0.8805550884581401,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.03154595881633131,
+          "self_clearance_m": 0.07330331053228341,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 0.6779480210389011,
+        "rnea_calls": 1188,
+        "bottleneck_s": 0.07758620689655171,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.8,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 12,
+        "parent_score": 2.1531042123369124,
+        "status": "UNQUALIFIED",
+        "score": 2.2861331581722673,
+        "lp_expansion": 0.16840272746452617,
+        "gravity_peak": 1.3035460861415482,
+        "deviation_rad": 0.4308449402621624,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.01561730110106449,
+          "self_clearance_m": 0.0819739897003198,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 0.7342540370300412,
+        "rnea_calls": 1287,
+        "bottleneck_s": 0.4493103448275862,
+        "dual_lp_expansion": 0.18326382758468437,
+        "method": "random_global",
+        "radius": 0.16,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 13,
+        "parent_score": 0.70649878482903,
+        "status": "UNQUALIFIED",
+        "score": 0.6052603876611334,
+        "lp_expansion": 0.0,
+        "gravity_peak": 1.0010520775322267,
+        "deviation_rad": 0.6900999912127435,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.03784095402269836,
+          "self_clearance_m": 0.08175887655558187,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 0.7901214850135148,
+        "rnea_calls": 1386,
+        "bottleneck_s": 0.04379310344827586,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 14,
+        "parent_score": 0.70649878482903,
+        "status": "UNQUALIFIED",
+        "score": 1.7889253124349753,
+        "lp_expansion": 0.0,
+        "gravity_peak": 1.2134042998552665,
+        "deviation_rad": 0.7041461979176031,
+        "clearance": {
+          "position_violation_rad": 0.006095190657932126,
+          "world_clearance_m": null,
+          "self_clearance_m": null,
+          "sampled_acceptable": false
+        },
+        "wall_s": 0.8233104520477355,
+        "rnea_calls": 1485,
+        "bottleneck_s": 0.07758620689655171,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.5,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 15,
+        "parent_score": 1.0093141134969623,
+        "status": "UNQUALIFIED",
+        "score": 1.5429434851348218,
+        "lp_expansion": 0.0,
+        "gravity_peak": 1.1885886970269643,
+        "deviation_rad": 0.769967294630514,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.005133314544873459,
+          "self_clearance_m": 0.08199789014579234,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 0.880128073040396,
+        "rnea_calls": 1584,
+        "bottleneck_s": 0.01,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.8,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 16,
+        "parent_score": 1.330496147973443,
+        "status": "UNQUALIFIED",
+        "score": 1.2470668608404551,
+        "lp_expansion": 0.0,
+        "gravity_peak": 1.129413372168091,
+        "deviation_rad": 0.6688009768416213,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.04509328233221719,
+          "self_clearance_m": 0.08200573610499923,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 0.9364335080026649,
+        "rnea_calls": 1683,
+        "bottleneck_s": 0.04379310344827586,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.16,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 17,
+        "parent_score": 0.6052603876611334,
+        "status": "UNQUALIFIED",
+        "score": 2.5691437438888993,
+        "lp_expansion": 0.0,
+        "gravity_peak": 1.1024796319068617,
+        "deviation_rad": 0.7147913064033788,
+        "clearance": {
+          "position_violation_rad": 0.07283727921772955,
+          "world_clearance_m": null,
+          "self_clearance_m": null,
+          "sampled_acceptable": false
+        },
+        "wall_s": 0.9696730900323018,
+        "rnea_calls": 1782,
+        "bottleneck_s": 0.07758620689655171,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 18,
+        "parent_score": 0.70649878482903,
+        "status": "UNQUALIFIED",
+        "score": 0.7296055269294527,
+        "lp_expansion": 0.0,
+        "gravity_peak": 1.0259211053858905,
+        "deviation_rad": 0.6674880589147804,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.05874737998059861,
+          "self_clearance_m": 0.08200573610499923,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 1.02576686500106,
+        "rnea_calls": 1881,
+        "bottleneck_s": 0.01,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.5,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 19,
+        "parent_score": 0.7296055269294527,
+        "status": "UNQUALIFIED",
+        "score": 1.88168713511023,
+        "lp_expansion": 0.0,
+        "gravity_peak": 1.256337427022046,
+        "deviation_rad": 0.7517086721379352,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.08000000000000002,
+          "self_clearance_m": 0.08200573610499923,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 1.0819477250333875,
+        "rnea_calls": 1980,
+        "bottleneck_s": 0.04379310344827586,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.8,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 20,
+        "parent_score": 1.0093141134969623,
+        "status": "UNQUALIFIED",
+        "score": 1.3371186677422102,
+        "lp_expansion": 0.0,
+        "gravity_peak": 1.147423733548442,
+        "deviation_rad": 0.6548394044568477,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.02287096888656432,
+          "self_clearance_m": 0.08199152285204944,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 1.137973471020814,
+        "rnea_calls": 2079,
+        "bottleneck_s": 0.07758620689655171,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.16,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 21,
+        "parent_score": 0.6052603876611334,
+        "status": "UNQUALIFIED",
+        "score": 1.118180232799873,
+        "lp_expansion": 0.0,
+        "gravity_peak": 1.0563492043238925,
+        "deviation_rad": 0.7542777832384308,
+        "clearance": {
+          "position_violation_rad": 0.011821710559020544,
+          "world_clearance_m": null,
+          "self_clearance_m": null,
+          "sampled_acceptable": false
+        },
+        "wall_s": 1.1711356580490246,
+        "rnea_calls": 2178,
+        "bottleneck_s": 0.01,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 22,
+        "parent_score": 0.70649878482903,
+        "status": "UNQUALIFIED",
+        "score": 0.885434979515381,
+        "lp_expansion": 0.0,
+        "gravity_peak": 1.0570869959030762,
+        "deviation_rad": 0.8150805454978536,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.028063206904441675,
+          "self_clearance_m": 0.08185822862016587,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 1.227310826012399,
+        "rnea_calls": 2277,
+        "bottleneck_s": 0.04379310344827586,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.5,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 23,
+        "parent_score": 0.7296055269294527,
+        "status": "UNQUALIFIED",
+        "score": 0.3526053992729253,
+        "lp_expansion": 0.0,
+        "gravity_peak": 0.9433305263548554,
+        "deviation_rad": 0.7408577340327901,
+        "clearance": {
+          "position_violation_rad": 0.0017976383749324226,
+          "world_clearance_m": null,
+          "self_clearance_m": null,
+          "sampled_acceptable": false
+        },
+        "wall_s": 1.2605322860181332,
+        "rnea_calls": 2376,
+        "bottleneck_s": 0.07758620689655171,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.8,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 24,
+        "parent_score": 0.7296055269294527,
+        "status": "UNQUALIFIED",
+        "score": 0.7625013397220487,
+        "lp_expansion": 0.0,
+        "gravity_peak": 1.0325002679444097,
+        "deviation_rad": 0.7097296557759087,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.054049955084388986,
+          "self_clearance_m": 0.08200573610499923,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 1.3165424430044368,
+        "rnea_calls": 2475,
+        "bottleneck_s": 0.01,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.16,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 25,
+        "parent_score": 0.3526053992729253,
+        "status": "UNQUALIFIED",
+        "score": 1.4029521503267883,
+        "lp_expansion": 0.0,
+        "gravity_peak": 0.922228934132058,
+        "deviation_rad": 0.853360411826906,
+        "clearance": {
+          "position_violation_rad": 0.05959037398332493,
+          "world_clearance_m": null,
+          "self_clearance_m": null,
+          "sampled_acceptable": false
+        },
+        "wall_s": 1.3498646610532887,
+        "rnea_calls": 2574,
+        "bottleneck_s": 0.04379310344827586,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 26,
+        "parent_score": 0.6052603876611334,
+        "status": "UNQUALIFIED",
+        "score": 2.095908434947862,
+        "lp_expansion": 0.0,
+        "gravity_peak": 1.075377630845441,
+        "deviation_rad": 0.7349946073609314,
+        "clearance": {
+          "position_violation_rad": 0.055951014036032844,
+          "world_clearance_m": null,
+          "self_clearance_m": null,
+          "sampled_acceptable": false
+        },
+        "wall_s": 1.38312944205245,
+        "rnea_calls": 2673,
+        "bottleneck_s": 0.07758620689655171,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.5,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 27,
+        "parent_score": 0.70649878482903,
+        "status": "UNQUALIFIED",
+        "score": 1.3790008194756513,
+        "lp_expansion": 0.0,
+        "gravity_peak": 1.1558001638951303,
+        "deviation_rad": 0.7175876958589057,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.005391797907681219,
+          "self_clearance_m": 0.0818108207361957,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 1.4392095300136134,
+        "rnea_calls": 2772,
+        "bottleneck_s": 0.01,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.8,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 28,
+        "parent_score": 0.7296055269294527,
+        "status": "UNQUALIFIED",
+        "score": 0.8589005875064254,
+        "lp_expansion": 0.0,
+        "gravity_peak": 1.051780117501285,
+        "deviation_rad": 0.6705127690070741,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.05837503049360785,
+          "self_clearance_m": 0.08200573610499923,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 1.4950956530519761,
+        "rnea_calls": 2871,
+        "bottleneck_s": 0.04379310344827586,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.16,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 29,
+        "parent_score": 0.3526053992729253,
+        "status": "UNQUALIFIED",
+        "score": 0.5126232427223182,
+        "lp_expansion": 0.0,
+        "gravity_peak": 0.9825246485444636,
+        "deviation_rad": 0.7722056119938489,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.04872462426500091,
+          "self_clearance_m": 0.08176840295929377,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 1.5511551730451174,
+        "rnea_calls": 2970,
+        "bottleneck_s": 0.07758620689655171,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 30,
+        "parent_score": 0.5126232427223182,
+        "status": "SCREEN_PASS",
+        "score": 0.0,
+        "lp_expansion": 0.0,
+        "gravity_peak": 0.8148146118297779,
+        "deviation_rad": 0.9204425885518185,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.016556157311604036,
+          "self_clearance_m": 0.0819009816461781,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 1.6112499100272544,
+        "rnea_calls": 3069,
+        "bottleneck_s": 0.01,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.5,
+        "direction_source": "RANDOM_GLOBAL",
+        "constructive_timing": [
+          {
+            "duration_s": 0.3,
+            "max_scaled95_utilization": {
+              "torque": 876.2581412012506,
+              "velocity": 37.273215412376935,
+              "acceleration": 856.5372026658191,
+              "jerk": 5994.769701621017
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 0.5,
+            "max_scaled95_utilization": {
+              "torque": 315.971194652901,
+              "velocity": 22.36392924742616,
+              "acceleration": 308.3533929596949,
+              "jerk": 1294.8702555501395
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 0.75,
+            "max_scaled95_utilization": {
+              "torque": 140.8815238565417,
+              "velocity": 14.909286164950773,
+              "acceleration": 137.04595242653104,
+              "jerk": 383.66526090374504
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 1.0,
+            "max_scaled95_utilization": {
+              "torque": 79.60013907781594,
+              "velocity": 11.18196462371308,
+              "acceleration": 77.08834823992372,
+              "jerk": 161.85878194376744
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 1.5,
+            "max_scaled95_utilization": {
+              "torque": 35.82772137872612,
+              "velocity": 7.454643082475386,
+              "acceleration": 34.26148810663276,
+              "jerk": 47.95815761296813
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 2.0,
+            "max_scaled95_utilization": {
+              "torque": 20.507375184044683,
+              "velocity": 5.59098231185654,
+              "acceleration": 19.27208705998093,
+              "jerk": 20.23234774297093
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 3.0,
+            "max_scaled95_utilization": {
+              "torque": 9.564270759272226,
+              "velocity": 3.727321541237693,
+              "acceleration": 8.56537202665819,
+              "jerk": 5.994769701621016
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 4.0,
+            "max_scaled95_utilization": {
+              "torque": 5.734184210601868,
+              "velocity": 2.79549115592827,
+              "acceleration": 4.818021764995232,
+              "jerk": 2.5290434678713662
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 6.0,
+            "max_scaled95_utilization": {
+              "torque": 2.9984081044087545,
+              "velocity": 1.8636607706188466,
+              "acceleration": 2.1413430066645476,
+              "jerk": 0.749346212702627
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 8.0,
+            "max_scaled95_utilization": {
+              "torque": 2.040886467241165,
+              "velocity": 1.397745577964135,
+              "acceleration": 1.204505441248808,
+              "jerk": 0.3161304334839208
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 12.0,
+            "max_scaled95_utilization": {
+              "torque": 1.3569424406928863,
+              "velocity": 0.9318303853094233,
+              "acceleration": 0.5353357516661369,
+              "jerk": 0.09366827658782838
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 20.0,
+            "max_scaled95_utilization": {
+              "torque": 1.006763099100168,
+              "velocity": 0.559098231185654,
+              "acceleration": 0.19272087059980927,
+              "jerk": 0.02023234774297093
+            },
+            "screen_pass": false
+          }
+        ]
+      },
+      {
+        "proposal": 31,
+        "parent_score": 0.5126232427223182,
+        "status": "UNQUALIFIED",
+        "score": 3.2928663615953626,
+        "lp_expansion": 0.0,
+        "gravity_peak": 1.1328693265202077,
+        "deviation_rad": 1.0552017030099259,
+        "clearance": {
+          "position_violation_rad": 0.1014259864497162,
+          "world_clearance_m": null,
+          "self_clearance_m": null,
+          "sampled_acceptable": false
+        },
+        "wall_s": 1.6445913950446993,
+        "rnea_calls": 3168,
+        "bottleneck_s": 0.04379310344827586,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.8,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 32,
+        "parent_score": 0.6052603876611334,
+        "status": "UNQUALIFIED",
+        "score": 0.42922694727300703,
+        "lp_expansion": 0.0,
+        "gravity_peak": 0.9658453894546014,
+        "deviation_rad": 0.7139886153487989,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.03795815940468022,
+          "self_clearance_m": 0.08176607798617352,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 1.7005748620140366,
+        "rnea_calls": 3267,
+        "bottleneck_s": 0.07758620689655171,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.16,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 33,
+        "parent_score": 0.0,
+        "status": "SCREEN_PASS",
+        "score": 0.0,
+        "lp_expansion": 0.0,
+        "gravity_peak": 0.8603706210741429,
+        "deviation_rad": 0.9108011027880005,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.0396454120371079,
+          "self_clearance_m": 0.08198816041751877,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 1.7606750080012716,
+        "rnea_calls": 3366,
+        "bottleneck_s": 0.01,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL",
+        "constructive_timing": [
+          {
+            "duration_s": 0.3,
+            "max_scaled95_utilization": {
+              "torque": 891.6784158931449,
+              "velocity": 38.125301104041256,
+              "acceleration": 878.000288757975,
+              "jerk": 6032.95212997439
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 0.5,
+            "max_scaled95_utilization": {
+              "torque": 321.5456391548891,
+              "velocity": 22.87518066242475,
+              "acceleration": 316.080103952871,
+              "jerk": 1303.1176600744682
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 0.75,
+            "max_scaled95_utilization": {
+              "torque": 143.37914642418423,
+              "velocity": 15.250120441616499,
+              "acceleration": 140.480046201276,
+              "jerk": 386.1089363183609
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 1.0,
+            "max_scaled95_utilization": {
+              "torque": 81.02087396843751,
+              "velocity": 11.437590331212375,
+              "acceleration": 79.02002598821775,
+              "jerk": 162.88970750930852
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 1.5,
+            "max_scaled95_utilization": {
+              "torque": 36.47925078576128,
+              "velocity": 7.625060220808249,
+              "acceleration": 35.120011550319,
+              "jerk": 48.263617039795115
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 2.0,
+            "max_scaled95_utilization": {
+              "torque": 20.889682671824595,
+              "velocity": 5.7187951656061875,
+              "acceleration": 19.75500649705444,
+              "jerk": 20.361213438663565
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 3.0,
+            "max_scaled95_utilization": {
+              "torque": 9.75427687615554,
+              "velocity": 3.8125301104041247,
+              "acceleration": 8.78000288757975,
+              "jerk": 6.032952129974389
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 4.0,
+            "max_scaled95_utilization": {
+              "torque": 5.85688484767137,
+              "velocity": 2.8593975828030938,
+              "acceleration": 4.93875162426361,
+              "jerk": 2.5451516798329457
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 6.0,
+            "max_scaled95_utilization": {
+              "torque": 3.07438910890793,
+              "velocity": 1.9062650552020624,
+              "acceleration": 2.1950007218949374,
+              "jerk": 0.7541190162467987
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 8.0,
+            "max_scaled95_utilization": {
+              "torque": 2.1052861372936493,
+              "velocity": 1.4296987914015469,
+              "acceleration": 1.2346879060659024,
+              "jerk": 0.3181439599791182
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 12.0,
+            "max_scaled95_utilization": {
+              "torque": 1.4130697289977345,
+              "velocity": 0.9531325276010312,
+              "acceleration": 0.5487501804737344,
+              "jerk": 0.09426487703084983
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 20.0,
+            "max_scaled95_utilization": {
+              "torque": 1.0586549279502262,
+              "velocity": 0.5718795165606188,
+              "acceleration": 0.1975500649705444,
+              "jerk": 0.020361213438663563
+            },
+            "screen_pass": false
+          }
+        ]
+      },
+      {
+        "proposal": 34,
+        "parent_score": 0.0,
+        "status": "UNQUALIFIED",
+        "score": 0.20283270212752705,
+        "lp_expansion": 0.0,
+        "gravity_peak": 0.7782110729176974,
+        "deviation_rad": 1.0937482029750605,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.003113308085101081,
+          "self_clearance_m": 0.08190303169888966,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 1.8172791260294616,
+        "rnea_calls": 3465,
+        "bottleneck_s": 0.04379310344827586,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.5,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 35,
+        "parent_score": 0.20283270212752705,
+        "status": "UNQUALIFIED",
+        "score": 0.5321907257526128,
+        "lp_expansion": 0.0,
+        "gravity_peak": 0.9864341180283986,
+        "deviation_rad": 1.079851271377891,
+        "clearance": {
+          "position_violation_rad": 1.0067805309849076e-06,
+          "world_clearance_m": null,
+          "self_clearance_m": null,
+          "sampled_acceptable": false
+        },
+        "wall_s": 1.85068425105419,
+        "rnea_calls": 3564,
+        "bottleneck_s": 0.07758620689655171,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.8,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 36,
+        "parent_score": 0.3526053992729253,
+        "status": "UNQUALIFIED",
+        "score": 0.8772960506238013,
+        "lp_expansion": 0.0,
+        "gravity_peak": 0.989666260183392,
+        "deviation_rad": 0.7904047879433576,
+        "clearance": {
+          "position_violation_rad": 0.01644823748534207,
+          "world_clearance_m": null,
+          "self_clearance_m": null,
+          "sampled_acceptable": false
+        },
+        "wall_s": 1.8841016900260001,
+        "rnea_calls": 3663,
+        "bottleneck_s": 0.01,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.16,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 37,
+        "parent_score": 0.0,
+        "status": "SCREEN_PASS",
+        "score": 0.0,
+        "lp_expansion": 0.0,
+        "gravity_peak": 0.7976717033108656,
+        "deviation_rad": 0.9250004777165165,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.0292866524008041,
+          "self_clearance_m": 0.08187589023899833,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 1.948908228019718,
+        "rnea_calls": 3762,
+        "bottleneck_s": 0.04379310344827586,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL",
+        "constructive_timing": [
+          {
+            "duration_s": 0.3,
+            "max_scaled95_utilization": {
+              "torque": 807.4860352651547,
+              "velocity": 35.275411161812976,
+              "acceleration": 813.5860011422025,
+              "jerk": 5915.7636758756225
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 0.5,
+            "max_scaled95_utilization": {
+              "torque": 291.1796811720885,
+              "velocity": 21.165246697087785,
+              "acceleration": 292.8909604111929,
+              "jerk": 1277.8049539891344
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 0.75,
+            "max_scaled95_utilization": {
+              "torque": 129.83394551800535,
+              "velocity": 14.11016446472519,
+              "acceleration": 130.1737601827524,
+              "jerk": 378.6088752560398
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 1.0,
+            "max_scaled95_utilization": {
+              "torque": 73.36293803907625,
+              "velocity": 10.582623348543892,
+              "acceleration": 73.22274010279823,
+              "jerk": 159.7256192486418
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 1.5,
+            "max_scaled95_utilization": {
+              "torque": 33.026504125555476,
+              "velocity": 7.055082232362595,
+              "acceleration": 32.5434400456881,
+              "jerk": 47.32610940700498
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 2.0,
+            "max_scaled95_utilization": {
+              "torque": 18.9087522558232,
+              "velocity": 5.291311674271946,
+              "acceleration": 18.305685025699557,
+              "jerk": 19.965702406080226
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 3.0,
+            "max_scaled95_utilization": {
+              "torque": 8.824643777443002,
+              "velocity": 3.5275411161812973,
+              "acceleration": 8.135860011422025,
+              "jerk": 5.915763675875622
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 4.0,
+            "max_scaled95_utilization": {
+              "torque": 5.295205810009933,
+              "velocity": 2.645655837135973,
+              "acceleration": 4.576421256424889,
+              "jerk": 2.495712800760028
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 6.0,
+            "max_scaled95_utilization": {
+              "torque": 2.774178690414884,
+              "velocity": 1.7637705580906486,
+              "acceleration": 2.0339650028555063,
+              "jerk": 0.7394704594844528
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 8.0,
+            "max_scaled95_utilization": {
+              "torque": 1.8918191985566166,
+              "velocity": 1.3228279185679865,
+              "acceleration": 1.1441053141062223,
+              "jerk": 0.3119641000950035
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 12.0,
+            "max_scaled95_utilization": {
+              "torque": 1.261562418657854,
+              "velocity": 0.8818852790453243,
+              "acceleration": 0.5084912507138766,
+              "jerk": 0.0924338074355566
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 20.0,
+            "max_scaled95_utilization": {
+              "torque": 0.9413450436991506,
+              "velocity": 0.5291311674271946,
+              "acceleration": 0.18305685025699556,
+              "jerk": 0.019965702406080227
+            },
+            "screen_pass": true
+          }
+        ]
+      }
+    ],
+    "claim": "preliminary research screens only; requires independent adaptive validation",
+    "task_sha256": "ab21291db920246f298722bb7877b0c15d8e0a3c45dee58bffeb8d64e3cd290b",
+    "torque_profile_sha256": "63efbd648a621f796f04bd9b317d146ab13450511d2b7c52c4af7ac6433cb1ac",
+    "source_native_buffers_sha256": "a517b394c0025007ef31261e2a1a44c77e27e5e495406ce79697c411b37a0f2d",
+    "source_witness_not_used_for_initialization": true,
+    "controls_sha256": "ff2e181b617a7a7289ae15e60f628afb018dddc93d47218003bf0ce7875c9532",
+    "w_dense_sha256": "393caaaba33ce8bef7824627fa2edd1e9cb19275266c3e6df26624262f9e36ef"
+  },
+  "confirm_geom_cluttered_02": {
+    "case_id": "confirm_geom_cluttered_02",
+    "arm": "random_global",
+    "seed": 20261108,
+    "budget": 128,
+    "proposals_evaluated": 105,
+    "evaluation_count": 106,
+    "solver_wall_s_including_gradient_and_screen": 6.761787116003688,
+    "rnea_calls": 10494,
+    "screening_and_timing_rnea_calls": 28247,
+    "total_counted_rnea_calls": 38741,
+    "base_fit": {
+      "maximum_same_progress_fit_deviation_rad": 0.0007920315001252217,
+      "squared_residual": 5.015455508291412e-05,
+      "count": 22,
+      "fit_note": "approximate original path for SHARED search initialization; original LP obstruction remains on EXACT native cubic"
+    },
+    "initial_path_lp_expansion": 0.5140534546888718,
+    "initial_path_clearance": {
+      "position_violation_rad": 0.0,
+      "world_clearance_m": 0.005883084833273836,
+      "self_clearance_m": 0.08406166723550876,
+      "sampled_acceptable": true,
+      "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+    },
+    "initial_path_gravity_utilization": 1.5990275126687725,
+    "candidate_witness_prescreen": true,
+    "first_witness_proposal": 105,
+    "selected_score": 0.0,
+    "selected_deviation_rad": 1.3434546142280301,
+    "witness_duration_s": 20.0,
+    "best_score": 0.0,
+    "rnea_count_scope": "rnea_calls counts pointwise LP/gradient; screening_and_timing_rnea_calls counts gravity/candidate checks and constructive timing; total is their sum",
+    "ledger": [
+      {
+        "proposal": 0,
+        "status": "UNQUALIFIED",
+        "score": 4.2087847655059845,
+        "lp_expansion": 0.5140534546888718,
+        "gravity_peak": 1.5990275126687725,
+        "deviation_rad": 0.0004062525267502113,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.005883084833273836,
+          "self_clearance_m": 0.08406166723550876,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 0.06337805197108537,
+        "rnea_calls": 99
+      },
+      {
+        "proposal": 1,
+        "parent_score": 4.2087847655059845,
+        "status": "UNQUALIFIED",
+        "score": 5.275839436923789,
+        "lp_expansion": 0.5944347823177725,
+        "gravity_peak": 1.6941001480593514,
+        "deviation_rad": 0.1932556149762156,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.01943615657237037,
+          "self_clearance_m": 0.08395622047683457,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 0.12728844000957906,
+        "rnea_calls": 198,
+        "bottleneck_s": 0.678715984405458,
+        "dual_lp_expansion": 0.42486590193225154,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 2,
+        "parent_score": 5.275839436923789,
+        "status": "UNQUALIFIED",
+        "score": 6.65537935656161,
+        "lp_expansion": 0.178938759679464,
+        "gravity_peak": 1.8446784911520477,
+        "deviation_rad": 0.40299016369218504,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.06112192564487631,
+          "self_clearance_m": 0.08406166723550876,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 0.19077112001832575,
+        "rnea_calls": 297,
+        "bottleneck_s": 0.668715984405458,
+        "dual_lp_expansion": 0.49271216072211205,
+        "method": "random_global",
+        "radius": 0.5,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 3,
+        "parent_score": 6.65537935656161,
+        "status": "UNQUALIFIED",
+        "score": 5.079307284539192,
+        "lp_expansion": 0.6177587210281478,
+        "gravity_peak": 1.7576563668427558,
+        "deviation_rad": 0.7277769834357424,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.002069330828109381,
+          "self_clearance_m": 0.08406166723550876,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 0.25453616300364956,
+        "rnea_calls": 396,
+        "bottleneck_s": 0.6858620689655172,
+        "dual_lp_expansion": 0.178938759679464,
+        "method": "random_global",
+        "radius": 0.8,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 4,
+        "parent_score": 6.65537935656161,
+        "status": "UNQUALIFIED",
+        "score": 6.800379290489041,
+        "lp_expansion": 0.23813563677895738,
+        "gravity_peak": 1.859970169528579,
+        "deviation_rad": 0.4240487658867336,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.061495712242687545,
+          "self_clearance_m": 0.08406166723550876,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 0.3184295680257492,
+        "rnea_calls": 495,
+        "bottleneck_s": 0.7196551724137931,
+        "dual_lp_expansion": 0.14184288555307906,
+        "method": "random_global",
+        "radius": 0.16,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 5,
+        "parent_score": 4.2087847655059845,
+        "status": "UNQUALIFIED",
+        "score": 4.177763519155538,
+        "lp_expansion": 0.414723670744863,
+        "gravity_peak": 1.6139260967086315,
+        "deviation_rad": 0.15820429482192896,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.0012636254052993262,
+          "self_clearance_m": 0.08402794978223399,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 0.38211117300670594,
+        "rnea_calls": 594,
+        "bottleneck_s": 0.658715984405458,
+        "dual_lp_expansion": 0.41828918703158985,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 6,
+        "parent_score": 4.2087847655059845,
+        "status": "UNQUALIFIED",
+        "score": 4.511018931119566,
+        "lp_expansion": 0.26322312654521773,
+        "gravity_peak": 1.5829089028700325,
+        "deviation_rad": 0.2733819610561845,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.024330051608967437,
+          "self_clearance_m": 0.08406166723550876,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 0.44596785999601707,
+        "rnea_calls": 693,
+        "bottleneck_s": 0.668715984405458,
+        "dual_lp_expansion": 0.5140534546888718,
+        "method": "random_global",
+        "radius": 0.5,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 7,
+        "parent_score": 4.511018931119566,
+        "status": "UNQUALIFIED",
+        "score": 5.228130822681592,
+        "lp_expansion": 0.03162556036584993,
+        "gravity_peak": 1.652648333184702,
+        "deviation_rad": 0.6224797884515262,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.048330543855689315,
+          "self_clearance_m": 0.08406166723550876,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 0.5100552199874073,
+        "rnea_calls": 792,
+        "bottleneck_s": 0.7534482758620689,
+        "dual_lp_expansion": 0.08838997502568238,
+        "method": "random_global",
+        "radius": 0.8,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 8,
+        "parent_score": 5.079307284539192,
+        "status": "UNQUALIFIED",
+        "score": 5.573325693410861,
+        "lp_expansion": 0.58256059663488,
+        "gravity_peak": 1.7877419721681964,
+        "deviation_rad": 0.7498698061635404,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.013082209437399947,
+          "self_clearance_m": 0.08406166723550876,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 0.5737688670051284,
+        "rnea_calls": 891,
+        "bottleneck_s": 0.668715984405458,
+        "dual_lp_expansion": 0.39502985666795254,
+        "method": "random_global",
+        "radius": 0.16,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 9,
+        "parent_score": 4.177763519155538,
+        "status": "UNQUALIFIED",
+        "score": 4.8950805422360695,
+        "lp_expansion": 0.3627842391073368,
+        "gravity_peak": 1.5839143640280715,
+        "deviation_rad": 0.24175585331506277,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.035508979319535006,
+          "self_clearance_m": 0.08397751015292612,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 0.6379107799730264,
+        "rnea_calls": 990,
+        "bottleneck_s": 0.668715984405458,
+        "dual_lp_expansion": 0.414723670744863,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 10,
+        "parent_score": 4.2087847655059845,
+        "status": "UNQUALIFIED",
+        "score": 4.650324821308334,
+        "lp_expansion": 0.42030144476678094,
+        "gravity_peak": 1.6561518570218907,
+        "deviation_rad": 0.3529353456924979,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.00897056365728395,
+          "self_clearance_m": 0.08406166723550876,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 0.7018421780085191,
+        "rnea_calls": 1089,
+        "bottleneck_s": 0.678715984405458,
+        "dual_lp_expansion": 0.42486590193225154,
+        "method": "random_global",
+        "radius": 0.5,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 11,
+        "parent_score": 4.511018931119566,
+        "status": "UNQUALIFIED",
+        "score": 6.168366714752448,
+        "lp_expansion": 0.33480853234875,
+        "gravity_peak": 1.7256804074458414,
+        "deviation_rad": 0.7210835880907028,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.05920624580697964,
+          "self_clearance_m": 0.08379922085880906,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 0.7658145020250231,
+        "rnea_calls": 1188,
+        "bottleneck_s": 0.6182758620689655,
+        "dual_lp_expansion": 0.029180452661671408,
+        "method": "random_global",
+        "radius": 0.8,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 12,
+        "parent_score": 4.650324821308334,
+        "status": "UNQUALIFIED",
+        "score": 4.673765709188178,
+        "lp_expansion": 0.38078377323697865,
+        "gravity_peak": 1.6084963400285381,
+        "deviation_rad": 0.41854256067803686,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.02102000943234035,
+          "self_clearance_m": 0.08406166723550876,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 0.8295428460114636,
+        "rnea_calls": 1287,
+        "bottleneck_s": 0.6182758620689655,
+        "dual_lp_expansion": 0.42030144476678094,
+        "method": "random_global",
+        "radius": 0.16,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 13,
+        "parent_score": 4.177763519155538,
+        "status": "UNQUALIFIED",
+        "score": 4.111913228210981,
+        "lp_expansion": 0.17451269469158381,
+        "gravity_peak": 1.6194853909205165,
+        "deviation_rad": 0.25081957446924785,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.0045989431566726,
+          "self_clearance_m": 0.08406166723550876,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 0.8933881800039671,
+        "rnea_calls": 1386,
+        "bottleneck_s": 0.6182758620689655,
+        "dual_lp_expansion": 0.41179155702785347,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 14,
+        "parent_score": 4.177763519155538,
+        "status": "UNQUALIFIED",
+        "score": 5.107748589884159,
+        "lp_expansion": 0.6680193716107574,
+        "gravity_peak": 1.75708900490694,
+        "deviation_rad": 0.35940081954794467,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.0028286322504519484,
+          "self_clearance_m": 0.08372529995772943,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 0.9570031599723734,
+        "rnea_calls": 1485,
+        "bottleneck_s": 0.658715984405458,
+        "dual_lp_expansion": 0.40941143082087544,
+        "method": "random_global",
+        "radius": 0.5,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 15,
+        "parent_score": 4.2087847655059845,
+        "status": "UNQUALIFIED",
+        "score": 4.403197826962439,
+        "lp_expansion": 0.018137727127305613,
+        "gravity_peak": 1.6283647653611304,
+        "deviation_rad": 0.4873686217103344,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.020729450921179296,
+          "self_clearance_m": 0.08391647358419266,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 1.0207076100050472,
+        "rnea_calls": 1584,
+        "bottleneck_s": 0.668715984405458,
+        "dual_lp_expansion": 0.5140534546888718,
+        "method": "random_global",
+        "radius": 0.8,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 16,
+        "parent_score": 4.403197826962439,
+        "status": "UNQUALIFIED",
+        "score": 4.439255651684787,
+        "lp_expansion": 0.038919959454411804,
+        "gravity_peak": 1.660375691979781,
+        "deviation_rad": 0.512417446551524,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.014938289293258841,
+          "self_clearance_m": 0.08391668101660338,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 1.0845042709843256,
+        "rnea_calls": 1683,
+        "bottleneck_s": 0.01,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.16,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 17,
+        "parent_score": 4.111913228210981,
+        "status": "UNQUALIFIED",
+        "score": 4.344518012794388,
+        "lp_expansion": 0.46092962821379174,
+        "gravity_peak": 1.6567176769161192,
+        "deviation_rad": 0.2802742932222912,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.008414194178562887,
+          "self_clearance_m": 0.08406166723550876,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 1.1483746339799836,
+        "rnea_calls": 1782,
+        "bottleneck_s": 0.7534482758620689,
+        "dual_lp_expansion": 0.0329605524948802,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 18,
+        "parent_score": 4.177763519155538,
+        "status": "UNQUALIFIED",
+        "score": 5.8147464296720015,
+        "lp_expansion": 0.5429475180046455,
+        "gravity_peak": 1.6914541613974465,
+        "deviation_rad": 0.440479416659701,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.04358112418720496,
+          "self_clearance_m": 0.08400168286014453,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 1.2124492599978112,
+        "rnea_calls": 1881,
+        "bottleneck_s": 0.668715984405458,
+        "dual_lp_expansion": 0.414723670744863,
+        "method": "random_global",
+        "radius": 0.5,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 19,
+        "parent_score": 4.2087847655059845,
+        "status": "UNQUALIFIED",
+        "score": 5.133677750784194,
+        "lp_expansion": 0.6460402461161187,
+        "gravity_peak": 1.7557227336602612,
+        "deviation_rad": 0.4034263187324752,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.0006390465453292443,
+          "self_clearance_m": 0.08389292796916362,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 1.2760411070194095,
+        "rnea_calls": 1980,
+        "bottleneck_s": 0.678715984405458,
+        "dual_lp_expansion": 0.42486590193225154,
+        "method": "random_global",
+        "radius": 0.8,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 20,
+        "parent_score": 4.344518012794388,
+        "status": "UNQUALIFIED",
+        "score": 4.290187264484377,
+        "lp_expansion": 0.41418022565207346,
+        "gravity_peak": 1.5883800254317475,
+        "deviation_rad": 0.31366962172615354,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.008364276466942669,
+          "self_clearance_m": 0.08406166723550876,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 1.339870662020985,
+        "rnea_calls": 2079,
+        "bottleneck_s": 0.01,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.16,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 21,
+        "parent_score": 4.111913228210981,
+        "status": "UNQUALIFIED",
+        "score": 4.578546035541888,
+        "lp_expansion": 0.11936753254160644,
+        "gravity_peak": 1.7162596326163158,
+        "deviation_rad": 0.3400104978780508,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.00611521359674809,
+          "self_clearance_m": 0.08406166723550876,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 1.4034997780108824,
+        "rnea_calls": 2178,
+        "bottleneck_s": 0.5844827586206897,
+        "dual_lp_expansion": 0.17451269469158381,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 22,
+        "parent_score": 4.177763519155538,
+        "status": "UNQUALIFIED",
+        "score": 5.4904436286788485,
+        "lp_expansion": 0.5552543130861901,
+        "gravity_peak": 1.6955861343476835,
+        "deviation_rad": 0.40802457102751555,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.029290345754169625,
+          "self_clearance_m": 0.08400726408068235,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 1.4675193519797176,
+        "rnea_calls": 2277,
+        "bottleneck_s": 0.6182758620689655,
+        "dual_lp_expansion": 0.41179155702785347,
+        "method": "random_global",
+        "radius": 0.5,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 23,
+        "parent_score": 4.2087847655059845,
+        "status": "UNQUALIFIED",
+        "score": 7.557852034239288,
+        "lp_expansion": 0.4280450318128363,
+        "gravity_peak": 1.7609930352427043,
+        "deviation_rad": 0.616161508569684,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.10399367304851723,
+          "self_clearance_m": 0.08406166723550876,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 1.5312693659798242,
+        "rnea_calls": 2376,
+        "bottleneck_s": 0.658715984405458,
+        "dual_lp_expansion": 0.41828918703158985,
+        "method": "random_global",
+        "radius": 0.8,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 24,
+        "parent_score": 4.290187264484377,
+        "status": "UNQUALIFIED",
+        "score": 4.560357781046335,
+        "lp_expansion": 0.4893130351071802,
+        "gravity_peak": 1.6062146800256631,
+        "deviation_rad": 0.37384931308274943,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.012598853832433574,
+          "self_clearance_m": 0.08406166723550876,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 1.5950625829864293,
+        "rnea_calls": 2475,
+        "bottleneck_s": 0.7196551724137931,
+        "dual_lp_expansion": 0.41418022565207346,
+        "method": "random_global",
+        "radius": 0.16,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 25,
+        "parent_score": 4.111913228210981,
+        "status": "UNQUALIFIED",
+        "score": 3.68927915978342,
+        "lp_expansion": 0.05195658902659564,
+        "gravity_peak": 1.6074645141513648,
+        "deviation_rad": 0.30684717754363977,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.02718182338577893,
+          "self_clearance_m": 0.08406166723550876,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 1.6590381839778274,
+        "rnea_calls": 2574,
+        "bottleneck_s": 0.5506896551724138,
+        "dual_lp_expansion": 0.07188236882733046,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 26,
+        "parent_score": 4.111913228210981,
+        "status": "UNQUALIFIED",
+        "score": 6.341574163936146,
+        "lp_expansion": 0.4632837049677846,
+        "gravity_peak": 1.6019100462767428,
+        "deviation_rad": 0.45191095984901547,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.08574960910338589,
+          "self_clearance_m": 0.08401980563166411,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 1.7228838080191053,
+        "rnea_calls": 2673,
+        "bottleneck_s": 0.7534482758620689,
+        "dual_lp_expansion": 0.0329605524948802,
+        "method": "random_global",
+        "radius": 0.5,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 27,
+        "parent_score": 4.177763519155538,
+        "status": "UNQUALIFIED",
+        "score": 6.250589265697058,
+        "lp_expansion": 0.634696809952653,
+        "gravity_peak": 1.752402011110714,
+        "deviation_rad": 0.513730570358638,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.045155296007633405,
+          "self_clearance_m": 0.08385982609378798,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 1.786715988011565,
+        "rnea_calls": 2772,
+        "bottleneck_s": 0.668715984405458,
+        "dual_lp_expansion": 0.414723670744863,
+        "method": "random_global",
+        "radius": 0.8,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 28,
+        "parent_score": 4.2087847655059845,
+        "status": "UNQUALIFIED",
+        "score": 4.294133402260618,
+        "lp_expansion": 0.47443475217174413,
+        "gravity_peak": 1.6168857300720458,
+        "deviation_rad": 0.09900521381974624,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.0003710085419356274,
+          "self_clearance_m": 0.08406166723550876,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 1.8508362909778953,
+        "rnea_calls": 2871,
+        "bottleneck_s": 0.678715984405458,
+        "dual_lp_expansion": 0.42486590193225154,
+        "method": "random_global",
+        "radius": 0.16,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 29,
+        "parent_score": 3.68927915978342,
+        "status": "UNQUALIFIED",
+        "score": 3.782176703435871,
+        "lp_expansion": 0.25287761943019793,
+        "gravity_peak": 1.5858598168011346,
+        "deviation_rad": 0.3209767250465916,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.013030485489760088,
+          "self_clearance_m": 0.08406166723550876,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 1.9153321839985438,
+        "rnea_calls": 2970,
+        "bottleneck_s": 0.7534482758620689,
+        "dual_lp_expansion": 0.0028345118375242666,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 30,
+        "parent_score": 3.782176703435871,
+        "status": "UNQUALIFIED",
+        "score": 3.6514172661722153,
+        "lp_expansion": 0.2734015641400297,
+        "gravity_peak": 1.5420530980955909,
+        "deviation_rad": 0.49952639560138823,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.0022899915378307573,
+          "self_clearance_m": 0.08406166723550876,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 1.9794899889966473,
+        "rnea_calls": 3069,
+        "bottleneck_s": 0.7534482758620689,
+        "dual_lp_expansion": 0.25287761943019793,
+        "method": "random_global",
+        "radius": 0.5,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 31,
+        "parent_score": 3.782176703435871,
+        "status": "UNQUALIFIED",
+        "score": 6.058186130984561,
+        "lp_expansion": 0.18387245330834617,
+        "gravity_peak": 1.6036577291465695,
+        "deviation_rad": 0.6561674253525323,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.0852410012777347,
+          "self_clearance_m": 0.07206564579558342,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 2.043131046986673,
+        "rnea_calls": 3168,
+        "bottleneck_s": 0.5506896551724138,
+        "dual_lp_expansion": 0.04173995015625564,
+        "method": "random_global",
+        "radius": 0.8,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 32,
+        "parent_score": 4.111913228210981,
+        "status": "UNQUALIFIED",
+        "score": 3.854590822775936,
+        "lp_expansion": 0.14517952276781762,
+        "gravity_peak": 1.591975407656784,
+        "deviation_rad": 0.31078844393108085,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.0009813704689679154,
+          "self_clearance_m": 0.08398114693124809,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 2.1072054150281474,
+        "rnea_calls": 3267,
+        "bottleneck_s": 0.7534482758620689,
+        "dual_lp_expansion": 0.0329605524948802,
+        "method": "random_global",
+        "radius": 0.16,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 33,
+        "parent_score": 3.6514172661722153,
+        "status": "UNQUALIFIED",
+        "score": 3.3651143027826786,
+        "lp_expansion": 0.09996002025884233,
+        "gravity_peak": 1.4981572470044184,
+        "deviation_rad": 0.5714394340249983,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.0019747219000697674,
+          "self_clearance_m": 0.08396740371789521,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 2.170807258982677,
+        "rnea_calls": 3366,
+        "bottleneck_s": 0.7196551724137931,
+        "dual_lp_expansion": 0.2734015641400297,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 34,
+        "parent_score": 3.6514172661722153,
+        "status": "UNQUALIFIED",
+        "score": 3.665732105486229,
+        "lp_expansion": 0.07195257542814128,
+        "gravity_peak": 1.5790618867274062,
+        "deviation_rad": 0.5989344766577394,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.001061196143157736,
+          "self_clearance_m": 0.08403782689102116,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 2.2347682020044886,
+        "rnea_calls": 3465,
+        "bottleneck_s": 0.6858620689655172,
+        "dual_lp_expansion": 0.13604706217098583,
+        "method": "random_global",
+        "radius": 0.5,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 35,
+        "parent_score": 3.665732105486229,
+        "status": "UNQUALIFIED",
+        "score": 3.939418566256036,
+        "lp_expansion": 0.09699075687339989,
+        "gravity_peak": 1.6068624713635071,
+        "deviation_rad": 0.7144359740573214,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.003324618102604024,
+          "self_clearance_m": 0.08397757450282206,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 2.2988140350207686,
+        "rnea_calls": 3564,
+        "bottleneck_s": 0.678715984405458,
+        "dual_lp_expansion": 0.005975222386535426,
+        "method": "random_global",
+        "radius": 0.8,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 36,
+        "parent_score": 3.68927915978342,
+        "status": "UNQUALIFIED",
+        "score": 3.8289318250151814,
+        "lp_expansion": 0.16959332771526178,
+        "gravity_peak": 1.6118676994599839,
+        "deviation_rad": 0.3592858820383602,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.013465356254511993,
+          "self_clearance_m": 0.08406166723550876,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 2.363028366002254,
+        "rnea_calls": 3663,
+        "bottleneck_s": 0.5506896551724138,
+        "dual_lp_expansion": 0.05195658902659564,
+        "method": "random_global",
+        "radius": 0.16,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 37,
+        "parent_score": 3.3651143027826786,
+        "status": "UNQUALIFIED",
+        "score": 4.091250869433823,
+        "lp_expansion": 0.12992429016327417,
+        "gravity_peak": 1.4922458804422352,
+        "deviation_rad": 0.5055637549172001,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.031003887082374934,
+          "self_clearance_m": 0.08388963974379715,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 2.4270427799783647,
+        "rnea_calls": 3762,
+        "bottleneck_s": 0.678715984405458,
+        "dual_lp_expansion": 0.09133931233169211,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 38,
+        "parent_score": 3.6514172661722153,
+        "status": "UNQUALIFIED",
+        "score": 3.8650236944088747,
+        "lp_expansion": 0.23566696698340547,
+        "gravity_peak": 1.5717816154083648,
+        "deviation_rad": 0.5934668505809317,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.0018179460153458088,
+          "self_clearance_m": 0.08395000524238325,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 2.4911883720196784,
+        "rnea_calls": 3861,
+        "bottleneck_s": 0.668715984405458,
+        "dual_lp_expansion": 0.1160567939039185,
+        "method": "random_global",
+        "radius": 0.5,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 39,
+        "parent_score": 3.665732105486229,
+        "status": "UNQUALIFIED",
+        "score": 4.096345215650988,
+        "lp_expansion": 0.06894118734675961,
+        "gravity_peak": 1.6368061924062876,
+        "deviation_rad": 0.8638620610436996,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.004734922650911619,
+          "self_clearance_m": 0.08374554374994805,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 2.555334674019832,
+        "rnea_calls": 3960,
+        "bottleneck_s": 0.7196551724137931,
+        "dual_lp_expansion": 0.07195257542814128,
+        "method": "random_global",
+        "radius": 0.8,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 40,
+        "parent_score": 3.68927915978342,
+        "status": "UNQUALIFIED",
+        "score": 4.184800911449633,
+        "lp_expansion": 0.2262662607107955,
+        "gravity_peak": 1.6385209132730898,
+        "deviation_rad": 0.31661883751972597,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.0016372033749355447,
+          "self_clearance_m": 0.08406166723550876,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 2.6193483970128,
+        "rnea_calls": 4059,
+        "bottleneck_s": 0.5844827586206897,
+        "dual_lp_expansion": 0.03768003730841223,
+        "method": "random_global",
+        "radius": 0.16,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 41,
+        "parent_score": 3.3651143027826786,
+        "status": "UNQUALIFIED",
+        "score": 3.096650155701196,
+        "lp_expansion": 0.04743417922465294,
+        "gravity_peak": 1.4898431952953086,
+        "deviation_rad": 0.6528098760516394,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.03176278652871836,
+          "self_clearance_m": 0.08386579016070111,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 2.6832871669903398,
+        "rnea_calls": 4158,
+        "bottleneck_s": 0.5168965517241378,
+        "dual_lp_expansion": 0.08624754038979708,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 42,
+        "parent_score": 3.3651143027826786,
+        "status": "UNQUALIFIED",
+        "score": 6.258435877143595,
+        "lp_expansion": 0.4459266657613837,
+        "gravity_peak": 1.7271614514763771,
+        "deviation_rad": 0.669838769027916,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.058068078160013,
+          "self_clearance_m": 0.08400700730527286,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 2.7474486290011555,
+        "rnea_calls": 4257,
+        "bottleneck_s": 0.668715984405458,
+        "dual_lp_expansion": 0.09996002025884233,
+        "method": "random_global",
+        "radius": 0.5,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 43,
+        "parent_score": 3.6514172661722153,
+        "status": "UNQUALIFIED",
+        "score": 5.267179486056614,
+        "lp_expansion": 0.11253100389276853,
+        "gravity_peak": 1.661829081460568,
+        "deviation_rad": 0.75994182319169,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.0448201229944402,
+          "self_clearance_m": 0.08406166723550876,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 2.811636721016839,
+        "rnea_calls": 4356,
+        "bottleneck_s": 0.6858620689655172,
+        "dual_lp_expansion": 0.13604706217098583,
+        "method": "random_global",
+        "radius": 0.8,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 44,
+        "parent_score": 3.665732105486229,
+        "status": "UNQUALIFIED",
+        "score": 3.4786161835549856,
+        "lp_expansion": 0.02956597534156357,
+        "gravity_peak": 1.5601126166288033,
+        "deviation_rad": 0.5663343625065884,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.003060514997223776,
+          "self_clearance_m": 0.08400962298254747,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 2.87578601797577,
+        "rnea_calls": 4455,
+        "bottleneck_s": 0.678715984405458,
+        "dual_lp_expansion": 0.005975222386535426,
+        "method": "random_global",
+        "radius": 0.16,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 45,
+        "parent_score": 3.096650155701196,
+        "status": "UNQUALIFIED",
+        "score": 3.1263972347559816,
+        "lp_expansion": 0.026746787239544396,
+        "gravity_peak": 1.4999300895032874,
+        "deviation_rad": 0.6410662213567645,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.0497144932076469,
+          "self_clearance_m": 0.08401242381940943,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 2.9399002509890124,
+        "rnea_calls": 4554,
+        "bottleneck_s": 0.6858620689655172,
+        "dual_lp_expansion": 0.04743417922465294,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 46,
+        "parent_score": 3.1263972347559816,
+        "status": "UNQUALIFIED",
+        "score": 3.564337191026263,
+        "lp_expansion": 0.05900624594823111,
+        "gravity_peak": 1.5810661890156064,
+        "deviation_rad": 0.6628991643452694,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.05499999999999999,
+          "self_clearance_m": 0.08402677906623793,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 3.003865031991154,
+        "rnea_calls": 4653,
+        "bottleneck_s": 0.6520689655172414,
+        "dual_lp_expansion": 0.0256282584791737,
+        "method": "random_global",
+        "radius": 0.5,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 47,
+        "parent_score": 3.3651143027826786,
+        "status": "UNQUALIFIED",
+        "score": 2.9643258545318103,
+        "lp_expansion": 0.09786259826021107,
+        "gravity_peak": 1.4532926512543198,
+        "deviation_rad": 0.7412045289482768,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.010145553379243624,
+          "self_clearance_m": 0.08294849333904064,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 3.0680485329939984,
+        "rnea_calls": 4752,
+        "bottleneck_s": 0.5168965517241378,
+        "dual_lp_expansion": 0.08624754038979708,
+        "method": "random_global",
+        "radius": 0.8,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 48,
+        "parent_score": 3.3651143027826786,
+        "status": "UNQUALIFIED",
+        "score": 3.813937175628597,
+        "lp_expansion": 0.11083895412100828,
+        "gravity_peak": 1.558536053224245,
+        "deviation_rad": 0.6273185098945567,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.0074167182154545735,
+          "self_clearance_m": 0.08391063490308992,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 3.1320155179710127,
+        "rnea_calls": 4851,
+        "bottleneck_s": 0.668715984405458,
+        "dual_lp_expansion": 0.09996002025884233,
+        "method": "random_global",
+        "radius": 0.16,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 49,
+        "parent_score": 2.9643258545318103,
+        "status": "UNQUALIFIED",
+        "score": 3.399023734055042,
+        "lp_expansion": 0.31026450080044665,
+        "gravity_peak": 1.4785178203725267,
+        "deviation_rad": 0.6951994321269569,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.0011531947443215035,
+          "self_clearance_m": 0.08305714301671469,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 3.1962585439905524,
+        "rnea_calls": 4950,
+        "bottleneck_s": 0.48310344827586205,
+        "dual_lp_expansion": 0.08227703606231303,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 50,
+        "parent_score": 3.096650155701196,
+        "status": "UNQUALIFIED",
+        "score": 3.3821052514519168,
+        "lp_expansion": 0.052534820437603616,
+        "gravity_peak": 1.5459140862028626,
+        "deviation_rad": 0.6560174541815278,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.05499999999999999,
+          "self_clearance_m": 0.08388368585378181,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 3.2605111059965566,
+        "rnea_calls": 5049,
+        "bottleneck_s": 0.668715984405458,
+        "dual_lp_expansion": 0.011227325242323007,
+        "method": "random_global",
+        "radius": 0.5,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 51,
+        "parent_score": 3.1263972347559816,
+        "status": "UNQUALIFIED",
+        "score": 4.536280431435551,
+        "lp_expansion": 0.0,
+        "gravity_peak": 1.7688489998950505,
+        "deviation_rad": 0.6966635518791869,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.001318582721588038,
+          "self_clearance_m": 0.08406166723550876,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 3.3245006640208885,
+        "rnea_calls": 5148,
+        "bottleneck_s": 0.658715984405458,
+        "dual_lp_expansion": 0.026746787239544396,
+        "method": "random_global",
+        "radius": 0.8,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 52,
+        "parent_score": 3.3651143027826786,
+        "status": "UNQUALIFIED",
+        "score": 3.261576396758714,
+        "lp_expansion": 0.19717710963173574,
+        "gravity_peak": 1.4575275808266404,
+        "deviation_rad": 0.6058482103331825,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.0020704553197510717,
+          "self_clearance_m": 0.0839621281165654,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 3.388691259024199,
+        "rnea_calls": 5247,
+        "bottleneck_s": 0.678715984405458,
+        "dual_lp_expansion": 0.09133931233169211,
+        "method": "random_global",
+        "radius": 0.16,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 53,
+        "parent_score": 2.9643258545318103,
+        "status": "UNQUALIFIED",
+        "score": 2.982017114770794,
+        "lp_expansion": 0.19698975949612035,
+        "gravity_peak": 1.4370054710549347,
+        "deviation_rad": 0.7857018454930267,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.018768892612256186,
+          "self_clearance_m": 0.08282544281061216,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 3.452625010977499,
+        "rnea_calls": 5346,
+        "bottleneck_s": 0.6182758620689655,
+        "dual_lp_expansion": 0.07230338283974493,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 54,
+        "parent_score": 2.982017114770794,
+        "status": "UNQUALIFIED",
+        "score": 3.3939658448619068,
+        "lp_expansion": 0.05525023000699155,
+        "gravity_peak": 1.547743122970983,
+        "deviation_rad": 0.8552320420855861,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.0323156127133474,
+          "self_clearance_m": 0.08308136862380042,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 3.516552019980736,
+        "rnea_calls": 5445,
+        "bottleneck_s": 0.48310344827586205,
+        "dual_lp_expansion": 0.19698975949612035,
+        "method": "random_global",
+        "radius": 0.5,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 55,
+        "parent_score": 3.096650155701196,
+        "status": "UNQUALIFIED",
+        "score": 4.182082406823681,
+        "lp_expansion": 0.21262024361005752,
+        "gravity_peak": 1.600892424899293,
+        "deviation_rad": 0.7222893214903255,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.00960000154868633,
+          "self_clearance_m": 0.08339890544099085,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 3.580476633971557,
+        "rnea_calls": 5544,
+        "bottleneck_s": 0.678715984405458,
+        "dual_lp_expansion": 0.03356141624843914,
+        "method": "random_global",
+        "radius": 0.8,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 56,
+        "parent_score": 3.1263972347559816,
+        "status": "UNQUALIFIED",
+        "score": 3.227836890360221,
+        "lp_expansion": 0.09350272465762594,
+        "gravity_peak": 1.506866833140519,
+        "deviation_rad": 0.6573116250272953,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.03180011846946054,
+          "self_clearance_m": 0.08401929485397894,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 3.6443879029829986,
+        "rnea_calls": 5643,
+        "bottleneck_s": 0.668715984405458,
+        "dual_lp_expansion": 0.010893601317132429,
+        "method": "random_global",
+        "radius": 0.16,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 57,
+        "parent_score": 2.9643258545318103,
+        "status": "UNQUALIFIED",
+        "score": 3.5282956733560424,
+        "lp_expansion": 0.021200222562238583,
+        "gravity_peak": 1.496439555784617,
+        "deviation_rad": 0.7943642994143959,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.011995906874828738,
+          "self_clearance_m": 0.08286069575075103,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 3.7082855370244943,
+        "rnea_calls": 5742,
+        "bottleneck_s": 0.7196551724137931,
+        "dual_lp_expansion": 0.09786259826021107,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 58,
+        "parent_score": 2.982017114770794,
+        "status": "UNQUALIFIED",
+        "score": 3.7478166364632886,
+        "lp_expansion": 0.36719158822536846,
+        "gravity_peak": 1.556125009647584,
+        "deviation_rad": 0.8419678063357736,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.014550166674407311,
+          "self_clearance_m": 0.08275594716118215,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 3.772281786019448,
+        "rnea_calls": 5841,
+        "bottleneck_s": 0.01,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.5,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 59,
+        "parent_score": 3.096650155701196,
+        "status": "UNQUALIFIED",
+        "score": 3.9130647764851343,
+        "lp_expansion": 0.3058397438286032,
+        "gravity_peak": 1.6014450065313062,
+        "deviation_rad": 0.8955685346120641,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.04582979735793549,
+          "self_clearance_m": 0.08361325978623074,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 3.836054974992294,
+        "rnea_calls": 5940,
+        "bottleneck_s": 0.668715984405458,
+        "dual_lp_expansion": 0.011227325242323007,
+        "method": "random_global",
+        "radius": 0.8,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 60,
+        "parent_score": 3.1263972347559816,
+        "status": "UNQUALIFIED",
+        "score": 3.140551072346529,
+        "lp_expansion": 0.08950289304902649,
+        "gravity_peak": 1.4902096358595005,
+        "deviation_rad": 0.6026736535242557,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.03536115163893269,
+          "self_clearance_m": 0.08393178539811824,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 3.9001613829750568,
+        "rnea_calls": 6039,
+        "bottleneck_s": 0.658715984405458,
+        "dual_lp_expansion": 0.026746787239544396,
+        "method": "random_global",
+        "radius": 0.16,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 61,
+        "parent_score": 2.9643258545318103,
+        "status": "UNQUALIFIED",
+        "score": 3.4598285949205625,
+        "lp_expansion": 0.3363557990494913,
+        "gravity_peak": 1.5046945591742142,
+        "deviation_rad": 0.7611165195516546,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.017834992680854048,
+          "self_clearance_m": 0.0828929308328494,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 3.9646785149816424,
+        "rnea_calls": 6138,
+        "bottleneck_s": 0.48310344827586205,
+        "dual_lp_expansion": 0.08227703606231303,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 62,
+        "parent_score": 2.982017114770794,
+        "status": "UNQUALIFIED",
+        "score": 2.8489313671452785,
+        "lp_expansion": 0.1695422500026758,
+        "gravity_peak": 1.4158778234285205,
+        "deviation_rad": 0.7699727769184562,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.03141256335627726,
+          "self_clearance_m": 0.08299833503514475,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 4.029265769990161,
+        "rnea_calls": 6237,
+        "bottleneck_s": 0.04379310344827586,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.5,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 63,
+        "parent_score": 2.982017114770794,
+        "status": "UNQUALIFIED",
+        "score": 3.2013182905589606,
+        "lp_expansion": 0.21961185310284018,
+        "gravity_peak": 1.476341287491224,
+        "deviation_rad": 0.8221459598001312,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.015591960742608948,
+          "self_clearance_m": 0.08300613053778408,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 4.093472937995102,
+        "rnea_calls": 6336,
+        "bottleneck_s": 0.48310344827586205,
+        "dual_lp_expansion": 0.19698975949612035,
+        "method": "random_global",
+        "radius": 0.8,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 64,
+        "parent_score": 3.096650155701196,
+        "status": "UNQUALIFIED",
+        "score": 3.2058431062782393,
+        "lp_expansion": 0.15640378119607296,
+        "gravity_peak": 1.4898878650164333,
+        "deviation_rad": 0.6097147455225237,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.041272119546973934,
+          "self_clearance_m": 0.08384373344447743,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 4.157628847984597,
+        "rnea_calls": 6435,
+        "bottleneck_s": 0.678715984405458,
+        "dual_lp_expansion": 0.03356141624843914,
+        "method": "random_global",
+        "radius": 0.16,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 65,
+        "parent_score": 2.8489313671452785,
+        "status": "UNQUALIFIED",
+        "score": 3.3466881596642204,
+        "lp_expansion": 0.08969101116273057,
+        "gravity_peak": 1.531399429700298,
+        "deviation_rad": 0.7954399637988844,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.04207167771935613,
+          "self_clearance_m": 0.08316540959635932,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 4.221794406999834,
+        "rnea_calls": 6534,
+        "bottleneck_s": 0.01,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 66,
+        "parent_score": 2.9643258545318103,
+        "status": "UNQUALIFIED",
+        "score": 2.7190589760244674,
+        "lp_expansion": 0.11128171074166217,
+        "gravity_peak": 1.401555453056561,
+        "deviation_rad": 0.6846978836138942,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.04048180195753978,
+          "self_clearance_m": 0.08296531580200389,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 4.28573324898025,
+        "rnea_calls": 6633,
+        "bottleneck_s": 0.7196551724137931,
+        "dual_lp_expansion": 0.09786259826021107,
+        "method": "random_global",
+        "radius": 0.5,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 67,
+        "parent_score": 2.9643258545318103,
+        "status": "UNQUALIFIED",
+        "score": 3.7683793124765597,
+        "lp_expansion": 0.07595977702545666,
+        "gravity_peak": 1.6184839070902206,
+        "deviation_rad": 0.8970145738697447,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.05499999999999999,
+          "self_clearance_m": 0.08282651665335855,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 4.3494730240199715,
+        "rnea_calls": 6732,
+        "bottleneck_s": 0.48310344827586205,
+        "dual_lp_expansion": 0.08227703606231303,
+        "method": "random_global",
+        "radius": 0.8,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 68,
+        "parent_score": 2.982017114770794,
+        "status": "UNQUALIFIED",
+        "score": 3.2380918064236845,
+        "lp_expansion": 0.19552939419232843,
+        "gravity_peak": 1.4885124824462712,
+        "deviation_rad": 0.8162555656823687,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.016827391899796346,
+          "self_clearance_m": 0.08281485425575341,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 4.41339414200047,
+        "rnea_calls": 6831,
+        "bottleneck_s": 0.04379310344827586,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.16,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 69,
+        "parent_score": 2.7190589760244674,
+        "status": "UNQUALIFIED",
+        "score": 2.8950019813408696,
+        "lp_expansion": 0.13404904258734013,
+        "gravity_peak": 1.432190587750706,
+        "deviation_rad": 0.7245385306590018,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.05499999999999999,
+          "self_clearance_m": 0.08281153935096136,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 4.477596300013829,
+        "rnea_calls": 6930,
+        "bottleneck_s": 0.6858620689655172,
+        "dual_lp_expansion": 0.11128171074166217,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 70,
+        "parent_score": 2.8489313671452785,
+        "status": "UNQUALIFIED",
+        "score": 4.513554683734906,
+        "lp_expansion": 0.5129785084587876,
+        "gravity_peak": 1.6801152350552238,
+        "deviation_rad": 0.9061041774088614,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.04059856702293976,
+          "self_clearance_m": 0.08271105707582951,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 4.541271144000348,
+        "rnea_calls": 7029,
+        "bottleneck_s": 0.48310344827586205,
+        "dual_lp_expansion": 0.029103148030841467,
+        "method": "random_global",
+        "radius": 0.5,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 71,
+        "parent_score": 2.8950019813408696,
+        "status": "UNQUALIFIED",
+        "score": 3.769064907691306,
+        "lp_expansion": 0.2237360295004421,
+        "gravity_peak": 1.5890657756381728,
+        "deviation_rad": 0.7750643364488876,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.05499999999999999,
+          "self_clearance_m": 0.08285865874106696,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 4.605374904989731,
+        "rnea_calls": 7128,
+        "bottleneck_s": 0.6858620689655172,
+        "dual_lp_expansion": 0.05598644205385421,
+        "method": "random_global",
+        "radius": 0.8,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 72,
+        "parent_score": 2.9643258545318103,
+        "status": "UNQUALIFIED",
+        "score": 2.957341310371519,
+        "lp_expansion": 0.19428658134229318,
+        "gravity_peak": 1.4326109458058451,
+        "deviation_rad": 0.7592169917329239,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.01906300638690743,
+          "self_clearance_m": 0.082877351320083,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 4.6695647109881975,
+        "rnea_calls": 7227,
+        "bottleneck_s": 0.7196551724137931,
+        "dual_lp_expansion": 0.09786259826021107,
+        "method": "random_global",
+        "radius": 0.16,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 73,
+        "parent_score": 2.7190589760244674,
+        "status": "UNQUALIFIED",
+        "score": 2.8324347988312706,
+        "lp_expansion": 0.008732163094237048,
+        "gravity_peak": 1.4447405271474068,
+        "deviation_rad": 0.6867053658571173,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.05499999999999999,
+          "self_clearance_m": 0.0830263746945972,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 4.73354795598425,
+        "rnea_calls": 7326,
+        "bottleneck_s": 0.678715984405458,
+        "dual_lp_expansion": 0.04717405120472256,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 74,
+        "parent_score": 2.8324347988312706,
+        "status": "UNQUALIFIED",
+        "score": 2.892208360462408,
+        "lp_expansion": 0.16469619648373404,
+        "gravity_peak": 1.4255024327957349,
+        "deviation_rad": 0.8330353848031731,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.0468228716927688,
+          "self_clearance_m": 0.08288813124728761,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 4.797702684008982,
+        "rnea_calls": 7425,
+        "bottleneck_s": 0.04379310344827586,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.5,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 75,
+        "parent_score": 2.8489313671452785,
+        "status": "UNQUALIFIED",
+        "score": 2.7505084834165294,
+        "lp_expansion": 0.11751941930860534,
+        "gravity_peak": 1.392312140888985,
+        "deviation_rad": 0.8373992721515482,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.0021428656134800245,
+          "self_clearance_m": 0.08316652765504448,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 4.8615353149943985,
+        "rnea_calls": 7524,
+        "bottleneck_s": 0.7534482758620689,
+        "dual_lp_expansion": 0.1695422500026758,
+        "method": "random_global",
+        "radius": 0.8,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 76,
+        "parent_score": 2.8489313671452785,
+        "status": "UNQUALIFIED",
+        "score": 2.723280690261281,
+        "lp_expansion": 0.1402950324066617,
+        "gravity_peak": 1.3965971315709238,
+        "deviation_rad": 0.7904570382446682,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.05298825146866118,
+          "self_clearance_m": 0.0828881593595249,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 4.925463376974221,
+        "rnea_calls": 7623,
+        "bottleneck_s": 0.48310344827586205,
+        "dual_lp_expansion": 0.029103148030841467,
+        "method": "random_global",
+        "radius": 0.16,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 77,
+        "parent_score": 2.7190589760244674,
+        "status": "UNQUALIFIED",
+        "score": 3.465151221160554,
+        "lp_expansion": 0.002885688014307432,
+        "gravity_peak": 1.5724531066292493,
+        "deviation_rad": 0.7567508717487015,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.015722257193237194,
+          "self_clearance_m": 0.08296053239499993,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 4.9893942020135,
+        "rnea_calls": 7722,
+        "bottleneck_s": 0.01,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 78,
+        "parent_score": 2.723280690261281,
+        "status": "UNQUALIFIED",
+        "score": 2.6410591659477918,
+        "lp_expansion": 0.15824154654823142,
+        "gravity_peak": 1.376563523879912,
+        "deviation_rad": 0.912086571200358,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.040065372737513455,
+          "self_clearance_m": 0.07596628889897254,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 5.053609444992617,
+        "rnea_calls": 7821,
+        "bottleneck_s": 0.48310344827586205,
+        "dual_lp_expansion": 0.1402950324066617,
+        "method": "random_global",
+        "radius": 0.5,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 79,
+        "parent_score": 2.723280690261281,
+        "status": "UNQUALIFIED",
+        "score": 3.735321467585602,
+        "lp_expansion": 0.10023656291570741,
+        "gravity_peak": 1.607016980933979,
+        "deviation_rad": 1.0351980809603496,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.03181695450542363,
+          "self_clearance_m": 0.08044715915657298,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 5.1173445120221,
+        "rnea_calls": 7920,
+        "bottleneck_s": 0.7534482758620689,
+        "dual_lp_expansion": 0.014623344356671734,
+        "method": "random_global",
+        "radius": 0.8,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 80,
+        "parent_score": 2.7505084834165294,
+        "status": "UNQUALIFIED",
+        "score": 2.811673119474598,
+        "lp_expansion": 0.0,
+        "gravity_peak": 1.3933395907925739,
+        "deviation_rad": 0.8871293298215893,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.004799006620469157,
+          "self_clearance_m": 0.0831687513261965,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 5.181152855977416,
+        "rnea_calls": 8019,
+        "bottleneck_s": 0.04379310344827586,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.16,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 81,
+        "parent_score": 2.6410591659477918,
+        "status": "UNQUALIFIED",
+        "score": 2.486296919482493,
+        "lp_expansion": 0.0,
+        "gravity_peak": 1.3772593838964986,
+        "deviation_rad": 0.9864298051429391,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.04528880635703189,
+          "self_clearance_m": 0.07988986572774238,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 5.2452040200005285,
+        "rnea_calls": 8118,
+        "bottleneck_s": 0.6182758620689655,
+        "dual_lp_expansion": 0.15824154654823142,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 82,
+        "parent_score": 2.6410591659477918,
+        "status": "UNQUALIFIED",
+        "score": 3.1003548583260714,
+        "lp_expansion": 0.195973550009517,
+        "gravity_peak": 1.4608762616633109,
+        "deviation_rad": 1.0211496703300134,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.006141495000886052,
+          "self_clearance_m": 0.07308660036749741,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 5.309434021008201,
+        "rnea_calls": 8217,
+        "bottleneck_s": 0.01,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.5,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 83,
+        "parent_score": 2.7190589760244674,
+        "status": "UNQUALIFIED",
+        "score": 3.031334401222635,
+        "lp_expansion": 0.0,
+        "gravity_peak": 1.4719602313638143,
+        "deviation_rad": 0.9832623115140512,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.0021386702238574556,
+          "self_clearance_m": 0.08300550369200776,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 5.373346152016893,
+        "rnea_calls": 8316,
+        "bottleneck_s": 0.01,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.8,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 84,
+        "parent_score": 2.723280690261281,
+        "status": "UNQUALIFIED",
+        "score": 2.6196607525971483,
+        "lp_expansion": 0.1326335952238227,
+        "gravity_peak": 1.377405431474665,
+        "deviation_rad": 0.8162056537141386,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.04980659846507626,
+          "self_clearance_m": 0.0828664595242859,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 5.437586040992755,
+        "rnea_calls": 8415,
+        "bottleneck_s": 0.48310344827586205,
+        "dual_lp_expansion": 0.1402950324066617,
+        "method": "random_global",
+        "radius": 0.16,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 85,
+        "parent_score": 2.486296919482493,
+        "status": "UNQUALIFIED",
+        "score": 2.4802690762222293,
+        "lp_expansion": 0.01630921454122889,
+        "gravity_peak": 1.3727919723362,
+        "deviation_rad": 0.986138265826135,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.01536528423502466,
+          "self_clearance_m": 0.07068132148406144,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 5.501471631985623,
+        "rnea_calls": 8514,
+        "bottleneck_s": 0.04379310344827586,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 86,
+        "parent_score": 2.486296919482493,
+        "status": "UNQUALIFIED",
+        "score": 2.030887560139792,
+        "lp_expansion": 0.002747391539541769,
+        "gravity_peak": 1.28562803372005,
+        "deviation_rad": 1.1802760964872856,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.05499999999999999,
+          "self_clearance_m": 0.06827486087037003,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 5.565123111009598,
+        "rnea_calls": 8613,
+        "bottleneck_s": 0.07758620689655171,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.5,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 87,
+        "parent_score": 2.486296919482493,
+        "status": "UNQUALIFIED",
+        "score": 4.006904871450666,
+        "lp_expansion": 0.32865051534851036,
+        "gravity_peak": 1.5866083528654107,
+        "deviation_rad": 1.1429128163050972,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.0008085036710040877,
+          "self_clearance_m": 0.0825823053977,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 5.62899161898531,
+        "rnea_calls": 8712,
+        "bottleneck_s": 0.01,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.8,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 88,
+        "parent_score": 2.6196607525971483,
+        "status": "UNQUALIFIED",
+        "score": 2.7755284945699374,
+        "lp_expansion": 0.1740114818861775,
+        "gravity_peak": 1.400303402536752,
+        "deviation_rad": 0.8160611659466201,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.05499999999999999,
+          "self_clearance_m": 0.08285722126538175,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 5.69309031200828,
+        "rnea_calls": 8811,
+        "bottleneck_s": 0.48310344827586205,
+        "dual_lp_expansion": 0.07940248893783733,
+        "method": "random_global",
+        "radius": 0.16,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 89,
+        "parent_score": 2.030887560139792,
+        "status": "UNQUALIFIED",
+        "score": 1.983113321909653,
+        "lp_expansion": 0.032556116980441856,
+        "gravity_peak": 1.2701114409858423,
+        "deviation_rad": 1.159674096720553,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.05499999999999999,
+          "self_clearance_m": 0.05517824861804864,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 5.756735478993505,
+        "rnea_calls": 8910,
+        "bottleneck_s": 0.04379310344827586,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 90,
+        "parent_score": 2.030887560139792,
+        "status": "UNQUALIFIED",
+        "score": 2.300231676838339,
+        "lp_expansion": 0.11301707230044218,
+        "gravity_peak": 1.3174429209075793,
+        "deviation_rad": 1.135574000116784,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.05499999999999999,
+          "self_clearance_m": 0.08227897215920818,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 5.820585904002655,
+        "rnea_calls": 9009,
+        "bottleneck_s": 0.48310344827586205,
+        "dual_lp_expansion": 0.002747391539541769,
+        "method": "random_global",
+        "radius": 0.5,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 91,
+        "parent_score": 2.300231676838339,
+        "status": "UNQUALIFIED",
+        "score": 2.5050695748117078,
+        "lp_expansion": 0.10461428400617946,
+        "gravity_peak": 1.3600910581611056,
+        "deviation_rad": 1.2049060171412886,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.05499999999999999,
+          "self_clearance_m": 0.0746492987310733,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 5.8863625440280885,
+        "rnea_calls": 9108,
+        "bottleneck_s": 0.01,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.8,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 92,
+        "parent_score": 2.4802690762222293,
+        "status": "UNQUALIFIED",
+        "score": 3.230404006568873,
+        "lp_expansion": 0.04263527912302619,
+        "gravity_peak": 1.4194799686573598,
+        "deviation_rad": 0.9954565162838315,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": -0.014614755366361906,
+          "self_clearance_m": 0.06943704646356029,
+          "sampled_acceptable": false,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 5.950459473009687,
+        "rnea_calls": 9207,
+        "bottleneck_s": 0.04379310344827586,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.16,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 93,
+        "parent_score": 1.983113321909653,
+        "status": "UNQUALIFIED",
+        "score": 1.765452535464287,
+        "lp_expansion": 0.06320839736730735,
+        "gravity_peak": 1.2204488276193959,
+        "deviation_rad": 1.1740582003516333,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.05281020981026893,
+          "self_clearance_m": 0.05839640839388084,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 6.014476772979833,
+        "rnea_calls": 9306,
+        "bottleneck_s": 0.48310344827586205,
+        "dual_lp_expansion": 0.032556116980441856,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 94,
+        "parent_score": 1.983113321909653,
+        "status": "UNQUALIFIED",
+        "score": 1.932120385577436,
+        "lp_expansion": 0.07649489471110053,
+        "gravity_peak": 1.2511250981732671,
+        "deviation_rad": 1.1742121272147157,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.05499999999999999,
+          "self_clearance_m": 0.04296894768582653,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 6.078982294013258,
+        "rnea_calls": 9405,
+        "bottleneck_s": 0.01,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.5,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 95,
+        "parent_score": 1.983113321909653,
+        "status": "UNQUALIFIED",
+        "score": 1.1986208299871797,
+        "lp_expansion": 0.03759324532148222,
+        "gravity_peak": 1.1122055169331395,
+        "deviation_rad": 1.1963643510660287,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.05499999999999999,
+          "self_clearance_m": 0.06245025855257837,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 6.143214980023913,
+        "rnea_calls": 9504,
+        "bottleneck_s": 0.04379310344827586,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.8,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 96,
+        "parent_score": 1.983113321909653,
+        "status": "UNQUALIFIED",
+        "score": 1.988699064351012,
+        "lp_expansion": 0.0,
+        "gravity_peak": 1.2777398128702024,
+        "deviation_rad": 1.197704785285702,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.05499999999999999,
+          "self_clearance_m": 0.05034716854247388,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 6.207303732982837,
+        "rnea_calls": 9603,
+        "bottleneck_s": 0.48310344827586205,
+        "dual_lp_expansion": 0.032556116980441856,
+        "method": "random_global",
+        "radius": 0.16,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 97,
+        "parent_score": 1.1986208299871797,
+        "status": "UNQUALIFIED",
+        "score": 0.496312056326384,
+        "lp_expansion": 0.0,
+        "gravity_peak": 0.9792624112652768,
+        "deviation_rad": 1.1115322386252984,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.05499999999999999,
+          "self_clearance_m": 0.07465465089141939,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 6.271179264993407,
+        "rnea_calls": 9702,
+        "bottleneck_s": 0.01,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 98,
+        "parent_score": 1.1986208299871797,
+        "status": "UNQUALIFIED",
+        "score": 1.5040939490584866,
+        "lp_expansion": 0.0,
+        "gravity_peak": 1.1808187898116973,
+        "deviation_rad": 1.195118612252272,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.05499999999999999,
+          "self_clearance_m": 0.06427977910619288,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 6.334604126983322,
+        "rnea_calls": 9801,
+        "bottleneck_s": 0.04379310344827586,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.5,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 99,
+        "parent_score": 1.5040939490584866,
+        "status": "UNQUALIFIED",
+        "score": 4.703391500654356,
+        "lp_expansion": 0.03691788446986374,
+        "gravity_peak": 1.2769608196124804,
+        "deviation_rad": 1.4712698179331063,
+        "clearance": {
+          "position_violation_rad": 0.13408347590610453,
+          "world_clearance_m": null,
+          "self_clearance_m": null,
+          "sampled_acceptable": false
+        },
+        "wall_s": 6.367940541997086,
+        "rnea_calls": 9900,
+        "bottleneck_s": 0.01,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.8,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 100,
+        "parent_score": 1.765452535464287,
+        "status": "UNQUALIFIED",
+        "score": 2.0180436036158924,
+        "lp_expansion": 0.047031686455459555,
+        "gravity_peak": 1.2742023834320866,
+        "deviation_rad": 1.1633194017628983,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.05117023371671944,
+          "self_clearance_m": 0.06036159903410761,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 6.431880154996179,
+        "rnea_calls": 9999,
+        "bottleneck_s": 0.01,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.16,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 101,
+        "parent_score": 0.496312056326384,
+        "status": "UNQUALIFIED",
+        "score": 0.6759249142297014,
+        "lp_expansion": 0.0,
+        "gravity_peak": 1.0151849828459403,
+        "deviation_rad": 1.1994407761392591,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.05499999999999999,
+          "self_clearance_m": 0.07585453632686247,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 6.495538136980031,
+        "rnea_calls": 10098,
+        "bottleneck_s": 0.07758620689655171,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 102,
+        "parent_score": 0.6759249142297014,
+        "status": "UNQUALIFIED",
+        "score": 0.9915158069570978,
+        "lp_expansion": 0.0,
+        "gravity_peak": 1.0783031613914196,
+        "deviation_rad": 1.1776441166106402,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.05499999999999999,
+          "self_clearance_m": 0.07534827538012422,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 6.559122999024112,
+        "rnea_calls": 10197,
+        "bottleneck_s": 0.01,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.5,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 103,
+        "parent_score": 0.9915158069570978,
+        "status": "SCREEN_PASS",
+        "score": 0.0,
+        "lp_expansion": 0.0,
+        "gravity_peak": 0.8426461535432855,
+        "deviation_rad": 1.2942440247492033,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.05499999999999999,
+          "self_clearance_m": 0.0754930797733037,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 6.626639582973439,
+        "rnea_calls": 10296,
+        "bottleneck_s": 0.04379310344827586,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.8,
+        "direction_source": "RANDOM_GLOBAL",
+        "constructive_timing": [
+          {
+            "duration_s": 0.3,
+            "max_scaled95_utilization": {
+              "torque": 949.0573235945551,
+              "velocity": 44.02879565645515,
+              "acceleration": 1195.7998693598079,
+              "jerk": 6616.583998474553
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 0.5,
+            "max_scaled95_utilization": {
+              "torque": 341.8774038894968,
+              "velocity": 26.41727739387309,
+              "acceleration": 430.4879529695308,
+              "jerk": 1429.1821436705031
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 0.75,
+            "max_scaled95_utilization": {
+              "torque": 152.1336789816661,
+              "velocity": 17.61151826258206,
+              "acceleration": 191.32797909756925,
+              "jerk": 423.4613759023713
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 1.0,
+            "max_scaled95_utilization": {
+              "torque": 85.72337526392535,
+              "velocity": 13.208638696936545,
+              "acceleration": 107.6219882423827,
+              "jerk": 178.6477679588129
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 1.5,
+            "max_scaled95_utilization": {
+              "torque": 38.28744403696768,
+              "velocity": 8.80575913129103,
+              "acceleration": 47.831994774392314,
+              "jerk": 52.93267198779641
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 2.0,
+            "max_scaled95_utilization": {
+              "torque": 21.684868107532488,
+              "velocity": 6.604319348468272,
+              "acceleration": 26.905497060595675,
+              "jerk": 22.33097099485161
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 3.0,
+            "max_scaled95_utilization": {
+              "torque": 9.825885300793068,
+              "velocity": 4.402879565645515,
+              "acceleration": 11.957998693598078,
+              "jerk": 6.616583998474551
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 4.0,
+            "max_scaled95_utilization": {
+              "torque": 5.675241318434271,
+              "velocity": 3.302159674234136,
+              "acceleration": 6.726374265148919,
+              "jerk": 2.7913713743564514
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 6.0,
+            "max_scaled95_utilization": {
+              "torque": 2.7104956167494163,
+              "velocity": 2.2014397828227574,
+              "acceleration": 2.9894996733995196,
+              "jerk": 0.8270729998093189
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 8.0,
+            "max_scaled95_utilization": {
+              "torque": 1.888884180431939,
+              "velocity": 1.651079837117068,
+              "acceleration": 1.6815935662872297,
+              "jerk": 0.34892142179455643
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 12.0,
+            "max_scaled95_utilization": {
+              "torque": 1.3039477404280906,
+              "velocity": 1.1007198914113787,
+              "acceleration": 0.7473749183498799,
+              "jerk": 0.10338412497616487
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 20.0,
+            "max_scaled95_utilization": {
+              "torque": 1.0044602831461202,
+              "velocity": 0.6604319348468272,
+              "acceleration": 0.26905497060595673,
+              "jerk": 0.02233097099485161
+            },
+            "screen_pass": false
+          }
+        ]
+      },
+      {
+        "proposal": 104,
+        "parent_score": 0.9915158069570978,
+        "status": "UNQUALIFIED",
+        "score": 0.896825489178627,
+        "lp_expansion": 0.0,
+        "gravity_peak": 1.0593650978357254,
+        "deviation_rad": 1.1789136114996932,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.05499999999999999,
+          "self_clearance_m": 0.07199811157728293,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 6.6903591100126505,
+        "rnea_calls": 10395,
+        "bottleneck_s": 0.07758620689655171,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.16,
+        "direction_source": "RANDOM_GLOBAL"
+      },
+      {
+        "proposal": 105,
+        "parent_score": 0.0,
+        "status": "SCREEN_PASS",
+        "score": 0.0,
+        "lp_expansion": 0.0,
+        "gravity_peak": 0.8411764177760692,
+        "deviation_rad": 1.3434546142280301,
+        "clearance": {
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.05499999999999999,
+          "self_clearance_m": 0.08200906014790471,
+          "sampled_acceptable": true,
+          "note": "sampled independent Pinocchio spheres and scene primitives; NOT continuous certification"
+        },
+        "wall_s": 6.761784581991378,
+        "rnea_calls": 10494,
+        "bottleneck_s": 0.01,
+        "dual_lp_expansion": 0.0,
+        "method": "random_global",
+        "radius": 0.3,
+        "direction_source": "RANDOM_GLOBAL",
+        "constructive_timing": [
+          {
+            "duration_s": 0.3,
+            "max_scaled95_utilization": {
+              "torque": 1041.5062442400595,
+              "velocity": 42.6352583489962,
+              "acceleration": 1283.3197456534147,
+              "jerk": 6559.383054937928
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 0.5,
+            "max_scaled95_utilization": {
+              "torque": 375.2356207714971,
+              "velocity": 25.581155009397722,
+              "acceleration": 461.9951084352292,
+              "jerk": 1416.8267398665923
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 0.75,
+            "max_scaled95_utilization": {
+              "torque": 167.02605093757143,
+              "velocity": 17.05410333959848,
+              "acceleration": 205.3311593045463,
+              "jerk": 419.80051551602736
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 1.0,
+            "max_scaled95_utilization": {
+              "torque": 94.15270149569743,
+              "velocity": 12.790577504698861,
+              "acceleration": 115.4987771088073,
+              "jerk": 177.10334248332404
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 1.5,
+            "max_scaled95_utilization": {
+              "torque": 42.100309037216,
+              "velocity": 8.52705166979924,
+              "acceleration": 51.332789826136576,
+              "jerk": 52.47506443950342
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 2.0,
+            "max_scaled95_utilization": {
+              "torque": 23.881971676747494,
+              "velocity": 6.395288752349431,
+              "acceleration": 28.874694277201826,
+              "jerk": 22.137917810415505
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 3.0,
+            "max_scaled95_utilization": {
+              "torque": 10.868873562127138,
+              "velocity": 4.26352583489962,
+              "acceleration": 12.833197456534144,
+              "jerk": 6.5593830549379275
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 4.0,
+            "max_scaled95_utilization": {
+              "torque": 6.314289222010013,
+              "velocity": 3.1976443761747153,
+              "acceleration": 7.2186735693004564,
+              "jerk": 2.767239726301938
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 6.0,
+            "max_scaled95_utilization": {
+              "torque": 3.0610146933549225,
+              "velocity": 2.13176291744981,
+              "acceleration": 3.208299364133536,
+              "jerk": 0.8199228818672409
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 8.0,
+            "max_scaled95_utilization": {
+              "torque": 1.9223686083256413,
+              "velocity": 1.5988221880873577,
+              "acceleration": 1.8046683923251141,
+              "jerk": 0.34590496578774227
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 12.0,
+            "max_scaled95_utilization": {
+              "torque": 1.2460805897322833,
+              "velocity": 1.065881458724905,
+              "acceleration": 0.802074841033384,
+              "jerk": 0.10249036023340512
+            },
+            "screen_pass": false
+          },
+          {
+            "duration_s": 20.0,
+            "max_scaled95_utilization": {
+              "torque": 0.9769740812418044,
+              "velocity": 0.6395288752349431,
+              "acceleration": 0.2887469427720183,
+              "jerk": 0.022137917810415506
+            },
+            "screen_pass": true
+          }
+        ]
+      }
+    ],
+    "claim": "preliminary research screens only; requires independent adaptive validation",
+    "task_sha256": "5cab1bd68c017b2340fd1f72c55064c46a63c9674edda8cfc8f81e0e3cc775a7",
+    "torque_profile_sha256": "e80bb836142ad1606233567b07e693f470b42cbe67bc7ac79e98478e562bb73d",
+    "source_native_buffers_sha256": "a0e4c11e4a057e8509e022601fe49bc71a6dea630cbe177015208ad73709d4dd",
+    "source_witness_not_used_for_initialization": true,
+    "controls_sha256": "966ab776311ee7b3badf765748da93d99c4c8d11d23183fb64dea894cd7e659a",
+    "w_dense_sha256": "388988b4d016033f75c601cd639aa8be120effa9eb8874c1b9372a90e30c3aa9"
+  }
+}

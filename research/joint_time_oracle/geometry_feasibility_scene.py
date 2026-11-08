@@ -24,6 +24,7 @@ class IndependentGeometryAuditor:
         self.model, self.data, self.neutral, self.qi, self.vi = dynamics()
         self.q = self.neutral.copy()
         self.zero = np.zeros(self.model.nv)
+        self.rnea_calls = 0
         links = []
         local = []
         radii = []
@@ -111,6 +112,7 @@ class IndependentGeometryAuditor:
             tau[k] = pin.rnea(self.model, self.data, self.q, self.zero, self.zero)[
                 self.vi
             ]
+            self.rnea_calls += 1
         return tau
 
     def check(self, waypoints: np.ndarray, *, min_clearance_m: float = 0.005) -> dict:

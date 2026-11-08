@@ -1,0 +1,654 @@
+{
+  "case_id": "trap_cluttered_08",
+  "task_sha256": "bba76af506c5677fd3317d7fd784579b959280c4d1c89e07e9c7d5c7ee6db354",
+  "source_native_geometry_sha256": "656bbb8615acdda7e41e9d2423d4a6e5bb91ed1c8f0596884f093beb753e3d57",
+  "torque_profile_sha256": "2fcc2fb06ed57586443197b65acd7556b0267f89f1d00ee80add08882524aa50",
+  "controls_archive": "/home/pkicki/curobo/research/joint_time_oracle/results/torque_lp_guided_rescue_20261108/dual_gradient_validation_controls.npz",
+  "controls_archive_sha256": "4fb118f1bea08a8a2e2d1258038e170bdeadd916fc9028085553b9e7dcb660b8",
+  "fit": {
+    "maximum_same_progress_fit_deviation_rad": 0.0006052829437281554,
+    "squared_residual": 2.6371836105408336e-05,
+    "count": 22,
+    "fit_note": "approximate original path for SHARED search initialization; original LP obstruction remains on EXACT native cubic"
+  },
+  "progress": 0.2778777777777778,
+  "baseline_lp": {
+    "status": "SOLVED",
+    "epsilon": 0.0686187753352194,
+    "duality_gap": 1.3877787807814457e-17,
+    "primal_residual": 0.0,
+    "dual_residual": 0.0,
+    "active_set": {
+      "upper": [
+        2
+      ],
+      "lower": [
+        1
+      ]
+    }
+  },
+  "gradient_step_sweep": [
+    {
+      "gradient_fd_step": 0.001,
+      "gradient_norm": 24.605714111440093,
+      "predicted_directional_derivative": -24.605714111440093,
+      "direction_finite": true,
+      "checks": [
+        {
+          "path_step": 0.001,
+          "plus_epsilon": 0.04423535943783176,
+          "minus_epsilon": 0.05721125800108722,
+          "predicted_directional_derivative": -24.605714111440093,
+          "one_sided_descent_fd": -24.383415897387643,
+          "central_directional_fd": -6.487949281627731,
+          "plus_active_set": {
+            "upper": [
+              2
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "minus_active_set": {
+            "upper": [
+              3
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "active_set_changed": true,
+          "lp_status": [
+            "SOLVED",
+            "SOLVED"
+          ]
+        },
+        {
+          "path_step": 0.0003,
+          "plus_epsilon": 0.06125719452949943,
+          "minus_epsilon": 0.06545647547938392,
+          "predicted_directional_derivative": -24.605714111440093,
+          "one_sided_descent_fd": -24.538602685733235,
+          "central_directional_fd": -6.998801583140818,
+          "plus_active_set": {
+            "upper": [
+              2
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "minus_active_set": {
+            "upper": [
+              3
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "active_set_changed": true,
+          "lp_status": [
+            "SOLVED",
+            "SOLVED"
+          ]
+        },
+        {
+          "path_step": 0.0001,
+          "plus_epsilon": 0.06616044500554319,
+          "minus_epsilon": 0.06787019330395415,
+          "predicted_directional_derivative": -24.605714111440093,
+          "one_sided_descent_fd": -24.583303296762114,
+          "central_directional_fd": -8.548741492054798,
+          "plus_active_set": {
+            "upper": [
+              2
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "minus_active_set": {
+            "upper": [
+              3
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "active_set_changed": true,
+          "lp_status": [
+            "SOLVED",
+            "SOLVED"
+          ]
+        },
+        {
+          "path_step": 3e-05,
+          "plus_epsilon": 0.06788080573107681,
+          "minus_epsilon": 0.06872124033126568,
+          "predicted_directional_derivative": -24.605714111440093,
+          "one_sided_descent_fd": -24.59898680475294,
+          "central_directional_fd": -14.007243336481197,
+          "plus_active_set": {
+            "upper": [
+              2
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "minus_active_set": {
+            "upper": [
+              3
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "active_set_changed": true,
+          "lp_status": [
+            "SOLVED",
+            "SOLVED"
+          ]
+        }
+      ]
+    },
+    {
+      "gradient_fd_step": 0.0005,
+      "gradient_norm": 24.605714330485505,
+      "predicted_directional_derivative": -24.605714330485505,
+      "direction_finite": true,
+      "checks": [
+        {
+          "path_step": 0.001,
+          "plus_epsilon": 0.0442353594354032,
+          "minus_epsilon": 0.05721125800771727,
+          "predicted_directional_derivative": -24.605714330485505,
+          "one_sided_descent_fd": -24.3834158998162,
+          "central_directional_fd": -6.487949286157035,
+          "plus_active_set": {
+            "upper": [
+              2
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "minus_active_set": {
+            "upper": [
+              3
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "active_set_changed": true,
+          "lp_status": [
+            "SOLVED",
+            "SOLVED"
+          ]
+        },
+        {
+          "path_step": 0.0003,
+          "plus_epsilon": 0.06125719452927043,
+          "minus_epsilon": 0.06545647548132397,
+          "predicted_directional_derivative": -24.605714330485505,
+          "one_sided_descent_fd": -24.53860268649658,
+          "central_directional_fd": -6.9988015867559,
+          "plus_active_set": {
+            "upper": [
+              2
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "minus_active_set": {
+            "upper": [
+              3
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "active_set_changed": true,
+          "lp_status": [
+            "SOLVED",
+            "SOLVED"
+          ]
+        },
+        {
+          "path_step": 0.0001,
+          "plus_epsilon": 0.06616044500551493,
+          "minus_epsilon": 0.06787019330459092,
+          "predicted_directional_derivative": -24.605714330485505,
+          "one_sided_descent_fd": -24.583303297044665,
+          "central_directional_fd": -8.548741495379916,
+          "plus_active_set": {
+            "upper": [
+              2
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "minus_active_set": {
+            "upper": [
+              3
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "active_set_changed": true,
+          "lp_status": [
+            "SOLVED",
+            "SOLVED"
+          ]
+        },
+        {
+          "path_step": 3e-05,
+          "plus_epsilon": 0.06788080573106606,
+          "minus_epsilon": 0.0687212403314543,
+          "predicted_directional_derivative": -24.605714330485505,
+          "one_sided_descent_fd": -24.598986805111448,
+          "central_directional_fd": -14.007243339804003,
+          "plus_active_set": {
+            "upper": [
+              2
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "minus_active_set": {
+            "upper": [
+              3
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "active_set_changed": true,
+          "lp_status": [
+            "SOLVED",
+            "SOLVED"
+          ]
+        }
+      ]
+    },
+    {
+      "gradient_fd_step": 0.0002,
+      "gradient_norm": 24.605714391807666,
+      "predicted_directional_derivative": -24.605714391807666,
+      "direction_finite": true,
+      "checks": [
+        {
+          "path_step": 0.001,
+          "plus_epsilon": 0.044235359434731135,
+          "minus_epsilon": 0.05721125800957246,
+          "predicted_directional_derivative": -24.605714391807666,
+          "one_sided_descent_fd": -24.383415900488266,
+          "central_directional_fd": -6.487949287420664,
+          "plus_active_set": {
+            "upper": [
+              2
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "minus_active_set": {
+            "upper": [
+              3
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "active_set_changed": true,
+          "lp_status": [
+            "SOLVED",
+            "SOLVED"
+          ]
+        },
+        {
+          "path_step": 0.0003,
+          "plus_epsilon": 0.061257194529210246,
+          "minus_epsilon": 0.06545647548187492,
+          "predicted_directional_derivative": -24.605714391807666,
+          "one_sided_descent_fd": -24.538602686697185,
+          "central_directional_fd": -6.998801587774449,
+          "plus_active_set": {
+            "upper": [
+              2
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "minus_active_set": {
+            "upper": [
+              3
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "active_set_changed": true,
+          "lp_status": [
+            "SOLVED",
+            "SOLVED"
+          ]
+        },
+        {
+          "path_step": 0.0001,
+          "plus_epsilon": 0.06616044500550494,
+          "minus_epsilon": 0.06787019330477603,
+          "predicted_directional_derivative": -24.605714391807666,
+          "one_sided_descent_fd": -24.583303297144585,
+          "central_directional_fd": -8.548741496355454,
+          "plus_active_set": {
+            "upper": [
+              2
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "minus_active_set": {
+            "upper": [
+              3
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "active_set_changed": true,
+          "lp_status": [
+            "SOLVED",
+            "SOLVED"
+          ]
+        },
+        {
+          "path_step": 3e-05,
+          "plus_epsilon": 0.06788080573106872,
+          "minus_epsilon": 0.06872124033150805,
+          "predicted_directional_derivative": -24.605714391807666,
+          "one_sided_descent_fd": -24.59898680502263,
+          "central_directional_fd": -14.007243340655405,
+          "plus_active_set": {
+            "upper": [
+              2
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "minus_active_set": {
+            "upper": [
+              3
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "active_set_changed": true,
+          "lp_status": [
+            "SOLVED",
+            "SOLVED"
+          ]
+        }
+      ]
+    },
+    {
+      "gradient_fd_step": 0.0001,
+      "gradient_norm": 24.60571440056215,
+      "predicted_directional_derivative": -24.60571440056215,
+      "direction_finite": true,
+      "checks": [
+        {
+          "path_step": 0.001,
+          "plus_epsilon": 0.044235359434642824,
+          "minus_epsilon": 0.057211258009846624,
+          "predicted_directional_derivative": -24.60571440056215,
+          "one_sided_descent_fd": -24.383415900576576,
+          "central_directional_fd": -6.4879492876019,
+          "plus_active_set": {
+            "upper": [
+              2
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "minus_active_set": {
+            "upper": [
+              3
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "active_set_changed": true,
+          "lp_status": [
+            "SOLVED",
+            "SOLVED"
+          ]
+        },
+        {
+          "path_step": 0.0003,
+          "plus_epsilon": 0.0612571945292063,
+          "minus_epsilon": 0.0654564754819507,
+          "predicted_directional_derivative": -24.60571440056215,
+          "one_sided_descent_fd": -24.538602686710345,
+          "central_directional_fd": -6.998801587907341,
+          "plus_active_set": {
+            "upper": [
+              2
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "minus_active_set": {
+            "upper": [
+              3
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "active_set_changed": true,
+          "lp_status": [
+            "SOLVED",
+            "SOLVED"
+          ]
+        },
+        {
+          "path_step": 0.0001,
+          "plus_epsilon": 0.06616044500550777,
+          "minus_epsilon": 0.06787019330480583,
+          "predicted_directional_derivative": -24.60571440056215,
+          "one_sided_descent_fd": -24.583303297116277,
+          "central_directional_fd": -8.548741496490278,
+          "plus_active_set": {
+            "upper": [
+              2
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "minus_active_set": {
+            "upper": [
+              3
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "active_set_changed": true,
+          "lp_status": [
+            "SOLVED",
+            "SOLVED"
+          ]
+        },
+        {
+          "path_step": 3e-05,
+          "plus_epsilon": 0.06788080573105962,
+          "minus_epsilon": 0.06872124033151869,
+          "predicted_directional_derivative": -24.60571440056215,
+          "one_sided_descent_fd": -24.598986805326092,
+          "central_directional_fd": -14.00724334098454,
+          "plus_active_set": {
+            "upper": [
+              2
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "minus_active_set": {
+            "upper": [
+              3
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "active_set_changed": true,
+          "lp_status": [
+            "SOLVED",
+            "SOLVED"
+          ]
+        }
+      ]
+    },
+    {
+      "gradient_fd_step": 5e-05,
+      "gradient_norm": 24.605714402784837,
+      "predicted_directional_derivative": -24.605714402784837,
+      "direction_finite": true,
+      "checks": [
+        {
+          "path_step": 0.001,
+          "plus_epsilon": 0.04423535943461347,
+          "minus_epsilon": 0.05721125800989056,
+          "predicted_directional_derivative": -24.605714402784837,
+          "one_sided_descent_fd": -24.38341590060593,
+          "central_directional_fd": -6.4879492876385445,
+          "plus_active_set": {
+            "upper": [
+              2
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "minus_active_set": {
+            "upper": [
+              3
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "active_set_changed": true,
+          "lp_status": [
+            "SOLVED",
+            "SOLVED"
+          ]
+        },
+        {
+          "path_step": 0.0003,
+          "plus_epsilon": 0.06125719452918609,
+          "minus_epsilon": 0.06545647548196866,
+          "predicted_directional_derivative": -24.605714402784837,
+          "one_sided_descent_fd": -24.5386026867777,
+          "central_directional_fd": -6.998801587970947,
+          "plus_active_set": {
+            "upper": [
+              2
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "minus_active_set": {
+            "upper": [
+              3
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "active_set_changed": true,
+          "lp_status": [
+            "SOLVED",
+            "SOLVED"
+          ]
+        },
+        {
+          "path_step": 0.0001,
+          "plus_epsilon": 0.06616044500549716,
+          "minus_epsilon": 0.06787019330480462,
+          "predicted_directional_derivative": -24.605714402784837,
+          "one_sided_descent_fd": -24.58330329722244,
+          "central_directional_fd": -8.548741496537323,
+          "plus_active_set": {
+            "upper": [
+              2
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "minus_active_set": {
+            "upper": [
+              3
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "active_set_changed": true,
+          "lp_status": [
+            "SOLVED",
+            "SOLVED"
+          ]
+        },
+        {
+          "path_step": 3e-05,
+          "plus_epsilon": 0.06788080573105507,
+          "minus_epsilon": 0.06872124033151951,
+          "predicted_directional_derivative": -24.605714402784837,
+          "one_sided_descent_fd": -24.59898680547782,
+          "central_directional_fd": -14.007243341074052,
+          "plus_active_set": {
+            "upper": [
+              2
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "minus_active_set": {
+            "upper": [
+              3
+            ],
+            "lower": [
+              1
+            ]
+          },
+          "active_set_changed": true,
+          "lp_status": [
+            "SOLVED",
+            "SOLVED"
+          ]
+        }
+      ]
+    }
+  ],
+  "rnea_calls": 3483,
+  "interpretation": "Local envelope guidance is heuristic. Stable norm under the finite-difference sweep supports derivative consistency; active-set changes make central differences differ from the one-sided local derivative."
+}

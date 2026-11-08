@@ -1,0 +1,2 @@
+{"case_id": "confirm_geom_table_07", "population": "table", "cohort": "guided_rescue", "task_sha256": "ab21291db920246f298722bb7877b0c15d8e0a3c45dee58bffeb8d64e3cd290b", "methods": {"W": {"status": "PRESCREEN_ONLY", "duration_s": 20.0, "verification": {}}}}
+{"case_id": "confirm_geom_cluttered_02", "population": "cluttered", "cohort": "guided_rescue", "task_sha256": "5cab1bd68c017b2340fd1f72c55064c46a63c9674edda8cfc8f81e0e3cc775a7", "methods": {"W": {"status": "PRESCREEN_ONLY", "duration_s": 20.0, "verification": {}}}}

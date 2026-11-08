@@ -1,0 +1,62 @@
+{
+  "scope": "conservative continuous-time POSITION/VELOCITY/ACCELERATION/JERK ONLY; no torque or collision certificate",
+  "duration_s": 20.0,
+  "envelopes": {
+    "position_min": [
+      -1.2131349347916462,
+      -0.43762891756864497,
+      -1.6379605710749308,
+      -2.426445185251473,
+      -2.201129508362744,
+      0.810018973389492,
+      0.4550165079333785
+    ],
+    "position_max": [
+      0.742394299426637,
+      1.1183813228264055,
+      2.6498067106932237,
+      0.05647337527529285,
+      0.3446669951305041,
+      3.2821761832823,
+      2.1231698320554586
+    ],
+    "velocity_abs_max": [
+      1.7014326294849855,
+      1.1273239454448996,
+      2.036904063841611,
+      1.0941158817856038,
+      1.5823768322991842,
+      2.1212263393262982,
+      2.238173484964226
+    ],
+    "acceleration_abs_max": [
+      6.579984208172264,
+      3.2400050258971915,
+      4.719160759931587,
+      3.4866675751349474,
+      4.57786009328679,
+      7.071059578122474,
+      7.381224077091619
+    ],
+    "jerk_abs_max": [
+      29.621189678528456,
+      9.500119940153377,
+      23.2618711206954,
+      14.21580034680436,
+      22.74699835305661,
+      23.8769496144715,
+      22.532806133980706
+    ]
+  },
+  "per_family_pass": {
+    "position": false,
+    "velocity": true,
+    "acceleration": true,
+    "jerk": true
+  },
+  "all_kinematic_families_conservatively_verified": false,
+  "conservative_basis": "quintic BSpline derivative-control convex hull + analytic smoothstep time-chain maxima",
+  "baseline_limits_sha256": "0c9f521a066a166419561d0ee7e0cd468fc0c05940c8c68fbc521cec81f7b475",
+  "candidate_geometry_sha256": "f199fb3a457a35b6a846239ba06c39e15f59054f4b8ba0b9ca967b439b6168a8",
+  "witness_dense_sha256": "393caaaba33ce8bef7824627fa2edd1e9cb19275266c3e6df26624262f9e36ef"
+}

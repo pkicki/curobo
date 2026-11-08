@@ -187,6 +187,8 @@ def constructive_timing(
         tau[k] = pin.rnea(
             auditor.model, auditor.data, auditor.q, velocity, acceleration
         )[auditor.vi]
+        if hasattr(auditor, "rnea_calls"):
+            auditor.rnea_calls += 1
     # Static gravity sufficient condition is checked here; this is sampled
     # screening, not a mathematically global path bound.
     outcomes = []

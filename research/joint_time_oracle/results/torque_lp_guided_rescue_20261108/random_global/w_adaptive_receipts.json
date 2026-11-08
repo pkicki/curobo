@@ -1,0 +1,112 @@
+{
+  "confirm_geom_table_07:W": {
+    "case_id": "confirm_geom_table_07",
+    "physical": true,
+    "scaled95": true,
+    "collision": true,
+    "endpoint": true,
+    "reasons": [],
+    "scope": "dense+adaptive sampled Pinocchio/spheres; NOT continuous-time certificate",
+    "torque_profile_sha256": "63efbd648a621f796f04bd9b317d146ab13450511d2b7c52c4af7ac6433cb1ac",
+    "base_sha256": "393caaaba33ce8bef7824627fa2edd1e9cb19275266c3e6df26624262f9e36ef",
+    "adaptive_sha256": "99244342b18f94149a67a280f0e3aed103e80b1566d7c77be6fae3ef9619151d",
+    "witness_geometry_sha256": "f199fb3a457a35b6a846239ba06c39e15f59054f4b8ba0b9ca967b439b6168a8",
+    "base_samples": 8193,
+    "adaptive_samples": 8205,
+    "endpoint_checks": {
+      "position_start": true,
+      "position_goal": true,
+      "velocity": true,
+      "acceleration": true
+    },
+    "family_checks": {
+      "physical": {
+        "base": {
+          "position": true,
+          "velocity": true,
+          "acceleration": true,
+          "jerk": true,
+          "torque": true
+        },
+        "adaptive": {
+          "position": true,
+          "velocity": true,
+          "acceleration": true,
+          "jerk": true,
+          "torque": true
+        }
+      },
+      "scaled95": {
+        "base": {
+          "position": true,
+          "velocity": true,
+          "acceleration": true,
+          "jerk": true,
+          "torque": true
+        },
+        "adaptive": {
+          "position": true,
+          "velocity": true,
+          "acceleration": true,
+          "jerk": true,
+          "torque": true
+        }
+      }
+    }
+  },
+  "confirm_geom_cluttered_02:W": {
+    "case_id": "confirm_geom_cluttered_02",
+    "physical": true,
+    "scaled95": true,
+    "collision": true,
+    "endpoint": true,
+    "reasons": [],
+    "scope": "dense+adaptive sampled Pinocchio/spheres; NOT continuous-time certificate",
+    "torque_profile_sha256": "e80bb836142ad1606233567b07e693f470b42cbe67bc7ac79e98478e562bb73d",
+    "base_sha256": "388988b4d016033f75c601cd639aa8be120effa9eb8874c1b9372a90e30c3aa9",
+    "adaptive_sha256": "0490e98b079a7be1766ca3276fe2a05164f2e2a80ea7f5b40c6e1808ca35b0ae",
+    "witness_geometry_sha256": "dc91909ce49af168e50abfdcfa9248ba86a42495c8960ed9aa43a19902c0d03c",
+    "base_samples": 8193,
+    "adaptive_samples": 8204,
+    "endpoint_checks": {
+      "position_start": true,
+      "position_goal": true,
+      "velocity": true,
+      "acceleration": true
+    },
+    "family_checks": {
+      "physical": {
+        "base": {
+          "position": true,
+          "velocity": true,
+          "acceleration": true,
+          "jerk": true,
+          "torque": true
+        },
+        "adaptive": {
+          "position": true,
+          "velocity": true,
+          "acceleration": true,
+          "jerk": true,
+          "torque": true
+        }
+      },
+      "scaled95": {
+        "base": {
+          "position": true,
+          "velocity": true,
+          "acceleration": true,
+          "jerk": true,
+          "torque": true
+        },
+        "adaptive": {
+          "position": true,
+          "velocity": true,
+          "acceleration": true,
+          "jerk": true,
+          "torque": true
+        }
+      }
+    }
+  }
+}

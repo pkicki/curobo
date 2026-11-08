@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "development_case": "trap_cluttered_08",
+  "holdout_case_ids": [
+    "confirm_geom_table_07",
+    "confirm_geom_cluttered_02"
+  ],
+  "budget": 128,
+  "seed": 20261108,
+  "implementations": {
+    "research/joint_time_oracle/torque_guided_rescue.py": "191abaa5305d82f277ec7cc0e94fd450d90b6698f615a5072e29f25870bca443",
+    "research/joint_time_oracle/torque_dual_guidance.py": "9771535842be460b1c3da75e593f4d76df081afa84dbe86b12911b860d9785a3",
+    "research/joint_time_oracle/geometry_feasibility_core.py": "0aaef1453a7aee5305206b954732ec309b06fd78d6187f42c8ee9d449032fce6",
+    "research/joint_time_oracle/geometry_feasibility_scene.py": "aa68416409509759ddc6c84ab983814208a53998c21136bb907cbfd656c519f5",
+    "research/joint_time_oracle/geometry_feasibility_discover.py": "251316ede1eceb500f6364b56976b519ba31bcd17db7be7730e183f0934ba5ff"
+  },
+  "development_evidence": {
+    "dual": {
+      "development_result_sha256": "082bf67593775b5f8e5e853f030637ee32dad0c199033beefc0fe17da630e7bd",
+      "experiment_config_sha256": "ea3bf50016573b8b288d879c95f061f538eae38db8e076a665e196476cbe8ed1",
+      "development_independent_receipt": null
+    },
+    "random_local": {
+      "development_result_sha256": "f93ce3021a332402c1b17a5bfe20836e737a71ca7047638ed9f0b8d2b6d8c710",
+      "experiment_config_sha256": "0ccbefd8f160a18eea9fa312a65dbf01123266b65f3bfa56b0b6a3549ca1a0c6",
+      "development_independent_receipt": null
+    },
+    "random_global": {
+      "development_result_sha256": "3f7dc6ad5c211525e7f330bfb6a358a719dc2f03d9549a825f029ac272bba8f6",
+      "experiment_config_sha256": "039db1646f73ffcc2366afb83c4d6c5cc1c15f978306d304ff8af047658adaea",
+      "development_independent_receipt": null
+    }
+  },
+  "source_registry_sha256": null,
+  "note": "freeze BEFORE ANY controlled-search run on heldout tasks"
+}

@@ -1,0 +1,1849 @@
+{
+  "schema_version": 1,
+  "cases": {
+    "trap_cluttered_08": {
+      "dual": {
+        "status": "NO_QUALIFIED_RESCUE",
+        "failure_reasons": [
+          "no constructive witness generated"
+        ],
+        "candidate_prescreen": false,
+        "qualified_by_budget": {
+          "16": false,
+          "32": false,
+          "64": false,
+          "128": false
+        },
+        "first_qualified_proposal": null,
+        "first_qualified_elapsed_wall_s": null,
+        "duration_s": null,
+        "preliminary_duration_s": null,
+        "first_screen_proposal": null,
+        "selected_deviation_rad": 0.5629914821869851,
+        "best_score": 2.5419566392504684,
+        "total_wall_s": 8.283571581006981,
+        "proposals_evaluated": 128,
+        "rnea_calls": 14796,
+        "screening_and_timing_rnea_calls": 33282,
+        "total_counted_rnea_calls": 48078,
+        "initial_path_lp_expansion": 0.0686187753352194,
+        "initial_native_fit": {
+          "maximum_same_progress_fit_deviation_rad": 0.0006052829437281554,
+          "squared_residual": 2.6371836105408336e-05,
+          "count": 22,
+          "fit_note": "approximate original path for SHARED search initialization; original LP obstruction remains on EXACT native cubic"
+        },
+        "task_sha256": "bba76af506c5677fd3317d7fd784579b959280c4d1c89e07e9c7d5c7ee6db354",
+        "torque_profile_sha256": "2fcc2fb06ed57586443197b65acd7556b0267f89f1d00ee80add08882524aa50",
+        "witness_sha256": null,
+        "world_clearance_m": null,
+        "self_clearance_m": null,
+        "adaptive_family_checks": null,
+        "kinematic_hull": null,
+        "source_original_native_sha256": "656bbb8615acdda7e41e9d2423d4a6e5bb91ed1c8f0596884f093beb753e3d57"
+      },
+      "random_local": {
+        "status": "NO_QUALIFIED_RESCUE",
+        "failure_reasons": [
+          "no constructive witness generated"
+        ],
+        "candidate_prescreen": false,
+        "qualified_by_budget": {
+          "16": false,
+          "32": false,
+          "64": false,
+          "128": false
+        },
+        "first_qualified_proposal": null,
+        "first_qualified_elapsed_wall_s": null,
+        "duration_s": null,
+        "preliminary_duration_s": null,
+        "first_screen_proposal": null,
+        "selected_deviation_rad": 0.27330657148407034,
+        "best_score": 2.6224868541878172,
+        "total_wall_s": 8.18616857600864,
+        "proposals_evaluated": 128,
+        "rnea_calls": 12771,
+        "screening_and_timing_rnea_calls": 33282,
+        "total_counted_rnea_calls": 46053,
+        "initial_path_lp_expansion": 0.0686187753352194,
+        "initial_native_fit": {
+          "maximum_same_progress_fit_deviation_rad": 0.0006052829437281554,
+          "squared_residual": 2.6371836105408336e-05,
+          "count": 22,
+          "fit_note": "approximate original path for SHARED search initialization; original LP obstruction remains on EXACT native cubic"
+        },
+        "task_sha256": "bba76af506c5677fd3317d7fd784579b959280c4d1c89e07e9c7d5c7ee6db354",
+        "torque_profile_sha256": "2fcc2fb06ed57586443197b65acd7556b0267f89f1d00ee80add08882524aa50",
+        "witness_sha256": null,
+        "world_clearance_m": null,
+        "self_clearance_m": null,
+        "adaptive_family_checks": null,
+        "kinematic_hull": null,
+        "source_original_native_sha256": "656bbb8615acdda7e41e9d2423d4a6e5bb91ed1c8f0596884f093beb753e3d57"
+      },
+      "random_global": {
+        "status": "NO_QUALIFIED_RESCUE",
+        "failure_reasons": [
+          "no constructive witness generated"
+        ],
+        "candidate_prescreen": false,
+        "qualified_by_budget": {
+          "16": false,
+          "32": false,
+          "64": false,
+          "128": false
+        },
+        "first_qualified_proposal": null,
+        "first_qualified_elapsed_wall_s": null,
+        "duration_s": null,
+        "preliminary_duration_s": null,
+        "first_screen_proposal": null,
+        "selected_deviation_rad": 1.0182566202486636,
+        "best_score": 0.2606842862411102,
+        "total_wall_s": 7.507359773037024,
+        "proposals_evaluated": 128,
+        "rnea_calls": 12771,
+        "screening_and_timing_rnea_calls": 29670,
+        "total_counted_rnea_calls": 42441,
+        "initial_path_lp_expansion": 0.0686187753352194,
+        "initial_native_fit": {
+          "maximum_same_progress_fit_deviation_rad": 0.0006052829437281554,
+          "squared_residual": 2.6371836105408336e-05,
+          "count": 22,
+          "fit_note": "approximate original path for SHARED search initialization; original LP obstruction remains on EXACT native cubic"
+        },
+        "task_sha256": "bba76af506c5677fd3317d7fd784579b959280c4d1c89e07e9c7d5c7ee6db354",
+        "torque_profile_sha256": "2fcc2fb06ed57586443197b65acd7556b0267f89f1d00ee80add08882524aa50",
+        "witness_sha256": null,
+        "world_clearance_m": null,
+        "self_clearance_m": null,
+        "adaptive_family_checks": null,
+        "kinematic_hull": null,
+        "source_original_native_sha256": "656bbb8615acdda7e41e9d2423d4a6e5bb91ed1c8f0596884f093beb753e3d57"
+      }
+    },
+    "confirm_geom_table_07": {
+      "dual": {
+        "status": "NO_QUALIFIED_RESCUE",
+        "failure_reasons": [
+          "no constructive witness generated"
+        ],
+        "candidate_prescreen": false,
+        "qualified_by_budget": {
+          "16": false,
+          "32": false,
+          "64": false,
+          "128": false
+        },
+        "first_qualified_proposal": null,
+        "first_qualified_elapsed_wall_s": null,
+        "duration_s": null,
+        "preliminary_duration_s": null,
+        "first_screen_proposal": null,
+        "selected_deviation_rad": 0.9665868800111374,
+        "best_score": 1.8963896874045765,
+        "total_wall_s": 7.146405759034678,
+        "proposals_evaluated": 128,
+        "rnea_calls": 18171,
+        "screening_and_timing_rnea_calls": 31863,
+        "total_counted_rnea_calls": 50034,
+        "initial_path_lp_expansion": 0.21538157387855067,
+        "initial_native_fit": {
+          "maximum_same_progress_fit_deviation_rad": 0.0008455647846458585,
+          "squared_residual": 5.1116253067859986e-05,
+          "count": 22,
+          "fit_note": "approximate original path for SHARED search initialization; original LP obstruction remains on EXACT native cubic"
+        },
+        "task_sha256": "ab21291db920246f298722bb7877b0c15d8e0a3c45dee58bffeb8d64e3cd290b",
+        "torque_profile_sha256": "63efbd648a621f796f04bd9b317d146ab13450511d2b7c52c4af7ac6433cb1ac",
+        "witness_sha256": null,
+        "world_clearance_m": null,
+        "self_clearance_m": null,
+        "adaptive_family_checks": null,
+        "kinematic_hull": null,
+        "source_original_native_sha256": "a517b394c0025007ef31261e2a1a44c77e27e5e495406ce79697c411b37a0f2d"
+      },
+      "random_local": {
+        "status": "NO_QUALIFIED_RESCUE",
+        "failure_reasons": [
+          "no constructive witness generated"
+        ],
+        "candidate_prescreen": false,
+        "qualified_by_budget": {
+          "16": false,
+          "32": false,
+          "64": false,
+          "128": false
+        },
+        "first_qualified_proposal": null,
+        "first_qualified_elapsed_wall_s": null,
+        "duration_s": null,
+        "preliminary_duration_s": null,
+        "first_screen_proposal": null,
+        "selected_deviation_rad": 0.6622711076389041,
+        "best_score": 1.6835897264643744,
+        "total_wall_s": 7.392275299003813,
+        "proposals_evaluated": 128,
+        "rnea_calls": 12771,
+        "screening_and_timing_rnea_calls": 33153,
+        "total_counted_rnea_calls": 45924,
+        "initial_path_lp_expansion": 0.21538157387855067,
+        "initial_native_fit": {
+          "maximum_same_progress_fit_deviation_rad": 0.0008455647846458585,
+          "squared_residual": 5.1116253067859986e-05,
+          "count": 22,
+          "fit_note": "approximate original path for SHARED search initialization; original LP obstruction remains on EXACT native cubic"
+        },
+        "task_sha256": "ab21291db920246f298722bb7877b0c15d8e0a3c45dee58bffeb8d64e3cd290b",
+        "torque_profile_sha256": "63efbd648a621f796f04bd9b317d146ab13450511d2b7c52c4af7ac6433cb1ac",
+        "witness_sha256": null,
+        "world_clearance_m": null,
+        "self_clearance_m": null,
+        "adaptive_family_checks": null,
+        "kinematic_hull": null,
+        "source_original_native_sha256": "a517b394c0025007ef31261e2a1a44c77e27e5e495406ce79697c411b37a0f2d"
+      },
+      "random_global": {
+        "status": "INDEPENDENTLY_QUALIFIED",
+        "failure_reasons": [],
+        "candidate_prescreen": true,
+        "qualified_by_budget": {
+          "16": false,
+          "32": false,
+          "64": true,
+          "128": true
+        },
+        "first_qualified_proposal": 37,
+        "first_qualified_elapsed_wall_s": 1.948908228019718,
+        "duration_s": 20.0,
+        "preliminary_duration_s": 20.0,
+        "first_screen_proposal": 37,
+        "selected_deviation_rad": 0.9250004777165165,
+        "best_score": 0.0,
+        "total_wall_s": 1.9489114740281366,
+        "proposals_evaluated": 37,
+        "rnea_calls": 3762,
+        "screening_and_timing_rnea_calls": 10185,
+        "total_counted_rnea_calls": 13947,
+        "initial_path_lp_expansion": 0.21538157387855067,
+        "initial_native_fit": {
+          "maximum_same_progress_fit_deviation_rad": 0.0008455647846458585,
+          "squared_residual": 5.1116253067859986e-05,
+          "count": 22,
+          "fit_note": "approximate original path for SHARED search initialization; original LP obstruction remains on EXACT native cubic"
+        },
+        "task_sha256": "ab21291db920246f298722bb7877b0c15d8e0a3c45dee58bffeb8d64e3cd290b",
+        "torque_profile_sha256": "63efbd648a621f796f04bd9b317d146ab13450511d2b7c52c4af7ac6433cb1ac",
+        "witness_sha256": "393caaaba33ce8bef7824627fa2edd1e9cb19275266c3e6df26624262f9e36ef",
+        "world_clearance_m": 0.029275955227066032,
+        "self_clearance_m": 0.08187412452824389,
+        "adaptive_family_checks": {
+          "position": {
+            "physical": {
+              "violation": 0.0,
+              "signed_residual": -0.06471199359530061,
+              "joint": 4,
+              "time_s": 5.4644775390625,
+              "value": -0.13451199050778,
+              "lower": -3.0717999935150146,
+              "upper": -0.0697999969124794
+            },
+            "scaled95": {
+              "violation": 0.0,
+              "signed_residual": -0.06471199359530061,
+              "joint": 4,
+              "time_s": 5.4644775390625,
+              "value": -0.13451199050778,
+              "lower": -3.0717999935150146,
+              "upper": -0.0697999969124794
+            }
+          },
+          "velocity": {
+            "physical": {
+              "violation": 0.0,
+              "signed_residual": -1.0808239021430721,
+              "joint": 3,
+              "time_s": 7.3638916015625,
+              "value": 1.094176050173212,
+              "lower": -2.174999952316284,
+              "upper": 2.174999952316284
+            },
+            "scaled95": {
+              "violation": 0.0,
+              "signed_residual": -0.9720739045272577,
+              "joint": 3,
+              "time_s": 7.3638916015625,
+              "value": 1.094176050173212,
+              "lower": -2.06624995470047,
+              "upper": 2.06624995470047
+            }
+          },
+          "acceleration": {
+            "physical": {
+              "violation": 0.0,
+              "signed_residual": -12.388584252974011,
+              "joint": 6,
+              "time_s": 8.5028076171875,
+              "value": -2.611415747025989,
+              "lower": -15.0,
+              "upper": 15.0
+            },
+            "scaled95": {
+              "violation": 0.0,
+              "signed_residual": -11.638584252974011,
+              "joint": 6,
+              "time_s": 8.5028076171875,
+              "value": -2.611415747025989,
+              "lower": -14.25,
+              "upper": 14.25
+            }
+          },
+          "jerk": {
+            "physical": {
+              "violation": 0.0,
+              "signed_residual": -490.5161162760216,
+              "joint": 6,
+              "time_s": 8.1268310546875,
+              "value": -9.483883723978435,
+              "lower": -500.0,
+              "upper": 500.0
+            },
+            "scaled95": {
+              "violation": 0.0,
+              "signed_residual": -465.5161162760216,
+              "joint": 6,
+              "time_s": 8.1268310546875,
+              "value": -9.483883723978435,
+              "lower": -475.0,
+              "upper": 475.0
+            }
+          },
+          "torque": {
+            "physical": {
+              "violation": 0.0,
+              "signed_residual": -2.7091712049729644,
+              "joint": 2,
+              "time_s": 7.78076171875,
+              "value": -23.390828795027033,
+              "lower": -26.099999999999998,
+              "upper": 26.099999999999998
+            },
+            "scaled95": {
+              "violation": 0.0,
+              "signed_residual": -1.4041712049729647,
+              "joint": 2,
+              "time_s": 7.78076171875,
+              "value": -23.390828795027033,
+              "lower": -24.794999999999998,
+              "upper": 24.794999999999998
+            }
+          }
+        },
+        "kinematic_hull": {
+          "scope": "conservative continuous-time POSITION/VELOCITY/ACCELERATION/JERK ONLY; no torque or collision certificate",
+          "duration_s": 20.0,
+          "envelopes": {
+            "position_min": [
+              -1.2131349347916462,
+              -0.43762891756864497,
+              -1.6379605710749308,
+              -2.426445185251473,
+              -2.201129508362744,
+              0.810018973389492,
+              0.4550165079333785
+            ],
+            "position_max": [
+              0.742394299426637,
+              1.1183813228264055,
+              2.6498067106932237,
+              0.05647337527529285,
+              0.3446669951305041,
+              3.2821761832823,
+              2.1231698320554586
+            ],
+            "velocity_abs_max": [
+              1.7014326294849855,
+              1.1273239454448996,
+              2.036904063841611,
+              1.0941158817856038,
+              1.5823768322991842,
+              2.1212263393262982,
+              2.238173484964226
+            ],
+            "acceleration_abs_max": [
+              6.579984208172264,
+              3.2400050258971915,
+              4.719160759931587,
+              3.4866675751349474,
+              4.57786009328679,
+              7.071059578122474,
+              7.381224077091619
+            ],
+            "jerk_abs_max": [
+              29.621189678528456,
+              9.500119940153377,
+              23.2618711206954,
+              14.21580034680436,
+              22.74699835305661,
+              23.8769496144715,
+              22.532806133980706
+            ]
+          },
+          "per_family_pass": {
+            "position": false,
+            "velocity": true,
+            "acceleration": true,
+            "jerk": true
+          },
+          "all_kinematic_families_conservatively_verified": false,
+          "conservative_basis": "quintic BSpline derivative-control convex hull + analytic smoothstep time-chain maxima",
+          "baseline_limits_sha256": "0c9f521a066a166419561d0ee7e0cd468fc0c05940c8c68fbc521cec81f7b475",
+          "candidate_geometry_sha256": "f199fb3a457a35b6a846239ba06c39e15f59054f4b8ba0b9ca967b439b6168a8",
+          "witness_dense_sha256": "393caaaba33ce8bef7824627fa2edd1e9cb19275266c3e6df26624262f9e36ef"
+        },
+        "source_original_native_sha256": "a517b394c0025007ef31261e2a1a44c77e27e5e495406ce79697c411b37a0f2d"
+      }
+    },
+    "confirm_geom_cluttered_02": {
+      "dual": {
+        "status": "NO_QUALIFIED_RESCUE",
+        "failure_reasons": [
+          "no constructive witness generated"
+        ],
+        "candidate_prescreen": false,
+        "qualified_by_budget": {
+          "16": false,
+          "32": false,
+          "64": false,
+          "128": false
+        },
+        "first_qualified_proposal": null,
+        "first_qualified_elapsed_wall_s": null,
+        "duration_s": null,
+        "preliminary_duration_s": null,
+        "first_screen_proposal": null,
+        "selected_deviation_rad": 0.2649995562672049,
+        "best_score": 4.012160614568862,
+        "total_wall_s": 9.720045541005675,
+        "proposals_evaluated": 128,
+        "rnea_calls": 68121,
+        "screening_and_timing_rnea_calls": 33282,
+        "total_counted_rnea_calls": 101403,
+        "initial_path_lp_expansion": 0.5140534546888718,
+        "initial_native_fit": {
+          "maximum_same_progress_fit_deviation_rad": 0.0007920315001252217,
+          "squared_residual": 5.015455508291412e-05,
+          "count": 22,
+          "fit_note": "approximate original path for SHARED search initialization; original LP obstruction remains on EXACT native cubic"
+        },
+        "task_sha256": "5cab1bd68c017b2340fd1f72c55064c46a63c9674edda8cfc8f81e0e3cc775a7",
+        "torque_profile_sha256": "e80bb836142ad1606233567b07e693f470b42cbe67bc7ac79e98478e562bb73d",
+        "witness_sha256": null,
+        "world_clearance_m": null,
+        "self_clearance_m": null,
+        "adaptive_family_checks": null,
+        "kinematic_hull": null,
+        "source_original_native_sha256": "a0e4c11e4a057e8509e022601fe49bc71a6dea630cbe177015208ad73709d4dd"
+      },
+      "random_local": {
+        "status": "NO_QUALIFIED_RESCUE",
+        "failure_reasons": [
+          "no constructive witness generated"
+        ],
+        "candidate_prescreen": false,
+        "qualified_by_budget": {
+          "16": false,
+          "32": false,
+          "64": false,
+          "128": false
+        },
+        "first_qualified_proposal": null,
+        "first_qualified_elapsed_wall_s": null,
+        "duration_s": null,
+        "preliminary_duration_s": null,
+        "first_screen_proposal": null,
+        "selected_deviation_rad": 0.5135548786918619,
+        "best_score": 2.092159982218869,
+        "total_wall_s": 8.380723006033804,
+        "proposals_evaluated": 128,
+        "rnea_calls": 12771,
+        "screening_and_timing_rnea_calls": 33282,
+        "total_counted_rnea_calls": 46053,
+        "initial_path_lp_expansion": 0.5140534546888718,
+        "initial_native_fit": {
+          "maximum_same_progress_fit_deviation_rad": 0.0007920315001252217,
+          "squared_residual": 5.015455508291412e-05,
+          "count": 22,
+          "fit_note": "approximate original path for SHARED search initialization; original LP obstruction remains on EXACT native cubic"
+        },
+        "task_sha256": "5cab1bd68c017b2340fd1f72c55064c46a63c9674edda8cfc8f81e0e3cc775a7",
+        "torque_profile_sha256": "e80bb836142ad1606233567b07e693f470b42cbe67bc7ac79e98478e562bb73d",
+        "witness_sha256": null,
+        "world_clearance_m": null,
+        "self_clearance_m": null,
+        "adaptive_family_checks": null,
+        "kinematic_hull": null,
+        "source_original_native_sha256": "a0e4c11e4a057e8509e022601fe49bc71a6dea630cbe177015208ad73709d4dd"
+      },
+      "random_global": {
+        "status": "INDEPENDENTLY_QUALIFIED",
+        "failure_reasons": [],
+        "candidate_prescreen": true,
+        "qualified_by_budget": {
+          "16": false,
+          "32": false,
+          "64": false,
+          "128": true
+        },
+        "first_qualified_proposal": 105,
+        "first_qualified_elapsed_wall_s": 6.761784581991378,
+        "duration_s": 20.0,
+        "preliminary_duration_s": 20.0,
+        "first_screen_proposal": 105,
+        "selected_deviation_rad": 1.3434546142280301,
+        "best_score": 0.0,
+        "total_wall_s": 6.761787116003688,
+        "proposals_evaluated": 105,
+        "rnea_calls": 10494,
+        "screening_and_timing_rnea_calls": 28247,
+        "total_counted_rnea_calls": 38741,
+        "initial_path_lp_expansion": 0.5140534546888718,
+        "initial_native_fit": {
+          "maximum_same_progress_fit_deviation_rad": 0.0007920315001252217,
+          "squared_residual": 5.015455508291412e-05,
+          "count": 22,
+          "fit_note": "approximate original path for SHARED search initialization; original LP obstruction remains on EXACT native cubic"
+        },
+        "task_sha256": "5cab1bd68c017b2340fd1f72c55064c46a63c9674edda8cfc8f81e0e3cc775a7",
+        "torque_profile_sha256": "e80bb836142ad1606233567b07e693f470b42cbe67bc7ac79e98478e562bb73d",
+        "witness_sha256": "388988b4d016033f75c601cd639aa8be120effa9eb8874c1b9372a90e30c3aa9",
+        "world_clearance_m": 0.05499999999999999,
+        "self_clearance_m": 0.08200534017054614,
+        "adaptive_family_checks": {
+          "position": {
+            "physical": {
+              "violation": 0.0,
+              "signed_residual": -0.11983499937507927,
+              "joint": 4,
+              "time_s": 13.3758544921875,
+              "value": -0.18963499628755867,
+              "lower": -3.0717999935150146,
+              "upper": -0.0697999969124794
+            },
+            "scaled95": {
+              "violation": 0.0,
+              "signed_residual": -0.11983499937507927,
+              "joint": 4,
+              "time_s": 13.3758544921875,
+              "value": -0.18963499628755867,
+              "lower": -3.0717999935150146,
+              "upper": -0.0697999969124794
+            }
+          },
+          "velocity": {
+            "physical": {
+              "violation": 0.0,
+              "signed_residual": -0.8504359154873762,
+              "joint": 3,
+              "time_s": 11.4471435546875,
+              "value": -1.324564036828908,
+              "lower": -2.174999952316284,
+              "upper": 2.174999952316284
+            },
+            "scaled95": {
+              "violation": 0.0,
+              "signed_residual": -0.7416859178715618,
+              "joint": 3,
+              "time_s": 11.4471435546875,
+              "value": -1.324564036828908,
+              "lower": -2.06624995470047,
+              "upper": 2.06624995470047
+            }
+          },
+          "acceleration": {
+            "physical": {
+              "violation": 0.0,
+              "signed_residual": -10.882586998923351,
+              "joint": 5,
+              "time_s": 9.0521240234375,
+              "value": -4.117413001076648,
+              "lower": -15.0,
+              "upper": 15.0
+            },
+            "scaled95": {
+              "violation": 0.0,
+              "signed_residual": -10.132586998923351,
+              "joint": 5,
+              "time_s": 9.0521240234375,
+              "value": -4.117413001076648,
+              "lower": -14.25,
+              "upper": 14.25
+            }
+          },
+          "jerk": {
+            "physical": {
+              "violation": 0.0,
+              "signed_residual": -489.48050811653155,
+              "joint": 5,
+              "time_s": 9.44580078125,
+              "value": 10.519491883468422,
+              "lower": -500.0,
+              "upper": 500.0
+            },
+            "scaled95": {
+              "violation": 0.0,
+              "signed_residual": -464.48050811653155,
+              "joint": 5,
+              "time_s": 9.44580078125,
+              "value": 10.519491883468422,
+              "lower": -475.0,
+              "upper": 475.0
+            }
+          },
+          "torque": {
+            "physical": {
+              "violation": 0.0,
+              "signed_residual": -1.8733533729753837,
+              "joint": 2,
+              "time_s": 9.5404052734375,
+              "value": -24.226646627024614,
+              "lower": -26.099999999999998,
+              "upper": 26.099999999999998
+            },
+            "scaled95": {
+              "violation": 0.0,
+              "signed_residual": -0.568353372975384,
+              "joint": 2,
+              "time_s": 9.5404052734375,
+              "value": -24.226646627024614,
+              "lower": -24.794999999999998,
+              "upper": 24.794999999999998
+            }
+          }
+        },
+        "kinematic_hull": {
+          "scope": "conservative continuous-time POSITION/VELOCITY/ACCELERATION/JERK ONLY; no torque or collision certificate",
+          "duration_s": 20.0,
+          "envelopes": {
+            "position_min": [
+              -1.0409470261298794,
+              -0.3053396729123623,
+              -1.240229054117093,
+              -2.783634536801504,
+              0.7622603521982041,
+              -0.03570421498982619,
+              -1.6965816452235791
+            ],
+            "position_max": [
+              2.214151811199432,
+              1.257668891062308,
+              2.919629940531358,
+              0.09158302092716239,
+              3.356934313463424,
+              3.2680822691842217,
+              0.8156312834300955
+            ],
+            "velocity_abs_max": [
+              3.5214223613158975,
+              2.1094600417750304,
+              2.9948414118464974,
+              3.247685230275766,
+              2.7153613791776654,
+              2.324933323714644,
+              3.5242215545886886
+            ],
+            "acceleration_abs_max": [
+              12.992580041099274,
+              6.1165242183052,
+              9.141141400596506,
+              12.971122712601646,
+              8.23635336951529,
+              7.1844012844593435,
+              10.278125854847348
+            ],
+            "jerk_abs_max": [
+              62.63025740062026,
+              19.738889080237357,
+              40.485013071681756,
+              60.58145992964677,
+              24.76411453874832,
+              25.08623200585415,
+              36.1086502287333
+            ]
+          },
+          "per_family_pass": {
+            "position": false,
+            "velocity": false,
+            "acceleration": true,
+            "jerk": true
+          },
+          "all_kinematic_families_conservatively_verified": false,
+          "conservative_basis": "quintic BSpline derivative-control convex hull + analytic smoothstep time-chain maxima",
+          "baseline_limits_sha256": "0c9f521a066a166419561d0ee7e0cd468fc0c05940c8c68fbc521cec81f7b475",
+          "candidate_geometry_sha256": "dc91909ce49af168e50abfdcfa9248ba86a42495c8960ed9aa43a19902c0d03c",
+          "witness_dense_sha256": "388988b4d016033f75c601cd639aa8be120effa9eb8874c1b9372a90e30c3aa9"
+        },
+        "source_original_native_sha256": "a0e4c11e4a057e8509e022601fe49bc71a6dea630cbe177015208ad73709d4dd"
+      }
+    }
+  },
+  "arms": [
+    "dual",
+    "random_local",
+    "random_global"
+  ],
+  "proposal_budgets": [
+    16,
+    32,
+    64,
+    128
+  ],
+  "registered_source_registry": {
+    "trap_cluttered_08": {
+      "source_root": "/home/pkicki/curobo/research/joint_time_oracle/results/geometry_trap_source_20261108",
+      "discovery_root": "/home/pkicki/curobo/research/joint_time_oracle/results/geometry_feasibility_discovery_20261108",
+      "scenario_id": "j1234_f0300"
+    },
+    "confirm_geom_table_07": {
+      "source_root": "/home/pkicki/curobo/research/joint_time_oracle/results/geometry_trap_confirm_20261109",
+      "discovery_root": "/home/pkicki/curobo/research/joint_time_oracle/results/geometry_feasibility_confirmation_20261109",
+      "scenario_id": "j1234_f0300"
+    },
+    "confirm_geom_cluttered_02": {
+      "source_root": "/home/pkicki/curobo/research/joint_time_oracle/results/geometry_trap_confirm_20261109",
+      "discovery_root": "/home/pkicki/curobo/research/joint_time_oracle/results/geometry_feasibility_confirmation_20261109",
+      "scenario_id": "j1234_f0300"
+    }
+  },
+  "counts": {
+    "dual": {
+      "attempted": 3,
+      "qualified": 0,
+      "qualified_by_proposals": {
+        "16": 0,
+        "32": 0,
+        "64": 0,
+        "128": 0
+      }
+    },
+    "random_local": {
+      "attempted": 3,
+      "qualified": 0,
+      "qualified_by_proposals": {
+        "16": 0,
+        "32": 0,
+        "64": 0,
+        "128": 0
+      }
+    },
+    "random_global": {
+      "attempted": 3,
+      "qualified": 2,
+      "qualified_by_proposals": {
+        "16": 0,
+        "32": 0,
+        "64": 1,
+        "128": 2
+      }
+    }
+  },
+  "note": "3 adversarial examples; no population success-rate inference; no continuous-time physical certificate",
+  "fairness": "same nominal-path quintic fit, proposal budget and auditor; directional costs differ, so compare wall time and RNEA",
+  "dual_gradient_validation": {
+    "case_id": "trap_cluttered_08",
+    "task_sha256": "bba76af506c5677fd3317d7fd784579b959280c4d1c89e07e9c7d5c7ee6db354",
+    "source_native_geometry_sha256": "656bbb8615acdda7e41e9d2423d4a6e5bb91ed1c8f0596884f093beb753e3d57",
+    "torque_profile_sha256": "2fcc2fb06ed57586443197b65acd7556b0267f89f1d00ee80add08882524aa50",
+    "controls_archive": "/home/pkicki/curobo/research/joint_time_oracle/results/torque_lp_guided_rescue_20261108/dual_gradient_validation_controls.npz",
+    "controls_archive_sha256": "4fb118f1bea08a8a2e2d1258038e170bdeadd916fc9028085553b9e7dcb660b8",
+    "fit": {
+      "maximum_same_progress_fit_deviation_rad": 0.0006052829437281554,
+      "squared_residual": 2.6371836105408336e-05,
+      "count": 22,
+      "fit_note": "approximate original path for SHARED search initialization; original LP obstruction remains on EXACT native cubic"
+    },
+    "progress": 0.2778777777777778,
+    "baseline_lp": {
+      "status": "SOLVED",
+      "epsilon": 0.0686187753352194,
+      "duality_gap": 1.3877787807814457e-17,
+      "primal_residual": 0.0,
+      "dual_residual": 0.0,
+      "active_set": {
+        "upper": [
+          2
+        ],
+        "lower": [
+          1
+        ]
+      }
+    },
+    "gradient_step_sweep": [
+      {
+        "gradient_fd_step": 0.001,
+        "gradient_norm": 24.605714111440093,
+        "predicted_directional_derivative": -24.605714111440093,
+        "direction_finite": true,
+        "checks": [
+          {
+            "path_step": 0.001,
+            "plus_epsilon": 0.04423535943783176,
+            "minus_epsilon": 0.05721125800108722,
+            "predicted_directional_derivative": -24.605714111440093,
+            "one_sided_descent_fd": -24.383415897387643,
+            "central_directional_fd": -6.487949281627731,
+            "plus_active_set": {
+              "upper": [
+                2
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "minus_active_set": {
+              "upper": [
+                3
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "active_set_changed": true,
+            "lp_status": [
+              "SOLVED",
+              "SOLVED"
+            ]
+          },
+          {
+            "path_step": 0.0003,
+            "plus_epsilon": 0.06125719452949943,
+            "minus_epsilon": 0.06545647547938392,
+            "predicted_directional_derivative": -24.605714111440093,
+            "one_sided_descent_fd": -24.538602685733235,
+            "central_directional_fd": -6.998801583140818,
+            "plus_active_set": {
+              "upper": [
+                2
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "minus_active_set": {
+              "upper": [
+                3
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "active_set_changed": true,
+            "lp_status": [
+              "SOLVED",
+              "SOLVED"
+            ]
+          },
+          {
+            "path_step": 0.0001,
+            "plus_epsilon": 0.06616044500554319,
+            "minus_epsilon": 0.06787019330395415,
+            "predicted_directional_derivative": -24.605714111440093,
+            "one_sided_descent_fd": -24.583303296762114,
+            "central_directional_fd": -8.548741492054798,
+            "plus_active_set": {
+              "upper": [
+                2
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "minus_active_set": {
+              "upper": [
+                3
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "active_set_changed": true,
+            "lp_status": [
+              "SOLVED",
+              "SOLVED"
+            ]
+          },
+          {
+            "path_step": 3e-05,
+            "plus_epsilon": 0.06788080573107681,
+            "minus_epsilon": 0.06872124033126568,
+            "predicted_directional_derivative": -24.605714111440093,
+            "one_sided_descent_fd": -24.59898680475294,
+            "central_directional_fd": -14.007243336481197,
+            "plus_active_set": {
+              "upper": [
+                2
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "minus_active_set": {
+              "upper": [
+                3
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "active_set_changed": true,
+            "lp_status": [
+              "SOLVED",
+              "SOLVED"
+            ]
+          }
+        ]
+      },
+      {
+        "gradient_fd_step": 0.0005,
+        "gradient_norm": 24.605714330485505,
+        "predicted_directional_derivative": -24.605714330485505,
+        "direction_finite": true,
+        "checks": [
+          {
+            "path_step": 0.001,
+            "plus_epsilon": 0.0442353594354032,
+            "minus_epsilon": 0.05721125800771727,
+            "predicted_directional_derivative": -24.605714330485505,
+            "one_sided_descent_fd": -24.3834158998162,
+            "central_directional_fd": -6.487949286157035,
+            "plus_active_set": {
+              "upper": [
+                2
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "minus_active_set": {
+              "upper": [
+                3
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "active_set_changed": true,
+            "lp_status": [
+              "SOLVED",
+              "SOLVED"
+            ]
+          },
+          {
+            "path_step": 0.0003,
+            "plus_epsilon": 0.06125719452927043,
+            "minus_epsilon": 0.06545647548132397,
+            "predicted_directional_derivative": -24.605714330485505,
+            "one_sided_descent_fd": -24.53860268649658,
+            "central_directional_fd": -6.9988015867559,
+            "plus_active_set": {
+              "upper": [
+                2
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "minus_active_set": {
+              "upper": [
+                3
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "active_set_changed": true,
+            "lp_status": [
+              "SOLVED",
+              "SOLVED"
+            ]
+          },
+          {
+            "path_step": 0.0001,
+            "plus_epsilon": 0.06616044500551493,
+            "minus_epsilon": 0.06787019330459092,
+            "predicted_directional_derivative": -24.605714330485505,
+            "one_sided_descent_fd": -24.583303297044665,
+            "central_directional_fd": -8.548741495379916,
+            "plus_active_set": {
+              "upper": [
+                2
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "minus_active_set": {
+              "upper": [
+                3
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "active_set_changed": true,
+            "lp_status": [
+              "SOLVED",
+              "SOLVED"
+            ]
+          },
+          {
+            "path_step": 3e-05,
+            "plus_epsilon": 0.06788080573106606,
+            "minus_epsilon": 0.0687212403314543,
+            "predicted_directional_derivative": -24.605714330485505,
+            "one_sided_descent_fd": -24.598986805111448,
+            "central_directional_fd": -14.007243339804003,
+            "plus_active_set": {
+              "upper": [
+                2
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "minus_active_set": {
+              "upper": [
+                3
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "active_set_changed": true,
+            "lp_status": [
+              "SOLVED",
+              "SOLVED"
+            ]
+          }
+        ]
+      },
+      {
+        "gradient_fd_step": 0.0002,
+        "gradient_norm": 24.605714391807666,
+        "predicted_directional_derivative": -24.605714391807666,
+        "direction_finite": true,
+        "checks": [
+          {
+            "path_step": 0.001,
+            "plus_epsilon": 0.044235359434731135,
+            "minus_epsilon": 0.05721125800957246,
+            "predicted_directional_derivative": -24.605714391807666,
+            "one_sided_descent_fd": -24.383415900488266,
+            "central_directional_fd": -6.487949287420664,
+            "plus_active_set": {
+              "upper": [
+                2
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "minus_active_set": {
+              "upper": [
+                3
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "active_set_changed": true,
+            "lp_status": [
+              "SOLVED",
+              "SOLVED"
+            ]
+          },
+          {
+            "path_step": 0.0003,
+            "plus_epsilon": 0.061257194529210246,
+            "minus_epsilon": 0.06545647548187492,
+            "predicted_directional_derivative": -24.605714391807666,
+            "one_sided_descent_fd": -24.538602686697185,
+            "central_directional_fd": -6.998801587774449,
+            "plus_active_set": {
+              "upper": [
+                2
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "minus_active_set": {
+              "upper": [
+                3
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "active_set_changed": true,
+            "lp_status": [
+              "SOLVED",
+              "SOLVED"
+            ]
+          },
+          {
+            "path_step": 0.0001,
+            "plus_epsilon": 0.06616044500550494,
+            "minus_epsilon": 0.06787019330477603,
+            "predicted_directional_derivative": -24.605714391807666,
+            "one_sided_descent_fd": -24.583303297144585,
+            "central_directional_fd": -8.548741496355454,
+            "plus_active_set": {
+              "upper": [
+                2
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "minus_active_set": {
+              "upper": [
+                3
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "active_set_changed": true,
+            "lp_status": [
+              "SOLVED",
+              "SOLVED"
+            ]
+          },
+          {
+            "path_step": 3e-05,
+            "plus_epsilon": 0.06788080573106872,
+            "minus_epsilon": 0.06872124033150805,
+            "predicted_directional_derivative": -24.605714391807666,
+            "one_sided_descent_fd": -24.59898680502263,
+            "central_directional_fd": -14.007243340655405,
+            "plus_active_set": {
+              "upper": [
+                2
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "minus_active_set": {
+              "upper": [
+                3
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "active_set_changed": true,
+            "lp_status": [
+              "SOLVED",
+              "SOLVED"
+            ]
+          }
+        ]
+      },
+      {
+        "gradient_fd_step": 0.0001,
+        "gradient_norm": 24.60571440056215,
+        "predicted_directional_derivative": -24.60571440056215,
+        "direction_finite": true,
+        "checks": [
+          {
+            "path_step": 0.001,
+            "plus_epsilon": 0.044235359434642824,
+            "minus_epsilon": 0.057211258009846624,
+            "predicted_directional_derivative": -24.60571440056215,
+            "one_sided_descent_fd": -24.383415900576576,
+            "central_directional_fd": -6.4879492876019,
+            "plus_active_set": {
+              "upper": [
+                2
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "minus_active_set": {
+              "upper": [
+                3
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "active_set_changed": true,
+            "lp_status": [
+              "SOLVED",
+              "SOLVED"
+            ]
+          },
+          {
+            "path_step": 0.0003,
+            "plus_epsilon": 0.0612571945292063,
+            "minus_epsilon": 0.0654564754819507,
+            "predicted_directional_derivative": -24.60571440056215,
+            "one_sided_descent_fd": -24.538602686710345,
+            "central_directional_fd": -6.998801587907341,
+            "plus_active_set": {
+              "upper": [
+                2
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "minus_active_set": {
+              "upper": [
+                3
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "active_set_changed": true,
+            "lp_status": [
+              "SOLVED",
+              "SOLVED"
+            ]
+          },
+          {
+            "path_step": 0.0001,
+            "plus_epsilon": 0.06616044500550777,
+            "minus_epsilon": 0.06787019330480583,
+            "predicted_directional_derivative": -24.60571440056215,
+            "one_sided_descent_fd": -24.583303297116277,
+            "central_directional_fd": -8.548741496490278,
+            "plus_active_set": {
+              "upper": [
+                2
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "minus_active_set": {
+              "upper": [
+                3
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "active_set_changed": true,
+            "lp_status": [
+              "SOLVED",
+              "SOLVED"
+            ]
+          },
+          {
+            "path_step": 3e-05,
+            "plus_epsilon": 0.06788080573105962,
+            "minus_epsilon": 0.06872124033151869,
+            "predicted_directional_derivative": -24.60571440056215,
+            "one_sided_descent_fd": -24.598986805326092,
+            "central_directional_fd": -14.00724334098454,
+            "plus_active_set": {
+              "upper": [
+                2
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "minus_active_set": {
+              "upper": [
+                3
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "active_set_changed": true,
+            "lp_status": [
+              "SOLVED",
+              "SOLVED"
+            ]
+          }
+        ]
+      },
+      {
+        "gradient_fd_step": 5e-05,
+        "gradient_norm": 24.605714402784837,
+        "predicted_directional_derivative": -24.605714402784837,
+        "direction_finite": true,
+        "checks": [
+          {
+            "path_step": 0.001,
+            "plus_epsilon": 0.04423535943461347,
+            "minus_epsilon": 0.05721125800989056,
+            "predicted_directional_derivative": -24.605714402784837,
+            "one_sided_descent_fd": -24.38341590060593,
+            "central_directional_fd": -6.4879492876385445,
+            "plus_active_set": {
+              "upper": [
+                2
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "minus_active_set": {
+              "upper": [
+                3
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "active_set_changed": true,
+            "lp_status": [
+              "SOLVED",
+              "SOLVED"
+            ]
+          },
+          {
+            "path_step": 0.0003,
+            "plus_epsilon": 0.06125719452918609,
+            "minus_epsilon": 0.06545647548196866,
+            "predicted_directional_derivative": -24.605714402784837,
+            "one_sided_descent_fd": -24.5386026867777,
+            "central_directional_fd": -6.998801587970947,
+            "plus_active_set": {
+              "upper": [
+                2
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "minus_active_set": {
+              "upper": [
+                3
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "active_set_changed": true,
+            "lp_status": [
+              "SOLVED",
+              "SOLVED"
+            ]
+          },
+          {
+            "path_step": 0.0001,
+            "plus_epsilon": 0.06616044500549716,
+            "minus_epsilon": 0.06787019330480462,
+            "predicted_directional_derivative": -24.605714402784837,
+            "one_sided_descent_fd": -24.58330329722244,
+            "central_directional_fd": -8.548741496537323,
+            "plus_active_set": {
+              "upper": [
+                2
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "minus_active_set": {
+              "upper": [
+                3
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "active_set_changed": true,
+            "lp_status": [
+              "SOLVED",
+              "SOLVED"
+            ]
+          },
+          {
+            "path_step": 3e-05,
+            "plus_epsilon": 0.06788080573105507,
+            "minus_epsilon": 0.06872124033151951,
+            "predicted_directional_derivative": -24.605714402784837,
+            "one_sided_descent_fd": -24.59898680547782,
+            "central_directional_fd": -14.007243341074052,
+            "plus_active_set": {
+              "upper": [
+                2
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "minus_active_set": {
+              "upper": [
+                3
+              ],
+              "lower": [
+                1
+              ]
+            },
+            "active_set_changed": true,
+            "lp_status": [
+              "SOLVED",
+              "SOLVED"
+            ]
+          }
+        ]
+      }
+    ],
+    "rnea_calls": 3483,
+    "interpretation": "Local envelope guidance is heuristic. Stable norm under the finite-difference sweep supports derivative consistency; active-set changes make central differences differ from the one-sided local derivative."
+  },
+  "proposal_replay": {
+    "status": "REPLAY_MATCHED",
+    "manifest_path": "/home/pkicki/curobo/research/joint_time_oracle/results/torque_lp_guided_rescue_20261108/proposal_replay/proposal_replay_manifest.json",
+    "manifest_sha256": "e86a5f973353aa614e6f6a42fd76d791e84be5fd4c8e3c98469b7f37ee22d20c",
+    "arms": {
+      "dual": {
+        "trap_cluttered_08": {
+          "proposal_count": 128,
+          "replay_lp_solves": 4260,
+          "replay_collision_evaluations": 129,
+          "candidate_metrics_match_original_ledger": true,
+          "matched_proposals": 128,
+          "npz_path": "/home/pkicki/curobo/research/joint_time_oracle/results/torque_lp_guided_rescue_20261108/proposal_replay/dual_trap_cluttered_08_proposals.npz",
+          "npz_sha256": "dfa9cccae382403ec6fecc99e10715f2d346277bb9a8eb46279a1f8ff2dd98bf",
+          "json_path": "/home/pkicki/curobo/research/joint_time_oracle/results/torque_lp_guided_rescue_20261108/proposal_replay/dual_trap_cluttered_08_proposals.json",
+          "json_sha256": "71a24d4a6520ab1dcc877101a60511a202ae07094e334411e3e92a91f62faa7a",
+          "direction_source_counts": {
+            "LP_DUAL_GRADIENT": 3,
+            "RANDOM_LOCAL": 125
+          }
+        },
+        "confirm_geom_table_07": {
+          "proposal_count": 128,
+          "replay_lp_solves": 4265,
+          "replay_collision_evaluations": 129,
+          "candidate_metrics_match_original_ledger": true,
+          "matched_proposals": 128,
+          "npz_path": "/home/pkicki/curobo/research/joint_time_oracle/results/torque_lp_guided_rescue_20261108/proposal_replay/dual_confirm_geom_table_07_proposals.npz",
+          "npz_sha256": "a57cf1b3a7c9ed7fbc72d8f0cde4aaafad127119264ac52db626bd43c4bcb345",
+          "json_path": "/home/pkicki/curobo/research/joint_time_oracle/results/torque_lp_guided_rescue_20261108/proposal_replay/dual_confirm_geom_table_07_proposals.json",
+          "json_sha256": "ef25e2342fc7944620b007100160772deb1b9d8b8013b13572a4fd6f823450c6",
+          "direction_source_counts": {
+            "LP_DUAL_GRADIENT": 8,
+            "RANDOM_LOCAL": 120
+          }
+        },
+        "confirm_geom_cluttered_02": {
+          "proposal_count": 128,
+          "replay_lp_solves": 4339,
+          "replay_collision_evaluations": 129,
+          "candidate_metrics_match_original_ledger": true,
+          "matched_proposals": 128,
+          "npz_path": "/home/pkicki/curobo/research/joint_time_oracle/results/torque_lp_guided_rescue_20261108/proposal_replay/dual_confirm_geom_cluttered_02_proposals.npz",
+          "npz_sha256": "056ef3c1833c6bb15071255f0420623f91febc7a93fbf12b90230780347758a8",
+          "json_path": "/home/pkicki/curobo/research/joint_time_oracle/results/torque_lp_guided_rescue_20261108/proposal_replay/dual_confirm_geom_cluttered_02_proposals.json",
+          "json_sha256": "ba7755bdbfd8447c4f3201056e66d9d6525e09b0b5f7467fbe806d701cd746c9",
+          "direction_source_counts": {
+            "LP_DUAL_GRADIENT": 82,
+            "RANDOM_LOCAL": 46
+          }
+        }
+      },
+      "random_local": {
+        "trap_cluttered_08": {
+          "proposal_count": 128,
+          "replay_lp_solves": 4257,
+          "replay_collision_evaluations": 129,
+          "candidate_metrics_match_original_ledger": true,
+          "matched_proposals": 128,
+          "npz_path": "/home/pkicki/curobo/research/joint_time_oracle/results/torque_lp_guided_rescue_20261108/proposal_replay/random_local_trap_cluttered_08_proposals.npz",
+          "npz_sha256": "360384febe8a7d37b3ad170803ee87d936c8e0447b7bce44e9a9a2d3aa017471",
+          "json_path": "/home/pkicki/curobo/research/joint_time_oracle/results/torque_lp_guided_rescue_20261108/proposal_replay/random_local_trap_cluttered_08_proposals.json",
+          "json_sha256": "570fe28d4994350e42856dc21ad8565b8eee01f9a172a21bafd85b54dbc5dd68",
+          "direction_source_counts": {
+            "RANDOM_LOCAL": 128
+          }
+        },
+        "confirm_geom_table_07": {
+          "proposal_count": 128,
+          "replay_lp_solves": 4257,
+          "replay_collision_evaluations": 129,
+          "candidate_metrics_match_original_ledger": true,
+          "matched_proposals": 128,
+          "npz_path": "/home/pkicki/curobo/research/joint_time_oracle/results/torque_lp_guided_rescue_20261108/proposal_replay/random_local_confirm_geom_table_07_proposals.npz",
+          "npz_sha256": "31ffa1a888c473db70bb1d193b326b63047af61743cbd89016427b040555e595",
+          "json_path": "/home/pkicki/curobo/research/joint_time_oracle/results/torque_lp_guided_rescue_20261108/proposal_replay/random_local_confirm_geom_table_07_proposals.json",
+          "json_sha256": "94e32b97a4f394cbf5d9e5ef8c8d22d573291aded83bc375ff07fb482479e07e",
+          "direction_source_counts": {
+            "RANDOM_LOCAL": 128
+          }
+        },
+        "confirm_geom_cluttered_02": {
+          "proposal_count": 128,
+          "replay_lp_solves": 4257,
+          "replay_collision_evaluations": 129,
+          "candidate_metrics_match_original_ledger": true,
+          "matched_proposals": 128,
+          "npz_path": "/home/pkicki/curobo/research/joint_time_oracle/results/torque_lp_guided_rescue_20261108/proposal_replay/random_local_confirm_geom_cluttered_02_proposals.npz",
+          "npz_sha256": "5b17703a0eede62c584c9bd728dbe3e0ed209a126a0bfb47edec5934ff170524",
+          "json_path": "/home/pkicki/curobo/research/joint_time_oracle/results/torque_lp_guided_rescue_20261108/proposal_replay/random_local_confirm_geom_cluttered_02_proposals.json",
+          "json_sha256": "7a47d3d2ec52ee5e94bf142059edf4c274548d1f2af5504f80db318dd3b17139",
+          "direction_source_counts": {
+            "RANDOM_LOCAL": 128
+          }
+        }
+      },
+      "random_global": {
+        "trap_cluttered_08": {
+          "proposal_count": 128,
+          "replay_lp_solves": 4257,
+          "replay_collision_evaluations": 129,
+          "candidate_metrics_match_original_ledger": true,
+          "matched_proposals": 128,
+          "npz_path": "/home/pkicki/curobo/research/joint_time_oracle/results/torque_lp_guided_rescue_20261108/proposal_replay/random_global_trap_cluttered_08_proposals.npz",
+          "npz_sha256": "9ddd1d4059bc8ca257fc8ab9b41d1a6e77661ab00c4431562ed6e9526bfb108e",
+          "json_path": "/home/pkicki/curobo/research/joint_time_oracle/results/torque_lp_guided_rescue_20261108/proposal_replay/random_global_trap_cluttered_08_proposals.json",
+          "json_sha256": "9fc2275dc249265406f5a1aab1aa0c0598d8b6175fdba8da661922b10aea0a4a",
+          "direction_source_counts": {
+            "RANDOM_GLOBAL": 128
+          }
+        },
+        "confirm_geom_table_07": {
+          "proposal_count": 37,
+          "replay_lp_solves": 1254,
+          "replay_collision_evaluations": 38,
+          "candidate_metrics_match_original_ledger": true,
+          "matched_proposals": 37,
+          "npz_path": "/home/pkicki/curobo/research/joint_time_oracle/results/torque_lp_guided_rescue_20261108/proposal_replay/random_global_confirm_geom_table_07_proposals.npz",
+          "npz_sha256": "7a5bc08d9e2a8b3f19df468513c40c8b59ac486d4d3ea31db7943b5ec72bb784",
+          "json_path": "/home/pkicki/curobo/research/joint_time_oracle/results/torque_lp_guided_rescue_20261108/proposal_replay/random_global_confirm_geom_table_07_proposals.json",
+          "json_sha256": "dffb75aa33d3b0b3a86f2831f6e1cd3469922087e62e8fd41b3656cda3cc240a",
+          "direction_source_counts": {
+            "RANDOM_GLOBAL": 37
+          }
+        },
+        "confirm_geom_cluttered_02": {
+          "proposal_count": 105,
+          "replay_lp_solves": 3498,
+          "replay_collision_evaluations": 106,
+          "candidate_metrics_match_original_ledger": true,
+          "matched_proposals": 105,
+          "npz_path": "/home/pkicki/curobo/research/joint_time_oracle/results/torque_lp_guided_rescue_20261108/proposal_replay/random_global_confirm_geom_cluttered_02_proposals.npz",
+          "npz_sha256": "d93e7552ba3d15805da665abdc10c6f20d9573985ba4ecbee5bc9fbfcaac7cd1",
+          "json_path": "/home/pkicki/curobo/research/joint_time_oracle/results/torque_lp_guided_rescue_20261108/proposal_replay/random_global_confirm_geom_cluttered_02_proposals.json",
+          "json_sha256": "1abf8fabd4a8c652ea0641906db94258d8cdd5f32a951d634d7810084ad76de2",
+          "direction_source_counts": {
+            "RANDOM_GLOBAL": 105
+          }
+        }
+      }
+    },
+    "note": "Deterministic post hoc replay restored proposal and direction arrays; its extra runtime is not included in scored search time."
+  },
+  "holdout_freeze": {
+    "status": "VERIFIED",
+    "sha256": "8825e8b1dea10a785610ecec52dcda06710952313231b439ca8760362a5f644c",
+    "path": "/home/pkicki/curobo/research/joint_time_oracle/results/torque_lp_guided_rescue_20261108/holdout_freeze.json"
+  },
+  "registry_consistent": true,
+  "research_decision": {
+    "classification": "NO-GO for the current LP-dual-guided search",
+    "basis": "At the fixed 128-proposal budget, dual guidance qualified 0/3, random-local qualified 0/3, and random-global qualified 2/3. The development task had 0/3 qualified arm results. These three selected adversarial tasks form a small controlled evaluation, not a population benchmark. The outcome does not establish global search performance.",
+    "proposal_budget_counts": {
+      "dual": {
+        "16": 0,
+        "32": 0,
+        "64": 0,
+        "128": 0
+      },
+      "random_local": {
+        "16": 0,
+        "32": 0,
+        "64": 0,
+        "128": 0
+      },
+      "random_global": {
+        "16": 0,
+        "32": 0,
+        "64": 1,
+        "128": 2
+      }
+    }
+  },
+  "native_root": "/home/pkicki/curobo/research/joint_time_oracle/results/native_pretimeopt_probe_metrics_20261108",
+  "native_control_root": "/home/pkicki/curobo/research/joint_time_oracle/results/native_pretimeopt_control_20261108",
+  "native_pretimeopt": {
+    "trap_cluttered_08": {
+      "instrumented_restart_count": 32,
+      "instrumented_restart_statuses": {
+        "FAILED": 32
+      },
+      "pretimeopt_finalizer_invocations": 320,
+      "captured_pre_timeopt_geometries": 320,
+      "finalizer_returned_count": 320,
+      "pre_timeopt_success_lane_count": 1280,
+      "pre_timeopt_path_valid_lane_count": 1280,
+      "captured_lane_count": 1280,
+      "distinct_exact_geometries": 4,
+      "unique_lp_positive_geometry_count": 4,
+      "unique_sampled_geometry_valid_count": 4,
+      "unique_lp_zero_and_geometry_valid_count": 0,
+      "unique_solved_lp_gap_range": [
+        0.045776488307219344,
+        0.05837808431157411
+      ],
+      "lp_positive_lane_count": 1280,
+      "lp_zero_or_unresolved_lane_count": 0,
+      "independently_sampled_collision_and_position_valid_lane_count": 1280,
+      "independently_sampled_geometry_invalid_lane_count": 0,
+      "native_timeopt_masks_by_family": {
+        "path_valid": {
+          "true": 1280,
+          "false": 0
+        },
+        "collision_valid": {
+          "true": 0,
+          "false": 1280
+        },
+        "limits_and_dynamics_valid": {
+          "true": 0,
+          "false": 1280
+        }
+      },
+      "native_timeopt_validation_mask_false_lane_count": 2560,
+      "captured_native_metric_maxima": {
+        "constraints:cspace": 0.0,
+        "constraints:self_collision": null,
+        "constraints:scene_collision": 20100.0
+      },
+      "native_capture_diagnostics": "research/joint_time_oracle/results/native_pretimeopt_probe_metrics_20261108/j1234_f0300/native_full/pretimeopt_diagnostics.json",
+      "independent_retime_diagnostics": [],
+      "instrumented_result_file": "research/joint_time_oracle/results/native_pretimeopt_probe_metrics_20261108/j1234_f0300/native_full/trap_cluttered_08/native_candidates.json",
+      "uninstrumented_restart_count": 1,
+      "uninstrumented_source": "separate uninstrumented control root",
+      "uninstrumented_result_file": "research/joint_time_oracle/results/native_pretimeopt_control_20261108/j1234_f0300/native_full/trap_cluttered_08/native_candidates.json",
+      "uninstrumented_statuses": {
+        "FAILED": 1
+      },
+      "scope": "Observed native cubic lanes only. Positive relaxed LP rules out timing for that exact curve subject to floating-point checks; does not rule out unobserved paths. Native collision mask values are reported as internal diagnostics, not independent physical collision proof."
+    },
+    "confirm_geom_table_07": {
+      "instrumented_restart_count": 32,
+      "instrumented_restart_statuses": {
+        "FAILED": 32
+      },
+      "pretimeopt_finalizer_invocations": 320,
+      "captured_pre_timeopt_geometries": 320,
+      "finalizer_returned_count": 320,
+      "pre_timeopt_success_lane_count": 1280,
+      "pre_timeopt_path_valid_lane_count": 1280,
+      "captured_lane_count": 1280,
+      "distinct_exact_geometries": 33,
+      "unique_lp_positive_geometry_count": 33,
+      "unique_sampled_geometry_valid_count": 8,
+      "unique_lp_zero_and_geometry_valid_count": 0,
+      "unique_solved_lp_gap_range": [
+        0.09317336297920197,
+        0.3069586905129414
+      ],
+      "lp_positive_lane_count": 1280,
+      "lp_zero_or_unresolved_lane_count": 0,
+      "independently_sampled_collision_and_position_valid_lane_count": 256,
+      "independently_sampled_geometry_invalid_lane_count": 1024,
+      "native_timeopt_masks_by_family": {
+        "path_valid": {
+          "true": 1280,
+          "false": 0
+        },
+        "collision_valid": {
+          "true": 0,
+          "false": 1280
+        },
+        "limits_and_dynamics_valid": {
+          "true": 0,
+          "false": 1280
+        }
+      },
+      "native_timeopt_validation_mask_false_lane_count": 2560,
+      "captured_native_metric_maxima": {
+        "constraints:cspace": 0.0,
+        "constraints:self_collision": null,
+        "constraints:scene_collision": 20100.0
+      },
+      "native_capture_diagnostics": "research/joint_time_oracle/results/native_pretimeopt_probe_metrics_20261108/j1234_f0300/native_full/pretimeopt_diagnostics.json",
+      "independent_retime_diagnostics": [],
+      "instrumented_result_file": "research/joint_time_oracle/results/native_pretimeopt_probe_metrics_20261108/j1234_f0300/native_full/confirm_geom_table_07/native_candidates.json",
+      "uninstrumented_restart_count": 32,
+      "uninstrumented_source": "historical uninstrumented full-restart record",
+      "uninstrumented_result_file": "/home/pkicki/curobo/research/joint_time_oracle/results/geometry_feasibility_confirmation_20261109/j1234_f0300/native_full/confirm_geom_table_07/native_candidates.json",
+      "uninstrumented_statuses": {
+        "FAILED": 32
+      },
+      "scope": "Observed native cubic lanes only. Positive relaxed LP rules out timing for that exact curve subject to floating-point checks; does not rule out unobserved paths. Native collision mask values are reported as internal diagnostics, not independent physical collision proof."
+    },
+    "confirm_geom_cluttered_02": {
+      "instrumented_restart_count": 32,
+      "instrumented_restart_statuses": {
+        "FAILED": 32
+      },
+      "pretimeopt_finalizer_invocations": 320,
+      "captured_pre_timeopt_geometries": 320,
+      "finalizer_returned_count": 320,
+      "pre_timeopt_success_lane_count": 1280,
+      "pre_timeopt_path_valid_lane_count": 1280,
+      "captured_lane_count": 1280,
+      "distinct_exact_geometries": 60,
+      "unique_lp_positive_geometry_count": 49,
+      "unique_sampled_geometry_valid_count": 17,
+      "unique_lp_zero_and_geometry_valid_count": 2,
+      "unique_solved_lp_gap_range": [
+        0.0,
+        0.4983294135704446
+      ],
+      "lp_positive_lane_count": 1152,
+      "lp_zero_or_unresolved_lane_count": 128,
+      "independently_sampled_collision_and_position_valid_lane_count": 512,
+      "independently_sampled_geometry_invalid_lane_count": 768,
+      "native_timeopt_masks_by_family": {
+        "path_valid": {
+          "true": 1280,
+          "false": 0
+        },
+        "collision_valid": {
+          "true": 0,
+          "false": 1280
+        },
+        "limits_and_dynamics_valid": {
+          "true": 0,
+          "false": 1280
+        }
+      },
+      "native_timeopt_validation_mask_false_lane_count": 2560,
+      "captured_native_metric_maxima": {
+        "constraints:cspace": 0.0,
+        "constraints:self_collision": null,
+        "constraints:scene_collision": 20100.0
+      },
+      "native_capture_diagnostics": "research/joint_time_oracle/results/native_pretimeopt_probe_metrics_20261108/j1234_f0300/native_full/pretimeopt_diagnostics.json",
+      "independent_retime_diagnostics": [
+        {
+          "file": "research/joint_time_oracle/results/native_pretimeopt_probe_metrics_20261108/j1234_f0300/native_full/confirm_geom_cluttered_02/F000_pretimeopt_008_independent_retime.json",
+          "source_geometry_sha256": "616ab2a3422ea7a8600532fd4b05805e5b0a03fe6d201fc017805af2a22dc990",
+          "solver_status": 2,
+          "solver_converged": false,
+          "primal_min_margin": -0.050807893819435845,
+          "sampled_duration_s": 508055.6789564664,
+          "physical_dynamic_pass": true,
+          "scaled95_dynamic_pass": false,
+          "physical_family_min_margins": {
+            "position": 0.49446155317127694,
+            "velocity": 1.445520615905278,
+            "acceleration": 10.888663675807859,
+            "jerk": 365.6535673082236,
+            "torque": 0.04502771372230541
+          },
+          "scaled95_family_min_margins": {
+            "position": 0.49446155317127694,
+            "velocity": 1.3367706182894636,
+            "acceleration": 10.138663675807859,
+            "jerk": 340.6535673082236,
+            "torque": -1.2599722862776943
+          },
+          "endpoint_residuals": {
+            "start_position_inf_rad": 6.817694098160132e-08,
+            "goal_position_inf_rad": 8.334449708158331e-08,
+            "start_velocity_inf_rad_s": 0.0,
+            "goal_velocity_inf_rad_s": 0.0,
+            "start_acceleration_inf_rad_s2": 0.0,
+            "goal_acceleration_inf_rad_s2": 0.0
+          },
+          "world_clearance_m": 0.0049468250237366534,
+          "sampled_geometry_acceptable": false,
+          "qualification": "NOT_QUALIFIED; local infeasibility termination and/or sampled collision threshold failure"
+        },
+        {
+          "file": "research/joint_time_oracle/results/native_pretimeopt_probe_metrics_20261108/j1234_f0300/native_full/confirm_geom_cluttered_02/F004_pretimeopt_008_independent_retime.json",
+          "source_geometry_sha256": "686f6a76c8316dada3f64e5a20d8719a922ee491e9368bd29e2c3f5b6d5e670f",
+          "solver_status": 2,
+          "solver_converged": false,
+          "primal_min_margin": -0.05076684918571339,
+          "sampled_duration_s": 508267.9110002005,
+          "physical_dynamic_pass": true,
+          "scaled95_dynamic_pass": false,
+          "physical_family_min_margins": {
+            "position": 0.49446155317127694,
+            "velocity": 1.616845512104087,
+            "acceleration": 11.657812908010957,
+            "jerk": 330.0230937065261,
+            "torque": 0.04617269414029934
+          },
+          "scaled95_family_min_margins": {
+            "position": 0.49446155317127694,
+            "velocity": 1.5080955144882726,
+            "acceleration": 10.907812908010957,
+            "jerk": 305.0230937065261,
+            "torque": -1.2588273058597004
+          },
+          "endpoint_residuals": {
+            "start_position_inf_rad": 6.817694098160132e-08,
+            "goal_position_inf_rad": 8.334449708158331e-08,
+            "start_velocity_inf_rad_s": 0.0,
+            "goal_velocity_inf_rad_s": 0.0,
+            "start_acceleration_inf_rad_s2": 0.0,
+            "goal_acceleration_inf_rad_s2": 0.0
+          },
+          "world_clearance_m": 0.004950766806109827,
+          "sampled_geometry_acceptable": false,
+          "qualification": "NOT_QUALIFIED; local infeasibility termination and/or sampled collision threshold failure"
+        }
+      ],
+      "instrumented_result_file": "research/joint_time_oracle/results/native_pretimeopt_probe_metrics_20261108/j1234_f0300/native_full/confirm_geom_cluttered_02/native_candidates.json",
+      "uninstrumented_restart_count": 32,
+      "uninstrumented_source": "historical uninstrumented full-restart record",
+      "uninstrumented_result_file": "/home/pkicki/curobo/research/joint_time_oracle/results/geometry_feasibility_confirmation_20261109/j1234_f0300/native_full/confirm_geom_cluttered_02/native_candidates.json",
+      "uninstrumented_statuses": {
+        "FAILED": 32
+      },
+      "scope": "Observed native cubic lanes only. Positive relaxed LP rules out timing for that exact curve subject to floating-point checks; does not rule out unobserved paths. Native collision mask values are reported as internal diagnostics, not independent physical collision proof."
+    }
+  },
+  "figures": {
+    "trap_cluttered_08": {
+      "search_trace": "assets/search_trap_cluttered_08.png",
+      "qualified": []
+    },
+    "confirm_geom_table_07": {
+      "search_trace": "assets/search_confirm_geom_table_07.png",
+      "qualified": [
+        {
+          "arm": "random_global",
+          "duration_s": 20.0,
+          "geometry_sha256": "f199fb3a457a35b6a846239ba06c39e15f59054f4b8ba0b9ca967b439b6168a8",
+          "trajectory_sha256": "393caaaba33ce8bef7824627fa2edd1e9cb19275266c3e6df26624262f9e36ef"
+        }
+      ],
+      "trajectory": "assets/trajectory_confirm_geom_table_07.png",
+      "profiles": "assets/profiles_confirm_geom_table_07.png"
+    },
+    "confirm_geom_cluttered_02": {
+      "search_trace": "assets/search_confirm_geom_cluttered_02.png",
+      "qualified": [
+        {
+          "arm": "random_global",
+          "duration_s": 20.0,
+          "geometry_sha256": "dc91909ce49af168e50abfdcfa9248ba86a42495c8960ed9aa43a19902c0d03c",
+          "trajectory_sha256": "388988b4d016033f75c601cd639aa8be120effa9eb8874c1b9372a90e30c3aa9"
+        }
+      ],
+      "trajectory": "assets/trajectory_confirm_geom_cluttered_02.png",
+      "profiles": "assets/profiles_confirm_geom_cluttered_02.png"
+    }
+  }
+}

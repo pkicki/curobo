@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "arm": "dual",
+  "budget": 128,
+  "seed": 20261108,
+  "source_registry": {
+    "trap_cluttered_08": {
+      "source_root": "/home/pkicki/curobo/research/joint_time_oracle/results/geometry_trap_source_20261108",
+      "discovery_root": "/home/pkicki/curobo/research/joint_time_oracle/results/geometry_feasibility_discovery_20261108",
+      "scenario_id": "j1234_f0300"
+    },
+    "confirm_geom_table_07": {
+      "source_root": "/home/pkicki/curobo/research/joint_time_oracle/results/geometry_trap_confirm_20261109",
+      "discovery_root": "/home/pkicki/curobo/research/joint_time_oracle/results/geometry_feasibility_confirmation_20261109",
+      "scenario_id": "j1234_f0300"
+    },
+    "confirm_geom_cluttered_02": {
+      "source_root": "/home/pkicki/curobo/research/joint_time_oracle/results/geometry_trap_confirm_20261109",
+      "discovery_root": "/home/pkicki/curobo/research/joint_time_oracle/results/geometry_feasibility_confirmation_20261109",
+      "scenario_id": "j1234_f0300"
+    }
+  },
+  "source_registry_sha256": null,
+  "immutable_source_hashes": {
+    "trap_cluttered_08": {
+      "source_tasks": "b5f613cc45802f5b9cbc7a78b77ef994b56f5a8d0c868551852b9acbcc7da231",
+      "native_original_cubic": "656bbb8615acdda7e41e9d2423d4a6e5bb91ed1c8f0596884f093beb753e3d57",
+      "synthetic_profile": "a1fab9db6d4b802dc4ae07cee9ccd9ab49e95118348eb7a4945082570426e5fa",
+      "original_refined_lp": "f8b14ab62a11a207dbf1fc66623e21ad3c58a287df7d9909642a300c5433b74e",
+      "known_alternative_receipt": "048920b7993b2f61d7513038e11ddac431de1134ca645c663aa4bfed2751b6ec",
+      "frozen_native_outcomes": "798f9504a0c9c4c7c75d104c4e92de09f86a5cf192dd5eba4ea6f2ceeb59ddc0"
+    },
+    "confirm_geom_table_07": {
+      "source_tasks": "f2bd78375744c32ab2e992e946bc650d486a130f1702369452f501f09a044c89",
+      "native_original_cubic": "a517b394c0025007ef31261e2a1a44c77e27e5e495406ce79697c411b37a0f2d",
+      "synthetic_profile": "74ef7034d4eb7ad5f8ea49cbb5c525ca17e7c9a88da5a8903d227a80e97fcfa9",
+      "original_refined_lp": "ff3e4d0ed4146e38e5c7282959f04d46de1bd7016f7fcd3f98075da84a6e9186",
+      "known_alternative_receipt": "dfc2243a65fc0f1930e1a240f8913b90fdc4e0db1afa703452fe280de68b89d0",
+      "frozen_native_outcomes": "6867efbf7dcde3cacabe6625efb443a0543cd87b7327de6a1fb32abf54cdc631"
+    },
+    "confirm_geom_cluttered_02": {
+      "source_tasks": "f2bd78375744c32ab2e992e946bc650d486a130f1702369452f501f09a044c89",
+      "native_original_cubic": "a0e4c11e4a057e8509e022601fe49bc71a6dea630cbe177015208ad73709d4dd",
+      "synthetic_profile": "1a1d6e2ba0b42415d168fb0253253c90ecef95e1202c4b189d89a7ea29e5c6a9",
+      "original_refined_lp": "ff3e4d0ed4146e38e5c7282959f04d46de1bd7016f7fcd3f98075da84a6e9186",
+      "known_alternative_receipt": "dfc2243a65fc0f1930e1a240f8913b90fdc4e0db1afa703452fe280de68b89d0",
+      "frozen_native_outcomes": "c47937c2007cfc584e93c830aa0d6ed7035dc2329b8bbbe6d637c4e4a3be9164"
+    }
+  },
+  "count_quintic_controls": 22,
+  "lp_grid": 33,
+  "lp_grid_policy": "30 uniform interior points plus source-LP bottleneck at s and s+-0.01",
+  "beam_size": 4,
+  "step_radii_rad": [
+    0.16,
+    0.3,
+    0.5,
+    0.8
+  ],
+  "initialization": "same nominal original-path quintic least-squares fit in every arm",
+  "oracle_controls_forbidden": true,
+  "evidence": "prescreen only until independent CPU 8193/adaptive receipts"
+}

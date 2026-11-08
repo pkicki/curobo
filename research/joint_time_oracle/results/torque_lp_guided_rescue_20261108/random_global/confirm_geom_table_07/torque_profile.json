@@ -1,0 +1,70 @@
+{
+  "case_id": "j1234_f0300::confirm_geom_table_07",
+  "source_case_id": "confirm_geom_table_07",
+  "regime": "j1234_f0300",
+  "actuator_scale_by_joint": [
+    0.3,
+    0.3,
+    0.3,
+    0.3,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "derate": 1.0,
+  "nominal_effort_lower": [
+    -87.0,
+    -87.0,
+    -87.0,
+    -87.0,
+    -12.0,
+    -12.0,
+    -12.0
+  ],
+  "nominal_effort_upper": [
+    87.0,
+    87.0,
+    87.0,
+    87.0,
+    12.0,
+    12.0,
+    12.0
+  ],
+  "effort_lower": [
+    -26.099999999999998,
+    -26.099999999999998,
+    -26.099999999999998,
+    -26.099999999999998,
+    -12.0,
+    -12.0,
+    -12.0
+  ],
+  "effort_upper": [
+    26.099999999999998,
+    26.099999999999998,
+    26.099999999999998,
+    26.099999999999998,
+    12.0,
+    12.0,
+    12.0
+  ],
+  "admitted": true,
+  "rejection_reason": null,
+  "endpoint_gravity_scaled95_utilization": 0.7119585939270314,
+  "endpoint_scaled95_max": 0.8,
+  "source_task_sha256": "ab21291db920246f298722bb7877b0c15d8e0a3c45dee58bffeb8d64e3cd290b",
+  "source_geometry_sha256": "a517b394c0025007ef31261e2a1a44c77e27e5e495406ce79697c411b37a0f2d",
+  "model_sha256": "8f4d6768e7587ca6bbc1356007af48f26b91faa82025d21d2cadc9b22a1c4802",
+  "scenario": {
+    "scenario_id": "j1234_f0300",
+    "selected_joints_1based": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "derate_on_selected": 0.3
+  },
+  "provenance": "frozen joint-selective synthetic actuator weakening; not Panda ratings",
+  "profile_sha256": "63efbd648a621f796f04bd9b317d146ab13450511d2b7c52c4af7ac6433cb1ac"
+}

@@ -1,0 +1,14 @@
+{
+  "status": "CONSTRUCTIVE_WITNESS_PRESCREEN",
+  "case_id": "confirm_geom_table_07",
+  "torque_profile_sha256": "63efbd648a621f796f04bd9b317d146ab13450511d2b7c52c4af7ac6433cb1ac",
+  "candidate_attempts": [
+    {
+      "witness_sha256": "393caaaba33ce8bef7824627fa2edd1e9cb19275266c3e6df26624262f9e36ef",
+      "witness_geometry_sha256": "f199fb3a457a35b6a846239ba06c39e15f59054f4b8ba0b9ca967b439b6168a8",
+      "arc_length_aligned_geometry_deviation_rad": 0.9250004777165165,
+      "source": "controlled_search",
+      "arm": "random_global"
+    }
+  ]
+}

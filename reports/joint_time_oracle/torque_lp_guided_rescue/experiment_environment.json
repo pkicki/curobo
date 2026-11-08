@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "study_starting_commit": "bff3dee4f93297744d7b61d2b6f6603892f989fa",
+  "branch": "exp/torque-lp-guided-geometric-rescue-20261108",
+  "independent_pinocchio_environment": {
+    "python": "3.11.18",
+    "pinocchio": "4.1.0",
+    "scipy": "1.17.1"
+  },
+  "cuda_planning_environment": {
+    "python": "3.11.17",
+    "torch": "2.5.1",
+    "torch_cuda": "12.4",
+    "warp": "1.18.0",
+    "gpus": [
+      "NVIDIA A100-PCIE-40GB",
+      "NVIDIA GeForce RTX 3090"
+    ],
+    "driver": "535.146.02"
+  },
+  "compilation_timing_note": "GPU experiments followed planner/TimeOpt CUDA tests and used the installed Warp 1.18 runtime/cache. Search timing is CPU wall time from the independent Pinocchio process; instrumented native pre-TimeOpt captures synchronize GPU-to-CPU and are excluded from latency comparisons.",
+  "qualification_note": "Dense/adaptive sampled physical checks are not a continuous-time torque or collision certificate. Kinematic hull bounds are a separate conservative bound for position/velocity/acceleration/jerk only."
+}

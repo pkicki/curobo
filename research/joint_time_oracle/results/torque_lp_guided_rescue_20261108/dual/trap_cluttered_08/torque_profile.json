@@ -1,0 +1,70 @@
+{
+  "case_id": "j1234_f0300::trap_cluttered_08",
+  "source_case_id": "trap_cluttered_08",
+  "regime": "j1234_f0300",
+  "actuator_scale_by_joint": [
+    0.3,
+    0.3,
+    0.3,
+    0.3,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "derate": 1.0,
+  "nominal_effort_lower": [
+    -87.0,
+    -87.0,
+    -87.0,
+    -87.0,
+    -12.0,
+    -12.0,
+    -12.0
+  ],
+  "nominal_effort_upper": [
+    87.0,
+    87.0,
+    87.0,
+    87.0,
+    12.0,
+    12.0,
+    12.0
+  ],
+  "effort_lower": [
+    -26.099999999999998,
+    -26.099999999999998,
+    -26.099999999999998,
+    -26.099999999999998,
+    -12.0,
+    -12.0,
+    -12.0
+  ],
+  "effort_upper": [
+    26.099999999999998,
+    26.099999999999998,
+    26.099999999999998,
+    26.099999999999998,
+    12.0,
+    12.0,
+    12.0
+  ],
+  "admitted": true,
+  "rejection_reason": null,
+  "endpoint_gravity_scaled95_utilization": 0.7528025036867497,
+  "endpoint_scaled95_max": 0.8,
+  "source_task_sha256": "bba76af506c5677fd3317d7fd784579b959280c4d1c89e07e9c7d5c7ee6db354",
+  "source_geometry_sha256": "656bbb8615acdda7e41e9d2423d4a6e5bb91ed1c8f0596884f093beb753e3d57",
+  "model_sha256": "8f4d6768e7587ca6bbc1356007af48f26b91faa82025d21d2cadc9b22a1c4802",
+  "scenario": {
+    "scenario_id": "j1234_f0300",
+    "selected_joints_1based": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "derate_on_selected": 0.3
+  },
+  "provenance": "frozen joint-selective synthetic actuator weakening; not Panda ratings",
+  "profile_sha256": "2fcc2fb06ed57586443197b65acd7556b0267f89f1d00ee80add08882524aa50"
+}
