@@ -113,7 +113,7 @@ def generate(arm:Path) -> dict:
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root",type=Path,default=DEFAULT)
-    parser.add_argument("--regime",choices=("moderate","severe"),required=True)
+    parser.add_argument("--regime",,required=True)
     a=parser.parse_args()
     out=generate(a.root/a.regime)
     print(json.dumps({"total":len(out),"physical_pass":sum(x.get("physical") is True for x in out.values()),
