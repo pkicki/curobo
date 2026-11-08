@@ -23,9 +23,8 @@ from .cohort_retime import ROOT
 from .geometry_feasibility_core import path_distance, sha256_file
 from .geometry_feasibility_scene import IndependentGeometryAuditor
 from .torque_dual_guidance import AlignedPointDynamics, normalized_bottlenecks
-from .torque_full_planner import geometry_sha
 from .torque_active import read_profile
-from .torque_native_stage_trace import CASES, SCENARIO, OUTPUT
+from .torque_native_trace_contract import CASES, SCENARIO, OUTPUT, cubic_geometry_sha
 
 
 class TrimmedNativeAdapter:
@@ -49,7 +48,7 @@ def audit_lane(buffers:dict,lane:int,profile:dict,scene:str,
                         for progress in s],axis=1)
         worst=normalized_bottlenecks(coeff,effort,top_k=1)[0]
         return {"status":"AUDITED",
-                "geometry_sha256":geometry_sha(buffers,lane),
+                "geometry_sha256":cubic_geometry_sha(buffers,lane),
                 "maximum_relaxed_torque_expansion":float(worst["expansion"]),
                 "worst_progress":float(s[int(worst["index"])]),
                 "world_clearance_m":clearance["world_clearance_m"],
