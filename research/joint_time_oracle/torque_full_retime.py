@@ -29,6 +29,7 @@ DEFAULT = ROOT / "research/joint_time_oracle/results/torque_stress_final_2026110
 
 
 def source_sha(path):
+    """Return the SHA256 digest of a trajectory archive."""
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
@@ -42,6 +43,7 @@ def match_geometry(
     maxiter: int,
     refinements: int,
 ) -> dict:
+    """Optimize a fixed timing law while preserving native cubic geometry."""
     parent = native_name.split("L", 1)[0]
     with np.load(folder / (parent.lower() + "_buffers.npz")) as z:
         buffers = {k: np.asarray(z[k]) for k in z.files}
@@ -142,6 +144,7 @@ def execute(
     refinements: int,
     retry_existing: bool = False,
 ) -> dict:
+    """Retiming all saved native candidates with the matched IPOPT solver."""
     if grid < 65 or maxiter < 1 or refinements < 1:
         raise ValueError("invalid matched retiming numerical settings")
     native = arm / "native_full"
@@ -287,9 +290,10 @@ def execute(
 
 
 def main():
+    """Run independent matched retiming for one registered stress arm."""
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--root", type=Path, default=DEFAULT)
-    p.add_argument("--regime", , required=True)
+    p.add_argument("--regime", required=True)
     p.add_argument("--case")
     p.add_argument("--grid", type=int, default=513)
     p.add_argument("--maxiter", type=int, default=500)

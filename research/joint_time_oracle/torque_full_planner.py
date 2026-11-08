@@ -39,6 +39,7 @@ BUDGETS = (1, 4, 16, 32)
 
 
 def sha(path: Path) -> str:
+    """Return the SHA256 digest of an experiment artifact."""
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
@@ -87,6 +88,7 @@ def make_planner(
     lanes: int = 4,
     use_cuda_graph: bool = False,
 ) -> MotionPlanner:
+    """Construct a fresh planner with task-specific effort bounds installed."""
     robot = robot_with_derated_effort(profile)
     cfg = MotionPlannerCfg.create(
         robot=robot,
@@ -265,6 +267,7 @@ def captured_candidate(
         "lane": lane,
         "geometry_sha256": geometry_sha(buffers, lane),
         "alternate_accepted_lanes": len(alternates),
+        "alternate_lane_ids": [int(extra["lane"]) for extra in alternates],
         "native_mask_available": mask_available,
         "lane_position_replay_error_rad": float(error[lane]),
         "native_success": bool(buffers["success"][lane]),
@@ -291,6 +294,7 @@ def execute(
     warmup: int,
     use_cuda_graph: bool = False,
 ) -> dict:
+    """Run the frozen full-planner restart budget for selected arm tasks."""
     if not (1 <= max_restarts <= 32 and lanes >= 1 and max_attempts >= 1):
         raise ValueError("invalid native full-planner budget")
     tasks = json.loads((arm / "tasks.json").read_text())
@@ -420,7 +424,6 @@ def execute(
                         folder / (tag.lower() + "_buffers.npz"), **buffers["retimer"]
                     )
                     record.update(metadata)
-                    record["status"] = "SUCCESS"
                     record["dense_sha256"] = sha(folder / (tag.lower() + "_dense.npz"))
                     record["trajectory_source"] = getattr(
                         result, "trajectory_source", None
@@ -437,13 +440,18 @@ def execute(
                             "internal_candidate": True,
                             "lane": extra["lane"],
                             "duration_s": extra["duration_s"],
-                            "geometry_sha256": geometry_sha(buffers, extra["lane"]),
+                            "geometry_sha256": geometry_sha(
+                                buffers["retimer"], extra["lane"]
+                            ),
                             "torque_profile_sha256": profile["profile_sha256"],
                             "task_sha256": task["task_sha256"],
                             "dense_sha256": sha(other_path),
                             "native_validation_masks": extra["native_validation_masks"],
                             "parent_restart_tag": tag,
                         }
+                    # A restart is complete only after every native-valid lane
+                    # has been persisted. An exception above remains ERROR.
+                    record["status"] = "SUCCESS"
 
             except Exception as exc:
                 record["reason"] = repr(exc)
@@ -459,9 +467,13 @@ def execute(
 
 
 def main():
+    """Run native full-planner challenges for one registered torque arm."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=STRESS)
-    parser.add_argument("--regime", required=True, )
+    parser.add_argument(
+        "--regime",
+        required=True,
+    )
     parser.add_argument("--case")
     parser.add_argument("--max-restarts", type=int, default=4)
     parser.add_argument("--lanes", type=int, default=4)
