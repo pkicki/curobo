@@ -1,0 +1,42 @@
+{
+  "experiment_run_commit": "5924610c6fc7566ce86141610bc3953bf58987c9",
+  "branch": "exp/joint-time-oracle-extreme-torque-witness-20261108",
+  "torch": "2.5.1",
+  "cuda_available": true,
+  "torch_cuda": "12.4",
+  "gpus": [
+    "NVIDIA A100-PCIE-40GB",
+    "NVIDIA GeForce RTX 3090"
+  ],
+  "warp": "1.18.0",
+  "cuda_python": "3.11.17 (main, Oct 13 2026, 16:45:47) [GCC 15.3.0]",
+  "native_restart_budget": 1,
+  "planner_restarts_completed": 54,
+  "internal_lanes_per_restart": 4,
+  "native_lane_candidates": 216,
+  "native_plan_call_seconds": {
+    "median": 0.20477659098105505,
+    "mean": 0.19894575536966808,
+    "min": 0.16262061899760738,
+    "max": 0.23096087999874726
+  },
+  "planner_setup_and_warmup_seconds_excluded_from_plan_call": {
+    "median": 1.800222602498252,
+    "mean": 4.9727089030763,
+    "min": 1.1921334589715116,
+    "max": 24.240266154054552
+  },
+  "primary_native_duration_seconds": {
+    "median": 0.6028939783573151,
+    "mean": 0.6390605673745826
+  },
+  "arc_aligned_distinct_paths_per_task_factor": {
+    "median": 1.0,
+    "min": 1,
+    "max": 2
+  },
+  "independent_pinocchio_runtime": "/tmp/oracle-ipopt-env/bin/python; Pinocchio 4.1.0; native validation wall-time not separately timed",
+  "native_timeopt_and_geometric_planner_effort_limits_checked_before_planner_construction": true,
+  "cold_warp_compilation_excluded_from_planning_call_measurements": true,
+  "pinocchio_version_via_pinned_pythonpath": "4.1.0"
+}

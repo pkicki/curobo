@@ -492,7 +492,26 @@ original fixed cubic geometry, distinguishing geometric infeasibility
 from a potentially weak TimeOpt solver. The report is
 reports/joint_time_oracle/extreme_torque/index.html.
 
-**Status: NOT EXECUTED** (as implemented by the assistant). Existing severe
-stress, mechanism and full native rerun datasets remain frozen. A native
-planner exception, missing restart, model mismatch or missing independent
-feasibility receipt must never be called a verified failure example.
+**Status (2026-11-08): completed exploratory adversarial arm; no qualifying
+counterexample.** The frozen inventory contains 20 severe-stress source tasks
+and eight registered derating factors (1.000, 0.950, 0.900, 0.850, 0.800,
+0.750, 0.700, 0.650), for 160 task/factor attempts. Endpoint-gravity reserve
+admitted 54 cells; the remaining 106 were excluded before planner challenge.
+Every admitted D-derived time-dilated witness passed independent physical and
+Scaled95 sampled/adaptive receipts. The newly constructed full native planner
+returned four retained internal lanes for all 54 cells on one restart, and all
+216 lanes passed independent physical checks. Of those, 204 also passed
+Scaled95; this additional margin is reported separately. The relaxed pointwise
+torque LP completed on both the original cubic and alternate quintic paths for
+all 54 cells, with zero required bound expansion. Zero is inconclusive and
+does not establish that the original path can be retimed.
+
+The one-restart result did not justify escalation to 4/16/32 restarts: no native
+failure appeared at the initial registered budget. The report distinguishes
+the initially blocked preparation and alternate-lane export runs from planner
+failures; both were corrected and preserved in the attempt history. Independent
+validation is dense/adaptive sampled validation, not a continuous-time
+certificate. Raw evidence is approximately 930 MB at
+`research/joint_time_oracle/results/extreme_torque_witness_20261108/`; its
+checksum inventory and the generated report are at
+`reports/joint_time_oracle/extreme_torque/`.

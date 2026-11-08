@@ -140,6 +140,8 @@ docker/pkgs/*
 *.hdf5
 *.npy
 *.npz
+# Large, checksummed raw extreme-torque witness run; summarized in the report.
+research/joint_time_oracle/results/extreme_torque_witness_20261108/
 *.zip
 *.tar
 *.t
