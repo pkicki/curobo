@@ -201,7 +201,9 @@ prove all native geometries infeasible or any global optimality. Endpoint-
 infeasible profiles, missing restarts, planner runtime errors and native
 unverified successes are all separate categories. Analytic sphere collision
 and sampled Pinocchio checks are not continuous-time certificates.</p>"""
-    page+=f"<p><strong>{success}</strong> finite-budget native-failure-with-feasible-alternative cases; "" <strong>"+str(summary["strong_geometric_failure_examples"])+"</strong> also have a strictly positive relaxed torque infeasibility LP on the ORIGINAL path.</p>"
+    page+=(f"<p><strong>{success}</strong> finite-budget native-failure-with-feasible-alternative cases; "
+           f"<strong>{summary['strong_geometric_failure_examples']}</strong> also have "
+           "a strictly positive relaxed torque infeasibility LP on the original path.</p>")
     page+="<table><thead><tr><th>Case</th><th>Torque regime</th><th>Endpoint admitted</th>"
     page+="<th>Independent witness</th><th>Witness slowdown</th><th>Native failed restarts</th>"
     page+="<th>Decision</th></tr></thead><tbody>"+"\n".join(rows)+"</tbody></table>"
