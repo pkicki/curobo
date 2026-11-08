@@ -289,7 +289,7 @@ def execute(
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--root", type=Path, default=DEFAULT)
-    p.add_argument("--regime", choices=("moderate", "severe"), required=True)
+    p.add_argument("--regime", , required=True)
     p.add_argument("--case")
     p.add_argument("--grid", type=int, default=513)
     p.add_argument("--maxiter", type=int, default=500)
