@@ -26,20 +26,9 @@ import torch
 from .cohort_retime import ROOT
 from .geometry_feasibility_core import sha256_file
 from .torque_full_planner import make_planner
+from .torque_native_trace_contract import CASES, SCENARIO, OUTPUT
 from .torque_active import read_profile
 from curobo.types import JointState
-
-CASES={
-    "trap_cluttered_08":("geometry_trap_source_20261108",
-                        "geometry_feasibility_discovery_20261108"),
-    "confirm_geom_table_07":("geometry_trap_confirm_20261109",
-                             "geometry_feasibility_confirmation_20261109"),
-    "confirm_geom_cluttered_02":("geometry_trap_confirm_20261109",
-                                "geometry_feasibility_confirmation_20261109"),
-}
-SCENARIO="j1234_f0300"
-OUTPUT=ROOT/"research/joint_time_oracle/results/torque_lp_native_stage_trace_20261108"
-
 
 def snapshot_joint_state(value,*,keys=("position","knot","knot_dt","velocity",
                                        "acceleration","jerk","dt")):
