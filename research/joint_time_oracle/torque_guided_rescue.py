@@ -267,6 +267,12 @@ def search(task:dict,profile:dict,native:NativeGeometry,*,arm:str,
         pool=sorted(pool+[new],key=lambda x:x.score)[:4]
     if candidate_witness is None:
         archive=min(pool,key=lambda x:x.score).controls.copy()
+    selected_score=(base.score if chosen_index==0 else
+                    new.score if candidate_witness is not None else
+                    min(c.score for c in pool))
+    selected_deviation=(base.deviation_rad if chosen_index==0 else
+                        new.deviation_rad if candidate_witness is not None else
+                        min(pool,key=lambda x:x.score).deviation_rad)
     elapsed=time.perf_counter()-stamps
     result={"case_id":task["case_id"],"arm":arm,"seed":seed,
             "budget":budget,"proposals_evaluated":len(details)-1,
@@ -432,6 +438,18 @@ def run(root:Path,*,arm_name:str,budget:int,selected:list[str]|None=None,
                 "task_sha256":task["task_sha256"],
                 "profile_sha256":profile["profile_sha256"],
                 "status":"PRESCREEN_ONLY"},indent=2)+"\n")
+            geom_sha=sha256_file(folder/"w_geometry.json")
+            selected=res["report"]["ledger"][res["report"]["first_witness_proposal"]]
+            (folder/"discovery.json").write_text(json.dumps({
+                "case_id":case,"status":"CONSTRUCTIVE_WITNESS_PRESCREEN",
+                "candidate_attempts":[{
+                    "candidate":selected.get("direction_source",arm_name),
+                    "witness_sha256":res["report"]["w_dense_sha256"],
+                    "witness_geometry_sha256":geom_sha,
+                    "arc_length_aligned_geometry_deviation_rad":res["report"]["selected_deviation_rad"],
+                    "witness_duration_s":res["report"]["witness_duration_s"]}],
+                "reason":"research-only candidate, not independently qualified"
+            },indent=2)+"\n")
             # Match the independent geometry-feasibility receipts format,
             # without pretending that this candidate came from the old
             # discovery search or has already passed an audit.
@@ -444,9 +462,7 @@ def run(root:Path,*,arm_name:str,budget:int,selected:list[str]|None=None,
                 "status":"CONSTRUCTIVE_WITNESS_PRESCREEN",
                 "case_id":case,"torque_profile_sha256":profile["profile_sha256"],
                 "candidate_attempts":[candidate_evidence]},indent=2)+"\n")
-        outpath.write_text(json.dumps(res,default=lambda o:o.tolist()
-                                 if isinstance(o,np.ndarray) else float(o),
-                                 indent=2)+"\n")
+        outpath.write_text(json.dumps({"report":res["report"]},indent=2)+"\n")
         status[case]=res["report"]
         print(arm_name,case,"W_SCREEN" if witness is not None else "NO_W",
               res["report"]["proposals_evaluated"],flush=True)
