@@ -20,7 +20,7 @@ import numpy as np
 
 from .cohort_geometry import NativeGeometry
 from .cohort_retime import ROOT
-from .geometry_feasibility_core import path_distance, sha256_file
+from .geometry_feasibility_core import sha256_file
 from .geometry_feasibility_scene import IndependentGeometryAuditor
 from .torque_dual_guidance import AlignedPointDynamics, normalized_bottlenecks
 from .torque_active import read_profile
