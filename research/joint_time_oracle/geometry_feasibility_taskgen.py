@@ -31,8 +31,8 @@ def generate(output:Path,*,seed:int=20261108,per_population:int=10,
              max_attempts_per_task:int=2000,
              exclusion_roots:tuple[Path,...]=(OLD,WIDE),
              min_travel_rad:float=1.5,
-             max_endpoint_nominal_gravity:.float=0.35,
-             min_interior_nominal_gravity:.float=0.38,
+             max_endpoint_nominal_gravity:float=0.35,
+             min_interior_nominal_gravity:float=0.38,
              min_barrier_ratio:float=1.25,
              min_source_separation:float=0.40)->dict:
     """Prepare frozen task inventory; only source nominal planning may follow."""
