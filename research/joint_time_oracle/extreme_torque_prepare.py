@@ -154,8 +154,8 @@ def freeze(source:Path,output:Path,*,factors=DEFAULT_FACTORS,
                 "case_id":case,"cohort":"pilot","population":task["population"],
                 "task_sha256":task["task_sha256"],
                 "methods":{"W":{"duration_s":status.get("witness_duration_s"),
-                                 "verification":{},"status":"PRESCREEN_ONLY" if rho is not None
-                                 and profile.admitted and source_error is None else "NO_WITNESS"}}})
+                                 "verification":{},"status":"PRESCREEN_ONLY" if status["witness_screen_pass"]
+                                 else "NO_WITNESS"}}})
         print(case,{"admitted":sum(v[-1]["admitted"] for v in attempts.values()),
                     "screened":sum(v[-1]["witness_screen_pass"] for v in attempts.values())},flush=True)
     registry={}
