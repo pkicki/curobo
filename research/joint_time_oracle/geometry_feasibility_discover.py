@@ -198,7 +198,26 @@ def discover(source:Path,reference:Path,output:Path,*,
         if scene not in cache:
             cache[scene]=IndependentGeometryAuditor(scene)
         auditor=cache[scene]
-        native=source_native(source,task,rows[case])
+        try:
+            native=source_native(source,task,rows[case])
+        except Exception as exc:
+            # Nominal planning failure is not geometry/torque infeasibility.
+            # Preserve source-selection attrition across every frozen scenario.
+            for scenario in cfg["scenarios"]:
+                name=scenario["scenario_id"]
+                folder=output/name/case
+                folder.mkdir(parents=True,exist_ok=True)
+                missing={"case_id":case,"regime":name,"task_sha256":task["task_sha256"],
+                         "endpoint_admitted":False,"status":"NOMINAL_SOURCE_UNAVAILABLE",
+                         "reason":repr(exc),"candidate_attempts":[]}
+                (folder/"discovery.json").write_text(json.dumps(missing,indent=2)+"\n")
+                arm_rows.setdefault(name,[]).append((task,missing,None))
+                summary["attempted_scenarios"]+=1
+            summary["case_counts"][case]={"attempted":len(cfg["scenarios"]),
+                                         "status":"NOMINAL_SOURCE_UNAVAILABLE",
+                                         "reason":repr(exc)}
+            print(case,"NOMINAL_SOURCE_UNAVAILABLE",repr(exc),flush=True)
+            continue
         native_curve=native.evaluate_trimmed
         full_s=np.linspace(0,1,257)
         original_positions=np.asarray(native_curve(full_s)[0])
