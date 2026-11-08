@@ -283,3 +283,31 @@ native pre-TimeOpt stage/lane attribution and missing-stage reasons;
 HTML report and artifact manifest paths; source environment revisions;
 limitations and NO-GO/GO decision. No PR, no merge, no production
 defaults changes.
+
+
+## Optional conservative continuous-time kinematic envelope
+
+After independent sampled+adaptive W qualification, run the conservative
+analytic B-spline convex-hull bounds on each arm with W candidates:
+
+    PIN_PY -m research.joint_time_oracle.torque_guided_kinematic_hull \
+      --arm "$OUT/$ARM"
+
+For each exact quintic and smoothstep timing law this returns global
+sufficient bounds for joint position, velocity, acceleration and jerk.
+It uses the derivative control-polygon convex hull and analytic
+smoothstep time-derivative maxima. These bounds may be very
+conservative: a FAIL is inconclusive and does not invalidate independent
+sampled qualification. A PASS establishes the corresponding four
+kinematic constraint families globally under the mathematical spline
+model; it does NOT certify actuator torque, world collision, self
+collision or full continuous-time feasibility. Do not combine this
+partial bound with sampled torque/collision into a full formal
+certificate.
+
+The RNEA count in the initial search trace covers the pointwise
+LP and gradient worker; independent geometry/collision-gravity and
+constructive timing also call RNEA. Interpret measured CPU wall time
+as the all-in cost, and separately report full RNEA counts only after
+instrumenting those other calls. Do not label the partial RNEA counter
+as the total dynamics-work count.
