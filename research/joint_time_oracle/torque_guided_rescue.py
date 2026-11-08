@@ -430,7 +430,7 @@ def run(root:Path,*,arm_name:str,budget:int,selected:list[str]|None=None,
             # Match the independent geometry-feasibility receipts format,
             # without pretending that this candidate came from the old
             # discovery search or has already passed an audit.
-            selected={"witness_sha256":res["report"]["w_dense_sha256"],
+            candidate_evidence={"witness_sha256":res["report"]["w_dense_sha256"],
                       "witness_geometry_sha256":sha256_file(folder/"w_geometry.json"),
                       "arc_length_aligned_geometry_deviation_rad":
                           res["report"]["ledger"][-1]["deviation_rad"],
@@ -438,7 +438,7 @@ def run(root:Path,*,arm_name:str,budget:int,selected:list[str]|None=None,
             (folder/"discovery.json").write_text(json.dumps({
                 "status":"CONSTRUCTIVE_WITNESS_PRESCREEN",
                 "case_id":case,"torque_profile_sha256":profile["profile_sha256"],
-                "candidate_attempts":[selected]},indent=2)+"\n")
+                "candidate_attempts":[candidate_evidence]},indent=2)+"\n")
         outpath.write_text(json.dumps(res,default=lambda o:o.tolist()
                                  if isinstance(o,np.ndarray) else float(o),
                                  indent=2)+"\n")
