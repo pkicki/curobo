@@ -9,12 +9,16 @@ planned native cubic path is torque-infeasible. Every proposal is logged.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 from pathlib import Path
 
 import numpy as np
 
-import hashlib
+from .geometry_feasibility_scene import IndependentGeometryAuditor
+from .geometry_feasibility_core import sha256_file
+from .torque_active import torque_utilization
+from .cohort_retime import ROOT
 
 SCENES=(("free",None,6),("table","collision_test.yml",8),
         ("cluttered","collision_primitives_3d.yml",6))
@@ -30,10 +34,6 @@ def endpoint_pair_separation(start,goal,historical):
     return min(min(float(np.linalg.norm(start-np.asarray(x[key]))),
                    float(np.linalg.norm(goal-np.asarray(x[key]))))
                for x in historical for key in ("start","goal"))
-from .geometry_feasibility_scene import IndependentGeometryAuditor
-from .geometry_feasibility_core import sha256_file
-from .torque_active import torque_utilization
-from .cohort_retime import ROOT
 
 OUT=ROOT/"research/joint_time_oracle/results/geometry_trap_source_20261108"
 OLD=ROOT/"research/joint_time_oracle/results/cohort_pilot_isolated_20261106"
