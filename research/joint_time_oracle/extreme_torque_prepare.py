@@ -21,8 +21,8 @@ import pinocchio as pin
 from .cohort_retime import dynamics
 from .extreme_torque_core import (
     DEFAULT_FACTORS, DEFAULT_SLOWDOWNS, TORQUE_HEADROOM,
-    derived_profile, dilate_states, implied_torque, regime_name,
-    screen_slowdowns, sha256_file, source_manifest, check_manifest,
+    derived_profile, dilate_states, regime_name,
+    screen_slowdowns, sha256_file, source_manifest,
 )
 from .torque_active import read_profile, write_profile
 
