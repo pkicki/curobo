@@ -168,7 +168,7 @@ def replay(arm: Path, *, case_filter: str | None = None) -> dict:
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=DEFAULT)
-    parser.add_argument("--regime", required=True, choices=("moderate", "severe"))
+    parser.add_argument("--regime", required=True, )
     parser.add_argument("--case")
     a = parser.parse_args()
     replay(a.root / a.regime, case_filter=a.case)
