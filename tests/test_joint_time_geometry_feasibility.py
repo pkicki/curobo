@@ -24,7 +24,10 @@ from research.joint_time_oracle.geometry_feasibility_refine import (
     dual_slack_certificate,
     refinement_candidates,
 )
-from research.joint_time_oracle.geometry_feasibility_report import classify
+from research.joint_time_oracle.geometry_feasibility_report import (
+    attempt_category,
+    classify,
+)
 from research.joint_time_oracle.torque_active import read_profile
 
 
@@ -182,6 +185,24 @@ def test_strong_geometry_requires_LP_and_witness_not_native_failure():
     )
     neither = classify(good, None, failures, {}, budget=4)
     assert neither["category"] == "NO_STRONG_ORIGINAL_GEOMETRY_INFEASIBILITY_PROOF"
+
+
+def test_report_keeps_lp_inconclusive_and_missing_alternative_separate():
+    assert (
+        attempt_category(
+            {"status": "ORIGINAL_LP_NOT_INFEASIBLE", "endpoint_admitted": True}
+        )
+        == "ORIGINAL_LP_NOT_INFEASIBLE"
+    )
+    assert (
+        attempt_category(
+            {
+                "status": "POSITIVE_ORIGINAL_LP_NEEDS_ALTERNATIVE",
+                "endpoint_admitted": True,
+            }
+        )
+        == "NO_CONSTRUCTIVE_ALTERNATIVE_DISCOVERED"
+    )
 
 
 def test_lp_discovery_gate_does_not_count_presolve_only_as_confirmation():

@@ -1,0 +1,25 @@
+{
+  "experiment_freeze_commit": "0bfed9c42872a430f240999f4f048f6c8aa3fc19",
+  "branch": "exp/joint-time-oracle-geometry-feasibility-20261108",
+  "cuda_environment": {
+    "python": "3.11.17",
+    "torch": "2.5.1",
+    "cuda_runtime": "12.4",
+    "warp": "1.18.0",
+    "planning_gpu": "NVIDIA A100-PCIE-40GB",
+    "driver": "535.146.02",
+    "other_visible_gpu": "NVIDIA GeForce RTX 3090; not used for scored planning"
+  },
+  "pinocchio_environment": {
+    "python": "3.11.18",
+    "pinocchio": "4.1.0",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "casadi": "3.7.2",
+    "cyipopt": "1.7.0",
+    "matplotlib": "3.11.2"
+  },
+  "native_cuda_kernels": "Warp 1.18.0 modules loaded from cache during planner preflight; no separate C++ extension target was built",
+  "timing_note": "No planner-vs-planner latency claim is made; task generation, GPU warmup, and native restart planning are kept separate in raw records.",
+  "validation_note": "Pinocchio independent sampled/adaptive receipts are not continuous-time certificates."
+}

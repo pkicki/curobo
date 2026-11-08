@@ -142,6 +142,12 @@ docker/pkgs/*
 *.npz
 # Large, checksummed raw extreme-torque witness run; summarized in the report.
 research/joint_time_oracle/results/extreme_torque_witness_20261108/
+# Geometry-feasibility raw trajectories and solver ledgers (checksummed in report).
+research/joint_time_oracle/results/geometry_feasibility_preview_20261108/
+research/joint_time_oracle/results/geometry_feasibility_discovery_20261108/
+research/joint_time_oracle/results/geometry_trap_source_20261108/
+research/joint_time_oracle/results/geometry_trap_confirm_20261109/
+research/joint_time_oracle/results/geometry_feasibility_confirmation_20261109/
 *.zip
 *.tar
 *.t
