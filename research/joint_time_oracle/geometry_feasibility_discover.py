@@ -173,6 +173,8 @@ def discover(source:Path,reference:Path,output:Path,*,
     if not chosen or (scenario_ids is not None and len(chosen)!=len(set(scenario_ids))):
         raise ValueError("unregistered or empty frozen scenario selection")
     cfg={"schema_version":1,"source_tasks_sha256":sha256_file(source/"tasks.json"),
+         "selected_task_sha256s":[task["task_sha256"] for task in tasks],
+         "max_tasks":max_tasks,
          "source":str(source),"reference":str(reference.resolve()),
          "scenarios":chosen,"minimum_positive_original_lp_gap":min_gap,
          "lp_prescreen_samples":lp_samples,"max_alternate_geometry_proposals":max_candidates,
