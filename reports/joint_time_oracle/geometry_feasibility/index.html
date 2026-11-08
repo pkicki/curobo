@@ -1,0 +1,36 @@
+<!doctype html><html lang="en"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Geometry-dependent torque feasibility — Not executed</title>
+<style>
+body{font:16px/1.55 system-ui;max-width:1120px;margin:2rem auto;padding:0 1rem;color:#203044}
+.note{padding:1rem;background:#fff1d7;border-left:5px solid #b87714}
+table{border-collapse:collapse;width:100%}td,th{text-align:left;border-bottom:1px solid #dce1e6;padding:.6rem}
+th{background:#eff4fa}
+</style>
+<h1>Geometry-dependent torque infeasibility</h1>
+<p class="note"><strong>NOT EXECUTED.</strong> This page records a committed research implementation and
+preregistered method, not measured source-task results. No strong geometric obstruction, qualifying
+alternative, or native planner failure is claimed in the new study.</p>
+<h2>Hypothesis</h2>
+<p>For a synthetic, joint-selectively weakened Panda actuator configuration, the original cubic
+cuRobo path may be infeasible for <em>every</em> timing law under its torque limits, while a
+geometrically distinct quintic path admits an independently verified rest-to-rest execution
+with the identical start, goal, obstacles, robot model and constraints.</p>
+<h2>Evidence ladder</h2>
+<table><thead><tr><th>Test</th><th>Status</th><th>Evidence required</th></tr></thead><tbody>
+<tr><td>Original path torque obstruction</td><td>Not run</td><td>Positive pointwise LP gap, finer-grid recurrence and numerical dual lower bound</td></tr>
+<tr><td>Constructive alternative</td><td>Not run</td><td>Different quintic geometry and smooth rest-to-rest timing satisfying stringent gravity and collision screens</td></tr>
+<tr><td>Independent feasibility</td><td>Not run</td><td>8,193 samples plus exact analytic adaptive reconstruction; aligned Pinocchio dynamics, world/self spheres, endpoints, Scaled95 margin</td></tr>
+<tr><td>Full native planner</td><td>Not run</td><td>Fresh full cuRobo model built under the same limits, complete restart budget and independent candidate audits</td></tr>
+<tr><td>Fresh source-disjoint replication</td><td>Not run</td><td>Prospectively frozen actuator scenarios, benign-endpoint/high-interior tasks, full denominator</td></tr>
+</tbody></table>
+<p><strong>Scientific scope:</strong> a positive numerical LP at one regular point can rule out
+retiming a particular fixed geometry; it cannot rule out all native geometric paths. Failure to
+find a trajectory within 32 restarts is a finite-budget algorithm result, not global infeasibility.
+Dense and adaptive sampled feasibility checks do not prove continuous-time physical safety.
+The experimental actuator derating is synthetic and must not be confused with genuine
+Panda specifications or an attached payload.</p>
+<p>This report will be regenerated from saved evidence using
+<code>python -m research.joint_time_oracle.geometry_feasibility_report</code>.
+The original negative uniform-derating study remains frozen and unchanged.</p>
+</html>
