@@ -35,7 +35,7 @@ from .geometry_feasibility_core import (
     sha256_file, smoothstep_controls, timed_states,
 )
 from .geometry_feasibility_scene import IndependentGeometryAuditor
-from .torque_active import checked_bounds, torque_utilization
+from .torque_active import torque_utilization
 
 SOURCE = ROOT / "research/joint_time_oracle/results/cohort_pilot_isolated_20261106"
 REFERENCE = ROOT / "research/joint_time_oracle/results/torque_stress_final_20261107/severe"
