@@ -23,10 +23,9 @@ import traceback
 import numpy as np
 import torch
 
-from .cohort_retime import ROOT
 from .geometry_feasibility_core import sha256_file
 from .torque_full_planner import make_planner
-from .torque_native_trace_contract import CASES, SCENARIO, OUTPUT
+from .torque_native_trace_contract import CASES, SCENARIO, OUTPUT, ROOT
 from .torque_active import read_profile
 from curobo.types import JointState
 
