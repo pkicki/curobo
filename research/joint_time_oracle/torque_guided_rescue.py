@@ -284,6 +284,40 @@ def search(task:dict,profile:dict,native:NativeGeometry,*,arm:str,
     return {"controls":archive,"report":result},candidate_witness
 
 
+def frozen_research_sources()->dict:
+    """Bind the original geometry, torque profile, W oracle and failed-native
+    receipts to the experiment BEFORE doing any controlled rescue search.
+    Source W is allowed only for case admission, never as search initialization.
+    """
+    inventory={}
+    for case,(source_name,discovery_name) in ROOTS.items():
+        source=ROOT/"research/joint_time_oracle/results"/source_name
+        experiment=ROOT/"research/joint_time_oracle/results"/discovery_name
+        arm=experiment/SCENARIO
+        frozen=arm/"native_full"/case/"native_candidates.json"
+        if not frozen.exists():
+            raise FileNotFoundError("missing frozen native control for "+case)
+        native=json.loads(frozen.read_text())
+        if not all(native.get(f"F{i:03d}",{}).get("status")=="FAILED"
+                   for i in range(32)):
+            raise ValueError("source native control did not fail all 32 registered restarts for "+case)
+        lp=json.loads((arm/"refined_lp_summary.json").read_text()).get(case,{})
+        witness=json.loads((arm/"w_adaptive_receipts.json").read_text()).get(case+":W",{})
+        if lp.get("status")!="NUMERICALLY_STRONG_ORIGINAL_PATH_INFEASIBILITY" or (
+            witness.get("scaled95") is not True):
+            raise ValueError("source case is not a qualified torque-geometric counterexample")
+        required={
+            "source_tasks":source/"tasks.json",
+            "native_original_cubic":source/case/"a10_buffers.npz",
+            "synthetic_profile":arm/case/"torque_profile.json",
+            "original_refined_lp":arm/"refined_lp_summary.json",
+            "known_alternative_receipt":arm/"w_adaptive_receipts.json",
+            "frozen_native_outcomes":frozen,
+        }
+        inventory[case]={name:sha256_file(path) for name,path in required.items()}
+    return inventory
+
+
 def run(root:Path,*,arm_name:str,budget:int,selected:list[str]|None=None,
         seed:int=20261108)->dict:
     if arm_name not in ARMS:
@@ -294,6 +328,7 @@ def run(root:Path,*,arm_name:str,budget:int,selected:list[str]|None=None,
     output.mkdir(parents=True,exist_ok=True)
     config={"schema_version":1,"arm":arm_name,"budget":budget,
             "seed":seed,"scenario":SCENARIO,"three_case_registry":ROOTS,
+            "immutable_source_hashes":frozen_research_sources(),
             "count_quintic_controls":22,"lp_grid":33,"beam_size":4,
             "step_radii_rad":list(RADII),
             "initialization":"same nominal original-path quintic least-squares fit in every arm",
