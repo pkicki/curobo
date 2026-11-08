@@ -173,3 +173,30 @@ def test_independent_receipt_required_before_reporting_rescue(tmp_path):
     okay,why=qualified(arm,case,row)
     assert not okay
     assert any("independent" in m for m in why)
+
+
+
+def test_kinematic_spline_hull_certifies_easy_continuous_kinematics():
+    from research.joint_time_oracle.torque_guided_kinematic_hull import certificate
+    ctrl=np.zeros((14,7))
+    ctrl[-3:]=.1
+    ctrl[3:-3]=np.linspace(0,.1,8)[:,None]
+    wide=lambda b: np.vstack((-np.ones(7)*b,np.ones(7)*b))
+    limits={"position":wide(2),"velocity":wide(100),
+            "acceleration":wide(1000),"jerk":wide(10000)}
+    cert=certificate(ctrl,10.,limits)
+    assert cert["all_kinematic_families_conservatively_verified"]
+    assert "no torque" in cert["scope"]
+    limits["velocity"]=np.stack((np.ones(7)*.01,np.ones(7)*100))
+    restricted=certificate(ctrl,10.,limits)
+    assert not restricted["per_family_pass"]["velocity"]
+
+
+def test_kinematic_hull_fails_closed_for_wrong_joint_bounds():
+    from research.joint_time_oracle.torque_guided_kinematic_hull import certificate
+    ctrl=np.zeros((14,7))
+    limits={key:np.vstack((-np.ones(7),np.ones(7))) for key in (
+        "position","velocity","acceleration","jerk")}
+    limits["jerk"]=np.zeros((2,7))
+    with pytest.raises(ValueError,match="invalid jerk"):
+        certificate(ctrl,2.,limits)
