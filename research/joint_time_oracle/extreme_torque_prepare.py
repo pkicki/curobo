@@ -145,9 +145,11 @@ def freeze(source:Path,output:Path,*,factors=DEFAULT_FACTORS,
                         if wfile.exists():
                             # Preserve proof provenance: never overwrite witnesses in a resumed study.
                             with np.load(wfile) as previous:
-                                if (len(previous["time"])!=len(states["time"]) or
-                                    not np.allclose(previous["time"],states["time"],rtol=0,atol=1e-9)):
-                                    raise ValueError("existing witness differs; use a new output root")
+                                for key in ("time","q","qd","qdd","jerk","progress","controls","knots"):
+                                    if key in states:
+                                        if key not in previous or previous[key].shape!=states[key].shape or not np.allclose(
+                                            previous[key],states[key],rtol=0,atol=1e-12):
+                                            raise ValueError("existing witness differs; use a new output root")
                         else:
                             np.savez_compressed(wfile,**states)
                         status.update({"witness_slowdown":rho,
