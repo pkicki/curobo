@@ -34,7 +34,7 @@ from .geometry_feasibility_discover import constructive_timing, source_native, s
 from .geometry_feasibility_scene import IndependentGeometryAuditor
 from .torque_active import read_profile, torque_utilization
 from .torque_dual_guidance import (
-    AlignedPointDynamics, PointLP, normalized_bottlenecks,
+    AlignedPointDynamics, normalized_bottlenecks,
     normalized_descent_direction, solve_point_lp,
 )
 from .cohort_retime import ROOT
