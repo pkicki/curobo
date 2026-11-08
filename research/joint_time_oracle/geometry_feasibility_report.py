@@ -108,7 +108,9 @@ def collect(root:Path,source:Path,*,budget:int=32)->dict:
                      "max_required_torque_bound_expansion"),
                  "candidate_proposals":len(item.get("candidate_attempts",[])),
                  "constructive_candidate_duration_s":item.get("chosen_duration_s")}
-            if not item["endpoint_admitted"]:
+            if item["status"]=="NOMINAL_SOURCE_UNAVAILABLE":
+                row["category"]="NOMINAL_SOURCE_UNAVAILABLE"
+            elif not item["endpoint_admitted"]:
                 row["category"]="ENDPOINT_REJECTED"
             elif item["status"]!="CONSTRUCTIVE_WITNESS_PRESCREEN":
                 row["category"]="NO_CONSTRUCTIVE_ALTERNATIVE_DISCOVERED"
