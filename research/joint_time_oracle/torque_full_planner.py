@@ -293,6 +293,7 @@ def execute(
     max_attempts: int,
     warmup: int,
     use_cuda_graph: bool = False,
+    capture_pre_timeopt: bool = False,
 ) -> dict:
     """Run the frozen full-planner restart budget for selected arm tasks."""
     if not (1 <= max_restarts <= 32 and lanes >= 1 and max_attempts >= 1):
@@ -318,6 +319,9 @@ def execute(
         "num_requested_lanes_per_restart": lanes,
         "notes": "All candidate trajectories require independent physical validation.",
     }
+    if capture_pre_timeopt:
+        contract["pre_timeopt_capture"] = True
+        contract["latency_qualified"] = False
     manifest = out / "configuration.json"
     if manifest.exists() and json.loads(manifest.read_text()) != contract:
         raise ValueError("frozen native full-planner configuration mismatch")
@@ -402,7 +406,13 @@ def execute(
                 planner.reset_seed()
                 torch.cuda.synchronize()
                 run_stamp = time.perf_counter()
-                result = planner.plan_cspace(goal, start, max_attempts=max_attempts)
+                if capture_pre_timeopt:
+                    from .native_pretimeopt_probe import NativePreTimeOptProbe
+                    # Install after warmup so snapshots refer only to the scored request.
+                    with NativePreTimeOptProbe(planner,folder,tag):
+                        result = planner.plan_cspace(goal,start,max_attempts=max_attempts)
+                else:
+                    result = planner.plan_cspace(goal,start,max_attempts=max_attempts)
                 torch.cuda.synchronize()
                 record["plan_wall_s"] = time.perf_counter() - run_stamp
                 record["planning_attempts"] = planner.last_planning_attempts
@@ -480,6 +490,8 @@ def main():
     parser.add_argument("--max-attempts", type=int, default=5)
     parser.add_argument("--warmup", type=int, default=2)
     parser.add_argument("--use-cuda-graph", action="store_true")
+    parser.add_argument("--capture-pre-timeopt", action="store_true",
+                        help="Research-only capture; invalidates latency comparison.")
     args = parser.parse_args()
     data = execute(
         args.root / args.regime,
@@ -489,6 +501,7 @@ def main():
         max_attempts=args.max_attempts,
         warmup=args.warmup,
         use_cuda_graph=args.use_cuda_graph,
+        capture_pre_timeopt=args.capture_pre_timeopt,
     )
     print(
         json.dumps(
