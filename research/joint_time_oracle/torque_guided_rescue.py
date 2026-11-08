@@ -359,12 +359,23 @@ def frozen_research_sources(registry:dict)->dict:
 
 
 def run(root:Path,*,arm_name:str,budget:int,selected:list[str]|None=None,
-        seed:int=20261108,registry_file:Path|None=None)->dict:
+        seed:int=20261108,registry_file:Path|None=None,holdout:bool=False)->dict:
     if arm_name not in ARMS:
         raise ValueError("unknown controlled search arm")
     if budget not in BUDGETS:
         raise ValueError("unregistered budget")
     registry=resolve_registry(registry_file)
+    dev_case="trap_cluttered_08"
+    selected=[dev_case] if selected is None else selected
+    if not selected or len(set(selected))!=len(selected) or not set(selected)<=set(registry):
+        raise ValueError("empty, duplicate or unregistered case selection")
+    if any(case!=dev_case for case in selected):
+        if not holdout:
+            raise ValueError("heldout task IDs require --holdout and frozen development")
+        from .torque_guided_freeze import verify_frozen_holdout
+        verify_frozen_holdout(root,budget=budget,seed=seed,registry_file=registry_file)
+    elif holdout:
+        raise ValueError("--holdout requires explicit heldout case IDs")
     output=root/arm_name
     output.mkdir(parents=True,exist_ok=True)
     config={"schema_version":1,"arm":arm_name,"budget":budget,
@@ -438,25 +449,13 @@ def run(root:Path,*,arm_name:str,budget:int,selected:list[str]|None=None,
                 "task_sha256":task["task_sha256"],
                 "profile_sha256":profile["profile_sha256"],
                 "status":"PRESCREEN_ONLY"},indent=2)+"\n")
-            geom_sha=sha256_file(folder/"w_geometry.json")
-            selected=res["report"]["ledger"][res["report"]["first_witness_proposal"]]
-            (folder/"discovery.json").write_text(json.dumps({
-                "case_id":case,"status":"CONSTRUCTIVE_WITNESS_PRESCREEN",
-                "candidate_attempts":[{
-                    "candidate":selected.get("direction_source",arm_name),
-                    "witness_sha256":res["report"]["w_dense_sha256"],
-                    "witness_geometry_sha256":geom_sha,
-                    "arc_length_aligned_geometry_deviation_rad":res["report"]["selected_deviation_rad"],
-                    "witness_duration_s":res["report"]["witness_duration_s"]}],
-                "reason":"research-only candidate, not independently qualified"
-            },indent=2)+"\n")
             # Match the independent geometry-feasibility receipts format,
             # without pretending that this candidate came from the old
             # discovery search or has already passed an audit.
             candidate_evidence={"witness_sha256":res["report"]["w_dense_sha256"],
                       "witness_geometry_sha256":sha256_file(folder/"w_geometry.json"),
                       "arc_length_aligned_geometry_deviation_rad":
-                          res["report"]["ledger"][-1]["deviation_rad"],
+                          res["report"]["selected_deviation_rad"],
                       "source":"controlled_search","arm":arm_name}
             (folder/"discovery.json").write_text(json.dumps({
                 "status":"CONSTRUCTIVE_WITNESS_PRESCREEN",
@@ -485,11 +484,14 @@ def main():
     p.add_argument("--budget",type=int,default=128,choices=BUDGETS)
     p.add_argument("--case",action="append")
     p.add_argument("--seed",type=int,default=20261108)
+    p.add_argument("--holdout",action="store_true",
+                   help="Requires frozen algorithm and discovery-arm evidence.")
     p.add_argument("--registry",type=Path,
                    help="Frozen source-disjoint registry JSON; omission selects 3 known pilot tasks")
     a=p.parse_args()
     result=run(a.root,arm_name=a.arm,budget=a.budget,
-               selected=a.case,seed=a.seed,registry_file=a.registry)
+               selected=a.case,seed=a.seed,registry_file=a.registry,
+               holdout=a.holdout)
     print(json.dumps({"tasks":len(result),
                       "witness_prescreens":sum(x["candidate_witness_prescreen"]
                                                for x in result.values())},indent=2))
