@@ -6,7 +6,7 @@ import hashlib
 from pathlib import Path
 import numpy as np
 
-from .cohort_retime import ROOT
+ROOT=Path(__file__).resolve().parents[2]
 
 CASES={
     "trap_cluttered_08":("geometry_trap_source_20261108",
