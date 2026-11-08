@@ -478,3 +478,21 @@ the *same IPOPT fixed-path solver* as B and D. Native Full versus D is retained
 as a separate practical, mixed-timing-solver comparison. Run
 torque_full_retime.py and torque_full_retime_adaptive.py before issuing strict
 native-full receipts and selecting the best validated matched trajectory.
+
+
+## Extreme torque: feasible alternative versus full-planner failure (2026-11-08)
+
+See [EXTREME_TORQUE_WITNESS_PROTOCOL.md](EXTREME_TORQUE_WITNESS_PROTOCOL.md).
+This separate exploratory branch freezes increasingly derated physical effort
+limits, prescreens time-dilated alternative quintic paths, independently
+reaudits them on adaptive samples and challenges a freshly rebuilt FULL
+cuRobo planner for 1/4/16/32 registered restarts. A relaxed torque-feasibility
+LP can also provide a necessary-condition infeasibility witness for the
+original fixed cubic geometry, distinguishing geometric infeasibility
+from a potentially weak TimeOpt solver. The report is
+reports/joint_time_oracle/extreme_torque/index.html.
+
+**Status: NOT EXECUTED** (as implemented by the assistant). Existing severe
+stress, mechanism and full native rerun datasets remain frozen. A native
+planner exception, missing restart, model mismatch or missing independent
+feasibility receipt must never be called a verified failure example.
