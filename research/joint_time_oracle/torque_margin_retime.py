@@ -104,6 +104,8 @@ def store_r(arm:Path,case:str,states_r:dict,source:dict,source_geometry:dict,
         "profile_sha256":source["profile_sha256"]},indent=2)+"\n")
     document={"schema_version":1,"case_id":case,"method":method,
               "source_files_sha256":source["source_files_sha256"],
+              "source_W_duration_s":source["source_W_duration_s"],
+              "source_P_duration_s":source["source_P_duration_s"],
               "profile_sha256":source["profile_sha256"],
               "source_case_sha256":source["task_sha256"],
               "r_sha256":sha256_file(path),
