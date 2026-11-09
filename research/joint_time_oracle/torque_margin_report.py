@@ -16,7 +16,7 @@ from pathlib import Path
 
 from .cohort_retime import ROOT
 from .torque_margin_core import (
-    CASE_IDS, DILATION_FACTORS, TIGHTENING_FACTORS, MIN_DURATION_IMPROVEMENT,
+    CASE_IDS, TIGHTENING_FACTORS, MIN_DURATION_IMPROVEMENT,
     sha256_file,
 )
 from .torque_margin_prepare import OUTPUT
