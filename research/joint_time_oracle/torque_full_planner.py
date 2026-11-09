@@ -58,6 +58,11 @@ def robot_with_derated_effort(profile: dict) -> RobotCfg:
     """Do not mutate the global robot config or reuse a planner across profiles."""
     robot_data = resolve_config(join_path(get_robot_configs_path(), "franka.yml"))
     robot = RobotCfg.create(robot_data)
+    from .payload_parity import Payload, apply_curobo_payload, nominal_effort_only
+    payload = profile.get("payload")
+    if payload is not None:
+        apply_curobo_payload(robot, Payload(**{k:v for k,v in payload.items()
+            if k!="payload_sha256"}))
     bounds = robot.kinematics.kinematics_config.joint_limits
     nominal = np.stack(
         (profile["nominal_effort_lower"], profile["nominal_effort_upper"])
@@ -68,6 +73,9 @@ def robot_with_derated_effort(profile: dict) -> RobotCfg:
     ):
         raise ValueError("robot effort bounds do not match frozen nominal profile")
     modified = np.stack((profile["effort_lower"], profile["effort_upper"]))
+    if payload is not None:
+        # Original manufacturer/model actuator envelope, never synthetic derating.
+        nominal_effort_only(modified, nominal)
     if modified.shape != actual.shape or not np.all(np.isfinite(modified)):
         raise ValueError("invalid derated effort shape")
     bounds.effort.copy_(
@@ -342,6 +350,8 @@ def execute(
         folder = out / case
         folder.mkdir(parents=True, exist_ok=True)
         profile = read_profile(arm / case / "torque_profile.json")
+        if profile.get("payload") != task.get("payload"):
+            raise ValueError("native planner/task payload metadata differ")
         if profile["source_case_id"] != case:
             raise ValueError("profile/source mismatch")
         frozen = folder / "native_candidates.json"
