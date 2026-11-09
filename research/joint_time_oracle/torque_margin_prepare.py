@@ -14,7 +14,6 @@ import json
 from pathlib import Path
 
 from .cohort_retime import ROOT
-from .geometry_feasibility_discover import source_tasks
 from .torque_active import read_profile
 from .torque_margin_core import CASE_IDS, DEFAULT_SOURCE_ARM, immutable_json, sha256_file
 
