@@ -39,13 +39,16 @@ def tensor_cpu(x):
 
 
 class NativePreTimeOptProbe:
-    def __init__(self, planner, folder: Path, tag: str):
+    def __init__(self, planner, folder: Path, tag: str, *, post_samples: int = 0):
         self.solver = planner.trajopt_solver
         self.folder = Path(folder)
         self.tag = tag
         self.original = None
         self.attempts = []
         self._invocations = 0
+        if post_samples and (post_samples < 33 or post_samples > 2049):
+            raise ValueError("post sample count must be 0 or 33..2049")
+        self.post_samples = post_samples
         self._metric_owner = None
         self._metric_method_original = None
         self._metric_captures = []
@@ -179,6 +182,8 @@ class NativePreTimeOptProbe:
                         ("goal", "_goal"),
                         ("stationary", "_stationary"),
                         ("success", "_success"),
+                        ("timing", "_timing"),
+                        ("integrated_times", "_times"),
                     ):
                         value = getattr(optimizer, attr, None)
                         if value is not None:
@@ -193,6 +198,39 @@ class NativePreTimeOptProbe:
                         record["native_geometry_lane_count"] = int(
                             pathbuf["controls"].shape[0]
                         )
+                if probe.post_samples and optimizer is not None:
+                    try:
+                        # Diagnostic only; sampling may fail for paths that
+                        # TimeOpt rejected. Never modify the native return.
+                        import torch
+
+                        durations = tensor_cpu(getattr(optimizer, "_times"))
+                        durations = np.asarray(durations, dtype=float)
+                        durations = durations[:, -1] if durations.ndim == 2 else durations
+                        valid = np.isfinite(durations) & (durations > 1e-6)
+                        # Invalid lanes receive a dummy 1-second sample grid
+                        # and are explicitly NOT physically interpretable.
+                        stable = np.where(valid, durations, 1.)
+                        device = getattr(optimizer, "_controls").device
+                        unit = torch.linspace(0, 1, probe.post_samples, device=device)
+                        grid = torch.as_tensor(stable, device=device, dtype=unit.dtype)[:, None] * unit[None, :]
+                        state = optimizer.sample(grid.contiguous())
+                        archive = {
+                            "time":tensor_cpu(grid),
+                            "q":tensor_cpu(state.position),
+                            "qd":tensor_cpu(state.velocity),
+                            "qdd":tensor_cpu(state.acceleration),
+                            "jerk":tensor_cpu(state.jerk),
+                            "valid_duration_mask":valid,
+                        }
+                        file = probe.folder / (tag + "_post_timeopt_states.npz")
+                        np.savez_compressed(file, **archive)
+                        record["post_timeopt_state_file"] = str(file)
+                        record["post_timeopt_state_sha256"] = sha(file)
+                        record["post_timeopt_valid_duration_mask"] = valid.tolist()
+                        record["post_timeopt_samples"] = probe.post_samples
+                    except Exception as exc:
+                        record["post_timeopt_sampling_error"] = repr(exc)
                 return out
             except Exception as exc:
                 record["finalizer_returned"] = False
