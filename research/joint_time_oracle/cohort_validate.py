@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 from .torque_active import read_profile
 from pathlib import Path
@@ -14,6 +15,15 @@ import yaml
 
 ROOT=Path(__file__).resolve().parents[2]
 OUT=ROOT/'research/joint_time_oracle/results/cohort_pilot_isolated_20261106'
+
+
+def source_sha256(file: Path) -> str:
+    """Bind every independent audit to the exact trajectory file read."""
+    digest = hashlib.sha256()
+    with file.open('rb') as stream:
+        for chunk in iter(lambda: stream.read(1024 * 1024), b''):
+            digest.update(chunk)
+    return digest.hexdigest()
 
 
 def main() -> None:
@@ -69,6 +79,7 @@ def main() -> None:
             if source_dir is None: continue
             file=source_dir/task['case_id']/f'{method.lower()}_dense.npz'
             if not file.exists():continue
+            source_digest=source_sha256(file)
             source=np.load(file);s={k:source[k] for k in source.files}; n=len(s['time']);tau=np.empty_like(s['q'],dtype=np.float64)
             world_min=(float('inf'),None,None);self_min=(float('inf'),None,None)
             ee=np.empty((n,3));hand=model.getFrameId('panda_hand',pin.BODY)
@@ -100,7 +111,9 @@ def main() -> None:
             dest_dir=(options.extra if options.extra else source_dir)/task['case_id']
             dest_dir.mkdir(parents=True,exist_ok=True)
             np.savez_compressed(dest_dir/f'{method.lower()}_pin_torque.npz', time=s['time'], torque=tau, end_effector=ee)
-            result={'samples':n,'world_min_clearance_m':None if world_min[1] is None else world_min[0],
+            if source_sha256(file)!=source_digest:
+                raise ValueError('trajectory changed during independent audit: '+str(file))
+            result={'source_trajectory_sha256':source_digest,'samples':n,'world_min_clearance_m':None if world_min[1] is None else world_min[0],
                     'world_min_time_s':None if world_min[1] is None else float(s['time'][world_min[1]]),
                     'world_object':world_min[2],'self_min_clearance_m':self_min[0],
                     'self_min_time_s':float(s['time'][self_min[1]]),'self_pair':self_min[2], 'families':{}}
