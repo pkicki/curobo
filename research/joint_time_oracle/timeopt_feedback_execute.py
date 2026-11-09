@@ -51,6 +51,9 @@ def run_case(cohort:Path,output:Path,case_id:str,arm:str,
     task=next((x for x in tasks if x["case_id"]==case_id),None)
     if task is None:
         raise ValueError("source case absent/not admitted in nominal-payload registry")
+    if task["split"]!="development":
+        from .timeopt_feedback_freeze import verify
+        verify(cohort,output,retimer_sha=retimer_sha)
     profile_file=parent/case_id/"torque_profile.json"
     profile=read_profile(profile_file)
     if profile["source_task_sha256"]!=task["task_sha256"]:
