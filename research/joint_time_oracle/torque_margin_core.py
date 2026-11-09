@@ -122,6 +122,79 @@ def pilot_limits(states:dict[str,np.ndarray],tau:np.ndarray,
             "scope":"sampled dynamics only; no collision or independent certification"}
 
 
+def sampled_dilation_interval(states:dict[str,np.ndarray],tau:np.ndarray,
+                              physical_bounds:dict[str,np.ndarray])->dict:
+    """Exact sampled Scaled95 admissible z=1/rho^2 interval, 0<z<=1.
+
+    Velocity, acceleration, jerk scale with z**(.5,1,1.5). Torque is
+    affine in z with gravity intercept. Intersect ALL sampled joint
+    inequalities; no monotonicity assumption. This is diagnostic only:
+    neither time-independent collision nor the continuous path between
+    samples is checked, and no candidate is selected by this result.
+    """
+    if "gravity" not in states:
+        raise ValueError("gravity required for sampled torque intervals")
+    tau=np.asarray(tau,dtype=np.float64)
+    g=np.asarray(states["gravity"],dtype=np.float64)
+    if tau.ndim!=2 or tau.shape!=g.shape or not np.isfinite(tau).all() or not np.isfinite(g).all():
+        raise ValueError("torque/gravity sample mismatch")
+    low_z,high_z=0.,1.
+    sources={}
+    if sampled_max_violation(np.asarray(states["q"]),
+                             physical_bounds["position"])["violation"]>0:
+        return {"status":"EMPTY_POSITION_INTERVAL","z_interval":None,
+                "scope":"sampled Scaled95 necessary conditions only"}
+    def update(kind:str,lower:np.ndarray,upper:np.ndarray):
+        nonlocal low_z,high_z
+        low=float(np.max(lower))
+        high=float(np.min(upper))
+        sources[kind]={"z_lower":low,"z_upper":high}
+        low_z=max(low_z,low);high_z=min(high_z,high)
+    for name,key,power in (("velocity","qd",.5),
+                           ("acceleration","qdd",1.),
+                           ("jerk","jerk",1.5)):
+        values=np.asarray(states[key],dtype=np.float64)
+        lim=family_bounds(physical_bounds[name],name,scaled95=True)
+        if values.shape!=tau.shape or not np.isfinite(values).all():
+            raise ValueError("invalid "+name+" sample array")
+        lower=np.broadcast_to(lim[0],values.shape)
+        upper=np.broadcast_to(lim[1],values.shape)
+        nz=np.abs(values)>1e-12
+        if np.any(~nz & ((lower>0)|(upper<0))):
+            return {"status":"EMPTY_ZERO_"+name.upper(),
+                    "z_interval":None,"scope":"sampled only"}
+        lo=np.zeros_like(values);hi=np.ones_like(values)
+        first=np.divide(lower,values,out=np.full_like(values,-np.inf),where=nz)
+        second=np.divide(upper,values,out=np.full_like(values,np.inf),where=nz)
+        lo[nz]=np.maximum(0,np.minimum(first[nz],second[nz]))**(1/power)
+        hi[nz]=np.maximum(0,np.minimum(1,np.maximum(first[nz],second[nz])))**(1/power)
+        update(name,lo,hi)
+    effort=family_bounds(physical_bounds["torque"],"torque",scaled95=True)
+    d=tau-g
+    lower=np.broadcast_to(effort[0],tau.shape)
+    upper=np.broadcast_to(effort[1],tau.shape)
+    nz=np.abs(d)>1e-12
+    if np.any(~nz & ((g<lower)|(g>upper))):
+        return {"status":"EMPTY_STATIC_TORQUE_INTERVAL",
+                "z_interval":None,"scope":"sampled only"}
+    t1=np.divide(lower-g,d,out=np.zeros_like(tau),where=nz)
+    t2=np.divide(upper-g,d,out=np.zeros_like(tau),where=nz)
+    lo=np.zeros_like(tau);hi=np.ones_like(tau)
+    lo[nz]=np.minimum(t1[nz],t2[nz])
+    hi[nz]=np.maximum(t1[nz],t2[nz])
+    update("torque",lo,hi)
+    if low_z>high_z+1e-12 or high_z<=0:
+        return {"status":"EMPTY_INTERSECTION","z_interval":[low_z,high_z],
+                "by_family":sources,"scope":"sampled necessary only"}
+    z0=max(0.,low_z);z1=min(1.,high_z)
+    return {"status":"SAMPLED_ADMISSIBLE_INTERVAL",
+            "z_interval":[z0,z1],
+            "rho_min":float(1/np.sqrt(z1)),
+            "rho_max":float(1/np.sqrt(z0)) if z0>0 else None,
+            "by_family":sources,
+            "scope":"fixed-shape sampled necessary AND sufficient for these sampled algebraic bounds only; no independent/adaptive/continuous-time qualification"}
+
+
 def tighten_pointwise_problem(p, beta:float):
     """Tighten the existing 95%-scaled IPOPT envelope by beta < 1.
 
