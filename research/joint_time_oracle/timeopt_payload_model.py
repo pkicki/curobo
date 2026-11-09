@@ -110,6 +110,25 @@ def native_robot(payload: Payload):
         masses[i, 3] += payload.mass_kg
         inertia = 0.4 * payload.mass_kg * payload.radius_m**2
         inertias[i, :3] += inertia
+    # franka.yml reserves four collision spheres for attached_object but
+    # leaves them inactive by default. A physical payload must participate
+    # in world AND self collision, not just gravity/RNEA.
+    sphere_index=kp.get_sphere_index_from_link_name(payload.native_link)
+    if sphere_index.numel()<1 or kp.link_spheres is None:
+        raise RuntimeError("native attached-object collision slots unavailable")
+    sphere_values=torch.zeros((sphere_index.numel(),4),
+                              device=kp.link_spheres.device,
+                              dtype=kp.link_spheres.dtype)
+    sphere_values[0,3]=payload.radius_m
+    kp.update_link_spheres(payload.native_link,sphere_values)
+    if kp.reference_link_spheres is not None:
+        kp.reference_link_spheres[:,sphere_index,:]=sphere_values
+    measured=kp.get_link_spheres(payload.native_link)
+    if not torch.allclose(measured,sphere_values,atol=1e-7,rtol=0):
+        raise RuntimeError("native payload collision sphere update failed")
+    if kp.sphere_collision_mask is not None:
+        if not bool((kp.sphere_collision_mask[:,sphere_index[0]]!=0).all()):
+            raise RuntimeError("native payload collision sphere is disabled by mask")
     if not torch.equal(reference, kp.joint_limits.effort):
         raise RuntimeError("nominal effort bounds were changed by payload loading")
     return robot
