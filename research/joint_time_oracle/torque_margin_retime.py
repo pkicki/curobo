@@ -37,6 +37,9 @@ def source_contract(root:Path,case:str)->tuple[Path,dict,dict]:
     if case not in CASE_IDS:
         raise ValueError("unregistered source case")
     registration=json.loads((root/"margin_registration.json").read_text())
+    for model_file,digest in registration["model_inputs_sha256"].items():
+        if sha256_file(ROOT/model_file)!=digest:
+            raise ValueError("independent robot model/limits changed after source freeze: "+model_file)
     source={row["case_id"]:row for row in registration["sources"]}[case]
     src=Path(registration["source_root"])/registration["source_arm"]/case
     for filename,digest in source["source_files_sha256"].items():
