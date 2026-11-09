@@ -74,6 +74,17 @@ def build(cohort:Path,search_root:Path,audit_root:Path,*,arm:str)->dict:
                         raise ValueError("candidate independent replay modified")
                 else:
                     shutil.copy2(candidate/"k107_dense.npz",frozen_file)
+                for original_name,stored_name in (
+                    ("k107_response.json","source_k107_response.json"),
+                    ("geometry.npz","source_geometry.npz"),
+                ):
+                    srcfile=candidate/original_name
+                    dstfile=target/stored_name
+                    if dstfile.exists():
+                        if sha256_file(dstfile)!=sha256_file(srcfile):
+                            raise ValueError("candidate source geometry/response changed")
+                    else:
+                        shutil.copy2(srcfile,dstfile)
                 atomic_json(target/"torque_profile.json",p)
                 atomic_json(target/"k107_candidate.json",{
                     "case_id":new_id,"source_case_id":folder.name,
@@ -130,10 +141,9 @@ def adaptive(root:Path,*,arm:str)->dict:
             c=np.asarray(z["controls"],dtype=float)
         x=np.asarray(result["coefficients"],dtype=float)
         knots=np.asarray(result["knots"],dtype=float)
-        extra=np.r_[knots,c.shape[0]*np.zeros(0)]
         # Both K107 timing knot events and quintic geometry knot events.
         geom_knots=np.linspace(0,1,c.shape[0]-5+1)
-        events=np.r_[extra,geom_knots]
+        events=np.r_[knots,geom_knots]
         eps=1e-8
         events=np.unique(np.clip(np.r_[events-eps,events,events+eps],0,1))
         states=reconstruct(c,x,knots,samples=32769,extra_s=events)
