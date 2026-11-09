@@ -48,7 +48,8 @@ def common_limits(task:dict)->dict:
 def run(*,source:Path,output:Path,case:str,arm:str,budget:int,
         worker_command:str,parity_receipt:Path,seed:int=20261109,
         max_wall_s:float=60.,hard_case_registry:Path|None=None,
-        pilot:bool=False)->dict:
+        pilot:bool=False,holdout:bool=False,
+        timeopt_sha:str|None=None)->dict:
     if arm not in ARMS or budget not in BUDGETS:
         raise ValueError("unregistered arm or budget")
     tasks=json.loads((source/"tasks.json").read_text())
@@ -62,6 +63,14 @@ def run(*,source:Path,output:Path,case:str,arm:str,budget:int,
         task["payload"]["payload_sha256"] not in parity.get("payload_sha256_qualified",[])
     ):
         raise ValueError("payload dynamics+collision parity gate not met")
+    if not pilot and task["separation_group"]=="holdout":
+        if not holdout or hard_case_registry is None or not timeopt_sha:
+            raise ValueError("scored holdout requires frozen method and K107 revision")
+        from .timeopt_campaign_freeze import verify
+        verify(source=source,results=output,registry=hard_case_registry,
+               parity=parity_receipt,other_revision=timeopt_sha)
+    elif holdout and not pilot:
+        raise ValueError("development task may not use --holdout")
     if not pilot:
         if hard_case_registry is None:
             raise ValueError("scored search requires independently qualified hard-case registry")
@@ -161,12 +170,15 @@ def main():
     p.add_argument("--parity-receipt",type=Path,required=True)
     p.add_argument("--hard-case-registry",type=Path)
     p.add_argument("--pilot",action="store_true")
+    p.add_argument("--holdout",action="store_true")
+    p.add_argument("--timeopt-sha",help="full SHA of pinned K107 repository revision")
     a=p.parse_args()
     r=run(source=a.source,output=a.output,case=a.case,arm=a.arm,
           budget=a.budget,seed=a.seed,max_wall_s=a.max_wall_s,
           worker_command=a.worker_command,
           parity_receipt=a.parity_receipt,
-          hard_case_registry=a.hard_case_registry,pilot=a.pilot)
+          hard_case_registry=a.hard_case_registry,pilot=a.pilot,
+          holdout=a.holdout,timeopt_sha=a.timeopt_sha)
     print(json.dumps({k:v for k,v in r.items() if k not in
                       ("ledger","best_controls")},indent=2))
 
