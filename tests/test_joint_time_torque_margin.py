@@ -210,3 +210,39 @@ def test_native_phase_trace_preserves_numeric_buffers_with_checksum(tmp_path):
                                    "solver_output_timing":[[1.,.2]]}}
     with pytest.raises(ValueError,match="snapshot changed"):
         save_trace(tmp_path,"F000",altered)
+
+
+
+def test_independent_validator_source_sha_detects_post_audit_change(tmp_path):
+    from research.joint_time_oracle.cohort_validate import source_sha256
+    file=tmp_path/"r_dense.npz"
+    np.savez_compressed(file,time=np.array([0.,1.]),q=np.zeros((2,7)))
+    frozen=source_sha256(file)
+    assert source_sha256(file)==frozen
+    np.savez_compressed(file,time=np.array([0.,1.]),q=np.ones((2,7)))
+    assert source_sha256(file)!=frozen
+
+
+def test_sealed_r_speed_controls_refuses_changed_npz(tmp_path):
+    from research.joint_time_oracle.torque_margin_retime import seal_r_timing
+    from research.joint_time_oracle.torque_margin_core import sha256_file
+    case="test_case"
+    folder=tmp_path/case
+    folder.mkdir()
+    source={"source_files_sha256":{"p_timing_controls.npz":"P_SHA",
+                                   "w_geometry.json":"W_SHA"}}
+    np.savez_compressed(folder/"r_dense.npz",time=np.array([0.,1.]),
+                        q=np.zeros((2,7)))
+    np.savez_compressed(folder/"r_speed_controls.npz",
+                        squared_speed_controls=np.ones(32))
+    (folder/"r_registration.json").write_text(json.dumps({
+        "r_sha256":sha256_file(folder/"r_dense.npz")
+    }))
+    receipt=seal_r_timing(tmp_path,case,source,method="dilation")
+    assert receipt["r_speed_controls_sha256"]==sha256_file(
+        folder/"r_speed_controls.npz")
+    assert seal_r_timing(tmp_path,case,source,method="dilation")==receipt
+    np.savez_compressed(folder/"r_speed_controls.npz",
+                        squared_speed_controls=np.ones(32)*.8)
+    with pytest.raises(ValueError,match="frozen"):
+        seal_r_timing(tmp_path,case,source,method="dilation")
