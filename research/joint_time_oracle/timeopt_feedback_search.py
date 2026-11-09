@@ -35,7 +35,11 @@ BUDGETS=(32,128,256)
 
 
 def rng_seed(case_id:str,seed:int,arm:str)->int:
-    h=hashlib.sha256(f"{case_id}|{seed}|{arm}".encode()).digest()
+    # Identical initial random stream for all arms. Feedback is the ONLY
+    # registered reason proposals may diverge after INIT_BATCH.
+    if arm not in ARMS:
+        raise ValueError("unknown arm")
+    h=hashlib.sha256(f"{case_id}|{seed}|common".encode()).digest()
     return int.from_bytes(h[:8],"little")
 
 
