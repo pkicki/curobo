@@ -111,6 +111,7 @@ def collect(root:Path,*,native_arm:Path|None=None)->dict:
     for row in rows:
         counts[row["status"]]=counts.get(row["status"],0)+1
     successes=sum(row["status"]=="QUALIFIED_SCALED95_SHORTER" for row in rows)
+    qualified=sum(row["qualified_scaled95"] is True for row in rows)
     return {"schema_version":1,"status":"REGISTERED_RESULT_SUMMARY",
             "registration_sha256":sha256_file(registration),
             "registered_cases":list(CASE_IDS),"registered_arms":list(arms()),
@@ -118,11 +119,13 @@ def collect(root:Path,*,native_arm:Path|None=None)->dict:
             "material_duration_gain_threshold_pct":100*MIN_DURATION_IMPROVEMENT,
             "rows":rows,"classification_counts":counts,
             "qualified_shorter_count":successes,
+            "independently_scaled95_qualified_count":qualified,
             "native_trace":inspect_native_trace(native_arm),
             "decision":"NOT_READY_UNAUDITED" if any(x["status"] in (
                   "NOT_EXECUTED","R_PRELIMINARY_UNAUDITED","NO_MATCHING_INDEPENDENT_R_RECEIPT")
                   for x in rows) else
                   "RESEARCH_GO_MARGIN_RECOVERY" if successes else
+                  "PARTIAL_MARGIN_ONLY" if qualified else
                   "NO_GO_MARGIN_RECOVERY",
             "note":"all three tasks intentionally selected; no population inference, continuous-time torque/collision certificate or hardware safety claim"}
 
