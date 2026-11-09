@@ -1,0 +1,41 @@
+{
+  "registration_sha256": "57214862db4eaaa776e253e8e95cdbf286446ab1eb55a49ba41b541d78c5df21",
+  "source_tasks_sha256": "c3055659df873d1a364d8d36c2cc2abeae58867e983b1f8fedf1e057de138295",
+  "source_W_receipts_sha256": "85e5062647b225b306572fd5c5d7a7dddd21ab57bf87025869f32c3dfabcbb25",
+  "source_task_checksums": {
+    "trap_cluttered_08": "bba76af506c5677fd3317d7fd784579b959280c4d1c89e07e9c7d5c7ee6db354",
+    "confirm_geom_table_07": "ab21291db920246f298722bb7877b0c15d8e0a3c45dee58bffeb8d64e3cd290b",
+    "confirm_geom_cluttered_02": "5cab1bd68c017b2340fd1f72c55064c46a63c9674edda8cfc8f81e0e3cc775a7"
+  },
+  "source_W_sha256": {
+    "trap_cluttered_08": "d30644c3e942b286454d73aea41b21c04994c2c01cef7ae70766c6cb14059e1c",
+    "confirm_geom_table_07": "221d726b54588e75f87af9b819ea92a45b675d4006a9cd39b92eaef52ad9f4a7",
+    "confirm_geom_cluttered_02": "7d6a82952754521fa585ad9fac7f514125eaf2483dfbe9e6772be0c2f608483c"
+  },
+  "source_P_sha256": {
+    "trap_cluttered_08": "bb983f12fe00134b1d24e395aefa9da587cbde7725fc928b0008345dba56b6f4",
+    "confirm_geom_table_07": "9cdc57703e3b5228d806003b3a9537bc232acf2a05e3513749ce8838a084a762",
+    "confirm_geom_cluttered_02": "e1d8f874d16a079f321abdc726a522f8f78c5213910300005114c119d1f226c9"
+  },
+  "source_P_controls_sha256": {
+    "trap_cluttered_08": "958311e68288585bb9f36c079dec9697eac931cd73932835b94e7f4aa4b0c9b6",
+    "confirm_geom_table_07": "5aced260d553b2bf0cbcb202f2f5bbd6ad927f7404937fd66b46a181db3bc0f5",
+    "confirm_geom_cluttered_02": "1e63fefafa5f678392ce51f6149854b6379e3e11ebcd2f068a9b3ca2e9d1a2e8"
+  },
+  "robot_model_sha256": {
+    "curobo/content/assets/robot/franka_description/franka_panda.urdf": "8f4d6768e7587ca6bbc1356007af48f26b91faa82025d21d2cadc9b22a1c4802",
+    "curobo/content/configs/robot/franka.yml": "91d48371b9cd2358b0b5594bb5e93d7abbd05af436b2c28d05c41b5667e65e55",
+    "research/joint_time_oracle/results/native_reconstruction_20261106/baseline_validation_states.npz": "0c9f521a066a166419561d0ee7e0cd468fc0c05940c8c68fbc521cec81f7b475"
+  },
+  "scene_configuration_sha256": {
+    "collision_primitives_3d.yml": {
+      "path": "/home/pkicki/curobo/curobo/content/configs/scene/collision_primitives_3d.yml",
+      "sha256": "71105b285473f6361f34bdc66f8ef8c46b7b3c19a6e57944abd76722c3cd0e42"
+    },
+    "collision_test.yml": {
+      "path": "/home/pkicki/curobo/curobo/content/configs/scene/collision_test.yml",
+      "sha256": "b6128b145773a0b3090d13af6ba89d628660010743d7991d3b7dd18388895e8f"
+    }
+  },
+  "scene_hash_note": "Scene hashes supplement the frozen registration: its task hashes identify scene names but the original registration did not separately enumerate scene-file checksums."
+}
