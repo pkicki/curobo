@@ -25,9 +25,10 @@ from .timeopt_feedback_search import ARMS,BUDGETS,nominal_path,search
 from .timeopt_k107_service import K107Service
 from .timeopt_oracle_contract import K107_ROUTE,request
 from .timeopt_payload_model import (
-    Payload, file_sha256, nominal_effort_bounds,pinocchio_payload_model,
+    Payload, file_sha256, nominal_effort_bounds,
 )
-from .timeopt_payload_tasks import OUT, _payload_world_clearance
+from .timeopt_payload_tasks import OUT
+from .timeopt_payload_collision import payload_clearances
 
 RESULTS=ROOT/"research/joint_time_oracle/results/timeopt_feedback_20261109"
 
@@ -78,7 +79,6 @@ def run(*,source:Path,output:Path,case:str,arm:str,budget:int,
     if not np.array_equal(np.asarray(limits["torque"]),nominal_effort_bounds()):
         raise ValueError("effort changed relative to frozen Panda nominal")
     auditor=IndependentGeometryAuditor(task["scene"])
-    loaded=pinocchio_payload_model(mass)
     folder=output/arm/case
     folder.mkdir(parents=True,exist_ok=True)
     dest=folder/"search_result.json"
@@ -109,15 +109,15 @@ def run(*,source:Path,output:Path,case:str,arm:str,budget:int,
                                        "diagnostic_valid":False},
                         "reason":"GEOMETRY_OR_COLLISION_PRESCREEN",
                         "k107_called":False}
-            payload_clear=_payload_world_clearance(
-                auditor,loaded,sampled,mass.radius_m)
-            if payload_clear<.005:
+            payload_check=payload_clearances(sampled,payload=mass,
+                                               auditor=auditor,min_clearance_m=.005)
+            if not payload_check["sampled_acceptable"]:
                 geometry_rejects["payload"]+=1
                 return {"status":"INFEASIBLE_SCREENED",
                         "diagnostics":{"max_normalized_violation":2.,
                                        "diagnostic_valid":False},
-                        "reason":"PAYLOAD_WORLD_COLLISION",
-                        "k107_called":False}
+                        "reason":"PAYLOAD_WORLD_OR_SELF_COLLISION",
+                        "payload_clearance":payload_check,"k107_called":False}
             req=request(task,controls,
                         request_id=f"{case}_{arm}_{idx:04d}",
                         retimer=K107_ROUTE,limit_contract=limits)
