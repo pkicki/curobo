@@ -16,12 +16,17 @@ from .cohort_retime import ROOT, dynamics
 
 
 class IndependentGeometryAuditor:
-    def __init__(self, scene: str | None):
+    def __init__(self, scene: str | None, *, payload=None):
         cfg = yaml.safe_load(
             (ROOT / "curobo/content/configs/robot/franka.yml").read_text()
         )
         collision = cfg["robot_cfg"]["kinematics"]
         self.model, self.data, self.neutral, self.qi, self.vi = dynamics()
+        if payload is not None:
+            from .payload_parity import Payload, apply_pinocchio_payload
+            apply_pinocchio_payload(self.model, Payload(**{
+                k:v for k,v in payload.items() if k!="payload_sha256"}))
+            self.data=self.model.createData()
         self.q = self.neutral.copy()
         self.zero = np.zeros(self.model.nv)
         self.rnea_calls = 0
