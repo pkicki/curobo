@@ -22,9 +22,11 @@ A returned FEASIBLE_SCREENED is NEVER independent certification.
 from __future__ import annotations
 
 import argparse
+import contextlib
 import json
 import math
 from pathlib import Path
+import sys
 from types import SimpleNamespace
 import time
 import traceback
@@ -226,11 +228,53 @@ def run_one(path:Path,response:Path)->dict:
     return result
 
 
+def service_loop():
+    """Persistent JSON-lines API: stdin request JSON, stdout response JSON.
+
+    K107 imports/compilation and CUDA workspaces remain in one process;
+    each request still has all-in measured wall time. Diagnostic/log prints
+    from the benchmark are redirected to stderr to preserve stdout framing.
+    """
+    for line in sys.stdin:
+        if not line.strip():
+            continue
+        req={}
+        try:
+            req=json.loads(line)
+            with contextlib.redirect_stdout(sys.stderr):
+                result=evaluate(req)
+        except Exception as exc:
+            result={
+                "schema_version":1,
+                "request_sha256":req.get("request_sha256"),
+                "path_sha256":req.get("path",{}).get("path_sha256"),
+                "task_sha256":req.get("task_sha256"),
+                "payload_sha256":req.get("payload",{}).get("payload_sha256"),
+                "retimer_actual":K107_ROUTE,
+                "endpoint_contract":req.get("endpoint_contract"),
+                "active_families":list(CONSTRAINT_FAMILIES),
+                "torque_rate_constraint":req.get("torque_rate_constraint"),
+                "status":"ERROR","duration_s":None,
+                "worker_wall_ms":0.,"model_setup_ms":0.,"retiming_ms":0.,
+                "audit_ms":0.,"reason":repr(exc),
+                "diagnostics":{},
+            }
+        print(json.dumps(result,allow_nan=False),flush=True)
+
+
 def main():
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--request",required=True,type=Path)
-    p.add_argument("--response",required=True,type=Path)
+    p.add_argument("--request",type=Path)
+    p.add_argument("--response",type=Path)
+    p.add_argument("--jsonl-service",action="store_true")
     a=p.parse_args()
+    if a.jsonl_service:
+        if a.request is not None or a.response is not None:
+            p.error("JSONL service is exclusive with file mode")
+        service_loop()
+        return
+    if a.request is None or a.response is None:
+        p.error("file mode requires --request and --response")
     result=run_one(a.request,a.response)
     print(json.dumps({k:v for k,v in result.items() if k not in
                       ("screen_grid_s","timing_coefficients")},allow_nan=False))
