@@ -260,7 +260,16 @@ def main():
     p.add_argument("--beta",type=float,choices=TIGHTENING_FACTORS)
     p.add_argument("--maxiter",type=int,default=200)
     p.add_argument("--grid",type=int,default=513)
+    p.add_argument("--holdout",action="store_true",
+                   help="Required for table/cluttered confirmation after method freeze.")
     a=p.parse_args()
+    if a.case!=CASE_IDS[0]:
+        if not a.holdout:
+            p.error("holdout case requires --holdout")
+        from .torque_margin_freeze import verify
+        verify(a.root)
+    elif a.holdout:
+        p.error("development case must not use --holdout")
     if a.method=="dilation":
         result=dilation(a.root,a.case)
         arm="dilation"
