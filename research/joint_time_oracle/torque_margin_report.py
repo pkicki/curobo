@@ -40,9 +40,17 @@ def inspect_native_trace(native_arm:Path|None)->dict:
         for file in traces:
             try:
                 content=json.loads(file.read_text())
+                raw=content.get("raw_buffers_file")
+                rawpath=Path(raw) if raw is not None else None
+                raw_integrity=("NOT_CAPTURED" if rawpath is None else
+                               "MISSING" if not rawpath.is_file() else
+                               "VERIFIED" if sha256_file(rawpath)==content.get("raw_buffers_sha256")
+                               else "CHECKSUM_MISMATCH")
                 reports.append({"sha256":sha256_file(file),
                                 "file":str(file),
                                 "status":content.get("status"),
+                                "raw_buffers_sha256":content.get("raw_buffers_sha256"),
+                                "raw_buffers_integrity":raw_integrity,
                                 "first_observed_problem_per_lane":[
                                     lane.get("first_observed_problem") for lane in
                                     content.get("per_lane",[])]})
