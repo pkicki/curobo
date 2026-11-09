@@ -29,6 +29,9 @@ MODULES=(
     "research/joint_time_oracle/torque_margin_report.py",
     "research/joint_time_oracle/cohort_retime.py",
     "research/joint_time_oracle/torque_global_retime.py",
+    "research/joint_time_oracle/cohort_validate.py",
+    "research/joint_time_oracle/cohort_torque_report.py",
+    "research/joint_time_oracle/torque_active.py",
 )
 ARMS=("dilation","tight_b980","tight_b960","tight_b940","tight_b920")
 DEV=CASE_IDS[0]
