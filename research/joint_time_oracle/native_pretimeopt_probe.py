@@ -39,7 +39,7 @@ def tensor_cpu(x):
 
 
 class NativePreTimeOptProbe:
-    def __init__(self, planner, folder: Path, tag: str, *, post_samples: int = 0):
+    def __init__(self, planner, folder: Path, tag: str, *, post_samples: int = 0, trace_phases: bool = False):
         self.solver = planner.trajopt_solver
         self.folder = Path(folder)
         self.tag = tag
@@ -49,6 +49,7 @@ class NativePreTimeOptProbe:
         if post_samples and (post_samples < 33 or post_samples > 2049):
             raise ValueError("post sample count must be 0 or 33..2049")
         self.post_samples = post_samples
+        self.trace_phases = trace_phases
         self._metric_owner = None
         self._metric_method_original = None
         self._metric_captures = []
@@ -161,6 +162,13 @@ class NativePreTimeOptProbe:
                         tensor_cpu(out.success).reshape(-1).tolist()
                     )
                 stage = getattr(solver, "_timeopt", None)
+                if probe.trace_phases:
+                    try:
+                        from .native_timeopt_nan_trace import observe_optimizer, save_trace
+                        trace=observe_optimizer(stage,read_tensor=tensor_cpu)
+                        record.update(save_trace(probe.folder,tag,trace))
+                    except Exception as trace_error:
+                        record["timeopt_phase_capture_error"]=repr(trace_error)
                 validator = getattr(stage, "validation_masks", None)
                 if isinstance(validator, dict):
                     record["timeopt_validation_masks"] = {
