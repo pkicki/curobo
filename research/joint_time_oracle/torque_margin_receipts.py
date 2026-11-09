@@ -23,6 +23,10 @@ from .torque_margin_prepare import OUTPUT
 
 def issue(arm:Path)->dict:
     tasks=json.loads((arm/"tasks.json").read_text())
+    campaign_root=arm.parent
+    frozen_root=json.loads((campaign_root/"margin_registration.json").read_text())
+    source_records={x["case_id"]:x for x in frozen_root["sources"]}
+    source_arm=Path(frozen_root["source_root"])/frozen_root["source_arm"]
     base_file=arm/"independent_sampled.json"
     adaptive_file=arm/"independent_adaptive.json"
     if not base_file.exists() or not adaptive_file.exists():
@@ -39,6 +43,19 @@ def issue(arm:Path)->dict:
         try:
             profile=read_profile(folder/"torque_profile.json")
             frozen=json.loads((folder/"r_registration.json").read_text())
+            reference=source_records[case]
+            source_folder=source_arm/case
+            if any(sha256_file(source_folder/key)!=value for key,value
+                   in reference["source_files_sha256"].items()):
+                reasons.append("original W/P evidence changed after source freeze")
+            if frozen["source_files_sha256"]!=reference["source_files_sha256"]:
+                reasons.append("candidate derived from changed source P/W")
+            original_geo=json.loads((source_folder/"w_geometry.json").read_text())
+            proposed_geo=json.loads((folder/"r_geometry.json").read_text())
+            if not np.array_equal(
+                np.asarray(original_geo["controls"],dtype=float),
+                np.asarray(proposed_geo["controls"],dtype=float)):
+                reasons.append("fixed original W/P geometry changed")
             geom=folder/"r_geometry.json"
             dense=folder/"r_dense.npz"
             ad=folder/"r_adaptive_dense.npz"
