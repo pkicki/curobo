@@ -62,7 +62,15 @@ def replay(arm:Path,*,case_filter:str|None=None)->dict:
                 raise ValueError("modified R geometry after pilot")
             if frozen["r_sha256"]!=sha256_file(folder/"r_dense.npz"):
                 raise ValueError("modified R witness after pilot")
-            with np.load(folder/"r_speed_controls.npz") as z:
+            controls_file=folder/"r_speed_controls.npz"
+            control_receipt=json.loads((folder/"r_controls_receipt.json").read_text())
+            if sha256_file(controls_file)!=control_receipt.get("r_speed_controls_sha256"):
+                raise ValueError("R speed controls changed before adaptive replay")
+            if control_receipt.get("r_dense_sha256")!=frozen["r_sha256"]:
+                raise ValueError("R controls not linked to source retimed state")
+            if control_receipt.get("source_P_controls_sha256")!=frozen["source_files_sha256"]["p_timing_controls.npz"]:
+                raise ValueError("R controls source P SHA mismatch")
+            with np.load(controls_file) as z:
                 speeds=np.asarray(z["squared_speed_controls"],dtype=float)
             with np.load(folder/"r_dense.npz") as z:
                 original={k:np.asarray(z[k]) for k in z.files}
@@ -94,6 +102,7 @@ def replay(arm:Path,*,case_filter:str|None=None)->dict:
             row={"case_id":case,"status":"REPLAYED",
                  "source_r_sha256":frozen["r_sha256"],
                  "r_adaptive_sha256":sha256_file(dest),
+                 "r_speed_controls_sha256":control_receipt["r_speed_controls_sha256"],
                  "source_samples":len(source_s),
                  "adaptive_samples":len(s_new),
                  "max_replay_errors":errors,
