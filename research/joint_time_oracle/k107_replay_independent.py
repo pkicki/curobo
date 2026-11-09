@@ -21,7 +21,8 @@ from .geometry_feasibility_core import sha256_file
 
 
 def reconstruct(controls:np.ndarray,coeff:np.ndarray,knots:np.ndarray,
-                *,samples:int=8193,quadrature:int=32)->dict[str,np.ndarray]:
+                *,samples:int=8193,quadrature:int=32,
+                extra_s:np.ndarray|None=None)->dict[str,np.ndarray]:
     c=np.asarray(controls,dtype=float)
     xcoeff=np.asarray(coeff,dtype=float)
     xknot=np.asarray(knots,dtype=float)
@@ -36,6 +37,11 @@ def reconstruct(controls:np.ndarray,coeff:np.ndarray,knots:np.ndarray,
                  extrapolate=False)
     law=BSpline(xknot,xcoeff,3,extrapolate=False)
     s=np.linspace(0.,1.,samples,dtype=float)
+    if extra_s is not None:
+        points=np.asarray(extra_s,dtype=float)
+        if not np.isfinite(points).all() or np.any(points<0) or np.any(points>1):
+            raise ValueError("invalid additional path events")
+        s=np.unique(np.r_[s,points])
     qs=path(s);q1=path(s,nu=1);q2=path(s,nu=2);q3=path(s,nu=3)
     x=law(s)
     if not np.all(np.isfinite(x)) or np.min(x)<-1e-8:
