@@ -1,0 +1,12 @@
+{
+  "status": "CONSTRUCTIVE_WITNESS_PRESCREEN",
+  "case_id": "trap_cluttered_08",
+  "candidate_attempts": [
+    {
+      "witness_sha256": "d30644c3e942b286454d73aea41b21c04994c2c01cef7ae70766c6cb14059e1c",
+      "witness_geometry_sha256": "c4c13545addc21d0e8c1a04b8f96bb93495823e6b2065e369ec64f8c17beae59",
+      "arc_length_aligned_geometry_deviation_rad": 2.024873185510466,
+      "source": "global_bank_no_lp"
+    }
+  ]
+}

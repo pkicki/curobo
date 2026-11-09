@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "seed": 20261109,
+  "budget": 128,
+  "development_case": "trap_cluttered_08",
+  "holdout_case_ids": [
+    "confirm_geom_table_07",
+    "confirm_geom_cluttered_02"
+  ],
+  "bank_registration_sha256": "87c767e5dbfadfcc559cba6bf880d2f64a13c5d2db64424073b1d9222439ee48",
+  "bank_sha256": "cd01d388b6843b0bf95471e8de15e20601b35ee6550c4f6a66f82fc1e017658e",
+  "dev_evidence": {
+    "no_lp": {
+      "result_sha256": "db92ee4b2e7b25ce256a67bdd672d466beda18de2f767c43e44205ac84f1c88d",
+      "dev_receipt": {
+        "case_id": "trap_cluttered_08",
+        "physical": true,
+        "scaled95": true,
+        "collision": true,
+        "endpoint": true,
+        "reasons": [],
+        "scope": "dense+adaptive sampled Pinocchio/spheres; NOT continuous-time certificate",
+        "torque_profile_sha256": "2fcc2fb06ed57586443197b65acd7556b0267f89f1d00ee80add08882524aa50",
+        "base_sha256": "d30644c3e942b286454d73aea41b21c04994c2c01cef7ae70766c6cb14059e1c",
+        "adaptive_sha256": "60515bea9259357235b9779445849735b57dcb7402103052e1f36d6ab4506389",
+        "witness_geometry_sha256": "c4c13545addc21d0e8c1a04b8f96bb93495823e6b2065e369ec64f8c17beae59",
+        "base_samples": 8193,
+        "adaptive_samples": 8204,
+        "endpoint_checks": {
+          "position_start": true,
+          "position_goal": true,
+          "velocity": true,
+          "acceleration": true
+        },
+        "family_checks": {
+          "physical": {
+            "base": {
+              "position": true,
+              "velocity": true,
+              "acceleration": true,
+              "jerk": true,
+              "torque": true
+            },
+            "adaptive": {
+              "position": true,
+              "velocity": true,
+              "acceleration": true,
+              "jerk": true,
+              "torque": true
+            }
+          },
+          "scaled95": {
+            "base": {
+              "position": true,
+              "velocity": true,
+              "acceleration": true,
+              "jerk": true,
+              "torque": true
+            },
+            "adaptive": {
+              "position": true,
+              "velocity": true,
+              "acceleration": true,
+              "jerk": true,
+              "torque": true
+            }
+          }
+        }
+      },
+      "first_preliminary_proposal": 53
+    },
+    "lp_gate": {
+      "result_sha256": "5f192865f130316bc28d7cf3e4138c13b35883e0bc6bed9fede17e6f124f1e73",
+      "dev_receipt": {
+        "case_id": "trap_cluttered_08",
+        "physical": true,
+        "scaled95": true,
+        "collision": true,
+        "endpoint": true,
+        "reasons": [],
+        "scope": "dense+adaptive sampled Pinocchio/spheres; NOT continuous-time certificate",
+        "torque_profile_sha256": "2fcc2fb06ed57586443197b65acd7556b0267f89f1d00ee80add08882524aa50",
+        "base_sha256": "d30644c3e942b286454d73aea41b21c04994c2c01cef7ae70766c6cb14059e1c",
+        "adaptive_sha256": "60515bea9259357235b9779445849735b57dcb7402103052e1f36d6ab4506389",
+        "witness_geometry_sha256": "c4c13545addc21d0e8c1a04b8f96bb93495823e6b2065e369ec64f8c17beae59",
+        "base_samples": 8193,
+        "adaptive_samples": 8204,
+        "endpoint_checks": {
+          "position_start": true,
+          "position_goal": true,
+          "velocity": true,
+          "acceleration": true
+        },
+        "family_checks": {
+          "physical": {
+            "base": {
+              "position": true,
+              "velocity": true,
+              "acceleration": true,
+              "jerk": true,
+              "torque": true
+            },
+            "adaptive": {
+              "position": true,
+              "velocity": true,
+              "acceleration": true,
+              "jerk": true,
+              "torque": true
+            }
+          },
+          "scaled95": {
+            "base": {
+              "position": true,
+              "velocity": true,
+              "acceleration": true,
+              "jerk": true,
+              "torque": true
+            },
+            "adaptive": {
+              "position": true,
+              "velocity": true,
+              "acceleration": true,
+              "jerk": true,
+              "torque": true
+            }
+          }
+        }
+      },
+      "first_preliminary_proposal": 53
+    }
+  },
+  "method_source_sha256": {
+    "research/joint_time_oracle/torque_global_bank.py": "231baeec2b030c0ba9719d846499babc403063ce14b649583787835cf9b091a3",
+    "research/joint_time_oracle/torque_global_screen.py": "df497f74026f9adf02d1393fcac857bb5016f34aa1f712b74a002827c04f3fd4",
+    "research/joint_time_oracle/torque_global_freeze.py": "60ff999ca9fcdb1ff7a20aa47c9ede04a89f2df7761e35f9004c7013a3fade55",
+    "research/joint_time_oracle/torque_global_report.py": "f85d7ebd409b26d903b022c55b56e5b91c53c665f84e44b047dd299b7536ee37",
+    "research/joint_time_oracle/torque_dual_guidance.py": "9771535842be460b1c3da75e593f4d76df081afa84dbe86b12911b860d9785a3",
+    "research/joint_time_oracle/geometry_feasibility_discover.py": "251316ede1eceb500f6364b56976b519ba31bcd17db7be7730e183f0934ba5ff",
+    "research/joint_time_oracle/geometry_feasibility_core.py": "0aaef1453a7aee5305206b954732ec309b06fd78d6187f42c8ee9d449032fce6",
+    "research/joint_time_oracle/geometry_feasibility_receipts.py": "26b19c982fa62b3669d79728e6d1b69f22e04c8c8850beb29f8619afe07c6f68"
+  },
+  "registry_sha256": null,
+  "method_claim": "common proposal bank, no LP vs necessary-torque LP early reject",
+  "scope": "two previously source-disjoint feasibility tasks, no independent population-level inference"
+}

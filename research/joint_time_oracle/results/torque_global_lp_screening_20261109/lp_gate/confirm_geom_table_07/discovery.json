@@ -1,0 +1,12 @@
+{
+  "status": "CONSTRUCTIVE_WITNESS_PRESCREEN",
+  "case_id": "confirm_geom_table_07",
+  "candidate_attempts": [
+    {
+      "witness_sha256": "221d726b54588e75f87af9b819ea92a45b675d4006a9cd39b92eaef52ad9f4a7",
+      "witness_geometry_sha256": "457b70a803ebe1cede6371a88a97f22eb9e8e2044098a0fd00d446a1d6c1a92b",
+      "arc_length_aligned_geometry_deviation_rad": 1.592675164290507,
+      "source": "global_bank_lp_gate"
+    }
+  ]
+}

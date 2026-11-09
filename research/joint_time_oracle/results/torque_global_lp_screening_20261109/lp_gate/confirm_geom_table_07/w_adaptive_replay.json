@@ -1,0 +1,15 @@
+{
+  "status": "REPLAYED",
+  "source_witness_sha256": "221d726b54588e75f87af9b819ea92a45b675d4006a9cd39b92eaef52ad9f4a7",
+  "adaptive_sha256": "d946048b3635e71aae63d8b014fc9c0ee21070ba60beacf7e07d7633bbee11d7",
+  "samples": 8207,
+  "added_samples": 14,
+  "max_replay_errors": {
+    "q": 0.0,
+    "qd": 0.0,
+    "qdd": 0.0,
+    "jerk": 0.0,
+    "time": 0.0
+  },
+  "profile_sha256": "63efbd648a621f796f04bd9b317d146ab13450511d2b7c52c4af7ac6433cb1ac"
+}

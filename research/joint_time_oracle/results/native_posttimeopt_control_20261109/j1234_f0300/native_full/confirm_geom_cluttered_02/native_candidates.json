@@ -1,0 +1,14 @@
+{
+  "F000": {
+    "name": "F000",
+    "restart": 0,
+    "seed": 20261129,
+    "profile_sha256": "e80bb836142ad1606233567b07e693f470b42cbe67bc7ac79e98478e562bb73d",
+    "status": "FAILED",
+    "attempt_index": 0,
+    "setup_and_warmup_wall_s": 23.80737241404131,
+    "plan_wall_s": 2.857685402035713,
+    "planning_attempts": 5,
+    "reason": "native full planner returned no successful trajectory"
+  }
+}

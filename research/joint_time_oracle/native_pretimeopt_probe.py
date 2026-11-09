@@ -199,6 +199,7 @@ class NativePreTimeOptProbe:
                             pathbuf["controls"].shape[0]
                         )
                 if probe.post_samples and optimizer is not None:
+                    reset = None
                     try:
                         # Diagnostic only; sampling may fail for paths that
                         # TimeOpt rejected. Never modify the native return.
@@ -206,22 +207,35 @@ class NativePreTimeOptProbe:
 
                         durations = tensor_cpu(getattr(optimizer, "_times"))
                         durations = np.asarray(durations, dtype=float)
-                        durations = durations[:, -1] if durations.ndim == 2 else durations
+                        durations = (
+                            durations[:, -1] if durations.ndim == 2 else durations
+                        )
                         valid = np.isfinite(durations) & (durations > 1e-6)
                         # Invalid lanes receive a dummy 1-second sample grid
                         # and are explicitly NOT physically interpretable.
-                        stable = np.where(valid, durations, 1.)
+                        stable = np.where(valid, durations, 1.0)
                         device = getattr(optimizer, "_controls").device
                         unit = torch.linspace(0, 1, probe.post_samples, device=device)
-                        grid = torch.as_tensor(stable, device=device, dtype=unit.dtype)[:, None] * unit[None, :]
+                        grid = (
+                            torch.as_tensor(stable, device=device, dtype=unit.dtype)[
+                                :, None
+                            ]
+                            * unit[None, :]
+                        )
+                        # TimeOpt's sampler captures a graph for its first
+                        # sample count. The diagnostic requests its own count
+                        # after planning, so clear that graph before sampling.
+                        reset = getattr(optimizer, "reset_cuda_graph", None)
+                        if callable(reset):
+                            reset()
                         state = optimizer.sample(grid.contiguous())
                         archive = {
-                            "time":tensor_cpu(grid),
-                            "q":tensor_cpu(state.position),
-                            "qd":tensor_cpu(state.velocity),
-                            "qdd":tensor_cpu(state.acceleration),
-                            "jerk":tensor_cpu(state.jerk),
-                            "valid_duration_mask":valid,
+                            "time": tensor_cpu(grid),
+                            "q": tensor_cpu(state.position),
+                            "qd": tensor_cpu(state.velocity),
+                            "qdd": tensor_cpu(state.acceleration),
+                            "jerk": tensor_cpu(state.jerk),
+                            "valid_duration_mask": valid,
                         }
                         file = probe.folder / (tag + "_post_timeopt_states.npz")
                         np.savez_compressed(file, **archive)
@@ -231,6 +245,13 @@ class NativePreTimeOptProbe:
                         record["post_timeopt_samples"] = probe.post_samples
                     except Exception as exc:
                         record["post_timeopt_sampling_error"] = repr(exc)
+                    finally:
+                        # Restore the sampler's original lazy-graph state.
+                        # A planner can finalize multiple internal candidates
+                        # in one request; retaining N=post_samples would make
+                        # the next native finalizer fail its own sampling call.
+                        if callable(reset):
+                            reset()
                 return out
             except Exception as exc:
                 record["finalizer_returned"] = False

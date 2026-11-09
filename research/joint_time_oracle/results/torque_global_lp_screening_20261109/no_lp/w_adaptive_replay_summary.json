@@ -1,0 +1,17 @@
+{
+  "confirm_geom_cluttered_02": {
+    "status": "REPLAYED",
+    "source_witness_sha256": "7d6a82952754521fa585ad9fac7f514125eaf2483dfbe9e6772be0c2f608483c",
+    "adaptive_sha256": "cc5eaabeb07ac732ed28ead553f8fabb5c768216a26716a96bcf378942150107",
+    "samples": 8206,
+    "added_samples": 13,
+    "max_replay_errors": {
+      "q": 0.0,
+      "qd": 0.0,
+      "qdd": 0.0,
+      "jerk": 0.0,
+      "time": 0.0
+    },
+    "profile_sha256": "e80bb836142ad1606233567b07e693f470b42cbe67bc7ac79e98478e562bb73d"
+  }
+}

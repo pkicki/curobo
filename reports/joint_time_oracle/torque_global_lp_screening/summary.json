@@ -1,0 +1,230 @@
+{
+  "schema_version": 1,
+  "experiment_status": "COMPLETE",
+  "registered_tasks": [
+    "trap_cluttered_08",
+    "confirm_geom_table_07",
+    "confirm_geom_cluttered_02"
+  ],
+  "arms": [
+    "no_lp",
+    "lp_gate"
+  ],
+  "budgets": [
+    16,
+    32,
+    64,
+    128
+  ],
+  "qualified_counts": {
+    "no_lp": 3,
+    "lp_gate": 3
+  },
+  "shared_bank_generation_cpu_wall_s_by_case": {
+    "trap_cluttered_08": 0.01036338199628517,
+    "confirm_geom_table_07": 0.010288732999470085,
+    "confirm_geom_cluttered_02": 0.010401533974800259
+  },
+  "per_budget_success": {
+    "no_lp": {
+      "16": 2,
+      "32": 2,
+      "64": 3,
+      "128": 3
+    },
+    "lp_gate": {
+      "16": 2,
+      "32": 2,
+      "64": 3,
+      "128": 3
+    }
+  },
+  "rows": [
+    {
+      "case_id": "trap_cluttered_08",
+      "arm": "no_lp",
+      "status": "QUALIFIED_RESCUE",
+      "qualified": true,
+      "qualification_errors": [],
+      "search_wall_s": 1.1510992189869285,
+      "first_screen_proposal": 53,
+      "first_screen_cpu_s": 1.1510022960137576,
+      "first_qualified_proposal": 53,
+      "duration_s": 8.0,
+      "proposals_evaluated": 53,
+      "lp_rejections": 0,
+      "lp_errors": 0,
+      "constructive_timing_calls": 1,
+      "total_rnea_calls": 5416,
+      "lp_rnea_calls": 0,
+      "geometry_and_timing_rnea_calls": 5416,
+      "per_budget_qualification": {
+        "16": false,
+        "32": false,
+        "64": true,
+        "128": true
+      },
+      "task_sha256": "bba76af506c5677fd3317d7fd784579b959280c4d1c89e07e9c7d5c7ee6db354",
+      "torque_profile_sha256": "2fcc2fb06ed57586443197b65acd7556b0267f89f1d00ee80add08882524aa50",
+      "bank_sha256": "cd01d388b6843b0bf95471e8de15e20601b35ee6550c4f6a66f82fc1e017658e",
+      "result_sha256": "db92ee4b2e7b25ce256a67bdd672d466beda18de2f767c43e44205ac84f1c88d",
+      "scope": "independent dense+adaptive sampled, not continuous-time certificate"
+    },
+    {
+      "case_id": "trap_cluttered_08",
+      "arm": "lp_gate",
+      "status": "QUALIFIED_RESCUE",
+      "qualified": true,
+      "qualification_errors": [],
+      "search_wall_s": 1.2246614699834026,
+      "first_screen_proposal": 53,
+      "first_screen_cpu_s": 1.2245658689644188,
+      "first_qualified_proposal": 53,
+      "duration_s": 8.0,
+      "proposals_evaluated": 53,
+      "lp_rejections": 0,
+      "lp_errors": 0,
+      "constructive_timing_calls": 1,
+      "total_rnea_calls": 5662,
+      "lp_rnea_calls": 246,
+      "geometry_and_timing_rnea_calls": 5416,
+      "per_budget_qualification": {
+        "16": false,
+        "32": false,
+        "64": true,
+        "128": true
+      },
+      "task_sha256": "bba76af506c5677fd3317d7fd784579b959280c4d1c89e07e9c7d5c7ee6db354",
+      "torque_profile_sha256": "2fcc2fb06ed57586443197b65acd7556b0267f89f1d00ee80add08882524aa50",
+      "bank_sha256": "cd01d388b6843b0bf95471e8de15e20601b35ee6550c4f6a66f82fc1e017658e",
+      "result_sha256": "5f192865f130316bc28d7cf3e4138c13b35883e0bc6bed9fede17e6f124f1e73",
+      "scope": "independent dense+adaptive sampled, not continuous-time certificate"
+    },
+    {
+      "case_id": "confirm_geom_table_07",
+      "arm": "no_lp",
+      "status": "QUALIFIED_RESCUE",
+      "qualified": true,
+      "qualification_errors": [],
+      "search_wall_s": 0.30373768298886716,
+      "first_screen_proposal": 13,
+      "first_screen_cpu_s": 0.3036422929726541,
+      "first_qualified_proposal": 13,
+      "duration_s": 6.0,
+      "proposals_evaluated": 13,
+      "lp_rejections": 0,
+      "lp_errors": 0,
+      "constructive_timing_calls": 1,
+      "total_rnea_calls": 2191,
+      "lp_rnea_calls": 0,
+      "geometry_and_timing_rnea_calls": 2191,
+      "per_budget_qualification": {
+        "16": true,
+        "32": true,
+        "64": true,
+        "128": true
+      },
+      "task_sha256": "ab21291db920246f298722bb7877b0c15d8e0a3c45dee58bffeb8d64e3cd290b",
+      "torque_profile_sha256": "63efbd648a621f796f04bd9b317d146ab13450511d2b7c52c4af7ac6433cb1ac",
+      "bank_sha256": "77b58e98967ec1504ec3ea393e3dd5e6b4ef03d858e5ea6ce3e966f4e9033b4c",
+      "result_sha256": "d1a35f9088eab4e61e7541a3a4bed84b8d77116e190f1f8a3d13ece86723d01e",
+      "scope": "independent dense+adaptive sampled, not continuous-time certificate"
+    },
+    {
+      "case_id": "confirm_geom_table_07",
+      "arm": "lp_gate",
+      "status": "QUALIFIED_RESCUE",
+      "qualified": true,
+      "qualification_errors": [],
+      "search_wall_s": 0.3848446370102465,
+      "first_screen_proposal": 13,
+      "first_screen_cpu_s": 0.3847411010065116,
+      "first_qualified_proposal": 13,
+      "duration_s": 6.0,
+      "proposals_evaluated": 13,
+      "lp_rejections": 0,
+      "lp_errors": 0,
+      "constructive_timing_calls": 1,
+      "total_rnea_calls": 2437,
+      "lp_rnea_calls": 246,
+      "geometry_and_timing_rnea_calls": 2191,
+      "per_budget_qualification": {
+        "16": true,
+        "32": true,
+        "64": true,
+        "128": true
+      },
+      "task_sha256": "ab21291db920246f298722bb7877b0c15d8e0a3c45dee58bffeb8d64e3cd290b",
+      "torque_profile_sha256": "63efbd648a621f796f04bd9b317d146ab13450511d2b7c52c4af7ac6433cb1ac",
+      "bank_sha256": "77b58e98967ec1504ec3ea393e3dd5e6b4ef03d858e5ea6ce3e966f4e9033b4c",
+      "result_sha256": "4152e640a8e3dc050da7ede9bb53f0cb0eaf8ec60b79c63e9636b439dcde3b39",
+      "scope": "independent dense+adaptive sampled, not continuous-time certificate"
+    },
+    {
+      "case_id": "confirm_geom_cluttered_02",
+      "arm": "no_lp",
+      "status": "QUALIFIED_RESCUE",
+      "qualified": true,
+      "qualification_errors": [],
+      "search_wall_s": 0.27624199097044766,
+      "first_screen_proposal": 9,
+      "first_screen_cpu_s": 0.2761471319827251,
+      "first_qualified_proposal": 9,
+      "duration_s": 8.0,
+      "proposals_evaluated": 9,
+      "lp_rejections": 0,
+      "lp_errors": 0,
+      "constructive_timing_calls": 1,
+      "total_rnea_calls": 1675,
+      "lp_rnea_calls": 0,
+      "geometry_and_timing_rnea_calls": 1675,
+      "per_budget_qualification": {
+        "16": true,
+        "32": true,
+        "64": true,
+        "128": true
+      },
+      "task_sha256": "5cab1bd68c017b2340fd1f72c55064c46a63c9674edda8cfc8f81e0e3cc775a7",
+      "torque_profile_sha256": "e80bb836142ad1606233567b07e693f470b42cbe67bc7ac79e98478e562bb73d",
+      "bank_sha256": "d18fcc6e90c4e56f66d3521310b7c339dd24cf266c7221631eaee49bc04d2ac9",
+      "result_sha256": "37d9d005b3465a15e3aaaaa4206620e88ebec079602bce4df948949ed18caf56",
+      "scope": "independent dense+adaptive sampled, not continuous-time certificate"
+    },
+    {
+      "case_id": "confirm_geom_cluttered_02",
+      "arm": "lp_gate",
+      "status": "QUALIFIED_RESCUE",
+      "qualified": true,
+      "qualification_errors": [],
+      "search_wall_s": 0.36390542198205367,
+      "first_screen_proposal": 9,
+      "first_screen_cpu_s": 0.3638095210189931,
+      "first_qualified_proposal": 9,
+      "duration_s": 8.0,
+      "proposals_evaluated": 9,
+      "lp_rejections": 0,
+      "lp_errors": 0,
+      "constructive_timing_calls": 1,
+      "total_rnea_calls": 1921,
+      "lp_rnea_calls": 246,
+      "geometry_and_timing_rnea_calls": 1675,
+      "per_budget_qualification": {
+        "16": true,
+        "32": true,
+        "64": true,
+        "128": true
+      },
+      "task_sha256": "5cab1bd68c017b2340fd1f72c55064c46a63c9674edda8cfc8f81e0e3cc775a7",
+      "torque_profile_sha256": "e80bb836142ad1606233567b07e693f470b42cbe67bc7ac79e98478e562bb73d",
+      "bank_sha256": "d18fcc6e90c4e56f66d3521310b7c339dd24cf266c7221631eaee49bc04d2ac9",
+      "result_sha256": "2e446d6c6baf8fddaf5496baa10d71d97a8a17b8506f8ebdb3d9afdacc64eecf",
+      "scope": "independent dense+adaptive sampled, not continuous-time certificate"
+    }
+  ],
+  "safety_alerts": [],
+  "holdout_freeze_sha256": "1509cba5d5091ae86f8b714469e6c79f5d2ccd0d9a349385e1ee33969ba966f8",
+  "claim": "same prospective LP-blind proposal bank, selective necessary torque LP gate versus no LP gate",
+  "limits": "3 selected synthetic actuator task examples; W qualification is sampled/adaptive only",
+  "latency_contract": "search wall times include independent Pinocchio screening, LP and timing but exclude common pre-generated bank construction and offline audit",
+  "decision": "NO_GO_LP_GATE"
+}

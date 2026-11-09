@@ -1,0 +1,12 @@
+{
+  "status": "CONSTRUCTIVE_WITNESS_PRESCREEN",
+  "case_id": "confirm_geom_cluttered_02",
+  "candidate_attempts": [
+    {
+      "witness_sha256": "7d6a82952754521fa585ad9fac7f514125eaf2483dfbe9e6772be0c2f608483c",
+      "witness_geometry_sha256": "67cba48883de279706ceb9a0a024ad9805533cd19e938df86822d5c183bf94c5",
+      "arc_length_aligned_geometry_deviation_rad": 1.1172988767592504,
+      "source": "global_bank_lp_gate"
+    }
+  ]
+}

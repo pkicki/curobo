@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "research_decision": "NO_GO_LP_GATE",
+  "experiment_status": "COMPLETE",
+  "figures": [
+    "proposal_cost.png",
+    "trajectory_trap_cluttered_08.png",
+    "end_effector_trap_cluttered_08.png",
+    "trajectory_confirm_geom_table_07.png",
+    "end_effector_confirm_geom_table_07.png",
+    "trajectory_confirm_geom_cluttered_02.png",
+    "end_effector_confirm_geom_cluttered_02.png"
+  ],
+  "native": {
+    "instrumented": {
+      "name": "F000",
+      "restart": 0,
+      "seed": 20261129,
+      "profile_sha256": "e80bb836142ad1606233567b07e693f470b42cbe67bc7ac79e98478e562bb73d",
+      "status": "FAILED",
+      "attempt_index": 0,
+      "setup_and_warmup_wall_s": 23.756022311979905,
+      "plan_wall_s": 3.447940476005897,
+      "planning_attempts": 5,
+      "reason": "native full planner returned no successful trajectory"
+    },
+    "uninstrumented": {
+      "name": "F000",
+      "restart": 0,
+      "seed": 20261129,
+      "profile_sha256": "e80bb836142ad1606233567b07e693f470b42cbe67bc7ac79e98478e562bb73d",
+      "status": "FAILED",
+      "attempt_index": 0,
+      "setup_and_warmup_wall_s": 23.80737241404131,
+      "plan_wall_s": 2.857685402035713,
+      "planning_attempts": 5,
+      "reason": "native full planner returned no successful trajectory"
+    },
+    "prior_zero_gap_retimes": [
+      {
+        "file": "/home/pkicki/curobo/research/joint_time_oracle/results/native_pretimeopt_probe_metrics_20261108/j1234_f0300/native_full/confirm_geom_cluttered_02/F000_pretimeopt_008_independent_retime.json",
+        "sha256": "1ffeed5488ed11fdc4e509c690267ab1e52223eb986bb28f4aa35f455ae1dd71",
+        "geometry_sha256": "616ab2a3422ea7a8600532fd4b05805e5b0a03fe6d201fc017805af2a22dc990",
+        "duration_s": 508055.6789564664,
+        "solver_status": 2,
+        "solver_converged": false,
+        "primal_min_margin": -0.050807893819435845,
+        "stationarity_inf": 3.300456139288219e+17,
+        "scaled95_dynamic_pass": false,
+        "collision_clearance_m": 0.0049468250237366534,
+        "qualified": false
+      },
+      {
+        "file": "/home/pkicki/curobo/research/joint_time_oracle/results/native_pretimeopt_probe_metrics_20261108/j1234_f0300/native_full/confirm_geom_cluttered_02/F004_pretimeopt_008_independent_retime.json",
+        "sha256": "dc787be0a0233e3111d9e268917fe8150f529ee7a9e137af68bc7cc9e811dbd6",
+        "geometry_sha256": "686f6a76c8316dada3f64e5a20d8719a922ee491e9368bd29e2c3f5b6d5e670f",
+        "duration_s": 508267.9110002005,
+        "solver_status": 2,
+        "solver_converged": false,
+        "primal_min_margin": -0.05076684918571339,
+        "stationarity_inf": 3.306455113605442e+17,
+        "scaled95_dynamic_pass": false,
+        "collision_clearance_m": 0.004950766806109827,
+        "qualified": false
+      }
+    ],
+    "captured": {
+      "finalizer_invocations": 10,
+      "captured_lanes": 40,
+      "unique_geometry_count": 18,
+      "unique_lp_positive_count": 15,
+      "unique_lp_inconclusive_count": 3,
+      "unique_geometry_valid_count": 6,
+      "unique_valid_and_lp_inconclusive_count": 1,
+      "post_lane_status_counts": {
+        "INVALID_NATIVE_TIMING_DURATION": 40
+      },
+      "native_masks": {
+        "path_valid": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "collision_valid": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "limits_and_dynamics_valid": [
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      "sample_archive_sha256": "79cceb98857c0eaddb82b927f85452c2356b9206f39d2cad9cea2e9737338aae"
+    }
+  },
+  "summary_sha256": "38734b41af9b9e859b1a4303f1aa6e0edfb1256843cb7a321a5f161644286ae6",
+  "native_summary_sha256": "5d0849a6424820a87003ad54312371755967beffcca689bca92e279b043f05e5",
+  "report_html_sha256": "0a8e53036335953313894b9703a7e7e577178c57cc2d2d2ee87c156b8a2d4a53"
+}

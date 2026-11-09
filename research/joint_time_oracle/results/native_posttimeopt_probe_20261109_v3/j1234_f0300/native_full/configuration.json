@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "source_tasks_sha256": "c3055659df873d1a364d8d36c2cc2abeae58867e983b1f8fedf1e057de138295",
+  "maximum_restarts_allowed": 32,
+  "lanes_per_restart": 4,
+  "max_planner_attempts": 5,
+  "warmup_iterations": 2,
+  "use_cuda_graph": false,
+  "role": "full native replanning under frozen derated effort limits",
+  "budget_definition": "independent planner restarts, not solver Newton iterations",
+  "num_requested_lanes_per_restart": 4,
+  "notes": "All candidate trajectories require independent physical validation.",
+  "pre_timeopt_capture": true,
+  "latency_qualified": false,
+  "post_timeopt_samples": 513
+}

@@ -1,0 +1,634 @@
+{
+  "confirm_geom_cluttered_02": [
+    {
+      "tag": "F000_pretimeopt_000",
+      "status": "AUDITED_POST_SAMPLES",
+      "native_validation_masks": {
+        "path_valid": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "collision_valid": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "limits_and_dynamics_valid": [
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      "post_sample_error": null,
+      "lanes": [
+        {
+          "lane": 0,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        },
+        {
+          "lane": 1,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        },
+        {
+          "lane": 2,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        },
+        {
+          "lane": 3,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        }
+      ]
+    },
+    {
+      "tag": "F000_pretimeopt_001",
+      "status": "AUDITED_POST_SAMPLES",
+      "native_validation_masks": {
+        "path_valid": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "collision_valid": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "limits_and_dynamics_valid": [
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      "post_sample_error": null,
+      "lanes": [
+        {
+          "lane": 0,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        },
+        {
+          "lane": 1,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        },
+        {
+          "lane": 2,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        },
+        {
+          "lane": 3,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        }
+      ]
+    },
+    {
+      "tag": "F000_pretimeopt_002",
+      "status": "AUDITED_POST_SAMPLES",
+      "native_validation_masks": {
+        "path_valid": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "collision_valid": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "limits_and_dynamics_valid": [
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      "post_sample_error": null,
+      "lanes": [
+        {
+          "lane": 0,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        },
+        {
+          "lane": 1,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        },
+        {
+          "lane": 2,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        },
+        {
+          "lane": 3,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        }
+      ]
+    },
+    {
+      "tag": "F000_pretimeopt_003",
+      "status": "AUDITED_POST_SAMPLES",
+      "native_validation_masks": {
+        "path_valid": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "collision_valid": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "limits_and_dynamics_valid": [
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      "post_sample_error": null,
+      "lanes": [
+        {
+          "lane": 0,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        },
+        {
+          "lane": 1,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        },
+        {
+          "lane": 2,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        },
+        {
+          "lane": 3,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        }
+      ]
+    },
+    {
+      "tag": "F000_pretimeopt_004",
+      "status": "AUDITED_POST_SAMPLES",
+      "native_validation_masks": {
+        "path_valid": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "collision_valid": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "limits_and_dynamics_valid": [
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      "post_sample_error": null,
+      "lanes": [
+        {
+          "lane": 0,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        },
+        {
+          "lane": 1,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        },
+        {
+          "lane": 2,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        },
+        {
+          "lane": 3,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        }
+      ]
+    },
+    {
+      "tag": "F000_pretimeopt_005",
+      "status": "AUDITED_POST_SAMPLES",
+      "native_validation_masks": {
+        "path_valid": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "collision_valid": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "limits_and_dynamics_valid": [
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      "post_sample_error": null,
+      "lanes": [
+        {
+          "lane": 0,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        },
+        {
+          "lane": 1,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        },
+        {
+          "lane": 2,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        },
+        {
+          "lane": 3,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        }
+      ]
+    },
+    {
+      "tag": "F000_pretimeopt_006",
+      "status": "AUDITED_POST_SAMPLES",
+      "native_validation_masks": {
+        "path_valid": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "collision_valid": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "limits_and_dynamics_valid": [
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      "post_sample_error": null,
+      "lanes": [
+        {
+          "lane": 0,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        },
+        {
+          "lane": 1,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        },
+        {
+          "lane": 2,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        },
+        {
+          "lane": 3,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        }
+      ]
+    },
+    {
+      "tag": "F000_pretimeopt_007",
+      "status": "AUDITED_POST_SAMPLES",
+      "native_validation_masks": {
+        "path_valid": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "collision_valid": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "limits_and_dynamics_valid": [
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      "post_sample_error": null,
+      "lanes": [
+        {
+          "lane": 0,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        },
+        {
+          "lane": 1,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        },
+        {
+          "lane": 2,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        },
+        {
+          "lane": 3,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        }
+      ]
+    },
+    {
+      "tag": "F000_pretimeopt_008",
+      "status": "AUDITED_POST_SAMPLES",
+      "native_validation_masks": {
+        "path_valid": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "collision_valid": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "limits_and_dynamics_valid": [
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      "post_sample_error": null,
+      "lanes": [
+        {
+          "lane": 0,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        },
+        {
+          "lane": 1,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        },
+        {
+          "lane": 2,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        },
+        {
+          "lane": 3,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        }
+      ]
+    },
+    {
+      "tag": "F000_pretimeopt_009",
+      "status": "AUDITED_POST_SAMPLES",
+      "native_validation_masks": {
+        "path_valid": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "collision_valid": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "limits_and_dynamics_valid": [
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      "post_sample_error": null,
+      "lanes": [
+        {
+          "lane": 0,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        },
+        {
+          "lane": 1,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        },
+        {
+          "lane": 2,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        },
+        {
+          "lane": 3,
+          "status": "INVALID_NATIVE_TIMING_DURATION",
+          "native_masks": {
+            "path_valid": true,
+            "collision_valid": false,
+            "limits_and_dynamics_valid": false
+          }
+        }
+      ]
+    }
+  ]
+}

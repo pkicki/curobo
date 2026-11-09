@@ -1,0 +1,1005 @@
+{
+  "schema_version": 1,
+  "raw_root": "/home/pkicki/curobo/research/joint_time_oracle/results/torque_global_lp_screening_20261109",
+  "source_root": null,
+  "additional_roots": {
+    "native_post_timeopt_instrumented": "/home/pkicki/curobo/research/joint_time_oracle/results/native_posttimeopt_probe_20261109_v3",
+    "native_post_timeopt_uninstrumented_control": "/home/pkicki/curobo/research/joint_time_oracle/results/native_posttimeopt_control_20261109"
+  },
+  "report_root": "/home/pkicki/curobo/reports/joint_time_oracle/torque_global_lp_screening",
+  "implementation_commit": "9f0b3a14c07b79ab6961f01cfaad007a90760474",
+  "artifact_count": 165,
+  "items": [
+    {
+      "source": "raw",
+      "relative_path": "bank/confirm_geom_cluttered_02/bank.json",
+      "bytes": 20478,
+      "sha256": "412c1568543ec196b7728c898829ed7f97cb85aa19a476b6c486701410618b5a"
+    },
+    {
+      "source": "raw",
+      "relative_path": "bank/confirm_geom_cluttered_02/proposals.npz",
+      "bytes": 112789,
+      "sha256": "d18fcc6e90c4e56f66d3521310b7c339dd24cf266c7221631eaee49bc04d2ac9"
+    },
+    {
+      "source": "raw",
+      "relative_path": "bank/confirm_geom_table_07/bank.json",
+      "bytes": 20481,
+      "sha256": "7c6b97b829ebd881942122060d7a7234495894b6607af9fc9cfe212064611d6b"
+    },
+    {
+      "source": "raw",
+      "relative_path": "bank/confirm_geom_table_07/proposals.npz",
+      "bytes": 112899,
+      "sha256": "77b58e98967ec1504ec3ea393e3dd5e6b4ef03d858e5ea6ce3e966f4e9033b4c"
+    },
+    {
+      "source": "raw",
+      "relative_path": "bank/trap_cluttered_08/bank.json",
+      "bytes": 20473,
+      "sha256": "87c767e5dbfadfcc559cba6bf880d2f64a13c5d2db64424073b1d9222439ee48"
+    },
+    {
+      "source": "raw",
+      "relative_path": "bank/trap_cluttered_08/proposals.npz",
+      "bytes": 112449,
+      "sha256": "cd01d388b6843b0bf95471e8de15e20601b35ee6550c4f6a66f82fc1e017658e"
+    },
+    {
+      "source": "raw",
+      "relative_path": "holdout_freeze.json",
+      "bytes": 5600,
+      "sha256": "1509cba5d5091ae86f8b714469e6c79f5d2ccd0d9a349385e1ee33969ba966f8"
+    },
+    {
+      "source": "raw",
+      "relative_path": "logs/bank_confirm_geom_cluttered_02.json",
+      "bytes": 20478,
+      "sha256": "412c1568543ec196b7728c898829ed7f97cb85aa19a476b6c486701410618b5a"
+    },
+    {
+      "source": "raw",
+      "relative_path": "logs/bank_confirm_geom_table_07.json",
+      "bytes": 20481,
+      "sha256": "7c6b97b829ebd881942122060d7a7234495894b6607af9fc9cfe212064611d6b"
+    },
+    {
+      "source": "raw",
+      "relative_path": "logs/bank_trap.json",
+      "bytes": 20473,
+      "sha256": "87c767e5dbfadfcc559cba6bf880d2f64a13c5d2db64424073b1d9222439ee48"
+    },
+    {
+      "source": "raw",
+      "relative_path": "logs/lp_gate_confirm_geom_cluttered_02.json",
+      "bytes": 1120,
+      "sha256": "dbd1cd5792e444d065e0f7f53424a90b7abc3cbbf5063aae4484cd9bfe1b9f5f"
+    },
+    {
+      "source": "raw",
+      "relative_path": "logs/lp_gate_confirm_geom_table_07.json",
+      "bytes": 1117,
+      "sha256": "5b477dac8b7d303aa3a0463b8e79963fcf14d1762e32241e35531e62a89de074"
+    },
+    {
+      "source": "raw",
+      "relative_path": "logs/lp_gate_trap.json",
+      "bytes": 1113,
+      "sha256": "2726dee3b09b9ade607db856c51aa6b87e3c535d5a7f40731366341521d398f3"
+    },
+    {
+      "source": "raw",
+      "relative_path": "logs/no_lp_confirm_geom_cluttered_02.json",
+      "bytes": 1116,
+      "sha256": "c9460e737a02c0e064e21477f30984a43f3b65b61b3d21c85f6d51f7f82bd745"
+    },
+    {
+      "source": "raw",
+      "relative_path": "logs/no_lp_confirm_geom_table_07.json",
+      "bytes": 1114,
+      "sha256": "c991369f37b834eeebc7c372f69f82cf6971b598dae3c98b8d8fa1e9a4f60dcb"
+    },
+    {
+      "source": "raw",
+      "relative_path": "logs/no_lp_trap.json",
+      "bytes": 1109,
+      "sha256": "74f9a2cf906ea2df8df841d80c968a9b84a012d4143cdea2ef65f031b4bbbf37"
+    },
+    {
+      "source": "raw",
+      "relative_path": "logs/refined_retime/confirm_geom_cluttered_02.json",
+      "bytes": 10858,
+      "sha256": "fce2ea9a1f3ea5f607721eb34298fca8c00734d7ca791a26db68433c748512da"
+    },
+    {
+      "source": "raw",
+      "relative_path": "logs/refined_retime/confirm_geom_table_07.json",
+      "bytes": 10422,
+      "sha256": "2c31733a7024a99c3c54bdf1135b929e31205b822273be18899c6eb5b49a5887"
+    },
+    {
+      "source": "raw",
+      "relative_path": "logs/refined_retime/trap_cluttered_08.json",
+      "bytes": 13767,
+      "sha256": "4a8febea56f9d468f8478db47309d6d69956ecc85bd765c71d0a67493af3c826"
+    },
+    {
+      "source": "raw",
+      "relative_path": "lp_gate/confirm_geom_cluttered_02/discovery.json",
+      "bytes": 436,
+      "sha256": "5fb7df91172db026f97e461889585b13cc62a9dfca05749bd59925d24ab71397"
+    },
+    {
+      "source": "raw",
+      "relative_path": "lp_gate/confirm_geom_cluttered_02/screen_result.json",
+      "bytes": 9521,
+      "sha256": "2e446d6c6baf8fddaf5496baa10d71d97a8a17b8506f8ebdb3d9afdacc64eecf"
+    },
+    {
+      "source": "raw",
+      "relative_path": "lp_gate/confirm_geom_cluttered_02/torque_profile.json",
+      "bytes": 1521,
+      "sha256": "1a1d6e2ba0b42415d168fb0253253c90ecef95e1202c4b189d89a7ea29e5c6a9"
+    },
+    {
+      "source": "raw",
+      "relative_path": "lp_gate/confirm_geom_cluttered_02/w_adaptive_dense.npz",
+      "bytes": 1794752,
+      "sha256": "cc5eaabeb07ac732ed28ead553f8fabb5c768216a26716a96bcf378942150107"
+    },
+    {
+      "source": "raw",
+      "relative_path": "lp_gate/confirm_geom_cluttered_02/w_adaptive_pin_torque.npz",
+      "bytes": 601476,
+      "sha256": "f1bb1b4c3c9160782a38932ad9538b6a1f98dbda1e520917c4f59dcd562fb2fb"
+    },
+    {
+      "source": "raw",
+      "relative_path": "lp_gate/confirm_geom_cluttered_02/w_adaptive_replay.json",
+      "bytes": 449,
+      "sha256": "4ea986021468cefda16d10686e578f3faa7ed9d6654744934abd5226a6ca330b"
+    },
+    {
+      "source": "raw",
+      "relative_path": "lp_gate/confirm_geom_cluttered_02/w_dense.npz",
+      "bytes": 1791919,
+      "sha256": "7d6a82952754521fa585ad9fac7f514125eaf2483dfbe9e6772be0c2f608483c"
+    },
+    {
+      "source": "raw",
+      "relative_path": "lp_gate/confirm_geom_cluttered_02/w_geometry.json",
+      "bytes": 4634,
+      "sha256": "67cba48883de279706ceb9a0a024ad9805533cd19e938df86822d5c183bf94c5"
+    },
+    {
+      "source": "raw",
+      "relative_path": "lp_gate/confirm_geom_cluttered_02/w_pin_torque.npz",
+      "bytes": 600611,
+      "sha256": "2f9f6d3c60f0f64f5ae9311a006ea3d7a297811536cd36fe4d1fb04b7c313fca"
+    },
+    {
+      "source": "raw",
+      "relative_path": "lp_gate/confirm_geom_table_07/discovery.json",
+      "bytes": 431,
+      "sha256": "3076378df96549875c75c8e57e2695bc6b01f94c0e35a10afd07445824a46529"
+    },
+    {
+      "source": "raw",
+      "relative_path": "lp_gate/confirm_geom_table_07/screen_result.json",
+      "bytes": 11506,
+      "sha256": "4152e640a8e3dc050da7ede9bb53f0cb0eaf8ec60b79c63e9636b439dcde3b39"
+    },
+    {
+      "source": "raw",
+      "relative_path": "lp_gate/confirm_geom_table_07/torque_profile.json",
+      "bytes": 1513,
+      "sha256": "74ef7034d4eb7ad5f8ea49cbb5c525ca17e7c9a88da5a8903d227a80e97fcfa9"
+    },
+    {
+      "source": "raw",
+      "relative_path": "lp_gate/confirm_geom_table_07/w_adaptive_dense.npz",
+      "bytes": 1789545,
+      "sha256": "d946048b3635e71aae63d8b014fc9c0ee21070ba60beacf7e07d7633bbee11d7"
+    },
+    {
+      "source": "raw",
+      "relative_path": "lp_gate/confirm_geom_table_07/w_adaptive_pin_torque.npz",
+      "bytes": 596202,
+      "sha256": "f187174eb92b8f94dea0f6d01003c0156926f55d0e0c8f2910c3df5c55afaa20"
+    },
+    {
+      "source": "raw",
+      "relative_path": "lp_gate/confirm_geom_table_07/w_adaptive_replay.json",
+      "bytes": 449,
+      "sha256": "da799afdd55c048a396b9a8c7ac2e72a2c3d9a3e6a179ade2238b81f365a3feb"
+    },
+    {
+      "source": "raw",
+      "relative_path": "lp_gate/confirm_geom_table_07/w_dense.npz",
+      "bytes": 1786677,
+      "sha256": "221d726b54588e75f87af9b819ea92a45b675d4006a9cd39b92eaef52ad9f4a7"
+    },
+    {
+      "source": "raw",
+      "relative_path": "lp_gate/confirm_geom_table_07/w_geometry.json",
+      "bytes": 4630,
+      "sha256": "457b70a803ebe1cede6371a88a97f22eb9e8e2044098a0fd00d446a1d6c1a92b"
+    },
+    {
+      "source": "raw",
+      "relative_path": "lp_gate/confirm_geom_table_07/w_pin_torque.npz",
+      "bytes": 595309,
+      "sha256": "14c5da460358ececff2466ceb60de487906e8fc992d29acc2ba675b61c5cbbd1"
+    },
+    {
+      "source": "raw",
+      "relative_path": "lp_gate/independent_adaptive.json",
+      "bytes": 10790,
+      "sha256": "cbc9e67c346376a5bd5ea45426f85f8dd7721f1019055f91f4933037231dd291"
+    },
+    {
+      "source": "raw",
+      "relative_path": "lp_gate/independent_sampled.json",
+      "bytes": 10690,
+      "sha256": "c1043f19eceb4e294029f5ca82ed66f5139760b8be9cf74fa0c0102c6d59e6d0"
+    },
+    {
+      "source": "raw",
+      "relative_path": "lp_gate/pilot.jsonl",
+      "bytes": 782,
+      "sha256": "18f10036b33f0aee67d394397a291266c5cd1bf785ded49eec35fbc96dce34fa"
+    },
+    {
+      "source": "raw",
+      "relative_path": "lp_gate/tasks.json",
+      "bytes": 5077,
+      "sha256": "c3055659df873d1a364d8d36c2cc2abeae58867e983b1f8fedf1e057de138295"
+    },
+    {
+      "source": "raw",
+      "relative_path": "lp_gate/trap_cluttered_08/discovery.json",
+      "bytes": 427,
+      "sha256": "430bba2c32ace4aa3f3060f45da4c63ffbb8a50ebf4110e8e6e418b909aa91f6"
+    },
+    {
+      "source": "raw",
+      "relative_path": "lp_gate/trap_cluttered_08/screen_result.json",
+      "bytes": 34957,
+      "sha256": "5f192865f130316bc28d7cf3e4138c13b35883e0bc6bed9fede17e6f124f1e73"
+    },
+    {
+      "source": "raw",
+      "relative_path": "lp_gate/trap_cluttered_08/torque_profile.json",
+      "bytes": 1505,
+      "sha256": "a1fab9db6d4b802dc4ae07cee9ccd9ab49e95118348eb7a4945082570426e5fa"
+    },
+    {
+      "source": "raw",
+      "relative_path": "lp_gate/trap_cluttered_08/w_adaptive_dense.npz",
+      "bytes": 1787991,
+      "sha256": "60515bea9259357235b9779445849735b57dcb7402103052e1f36d6ab4506389"
+    },
+    {
+      "source": "raw",
+      "relative_path": "lp_gate/trap_cluttered_08/w_adaptive_pin_torque.npz",
+      "bytes": 587165,
+      "sha256": "5c42e2b43484dac012313d6c74b4a1ab5676fba516be5d64a43373584341d9b1"
+    },
+    {
+      "source": "raw",
+      "relative_path": "lp_gate/trap_cluttered_08/w_adaptive_replay.json",
+      "bytes": 449,
+      "sha256": "025b53e2e77d086d3d61d533fedbe65b6266afb930007aae3181a5f087e80ba4"
+    },
+    {
+      "source": "raw",
+      "relative_path": "lp_gate/trap_cluttered_08/w_dense.npz",
+      "bytes": 1785663,
+      "sha256": "d30644c3e942b286454d73aea41b21c04994c2c01cef7ae70766c6cb14059e1c"
+    },
+    {
+      "source": "raw",
+      "relative_path": "lp_gate/trap_cluttered_08/w_geometry.json",
+      "bytes": 4628,
+      "sha256": "c4c13545addc21d0e8c1a04b8f96bb93495823e6b2065e369ec64f8c17beae59"
+    },
+    {
+      "source": "raw",
+      "relative_path": "lp_gate/trap_cluttered_08/w_pin_torque.npz",
+      "bytes": 586379,
+      "sha256": "5821df7049dd7ef445113de8e5ed4cb96040361666b534ee97b8bc3cdc5f07fc"
+    },
+    {
+      "source": "raw",
+      "relative_path": "lp_gate/w_adaptive_receipts.json",
+      "bytes": 4809,
+      "sha256": "85e5062647b225b306572fd5c5d7a7dddd21ab57bf87025869f32c3dfabcbb25"
+    },
+    {
+      "source": "raw",
+      "relative_path": "lp_gate/w_adaptive_replay_summary.json",
+      "bytes": 512,
+      "sha256": "abf80433010cadcd46cbb36e51d2dab6e0d8cd5c908d878974348485db833e07"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/confirm_geom_cluttered_02/discovery.json",
+      "bytes": 434,
+      "sha256": "d49ba57584f05de072b634e89bd9cfc26940a54b856bef7dee61be14241e03fc"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/confirm_geom_cluttered_02/ipopt_polish.json",
+      "bytes": 10471,
+      "sha256": "e2e1525b7dd956fab739bf4560bf4c96b7b9acffe247e4c249eb29a4ee2f5f88"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/confirm_geom_cluttered_02/p_dense.npz",
+      "bytes": 1832438,
+      "sha256": "82c03903aea9c7a9397939659ed2edfa2bf06a6687c410d00718c4faed0bb5a8"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/confirm_geom_cluttered_02/p_pin_torque.npz",
+      "bytes": 683072,
+      "sha256": "afdf195140669158709d9fc4f3fb42d922d8e586bc556b03643dffffba280e06"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/confirm_geom_cluttered_02/p_refined_dense.npz",
+      "bytes": 6987658,
+      "sha256": "e1d8f874d16a079f321abdc726a522f8f78c5213910300005114c119d1f226c9"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/confirm_geom_cluttered_02/p_refined_pin_torque.npz",
+      "bytes": 2560755,
+      "sha256": "eb2ade20d247cb82a46b2fd25cb31ef1ccb1194418fe2b847277e1dd81cab1e2"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/confirm_geom_cluttered_02/p_timing_controls.npz",
+      "bytes": 2446,
+      "sha256": "1e63fefafa5f678392ce51f6149854b6379e3e11ebcd2f068a9b3ca2e9d1a2e8"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/confirm_geom_cluttered_02/screen_result.json",
+      "bytes": 9311,
+      "sha256": "37d9d005b3465a15e3aaaaa4206620e88ebec079602bce4df948949ed18caf56"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/confirm_geom_cluttered_02/torque_profile.json",
+      "bytes": 1521,
+      "sha256": "1a1d6e2ba0b42415d168fb0253253c90ecef95e1202c4b189d89a7ea29e5c6a9"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/confirm_geom_cluttered_02/w_adaptive_dense.npz",
+      "bytes": 1794752,
+      "sha256": "cc5eaabeb07ac732ed28ead553f8fabb5c768216a26716a96bcf378942150107"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/confirm_geom_cluttered_02/w_adaptive_pin_torque.npz",
+      "bytes": 601476,
+      "sha256": "f1bb1b4c3c9160782a38932ad9538b6a1f98dbda1e520917c4f59dcd562fb2fb"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/confirm_geom_cluttered_02/w_adaptive_replay.json",
+      "bytes": 449,
+      "sha256": "4ea986021468cefda16d10686e578f3faa7ed9d6654744934abd5226a6ca330b"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/confirm_geom_cluttered_02/w_dense.npz",
+      "bytes": 1791919,
+      "sha256": "7d6a82952754521fa585ad9fac7f514125eaf2483dfbe9e6772be0c2f608483c"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/confirm_geom_cluttered_02/w_geometry.json",
+      "bytes": 4634,
+      "sha256": "67cba48883de279706ceb9a0a024ad9805533cd19e938df86822d5c183bf94c5"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/confirm_geom_cluttered_02/w_pin_torque.npz",
+      "bytes": 600611,
+      "sha256": "2f9f6d3c60f0f64f5ae9311a006ea3d7a297811536cd36fe4d1fb04b7c313fca"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/confirm_geom_table_07/discovery.json",
+      "bytes": 429,
+      "sha256": "f20142a75433bdec603c578e3ebd633669c9f81da605eb28f098e542ba00e428"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/confirm_geom_table_07/ipopt_polish.json",
+      "bytes": 10035,
+      "sha256": "7dedc33405dfeefc2c4e100a687260197b5fa56dff016e6f03e10afb68214f00"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/confirm_geom_table_07/p_dense.npz",
+      "bytes": 1818995,
+      "sha256": "b550a61f57b83d08fda7bc365c09a5773c86ba4ebadcc20dc56f54d6405a2803"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/confirm_geom_table_07/p_pin_torque.npz",
+      "bytes": 687448,
+      "sha256": "aa5c9fbe72ef3d4a1edefa8f669da3438bb7328bd439bc934d296bccdb27a7f8"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/confirm_geom_table_07/p_refined_dense.npz",
+      "bytes": 6889609,
+      "sha256": "9cdc57703e3b5228d806003b3a9537bc232acf2a05e3513749ce8838a084a762"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/confirm_geom_table_07/p_refined_pin_torque.npz",
+      "bytes": 2604226,
+      "sha256": "d98c0fe1efeea7640f64f9c3ef00ecc8eabe719874456a9fb3e8cd3e6461ee84"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/confirm_geom_table_07/p_timing_controls.npz",
+      "bytes": 2446,
+      "sha256": "5aced260d553b2bf0cbcb202f2f5bbd6ad927f7404937fd66b46a181db3bc0f5"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/confirm_geom_table_07/screen_result.json",
+      "bytes": 11282,
+      "sha256": "d1a35f9088eab4e61e7541a3a4bed84b8d77116e190f1f8a3d13ece86723d01e"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/confirm_geom_table_07/torque_profile.json",
+      "bytes": 1513,
+      "sha256": "74ef7034d4eb7ad5f8ea49cbb5c525ca17e7c9a88da5a8903d227a80e97fcfa9"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/confirm_geom_table_07/w_adaptive_dense.npz",
+      "bytes": 1789545,
+      "sha256": "d946048b3635e71aae63d8b014fc9c0ee21070ba60beacf7e07d7633bbee11d7"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/confirm_geom_table_07/w_adaptive_pin_torque.npz",
+      "bytes": 596202,
+      "sha256": "f187174eb92b8f94dea0f6d01003c0156926f55d0e0c8f2910c3df5c55afaa20"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/confirm_geom_table_07/w_adaptive_replay.json",
+      "bytes": 449,
+      "sha256": "da799afdd55c048a396b9a8c7ac2e72a2c3d9a3e6a179ade2238b81f365a3feb"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/confirm_geom_table_07/w_dense.npz",
+      "bytes": 1786677,
+      "sha256": "221d726b54588e75f87af9b819ea92a45b675d4006a9cd39b92eaef52ad9f4a7"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/confirm_geom_table_07/w_geometry.json",
+      "bytes": 4630,
+      "sha256": "457b70a803ebe1cede6371a88a97f22eb9e8e2044098a0fd00d446a1d6c1a92b"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/confirm_geom_table_07/w_pin_torque.npz",
+      "bytes": 595309,
+      "sha256": "14c5da460358ececff2466ceb60de487906e8fc992d29acc2ba675b61c5cbbd1"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/independent_adaptive.json",
+      "bytes": 10790,
+      "sha256": "cbc9e67c346376a5bd5ea45426f85f8dd7721f1019055f91f4933037231dd291"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/independent_p.json",
+      "bytes": 11047,
+      "sha256": "9d2f0f3b8d93f7f9ac65979aa27b2b3e89b46ab42724e39145f6fdc027d9c686"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/independent_p_refined.json",
+      "bytes": 11075,
+      "sha256": "07f44a285c38cbfc13e58ffb868e0393731da123ebb25da8fa4aebdf4010891b"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/independent_sampled.json",
+      "bytes": 10690,
+      "sha256": "c1043f19eceb4e294029f5ca82ed66f5139760b8be9cf74fa0c0102c6d59e6d0"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/pilot.jsonl",
+      "bytes": 782,
+      "sha256": "18f10036b33f0aee67d394397a291266c5cd1bf785ded49eec35fbc96dce34fa"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/tasks.json",
+      "bytes": 5077,
+      "sha256": "c3055659df873d1a364d8d36c2cc2abeae58867e983b1f8fedf1e057de138295"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/trap_cluttered_08/discovery.json",
+      "bytes": 425,
+      "sha256": "6fdb480e04076dba29f71b98e402e6a41921537a283ac4a6543d7eca039fb484"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/trap_cluttered_08/ipopt_polish.json",
+      "bytes": 13380,
+      "sha256": "f47e7c555665436ec42dab533ecfc850c1f7a768f472bcc8def1b3261450089b"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/trap_cluttered_08/p_dense.npz",
+      "bytes": 1830508,
+      "sha256": "1692c2af8e229d29fcc5485540a29bb541a94fca548e9bd1145ef8935ee8a8f3"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/trap_cluttered_08/p_pin_torque.npz",
+      "bytes": 677721,
+      "sha256": "1c072ec50f75704076c0fa193eb264db1c9ac081ed0a0c61c01733835c288a94"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/trap_cluttered_08/p_refined_dense.npz",
+      "bytes": 6992269,
+      "sha256": "bb983f12fe00134b1d24e395aefa9da587cbde7725fc928b0008345dba56b6f4"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/trap_cluttered_08/p_refined_pin_torque.npz",
+      "bytes": 2579229,
+      "sha256": "cf26b391beaada09806a136c093c97a520d1deb27e133f8f045c17f79575a44b"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/trap_cluttered_08/p_timing_controls.npz",
+      "bytes": 2440,
+      "sha256": "958311e68288585bb9f36c079dec9697eac931cd73932835b94e7f4aa4b0c9b6"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/trap_cluttered_08/screen_result.json",
+      "bytes": 34651,
+      "sha256": "db92ee4b2e7b25ce256a67bdd672d466beda18de2f767c43e44205ac84f1c88d"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/trap_cluttered_08/torque_profile.json",
+      "bytes": 1505,
+      "sha256": "a1fab9db6d4b802dc4ae07cee9ccd9ab49e95118348eb7a4945082570426e5fa"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/trap_cluttered_08/w_adaptive_dense.npz",
+      "bytes": 1787991,
+      "sha256": "60515bea9259357235b9779445849735b57dcb7402103052e1f36d6ab4506389"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/trap_cluttered_08/w_adaptive_pin_torque.npz",
+      "bytes": 587165,
+      "sha256": "5c42e2b43484dac012313d6c74b4a1ab5676fba516be5d64a43373584341d9b1"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/trap_cluttered_08/w_adaptive_replay.json",
+      "bytes": 449,
+      "sha256": "025b53e2e77d086d3d61d533fedbe65b6266afb930007aae3181a5f087e80ba4"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/trap_cluttered_08/w_dense.npz",
+      "bytes": 1785663,
+      "sha256": "d30644c3e942b286454d73aea41b21c04994c2c01cef7ae70766c6cb14059e1c"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/trap_cluttered_08/w_geometry.json",
+      "bytes": 4628,
+      "sha256": "c4c13545addc21d0e8c1a04b8f96bb93495823e6b2065e369ec64f8c17beae59"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/trap_cluttered_08/w_pin_torque.npz",
+      "bytes": 586379,
+      "sha256": "5821df7049dd7ef445113de8e5ed4cb96040361666b534ee97b8bc3cdc5f07fc"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/w_adaptive_receipts.json",
+      "bytes": 4809,
+      "sha256": "85e5062647b225b306572fd5c5d7a7dddd21ab57bf87025869f32c3dfabcbb25"
+    },
+    {
+      "source": "raw",
+      "relative_path": "no_lp/w_adaptive_replay_summary.json",
+      "bytes": 512,
+      "sha256": "abf80433010cadcd46cbb36e51d2dab6e0d8cd5c908d878974348485db833e07"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/confirm_geom_cluttered_02/torque_profile.json",
+      "bytes": 1521,
+      "sha256": "1a1d6e2ba0b42415d168fb0253253c90ecef95e1202c4b189d89a7ea29e5c6a9"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/confirm_geom_table_07/torque_profile.json",
+      "bytes": 1513,
+      "sha256": "74ef7034d4eb7ad5f8ea49cbb5c525ca17e7c9a88da5a8903d227a80e97fcfa9"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/configuration.json",
+      "bytes": 623,
+      "sha256": "8d12540704276f6cd4981a08643ac17d4905c44ba8512b95f4065430c197dd6c"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/confirm_geom_cluttered_02/F000_pretimeopt_000.npz",
+      "bytes": 19877,
+      "sha256": "83aa7b6f91258218496c5dd18df2bd9e5e28ec9b4e21197cfc168583ca9cc795"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/confirm_geom_cluttered_02/F000_pretimeopt_000_native_geometry.npz",
+      "bytes": 2678,
+      "sha256": "14da761d3556efa239f349f4c19c92854a0b8a1bf04e1cb3db774db6a620faff"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/confirm_geom_cluttered_02/F000_pretimeopt_000_post_timeopt_states.npz",
+      "bytes": 2315,
+      "sha256": "79cceb98857c0eaddb82b927f85452c2356b9206f39d2cad9cea2e9737338aae"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/confirm_geom_cluttered_02/F000_pretimeopt_001.npz",
+      "bytes": 19877,
+      "sha256": "83aa7b6f91258218496c5dd18df2bd9e5e28ec9b4e21197cfc168583ca9cc795"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/confirm_geom_cluttered_02/F000_pretimeopt_001_native_geometry.npz",
+      "bytes": 2678,
+      "sha256": "14da761d3556efa239f349f4c19c92854a0b8a1bf04e1cb3db774db6a620faff"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/confirm_geom_cluttered_02/F000_pretimeopt_001_post_timeopt_states.npz",
+      "bytes": 2315,
+      "sha256": "79cceb98857c0eaddb82b927f85452c2356b9206f39d2cad9cea2e9737338aae"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/confirm_geom_cluttered_02/F000_pretimeopt_002.npz",
+      "bytes": 27283,
+      "sha256": "45fb9ed027ed33067483485a86d513cb82b125f9f8d65714daa50d79f33904a6"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/confirm_geom_cluttered_02/F000_pretimeopt_002_native_geometry.npz",
+      "bytes": 3254,
+      "sha256": "32252d6ea876e76e62a709f825ef69a747d59eb5d78b6b95f9df956ff2322c88"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/confirm_geom_cluttered_02/F000_pretimeopt_002_post_timeopt_states.npz",
+      "bytes": 2315,
+      "sha256": "79cceb98857c0eaddb82b927f85452c2356b9206f39d2cad9cea2e9737338aae"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/confirm_geom_cluttered_02/F000_pretimeopt_003.npz",
+      "bytes": 27293,
+      "sha256": "0cd16dc8663e11db19d9f7fac40ae99111ee3bf4b6db508c48252e7c52809663"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/confirm_geom_cluttered_02/F000_pretimeopt_003_native_geometry.npz",
+      "bytes": 3258,
+      "sha256": "74edcae3eac2953ec4e5f33e1be880e0376a64aaf7485ee8e759dd308d876258"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/confirm_geom_cluttered_02/F000_pretimeopt_003_post_timeopt_states.npz",
+      "bytes": 2315,
+      "sha256": "79cceb98857c0eaddb82b927f85452c2356b9206f39d2cad9cea2e9737338aae"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/confirm_geom_cluttered_02/F000_pretimeopt_004.npz",
+      "bytes": 26494,
+      "sha256": "583e80fbc789ba6733d45b0d54f58f2a742f12c834536583f5ec3d0797982ce5"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/confirm_geom_cluttered_02/F000_pretimeopt_004_native_geometry.npz",
+      "bytes": 3061,
+      "sha256": "c947545ccfc3fcdec3b989068e4cf240c5999dbbdfa8b3d048e9be9f47e85d7b"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/confirm_geom_cluttered_02/F000_pretimeopt_004_post_timeopt_states.npz",
+      "bytes": 2315,
+      "sha256": "79cceb98857c0eaddb82b927f85452c2356b9206f39d2cad9cea2e9737338aae"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/confirm_geom_cluttered_02/F000_pretimeopt_005.npz",
+      "bytes": 26493,
+      "sha256": "00da2ba53bd8ee46dbd984b7a2807f1163984355984d1051803ea062d5f0ee48"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/confirm_geom_cluttered_02/F000_pretimeopt_005_native_geometry.npz",
+      "bytes": 3061,
+      "sha256": "83192f39dc4faece960c558f67b49821a781ea32747c46cc9cfe76d4a9436f56"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/confirm_geom_cluttered_02/F000_pretimeopt_005_post_timeopt_states.npz",
+      "bytes": 2315,
+      "sha256": "79cceb98857c0eaddb82b927f85452c2356b9206f39d2cad9cea2e9737338aae"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/confirm_geom_cluttered_02/F000_pretimeopt_006.npz",
+      "bytes": 21010,
+      "sha256": "0d470608047f5c698804b0a3c1a599b362eb2f1258b67dfe2577add5bbbc8941"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/confirm_geom_cluttered_02/F000_pretimeopt_006_native_geometry.npz",
+      "bytes": 2860,
+      "sha256": "c00a0c1cc7f7e8ec92ccf624c6c55db96dcee00e702e27e512b1745cfe5c8570"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/confirm_geom_cluttered_02/F000_pretimeopt_006_post_timeopt_states.npz",
+      "bytes": 2315,
+      "sha256": "79cceb98857c0eaddb82b927f85452c2356b9206f39d2cad9cea2e9737338aae"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/confirm_geom_cluttered_02/F000_pretimeopt_007.npz",
+      "bytes": 21004,
+      "sha256": "b98329dd6227ea1624f177d320447cbe83e170459cbc14567a6dd7ee76893477"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/confirm_geom_cluttered_02/F000_pretimeopt_007_native_geometry.npz",
+      "bytes": 2860,
+      "sha256": "c00a0c1cc7f7e8ec92ccf624c6c55db96dcee00e702e27e512b1745cfe5c8570"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/confirm_geom_cluttered_02/F000_pretimeopt_007_post_timeopt_states.npz",
+      "bytes": 2315,
+      "sha256": "79cceb98857c0eaddb82b927f85452c2356b9206f39d2cad9cea2e9737338aae"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/confirm_geom_cluttered_02/F000_pretimeopt_008.npz",
+      "bytes": 20553,
+      "sha256": "0c10b913f29b17074ae34401aa6854553689fed04fac00076e90ad21372049f9"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/confirm_geom_cluttered_02/F000_pretimeopt_008_native_geometry.npz",
+      "bytes": 2803,
+      "sha256": "552325887c9d8d5e1c3c0a8c1502daa267aaf80e17414c26fa4d00fab0e60efb"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/confirm_geom_cluttered_02/F000_pretimeopt_008_post_timeopt_states.npz",
+      "bytes": 2315,
+      "sha256": "79cceb98857c0eaddb82b927f85452c2356b9206f39d2cad9cea2e9737338aae"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/confirm_geom_cluttered_02/F000_pretimeopt_009.npz",
+      "bytes": 20549,
+      "sha256": "b62de43ffa214ab756ca827bd1a9828715d387fe36036043d38f842acc6a849d"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/confirm_geom_cluttered_02/F000_pretimeopt_009_native_geometry.npz",
+      "bytes": 2803,
+      "sha256": "552325887c9d8d5e1c3c0a8c1502daa267aaf80e17414c26fa4d00fab0e60efb"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/confirm_geom_cluttered_02/F000_pretimeopt_009_post_timeopt_states.npz",
+      "bytes": 2315,
+      "sha256": "79cceb98857c0eaddb82b927f85452c2356b9206f39d2cad9cea2e9737338aae"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/confirm_geom_cluttered_02/F000_pretimeopt_inventory.json",
+      "bytes": 4558113,
+      "sha256": "5b1bc2a3146bafacfc6e4046e919d60d3ef4f41499a2cda3678bd65296267253"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/confirm_geom_cluttered_02/native_candidates.json",
+      "bytes": 405,
+      "sha256": "ffa793695f9dd43b708e1574f4d483be2fe24cfa02f821fe0d4e29f99eb55fe1"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/post_timeopt_independent_diagnostics.json",
+      "bytes": 15270,
+      "sha256": "8e41225775be25f8cb405d2f94838b091de9207922111b88efbc92aeb98253a7"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/pretimeopt_diagnostics.json",
+      "bytes": 56753,
+      "sha256": "0b23a4a22662269a4b816583a0525f56ecd01361bb9cc12990b415680bb60999"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/native_full/tasks.json",
+      "bytes": 5077,
+      "sha256": "c3055659df873d1a364d8d36c2cc2abeae58867e983b1f8fedf1e057de138295"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/probe_source_manifest.json",
+      "bytes": 1885,
+      "sha256": "01a7013208349d322ffb6179071adad43354a66ce534b381215b454be7caca3b"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/tasks.json",
+      "bytes": 5077,
+      "sha256": "c3055659df873d1a364d8d36c2cc2abeae58867e983b1f8fedf1e057de138295"
+    },
+    {
+      "source": "native_post_timeopt_instrumented",
+      "relative_path": "j1234_f0300/trap_cluttered_08/torque_profile.json",
+      "bytes": 1505,
+      "sha256": "a1fab9db6d4b802dc4ae07cee9ccd9ab49e95118348eb7a4945082570426e5fa"
+    },
+    {
+      "source": "native_post_timeopt_uninstrumented_control",
+      "relative_path": "j1234_f0300/confirm_geom_cluttered_02/torque_profile.json",
+      "bytes": 1521,
+      "sha256": "1a1d6e2ba0b42415d168fb0253253c90ecef95e1202c4b189d89a7ea29e5c6a9"
+    },
+    {
+      "source": "native_post_timeopt_uninstrumented_control",
+      "relative_path": "j1234_f0300/confirm_geom_table_07/torque_profile.json",
+      "bytes": 1513,
+      "sha256": "74ef7034d4eb7ad5f8ea49cbb5c525ca17e7c9a88da5a8903d227a80e97fcfa9"
+    },
+    {
+      "source": "native_post_timeopt_uninstrumented_control",
+      "relative_path": "j1234_f0300/native_full/configuration.json",
+      "bytes": 531,
+      "sha256": "347cf14bcfb91b0630befb9b1db67bd2189ce2c23101aef1b4586131b1d2f98a"
+    },
+    {
+      "source": "native_post_timeopt_uninstrumented_control",
+      "relative_path": "j1234_f0300/native_full/confirm_geom_cluttered_02/native_candidates.json",
+      "bytes": 404,
+      "sha256": "c4fb57a7efca56145a6368827362665060d367fa8d8ea03342a33af7708a9dcd"
+    },
+    {
+      "source": "native_post_timeopt_uninstrumented_control",
+      "relative_path": "j1234_f0300/native_full/tasks.json",
+      "bytes": 5077,
+      "sha256": "c3055659df873d1a364d8d36c2cc2abeae58867e983b1f8fedf1e057de138295"
+    },
+    {
+      "source": "native_post_timeopt_uninstrumented_control",
+      "relative_path": "j1234_f0300/probe_source_manifest.json",
+      "bytes": 1885,
+      "sha256": "01a7013208349d322ffb6179071adad43354a66ce534b381215b454be7caca3b"
+    },
+    {
+      "source": "native_post_timeopt_uninstrumented_control",
+      "relative_path": "j1234_f0300/tasks.json",
+      "bytes": 5077,
+      "sha256": "c3055659df873d1a364d8d36c2cc2abeae58867e983b1f8fedf1e057de138295"
+    },
+    {
+      "source": "native_post_timeopt_uninstrumented_control",
+      "relative_path": "j1234_f0300/trap_cluttered_08/torque_profile.json",
+      "bytes": 1505,
+      "sha256": "a1fab9db6d4b802dc4ae07cee9ccd9ab49e95118348eb7a4945082570426e5fa"
+    },
+    {
+      "source": "report",
+      "relative_path": "assets/end_effector_confirm_geom_cluttered_02.png",
+      "bytes": 182927,
+      "sha256": "ffc43ff701ff49bb28e7200e56d992f1b42b11e2fc815973d88997d27ada349e"
+    },
+    {
+      "source": "report",
+      "relative_path": "assets/end_effector_confirm_geom_table_07.png",
+      "bytes": 178700,
+      "sha256": "5bb80ac3530100cd8353392733fb6919584e78699d0d07fb96d7d332774a5b08"
+    },
+    {
+      "source": "report",
+      "relative_path": "assets/end_effector_trap_cluttered_08.png",
+      "bytes": 172465,
+      "sha256": "560eee611eb5fc3171464e208218229bdd49478de9a106810881da950ea07fa7"
+    },
+    {
+      "source": "report",
+      "relative_path": "assets/proposal_cost.png",
+      "bytes": 150935,
+      "sha256": "8fb92880c673243308491568df49218c315554d1bccf72432bce0929118e355a"
+    },
+    {
+      "source": "report",
+      "relative_path": "assets/trajectory_confirm_geom_cluttered_02.png",
+      "bytes": 283022,
+      "sha256": "a1c196ea76b6374e36187716d4cefc823639a030bc6083f5f053ccf56ef806a2"
+    },
+    {
+      "source": "report",
+      "relative_path": "assets/trajectory_confirm_geom_table_07.png",
+      "bytes": 282837,
+      "sha256": "9b77a90ce46ec4081f5f59db90523acbcd0cbe66e2f394ff8a28b4c936350a09"
+    },
+    {
+      "source": "report",
+      "relative_path": "assets/trajectory_trap_cluttered_08.png",
+      "bytes": 292666,
+      "sha256": "848d36efa317d75bf96aea923526c8e39cd38c29d0b7c405ab82b1d2de7e4f19"
+    },
+    {
+      "source": "report",
+      "relative_path": "evidence_summary.json",
+      "bytes": 3921,
+      "sha256": "1a332bcba146192a5b31f8cf2684d6368035e12ac173ab12563d9971e973781f"
+    },
+    {
+      "source": "report",
+      "relative_path": "index.html",
+      "bytes": 15022,
+      "sha256": "0a8e53036335953313894b9703a7e7e577178c57cc2d2d2ee87c156b8a2d4a53"
+    },
+    {
+      "source": "report",
+      "relative_path": "native_diagnostic_summary.json",
+      "bytes": 3046,
+      "sha256": "5d0849a6424820a87003ad54312371755967beffcca689bca92e279b043f05e5"
+    },
+    {
+      "source": "report",
+      "relative_path": "summary.json",
+      "bytes": 8261,
+      "sha256": "38734b41af9b9e859b1a4303f1aa6e0edfb1256843cb7a321a5f161644286ae6"
+    }
+  ],
+  "note": "local NPZ files are not embedded in Git; verify against this inventory"
+}

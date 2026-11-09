@@ -1,35 +1,126 @@
 <!doctype html><html lang="en"><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Global path search: LP screening experiment — NOT EXECUTED</title>
-<style>body{font:16px/1.55 system-ui;max-width:1080px;margin:2rem auto;padding:0 1rem;color:#24334a}
-.note{background:#fff1dd;border-left:5px solid #bd8315;padding:1rem}
-table{width:100%;border-collapse:collapse}td,th{text-align:left;padding:.6rem;border-bottom:1px solid #dce1e8}th{background:#f1f6fa}</style>
-<h1>Global geometric exploration with necessary torque-LP screening</h1>
-<p class="note"><strong>NEW EXPERIMENTS NOT EXECUTED.</strong> Research implementation and registered
-comparison are committed. No new geometric rescue, screening speedup, native internal failure-stage
-diagnosis, or continuous-time physical certificate has been established by this branch.</p>
-<p><strong>Question:</strong> Does rejecting intrinsically torque-infeasible geometric
-curves with a cheap relaxed pointwise LP reduce the actual cost of finding feasible motion in
-an LP-blind global candidate bank?</p>
-<table><thead><tr><th>Arm</th><th>Candidate bank</th><th>Online checks</th><th>Status</th></tr></thead><tbody>
-<tr><td>no_lp</td><td>Same frozen global 128 proposals</td><td>Geometry/collision/gravity then timing</td><td>Not run</td></tr>
-<tr><td>lp_gate</td><td>Same frozen global 128 proposals</td><td>Identical cheap checks, then necessary LP, then timing</td><td>Not run</td></tr>
-</tbody></table>
-<p>Three selected synthetic actuator cases: one development case and two frozen
-algorithm holdouts. Only independently sampled/adaptive physical and Scaled95-qualified
-trajectories count as success. LP gaps must be dual verified. Zero LP gap is inconclusive.
-CPU search, proposal-bank construction, independent validation, and optional IPOPT polishing have
-separate time contracts.</p>
-<h2>Native same-state diagnosis</h2>
-<p>Opt-in pre- and post-TimeOpt capture uses separate isolated research inputs; independent
-Pinocchio joint dynamics and sphere collision results are compared with native masks on the
-same sampled post-TimeOpt states. Unavailable snapshots and model mismatches are reported as
-unknown, not evidence of a specific failure cause. Instrumentation invalidates native latency
-comparisons.</p>
-<h2>Method and provenance</h2>
-<p>Rebuild the results from raw evidence using the module
-<code>research.joint_time_oracle.torque_global_report</code>.
-Read the registered research protocol at
-<code>research/joint_time_oracle/TORQUE_GLOBAL_LP_SCREENING_PROTOCOL.md</code>.
-The earlier LP-dual negative results and original geometrical feasibility examples remain frozen.</p>
-</html>
+<title>Global candidate screening: LP gate vs no LP</title>
+<style>body{font:15px/1.55 system-ui;max-width:1180px;margin:2rem auto;padding:0 1rem}
+table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid #d8dee7;padding:.5rem;text-align:left}
+th{background:#e9eff8}.note{background:#fff1d7;border-left:5px solid #b37412;padding:1rem}</style>
+<h1>Global path exploration: necessary torque LP gating</h1>
+<p class="note">Both arms evaluate the exact SAME frozen LP-blind global proposal bank
+in the same order. Only a numerically dual-checked positive necessary torque LP
+can exclude a path from expensive timing. LP zero is inconclusive. Only
+independently physical+Scaled95 qualified dense/adaptive witnesses count as
+success. All tests use synthetic actuator limits, not Panda manufacturer ratings.
+No continuous-time torque or collision guarantee is claimed.</p><h2>Status</h2><pre>{
+  &quot;experiment_status&quot;: &quot;COMPLETE&quot;,
+  &quot;decision&quot;: &quot;NO_GO_LP_GATE&quot;,
+  &quot;qualified_counts&quot;: {
+    &quot;no_lp&quot;: 3,
+    &quot;lp_gate&quot;: 3
+  },
+  &quot;per_budget_success&quot;: {
+    &quot;no_lp&quot;: {
+      &quot;16&quot;: 2,
+      &quot;32&quot;: 2,
+      &quot;64&quot;: 3,
+      &quot;128&quot;: 3
+    },
+    &quot;lp_gate&quot;: {
+      &quot;16&quot;: 2,
+      &quot;32&quot;: 2,
+      &quot;64&quot;: 3,
+      &quot;128&quot;: 3
+    }
+  },
+  &quot;safety_alerts&quot;: []
+}</pre><h2>Every arm and case</h2><table><thead><tr><th>case_id</th><th>arm</th><th>status</th><th>first_qualified_proposal</th><th>search_wall_s</th><th>lp_rejections</th><th>constructive_timing_calls</th><th>total_rnea_calls</th><th>duration_s</th></tr></thead><tbody><tr><td>trap_cluttered_08</td><td>no_lp</td><td>QUALIFIED_RESCUE</td><td>53</td><td>1.1510992189869285</td><td>0</td><td>1</td><td>5416</td><td>8.0</td></tr>
+<tr><td>trap_cluttered_08</td><td>lp_gate</td><td>QUALIFIED_RESCUE</td><td>53</td><td>1.2246614699834026</td><td>0</td><td>1</td><td>5662</td><td>8.0</td></tr>
+<tr><td>confirm_geom_table_07</td><td>no_lp</td><td>QUALIFIED_RESCUE</td><td>13</td><td>0.30373768298886716</td><td>0</td><td>1</td><td>2191</td><td>6.0</td></tr>
+<tr><td>confirm_geom_table_07</td><td>lp_gate</td><td>QUALIFIED_RESCUE</td><td>13</td><td>0.3848446370102465</td><td>0</td><td>1</td><td>2437</td><td>6.0</td></tr>
+<tr><td>confirm_geom_cluttered_02</td><td>no_lp</td><td>QUALIFIED_RESCUE</td><td>9</td><td>0.27624199097044766</td><td>0</td><td>1</td><td>1675</td><td>8.0</td></tr>
+<tr><td>confirm_geom_cluttered_02</td><td>lp_gate</td><td>QUALIFIED_RESCUE</td><td>9</td><td>0.36390542198205367</td><td>0</td><td>1</td><td>1921</td><td>8.0</td></tr></tbody></table><p>Raw trajectory SHA manifests, CPU timing boundaries and independent receipts are required before interpreting apparent compute savings.</p><h2>Research decision</h2><p><strong>NO_GO:</strong> the LP gate preserved all three qualified rescues but excluded no candidates and saved no constructive timing calls. It added 246 RNEA calls per task and increased wall time on every task. The shared prospective generator found each W before proposal 64, so this three-case study does not establish behavior on harder proposal banks.</p><h2>Matched search evidence</h2><table><thead><tr><th>Task</th><th>Arm</th><th>Status</th><th>Proposals</th><th>LP exclusions</th><th>Timing calls</th><th>CPU seconds</th><th>RNEA calls</th><th>W duration (s)</th></tr></thead><tbody><tr><td>trap_cluttered_08</td><td>no_lp</td><td>QUALIFIED_RESCUE</td><td>53</td><td>0</td><td>1</td><td>1.1510992189869285</td><td>5416</td><td>8.0</td></tr><tr><td>trap_cluttered_08</td><td>lp_gate</td><td>QUALIFIED_RESCUE</td><td>53</td><td>0</td><td>1</td><td>1.2246614699834026</td><td>5662</td><td>8.0</td></tr><tr><td>confirm_geom_table_07</td><td>no_lp</td><td>QUALIFIED_RESCUE</td><td>13</td><td>0</td><td>1</td><td>0.30373768298886716</td><td>2191</td><td>6.0</td></tr><tr><td>confirm_geom_table_07</td><td>lp_gate</td><td>QUALIFIED_RESCUE</td><td>13</td><td>0</td><td>1</td><td>0.3848446370102465</td><td>2437</td><td>6.0</td></tr><tr><td>confirm_geom_cluttered_02</td><td>no_lp</td><td>QUALIFIED_RESCUE</td><td>9</td><td>0</td><td>1</td><td>0.27624199097044766</td><td>1675</td><td>8.0</td></tr><tr><td>confirm_geom_cluttered_02</td><td>lp_gate</td><td>QUALIFIED_RESCUE</td><td>9</td><td>0</td><td>1</td><td>0.36390542198205367</td><td>1921</td><td>8.0</td></tr></tbody></table><p>All methods used the same per-task proposal bank. Search timing excludes common bank generation and offline qualification. Each W has independent dense 8,193-point and adaptive receipts (8,204–8,207 samples), with physical and Scaled95 checks passing. These are sampled checks, not continuous-time certificates.</p><h3>Proposal cost by task</h3><img style='max-width:100%' src='assets/proposal_cost.png' alt='Cumulative CPU time by shared proposal index'><h2>Qualified witnesses and independent retiming</h2><h2>Frozen shared proposal banks</h2><table><thead><tr><th>Task</th><th>Bank SHA256</th><th>Source task SHA256</th><th>Torque profile SHA256</th><th>Original native geometry SHA256</th></tr></thead><tbody><tr><td>trap_cluttered_08</td><td>cd01d388b6843b0bf95471e8de15e20601b35ee6550c4f6a66f82fc1e017658e</td><td>bba76af506c5677fd3317d7fd784579b959280c4d1c89e07e9c7d5c7ee6db354</td><td>2fcc2fb06ed57586443197b65acd7556b0267f89f1d00ee80add08882524aa50</td><td>656bbb8615acdda7e41e9d2423d4a6e5bb91ed1c8f0596884f093beb753e3d57</td></tr><tr><td>confirm_geom_table_07</td><td>77b58e98967ec1504ec3ea393e3dd5e6b4ef03d858e5ea6ce3e966f4e9033b4c</td><td>ab21291db920246f298722bb7877b0c15d8e0a3c45dee58bffeb8d64e3cd290b</td><td>63efbd648a621f796f04bd9b317d146ab13450511d2b7c52c4af7ac6433cb1ac</td><td>a517b394c0025007ef31261e2a1a44c77e27e5e495406ce79697c411b37a0f2d</td></tr><tr><td>confirm_geom_cluttered_02</td><td>d18fcc6e90c4e56f66d3521310b7c339dd24cf266c7221631eaee49bc04d2ac9</td><td>5cab1bd68c017b2340fd1f72c55064c46a63c9674edda8cfc8f81e0e3cc775a7</td><td>e80bb836142ad1606233567b07e693f470b42cbe67bc7ac79e98478e562bb73d</td><td>a0e4c11e4a057e8509e022601fe49bc71a6dea630cbe177015208ad73709d4dd</td></tr></tbody></table><p>The generator is LP-blind and uses only the nominal native path, fixed seed, and registered perturbation schedule. The same proposal bank/order is used by both arms; the prior W trajectory is excluded from proposal construction.</p><table><thead><tr><th>Task</th><th>W(s)</th><th>IPOPT P(s)</th><th>Converged</th><th>Iterations</th><th>Solver s</th><th>Independent samples</th><th>Physical P</th><th>Scaled95 P</th><th>Scaled95 residuals by family</th></tr></thead><tbody><tr><td>trap_cluttered_08</td><td>8.0</td><td>2.906695768572586</td><td>True</td><td>50</td><td>33.73950973601313</td><td>32915</td><td>True</td><td>False</td><td>{&#x27;position&#x27;: 0.0, &#x27;velocity&#x27;: 0.00012187321492618253, &#x27;acceleration&#x27;: 0.0013911503003374293, &#x27;jerk&#x27;: 0.03655685469470882, &#x27;torque&#x27;: 0.011028064772332868}</td></tr><tr><td>confirm_geom_table_07</td><td>6.0</td><td>2.244931171400508</td><td>True</td><td>33</td><td>21.76628478197381</td><td>32927</td><td>True</td><td>False</td><td>{&#x27;position&#x27;: 0.0, &#x27;velocity&#x27;: 5.9595159054737223e-05, &#x27;acceleration&#x27;: 0.02567396743542716, &#x27;jerk&#x27;: 2.444090963201802, &#x27;torque&#x27;: 0.0}</td></tr><tr><td>confirm_geom_cluttered_02</td><td>8.0</td><td>2.5418561852688977</td><td>True</td><td>35</td><td>23.448830114968587</td><td>32925</td><td>True</td><td>False</td><td>{&#x27;position&#x27;: 0.0, &#x27;velocity&#x27;: 7.121417861544188e-05, &#x27;acceleration&#x27;: 0.020885478322112405, &#x27;jerk&#x27;: 0.0, &#x27;torque&#x27;: 0.03595011166785156}</td></tr></tbody></table><p>IPOPT retimed the exact frozen W geometry and converged locally on all three tasks. The optimized squared-speed controls and geometry knots are saved. Independent Pinocchio checks on 32,769 uniform progress samples plus spline-knot/extrema samples passed original physical limits for P, but the extra Scaled95 contract failed on at least one dynamic family in every case; P is therefore not called a qualified Scaled95 witness. This remains a local retiming result, not a global timing optimum.</p><h3>trap_cluttered_08: joint and torque profiles</h3><img style='max-width:100%' src='assets/trajectory_trap_cluttered_08.png'><img style='max-width:70%' src='assets/end_effector_trap_cluttered_08.png' alt='End-effector path'><h3>confirm_geom_table_07: joint and torque profiles</h3><img style='max-width:100%' src='assets/trajectory_confirm_geom_table_07.png'><img style='max-width:70%' src='assets/end_effector_confirm_geom_table_07.png' alt='End-effector path'><h3>confirm_geom_cluttered_02: joint and torque profiles</h3><img style='max-width:100%' src='assets/trajectory_confirm_geom_cluttered_02.png'><img style='max-width:70%' src='assets/end_effector_confirm_geom_cluttered_02.png' alt='End-effector path'><h2>Native post-TimeOpt diagnostic</h2><p>The instrumented and uninstrumented one-restart challenge both returned FAILED after five planner attempts for confirm_geom_cluttered_02 (same task seed). The instrumented run captured 10 finalizer invocations, 40 lanes and 18 distinct exact native cubic geometries. Of those unique curves, 15 had a positive sampled necessary LP gap above 0.005; 6 passed sampled independent geometry checks, with 1 both geometry-valid and LP-inconclusive. Every captured native path mask was true, while collision and limits/dynamics masks were false. TimeOpt integrated times were NaN, all 40 sampled-duration masks were false, and the captured q/qd/qdd/jerk arrays were NaN; hence no actual post-TimeOpt physical-state comparison was available. The instrumentation outcome matches the uninstrumented failure, but the exclusive failure cause remains unresolved.</p><p>On the two previously captured valid-geometry, zero-LP-gap clutter curves, stored IPOPT retiming diagnostics did not qualify either: local solver status 2, stationarity around 3.3e17, durations about 508,000 s, Scaled95 torque failed, and independent world clearance was 0.00495 m (below the 0.005 m threshold). Zero LP gap is inconclusive and these outcomes do not prove path infeasibility.</p><h3>Native pre-TimeOpt and post-TimeOpt evidence</h3><pre>{
+  &quot;instrumented&quot;: {
+    &quot;name&quot;: &quot;F000&quot;,
+    &quot;restart&quot;: 0,
+    &quot;seed&quot;: 20261129,
+    &quot;profile_sha256&quot;: &quot;e80bb836142ad1606233567b07e693f470b42cbe67bc7ac79e98478e562bb73d&quot;,
+    &quot;status&quot;: &quot;FAILED&quot;,
+    &quot;attempt_index&quot;: 0,
+    &quot;setup_and_warmup_wall_s&quot;: 23.756022311979905,
+    &quot;plan_wall_s&quot;: 3.447940476005897,
+    &quot;planning_attempts&quot;: 5,
+    &quot;reason&quot;: &quot;native full planner returned no successful trajectory&quot;
+  },
+  &quot;uninstrumented&quot;: {
+    &quot;name&quot;: &quot;F000&quot;,
+    &quot;restart&quot;: 0,
+    &quot;seed&quot;: 20261129,
+    &quot;profile_sha256&quot;: &quot;e80bb836142ad1606233567b07e693f470b42cbe67bc7ac79e98478e562bb73d&quot;,
+    &quot;status&quot;: &quot;FAILED&quot;,
+    &quot;attempt_index&quot;: 0,
+    &quot;setup_and_warmup_wall_s&quot;: 23.80737241404131,
+    &quot;plan_wall_s&quot;: 2.857685402035713,
+    &quot;planning_attempts&quot;: 5,
+    &quot;reason&quot;: &quot;native full planner returned no successful trajectory&quot;
+  },
+  &quot;prior_zero_gap_retimes&quot;: [
+    {
+      &quot;file&quot;: &quot;/home/pkicki/curobo/research/joint_time_oracle/results/native_pretimeopt_probe_metrics_20261108/j1234_f0300/native_full/confirm_geom_cluttered_02/F000_pretimeopt_008_independent_retime.json&quot;,
+      &quot;sha256&quot;: &quot;1ffeed5488ed11fdc4e509c690267ab1e52223eb986bb28f4aa35f455ae1dd71&quot;,
+      &quot;geometry_sha256&quot;: &quot;616ab2a3422ea7a8600532fd4b05805e5b0a03fe6d201fc017805af2a22dc990&quot;,
+      &quot;duration_s&quot;: 508055.6789564664,
+      &quot;solver_status&quot;: 2,
+      &quot;solver_converged&quot;: false,
+      &quot;primal_min_margin&quot;: -0.050807893819435845,
+      &quot;stationarity_inf&quot;: 3.300456139288219e+17,
+      &quot;scaled95_dynamic_pass&quot;: false,
+      &quot;collision_clearance_m&quot;: 0.0049468250237366534,
+      &quot;qualified&quot;: false
+    },
+    {
+      &quot;file&quot;: &quot;/home/pkicki/curobo/research/joint_time_oracle/results/native_pretimeopt_probe_metrics_20261108/j1234_f0300/native_full/confirm_geom_cluttered_02/F004_pretimeopt_008_independent_retime.json&quot;,
+      &quot;sha256&quot;: &quot;dc787be0a0233e3111d9e268917fe8150f529ee7a9e137af68bc7cc9e811dbd6&quot;,
+      &quot;geometry_sha256&quot;: &quot;686f6a76c8316dada3f64e5a20d8719a922ee491e9368bd29e2c3f5b6d5e670f&quot;,
+      &quot;duration_s&quot;: 508267.9110002005,
+      &quot;solver_status&quot;: 2,
+      &quot;solver_converged&quot;: false,
+      &quot;primal_min_margin&quot;: -0.05076684918571339,
+      &quot;stationarity_inf&quot;: 3.306455113605442e+17,
+      &quot;scaled95_dynamic_pass&quot;: false,
+      &quot;collision_clearance_m&quot;: 0.004950766806109827,
+      &quot;qualified&quot;: false
+    }
+  ],
+  &quot;captured&quot;: {
+    &quot;finalizer_invocations&quot;: 10,
+    &quot;captured_lanes&quot;: 40,
+    &quot;unique_geometry_count&quot;: 18,
+    &quot;unique_lp_positive_count&quot;: 15,
+    &quot;unique_lp_inconclusive_count&quot;: 3,
+    &quot;unique_geometry_valid_count&quot;: 6,
+    &quot;unique_valid_and_lp_inconclusive_count&quot;: 1,
+    &quot;post_lane_status_counts&quot;: {
+      &quot;INVALID_NATIVE_TIMING_DURATION&quot;: 40
+    },
+    &quot;native_masks&quot;: {
+      &quot;path_valid&quot;: [
+        true,
+        true,
+        true,
+        true
+      ],
+      &quot;collision_valid&quot;: [
+        false,
+        false,
+        false,
+        false
+      ],
+      &quot;limits_and_dynamics_valid&quot;: [
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    &quot;sample_archive_sha256&quot;: &quot;79cceb98857c0eaddb82b927f85452c2356b9206f39d2cad9cea2e9737338aae&quot;
+  }
+}</pre><h2>Limitations</h2><ul><li>Three previously selected adversarial tasks are not a population benchmark.</li><li>The shared global bank is newly registered and differs from the earlier adaptive random-global beam.</li><li>LP positivity rejects a specific path only; LP zero does not establish a feasible timing law.</li><li>W receipts are independent sampled/adaptive checks, not continuous-time certificates.</li><li>Native rejected lanes produced invalid integrated times, preventing like-for-like post-TimeOpt state checks.</li><li>IPOPT is a local solver; its physically feasible P samples fail Scaled95 checks and are not promoted to qualified results.</li></ul><p>Checksum inventory: <a href='artifact_manifest.json'>artifact_manifest.json</a>.</p></html>

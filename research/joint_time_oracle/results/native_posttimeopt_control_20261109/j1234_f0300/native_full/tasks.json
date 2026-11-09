@@ -1,0 +1,242 @@
+[
+  {
+    "case_id": "trap_cluttered_08",
+    "cohort": "discovery",
+    "population": "cluttered",
+    "scene": "collision_primitives_3d.yml",
+    "robot": "franka.yml",
+    "start": [
+      -2.2092234249495295,
+      0.48126871963829954,
+      1.589804421913685,
+      -1.6817898635214772,
+      0.8531416041751585,
+      1.8410641033666166,
+      -0.5845675408990668
+    ],
+    "goal": [
+      -0.41216328632058175,
+      0.19448082392150456,
+      -1.1932280445190948,
+      -0.19841474741268872,
+      0.19926648639558228,
+      1.171064468431172,
+      1.666537712858584
+    ],
+    "joint_names": [
+      "panda_joint1",
+      "panda_joint2",
+      "panda_joint3",
+      "panda_joint4",
+      "panda_joint5",
+      "panda_joint6",
+      "panda_joint7"
+    ],
+    "initial_velocity": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "initial_acceleration": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "terminal_velocity": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "terminal_acceleration": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "payload": null,
+    "dynamic_limit_scale": 0.95,
+    "seed": 20261132,
+    "max_planner_attempts": 5,
+    "joint_displacement_l2_rad": 4.381925481708769,
+    "max_endpoint_static_torque_utilization": 0.22736186985776044,
+    "direct_line_interior_torque_utilization": 0.3972203385873077,
+    "direct_line_gravity_barrier_ratio": 1.7470842355220433,
+    "task_generator_seed": 20261108,
+    "task_sha256": "bba76af506c5677fd3317d7fd784579b959280c4d1c89e07e9c7d5c7ee6db354"
+  },
+  {
+    "case_id": "confirm_geom_table_07",
+    "cohort": "discovery",
+    "population": "table",
+    "scene": "collision_test.yml",
+    "robot": "franka.yml",
+    "start": [
+      -1.0944788804073464,
+      -0.04206080584812111,
+      -1.5170067295593428,
+      -0.1897999969124794,
+      -1.8440195451035002,
+      2.6447916474834647,
+      0.773402452348608
+    ],
+    "goal": [
+      0.23026795150030827,
+      0.7215611017991689,
+      2.4388892021381388,
+      -2.2729536397741574,
+      0.054702331758991855,
+      1.1596508337422229,
+      1.3507918156618794
+    ],
+    "joint_names": [
+      "panda_joint1",
+      "panda_joint2",
+      "panda_joint3",
+      "panda_joint4",
+      "panda_joint5",
+      "panda_joint6",
+      "panda_joint7"
+    ],
+    "initial_velocity": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "initial_acceleration": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "terminal_velocity": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "terminal_acceleration": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "payload": null,
+    "dynamic_limit_scale": 0.95,
+    "seed": 20261126,
+    "max_planner_attempts": 5,
+    "joint_displacement_l2_rad": 5.335811164936438,
+    "max_endpoint_static_torque_utilization": 0.20290819926920392,
+    "direct_line_interior_torque_utilization": 0.40760173383837567,
+    "direct_line_gravity_barrier_ratio": 2.008798734138876,
+    "task_generator_seed": 20261109,
+    "task_sha256": "ab21291db920246f298722bb7877b0c15d8e0a3c45dee58bffeb8d64e3cd290b"
+  },
+  {
+    "case_id": "confirm_geom_cluttered_02",
+    "cohort": "discovery",
+    "population": "cluttered",
+    "scene": "collision_primitives_3d.yml",
+    "robot": "franka.yml",
+    "start": [
+      0.8884398634099178,
+      0.7835127969857391,
+      2.051851307473143,
+      -2.2247471300555546,
+      2.3032378468621215,
+      0.47696156190339445,
+      0.06172711132070885
+    ],
+    "goal": [
+      -0.3459390579814772,
+      0.0004367396668857326,
+      -0.8299173206718373,
+      -1.0557630418313224,
+      1.3206348659258087,
+      2.6139250635080713,
+      -0.3255681076781166
+    ],
+    "joint_names": [
+      "panda_joint1",
+      "panda_joint2",
+      "panda_joint3",
+      "panda_joint4",
+      "panda_joint5",
+      "panda_joint6",
+      "panda_joint7"
+    ],
+    "initial_velocity": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "initial_acceleration": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "terminal_velocity": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "terminal_acceleration": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "payload": null,
+    "dynamic_limit_scale": 0.95,
+    "seed": 20261129,
+    "max_planner_attempts": 5,
+    "joint_displacement_l2_rad": 4.182120618752915,
+    "max_endpoint_static_torque_utilization": 0.17789397954684186,
+    "direct_line_interior_torque_utilization": 0.4148141703944777,
+    "direct_line_gravity_barrier_ratio": 2.3318055588567663,
+    "task_generator_seed": 20261109,
+    "task_sha256": "5cab1bd68c017b2340fd1f72c55064c46a63c9674edda8cfc8f81e0e3cc775a7"
+  }
+]

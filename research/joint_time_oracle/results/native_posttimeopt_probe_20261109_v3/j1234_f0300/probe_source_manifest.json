@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "scenario": "j1234_f0300",
+  "cases": {
+    "trap_cluttered_08": {
+      "task_sha256": "bba76af506c5677fd3317d7fd784579b959280c4d1c89e07e9c7d5c7ee6db354",
+      "torque_profile_sha256": "2fcc2fb06ed57586443197b65acd7556b0267f89f1d00ee80add08882524aa50",
+      "source_task_inventory_sha256": "b5f613cc45802f5b9cbc7a78b77ef994b56f5a8d0c868551852b9acbcc7da231",
+      "source_native_failure_sha256": "798f9504a0c9c4c7c75d104c4e92de09f86a5cf192dd5eba4ea6f2ceeb59ddc0",
+      "source_torque_profile_file_sha256": "a1fab9db6d4b802dc4ae07cee9ccd9ab49e95118348eb7a4945082570426e5fa"
+    },
+    "confirm_geom_table_07": {
+      "task_sha256": "ab21291db920246f298722bb7877b0c15d8e0a3c45dee58bffeb8d64e3cd290b",
+      "torque_profile_sha256": "63efbd648a621f796f04bd9b317d146ab13450511d2b7c52c4af7ac6433cb1ac",
+      "source_task_inventory_sha256": "f2bd78375744c32ab2e992e946bc650d486a130f1702369452f501f09a044c89",
+      "source_native_failure_sha256": "6867efbf7dcde3cacabe6625efb443a0543cd87b7327de6a1fb32abf54cdc631",
+      "source_torque_profile_file_sha256": "74ef7034d4eb7ad5f8ea49cbb5c525ca17e7c9a88da5a8903d227a80e97fcfa9"
+    },
+    "confirm_geom_cluttered_02": {
+      "task_sha256": "5cab1bd68c017b2340fd1f72c55064c46a63c9674edda8cfc8f81e0e3cc775a7",
+      "torque_profile_sha256": "e80bb836142ad1606233567b07e693f470b42cbe67bc7ac79e98478e562bb73d",
+      "source_task_inventory_sha256": "f2bd78375744c32ab2e992e946bc650d486a130f1702369452f501f09a044c89",
+      "source_native_failure_sha256": "c47937c2007cfc584e93c830aa0d6ed7035dc2329b8bbbe6d637c4e4a3be9164",
+      "source_torque_profile_file_sha256": "1a1d6e2ba0b42415d168fb0253253c90ecef95e1202c4b189d89a7ea29e5c6a9"
+    }
+  },
+  "probe": "research-only pre-TimeOpt snapshot, NOT latency-qualified",
+  "interpretation": "compare recorded stage/candidate failures, not claim global impossibility"
+}

@@ -1,0 +1,1506 @@
+{
+  "trap_cluttered_08": [
+    {
+      "status": "NO_PRETIMEOPT_INVOCATION_RECORDED",
+      "reason": "could fail before solver finalizer; not evidence of geometric infeasibility"
+    }
+  ],
+  "confirm_geom_table_07": [
+    {
+      "status": "NO_PRETIMEOPT_INVOCATION_RECORDED",
+      "reason": "could fail before solver finalizer; not evidence of geometric infeasibility"
+    }
+  ],
+  "confirm_geom_cluttered_02": [
+    {
+      "tag": "F000_pretimeopt_000",
+      "capture_state": "PRETIMEOPT_SNAPSHOT_SAVED",
+      "profile_sha256": "e80bb836142ad1606233567b07e693f470b42cbe67bc7ac79e98478e562bb73d",
+      "finalizer_returned": true,
+      "timeopt_validation_masks": {
+        "path_valid": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "collision_valid": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "limits_and_dynamics_valid": [
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      "pre_snapshot_success": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "pre_snapshot_path_valid": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "lanes": [
+        {
+          "lane": 0,
+          "geometry_fingerprint": "7664269e762c5fffa33683a3f15c6f524959bdd42f9f4c615fa9e6ec1002f174",
+          "duplicate_geometry": false,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.5101121248406298,
+            "worst_progress": 0.6692307692307693,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.5101121248406298,
+              "witness_x": 0.0,
+              "witness_half_x_prime": -3.300903315533327,
+              "constraint_residual_Nm": 0.0,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.005802135937578376,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": true
+        },
+        {
+          "lane": 1,
+          "geometry_fingerprint": "7664269e762c5fffa33683a3f15c6f524959bdd42f9f4c615fa9e6ec1002f174",
+          "duplicate_geometry": true,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.5101121248406298,
+            "worst_progress": 0.6692307692307693,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.5101121248406298,
+              "witness_x": 0.0,
+              "witness_half_x_prime": -3.300903315533327,
+              "constraint_residual_Nm": 0.0,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.005802135937578376,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": true
+        },
+        {
+          "lane": 2,
+          "geometry_fingerprint": "190c7292c0de197a867ed6f017dfdc8fb5f42303a1ba7e5ce3fab7fb19155ec1",
+          "duplicate_geometry": false,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.5101512731461296,
+            "worst_progress": 0.6692307692307693,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.5101512731461296,
+              "witness_x": 0.0,
+              "witness_half_x_prime": -3.300945624067453,
+              "constraint_residual_Nm": 0.0,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.005807086070203679,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": true
+        },
+        {
+          "lane": 3,
+          "geometry_fingerprint": "ddab56ff71fa58c172b70ac73080a223da9b16b52fc54ce9baa13852138cc5f9",
+          "duplicate_geometry": false,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.5100732631388293,
+            "worst_progress": 0.6692307692307693,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.5100732631388293,
+              "witness_x": 0.0,
+              "witness_half_x_prime": -3.3008741380061717,
+              "constraint_residual_Nm": 1.5276668818842154e-13,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.00579749816577825,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": true
+        }
+      ],
+      "status": "DIAGNOSED_WITH_INDEPENDENT_LP"
+    },
+    {
+      "tag": "F000_pretimeopt_001",
+      "capture_state": "PRETIMEOPT_SNAPSHOT_SAVED",
+      "profile_sha256": "e80bb836142ad1606233567b07e693f470b42cbe67bc7ac79e98478e562bb73d",
+      "finalizer_returned": true,
+      "timeopt_validation_masks": {
+        "path_valid": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "collision_valid": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "limits_and_dynamics_valid": [
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      "pre_snapshot_success": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "pre_snapshot_path_valid": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "lanes": [
+        {
+          "lane": 0,
+          "geometry_fingerprint": "7664269e762c5fffa33683a3f15c6f524959bdd42f9f4c615fa9e6ec1002f174",
+          "duplicate_geometry": true,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.5101121248406298,
+            "worst_progress": 0.6692307692307693,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.5101121248406298,
+              "witness_x": 0.0,
+              "witness_half_x_prime": -3.300903315533327,
+              "constraint_residual_Nm": 0.0,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.005802135937578376,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": true
+        },
+        {
+          "lane": 1,
+          "geometry_fingerprint": "7664269e762c5fffa33683a3f15c6f524959bdd42f9f4c615fa9e6ec1002f174",
+          "duplicate_geometry": true,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.5101121248406298,
+            "worst_progress": 0.6692307692307693,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.5101121248406298,
+              "witness_x": 0.0,
+              "witness_half_x_prime": -3.300903315533327,
+              "constraint_residual_Nm": 0.0,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.005802135937578376,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": true
+        },
+        {
+          "lane": 2,
+          "geometry_fingerprint": "190c7292c0de197a867ed6f017dfdc8fb5f42303a1ba7e5ce3fab7fb19155ec1",
+          "duplicate_geometry": true,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.5101512731461296,
+            "worst_progress": 0.6692307692307693,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.5101512731461296,
+              "witness_x": 0.0,
+              "witness_half_x_prime": -3.300945624067453,
+              "constraint_residual_Nm": 0.0,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.005807086070203679,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": true
+        },
+        {
+          "lane": 3,
+          "geometry_fingerprint": "ddab56ff71fa58c172b70ac73080a223da9b16b52fc54ce9baa13852138cc5f9",
+          "duplicate_geometry": true,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.5100732631388293,
+            "worst_progress": 0.6692307692307693,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.5100732631388293,
+              "witness_x": 0.0,
+              "witness_half_x_prime": -3.3008741380061717,
+              "constraint_residual_Nm": 1.5276668818842154e-13,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.00579749816577825,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": true
+        }
+      ],
+      "status": "DIAGNOSED_WITH_INDEPENDENT_LP"
+    },
+    {
+      "tag": "F000_pretimeopt_002",
+      "capture_state": "PRETIMEOPT_SNAPSHOT_SAVED",
+      "profile_sha256": "e80bb836142ad1606233567b07e693f470b42cbe67bc7ac79e98478e562bb73d",
+      "finalizer_returned": true,
+      "timeopt_validation_masks": {
+        "path_valid": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "collision_valid": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "limits_and_dynamics_valid": [
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      "pre_snapshot_success": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "pre_snapshot_path_valid": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "lanes": [
+        {
+          "lane": 0,
+          "geometry_fingerprint": "602c95c667f3205f3b2b9a028f3fd74357f626d212735f773a4f3bc1a381e33d",
+          "duplicate_geometry": false,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.08531481289554874,
+            "worst_progress": 0.5461538461538462,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.08531481289554874,
+              "witness_x": 0.0,
+              "witness_half_x_prime": -4.19004002584169,
+              "constraint_residual_Nm": 5.684341886080802e-14,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.0026670446223846095,
+          "self_clearance_m": 0.0840280341109228,
+          "sampled_geometry_valid": false
+        },
+        {
+          "lane": 1,
+          "geometry_fingerprint": "dea8035a613b4ffa3d79d30a4047b8bf1cd96373e2088ebad6805b2e135fd9a3",
+          "duplicate_geometry": false,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.05559451444938761,
+            "worst_progress": 0.6000000000000001,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.05559451444938761,
+              "witness_x": 0.0,
+              "witness_half_x_prime": 3.7007294219376643,
+              "constraint_residual_Nm": 0.0,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.002534146895240272,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": false
+        },
+        {
+          "lane": 2,
+          "geometry_fingerprint": "592c130c07e64b0a54a00b6365446a886efa6373f7a3d011fae5245e86e7dca0",
+          "duplicate_geometry": false,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.23317595419608908,
+            "worst_progress": 0.6000000000000001,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.23317595419608908,
+              "witness_x": 0.0,
+              "witness_half_x_prime": -3.4857865383595694,
+              "constraint_residual_Nm": 2.842170943040401e-14,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.00288956339346004,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": false
+        },
+        {
+          "lane": 3,
+          "geometry_fingerprint": "d3576662ea31f2f0415c2bb2eb794d9134521f6240e055790ec6e320ba26cfc1",
+          "duplicate_geometry": false,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.2561494592766205,
+            "worst_progress": 0.5923076923076923,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.2561494592766205,
+              "witness_x": 0.0,
+              "witness_half_x_prime": 3.4233943900525206,
+              "constraint_residual_Nm": 7.105427357601002e-14,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.002243554816202767,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": false
+        }
+      ],
+      "status": "DIAGNOSED_WITH_INDEPENDENT_LP"
+    },
+    {
+      "tag": "F000_pretimeopt_003",
+      "capture_state": "PRETIMEOPT_SNAPSHOT_SAVED",
+      "profile_sha256": "e80bb836142ad1606233567b07e693f470b42cbe67bc7ac79e98478e562bb73d",
+      "finalizer_returned": true,
+      "timeopt_validation_masks": {
+        "path_valid": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "collision_valid": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "limits_and_dynamics_valid": [
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      "pre_snapshot_success": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "pre_snapshot_path_valid": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "lanes": [
+        {
+          "lane": 0,
+          "geometry_fingerprint": "602c95c667f3205f3b2b9a028f3fd74357f626d212735f773a4f3bc1a381e33d",
+          "duplicate_geometry": true,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.08531481289554874,
+            "worst_progress": 0.5461538461538462,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.08531481289554874,
+              "witness_x": 0.0,
+              "witness_half_x_prime": -4.19004002584169,
+              "constraint_residual_Nm": 5.684341886080802e-14,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.0026670446223846095,
+          "self_clearance_m": 0.0840280341109228,
+          "sampled_geometry_valid": false
+        },
+        {
+          "lane": 1,
+          "geometry_fingerprint": "d3b1dd9ae333a964e64525244a95c8c185974fb54ce14e4726073d4793f25256",
+          "duplicate_geometry": false,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.17965617079161375,
+            "worst_progress": 0.6000000000000001,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.17965617079161375,
+              "witness_x": 0.0,
+              "witness_half_x_prime": -3.4824306409754944,
+              "constraint_residual_Nm": 2.5579538487363607e-13,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.002302717418099634,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": false
+        },
+        {
+          "lane": 2,
+          "geometry_fingerprint": "592c130c07e64b0a54a00b6365446a886efa6373f7a3d011fae5245e86e7dca0",
+          "duplicate_geometry": true,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.23317595419608908,
+            "worst_progress": 0.6000000000000001,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.23317595419608908,
+              "witness_x": 0.0,
+              "witness_half_x_prime": -3.4857865383595694,
+              "constraint_residual_Nm": 2.842170943040401e-14,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.00288956339346004,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": false
+        },
+        {
+          "lane": 3,
+          "geometry_fingerprint": "d3576662ea31f2f0415c2bb2eb794d9134521f6240e055790ec6e320ba26cfc1",
+          "duplicate_geometry": true,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.2561494592766205,
+            "worst_progress": 0.5923076923076923,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.2561494592766205,
+              "witness_x": 0.0,
+              "witness_half_x_prime": 3.4233943900525206,
+              "constraint_residual_Nm": 7.105427357601002e-14,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.002243554816202767,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": false
+        }
+      ],
+      "status": "DIAGNOSED_WITH_INDEPENDENT_LP"
+    },
+    {
+      "tag": "F000_pretimeopt_004",
+      "capture_state": "PRETIMEOPT_SNAPSHOT_SAVED",
+      "profile_sha256": "e80bb836142ad1606233567b07e693f470b42cbe67bc7ac79e98478e562bb73d",
+      "finalizer_returned": true,
+      "timeopt_validation_masks": {
+        "path_valid": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "collision_valid": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "limits_and_dynamics_valid": [
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      "pre_snapshot_success": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "pre_snapshot_path_valid": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "lanes": [
+        {
+          "lane": 0,
+          "geometry_fingerprint": "2dbc86502524e6d1bfebdd7937db71ea6c0751f023493d64e44aaafac00fc9f1",
+          "duplicate_geometry": false,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.5101034886707061,
+            "worst_progress": 0.6692307692307693,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.5101034886707061,
+              "witness_x": 0.0,
+              "witness_half_x_prime": -3.3008919983036655,
+              "constraint_residual_Nm": 0.0,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.005799383263968325,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": true
+        },
+        {
+          "lane": 1,
+          "geometry_fingerprint": "ad6a1f59ea347e28b457b4e88b06beaa587652f8214007d76235edf640cfc1c5",
+          "duplicate_geometry": false,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.0,
+            "worst_progress": 0.007692307692307693,
+            "strong_fixed_path_infeasibility_witness": false,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.0,
+              "witness_x": 0.0,
+              "witness_half_x_prime": 0.0,
+              "constraint_residual_Nm": -10.623141239568541,
+              "strongly_infeasible": false
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.002409693752913153,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": false
+        },
+        {
+          "lane": 2,
+          "geometry_fingerprint": "4f8df2e35484dcb33173c0cd6aa2fd4f1cc0f1e6351cb3bc728a59ce92a08b74",
+          "duplicate_geometry": false,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.5101194116463987,
+            "worst_progress": 0.6692307692307693,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.5101194116463987,
+              "witness_x": 0.0,
+              "witness_half_x_prime": -3.3008774148768136,
+              "constraint_residual_Nm": 0.0,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.005801115373625973,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": true
+        },
+        {
+          "lane": 3,
+          "geometry_fingerprint": "ddab56ff71fa58c172b70ac73080a223da9b16b52fc54ce9baa13852138cc5f9",
+          "duplicate_geometry": true,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.5100732631388293,
+            "worst_progress": 0.6692307692307693,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.5100732631388293,
+              "witness_x": 0.0,
+              "witness_half_x_prime": -3.3008741380061717,
+              "constraint_residual_Nm": 1.5276668818842154e-13,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.00579749816577825,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": true
+        }
+      ],
+      "status": "DIAGNOSED_WITH_INDEPENDENT_LP"
+    },
+    {
+      "tag": "F000_pretimeopt_005",
+      "capture_state": "PRETIMEOPT_SNAPSHOT_SAVED",
+      "profile_sha256": "e80bb836142ad1606233567b07e693f470b42cbe67bc7ac79e98478e562bb73d",
+      "finalizer_returned": true,
+      "timeopt_validation_masks": {
+        "path_valid": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "collision_valid": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "limits_and_dynamics_valid": [
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      "pre_snapshot_success": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "pre_snapshot_path_valid": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "lanes": [
+        {
+          "lane": 0,
+          "geometry_fingerprint": "2dbc86502524e6d1bfebdd7937db71ea6c0751f023493d64e44aaafac00fc9f1",
+          "duplicate_geometry": true,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.5101034886707061,
+            "worst_progress": 0.6692307692307693,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.5101034886707061,
+              "witness_x": 0.0,
+              "witness_half_x_prime": -3.3008919983036655,
+              "constraint_residual_Nm": 0.0,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.005799383263968325,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": true
+        },
+        {
+          "lane": 1,
+          "geometry_fingerprint": "3a9f3c179daf2c1b9139620e5ba8d8e1a4dbf7ebae311d25c536680968f17adf",
+          "duplicate_geometry": false,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.0,
+            "worst_progress": 0.007692307692307693,
+            "strong_fixed_path_infeasibility_witness": false,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.0,
+              "witness_x": 0.0,
+              "witness_half_x_prime": 0.0,
+              "constraint_residual_Nm": -10.623266950913287,
+              "strongly_infeasible": false
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.0021031528625572032,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": false
+        },
+        {
+          "lane": 2,
+          "geometry_fingerprint": "4f8df2e35484dcb33173c0cd6aa2fd4f1cc0f1e6351cb3bc728a59ce92a08b74",
+          "duplicate_geometry": true,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.5101194116463987,
+            "worst_progress": 0.6692307692307693,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.5101194116463987,
+              "witness_x": 0.0,
+              "witness_half_x_prime": -3.3008774148768136,
+              "constraint_residual_Nm": 0.0,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.005801115373625973,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": true
+        },
+        {
+          "lane": 3,
+          "geometry_fingerprint": "ddab56ff71fa58c172b70ac73080a223da9b16b52fc54ce9baa13852138cc5f9",
+          "duplicate_geometry": true,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.5100732631388293,
+            "worst_progress": 0.6692307692307693,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.5100732631388293,
+              "witness_x": 0.0,
+              "witness_half_x_prime": -3.3008741380061717,
+              "constraint_residual_Nm": 1.5276668818842154e-13,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.00579749816577825,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": true
+        }
+      ],
+      "status": "DIAGNOSED_WITH_INDEPENDENT_LP"
+    },
+    {
+      "tag": "F000_pretimeopt_006",
+      "capture_state": "PRETIMEOPT_SNAPSHOT_SAVED",
+      "profile_sha256": "e80bb836142ad1606233567b07e693f470b42cbe67bc7ac79e98478e562bb73d",
+      "finalizer_returned": true,
+      "timeopt_validation_masks": {
+        "path_valid": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "collision_valid": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "limits_and_dynamics_valid": [
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      "pre_snapshot_success": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "pre_snapshot_path_valid": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "lanes": [
+        {
+          "lane": 0,
+          "geometry_fingerprint": "76f6da43e22a549851ec9ca8de77ca78014a9aed633201c494bb5ea0ce98f663",
+          "duplicate_geometry": false,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.054604637974640546,
+            "worst_progress": 0.6076923076923078,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.054604637974640546,
+              "witness_x": 0.0,
+              "witness_half_x_prime": -3.4105371557271007,
+              "constraint_residual_Nm": 0.0,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.002319079097114582,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": false
+        },
+        {
+          "lane": 1,
+          "geometry_fingerprint": "00619ebcf3d8db317265f3a401839c0e452d34290e0911060efc4808fd7c0af1",
+          "duplicate_geometry": false,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.12314899399000837,
+            "worst_progress": 0.576923076923077,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.12314899399000837,
+              "witness_x": 0.0,
+              "witness_half_x_prime": 3.4892706175595456,
+              "constraint_residual_Nm": 0.0,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.0025523799103551875,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": false
+        },
+        {
+          "lane": 2,
+          "geometry_fingerprint": "00619ebcf3d8db317265f3a401839c0e452d34290e0911060efc4808fd7c0af1",
+          "duplicate_geometry": true,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.12314899399000837,
+            "worst_progress": 0.576923076923077,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.12314899399000837,
+              "witness_x": 0.0,
+              "witness_half_x_prime": 3.4892706175595456,
+              "constraint_residual_Nm": 0.0,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.0025523799103551875,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": false
+        },
+        {
+          "lane": 3,
+          "geometry_fingerprint": "67211d67bb3d4d0ab26de3f7e02fc015f5e7e4b043dac65ea4eefe754ee35586",
+          "duplicate_geometry": false,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.028923523808560402,
+            "worst_progress": 0.6000000000000001,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.028923523808560402,
+              "witness_x": 0.0,
+              "witness_half_x_prime": -3.3469001435468813,
+              "constraint_residual_Nm": 0.0,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.002254919873414349,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": false
+        }
+      ],
+      "status": "DIAGNOSED_WITH_INDEPENDENT_LP"
+    },
+    {
+      "tag": "F000_pretimeopt_007",
+      "capture_state": "PRETIMEOPT_SNAPSHOT_SAVED",
+      "profile_sha256": "e80bb836142ad1606233567b07e693f470b42cbe67bc7ac79e98478e562bb73d",
+      "finalizer_returned": true,
+      "timeopt_validation_masks": {
+        "path_valid": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "collision_valid": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "limits_and_dynamics_valid": [
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      "pre_snapshot_success": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "pre_snapshot_path_valid": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "lanes": [
+        {
+          "lane": 0,
+          "geometry_fingerprint": "76f6da43e22a549851ec9ca8de77ca78014a9aed633201c494bb5ea0ce98f663",
+          "duplicate_geometry": true,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.054604637974640546,
+            "worst_progress": 0.6076923076923078,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.054604637974640546,
+              "witness_x": 0.0,
+              "witness_half_x_prime": -3.4105371557271007,
+              "constraint_residual_Nm": 0.0,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.002319079097114582,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": false
+        },
+        {
+          "lane": 1,
+          "geometry_fingerprint": "00619ebcf3d8db317265f3a401839c0e452d34290e0911060efc4808fd7c0af1",
+          "duplicate_geometry": true,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.12314899399000837,
+            "worst_progress": 0.576923076923077,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.12314899399000837,
+              "witness_x": 0.0,
+              "witness_half_x_prime": 3.4892706175595456,
+              "constraint_residual_Nm": 0.0,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.0025523799103551875,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": false
+        },
+        {
+          "lane": 2,
+          "geometry_fingerprint": "00619ebcf3d8db317265f3a401839c0e452d34290e0911060efc4808fd7c0af1",
+          "duplicate_geometry": true,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.12314899399000837,
+            "worst_progress": 0.576923076923077,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.12314899399000837,
+              "witness_x": 0.0,
+              "witness_half_x_prime": 3.4892706175595456,
+              "constraint_residual_Nm": 0.0,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.0025523799103551875,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": false
+        },
+        {
+          "lane": 3,
+          "geometry_fingerprint": "67211d67bb3d4d0ab26de3f7e02fc015f5e7e4b043dac65ea4eefe754ee35586",
+          "duplicate_geometry": true,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.028923523808560402,
+            "worst_progress": 0.6000000000000001,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.028923523808560402,
+              "witness_x": 0.0,
+              "witness_half_x_prime": -3.3469001435468813,
+              "constraint_residual_Nm": 0.0,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.002254919873414349,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": false
+        }
+      ],
+      "status": "DIAGNOSED_WITH_INDEPENDENT_LP"
+    },
+    {
+      "tag": "F000_pretimeopt_008",
+      "capture_state": "PRETIMEOPT_SNAPSHOT_SAVED",
+      "profile_sha256": "e80bb836142ad1606233567b07e693f470b42cbe67bc7ac79e98478e562bb73d",
+      "finalizer_returned": true,
+      "timeopt_validation_masks": {
+        "path_valid": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "collision_valid": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "limits_and_dynamics_valid": [
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      "pre_snapshot_success": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "pre_snapshot_path_valid": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "lanes": [
+        {
+          "lane": 0,
+          "geometry_fingerprint": "09b4ac23df5ab217755169fc540090a5381397ce4c0f930448261348b6a99162",
+          "duplicate_geometry": false,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.0,
+            "worst_progress": 0.007692307692307693,
+            "strong_fixed_path_infeasibility_witness": false,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.0,
+              "witness_x": 0.0,
+              "witness_half_x_prime": 0.0,
+              "constraint_residual_Nm": -10.623368992757522,
+              "strongly_infeasible": false
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.005008892902016546,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": true
+        },
+        {
+          "lane": 1,
+          "geometry_fingerprint": "5784168cd8f11cc0b940673e1f61210e57323d21c70ff5747a2f1955bd9ba3c6",
+          "duplicate_geometry": false,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.15330119165002146,
+            "worst_progress": 0.5846153846153846,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.15330119165002146,
+              "witness_x": 0.0,
+              "witness_half_x_prime": -3.5544015486721947,
+              "constraint_residual_Nm": 4.263256414560601e-14,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.0028044934741155575,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": false
+        },
+        {
+          "lane": 2,
+          "geometry_fingerprint": "b4ec5bcf305f43fdd029cc959914296d763c34047b0fab888e7502c2e6bc34bb",
+          "duplicate_geometry": false,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.1533519235349943,
+            "worst_progress": 0.5846153846153846,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.1533519235349943,
+              "witness_x": 0.0,
+              "witness_half_x_prime": -3.5545595021145537,
+              "constraint_residual_Nm": 0.0,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.0028093309026159113,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": false
+        },
+        {
+          "lane": 3,
+          "geometry_fingerprint": "b4ec5bcf305f43fdd029cc959914296d763c34047b0fab888e7502c2e6bc34bb",
+          "duplicate_geometry": true,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.1533519235349943,
+            "worst_progress": 0.5846153846153846,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.1533519235349943,
+              "witness_x": 0.0,
+              "witness_half_x_prime": -3.5545595021145537,
+              "constraint_residual_Nm": 0.0,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.0028093309026159113,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": false
+        }
+      ],
+      "status": "DIAGNOSED_WITH_INDEPENDENT_LP"
+    },
+    {
+      "tag": "F000_pretimeopt_009",
+      "capture_state": "PRETIMEOPT_SNAPSHOT_SAVED",
+      "profile_sha256": "e80bb836142ad1606233567b07e693f470b42cbe67bc7ac79e98478e562bb73d",
+      "finalizer_returned": true,
+      "timeopt_validation_masks": {
+        "path_valid": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "collision_valid": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "limits_and_dynamics_valid": [
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      "pre_snapshot_success": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "pre_snapshot_path_valid": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "lanes": [
+        {
+          "lane": 0,
+          "geometry_fingerprint": "09b4ac23df5ab217755169fc540090a5381397ce4c0f930448261348b6a99162",
+          "duplicate_geometry": true,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.0,
+            "worst_progress": 0.007692307692307693,
+            "strong_fixed_path_infeasibility_witness": false,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.0,
+              "witness_x": 0.0,
+              "witness_half_x_prime": 0.0,
+              "constraint_residual_Nm": -10.623368992757522,
+              "strongly_infeasible": false
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.005008892902016546,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": true
+        },
+        {
+          "lane": 1,
+          "geometry_fingerprint": "5784168cd8f11cc0b940673e1f61210e57323d21c70ff5747a2f1955bd9ba3c6",
+          "duplicate_geometry": true,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.15330119165002146,
+            "worst_progress": 0.5846153846153846,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.15330119165002146,
+              "witness_x": 0.0,
+              "witness_half_x_prime": -3.5544015486721947,
+              "constraint_residual_Nm": 4.263256414560601e-14,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.0028044934741155575,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": false
+        },
+        {
+          "lane": 2,
+          "geometry_fingerprint": "b4ec5bcf305f43fdd029cc959914296d763c34047b0fab888e7502c2e6bc34bb",
+          "duplicate_geometry": true,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.1533519235349943,
+            "worst_progress": 0.5846153846153846,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.1533519235349943,
+              "witness_x": 0.0,
+              "witness_half_x_prime": -3.5545595021145537,
+              "constraint_residual_Nm": 0.0,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.0028093309026159113,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": false
+        },
+        {
+          "lane": 3,
+          "geometry_fingerprint": "b4ec5bcf305f43fdd029cc959914296d763c34047b0fab888e7502c2e6bc34bb",
+          "duplicate_geometry": true,
+          "status": "DIAGNOSED",
+          "native_success_flag": false,
+          "lp": {
+            "status": "SOLVED",
+            "samples": 129,
+            "max_required_torque_bound_expansion": 0.1533519235349943,
+            "worst_progress": 0.5846153846153846,
+            "strong_fixed_path_infeasibility_witness": true,
+            "worst_lp": {
+              "status": "SOLVED",
+              "min_relaxed_expansion": 0.1533519235349943,
+              "witness_x": 0.0,
+              "witness_half_x_prime": -3.5545595021145537,
+              "constraint_residual_Nm": 0.0,
+              "strongly_infeasible": true
+            },
+            "scope": "necessary pointwise torque feasibility; positive relaxed expansion disproves this exact path under any timing, subject to numeric accuracy"
+          },
+          "position_violation_rad": 0.0,
+          "world_clearance_m": 0.0028093309026159113,
+          "self_clearance_m": 0.08406166716248195,
+          "sampled_geometry_valid": false
+        }
+      ],
+      "status": "DIAGNOSED_WITH_INDEPENDENT_LP"
+    }
+  ]
+}
