@@ -117,6 +117,26 @@ def store_r(arm:Path,case:str,states_r:dict,source:dict,source_geometry:dict,
     return document
 
 
+def seal_r_timing(arm:Path,case:str,source:dict,*,method:str)->dict:
+    """Freeze the EXACT speed-control NPZ backing an R replay."""
+    folder=arm/case
+    controls=folder/"r_speed_controls.npz"
+    trajectory=folder/"r_dense.npz"
+    registry=folder/"r_registration.json"
+    if not all(p.exists() for p in (controls,trajectory,registry)):
+        raise ValueError("incomplete retiming result cannot be sealed")
+    metadata=json.loads(registry.read_text())
+    if metadata["r_sha256"]!=sha256_file(trajectory):
+        raise ValueError("retiming trajectory changed before sealing")
+    receipt={"schema_version":1,"case_id":case,"method":method,
+             "r_speed_controls_sha256":sha256_file(controls),
+             "r_dense_sha256":metadata["r_sha256"],
+             "source_P_controls_sha256":source["source_files_sha256"]["p_timing_controls.npz"],
+             "source_W_geometry_sha256":source["source_files_sha256"]["w_geometry.json"]}
+    immutable_json(folder/"r_controls_receipt.json",receipt)
+    return receipt
+
+
 def reeval(geometry:QuinticGeometry,coeff:np.ndarray,*,samples:int=8193,
            extra=None)->dict:
     if not np.isfinite(coeff).all() or np.min(coeff)<=0:
@@ -164,6 +184,7 @@ def dilation(root:Path,case:str)->dict:
                             squared_speed_controls=initial,
                             original_p_controls=controls,
                             rho=np.array(winner))
+        outcome["r_controls_receipt"]=seal_r_timing(arm,case,source,method="dilation")
     else:
         outcome["reason"]="NO_REGISTERED_DILATION_PASSED_SAMPLE_MARGIN_GATE"
     immutable_json(arm/case/"screen_result.json",outcome)
@@ -213,6 +234,7 @@ def tightening(root:Path,case:str,beta:float,*,maxiter:int=200,grid:int=513)->di
                                 squared_speed_controls=solution,
                                 initial_p_controls=pcontrols,
                                 beta=np.array(beta))
+            record["r_controls_receipt"]=seal_r_timing(arm,case,source,method=name)
             record["r_sha256"]=candidate["r_sha256"]
             record["preliminary_R_duration_s"]=candidate["r_duration_s"]
         else:
