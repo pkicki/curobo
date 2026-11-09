@@ -228,7 +228,12 @@ def rebuild_arm_inventory(root:Path,arm_name:str):
     registered=json.loads((root/"source_tasks.json").read_text())
     arm=root/arm_name
     tasks=[t for t in registered if (arm/t["case_id"]/"r_dense.npz").is_file()]
-    immutable_json(arm/"tasks.json",tasks)
+    task_file=arm/"tasks.json"
+    if task_file.exists() and json.loads(task_file.read_text())!=tasks and (
+        (arm/"independent_sampled.json").exists() or
+        (arm/"independent_adaptive.json").exists()):
+        raise ValueError("cannot change arm inventory after independent validation")
+    task_file.write_text(json.dumps(tasks,indent=2)+"\n")
     pilot=[{"case_id":t["case_id"],"population":t["population"],
             "cohort":"margin_retiming","task_sha256":t["task_sha256"],
             "methods":{"R":{"status":"PRELIMINARY",
