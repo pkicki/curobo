@@ -1,0 +1,35 @@
+<!doctype html><html lang="en"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Global path search: LP screening experiment — NOT EXECUTED</title>
+<style>body{font:16px/1.55 system-ui;max-width:1080px;margin:2rem auto;padding:0 1rem;color:#24334a}
+.note{background:#fff1dd;border-left:5px solid #bd8315;padding:1rem}
+table{width:100%;border-collapse:collapse}td,th{text-align:left;padding:.6rem;border-bottom:1px solid #dce1e8}th{background:#f1f6fa}</style>
+<h1>Global geometric exploration with necessary torque-LP screening</h1>
+<p class="note"><strong>NEW EXPERIMENTS NOT EXECUTED.</strong> Research implementation and registered
+comparison are committed. No new geometric rescue, screening speedup, native internal failure-stage
+diagnosis, or continuous-time physical certificate has been established by this branch.</p>
+<p><strong>Question:</strong> Does rejecting intrinsically torque-infeasible geometric
+curves with a cheap relaxed pointwise LP reduce the actual cost of finding feasible motion in
+an LP-blind global candidate bank?</p>
+<table><thead><tr><th>Arm</th><th>Candidate bank</th><th>Online checks</th><th>Status</th></tr></thead><tbody>
+<tr><td>no_lp</td><td>Same frozen global 128 proposals</td><td>Geometry/collision/gravity then timing</td><td>Not run</td></tr>
+<tr><td>lp_gate</td><td>Same frozen global 128 proposals</td><td>Identical cheap checks, then necessary LP, then timing</td><td>Not run</td></tr>
+</tbody></table>
+<p>Three selected synthetic actuator cases: one development case and two frozen
+algorithm holdouts. Only independently sampled/adaptive physical and Scaled95-qualified
+trajectories count as success. LP gaps must be dual verified. Zero LP gap is inconclusive.
+CPU search, proposal-bank construction, independent validation, and optional IPOPT polishing have
+separate time contracts.</p>
+<h2>Native same-state diagnosis</h2>
+<p>Opt-in pre- and post-TimeOpt capture uses separate isolated research inputs; independent
+Pinocchio joint dynamics and sphere collision results are compared with native masks on the
+same sampled post-TimeOpt states. Unavailable snapshots and model mismatches are reported as
+unknown, not evidence of a specific failure cause. Instrumentation invalidates native latency
+comparisons.</p>
+<h2>Method and provenance</h2>
+<p>Rebuild the results from raw evidence using the module
+<code>research.joint_time_oracle.torque_global_report</code>.
+Read the registered research protocol at
+<code>research/joint_time_oracle/TORQUE_GLOBAL_LP_SCREENING_PROTOCOL.md</code>.
+The earlier LP-dual negative results and original geometrical feasibility examples remain frozen.</p>
+</html>
