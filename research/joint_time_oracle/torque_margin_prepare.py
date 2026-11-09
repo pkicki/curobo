@@ -22,6 +22,11 @@ OUTPUT=ROOT/"research/joint_time_oracle/results/torque_margin_retime_20261109"
 INPUTS=("w_geometry.json","w_dense.npz","p_dense.npz",
         "p_refined_dense.npz","p_timing_controls.npz","ipopt_polish.json",
         "torque_profile.json")
+MODEL_INPUTS=(
+    "curobo/content/assets/robot/franka_description/franka_panda.urdf",
+    "curobo/content/configs/robot/franka.yml",
+    "research/joint_time_oracle/results/native_reconstruction_20261106/baseline_validation_states.npz",
+)
 
 
 def prepare(source:Path,output:Path,*,source_arm:str=DEFAULT_SOURCE_ARM)->dict:
@@ -79,8 +84,10 @@ def prepare(source:Path,output:Path,*,source_arm:str=DEFAULT_SOURCE_ARM)->dict:
         if not dest.exists():
             dest.write_bytes((folder/"torque_profile.json").read_bytes())
         copied.append(task)
+    model_shas={name:sha256_file(ROOT/name) for name in MODEL_INPUTS}
     manifest={"schema_version":1,"source_arm":source_arm,
               "source_root":str(source.resolve()),"sources":cases,
+              "model_inputs_sha256":model_shas,
               "source_tasks_sha256":sha256_file(arm/"tasks.json"),
               "source_w_receipts_sha256":sha256_file(arm/"w_adaptive_receipts.json"),
               "scope":"three preselected synthetic derating tasks; source W qualified; source P NOT Scaled95 qualified"}
