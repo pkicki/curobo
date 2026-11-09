@@ -12,6 +12,7 @@ inputs, return values, kernels, or production defaults.
 """
 from __future__ import annotations
 
+import hashlib
 import json
 from pathlib import Path
 
@@ -113,19 +114,59 @@ def observe_optimizer(stage,*,read_tensor)->dict:
         except Exception as exc:
             summary[name]={"status":"CAPTURE_ERROR","reason":repr(exc)}
     per_lane=per_lane_diagnosis(captured)
+    # Persist selected raw arrays in a separate compressed research archive.
+    # Per-lane summaries alone are insufficient to reproduce a nonfinite
+    # squared-speed control or invalid integrated-time pattern.
+    keep=("input_valid","solver_seed_feasible","solver_numerical_ok",
+          "solver_output_timing","solver_uniform_duration",
+          "solver_seed_bounds","solver_output_bounds",
+          "finish_optimization_ok","finished_squared_speed_controls",
+          "finished_uniform_duration","integrated_times",
+          "native_timeopt_success","finish_status")
     return {"status":"OBSERVED_AFTER_NATIVE_FINALIZATION",
             "summary":summary,"per_lane":per_lane,
+            "raw_buffers":{k:captured[k].tolist() for k in keep if k in captured},
             "limitations":"observational post-run buffers; CUDA graph, same-lane overwrite, and absent pre-integration state may limit causal attribution"}
 
 
+def _sha(path:Path)->str:
+    value=hashlib.sha256()
+    with path.open("rb") as src:
+        for chunk in iter(lambda:src.read(1024*1024),b""):
+            value.update(chunk)
+    return value.hexdigest()
+
+
 def save_trace(folder:Path,tag:str,info:dict)->dict:
+    """Seal raw numeric CUDA buffers and metadata as immutable research evidence."""
+    folder=Path(folder)
+    folder.mkdir(parents=True,exist_ok=True)
+    if "/" in tag or ".." in tag or not tag:
+        raise ValueError("invalid native trace tag")
     path=folder/(tag+"_timeopt_phase_trace.json")
-    payload=json.dumps(info,indent=2,sort_keys=True)+"\n"
+    metadata={k:v for k,v in info.items() if k!="raw_buffers"}
+    raw=info.get("raw_buffers",{})
+    archive=folder/(tag+"_timeopt_phase_buffers.npz")
+    if raw:
+        arrays={k:np.asarray(v) for k,v in raw.items()}
+        if archive.exists():
+            with np.load(archive) as saved:
+                if set(saved.files)!=set(arrays) or any(
+                    not np.array_equal(saved[key],value,equal_nan=True)
+                    for key,value in arrays.items()):
+                    raise ValueError("previous numeric buffer snapshot changed")
+        else:
+            np.savez_compressed(archive,**arrays)
+        metadata["raw_buffers_sha256"]=_sha(archive)
+        metadata["raw_buffers_file"]=str(archive)
+    payload=json.dumps(metadata,indent=2,sort_keys=True)+"\n"
     if path.exists() and path.read_text()!=payload:
         raise ValueError("phase trace cannot silently be overwritten")
     if not path.exists():
         path.write_text(payload)
     return {"timeopt_phase_trace_file":str(path),
+            "timeopt_phase_trace_sha256":_sha(path),
+            "timeopt_phase_buffers_sha256":metadata.get("raw_buffers_sha256"),
             "stage_observed":info.get("status"),
             "first_observed_issues":[x["first_observed_problem"]
                                      for x in info.get("per_lane",[])]}
