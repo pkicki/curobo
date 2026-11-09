@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import copy
 import hashlib
 import json
 from .torque_active import read_profile
@@ -58,16 +59,38 @@ def main() -> None:
     pair_dist=radii[ia]+radii[ib]+np.array([padding.get(links[i],0)+padding.get(links[j],0) for i,j in pairs])
     historical=np.load(ROOT/'research/joint_time_oracle/results/native_reconstruction_20261106/baseline_validation_states.npz')
     bounds={name:historical[name+'_bounds'] for name in ('position','velocity','acceleration','jerk','torque')}
+    base_model=copy.deepcopy(model)
+    base_q=q.copy()
     tasks=json.loads((output/'tasks.json').read_text()); rows=[json.loads(line) for line in (output/'pilot.jsonl').read_text().splitlines()]
     byid={task['case_id']:task for task in tasks}; results={}
     result_path=(options.extra/options.report) if options.extra else (output/options.report)
     for row in rows:
         task=byid[row['case_id']]; scene={}
+        payload=task.get("payload")
+        if payload is not None:
+            from .payload_parity import Payload, apply_pinocchio_payload, nominal_effort_only
+            model=copy.deepcopy(base_model)
+            apply_pinocchio_payload(model,Payload(**{
+                k:v for k,v in payload.items() if k!="payload_sha256"}))
+            data=model.createData()
+            q=base_q.copy()
+            v=np.zeros(model.nv);a=np.zeros(model.nv)
+        else:
+            model=base_model
+            data=base_model.createData()
+            q=base_q.copy()
+            v=np.zeros(model.nv);a=np.zeros(model.nv)
         case_bounds={key:np.array(value,copy=True) for key,value in bounds.items()}
         if options.torque_profile_dir:
             profile=read_profile(options.torque_profile_dir/task['case_id']/'torque_profile.json')
             if profile['source_case_id']!=task['case_id']:
                 raise ValueError('case/profile mismatch: '+task['case_id'])
+            if profile.get("payload")!=task.get("payload"):
+                raise ValueError("independent validator payload/task checksum mismatch")
+            if payload is not None:
+                nominal_effort_only(
+                    np.stack((profile["effort_lower"],profile["effort_upper"])),
+                    np.stack((profile["nominal_effort_lower"],profile["nominal_effort_upper"])))
             expected_nominal=np.stack((profile['nominal_effort_lower'],profile['nominal_effort_upper']))
             if not np.allclose(case_bounds['torque'],expected_nominal,rtol=1e-5,atol=1e-5):
                 raise ValueError('frozen nominal effort model mismatch')
