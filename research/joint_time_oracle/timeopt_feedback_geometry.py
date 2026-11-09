@@ -81,12 +81,13 @@ def _parent_score(candidate:Scored,selected:list[Scored])->float:
 def elite_pool(history:list[Scored],count:int=ELITES)->list[Scored]:
     """Greedy score+diversity, deterministic tie order and finite controls."""
     eligible=[x for x in history if np.isfinite(x.quality) and
-              np.isfinite(x.controls).all() and x.status!="CHEAP_GEOMETRY_REJECT"]
+              np.isfinite(x.controls).all() and
+              x.status in ("ONLINE_SCREEN_PASS","ONLINE_SCREEN_REJECTED")]
     chosen=[]
     while eligible and len(chosen)<count:
         x=max(eligible,key=lambda p:(_parent_score(p,chosen),-p.index))
         chosen.append(x)
-        eligible.remove(x)
+        eligible=[p for p in eligible if p.index!=x.index]
     return chosen
 
 
