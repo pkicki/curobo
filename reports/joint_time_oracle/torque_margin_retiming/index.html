@@ -1,0 +1,32 @@
+<!doctype html><html lang="en"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fixed-geometry Scaled95 retiming and native TimeOpt invalid-time diagnosis — NOT EXECUTED</title>
+<style>body{font:15px/1.55 system-ui;max-width:1100px;margin:2rem auto;padding:1rem;color:#223144}
+.warning{background:#fff0db;border-left:5px solid #c17b13;padding:1rem}
+th,td{text-align:left;border-bottom:1px solid #dbe1e8;padding:.6rem}
+th{background:#f1f6fb}table{border-collapse:collapse;width:100%}</style>
+<h1>Margin-aware fixed-geometry retiming</h1>
+<p class="warning"><strong>NOT EXECUTED.</strong> This is the registered research implementation and protocol only.
+No new independently qualified Scaled95 retiming, duration improvement, or causal native-TimeOpt NaN diagnosis
+has been measured on this experimental branch.</p>
+<p>Starting source has three selected synthetic torque-derating tasks with independently
+sampled physical+Scaled95 feasible W, and faster source IPOPT P that passed physical but failed Scaled95.</p>
+<h2>Registered retiming arms</h2>
+<table><thead><tr><th>Method</th><th>Contract</th><th>Status</th></tr></thead><tbody>
+<tr><td>dilation</td><td>Exact IPOPT P squared-speed controls scaled by 1/rho², frozen rho grid</td><td>Not executed</td></tr>
+<tr><td>tight_b980</td><td>Tightened IPOPT envelope beta=0.98 inside Scaled95</td><td>Not executed</td></tr>
+<tr><td>tight_b960</td><td>Tightened IPOPT envelope beta=0.96 inside Scaled95</td><td>Not executed</td></tr>
+<tr><td>tight_b940</td><td>Tightened IPOPT envelope beta=0.94 inside Scaled95</td><td>Not executed</td></tr>
+<tr><td>tight_b920</td><td>Tightened IPOPT envelope beta=0.92 inside Scaled95</td><td>Not executed</td></tr>
+</tbody></table>
+<p>Qualified success demands exact unchanged geometry, independent Pinocchio physical and Scaled95
+dense/adaptive samples, collision spheres and endpoints, and frozen task/model/control/torque SHA.
+Sampled checks are not complete continuous-time torque/collision certificates.</p>
+<h2>Native TimeOpt phase localization</h2>
+<p>An opt-in, separate CUDA probe records input validity, solver seed feasibility, numerical flags,
+32 squared-speed controls, finish status and integrated time buffers. Earliest observed invalid
+buffers are observational, not proof of exclusive cause or production bug. Probe timing is invalidated
+by GPU–CPU synchronization.</p>
+<p>Protocol: <code>research/joint_time_oracle/TORQUE_MARGIN_RETIMING_TIMEOPT_NAN_PROTOCOL.md</code>.
+This placeholder will be rebuilt using <code>python -m research.joint_time_oracle.torque_margin_report</code>.</p>
+</html>
