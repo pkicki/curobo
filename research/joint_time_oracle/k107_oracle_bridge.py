@@ -28,7 +28,7 @@ from .payload_parity import Payload, nominal_effort_only
 from .torque_active import read_profile
 
 BRIDGE_REL="scripts/joint_time_oracle_k107_bridge.py"
-BRIDGE_SHA_AT_IMPLEMENTATION="22b6636df4118cdde5355a4b48dc967bcab07b11"
+BRIDGE_SHA_AT_IMPLEMENTATION="d968ea27bb5c5facb1316beb1ca21bac064d9175"
 
 
 def require_repo(repo:Path,expected_sha:str,*,allow_descendant:bool=False):
@@ -51,10 +51,19 @@ def prepare(out:Path,case:dict,profile_file:Path,controls:np.ndarray,
         raise ValueError("payload task/profile mismatch")
     bounds=np.stack((profile["effort_lower"],profile["effort_upper"]))
     nominal=np.stack((profile["nominal_effort_lower"],profile["nominal_effort_upper"]))
-    nominal_effort_only(bounds,nominal)
-    payload=Payload(**{k:v for k,v in case["payload"].items() if k!="payload_sha256"})
-    if payload.record()!=case["payload"]:
-        raise ValueError("unregistered/modified payload")
+    source_kind=case.get("regime","legacy_synthetic_derate")
+    if source_kind=="nominal_effort_actual_payload":
+        nominal_effort_only(bounds,nominal)
+        payload=Payload(**{k:v for k,v in case["payload"].items() if k!="payload_sha256"})
+        if payload.record()!=case["payload"]:
+            raise ValueError("unregistered/modified payload")
+        payload_record=case["payload"]
+    elif source_kind=="legacy_synthetic_derate":
+        if case.get("payload") is not None:
+            raise ValueError("synthetic derated source has a payload")
+        payload_record=Payload(0.).record()
+    else:
+        raise ValueError("unsupported source type for K107 matching")
     ctrl=np.asarray(controls,dtype=np.float64)
     if ctrl.shape!=(22,7) or not np.isfinite(ctrl).all():
         raise ValueError("unexpected quintic control polygon")
@@ -75,7 +84,8 @@ def prepare(out:Path,case:dict,profile_file:Path,controls:np.ndarray,
              "geometry_file":str(path.resolve()),"geometry_sha256":sha256_file(path),
              "torque_profile_file":str(profile_file.resolve()),
              "torque_profile_sha256":sha256_file(profile_file),
-             "payload":case["payload"],"model_fingerprint":fingerprint,
+             "payload":payload_record,"source_kind":source_kind,
+             "model_fingerprint":fingerprint,
              "retimer_commit_sha256":retimer_commit,
              "endpoint_contract":"joint_rest","constraint_mode":"C3_NO_TR",
              "limit_scale":.95,
