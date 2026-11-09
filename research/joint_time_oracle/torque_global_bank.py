@@ -13,6 +13,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import time
 from pathlib import Path
 
 import numpy as np
@@ -85,6 +86,7 @@ def proposal_controls(base: np.ndarray, *, count: int = MAX_PROPOSALS,
 
 def make_bank(out: Path, case: str, *, seed: int = SEED,
               count: int = MAX_PROPOSALS, registry_file: Path | None = None) -> dict:
+    stamp = time.perf_counter()
     registry = resolve_registry(registry_file)
     if case not in registry:
         raise ValueError("unknown source task")
@@ -135,6 +137,7 @@ def make_bank(out: Path, case: str, *, seed: int = SEED,
         return previous
     np.savez_compressed(file,proposals=proposals,base_controls=fitted)
     contract["bank_sha256"]=sha256_file(file)
+    contract["bank_generation_wall_s"]=time.perf_counter()-stamp
     metadata.write_text(json.dumps(contract,indent=2)+"\n")
     return contract
 
