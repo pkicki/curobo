@@ -139,17 +139,33 @@ def execute(root:Path,*,restarts:int,lanes:int=4,max_attempts:int=5,
                 if result is None or not bool(result.success.any()):
                     record["status"]="FAIL_NATIVE_BUDGET"
                 else:
-                    from .run_study import read_plan
-                    plan=read_plan(result,names)
+                    # Persist exact cubic geometry plus TimeOpt timing,
+                    # NOT just samples returned by the public trajectory.
+                    # Reuse the proven reconstruction path from the
+                    # synthetic study with a NOMINAL effort receipt.
+                    from .torque_full_planner import captured_candidate
+                    receipt={
+                        "effort_lower":task["original_effort_lower"],
+                        "effort_upper":task["original_effort_upper"],
+                        "profile_sha256":task["payload"]["payload_sha256"],
+                    }
+                    dense,metadata,buffers=captured_candidate(
+                        planner,result,task,receipt)
                     path=folder/(tag.lower()+"_dense.npz")
-                    if path.exists():
-                        raise ValueError("native success trajectory path exists, refusing overwrite")
-                    np.savez_compressed(path,time=np.arange(len(plan["q"]))*plan["dt"],
-                                        q=plan["q"],qd=plan["qd"],qdd=plan["qdd"],
-                                        jerk=plan["jerk"])
+                    native_path=folder/(tag.lower()+"_buffers.npz")
+                    input_path=folder/(tag.lower()+"_native_input.npz")
+                    if any(x.exists() for x in (path,native_path,input_path)):
+                        raise ValueError("native replay source exists, refusing overwrite")
+                    np.savez_compressed(path,**dense)
+                    np.savez_compressed(native_path,**buffers["retimer"])
+                    np.savez_compressed(input_path,**buffers["native"])
+                    record.update(metadata)
                     record.update({"status":"SUCCESS_NATIVE_UNQUALIFIED",
                                    "dense_sha256":file_sha256(path),
-                                   "duration_s":float((len(plan["q"])-1)*plan["dt"])})
+                                   "exact_native_cubic_sha256":file_sha256(native_path),
+                                   "native_input_sha256":file_sha256(input_path),
+                                   "duration_s":float(metadata["duration_s"]),
+                                   "independent_payload_qualified":False})
             except Exception as exc:
                 record["status"]="ERROR"
                 record["reason"]=repr(exc)
