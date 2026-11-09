@@ -294,8 +294,11 @@ def execute(
     warmup: int,
     use_cuda_graph: bool = False,
     capture_pre_timeopt: bool = False,
+    post_timeopt_samples: int = 0,
 ) -> dict:
     """Run the frozen full-planner restart budget for selected arm tasks."""
+    if post_timeopt_samples and not capture_pre_timeopt:
+        raise ValueError("post-TimeOpt snapshots require pre-TimeOpt diagnostic mode")
     if not (1 <= max_restarts <= 32 and lanes >= 1 and max_attempts >= 1):
         raise ValueError("invalid native full-planner budget")
     tasks = json.loads((arm / "tasks.json").read_text())
@@ -322,6 +325,7 @@ def execute(
     if capture_pre_timeopt:
         contract["pre_timeopt_capture"] = True
         contract["latency_qualified"] = False
+        contract["post_timeopt_samples"] = post_timeopt_samples
     manifest = out / "configuration.json"
     if manifest.exists() and json.loads(manifest.read_text()) != contract:
         raise ValueError("frozen native full-planner configuration mismatch")
@@ -409,7 +413,7 @@ def execute(
                 if capture_pre_timeopt:
                     from .native_pretimeopt_probe import NativePreTimeOptProbe
                     # Install after warmup so snapshots refer only to the scored request.
-                    with NativePreTimeOptProbe(planner,folder,tag):
+                    with NativePreTimeOptProbe(planner,folder,tag,post_samples=post_timeopt_samples):
                         result = planner.plan_cspace(goal,start,max_attempts=max_attempts)
                 else:
                     result = planner.plan_cspace(goal,start,max_attempts=max_attempts)
@@ -490,6 +494,8 @@ def main():
     parser.add_argument("--max-attempts", type=int, default=5)
     parser.add_argument("--warmup", type=int, default=2)
     parser.add_argument("--use-cuda-graph", action="store_true")
+    parser.add_argument("--post-timeopt-samples", type=int, default=0,
+                        help="Research-only post-TimeOpt sampled states; may fail for rejected lanes.")
     parser.add_argument("--capture-pre-timeopt", action="store_true",
                         help="Research-only capture; invalidates latency comparison.")
     args = parser.parse_args()
@@ -502,6 +508,7 @@ def main():
         warmup=args.warmup,
         use_cuda_graph=args.use_cuda_graph,
         capture_pre_timeopt=args.capture_pre_timeopt,
+        post_timeopt_samples=args.post_timeopt_samples,
     )
     print(
         json.dumps(
