@@ -606,3 +606,36 @@ Research report: reports/joint_time_oracle/torque_lp_guided_rescue/index.html.
 **Status: NOT EXECUTED.** Code and protocol were committed without a
 new CPU/GPU experiment or qualified numerical result. Historical
 experiments, production defaults and main remain unchanged.
+
+
+## Global geometric candidate bank with necessary torque-LP screening (2026-11-09)
+
+See [TORQUE_GLOBAL_LP_SCREENING_PROTOCOL.md](TORQUE_GLOBAL_LP_SCREENING_PROTOCOL.md).
+Following the LP-dual-direction NO-GO (afe9f293), this research-only
+campaign tests a narrower computational hypothesis. The exact SAME
+LP-blind bank of 128 globally proposed quintic geometric paths is passed
+to two arms, one using independent geometry/gravity screening followed
+by constructive timing (no_lp), and one adding a numerically verified
+necessary torque-LP rejection gate before expensive timing (lp_gate).
+A positive LP gap can reject an impossible FIXED geometry; a zero gap is
+not a feasibility guarantee. Independent physical+Scaled95 dense/adaptive
+receipts remain the sole basis for rescue success. Candidate bank
+generation, online CPU search, independent validation and optional
+IPOPT postprocessing have separate timing/provenance contracts.
+
+A separate opt-in native TimeOpt diagnostic can now capture sampled
+post-TimeOpt states on failed candidate lanes. Independent Pinocchio
+RNEA and world/self sphere checks compare the SAME sampled post-state
+with the native TimeOpt masks; this may resolve the earlier cross-stage
+mask ambiguity, but is not a latency or complete collision-certification
+experiment. Models, padding, time grids and invalid native timings are
+possible confounders.
+
+The work remains limited to the original three source-selected synthetic
+actuator cases (one development, two algorithm holdouts), not general
+population evidence. The report is
+reports/joint_time_oracle/torque_global_lp_screening/index.html.
+
+**Status: NOT EXECUTED.** New tests, independent Pinocchio/CUDA campaigns,
+physical witness receipts and raw artifact manifests must be run by the
+coding agent. No PR, no merge to main, no production default changes.
