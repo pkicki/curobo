@@ -30,7 +30,7 @@ from .torque_margin_core import (
     CASE_IDS, DILATION_FACTORS, TIGHTENING_FACTORS,
     immutable_json, pilot_limits, sha256_file, tighten_pointwise_problem,
 )
-from .torque_margin_prepare import OUTPUT, PREVIOUS
+from .torque_margin_prepare import OUTPUT
 
 
 def source_contract(root:Path,case:str)->tuple[Path,dict,dict]:
@@ -125,7 +125,7 @@ def reeval(geometry:QuinticGeometry,coeff:np.ndarray,*,samples:int=8193,
                   knots=geometry.spline.t,extra=extra)
 
 
-def dilation(root:Path,case:str,*,source_root:Path=PREVIOUS)->dict:
+def dilation(root:Path,case:str)->dict:
     src,source,profile=source_contract(root,case)
     with np.load(src/"p_timing_controls.npz") as z:
         controls=np.asarray(z["squared_speed_controls"],dtype=float)
