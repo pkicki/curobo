@@ -43,8 +43,9 @@ def legacy_request(case:str,source:Path)->dict:
     geo=json.loads((folder/"w_geometry.json").read_text())
     controls=np.asarray(geo["controls"],dtype=float)
     profile=read_profile(folder/"torque_profile.json")
-    if not (profile["regime"]=="j1234_f0300" or
-            profile.get("scenario_id")=="j1234_f0300"):
+    if not (profile.get("regime")=="j1234_f0300" or
+            profile.get("scenario_id")=="j1234_f0300" or
+            profile.get("scenario")=="j1234_f0300"):
         raise ValueError("historical torque scenario not the registered 30% stress")
     file=ROOT/"research/joint_time_oracle/results/native_reconstruction_20261106/baseline_validation_states.npz"
     with np.load(file) as f:
