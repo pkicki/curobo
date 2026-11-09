@@ -10,7 +10,7 @@ import pytest
 
 from research.joint_time_oracle.torque_margin_core import (
     DILATION_FACTORS, TIGHTENING_FACTORS, family_bounds, immutable_json,
-    pilot_limits, sampled_max_violation, scale_torque, slowdown_states,
+    pilot_limits, sampled_dilation_interval, sampled_max_violation, scale_torque, slowdown_states,
     tighten_pointwise_problem,
 )
 from research.joint_time_oracle.native_timeopt_nan_trace import (
@@ -166,3 +166,47 @@ def test_margin_report_is_explicitly_unexecuted_when_no_source(tmp_path):
     assert out["status"]=="NOT_EXECUTED"
     assert out["cases"]==[]
     assert out["native_trace"]["status"]=="NOT_EXECUTED"
+
+
+
+def test_sampled_dilation_interval_can_be_bounded_on_both_sides_by_gravity():
+    # Torque requires a *minimum* amount of dynamic compensation.
+    # Velocity requires a minimum slowdown, so valid rho is a narrow interval.
+    states={"q":np.zeros((3,7)),"qd":np.ones((3,7))*1.5,
+            "qdd":np.zeros((3,7)),"jerk":np.zeros((3,7)),
+            "gravity":np.ones((3,7))*1.4}
+    tau=np.zeros((3,7))
+    bounds={key:np.stack((-np.ones(7)*limit,np.ones(7)*limit))
+            for key,limit in (("position",2),("velocity",1),
+                              ("acceleration",10),("jerk",10),("torque",1))}
+    interval=sampled_dilation_interval(states,tau,bounds)
+    assert interval["status"]=="SAMPLED_ADMISSIBLE_INTERVAL"
+    # Torque: 1.4(1-z)<=.95 -> z>=.45/1.4.
+    assert interval["z_interval"][0]==pytest.approx(.45/1.4)
+    # Velocity: 1.5 sqrt(z)<=.95 -> z<=(.95/1.5)**2.
+    assert interval["z_interval"][1]==pytest.approx((.95/1.5)**2)
+    assert 1.5<interval["rho_min"]<interval["rho_max"]<2.
+    states["qd"]*=2
+    rejected=sampled_dilation_interval(states,tau,bounds)
+    assert rejected["status"]=="EMPTY_INTERSECTION"
+
+
+def test_native_phase_trace_preserves_numeric_buffers_with_checksum(tmp_path):
+    trace=observe_optimizer(SimpleNamespace(optimizer=SimpleNamespace(
+        _solver=SimpleNamespace(
+            feasible=np.array([True]),numerical_ok=np.array([False]),
+            output=np.array([[np.nan,.2]])),
+        _input_valid=np.array([True]),_times=np.array([[0.,np.nan]]),
+        _success=np.array([False]))),read_tensor=lambda a:a.copy())
+    info=save_trace(tmp_path,"F000",trace)
+    assert info["timeopt_phase_buffers_sha256"] is not None
+    assert info["timeopt_phase_trace_sha256"] is not None
+    with np.load(tmp_path/"F000_timeopt_phase_buffers.npz") as data:
+        assert np.isnan(data["solver_output_timing"][0,0])
+        assert np.isnan(data["integrated_times"][0,-1])
+    # Same buffers are idempotent, altered observations must not overwrite.
+    assert save_trace(tmp_path,"F000",trace)==info
+    altered={**trace,"raw_buffers":{**trace["raw_buffers"],
+                                   "solver_output_timing":[[1.,.2]]}}
+    with pytest.raises(ValueError,match="snapshot changed"):
+        save_trace(tmp_path,"F000",altered)
