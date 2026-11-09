@@ -30,6 +30,9 @@ MODULES=(
     "research/joint_time_oracle/geometry_feasibility_scene.py",
     "research/joint_time_oracle/cohort_validate.py",
     "research/joint_time_oracle/torque_full_planner.py",
+    "research/joint_time_oracle/timeopt_feedback_freeze.py",
+    "research/joint_time_oracle/timeopt_feedback_report.py",
+    "research/joint_time_oracle/TIMEOPT_FEEDBACK_NOMINAL_PAYLOAD_PROTOCOL.md",
 )
 
 
