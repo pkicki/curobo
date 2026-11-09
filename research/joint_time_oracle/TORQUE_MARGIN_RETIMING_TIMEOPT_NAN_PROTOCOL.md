@@ -252,3 +252,69 @@ NO PR; NO main merge; NO production default change.
 Report final SHA, tests passed/skipped/failed, exact 15-cell retiming
 table, all independent receipts, native phase findings and uncertainties,
 report and manifest paths, and GO/PARTIAL/NO_GO/BLOCKED decision.
+
+
+## 6. Pre-execution provenance and numerical safeguards (2026-11-09 hardening)
+
+These safeguards were implemented before any new scored experiments
+on this branch and form part of the frozen method contract.
+
+1. Independent cohort_validate emits source_trajectory_sha256 for the
+   EXACT NPZ it read (and rejects a file changed while being audited).
+   margin_receipts REQUIRES both the base R and adaptive R independent
+   result's source_trajectory_sha256 to match the corresponding frozen
+   NPZ bytes. Earlier historical validator JSON without this field
+   is insufficient for a new R receipt; regenerate it from the original
+   frozen trajectory, never insert a guessed checksum.
+2. Every R has r_speed_controls.npz AND a separate immutable
+   r_controls_receipt.json tying the exact speed-control SHA to R dense
+   trajectory SHA, original P timing controls and W geometry SHA.
+   Adaptive exact spline reconstruction and final R receipt both
+   verify this chain; missing or altered speed controls fail closed.
+3. Initial source registration now records URDF, franka.yml collision
+   configuration, and baseline_validation_states.npz SHA256. Both
+   R generation and independent receipt refuse changed models/limits.
+4. Frozen development code hashes also cover cohort_validate,
+   cohort_torque_report (family tolerances) and torque_active (signed
+   effort limits). After freezing, held-out cases require EXACT
+   source-model and method parity.
+5. The slowdown pilot evaluates ALL registered rho factors to expose
+   possible nonmonotone margins, but selects the first factor passing
+   its frozen conservative sampled gate. No fallback tuning on
+   independent qualification is allowed in this registered arm.
+   In addition it reports sampled_dilation_interval: the exact
+   intersection of sampled algebraic Scaled95 inequalities expressed
+   in z=1/rho² (kinematic powers and affine gravity+inertial torque).
+   This interval is a DIAGNOSTIC ONLY: it may expose a narrow allowed
+   interval missed by the registered discrete rho grid, but cannot
+   choose a nonregistered factor or substitute for independent
+   dense+adaptive physical/Scaled95 auditing.
+6. The native TimeOpt phase probe now preserves SHA-linked compressed
+   raw observed buffers (solver timing, numerical/seed flags, finish
+   controls and integrated times) as well as a compact JSON
+   per-lane summary. Nonfinite raw values are retained in NPZ rather
+   than invented post-TimeOpt states. The "first observed invalid"
+   order is an OBSERVATIONAL buffer ordering, not proof of the
+   earliest causal kernel failure.
+
+### Mandatory agent preflight
+
+Before frozen development experiments:
+- Run focused numerical tests, including the narrow feasible rho
+  interval requiring inertia-to-gravity compensation.
+- Confirm the independent validator binds source SHA at *measurement*
+  time, and a changed r_dense or r_adaptive_dense invalidates the
+  independent audit receipt.
+- Confirm that tampering with r_speed_controls or R geometry also
+  blocks replay/qualification.
+- Confirm that previous model/limit SHA tampering blocks retiming and
+  that a post-freeze source/validator change blocks held-out tasks.
+- Verify raw native phase NPZ can be loaded, contains NaN/Inf exactly
+  as observed and matches its recorded SHA.
+- Format changed Python sources with Black and Ruff before freeze;
+  preserve historical unrelated style issues without modifying
+  production or unmodified source artifacts.
+
+If these tests uncover API/schema issues, fix them, rerun development
+in a NEW scored root, and only then freeze. Never retroactively edit
+or overwrite previously qualified source W/P NPZ.
