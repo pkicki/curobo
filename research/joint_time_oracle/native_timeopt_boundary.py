@@ -177,8 +177,14 @@ def analyze(native_arm:Path,profile_arm:Path,*,case_filter:str|None=None)->dict:
                                 np.linspace(0,1,513))[0]
                         except Exception:
                             pass
-                    audit=audited_post_lane(data,lane,auditor,bounds,torque_limits,
-                                             task=task,pre_positions=pre_q)
+                    try:
+                        audit=audited_post_lane(data,lane,auditor,bounds,torque_limits,
+                                                 task=task,pre_positions=pre_q)
+                    except Exception as exc:
+                        entry["lanes"].append({
+                            "lane":lane,"status":"INDEPENDENT_AUDIT_ERROR",
+                            "reason":repr(exc),"native_masks":mask})
+                        continue
                     audit["lane"]=lane
                     audit["native_masks"]=mask
                     native_collision=mask.get("collision_valid")
