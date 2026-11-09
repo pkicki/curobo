@@ -639,3 +639,35 @@ reports/joint_time_oracle/torque_global_lp_screening/index.html.
 **Status: NOT EXECUTED.** New tests, independent Pinocchio/CUDA campaigns,
 physical witness receipts and raw artifact manifests must be run by the
 coding agent. No PR, no merge to main, no production default changes.
+
+
+## Margin-aware fixed-geometry retiming and native invalid-time trace (2026-11-09)
+
+See [TORQUE_MARGIN_RETIMING_TIMEOPT_NAN_PROTOCOL.md](TORQUE_MARGIN_RETIMING_TIMEOPT_NAN_PROTOCOL.md).
+This follows the registered global-path search NO-GO for necessary LP
+screening and preserves all previous raw source evidence. The three
+global-found W paths were independently physical+Scaled95 sampled
+feasible; IPOPT P on the SAME fixed quintic geometries was substantially
+faster but failed the extra Scaled95 family margins.
+
+Two research-only fixed-path retiming directions are implemented:
+(1) exact time dilation of original IPOPT squared-speed controls using
+a frozen finite rho grid, retaining gravity rather than assuming
+torque feasibility is monotone with slowdown; and
+(2) fixed-geometry IPOPT reoptimization with tighter asymmetric,
+zero-centered torque and midpoint-centered kinematic constraints.
+Both deliver PRELIMINARY R only until independent 8193+adaptive R
+physical and Scaled95 Pinocchio/sphere receipts pass. A development
+trap case is frozen before the two selected algorithm holdouts, with
+source/task/controls SHA checks. Neither approach changes path geometry.
+
+A separate opt-in native numerical phase probe records TimeOpt input,
+seed feasibility, solver numerical validity, squared-speed controls,
+finish validation and integrated time buffers on each failed lane.
+It identifies earliest OBSERVED invalid states, not an exclusive
+causal root or production bug, and invalidates latency measurement.
+
+Report: reports/joint_time_oracle/torque_margin_retiming/index.html.
+**Status: NOT EXECUTED by assistant.** The pinned Pinocchio/CUDA tests,
+qualifications and numerical campaigns must be run by the coding
+agent. No PR, main merge or production default changes.
