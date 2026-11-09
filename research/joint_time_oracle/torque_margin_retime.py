@@ -28,7 +28,7 @@ from .cohort_retime import ROOT, dynamics, problem, solve, states
 from .torque_active import read_profile
 from .torque_margin_core import (
     CASE_IDS, DILATION_FACTORS, TIGHTENING_FACTORS,
-    immutable_json, pilot_limits, sha256_file, tighten_pointwise_problem,
+    immutable_json, pilot_limits, sampled_dilation_interval, sha256_file, tighten_pointwise_problem,
 )
 from .torque_margin_prepare import OUTPUT
 
@@ -153,12 +153,18 @@ def dilation(root:Path,case:str)->dict:
     geometry=QuinticGeometry(np.asarray(geo["controls"],dtype=float))
     with np.load(src/"p_refined_dense.npz") as z:
         sample={k:np.asarray(z[k]) for k in z.files}
+    wall_start=time.perf_counter()
     baseline=baseline_audit_samples(sample)
+    baseline_rnea_wall_s=time.perf_counter()-wall_start
     bounds=physical_limits(profile)
+    interval=sampled_dilation_interval(baseline["selected"],baseline["torque"],bounds)
     outcome={"case_id":case,"method":"dilation","source_P_duration_s":
              float(sample["time"][-1]),"source_P_controls_sha256":
              source["source_files_sha256"]["p_timing_controls.npz"],
              "screen_samples":baseline["samples"],"attempts":[],
+             "baseline_rnea_calls":2*baseline["samples"],
+             "baseline_rnea_wall_s":baseline_rnea_wall_s,
+             "sampled_analytic_dilation_interval":interval,
              "selected_rho":None,"selected_R_qualified":False,
              "timing_search":"frozen nonmonotone-safe finite rho grid"}
     winner=None
@@ -166,9 +172,8 @@ def dilation(root:Path,case:str)->dict:
     for rho in DILATION_FACTORS:
         row=pilot_limits(baseline["selected"],baseline["torque"],bounds,rho)
         outcome["attempts"].append(row)
-        if row["conservative_screen_pass"]:
+        if row["conservative_screen_pass"] and winner is None:
             winner=rho
-            break
     outcome["screen_wall_s"]=time.perf_counter()-stamp
     arm=root/"dilation"
     if winner is not None:
@@ -187,6 +192,7 @@ def dilation(root:Path,case:str)->dict:
         outcome["r_controls_receipt"]=seal_r_timing(arm,case,source,method="dilation")
     else:
         outcome["reason"]="NO_REGISTERED_DILATION_PASSED_SAMPLE_MARGIN_GATE"
+    outcome["total_cpu_wall_s"]=time.perf_counter()-wall_start
     immutable_json(arm/case/"screen_result.json",outcome)
     return outcome
 
