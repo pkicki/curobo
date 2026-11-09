@@ -25,6 +25,10 @@ def issue(arm:Path)->dict:
     tasks=json.loads((arm/"tasks.json").read_text())
     campaign_root=arm.parent
     frozen_root=json.loads((campaign_root/"margin_registration.json").read_text())
+    from .cohort_retime import ROOT
+    if any(sha256_file(ROOT/name)!=digest for name,digest
+           in frozen_root["model_inputs_sha256"].items()):
+        raise ValueError("frozen source robot dynamics/collision model changed")
     source_records={x["case_id"]:x for x in frozen_root["sources"]}
     source_arm=Path(frozen_root["source_root"])/frozen_root["source_arm"]
     base_file=arm/"independent_sampled.json"
