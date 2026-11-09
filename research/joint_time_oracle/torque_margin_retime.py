@@ -231,10 +231,11 @@ def rebuild_arm_inventory(root:Path,arm_name:str):
     arm=root/arm_name
     tasks=[t for t in registered if (arm/t["case_id"]/"r_dense.npz").is_file()]
     task_file=arm/"tasks.json"
-    if task_file.exists() and json.loads(task_file.read_text())!=tasks and (
-        (arm/"independent_sampled.json").exists() or
-        (arm/"independent_adaptive.json").exists()):
-        raise ValueError("cannot change arm inventory after independent validation")
+    if task_file.exists():
+        old=json.loads(task_file.read_text())
+        new_by_id={t["case_id"]:t for t in tasks}
+        if any(new_by_id.get(x["case_id"])!=x for x in old):
+            raise ValueError("previously recorded retiming task changed or disappeared")
     task_file.write_text(json.dumps(tasks,indent=2)+"\n")
     pilot=[{"case_id":t["case_id"],"population":t["population"],
             "cohort":"margin_retiming","task_sha256":t["task_sha256"],
@@ -244,13 +245,14 @@ def rebuild_arm_inventory(root:Path,arm_name:str):
                       )["r_duration_s"],"verification":{}}}} for t in tasks]
     file=arm/"pilot.jsonl"
     payload="".join(json.dumps(x)+"\n" for x in pilot)
-    if file.exists() and file.read_text()!=payload:
-        # A stage may add more cases; never mutate after independent
-        # validation has started, to preserve receipt history.
-        if (arm/"independent_sampled.json").exists():
-            raise ValueError("arm inventory frozen after independent audit")
+    if file.exists():
+        old_rows=[json.loads(line) for line in file.read_text().splitlines() if line.strip()]
+        new_rows={r["case_id"]:r for r in pilot}
+        if any(new_rows.get(x["case_id"])!=x for x in old_rows):
+            raise ValueError("previous retiming evaluation row changed or disappeared")
+    # Append-only inclusion permits prospective holdouts after auditing the
+    # development case; rerun independent audits on expanded full inventory.
     file.write_text(payload)
-
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
