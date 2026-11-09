@@ -28,7 +28,7 @@ from .timeopt_oracle_contract import CONSTRAINT_FAMILIES, check_response
 from .timeopt_payload_model import (
     Payload, file_sha256, pinocchio_payload_model,
 )
-from .timeopt_payload_tasks import _payload_world_clearance
+from .timeopt_payload_collision import payload_clearances
 
 GRIDS=(8193,32768)
 MAX_SAMPLED_VIOLATION=1e-6
@@ -140,8 +140,10 @@ def audit(req:dict,resp:dict,scene:str|None,*,grid_count:int)->dict:
     sampled["torque"]=torques
     auditor=IndependentGeometryAuditor(scene)
     geomcheck=auditor.check(sampled["q"],min_clearance_m=.005)
-    payload_clearance=_payload_world_clearance(
-        auditor,pinocchio_payload_model(payload),sampled["q"],payload.radius_m)
+    payload_collision=payload_clearances(
+        sampled["q"],payload=payload,auditor=auditor,min_clearance_m=.005)
+    payload_clearance=payload_collision["world_clearance_m"]
+    payload_self_clearance=payload_collision["self_clearance_m"]
     families={}
     for family in CONSTRAINT_FAMILIES:
         bounds=np.asarray(req["constraints"][family],dtype=float)
@@ -169,7 +171,7 @@ def audit(req:dict,resp:dict,scene:str|None,*,grid_count:int)->dict:
     success=bool(np.isfinite(duration) and duration>0 and
         all(row[typ]["max_violation"]<=MAX_SAMPLED_VIOLATION
             for row in families.values() for typ in ("physical","scaled95"))
-        and geomcheck["sampled_acceptable"] and payload_clearance>=.005
+        and geomcheck["sampled_acceptable"] and payload_collision["sampled_acceptable"]
         and endpoint_velocity<=1e-5 and endpoint_pos<=1e-6)
     return {"status":"SAMPLED_PHYSICAL_SCALED95_PASS" if success else
                      "INDEPENDENT_PHYSICAL_OR_SCALED95_FAIL",
@@ -182,6 +184,7 @@ def audit(req:dict,resp:dict,scene:str|None,*,grid_count:int)->dict:
             "native_sphere_geometry_clearance_m":geomcheck["world_clearance_m"],
             "self_sphere_clearance_m":geomcheck["self_clearance_m"],
             "payload_world_clearance_m":payload_clearance,
+            "payload_self_clearance_m":payload_self_clearance,
             "endpoint_velocity_inf":endpoint_velocity,
             "endpoint_position_inf":endpoint_pos,
             "geometric_path_sha256":path["path_sha256"],
