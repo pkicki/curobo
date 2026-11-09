@@ -29,9 +29,12 @@ CASES=(DEVELOPMENT_CASE,*HOLDOUT_CASES)
 
 def collect(root:Path)->dict:
     rows=[]
+    common_bank_build_cost={}
     for case in CASES:
         bankfile=root/"bank"/case/"bank.json"
         bank=json.loads(bankfile.read_text()) if bankfile.exists() else None
+        common_bank_build_cost[case]=(bank.get("bank_generation_wall_s")
+                                      if bank is not None else None)
         for arm_name in ARMS:
             folder=root/arm_name
             result=folder/case/"screen_result.json"
@@ -94,6 +97,7 @@ def collect(root:Path)->dict:
         "registered_tasks":list(CASES),
         "arms":list(ARMS),"budgets":list(BUDGETS),
         "qualified_counts":qualified_counts,
+        "shared_bank_generation_cpu_wall_s_by_case":common_bank_build_cost,
         "per_budget_success":{arm:{str(b):sum(x.get("per_budget_qualification",{}).get(str(b),False)
                                                  for x in rows if x["arm"]==arm)
                                     for b in BUDGETS} for arm in ARMS},
