@@ -68,9 +68,17 @@ def issue(arm:Path)->dict:
             if sha256_file(dense)!=frozen["r_sha256"] or (
                 sha256_file(geom)!=frozen["r_geometry_sha256"]):
                 reasons.append("frozen R trajectory or geometry changed")
+            controls_file=folder/"r_speed_controls.npz"
+            controls_receipt=json.loads((folder/"r_controls_receipt.json").read_text())
+            if (controls_receipt.get("r_speed_controls_sha256")!=sha256_file(controls_file)
+                or controls_receipt.get("r_dense_sha256")!=frozen["r_sha256"]
+                or controls_receipt.get("source_P_controls_sha256")
+                   !=reference["source_files_sha256"]["p_timing_controls.npz"]):
+                reasons.append("R timing controls are not linked to frozen source P/W")
             if replay.get("status")!="REPLAYED" or (
                 replay.get("source_r_sha256")!=frozen["r_sha256"]) or (
-                replay.get("r_adaptive_sha256")!=sha256_file(ad)):
+                replay.get("r_adaptive_sha256")!=sha256_file(ad)) or (
+                replay.get("r_speed_controls_sha256")!=sha256_file(controls_file)):
                 reasons.append("adaptive R reconstruction missing or changed")
             a=base.get(case+":R")
             b=adaptive.get(case+":R_adaptive")
@@ -83,6 +91,10 @@ def issue(arm:Path)->dict:
                     n2=len(f["time"])
                 if n1<8193 or n2<n1 or a.get("samples")!=n1 or b.get("samples")!=n2:
                     reasons.append("independent sample-count discrepancy")
+                if a.get("source_trajectory_sha256")!=sha256_file(dense):
+                    reasons.append("independent base validation is stale or unbound to R NPZ")
+                if b.get("source_trajectory_sha256")!=sha256_file(ad):
+                    reasons.append("independent adaptive validation is stale or unbound to R_adaptive NPZ")
                 if duration>=frozen.get("source_W_duration_s",float("inf")):
                     # Source W duration must be obtained from the frozen
                     # input registration and compared by the report as well.
