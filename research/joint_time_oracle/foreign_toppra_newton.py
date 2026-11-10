@@ -61,17 +61,23 @@ def geometry_from_npz(path:Path,*,lane:int|None=None)->tuple[dict,Any, np.ndarra
 
 
 def parity_request(*,source_path:Path,lane:int|None,payload:Payload,
-                   signed_effort:np.ndarray,case_id:str)->dict:
+                   signed_effort:np.ndarray,case_id:str,
+                   effort_profile_kind:str="nominal")->dict:
     signed=np.asarray(signed_effort,dtype=np.float64)
     if signed.shape!=(2,7) or not np.isfinite(signed).all():
         raise ValueError("signed nominal effort shape mismatch")
     if not np.allclose(signed[0],-signed[1],atol=1e-6,rtol=1e-6):
         raise ValueError("K107 symmetric torque interface cannot represent signed asymmetric bounds")
+    if effort_profile_kind not in ("nominal","historical_j1234_f0300"):
+        raise ValueError("unsupported registered actuator effort regime")
+    if effort_profile_kind!="nominal" and payload.mass_kg!=0:
+        raise ValueError("historical synthetic effort test must not add payload")
     geometry,_,_=geometry_from_npz(source_path,lane=lane)
     return {"schema":REQUEST_SCHEMA,"case_id":case_id,
             "payload":{"mass_kg":payload.mass_kg,
                        "com_xyz_m":list(payload.com_xyz_m)},
             "payload_collision_qualified":False,
+            "effort_profile_kind":effort_profile_kind,
             "effort_bounds_signed":signed.tolist(),
             "path_input_file":str(source_path.resolve()),
             "path_input_sha256":source_sha(source_path),
@@ -85,7 +91,7 @@ def parity_request(*,source_path:Path,lane:int|None,payload:Payload,
 
 def solve_foreign(*,source_path:Path,lane:int|None,payload:Payload,effort:np.ndarray,
                   case_id:str,topp_repo:Path,topp_python:Path,output:Path,
-                  expected_topp_sha:str)->dict:
+                  expected_topp_sha:str,effort_profile_kind:str="nominal")->dict:
     if not expected_topp_sha or len(expected_topp_sha)<12:
         raise ValueError("must pin full external TOPP solver revision")
     top=Path(topp_repo).resolve()
@@ -99,7 +105,8 @@ def solve_foreign(*,source_path:Path,lane:int|None,payload:Payload,effort:np.nda
     output=Path(output)
     output.mkdir(parents=True,exist_ok=True)
     request=parity_request(source_path=source_path,lane=lane,payload=payload,
-                          signed_effort=effort,case_id=case_id)
+                          signed_effort=effort,case_id=case_id,
+                          effort_profile_kind=effort_profile_kind)
     frozen=output/"foreign_request.json"
     immutable_json(frozen,request)
     path=output/"foreign_result.json"
@@ -179,6 +186,8 @@ def main():
     p.add_argument("--topp-repo",type=Path,required=True)
     p.add_argument("--topp-python",type=Path,required=True)
     p.add_argument("--topp-revision",required=True)
+    p.add_argument("--effort-profile-kind",choices=("nominal","historical_j1234_f0300"),
+                   default="nominal")
     p.add_argument("--output-dir",type=Path,required=True)
     args=p.parse_args()
     with np.load(args.effort_bounds_npz) as f:
@@ -188,7 +197,8 @@ def main():
         payload=Payload(args.payload_mass,tuple(args.payload_com)),
         effort=effort,case_id=args.case_id,topp_repo=args.topp_repo,
         topp_python=args.topp_python,output=args.output_dir,
-        expected_topp_sha=args.topp_revision)
+        expected_topp_sha=args.topp_revision,
+        effort_profile_kind=args.effort_profile_kind)
     summary=reconstruct_topp_result(
         source_path=args.source_path,lane=args.native_lane,result=result,
         output=args.output_dir/"k107_dense.npz")
