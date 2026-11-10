@@ -92,10 +92,8 @@ def guided_candidate(base:np.ndarray,archive:list[ArchiveItem],k:int,
 def independent_geometry_screen(controls,scene:str|None,payload:Payload,
                                 *,clearance:float=.005)->dict:
     """Robot/scene sphere audit; payload collision shape NOT included."""
-    auditor=IndependentGeometryAuditor(scene)
-    model,data,neutral,qi,vi=independent_payload_model(payload)
-    auditor.model=model;auditor.data=data;auditor.neutral=neutral
-    auditor.q=neutral.copy();auditor.qi=qi;auditor.vi=vi
+    from .payload_model_parity import independent_payload_auditor
+    auditor=independent_payload_auditor(payload,scene)
     values=QuinticGeometry(controls).evaluate(np.linspace(0,1,129))[0]
     result=auditor.check(values,min_clearance_m=clearance)
     gravity=auditor.gravity(values[[0,-1]])
@@ -215,6 +213,12 @@ def run_case(*,task:dict,arm:str,output:Path,top_repo:Path,
              budget:int=128,time_budget_s:float=30.):
     from .foreign_toppra_newton import solve_foreign
     output=Path(output)
+    from .payload_parity_qualify import verify_task_payload_receipt
+    verify_task_payload_receipt(task)
+    if task.get("admission")!="ENDPOINT_ADMITTED":
+        raise ValueError("invalid payload endpoint gravity admission")
+    if budget not in PROPOSAL_BUDGETS:
+        raise ValueError("unregistered search proposal budget")
     if output.exists():
         raise ValueError("existing scored arm cannot be overwritten")
     output.mkdir(parents=True,exist_ok=False)
