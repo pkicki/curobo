@@ -336,6 +336,34 @@ on top of the hybrid planner.
   * Methods are evaluated only against this manifest from now on: success
     over certified cells, stratified by payload, scene, stratum and ρ.
 
+### 2.9 Hard benchmark subsets (frozen: `results/hard_benchmark_20261114/manifest.json`, sha b4523204…)
+
+Gravity bottleneck ρ\*: the minimax static gravity utilisation over collision-free routes
+(roadmap estimate, i.e. an upper bound). Findings that shaped the subsets:
+
+* **Static disconnection does not occur here.** In all scenes and for offset payloads of
+  4–8 kg, statically feasible configurations form ONE connected component. The other
+  components are single isolated samples. The arm can always fold the payload in.
+  "Strictly beyond static limits" rest-to-rest problems are therefore essentially absent
+  for this robot and problem class.
+* **Tightness is endpoint-driven.** On every verified tight problem, the bottleneck is
+  the start or goal configuration itself, not the route between them.
+
+Subsets (independently certified witnesses only):
+
+| label | n (dev / conf) | definition | key statistics |
+|---|---|---|---|
+| TIGHT_STATIC | 59 (41 / 18) | ρ\* ∈ [0.90, 0.97], straight line statically infeasible, ≥ 3 segments or ≥ 1.3× length | ρ\* median 0.96; length ratio median 1.72 (up to 6.3) |
+| DETOUR | 127 (97 / 30) | shortest collision-free route overloaded (peak ≥ 1.05); shortest static route (peak ≤ 0.97) ≥ 2× longer | detour ratio median 2.18 (2.00–3.07); shortest-route peak median 1.24 (up to 1.57) |
+| SWING | 24 (20 / 4) | DETOUR plus a short route (≥ 1.5× shorter) with peak ≥ 1.01 and a certified dynamic K107 witness | swing ratio median 2.05; peak median 1.06 (up to 1.29); swing faster than the K107-timed static route in 20/24 (median duration ratio 0.56) |
+| SWING_MARGINAL | 4 | as SWING, but peak < 1.01 | listed only |
+
+* SWING witnesses depend on K107, which tested methods also use. This is recorded per
+  problem.
+* Generation runs: TIGHT was interrupted once (out of memory) and resumed. DETOUR batch
+  2 was resumed after the speed refactor (`4e5d373`) with per-combination seeds; finished
+  cells were kept. Both facts are noted in the manifest.
+
 ## 3. Software (all in `research/timeopt_guided/`)
 
 | Module | Env | Role |

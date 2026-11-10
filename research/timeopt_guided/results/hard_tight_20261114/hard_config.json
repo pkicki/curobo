@@ -1,0 +1,70 @@
+{
+  "args": {
+    "config": "{}",
+    "kinds": [
+      "TIGHT"
+    ],
+    "max_candidates": 40,
+    "nshards": 4,
+    "output": "research/timeopt_guided/results/hard_tight_20261114",
+    "payloads": [
+      "m3_offset",
+      "m4_axial",
+      "m4_offset",
+      "m5_axial",
+      "m5_offset"
+    ],
+    "scenes": [
+      "free",
+      "table",
+      "cluttered"
+    ],
+    "seed": 20261112,
+    "shard": 1
+  },
+  "hard": {
+    "confirm_samples": 1000000,
+    "dynamic_min": 1.02,
+    "endpoint_max": 0.97,
+    "k": 12,
+    "max_edge": 1.2,
+    "max_lazy_iters": 300,
+    "min_length_ratio": 1.3,
+    "min_segments": 3,
+    "samples": 400000,
+    "seed": 20261112,
+    "select_samples": 400000,
+    "spline_controls": [
+      30,
+      60,
+      100,
+      16
+    ],
+    "straight_min_peak": 1.0,
+    "tight_min": 0.9
+  },
+  "oracle": {
+    "endpoint_radius": 0.3,
+    "joint_margin": 0.03,
+    "k": 12,
+    "margins": [
+      0.015,
+      0.005
+    ],
+    "max_edge": 1.2,
+    "max_lazy_iters": 400,
+    "rhos": [
+      0.8,
+      0.9,
+      0.97
+    ],
+    "samples": [
+      50000,
+      200000
+    ],
+    "seed": 20261112,
+    "shortcut_tries": 200,
+    "step": 0.01,
+    "time_safety": 0.9
+  }
+}
