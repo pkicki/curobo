@@ -219,10 +219,14 @@ def quintic(u):
 S1, S2, S3 = 1.875, 5.7735026919, 60.0  # max |s'|, |s''|, |s'''| of the quintic
 
 
-def segment_duration(adm: Admissibility, a: np.ndarray, b: np.ndarray, safety: float, n: int = 257) -> float:
-    """Smallest (doubling then bisection) T with V/A/J/tau <= safety * Scaled95 on a dense grid."""
+def segment_duration(adm: Admissibility, a: np.ndarray, b: np.ndarray, safety: float, n: int = 257,
+                     rho: float = 0.0) -> float:
+    """Smallest (doubling then bisection) T with V/A/J <= safety * Scaled95 and
+    torque <= max(safety, (1 + rho) / 2) * Scaled95 on a dense grid. The torque target
+    must lie between rho (gravity bound of the path) and 1, otherwise no T exists."""
     d = np.abs(b - a)
     sc = LIMIT_SCALE * safety
+    sc_tau = LIMIT_SCALE * max(safety, 0.5 * (1.0 + rho))
     T = max(float(np.max(d * S1 / (sc * adm.vmax))), float(np.sqrt(np.max(d * S2 / (sc * adm.amax)))),
             float(np.cbrt(np.max(d * S3 / (sc * adm.jmax)))), 1e-3)
 
@@ -233,7 +237,7 @@ def segment_duration(adm: Admissibility, a: np.ndarray, b: np.ndarray, safety: f
         qd = s1[:, None] * (b - a)[None] / T
         qdd = s2[:, None] * (b - a)[None] / T**2
         tau = adm.torque(q, qd, qdd)
-        return bool(np.all(np.abs(tau) <= sc * adm.tau_max))
+        return bool(np.all(np.abs(tau) <= sc_tau * adm.tau_max))
 
     if ok(T):
         return T
@@ -290,7 +294,12 @@ def certify_cell(scene: str, payload: Payload, start, goal, cfg: OracleConfig, a
                     break  # more samples cannot help at this rho
                 if r["path"] is not None:
                     wp = shortcut(adm, r["path"], rho, cfg.shortcut_tries, rng)
-                    durs = [segment_duration(adm, a, b, cfg.time_safety) for a, b in zip(wp[:-1], wp[1:])]
+                    try:
+                        durs = [segment_duration(adm, a, b, cfg.time_safety, rho=rho)
+                                for a, b in zip(wp[:-1], wp[1:])]
+                    except RuntimeError as error:
+                        tries[-1]["timing_error"] = str(error)
+                        continue
                     return {"status": "WITNESS_FOUND", "margin_m": margin, "rho": rho, "samples": n,
                             "waypoints": wp, "durations": durs, "tries": tries,
                             "wall_s": time.perf_counter() - t0, "endpoint_gravity_util": endpoint_util}

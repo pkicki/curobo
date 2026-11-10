@@ -317,8 +317,24 @@ on top of the hybrid planner.
     bank admitted because of the sphere bug.
   * So every valid pilot cell was certified, including the 26 that no method
     had solved. All of them have a gravity-feasible route.
-* **Next:** a new bank (new seed) → oracle on all admissible cells →
-  certification → `freeze_benchmark.py` manifest. Only then evaluate methods.
+* **Frozen benchmark `results/benchmark_20261111/manifest.json`** (sha
+  de3c6c81…, curobo 447adee; bank seed 20261111, corrected scenes):
+  * 180 tasks × 11 payloads = 1980 cells. 588 endpoint-inadmissible (443
+    static gravity, 145 payload collision).
+  * **All 1392 admissible cells are CERTIFIED_SOLVABLE.** 0 witnesses
+    rejected, 0 uncertified. Development 1134, confirmation 258.
+  * Per payload, certified cells range from 180 (0 kg) down to 29
+    (5 kg, offset COM).
+  * Gravity tightness: ρ 0.80 for 1202 cells, 0.90 for 186, 0.97 for 4.
+    All at the 1.5 cm margin. 801 witnesses are a single straight segment.
+  * Oracle: median 0.01 s, max 8.9 s per cell. Witness durations: median
+    3.8 s (existence only, never a quality reference).
+  * During the run: the time scaling now targets torque ≤ max(0.9, (1+ρ)/2)
+    of Scaled95. The old fixed 0.9 target was impossible at ρ = 0.97; the 407
+    cells completed before the fix used the stricter target, which is still
+    valid. Witness NPZ files are local and hash-pinned in the manifest.
+  * Methods are evaluated only against this manifest from now on: success
+    over certified cells, stratified by payload, scene, stratum and ρ.
 
 ## 3. Software (all in `research/timeopt_guided/`)
 
