@@ -16,11 +16,22 @@ from .cohort_retime import ROOT, dynamics
 
 
 class IndependentGeometryAuditor:
-    def __init__(self, scene: str | None):
+    def __init__(self, scene: str | None, *,
+                 extra_attached_spheres: list[dict] | None = None):
         cfg = yaml.safe_load(
             (ROOT / "curobo/content/configs/robot/franka.yml").read_text()
         )
         collision = cfg["robot_cfg"]["kinematics"]
+        if extra_attached_spheres is not None:
+            if len(extra_attached_spheres)!=4:
+                raise ValueError("research payload must use exact four-sphere shape")
+            import copy
+            collision=copy.deepcopy(collision)
+            collision["collision_spheres"]["attached_object"]=extra_attached_spheres
+            link=collision["extra_links"]["attached_object"]
+            if (link["parent_link_name"]!="panda_hand" or
+                list(link["fixed_transform"])!=[0,0,0,1,0,0,0]):
+                raise ValueError("attached_object frame is not identical to panda_hand")
         self.model, self.data, self.neutral, self.qi, self.vi = dynamics()
         self.q = self.neutral.copy()
         self.zero = np.zeros(self.model.nv)
@@ -39,7 +50,9 @@ class IndependentGeometryAuditor:
         self.grouped = [
             (
                 np.array([i for i, n in enumerate(links) if n == name]),
-                self.model.getFrameId(name, pin.BODY),
+                self.model.getFrameId(
+                    "panda_hand" if name=="attached_object" else name,pin.BODY
+                ),
             )
             for name in sorted(set(links))
         ]
