@@ -16,7 +16,7 @@ from research.joint_time_oracle.payload_native import (
 )
 from research.joint_time_oracle.native_uniform_seed_replay import uniform_seed_bounds
 from research.joint_time_oracle.retimer_oracle import (
-    Oracle, digest, make_request, validate_response,
+    Oracle, digest, make_request, make_native_cubic_request, validate_response,
 )
 from research.joint_time_oracle.timeopt_feedback_search import (
     ARMS, INITIAL, proposal, run, seed_for,
@@ -143,6 +143,7 @@ def test_retimer_request_rejects_mismatched_model_and_response():
               "request_sha256":request["request_sha256"],
               "engine":oracle.name,"engine_commit":oracle.engine_commit,
               "path_controls_sha256":request["path_controls_sha256"],
+              "path_type":request["path_type"],
               "model_contract_sha256":digest(contract()),
               "constraint_contract_sha256":digest(limits)}
     assert validate_response(request,response)["status"]=="INFEASIBLE_HEURISTIC"
@@ -170,3 +171,25 @@ def test_true_hard_case_requires_qualified_alternative_and_same_contract():
     bad={**alt,"payload_sha256":"different"}
     assert classify(native,bad)["status"]=="INCOMPARABLE_CONSTRAINT_OR_PAYLOAD_CONTRACT"
     assert population_split("case1")==population_split("case1")
+
+
+
+def test_exact_native_cubic_handoff_never_fits_quintic():
+    oracle=Oracle("toppra_newton_k107",("python","adapter.py"),"abc123")
+    limits={"families":["position","velocity","acceleration","jerk","torque"],
+            "signed_torque_bounds_sha256":"sha_a",
+            "endpoint_contract":"strict-rest"}
+    native={"controls":np.ones((8,7))*.1,
+            "start_boundary":np.zeros((3,7)),
+            "goal":np.ones(7)}
+    request=make_native_cubic_request("case",native,source_sha="origin",
+                       model_contract=contract(),limit_contract=limits,engine=oracle)
+    assert request["path_type"]=="native_cubic_exact"
+    assert "quintic_controls" not in request
+    assert request["native_cubic_buffers"]["controls"][0]==[.1]*7
+    wrong=dict(request)
+    wrong["model_contract"]={"nominal_effort_scale":.3}
+    with pytest.raises(ValueError):
+        make_native_cubic_request("case",native,source_sha="origin",
+                                 model_contract=wrong["model_contract"],
+                                 limit_contract=limits,engine=oracle)
