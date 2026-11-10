@@ -45,8 +45,9 @@ def model_receipt(task:dict,payload:Payload,native:Path,*,world_tol_m:float=.001
         v[vi]=qd[i];a[vi]=qdd[i]
         independent[i]=pin.rnea(model,data,state,v,a)[vi]
         check=auditor.check(pose[None],min_clearance_m=0)
-        world.append(check["world_clearance_m"])
-        self_clear.append(check["self_clearance_m"])
+        world.append(float("inf") if check["world_clearance_m"] is None
+                     else float(check["world_clearance_m"]))
+        self_clear.append(float(check["self_clearance_m"]))
     torque=compare_native_inverse_dynamics(arrays["native_tau"],independent,
                         atol_nm=torque_atol_nm,rtol=torque_rtol)
     calc_world=np.asarray(world,dtype=float)
