@@ -35,7 +35,9 @@ def native_attempt(task:dict,*,restart:int,lanes:int=4,
                    max_attempts:int=5,warmup:int=2,
                    capture:bool=False,folder:Path|None=None)->dict:
     payload=Payload(**task["payload"])
-    robot,installed=native_payload_robot(payload)
+    from .payload_parity_qualify import verify_task_payload_receipt
+    verify_task_payload_receipt(task)
+    robot,installed=native_payload_robot(payload,with_payload_spheres=True)
     seed=int(task["seed"]+291337*restart)
     torch.manual_seed(seed);np.random.seed(seed%(2**32))
     t0=time.perf_counter()
@@ -113,6 +115,10 @@ def run(task:dict,*,root:Path,budget:int=32,lanes:int=4,
         raise ValueError("only registered restart budgets allowed")
     if task.get("joint_limit_scale")!=1.0 or not task.get("nominal_actuator_limits"):
         raise ValueError("not an original actuator-effort source task")
+    if task.get("payload_collision_qualified") is not True:
+        raise ValueError("nominal-payload study requires separately qualified payload collision parity")
+    from .payload_parity_qualify import verify_task_payload_receipt
+    verify_task_payload_receipt(task)
     if task.get("admission")!="ENDPOINT_ADMITTED":
         return {"case_id":task["case_id"],"status":"ENDPOINT_GRAVITY_REJECTED",
                 "restarts":0}
