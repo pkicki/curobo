@@ -31,9 +31,9 @@ def independent_payload_model(payload:Payload):
 
 def native_payload_robot(payload:Payload):
     import torch
-    from curobo._src.robot.robot_cfg import RobotCfg
-    from curobo._src.util_file import get_robot_configs_path,join_path,resolve_config
-    from .cohort_retime import ROOT
+    from curobo._src.types.robot import RobotCfg
+    from curobo._src.util.config_io import join_path, resolve_config
+    from curobo.content import get_robot_configs_path
 
     cfg=resolve_config(join_path(get_robot_configs_path(),"franka.yml"))
     robot=RobotCfg.create(cfg)
