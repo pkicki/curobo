@@ -101,7 +101,6 @@ class JointRefiner:
         n = len(controls)
         s = np.linspace(0, 1, cfg.grid)
         B = self._bases(knots, n, s)
-        theta = torch.as_tensor(np.asarray(controls, float), device="cuda", dtype=torch.float32)
         res = start_result or self.o.retime(controls, degree=3, knots=knots, diagnose_infeasible=False)
         log.oracle_calls += start_result is None
         if not res.feasible:
