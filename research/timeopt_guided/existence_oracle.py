@@ -136,79 +136,169 @@ class Admissibility:
         return bool(self.admissible(pts, rho, self.near_endpoint(pts)).all())
 
 
-def lazy_prm(adm: Admissibility, start: np.ndarray, goal: np.ndarray, rho: float, n_samples: int,
-             rng: np.random.Generator) -> dict:
-    """Lazy PRM in A_rho. Returns waypoints (start..goal) or None, with statistics."""
-    import torch
-    from scipy.sparse import coo_matrix
-    from scipy.sparse.csgraph import dijkstra
+def knn_edge_codes(nodes: np.ndarray, k: int, max_edge: float, workers: int = 6) -> np.ndarray:
+    """Sorted unique int64 codes u * n + v (u < v) of k-NN edges within ``max_edge``.
 
-    cfg = adm.cfg
-    t0 = time.perf_counter()
+    KD-tree on the CPU: about 3x faster than chunked GPU brute force at 3e5-1e6 nodes."""
+    from scipy.spatial import cKDTree
+
+    n = len(nodes)
+    _, idx = cKDTree(nodes).query(nodes, k=min(k, n - 1) + 1, distance_upper_bound=max_edge, workers=workers)
+    idx = idx[:, 1:]  # drop self
+    r = np.broadcast_to(np.arange(n)[:, None], idx.shape)
+    keep = idx < n  # missing neighbours are reported as index n
+    u, v = np.minimum(r[keep], idx[keep]), np.maximum(r[keep], idx[keep])
+    return np.unique(u.astype(np.int64) * n + v)
+
+
+class LazyRoadmap:
+    """One roadmap per start/goal pair, shared by every gravity threshold.
+
+    Nodes: start, goal and uniform samples that are collision free (problem constraints
+    near the endpoints, oracle margins elsewhere). Edges: k-NN within ``max_edge``,
+    encoded as one int64 (u * n + v, u < v) for 1-D deduplication and ``searchsorted``
+    lookup. Each edge is evaluated at most once (in GPU batches): collision status and
+    peak static gravity utilisation along the edge. Queries:
+      ``shortest(thr)``   shortest length route with peak utilisation <= thr
+      ``bottleneck()``    minimax-utilisation route (minimum spanning tree property)
+    Both are lazy: optimistic weights for unevaluated edges, evaluate the edges on the
+    candidate route, repeat until the route is fully evaluated.
+    """
+
+    def __init__(self, adm: "Admissibility", start: np.ndarray, goal: np.ndarray, n_samples: int,
+                 rng: np.random.Generator, *, k: int | None = None, max_edge: float | None = None) -> None:
+        t0 = time.perf_counter()
+        self.adm = adm
+        k = k or adm.cfg.k
+        max_edge = max_edge or adm.cfg.max_edge
+        adm.anchors = (start, goal)
+        self.endpoints_ok = bool(adm.admissible(np.stack([start, goal]), np.inf, np.ones(2, bool)).all())
+        x = rng.uniform(adm.lo, adm.hi, size=(n_samples, 7))
+        x = x[adm.admissible(x, np.inf)]
+        self.nodes = np.concatenate([start[None], goal[None], x])
+        n = self.n = len(self.nodes)
+        self.util = adm.gravity_util(self.nodes)
+        self.code = knn_edge_codes(self.nodes, k, max_edge)
+        self.u, self.v = self.code // n, self.code % n
+        self.length = np.linalg.norm(self.nodes[self.u] - self.nodes[self.v], axis=1)
+        self.ok = np.full(len(self.code), -1, np.int8)  # -1 unknown, 0 colliding, 1 free
+        self.peak = np.maximum(self.util[self.u], self.util[self.v])  # lower bound until evaluated
+        self.build_s = time.perf_counter() - t0
+        self.evaluated = 0
+
+    def edge_ids(self, path_idx: list[int]) -> np.ndarray:
+        a, b = np.asarray(path_idx[:-1]), np.asarray(path_idx[1:])
+        return np.searchsorted(self.code, np.minimum(a, b) * self.n + np.maximum(a, b))
+
+    def evaluate(self, e: np.ndarray) -> None:
+        e = np.unique(e[self.ok[e] < 0])
+        if not len(e):
+            return
+        adm = self.adm
+        a, b = self.nodes[self.u[e]], self.nodes[self.v[e]]
+        m = np.maximum(2, np.ceil(np.max(np.abs(b - a), axis=1) / adm.step).astype(int) + 1)
+        seg = np.repeat(np.arange(len(e)), m)
+        t = np.concatenate([np.linspace(0, 1, k) for k in m])
+        pts = a[seg] + t[:, None] * (b - a)[seg]
+        free = adm.admissible(pts, np.inf, adm.near_endpoint(pts))
+        util = adm.gravity_util(pts)
+        ok = np.ones(len(e), bool)
+        np.logical_and.at(ok, seg, free)
+        pk = np.zeros(len(e))
+        np.maximum.at(pk, seg, util)
+        self.ok[e] = ok.astype(np.int8)
+        self.peak[e] = pk
+        self.evaluated += len(e)
+
+    def _path(self, pred: np.ndarray) -> list[int] | None:
+        if pred[1] < 0:
+            return None
+        path = [1]
+        while path[-1] != 0:
+            path.append(int(pred[path[-1]]))
+        return path[::-1]
+
+    def shortest(self, thr: float, max_iters: int = 400) -> dict:
+        from scipy.sparse import coo_matrix
+        from scipy.sparse.csgraph import dijkstra
+
+        t0 = time.perf_counter()
+        if not self.endpoints_ok or max(self.util[0], self.util[1]) > thr:
+            return {"path": None, "reason": "endpoint_not_admissible"}
+        for it in range(max_iters):
+            alive = (self.ok != 0) & (self.peak <= thr)
+            g = coo_matrix((self.length[alive], (self.u[alive], self.v[alive])), shape=(self.n, self.n)).tocsr()
+            _, pred = dijkstra(g, directed=False, indices=0, return_predecessors=True)
+            path = self._path(pred)
+            if path is None:
+                return {"path": None, "reason": "disconnected", "nodes": self.n, "lazy_iters": it,
+                        "wall_s": time.perf_counter() - t0}
+            e = self.edge_ids(path)
+            if (self.ok[e] < 0).any():
+                self.evaluate(e)
+                continue
+            return {"path": self.nodes[path], "nodes": self.n, "lazy_iters": it + 1,
+                    "edges_checked": self.evaluated, "wall_s": time.perf_counter() - t0}
+        return {"path": None, "reason": "lazy_iteration_budget", "nodes": self.n, "wall_s": time.perf_counter() - t0}
+
+    def bottleneck(self, max_iters: int = 400) -> dict:
+        from scipy.sparse import coo_matrix
+        from scipy.sparse.csgraph import breadth_first_order, minimum_spanning_tree
+
+        t0 = time.perf_counter()
+        if not self.endpoints_ok:
+            return {"path": None, "reason": "endpoint_not_admissible"}
+        for it in range(max_iters):
+            alive = self.ok != 0
+            g = coo_matrix((self.peak[alive] + 1.0, (self.u[alive], self.v[alive])), shape=(self.n, self.n)).tocsr()
+            tree = minimum_spanning_tree(g)
+            _, pred = breadth_first_order(tree + tree.T, 0, directed=False, return_predecessors=True)
+            path = self._path(pred)
+            if path is None:
+                return {"path": None, "reason": "disconnected", "nodes": self.n, "iters": it,
+                        "wall_s": time.perf_counter() - t0}
+            e = self.edge_ids(path)
+            if (self.ok[e] < 0).any():
+                self.evaluate(e)
+                continue
+            return {"path": self.nodes[path], "rho_star": float(self.peak[e].max()), "nodes": self.n,
+                    "iters": it + 1, "edges_checked": self.evaluated, "wall_s": time.perf_counter() - t0}
+        return {"path": None, "reason": "lazy_iteration_budget", "nodes": self.n, "wall_s": time.perf_counter() - t0}
+
+
+def lazy_prm(adm: "Admissibility", start: np.ndarray, goal: np.ndarray, rho: float, n_samples: int,
+             rng: np.random.Generator) -> dict:
+    """Shortest route in A_rho (kept for the existence oracle)."""
     adm.anchors = (start, goal)
     if not adm.admissible(np.stack([start, goal]), rho, np.ones(2, bool)).all():
         return {"path": None, "reason": "endpoint_not_admissible"}
     if adm.segment_ok(start, goal, rho):
-        return {"path": np.stack([start, goal]), "nodes": 2, "lazy_iters": 0, "wall_s": time.perf_counter() - t0}
-    x = rng.uniform(adm.lo, adm.hi, size=(n_samples, 7))
-    x = x[adm.admissible(x, rho)]
-    nodes = np.concatenate([start[None], goal[None], x])
-    n = len(nodes)
-    # k-NN (GPU, chunked)
-    X = torch.as_tensor(nodes, device="cuda", dtype=torch.float32)
-    rows, cols, dist = [], [], []
-    chunk = int(max(256, min(4096, 4e8 // max(n, 1))))
-    for i in range(0, n, chunk):
-        d = torch.cdist(X[i:i + chunk], X)
-        d[torch.arange(d.shape[0]), torch.arange(i, i + d.shape[0])] = float("inf")
-        vals, idx = torch.topk(d, min(cfg.k, n - 1), largest=False)
-        rows.append(np.repeat(np.arange(i, i + d.shape[0]), vals.shape[1]))
-        cols.append(idx.cpu().numpy().ravel())
-        dist.append(vals.cpu().numpy().ravel())
-    r, c, w = np.concatenate(rows), np.concatenate(cols), np.concatenate(dist)
-    keep = w <= cfg.max_edge
-    r, c, w = r[keep], c[keep], w[keep]
-    a, b = np.minimum(r, c), np.maximum(r, c)
-    key = np.unique(np.stack([a, b], 1), axis=0)
-    w = np.linalg.norm(nodes[key[:, 0]] - nodes[key[:, 1]], axis=1)
-    status = {}  # (i,j) -> bool, lazily evaluated
-    alive = np.ones(len(key), bool)
-    index = {(int(i), int(j)): e for e, (i, j) in enumerate(key)}
-    for it in range(cfg.max_lazy_iters):
-        g = coo_matrix((w[alive], (key[alive, 0], key[alive, 1])), shape=(n, n)).tocsr()
-        dist0, pred = dijkstra(g, directed=False, indices=0, return_predecessors=True)
-        if not np.isfinite(dist0[1]):
-            return {"path": None, "reason": "disconnected", "nodes": n, "lazy_iters": it,
-                    "wall_s": time.perf_counter() - t0}
-        path = [1]
-        while path[-1] != 0:
-            path.append(int(pred[path[-1]]))
-        path = path[::-1]
-        bad = False
-        for u, v in zip(path[:-1], path[1:]):
-            e = index[(min(u, v), max(u, v))]
-            if e not in status:
-                status[e] = adm.segment_ok(nodes[u], nodes[v], rho)
-            if not status[e]:
-                alive[e] = False
-                bad = True
-        if not bad:
-            return {"path": nodes[path], "nodes": n, "lazy_iters": it + 1, "edges_checked": len(status),
-                    "wall_s": time.perf_counter() - t0}
-    return {"path": None, "reason": "lazy_iteration_budget", "nodes": n, "wall_s": time.perf_counter() - t0}
+        return {"path": np.stack([start, goal]), "nodes": 2, "lazy_iters": 0, "wall_s": 0.0}
+    return LazyRoadmap(adm, start, goal, n_samples, rng).shortest(rho)
 
 
-def shortcut(adm: Admissibility, path: np.ndarray, rho: float, tries: int, rng) -> np.ndarray:
-    p = [np.asarray(x) for x in path]
-    for _ in range(tries):
-        if len(p) <= 2:
-            break
-        i, j = sorted(rng.choice(len(p), 2, replace=False))
-        if j - i < 2:
-            continue
-        if adm.segment_ok(p[i], p[j], rho):
-            p = p[: i + 1] + p[j:]
-    return np.stack(p)
+def shortcut(adm: "Admissibility", path: np.ndarray, rho: float, tries: int = 0, rng=None) -> np.ndarray:
+    """Greedy furthest-visible shortcutting; all waypoint pairs checked in ONE batch."""
+    p = np.asarray(path, float)
+    n = len(p)
+    if n <= 2:
+        return p
+    pairs = [(i, j) for i in range(n) for j in range(i + 2, n)]
+    a, b = p[[i for i, _ in pairs]], p[[j for _, j in pairs]]
+    m = np.maximum(2, np.ceil(np.max(np.abs(b - a), axis=1) / adm.step).astype(int) + 1)
+    seg = np.repeat(np.arange(len(pairs)), m)
+    t = np.concatenate([np.linspace(0, 1, k) for k in m])
+    pts = a[seg] + t[:, None] * (b - a)[seg]
+    good = adm.admissible(pts, rho, adm.near_endpoint(pts))
+    ok = np.ones(len(pairs), bool)
+    np.logical_and.at(ok, seg, good)
+    visible = {pr: o for pr, o in zip(pairs, ok)}
+    out, i = [0], 0
+    while i < n - 1:
+        j = next((j for j in range(n - 1, i + 1, -1) if visible[(i, j)]), i + 1)
+        out.append(j)
+        i = j
+    return p[out]
 
 
 # ------------------------------------------------------------------ time scaling

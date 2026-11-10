@@ -28,13 +28,14 @@ from __future__ import annotations
 import argparse
 import json
 import time
+import zlib
 from dataclasses import asdict, dataclass
 from pathlib import Path
 
 import numpy as np
 
 from .common import canonical_hash, payload_grid, rest_controls, task_split, write_json
-from .existence_oracle import Admissibility, OracleConfig, segment_duration, shortcut, witness_trajectory
+from .existence_oracle import Admissibility, LazyRoadmap, knn_edge_codes, OracleConfig, segment_duration, shortcut, witness_trajectory
 from .geometry import evaluate, fit_quintic
 
 HARD_PAYLOADS = ("m3_offset", "m4_axial", "m4_offset", "m5_axial", "m5_offset")
@@ -69,59 +70,11 @@ def edge_profile(adm: Admissibility, a: np.ndarray, b: np.ndarray) -> float:
 
 def bottleneck_route(adm: Admissibility, start, goal, n_samples: int, cfg: HardConfig, rng) -> dict:
     """Minimax-gravity route on a lazy roadmap of collision-free configurations."""
-    import torch
-    from scipy.sparse import coo_matrix
-    from scipy.sparse.csgraph import breadth_first_order, minimum_spanning_tree
-
     t0 = time.perf_counter()
-    adm.anchors = (start, goal)
-    x = rng.uniform(adm.lo, adm.hi, size=(n_samples, 7))
-    x = x[adm.admissible(x, np.inf)]
-    nodes = np.concatenate([start[None], goal[None], x])
-    util = adm.gravity_util(nodes)
-    n = len(nodes)
-    X = torch.as_tensor(nodes, device="cuda", dtype=torch.float32)
-    rows, cols = [], []
-    chunk = int(max(256, min(4096, 4e8 // max(n, 1))))  # keep the distance block <= ~1.6 GB
-    for i in range(0, n, chunk):
-        d = torch.cdist(X[i:i + chunk], X)
-        d[torch.arange(d.shape[0]), torch.arange(i, i + d.shape[0])] = float("inf")
-        vals, idx = torch.topk(d, min(cfg.k, n - 1), largest=False)
-        keep = (vals <= cfg.max_edge).cpu().numpy()
-        r = np.repeat(np.arange(i, i + d.shape[0]), vals.shape[1]).reshape(keep.shape)
-        rows.append(r[keep])
-        cols.append(idx.cpu().numpy()[keep])
-    r, c = np.concatenate(rows), np.concatenate(cols)
-    key = np.unique(np.stack([np.minimum(r, c), np.maximum(r, c)], 1), axis=0)
-    w = np.maximum(util[key[:, 0]], util[key[:, 1]])  # lower bound until checked
-    checked = np.zeros(len(key), bool)
-    index = {(int(a), int(b)): e for e, (a, b) in enumerate(key)}
-    for it in range(cfg.max_lazy_iters):
-        alive = np.isfinite(w)
-        # +1 keeps weights strictly positive for scipy (zero = no edge)
-        g = coo_matrix((w[alive] + 1.0, (key[alive, 0], key[alive, 1])), shape=(n, n)).tocsr()
-        tree = minimum_spanning_tree(g)
-        tree = tree + tree.T
-        order, pred = breadth_first_order(tree, 0, directed=False, return_predecessors=True)
-        if pred[1] < 0:
-            return {"path": None, "reason": "disconnected", "nodes": n, "iters": it,
-                    "wall_s": time.perf_counter() - t0}
-        path = [1]
-        while path[-1] != 0:
-            path.append(int(pred[path[-1]]))
-        path = path[::-1]
-        new = False
-        for u, v in zip(path[:-1], path[1:]):
-            e = index[(min(u, v), max(u, v))]
-            if not checked[e]:
-                checked[e] = True
-                w[e] = edge_profile(adm, nodes[u], nodes[v])
-                new = True
-        if not new:
-            peak = float(max(w[index[(min(u, v), max(u, v))]] for u, v in zip(path[:-1], path[1:])))
-            return {"path": nodes[path], "rho_star": peak, "nodes": n, "iters": it + 1,
-                    "edges_checked": int(checked.sum()), "wall_s": time.perf_counter() - t0}
-    return {"path": None, "reason": "lazy_iteration_budget", "nodes": n, "wall_s": time.perf_counter() - t0}
+    rm = LazyRoadmap(adm, start, goal, n_samples, rng, k=cfg.k, max_edge=cfg.max_edge)
+    out = rm.bottleneck(cfg.max_lazy_iters)
+    out["wall_s"] = time.perf_counter() - t0
+    return out
 
 
 def global_roadmap(adm: Admissibility, n_samples: int, cfg: HardConfig, rng, batch_points: int = 600_000) -> dict:
@@ -129,7 +82,6 @@ def global_roadmap(adm: Admissibility, n_samples: int, cfg: HardConfig, rng, bat
 
     Edge weight = max static gravity utilisation along the edge (inf if colliding).
     Returns nodes, node utilisation, the minimum spanning forest (minimax property)."""
-    import torch
     from scipy.sparse import coo_matrix
     from scipy.sparse.csgraph import minimum_spanning_tree
 
@@ -139,19 +91,8 @@ def global_roadmap(adm: Admissibility, n_samples: int, cfg: HardConfig, rng, bat
     nodes = x[adm.admissible(x, np.inf)]
     util = adm.gravity_util(nodes)
     n = len(nodes)
-    X = torch.as_tensor(nodes, device="cuda", dtype=torch.float32)
-    rows, cols = [], []
-    chunk = int(max(256, min(4096, 4e8 // max(n, 1))))  # keep the distance block <= ~1.6 GB
-    for i in range(0, n, chunk):
-        d = torch.cdist(X[i:i + chunk], X)
-        d[torch.arange(d.shape[0]), torch.arange(i, i + d.shape[0])] = float("inf")
-        vals, idx = torch.topk(d, min(cfg.k, n - 1), largest=False)
-        keep = (vals <= cfg.max_edge).cpu().numpy()
-        r = np.repeat(np.arange(i, i + d.shape[0]), vals.shape[1]).reshape(keep.shape)
-        rows.append(r[keep])
-        cols.append(idx.cpu().numpy()[keep])
-    r, c = np.concatenate(rows), np.concatenate(cols)
-    key = np.unique(np.stack([np.minimum(r, c), np.maximum(r, c)], 1), axis=0)
+    code = knn_edge_codes(nodes, cfg.k, cfg.max_edge)
+    key = np.stack([code // n, code % n], 1)
     length = np.linalg.norm(nodes[key[:, 0]] - nodes[key[:, 1]], axis=1)
     m = np.maximum(2, np.ceil(np.max(np.abs(nodes[key[:, 1]] - nodes[key[:, 0]]), axis=1) / adm.step).astype(int) + 1)
     w = np.empty(len(key))
@@ -178,7 +119,7 @@ def global_roadmap(adm: Admissibility, n_samples: int, cfg: HardConfig, rng, bat
     tree = minimum_spanning_tree(g)
     tree = (tree + tree.T).tocsr()
     return {"nodes": nodes, "util": util, "tree": tree, "edges": int(alive.sum()), "length": length,
-            "key": key, "w": w,
+            "key": key, "w": w, "code": code,
             "wall_s": time.perf_counter() - t0}
 
 
@@ -198,10 +139,12 @@ def select_pairs(rm: dict, cfg: HardConfig, rng, *, n_tight: int, n_dynamic: int
         # minimax value from s to every reachable node along the tree
         mm = np.full(len(nodes), np.inf)
         mm[s] = util[s]
-        tree_coo = tree.tocsr()
-        for v in order[1:]:
-            u = pred[v]
-            mm[v] = max(mm[u], tree_coo[u, v] - 1.0, util[v])
+        ch = order[1:]
+        par = pred[ch]
+        e = np.searchsorted(rm["code"], np.minimum(par, ch) * len(nodes) + np.maximum(par, ch))
+        wpar = np.maximum(rm["w"][e], util[ch])
+        for v, u, wv in zip(ch.tolist(), par.tolist(), wpar.tolist()):  # BFS order: parents first
+            mm[v] = mm[u] if mm[u] > wv else wv
         cand = [t for t in ok_end if t != s and np.isfinite(mm[t]) and np.linalg.norm(nodes[t] - nodes[s]) >= min_distance]
         if not cand:
             continue
@@ -275,16 +218,21 @@ def main() -> None:
     ap.add_argument("--max-candidates", type=int, default=30, help="per kind, per scene x payload")
     ap.add_argument("--config", default="{}", help="JSON overrides of HardConfig")
     ap.add_argument("--kinds", nargs="*", default=["TIGHT", "DYNAMIC"])
+    ap.add_argument("--shard", type=int, default=0)
+    ap.add_argument("--nshards", type=int, default=1)
     a = ap.parse_args()
     cfg = HardConfig(seed=a.seed, **json.loads(a.config))
     cfg_o = OracleConfig(seed=a.seed)
     lim = physical_limits(KinematicsCfg.from_robot_yaml_file("franka.yml").kinematics_config)
     write_json(a.output / "hard_config.json", {"hard": asdict(cfg), "oracle": asdict(cfg_o), "args": vars(a)})
     payloads = {p.label: p for p in payload_grid()}
-    rng = np.random.default_rng(a.seed)
-    for scene in a.scenes:
+    combos = [(sc, pl) for sc in a.scenes for pl in a.payloads]
+    for ci, (scene, pl) in enumerate(combos):
+        if ci % a.nshards != a.shard:
+            continue
         pool_checker = PathCollisionChecker(scene)
-        for pl in a.payloads:
+        if True:
+            rng = np.random.default_rng([a.seed, zlib.crc32(f"{scene}/{pl}".encode())])
             p = payloads[pl]
             adm = Admissibility(scene, p, cfg_o, cfg_o.margins[0])
             oracle = K107Oracle(p, overload_aware_start=True, start_method="lp")

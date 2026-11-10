@@ -24,13 +24,14 @@ from __future__ import annotations
 
 import argparse
 import json
+import zlib
 from dataclasses import asdict, dataclass
 from pathlib import Path
 
 import numpy as np
 
 from .common import canonical_hash, payload_grid, task_split, write_json
-from .existence_oracle import Admissibility, OracleConfig, lazy_prm, segment_duration, shortcut, witness_trajectory
+from .existence_oracle import Admissibility, LazyRoadmap, OracleConfig, segment_duration, shortcut, witness_trajectory
 from .hard_bank import HARD_PAYLOADS, HardConfig, dynamic_witness, global_roadmap, polyline_length
 
 
@@ -88,12 +89,12 @@ def select_detour_pairs(rm: dict, cfg: DetourConfig, rng) -> list[dict]:
     return out
 
 
-def route(adm, q0, q1, rho, n, seed):
-    r = lazy_prm(adm, q0, q1, rho, n, np.random.default_rng(seed))
+def route(rm: LazyRoadmap, rho: float):
+    """Shortest route with peak static utilisation <= rho on the cell's shared roadmap."""
+    r = rm.shortest(rho)
     if r["path"] is None:
         return None, r
-    p = shortcut(adm, r["path"], rho, 300, np.random.default_rng(seed))
-    return p, r
+    return shortcut(rm.adm, r["path"], rho), r
 
 
 def peak_util(adm, path: np.ndarray, step: float = 0.01) -> float:
@@ -115,21 +116,25 @@ def main() -> None:
     ap.add_argument("--scenes", nargs="*", default=["free", "table", "cluttered"])
     ap.add_argument("--payloads", nargs="*", default=list(HARD_PAYLOADS))
     ap.add_argument("--config", default="{}")
+    ap.add_argument("--shard", type=int, default=0)
+    ap.add_argument("--nshards", type=int, default=1)
     a = ap.parse_args()
     cfg = DetourConfig(**json.loads(a.config))
     cfg_o, cfg_h = OracleConfig(seed=cfg.seed), HardConfig(seed=cfg.seed)
     lim = physical_limits(KinematicsCfg.from_robot_yaml_file("franka.yml").kinematics_config)
     write_json(a.output / "detour_config.json", {"detour": asdict(cfg), "oracle": asdict(cfg_o), "args": vars(a)})
     payloads = {p.label: p for p in payload_grid()}
-    rng = np.random.default_rng(cfg.seed)
-    for scene in a.scenes:
-        for pl in a.payloads:
+    combos = [(sc, pl) for sc in a.scenes for pl in a.payloads]
+    for ci, (scene, pl) in enumerate(combos):
+        if ci % a.nshards != a.shard:
+            continue
+        if True:
+            rng = np.random.default_rng([cfg.seed, zlib.crc32(f"{scene}/{pl}".encode())])
             p = payloads[pl]
             adm = Admissibility(scene, p, cfg_o, cfg_o.margins[0])
             oracles = [K107Oracle(p, overload_aware_start=True, start_method="lp"),
                        K107Oracle(p, overload_aware_start=True, start_method="lp", warmup=False,
                                   lp_options={"lp_stride": 1, "min_slack": 0.001, "rounds": 2})]
-            oracle = oracles[0]
 
             def dyn(path, rho_path):
                 for o in oracles:  # default Phase-I LP first, then the full-resolution LP
@@ -149,10 +154,10 @@ def main() -> None:
                     continue
                 rec = core | {"cell_id": cid, "split": task_split(cid), "selection": {k: v for k, v in pr.items() if k.startswith("sel_")},
                               "endpoint_util": adm.gravity_util(np.stack([q0, q1])).tolist()}
-                seed = [cfg.seed, 11]
-                pf, _ = route(adm, q0, q1, np.inf, cfg.verify_samples, seed)
-                ps, _ = route(adm, q0, q1, cfg.rho_static, cfg.verify_samples, seed)
-                pw, _ = route(adm, q0, q1, cfg.rho_swing, cfg.verify_samples, seed)
+                rmc = LazyRoadmap(adm, q0, q1, cfg.verify_samples, np.random.default_rng([cfg.seed, 11]))
+                pf, _ = route(rmc, np.inf)
+                ps, _ = route(rmc, cfg.rho_static)
+                pw, _ = route(rmc, cfg.rho_swing)
                 if pf is None or ps is None:
                     rec.update(label="UNRESOLVED", reason="no_free_or_static_route")
                     write_json(d / "detour.json", rec)
@@ -184,7 +189,7 @@ def main() -> None:
                 # swing (dynamic) witness: least-overloaded short route first (rho ladder)
                 attempts = []
                 for rho_sw in cfg.swing_ladder:
-                    pr_sw, _ = route(adm, q0, q1, rho_sw, cfg.verify_samples, [cfg.seed, 13])
+                    pr_sw, _ = route(rmc, rho_sw)
                     if pr_sw is None:
                         attempts.append({"rho": rho_sw, "reason": "no_route"})
                         continue
