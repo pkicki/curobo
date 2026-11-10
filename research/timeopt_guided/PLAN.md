@@ -279,6 +279,47 @@ on top of the hybrid planner.
     matched wall time.
   * Rerun A+B+C on the held-out confirmation split.
 
+### 2.8 Existence oracle and frozen benchmark (in progress)
+
+* **Certificate (quasi-static existence).** Call a configuration
+  ρ-admissible if it is collision free with a clearance margin (world + self,
+  payload sphere), inside the joint limits with a margin, and its static
+  gravity torque is ≤ ρ · 0.95 · τmax, with ρ < 1. If a polygonal joint-space
+  path through ρ-admissible configurations connects start and goal, then each
+  segment executed rest-to-rest with a quintic time scaling of large enough
+  duration satisfies all Scaled95 constraints. That trajectory is the witness.
+* **Oracle** (`existence_oracle.py`), independent of every method under test:
+  * a lazy PRM (uniform samples, k-NN, edges checked only when on a candidate
+    shortest path), then shortcutting, then per-segment duration bisection;
+  * ladders: margin 1.5 cm → 5 mm (with proportionally finer edge steps),
+    ρ 0.80 → 0.90 → 0.97, samples 50k → 200k;
+  * within 0.3 rad of the start and goal, only the problem's own constraints
+    apply (no margin), because the bank admits endpoints with smaller margins.
+* **Certification.** `independent_validate.py` with `gap_check`: Pinocchio
+  dynamics with the payload; V/A/J/τ against Scaled95; sphere collisions with
+  an inter-sample guarantee (per-sample clearance ≥ the largest sphere
+  displacement to neighbouring samples, ×2 for self pairs); endpoints and
+  rest.
+* **Bugs found and fixed while building it:**
+  * cuRobo's `SceneData.load_from_scene_cfg` silently skips sphere obstacles.
+    The native planner "succeeds" from a start inside a sphere obstacle.
+    `common.curobo_scene` now gives cuRobo each sphere as a zero-length
+    capsule (exact), and every planner and screen uses it. Earlier
+    cluttered-scene results (2.3, 2.6, 2.7) predate this fix and must be
+    rerun.
+  * `RobotCollisionChecker.validate` does not enforce the activation margin;
+    `valid_configs(strict_margin=True)` does.
+* **Pilot check** (305 frozen pilot cells, after the fixes): 303 certified on
+  the first pass, 0 witnesses rejected, median 0.6 s per cell.
+  * One cell needed the 5 mm margin; it is now certified (23.5 s). Native's
+    trajectory there passes with 2.5 mm clearance.
+  * One cell has its goal 2 cm inside an obstacle: an invalid task that the
+    bank admitted because of the sphere bug.
+  * So every valid pilot cell was certified, including the 26 that no method
+    had solved. All of them have a gravity-feasible route.
+* **Next:** a new bank (new seed) → oracle on all admissible cells →
+  certification → `freeze_benchmark.py` manifest. Only then evaluate methods.
+
 ## 3. Software (all in `research/timeopt_guided/`)
 
 | Module | Env | Role |

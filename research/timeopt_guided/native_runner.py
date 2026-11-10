@@ -22,7 +22,7 @@ from dataclasses import dataclass, field
 import numpy as np
 import torch
 
-from .common import JOINT_NAMES, SCENES, Payload
+from .common import JOINT_NAMES, SCENES, Payload, curobo_scene
 
 DEFAULT_ATTACHED = {"mass": 0.01, "com": (0.0, 0.0, 0.0), "inertia": (1e-4, 1e-4, 1e-4, 0.0, 0.0, 0.0)}
 
@@ -50,15 +50,20 @@ class NativeAttempt:
 #                 existing torque-bound cost keeps |g(q)| <= rho * tau_max along the path
 #                 and leaves speed to TimeOpt. Metrics rollouts (final validity) keep the
 #                 true torque at the actual timing.
-VARIANTS = ("native", "torque_aware", "gravity_aware_85", "gravity_aware_90", "gravity_aware_95")
+#   torque_aware_<rho>: full torque (gravity + dynamics at TrajOpt's provisional timing)
+#                 / rho in the optimizer rollouts, i.e. TrajOpt's bound is rho * tau_max
+#                 (plain ``torque_aware`` = rho 1.00 vs the UNSCALED nominal effort).
+VARIANTS = ("native", "torque_aware", "torque_aware_95", "torque_aware_99",
+            "gravity_aware_85", "gravity_aware_90", "gravity_aware_95")
 
 
 class GravityOnlyDynamics:
     """Proxy for a cuRobo ``Dynamics``: compute_inverse_dynamics -> gravity torque / rho."""
 
-    def __init__(self, dynamics, rho: float) -> None:
+    def __init__(self, dynamics, rho: float, gravity_only: bool = True) -> None:
         self._d = dynamics
         self._rho = float(rho)
+        self._gravity_only = gravity_only
 
     def __getattr__(self, name):
         return getattr(self._d, name)
@@ -66,20 +71,22 @@ class GravityOnlyDynamics:
     def compute_inverse_dynamics(self, state):
         from curobo.types import JointState
 
+        if not self._gravity_only:
+            return self._d.compute_inverse_dynamics(state) / self._rho
         z = state.position * 0.0
         js = JointState(position=state.position, velocity=z, acceleration=z, jerk=z,
                         joint_names=state.joint_names)
         return self._d.compute_inverse_dynamics(js) / self._rho
 
 
-def install_gravity_cost(planner, rho: float) -> int:
+def install_gravity_cost(planner, rho: float, gravity_only: bool = True) -> int:
     """Swap the optimizer rollouts' dynamics of TrajOpt for the gravity-only proxy."""
     core = planner.trajopt_solver.core
     n = 0
     for rollout in core.optimizer_rollouts:
         tm = rollout.transition_model
         if tm.robot_dynamics is not None and not isinstance(tm.robot_dynamics, GravityOnlyDynamics):
-            tm.robot_dynamics = GravityOnlyDynamics(tm.robot_dynamics, rho)
+            tm.robot_dynamics = GravityOnlyDynamics(tm.robot_dynamics, rho, gravity_only)
             n += 1
     if n == 0:
         raise RuntimeError("no TrajOpt optimizer rollout with dynamics; load_dynamics missing?")
@@ -120,13 +127,16 @@ class NativePlanner:
         self.scene = scene
         self.variant = variant
         self.planner = MotionPlanner(MotionPlannerCfg.create(
-            robot=robot_config_for(variant), scene_model=SCENES[scene],
+            robot=robot_config_for(variant), scene_model=curobo_scene(scene),
             collision_cache={"cuboid": 32, "mesh": 2},
             graph_planner_algorithm="rrt", use_cuda_graph=use_cuda_graph, random_seed=seed,
         ))
         self.kp = self.planner.kinematics.config.kinematics_config
         if variant.startswith("gravity_aware_"):
             self.gravity_rollouts = install_gravity_cost(self.planner, int(variant.split("_")[-1]) / 100.0)
+        elif variant.startswith("torque_aware_"):
+            self.gravity_rollouts = install_gravity_cost(self.planner, int(variant.split("_")[-1]) / 100.0,
+                                                         gravity_only=False)
         self.payload = Payload(0.0, (0.0, 0.0, 0.0))
         t = time.perf_counter()
         self.planner.warmup(enable_graph=True, num_warmup_iterations=warmup_iterations)

@@ -13,7 +13,7 @@ from __future__ import annotations
 import numpy as np
 import torch
 
-from .common import SCENES, Payload
+from .common import Payload, curobo_scene
 from .geometry import evaluate
 
 
@@ -24,8 +24,8 @@ class PathCollisionChecker:
         from curobo.collision_checking import RobotCollisionChecker, RobotCollisionCheckerCfg
 
         cfg = RobotCollisionCheckerCfg.load_from_config(
-            robot_config="franka.yml", scene_model=SCENES[scene],
-            collision_activation_distance=margin_m, self_collision_activation_distance=0.0,
+            robot_config="franka.yml", scene_model=curobo_scene(scene),
+            collision_activation_distance=margin_m, self_collision_activation_distance=margin_m,
             n_cuboids=32, n_meshes=2,
         )
         self.checker = RobotCollisionChecker(cfg)
@@ -48,12 +48,22 @@ class PathCollisionChecker:
             spheres[0] = torch.as_tensor([*p.com_m, p.radius_m], device=dev)
         self.kp.update_link_spheres("attached_object", spheres)
 
-    def valid_configs(self, q: np.ndarray) -> np.ndarray:
-        """Boolean validity for configurations [B, H, 7] -> [B, H]."""
+    def valid_configs(self, q: np.ndarray, *, strict_margin: bool = False) -> np.ndarray:
+        """Boolean validity for configurations [B, H, 7] -> [B, H].
+
+        ``strict_margin``: also reject configurations within ``margin_m`` of an obstacle
+        or of a self-collision pair. ``RobotCollisionChecker.validate`` only rejects
+        actual penetration; the activation-distance costs are positive inside the margin.
+        """
         qt = torch.as_tensor(np.asarray(q, float), device=self.kp.link_spheres.device, dtype=torch.float32)
         if qt.ndim == 2:
             qt = qt[None]
-        return self.checker.validate(qt.contiguous()).detach().cpu().numpy()
+        qt = qt.contiguous()
+        valid = self.checker.validate(qt)
+        if strict_margin:
+            dw, ds = self.checker.get_scene_self_collision_distance_from_joints(qt)
+            valid = valid & (dw.reshape(*qt.shape[:2], -1).sum(-1) <= 0) & (ds.reshape(*qt.shape[:2], -1).sum(-1) <= 0)
+        return valid.detach().cpu().numpy()
 
     def check_paths(self, controls: list[np.ndarray], *, degree: int = 5, knots=None) -> np.ndarray:
         """True for each candidate whose sampled path is collision free and in joint limits."""

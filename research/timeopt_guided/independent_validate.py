@@ -106,6 +106,32 @@ class Geometry:
         if unsupported:
             raise ValueError(f"unsupported scene primitives {unsupported}")
 
+    def clearance_profile(self, q: np.ndarray) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+        """Per-sample world and self clearance [N] and sphere centers [N, S, 3]."""
+        n = len(q)
+        world, selfc = np.full(n, np.inf), np.full(n, np.inf)
+        xyzs = np.empty((n, len(self.local), 3))
+        for k, item in enumerate(q):
+            self.state[self.qi] = item
+            pin.framesForwardKinematics(self.model, self.data, self.state)
+            xyz = xyzs[k]
+            for ids, fid in self.groups:
+                pose = self.data.oMf[fid]
+                xyz[ids] = self.local[ids] @ pose.rotation.T + pose.translation
+            selfc[k] = float(np.min(np.linalg.norm(xyz[self.ia] - xyz[self.ib], axis=1) - self.self_limit))
+            for center, rot, half in self.cuboids:
+                d = np.abs(rot.inv().apply(xyz - center)) - half
+                dist = np.linalg.norm(np.maximum(d, 0), axis=1) + np.minimum(np.max(d, axis=1), 0) - self.radii
+                world[k] = min(world[k], float(dist.min()))
+            for center, r in self.spheres:
+                world[k] = min(world[k], float(np.min(np.linalg.norm(xyz - center, axis=1) - self.radii - r)))
+            for a, b, r in self.capsules:
+                ax = b - a
+                f = np.clip((xyz - a) @ ax / float(ax @ ax), 0, 1)
+                world[k] = min(world[k], float(np.min(np.linalg.norm(xyz - (a + f[:, None] * ax), axis=1)
+                                                      - self.radii - r)))
+        return world, selfc, xyzs
+
     def clearance(self, q: np.ndarray) -> tuple[float, float]:
         world, selfc = np.inf, np.inf
         for item in q:
@@ -156,8 +182,25 @@ def validate(traj: dict, meta: dict) -> dict:
     out["utilization_physical"] = util
     out["utilization_scaled95"] = {k: v / 0.95 for k, v in util.items()}
     geo = Geometry(model, data, state, qi, meta["scene"], payload)
-    stride = max(1, len(q) // int(meta.get("collision_samples", 2049)))
-    world, selfc = geo.clearance(q[::stride])
+    if meta.get("gap_check"):
+        # Inter-sample guarantee: between consecutive samples a sphere center moves along a
+        # path of length ~ |p_{k+1} - p_k| (dense sampling); a sample's clearance must exceed
+        # the largest displacement of any sphere to its neighbours (conservative for the
+        # world; for self pairs both spheres move, hence the factor 2).
+        w, sc, xyz = geo.clearance_profile(q)
+        disp = np.max(np.linalg.norm(np.diff(xyz, axis=0), axis=2), axis=1)  # [N-1]
+        nb = np.maximum(np.r_[disp, 0.0], np.r_[0.0, disp])
+        w_ok = ~np.isfinite(w) | (w >= nb)
+        s_ok = sc >= 2.0 * nb
+        out["gap_check"] = {"max_step_displacement_m": float(disp.max()), "world_ok": bool(w_ok.all()),
+                            "self_ok": bool(s_ok.all()),
+                            "min_world_slack_m": None if not np.isfinite(w).any() else float(np.min((w - nb)[np.isfinite(w)])),
+                            "min_self_slack_m": float(np.min(sc - 2.0 * nb))}
+        world = float(np.min(w)) if np.isfinite(w).any() else np.inf
+        selfc = float(np.min(sc))
+    else:
+        stride = max(1, len(q) // int(meta.get("collision_samples", 2049)))
+        world, selfc = geo.clearance(q[::stride])
     out["world_clearance_m"] = None if not np.isfinite(world) else world
     out["self_clearance_m"] = selfc
     out["start_error_rad"] = float(np.max(np.abs(q[0] - np.asarray(meta["start"]))))
@@ -167,6 +210,8 @@ def validate(traj: dict, meta: dict) -> dict:
     ok_end = out["start_error_rad"] <= 1e-3 and out["goal_error_rad"] <= 1e-3 and out["end_speed"] <= 1e-2
     out["physical_pass"] = bool(ok_geom and ok_end and all(v <= 1 + TOL for v in util.values()))
     out["scaled95_pass"] = bool(out["physical_pass"] and all(v <= 1 + TOL for v in out["utilization_scaled95"].values()))
+    if "gap_check" in out:
+        out["certified"] = bool(out["scaled95_pass"] and out["gap_check"]["world_ok"] and out["gap_check"]["self_ok"])
     out["note"] = "sampled Pinocchio + sphere audit; not a continuous-time certificate"
     return out
 

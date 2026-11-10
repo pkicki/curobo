@@ -163,3 +163,17 @@ def test_phase1_lp_start_matches_standard_route_on_regular_path():
         terms, torch.as_tensor(c0, device="cuda"), margin=0.995, fixed_ends=True, max_iterations=16,
         max_decrease=3, linear_solver="banded", sync_mode="fused", kernel_variant="split", restore_bisect=True)
     assert abs(float(res.duration) - ref.duration_s) < 0.03 * ref.duration_s
+
+
+def test_existence_witness_time_scaling_is_rest_to_rest():
+    from research.timeopt_guided.existence_oracle import S1, S2, S3, quintic, witness_trajectory
+
+    u = np.linspace(0, 1, 20001)
+    s, s1, s2, s3 = quintic(u)
+    assert abs(s[0]) < 1e-12 and abs(s[-1] - 1) < 1e-12
+    assert abs(np.abs(s1).max() - S1) < 1e-3 and abs(np.abs(s2).max() - S2) < 1e-3 and abs(np.abs(s3).max() - S3) < 1e-3
+    wp = np.array([[0.0] * 7, [0.5] * 7, [0.2] * 7], np.float32)
+    tr = witness_trajectory(wp, [1.0, 2.0], samples_per_segment=101)
+    assert np.allclose(tr["q"][0], wp[0]) and np.allclose(tr["q"][-1], wp[-1])
+    assert np.allclose(tr["qd"][[0, 100, -1]], 0.0) and np.allclose(tr["qdd"][[0, 100, -1]], 0.0, atol=1e-9)
+    assert np.all(np.diff(tr["time"]) > 0) and abs(tr["time"][-1] - 3.0) < 1e-9

@@ -38,6 +38,34 @@ SCENES = {
 }
 
 
+def curobo_scene(name: str):
+    """Scene for cuRobo with sphere obstacles given as zero-length capsules.
+
+    cuRobo's ``SceneData.load_from_scene_cfg`` (curobo/_src/geom/data/data_scene.py)
+    loads cuboid/capsule/cylinder/mesh/voxel obstacles but silently SKIPS
+    ``scene_cfg.sphere`` (verified at 299d7a6: a planner starting inside a sphere
+    obstacle reports success). A capsule with coincident endpoints is exactly a
+    sphere in cuRobo's capsule kernel, so this conversion is exact. Returns None
+    for the obstacle-free scene and a dict otherwise.
+    """
+    file = SCENES[name]
+    if file is None:
+        return None
+    import copy
+
+    import yaml
+
+    data = copy.deepcopy(yaml.safe_load((ROOT / "curobo/content/configs/scene" / file).read_text()))
+    spheres = data.pop("sphere", None) or {}
+    caps = data.setdefault("capsule", {}) or {}
+    for key, sph in spheres.items():
+        center = list(sph.get("position", (sph.get("pose") or [0, 0, 0])[:3]))
+        caps[f"{key}__as_capsule"] = {"radius": float(sph["radius"]), "base": [0.0, 0.0, 0.0],
+                                      "tip": [0.0, 0.0, 0.0], "pose": center + [1.0, 0.0, 0.0, 0.0]}
+    data["capsule"] = caps
+    return data
+
+
 @dataclass(frozen=True)
 class Payload:
     """Rigid tool payload on ``attached_object`` (see module docstring)."""
