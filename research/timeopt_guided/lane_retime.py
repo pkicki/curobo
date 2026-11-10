@@ -32,16 +32,35 @@ def main() -> None:
     ap.add_argument("--run", type=Path, required=True)
     ap.add_argument("--bank", type=Path, required=True)
     ap.add_argument("--tag", default="hybrid_R1")
-    ap.add_argument("--cells", type=Path, required=True)
+    ap.add_argument("--cells", type=Path, default=None, help="default: every cell of the run with --tag")
+    ap.add_argument("--method-tag", default=None,
+                    help="also write a complete method record <tag>.json/_traj.npz per cell (falls back to --tag)")
     a = ap.parse_args()
     bank = {t["task_id"]: t for t in read_json(a.bank / "tasks.json")["tasks"]}
     lim = physical_limits(KinematicsCfg.from_robot_yaml_file("franka.yml").kinematics_config)
     oracles, rows = {}, []
-    for c in read_json(a.cells):
+    cells = (read_json(a.cells) if a.cells else
+             [{"task_id": f.parent.parent.name, "payload": f.parent.name, "role": None}
+              for f in sorted(a.run.glob(f"cells/*/*/{a.tag}.json"))])
+
+    def method_record(d: Path, rec: dict, extra_wall: float, traj: dict | None, route: str) -> None:
+        if not a.method_tag:
+            return
+        out = dict(rec) | {"wall_s": rec["wall_s"] + extra_wall, "route": route, "variant": a.method_tag}
+        src = d / f"{a.tag}_traj.npz"
+        if traj is not None:
+            out["duration_s"] = float(traj["time"][-1])
+            np.savez_compressed(d / f"{a.method_tag}_traj.npz", **{k: traj[k] for k in ("time", "q", "qd", "qdd", "jerk")})
+        elif rec["success"] and src.exists():
+            np.savez_compressed(d / f"{a.method_tag}_traj.npz", **dict(np.load(src)))
+        write_json(d / f"{a.method_tag}.json", out)
+
+    for c in cells:
         d = a.run / "cells" / c["task_id"] / c["payload"]
         f = d / f"{a.tag}_success_lanes.npz"
         rec = read_json(d / f"{a.tag}.json")
         if not f.exists() or not rec["success"]:
+            method_record(d, rec, 0.0, None, f"{rec.get('route')}|no_retime")
             continue
         p = Payload.from_json(rec["payload"])
         o = oracles.setdefault(p.label, K107Oracle(p))
@@ -82,10 +101,13 @@ def main() -> None:
                 row["same_lane_k107_s"] = per[sel][0].duration_s
                 row["same_lane_ratio"] = per[sel][0].duration_s / rec["duration_s"]
             tr = o.sample_trajectory(conv["controls"], r, degree=3, knots=conv["knots"])
+            method_record(d, rec, wall, tr, f"{rec.get('route')}|k107_lane{i}")
             t = bank[c["task_id"]]
             export(a.run / "validation_B" / c["task_id"] / p.label / "k107_best_lane", tr,
                    {"payload": p.to_json(), "scene": t["scene"], "start": t["start"], "goal": t["goal"],
                     "limits": lim, "role": c.get("role"), "variant": "B_k107_best_lane"})
+        if not feas:
+            method_record(d, rec, wall, None, f"{rec.get('route')}|k107_no_lane")
         rows.append(row)
         print(c["task_id"], p.label, row.get("ratio"), row.get("same_lane_ratio"), f"{wall:.2f}s", flush=True)
     write_json(a.run / "lane_retime.json", rows)

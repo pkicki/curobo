@@ -31,6 +31,9 @@ def main() -> None:
     ap.add_argument("--per-role", type=int, default=20)
     ap.add_argument("--config", type=str, default="{}")
     ap.add_argument("--out", default="refine")
+    ap.add_argument("--all", action="store_true", help="refine every cell with a K107 lane (no per-role sample)")
+    ap.add_argument("--input-tag", default="B_R1", help="method record used as C's input / fallback")
+    ap.add_argument("--method-tag", default=None, help="write a complete method record per cell")
     a = ap.parse_args()
     cfg = RefineConfig(**json.loads(a.config))
     bank = {t["task_id"]: t for t in read_json(a.bank / "tasks.json")["tasks"]}
@@ -39,9 +42,30 @@ def main() -> None:
     rows = [r for r in read_json(a.run / "lane_retime.json") if "best_lane" in r]
     rng = random.Random(0)
     pick = []
-    for role in sorted({r["role"] for r in rows}):
-        rr = [r for r in rows if r["role"] == role]
-        pick += rng.sample(rr, min(a.per_role, len(rr)))
+    if a.all:
+        pick = rows
+    else:
+        for role in sorted({r["role"] for r in rows}):
+            rr = [r for r in rows if r["role"] == role]
+            pick += rng.sample(rr, min(a.per_role, len(rr)))
+
+    def method_record(d: Path, extra_wall: float, traj: dict | None, route: str) -> None:
+        if not a.method_tag:
+            return
+        base = read_json(d / f"{a.input_tag}.json")
+        out = dict(base) | {"wall_s": base["wall_s"] + extra_wall, "route": route, "variant": a.method_tag}
+        if traj is not None:
+            out["duration_s"] = float(traj["time"][-1])
+            np.savez_compressed(d / f"{a.method_tag}_traj.npz", **{k: traj[k] for k in ("time", "q", "qd", "qdd", "jerk")})
+        elif (d / f"{a.input_tag}_traj.npz").exists():
+            np.savez_compressed(d / f"{a.method_tag}_traj.npz", **dict(np.load(d / f"{a.input_tag}_traj.npz")))
+        write_json(d / f"{a.method_tag}.json", out)
+
+    if a.method_tag:  # cells C cannot start from (no K107 lane / planner failure): copy the input method
+        have = {(r["task_id"], r["payload"]) for r in pick}
+        for f in sorted(a.run.glob(f"cells/*/*/{a.input_tag}.json")):
+            if (f.parent.parent.name, f.parent.name) not in have:
+                method_record(f.parent, 0.0, None, read_json(f).get("route", "") + "|no_refine")
     oracles, checkers, out = {}, {}, []
     for r in pick:
         d = a.run / "cells" / r["task_id"] / r["payload"]
@@ -63,9 +87,12 @@ def main() -> None:
                "config": asdict(cfg)}
         if log.best_result is not None and log.accepted:
             tr = o.sample_trajectory(log.best_controls, log.best_result, degree=3, knots=conv["knots"])
+            method_record(d, log.wall_s, tr, "refined")
             export(a.run / f"validation_{a.out}" / r["task_id"] / p.label / "refined", tr,
                    {"payload": p.to_json(), "scene": t["scene"], "start": t["start"], "goal": t["goal"],
                     "limits": lim, "role": r["role"], "variant": "C_refined"})
+        if not (log.best_result is not None and log.accepted):
+            method_record(d, log.wall_s, None, "refine_no_improvement")
         out.append(row)
         print(r["task_id"], p.label, r["role"], row["start_k107_s"], row["final_k107_s"], log.accepted,
               f"{log.wall_s:.2f}s", flush=True)
