@@ -192,6 +192,47 @@ after the standard start fails, so regular paths are unchanged.
   (P1 item 4). Speed up the LP: warm start, fewer rows outside overload
   windows, or a GPU first-order LP.
 
+### 2.6 Idea A: gravity-aware TrajOpt and the hybrid planner (done, development pilot)
+
+* **Finding.** `franka.yml` loads no dynamics (`RobotCfg.load_dynamics=False`), so
+  TrajOpt and the success metrics never evaluate torque; only TimeOpt does.
+  Geometry is chosen torque-blind.
+* **Variants** (`native_runner.VARIANTS`, research only):
+  * `torque_aware`: load dynamics, so TrajOpt's existing torque-bound cost
+    becomes active.
+  * `gravity_aware_<ρ>`: the optimizer rollouts see gravity torque / ρ instead
+    (velocity and acceleration zeroed), which keeps |g(q)| ≤ ρ·τmax along the
+    path. Metrics rollouts are unchanged.
+  * `hybrid`: native `max_attempts=1`. On `timeopt_seed_infeasible_all_lanes`
+    (or a NaN false success) it switches to `gravity_aware_85`; on any other
+    failure, native continues with default attempts.
+* **Frozen comparison set** (pilot development tasks): 145 native R1 failures,
+  100 heavy (≥ 3 kg) successes and 60 light successes, all run on the same
+  A100.
+
+  | planner | R1 failures, physically valid | heavy successes valid | light valid | median latency |
+  |---|---|---|---|---|
+  | native | 2/145 | 100/100 | 60/60 | 16–18 ms (fail: 388 ms) |
+  | torque_aware | 64/145 planned | 84/100 planned | 60/60 | — (different GPU) |
+  | gravity ρ = 0.85 | 116/145 | 85/100 | 59/60 | 22 ms |
+  | **hybrid** | **117/145** | **100/100** | **60/60** | 16–19 ms; rescue 42 ms |
+
+  * ρ sweep (planned): 0.95 → 76, 0.90 → 114, 0.85 → 123 of 145.
+  * Durations on cells both planners solve: hybrid identical; gravity-only
+    median +0.1–0.6%.
+  * The gravity-only variant loses about 15% of heavy successes to collision:
+    the gravity cost pulls the payload toward the arm. The hybrid avoids this
+    by construction.
+  * 5 of 122 hybrid rescues fail the independent world-collision audit (the
+    same sphere-model gap as native).
+  * Jerk: all planners, native included, exceed Scaled95 jerk by up to 0.5%
+    (cubic jerk sampling), within the physical limit.
+* **Harness fixes:** the eager TimeOpt replay can return NaN where native's
+  interpolated output is finite; it now falls back to the interpolated output.
+* **Not yet done:** held-out confirmation split, full-cohort rates (the
+  frozen set is enriched with failures), and a ρ / cost-weight sweep for the
+  standalone variant.
+
 ## 3. Software (all in `research/timeopt_guided/`)
 
 | Module | Env | Role |

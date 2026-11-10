@@ -40,6 +40,63 @@ class NativeAttempt:
     native_reported_success: bool = False  # True if native said success (even if rejected here)
 
 
+# Planner variants (research only; "native" = production defaults).
+#   torque_aware: RobotCfg(load_dynamics=True), so TrajOpt rollouts compute inverse
+#                 dynamics and TrajOpt's existing cspace torque-bound cost becomes
+#                 active during geometric optimization (franka.yml defaults leave
+#                 load_dynamics=False: TrajOpt is torque-blind; only TimeOpt sees torque).
+#   gravity_aware_<rho>: as torque_aware, but the OPTIMIZER rollouts of TrajOpt see
+#                 only gravity torque / rho (velocity and acceleration zeroed), so the
+#                 existing torque-bound cost keeps |g(q)| <= rho * tau_max along the path
+#                 and leaves speed to TimeOpt. Metrics rollouts (final validity) keep the
+#                 true torque at the actual timing.
+VARIANTS = ("native", "torque_aware", "gravity_aware_85", "gravity_aware_90", "gravity_aware_95")
+
+
+class GravityOnlyDynamics:
+    """Proxy for a cuRobo ``Dynamics``: compute_inverse_dynamics -> gravity torque / rho."""
+
+    def __init__(self, dynamics, rho: float) -> None:
+        self._d = dynamics
+        self._rho = float(rho)
+
+    def __getattr__(self, name):
+        return getattr(self._d, name)
+
+    def compute_inverse_dynamics(self, state):
+        from curobo.types import JointState
+
+        z = state.position * 0.0
+        js = JointState(position=state.position, velocity=z, acceleration=z, jerk=z,
+                        joint_names=state.joint_names)
+        return self._d.compute_inverse_dynamics(js) / self._rho
+
+
+def install_gravity_cost(planner, rho: float) -> int:
+    """Swap the optimizer rollouts' dynamics of TrajOpt for the gravity-only proxy."""
+    core = planner.trajopt_solver.core
+    n = 0
+    for rollout in core.optimizer_rollouts:
+        tm = rollout.transition_model
+        if tm.robot_dynamics is not None and not isinstance(tm.robot_dynamics, GravityOnlyDynamics):
+            tm.robot_dynamics = GravityOnlyDynamics(tm.robot_dynamics, rho)
+            n += 1
+    if n == 0:
+        raise RuntimeError("no TrajOpt optimizer rollout with dynamics; load_dynamics missing?")
+    return n
+
+
+def robot_config_for(variant: str):
+    if variant == "native":
+        return "franka.yml"
+    from curobo._src.util.config_io import join_path, resolve_config
+    from curobo.content import get_robot_configs_path
+
+    data = resolve_config(join_path(get_robot_configs_path(), "franka.yml"))
+    data["robot_cfg"]["load_dynamics"] = True
+    return data
+
+
 def _timeopt_stage(planner):
     solver = planner.trajopt_solver
     for owner in (solver, getattr(solver, "core", None)):
@@ -53,18 +110,23 @@ class NativePlanner:
     """Reusable native planner for one scene."""
 
     def __init__(self, scene: str, *, seed: int = 0, use_cuda_graph: bool = True,
-                 warmup_iterations: int = 3, capture: bool = True) -> None:
+                 warmup_iterations: int = 3, capture: bool = True, variant: str = "native") -> None:
         from curobo.motion_planner import MotionPlanner, MotionPlannerCfg
 
         if scene not in SCENES:
             raise ValueError(f"unknown scene {scene}")
+        if variant not in VARIANTS:
+            raise ValueError(f"unknown planner variant {variant}")
         self.scene = scene
+        self.variant = variant
         self.planner = MotionPlanner(MotionPlannerCfg.create(
-            robot="franka.yml", scene_model=SCENES[scene],
+            robot=robot_config_for(variant), scene_model=SCENES[scene],
             collision_cache={"cuboid": 32, "mesh": 2},
             graph_planner_algorithm="rrt", use_cuda_graph=use_cuda_graph, random_seed=seed,
         ))
         self.kp = self.planner.kinematics.config.kinematics_config
+        if variant.startswith("gravity_aware_"):
+            self.gravity_rollouts = install_gravity_cost(self.planner, int(variant.split("_")[-1]) / 100.0)
         self.payload = Payload(0.0, (0.0, 0.0, 0.0))
         t = time.perf_counter()
         self.planner.warmup(enable_graph=True, num_warmup_iterations=warmup_iterations)
@@ -201,7 +263,7 @@ class NativePlanner:
 
     # ---------------------------------------------------------------- plan
     def plan(self, start: np.ndarray, goal: np.ndarray, *, restarts: int = 1,
-             dense_samples: int = 2049) -> list[NativeAttempt]:
+             dense_samples: int = 2049, max_attempts: int | None = None) -> list[NativeAttempt]:
         """Up to ``restarts`` complete plan_cspace calls; stops at the first success."""
         from curobo.types import JointState
 
@@ -215,7 +277,8 @@ class NativePlanner:
             self._snapshots = []
             torch.cuda.synchronize()
             t = time.perf_counter()
-            result = self.planner.plan_cspace(g, s)
+            result = (self.planner.plan_cspace(g, s) if max_attempts is None
+                      else self.planner.plan_cspace(g, s, max_attempts=max_attempts))
             torch.cuda.synchronize()
             wall = time.perf_counter() - t
             ok = result is not None and bool(result.success.any())
@@ -287,6 +350,8 @@ class NativePlanner:
             replay.reset_cuda_graph()
             st = replay.sample(tg)
             pick = lambda x: x[lane, :, :7].detach().cpu().numpy().copy()  # noqa: E731
+            if not all(np.isfinite(pick(v)).all() for v in (st.position, st.velocity, st.acceleration, st.jerk)):
+                return fallback | {"replay_nonfinite": True}
             return {"time": tg[lane].cpu().numpy(), "q": pick(st.position), "qd": pick(st.velocity),
                     "qdd": pick(st.acceleration), "jerk": pick(st.jerk), "source": "timeopt_replay",
                     "lane": lane, "replay_error": float(err[lane]), "duration_s": dur}
@@ -312,3 +377,48 @@ class NativePlanner:
 
     def destroy(self) -> None:
         self.planner.destroy()
+
+
+class HybridPlanner:
+    """Native first; gravity-aware TrajOpt only when native TimeOpt rejects every seed.
+
+    1. native ``plan_cspace(max_attempts=1)``; success -> return (route "native_first").
+    2. failure with ``timeopt_seed_infeasible_all_lanes`` (or a NaN false success)
+       -> gravity-aware planner with default attempts (route "gravity_fallback").
+    3. any other failure -> native with default attempts (route "native_rest").
+    Both planners are constructed, warmed and payload-updated once per scene.
+    """
+
+    TRIGGERS = ("timeopt_seed_infeasible_all_lanes", "success_flag_with_nonfinite_trajectory")
+
+    def __init__(self, scene: str, *, seed: int = 0, fallback: str = "gravity_aware_85") -> None:
+        self.native = NativePlanner(scene, seed=seed, variant="native")
+        self.fallback = NativePlanner(scene, seed=seed, variant=fallback)
+        self.warmup_s = self.native.warmup_s + self.fallback.warmup_s
+
+    def set_payload(self, payload: Payload) -> None:
+        self.native.set_payload(payload)
+        self.fallback.set_payload(payload)
+
+    def gravity_all_models(self, q):
+        return self.native.gravity_all_models(q)
+
+    def plan(self, start, goal, *, restarts: int = 1, dense_samples: int = 2049) -> list[NativeAttempt]:
+        if restarts != 1:
+            raise ValueError("hybrid planner is defined for one request")
+        t = time.perf_counter()
+        first = self.native.plan(start, goal, max_attempts=1, dense_samples=dense_samples)[-1]
+        if first.success:
+            route, out = "native_first", first
+        elif first.failure_stage in self.TRIGGERS:
+            route, out = "gravity_fallback", self.fallback.plan(start, goal, dense_samples=dense_samples)[-1]
+        else:
+            route, out = "native_rest", self.native.plan(start, goal, dense_samples=dense_samples)[-1]
+        out.wall_s = time.perf_counter() - t
+        out.failure_stage = None if out.success else f"{route}:{out.failure_stage}"
+        out.route = route
+        return [out]
+
+    def destroy(self) -> None:
+        self.native.destroy()
+        self.fallback.destroy()

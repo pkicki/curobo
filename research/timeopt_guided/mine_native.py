@@ -29,18 +29,25 @@ def cell_dir(root: Path, task_id: str, payload: Payload) -> Path:
 
 
 def run(bank_dir: Path, out: Path, *, restarts: int, scenes: list[str] | None, escalate_from: int | None,
-        split: str | None, limit: int | None, seed: int) -> None:
+        split: str | None, limit: int | None, seed: int, variant: str = "native",
+        cells_file: Path | None = None) -> None:
     from .native_runner import NativePlanner
 
     bank = read_json(bank_dir / "tasks.json")
     cells = read_json(bank_dir / "cells.json")
     tasks = {t["task_id"]: t for t in bank["tasks"]}
+    tag = f"native_R{restarts}" if variant == "native" else f"{variant.replace(':', '-')}_R{restarts}"
+    only = None
+    if cells_file is not None:
+        only = {(x["task_id"], x["payload"]) for x in read_json(cells_file)}
     todo = []
     for c in cells:
         t = tasks[c["task_id"]]
         if not c["admissible"] or (scenes and t["scene"] not in scenes) or (split and t["split"] != split):
             continue
         p = Payload.from_json(c["payload"])
+        if only is not None and (t["task_id"], p.label) not in only:
+            continue
         if escalate_from is not None:
             prev = cell_dir(out, t["task_id"], p) / f"native_R{escalate_from}.json"
             if not prev.exists() or read_json(prev)["success"]:
@@ -48,19 +55,25 @@ def run(bank_dir: Path, out: Path, *, restarts: int, scenes: list[str] | None, e
         todo.append((t, p))
     if limit:
         todo = todo[:limit]
-    write_json(out / f"native_R{restarts}_frozen_todo.json",
+    write_json(out / f"{tag}_frozen_todo.json",
                [{"task_id": t["task_id"], "payload": p.label} for t, p in todo])
-    print(f"native R{restarts}: {len(todo)} cells")
+    print(f"{tag}: {len(todo)} cells")
     by_scene: dict[str, list] = {}
     for t, p in todo:
         by_scene.setdefault(t["scene"], []).append((t, p))
     for scene, items in by_scene.items():
-        planner = NativePlanner(scene, seed=seed)
+        if variant.startswith("hybrid"):
+            from .native_runner import HybridPlanner
+
+            planner = HybridPlanner(scene, seed=seed, fallback=variant.split(":", 1)[1] if ":" in variant
+                                    else "gravity_aware_85")
+        else:
+            planner = NativePlanner(scene, seed=seed, variant=variant)
         items.sort(key=lambda x: x[1].label)  # group by payload to limit updates
         current = None
         for t, p in items:
             d = cell_dir(out, t["task_id"], p)
-            if (d / f"native_R{restarts}.json").exists():
+            if (d / f"{tag}.json").exists():
                 continue
             if current != p.label:
                 planner.set_payload(p)
@@ -85,11 +98,11 @@ def run(bank_dir: Path, out: Path, *, restarts: int, scenes: list[str] | None, e
             d.mkdir(parents=True, exist_ok=True)
             if last.success and last.trajectory is not None:
                 tr = {k: v for k, v in last.trajectory.items() if isinstance(v, np.ndarray)}
-                np.savez_compressed(d / f"native_R{restarts}_traj.npz", **tr)
+                np.savez_compressed(d / f"{tag}_traj.npz", **tr)
                 lane = last.trajectory.get("lane")
                 if lane is not None and last.timeopt_snapshots:
                     snap = last.timeopt_snapshots[-1]
-                    np.savez_compressed(d / f"native_R{restarts}_selected_lane.npz",
+                    np.savez_compressed(d / f"{tag}_selected_lane.npz",
                                         **{k: snap[k][lane] for k in ("controls", "start_boundary", "goal")})
             lanes = {}
             for ai, a in enumerate(attempts):
@@ -99,8 +112,10 @@ def run(bank_dir: Path, out: Path, *, restarts: int, scenes: list[str] | None, e
                 for k, v in snap.items():
                     lanes[f"a{ai}_{k}"] = v
             if lanes:
-                np.savez_compressed(d / f"native_R{restarts}_lanes.npz", **lanes)
-            write_json(d / f"native_R{restarts}.json", rec)
+                np.savez_compressed(d / f"{tag}_lanes.npz", **lanes)
+            rec["variant"] = variant
+            rec["route"] = getattr(last, "route", None)
+            write_json(d / f"{tag}.json", rec)
             print(f"{t['task_id']} {p.label}: success={last.success} T={last.duration_s} "
                   f"wall={wall:.2f}s stages={rec['failure_stages']}")
         planner.destroy()
@@ -116,9 +131,11 @@ def main() -> None:
     ap.add_argument("--split", choices=("development", "confirmation"), default=None)
     ap.add_argument("--limit", type=int, default=None)
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--variant", default="native")
+    ap.add_argument("--cells", type=Path, default=None, help="JSON list of {task_id, payload} to run")
     a = ap.parse_args()
     run(a.bank, a.output, restarts=a.restarts, scenes=a.scenes, escalate_from=a.escalate_from,
-        split=a.split, limit=a.limit, seed=a.seed)
+        split=a.split, limit=a.limit, seed=a.seed, variant=a.variant, cells_file=a.cells)
 
 
 if __name__ == "__main__":
