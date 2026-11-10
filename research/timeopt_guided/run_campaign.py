@@ -59,7 +59,8 @@ def select(run: Path, bank: dict, *, success_fraction: float, seed: int, split: 
         files = sorted(f.parent.glob("native_R*.json"), key=lambda p: int(p.stem.split("_R")[1]))
         files = [p for p in files if p.stem.count("_") == 1]
         top = read_json(files[-1])
-        if not top["success"]:
+        dur = top.get("duration_s")
+        if not top["success"] or dur is None or not np.isfinite(dur):  # NaN "success" = failure
             picked.append({"cell": str(f.parent), "native_budget": top["restarts_budget"], "role": "native_failure"})
         elif rng.random() < success_fraction:
             picked.append({"cell": str(f.parent), "native_budget": top["restarts_budget"], "role": "native_success_control",
@@ -117,7 +118,7 @@ def main() -> None:
     limits = physical_limits(kp)
     oracles, checkers = {}, {}
     rng = np.random.default_rng(0)
-    for item in selection:
+    for ci, item in enumerate(selection):
         cell = Path(item["cell"])
         rec = read_json(cell / f"native_R{item['native_budget']}.json")
         t = tasks[rec["task_id"]]
@@ -138,18 +139,21 @@ def main() -> None:
         checker = checkers.setdefault(t["scene"], PathCollisionChecker(t["scene"]))
         checker.set_payload(p)
         out = a.output / rec["task_id"] / p.label
+        if (out / "summary.json").exists():
+            continue  # resume
         meta = {"payload": p.to_json(), "scene": t["scene"], "start": t["start"], "goal": t["goal"],
                 "limits": limits, "task_id": t["task_id"], "role": item["role"]}
         seeds = []
         native_traj = cell / f"native_R{item['native_budget']}_traj.npz"
-        if rec["success"] and native_traj.exists():
+        native_ok = bool(rec["success"] and rec.get("duration_s") is not None and np.isfinite(rec["duration_s"]))
+        if native_ok and native_traj.exists() and all(np.isfinite(v).all() for v in np.load(native_traj).values()):
             z = dict(np.load(native_traj))
             export(out / "native", z, meta | {"kind": "native", "duration_s": rec["duration_s"]})
             if a.native_seeds:
                 arc = np.r_[0, np.cumsum(np.linalg.norm(np.diff(z["q"], axis=0), axis=1))]
                 seeds.append(fit_quintic(arc / max(arc[-1], 1e-9), z["q"]))
         lane_file = cell / f"native_R{item['native_budget']}_selected_lane.npz"
-        if rec["success"] and lane_file.exists():
+        if native_ok and lane_file.exists():
             # Retimer-only decomposition: K107 on the EXACT native cubic geometry.
             from .geometry import native_cubic_to_clamped
 
@@ -164,7 +168,8 @@ def main() -> None:
         search = GuidedSearch(oracle, checker, np.asarray(limits["position"]))
         summary = {"task_id": t["task_id"], "payload": p.label, "role": item["role"],
                    "native": rec, "arms": {}}
-        for arm in a.arms:
+        k = ci % len(a.arms)  # rotate arm order per cell: no systematic first-run advantage
+        for arm in a.arms[k:] + a.arms[:k]:
             for sd in range(a.search_seeds):
                 cfg = SearchConfig(**({"max_proposals": a.max_proposals} | overrides | {"arm": arm, "seed": sd}))
                 torch.cuda.synchronize()

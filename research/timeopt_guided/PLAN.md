@@ -81,6 +81,41 @@ from `1597f12`, for these reasons:
    a seed-infeasible failure (20 internal attempts). A 128-proposal search takes
    2–9 s. A practical planner therefore needs Phase 4.
 
+### 2.3 Pilot (2026-11-10, development split, 1 search seed: PRELIMINARY)
+
+180 tasks, 1980 cells, 1369 admissible. Native R1: 145 failures (130
+seed-infeasible + 15 NaN false successes). Escalating to R4 rescued only 1 of
+130, so more native restarts barely help. Seed diagnosis on 520 exact native
+lanes:
+
+* 62% are `GEOMETRY_TORQUE_INFEASIBLE`;
+* 34% are `TOPPRA_FEASIBLE_NEWTON_START_FAILED`;
+* 3.5% had a native seed flagged feasible;
+* none were fully retimed by K107 on the native geometry;
+* replay vs CUDA flag agreement is 96.7%, which is below the bar and needs
+  investigation.
+
+Search on 40 development cells (28 native failures, 12 success controls),
+128 proposals:
+
+| | B blind | C ranked | D guided |
+|---|---|---|---|
+| validated rescue, task-averaged, ∞ budget | 0.58 | 0.72 | **0.78** |
+| rescue within 1 s / 3 s | 0.58 / 0.58 | 0.72 / 0.72 | 0.72 / 0.78 |
+| median duration vs native (successes) | 0.988 | 0.988 | 0.988 |
+| median search wall time | 4.6 s | 8.1 s | 8.5 s |
+
+* 23 confirmed hard failures (validated rescue) and 6 unresolved.
+* On native successes, the arms do not differ (D vs B paired p = 0.55).
+* The report rule says GO_RESEARCH, but n is small and there is one seed:
+  treat it as a signal only.
+* Validation issues to fix: 16 of 167 search exports fail the independent
+  world-collision check. The search screen uses 257 samples and a 5 mm cuRobo
+  activation distance; the audit uses 2049 samples. One native "success"
+  collides in the independent audit, and one marginally exceeds Scaled95.
+* The retimer-only decomposition is missing from this pilot: the native runs
+  predate selected-lane capture.
+
 ## 3. Software (all in `research/timeopt_guided/`)
 
 | Module | Env | Role |

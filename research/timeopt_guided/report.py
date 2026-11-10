@@ -44,7 +44,8 @@ def load_campaign(camp: Path) -> list[dict]:
         d = summ.parent
         native_val = _val(d / "native")
         row = {"task_id": s["task_id"], "payload": s["payload"], "role": s["role"],
-               "native_success": s["native"]["success"], "native_duration_s": s["native"]["duration_s"],
+               "native_success": bool(s["native"]["success"] and s["native"]["duration_s"] is not None
+                                      and np.isfinite(s["native"]["duration_s"])), "native_duration_s": s["native"]["duration_s"],
                "native_budget": s["native"]["restarts_budget"], "native_validation": native_val,
                "native_wall_s": s["native"]["wall_s"], "arms": {},
                "native_geometry_k107_validation": _val(d / "native_geometry_k107")}

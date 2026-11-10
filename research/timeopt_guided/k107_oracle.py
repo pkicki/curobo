@@ -146,6 +146,7 @@ class K107Oracle:
         coefficients: int = 107,
         expansion_bisections: int = 8,
         n_profile: int = 257,
+        warmup: bool = True,
     ) -> None:
         if not torch.cuda.is_available():
             raise RuntimeError("K107 oracle requires CUDA")
@@ -158,6 +159,20 @@ class K107Oracle:
         self.n_profile = n_profile
         self.model, self.limits = self._prepare_model()
         self.calls = 0
+        self.warmup_s = self._warmup() if warmup else 0.0
+
+    def _warmup(self) -> float:
+        """Exclude first-call compilation from timed requests (feasible + infeasible routes)."""
+        t = time.perf_counter()
+        q0 = np.array([0.0, -0.8, 0.0, -2.4, 0.0, 1.6, 0.8])
+        q1 = np.array([0.6, -0.3, 0.2, -1.8, 0.2, 1.9, 0.4])
+        from .common import rest_controls
+
+        for _ in range(2):
+            self.retime(rest_controls(q0, q1))
+        self.calls = 0
+        torch.cuda.synchronize()
+        return time.perf_counter() - t
 
     # ---------------------------------------------------------------- model
     def _prepare_model(self):

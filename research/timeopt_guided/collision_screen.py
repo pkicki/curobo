@@ -34,6 +34,9 @@ class PathCollisionChecker:
         self.scene = scene
         self.margin_m = margin_m
         self.calls = 0
+        # Warm up kernels so the first search arm is not charged for compilation.
+        q = np.zeros((16, samples, 7))
+        self.valid_configs(q)
 
     def set_payload(self, payload: Payload) -> None:
         p = payload.validate()
