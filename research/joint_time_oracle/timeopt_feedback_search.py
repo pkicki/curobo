@@ -210,11 +210,16 @@ def search(*,task:dict,base:np.ndarray,arm:str,
 
 def run_case(*,task:dict,arm:str,output:Path,top_repo:Path,
              top_python:Path,top_sha:str,original_effort:np.ndarray,
-             budget:int=128,time_budget_s:float=30.):
+             budget:int=128,time_budget_s:float=30.,study_root:Path=OUT):
     from .foreign_toppra_newton import solve_foreign
     output=Path(output)
     from .payload_parity_qualify import verify_task_payload_receipt
     verify_task_payload_receipt(task)
+    if task.get("split") not in ("development","confirmation","holdout"):
+        raise ValueError("unknown source-level split")
+    if task["split"]!="development":
+        from .payload_joint_freeze import verify
+        verify(study_root)
     if task.get("admission")!="ENDPOINT_ADMITTED":
         raise ValueError("invalid payload endpoint gravity admission")
     if budget not in PROPOSAL_BUDGETS:
@@ -252,6 +257,8 @@ def main():
     p.add_argument("--task-json",type=Path,required=True)
     p.add_argument("--arm",choices=ARMS,required=True)
     p.add_argument("--out",type=Path,required=True)
+    p.add_argument("--study-root",type=Path,default=OUT,
+                   help="Frozen study registry; mandatory for confirmation/holdout.")
     p.add_argument("--topp-repo",type=Path,required=True)
     p.add_argument("--topp-python",type=Path,required=True)
     p.add_argument("--topp-sha",required=True)
@@ -265,7 +272,8 @@ def main():
     result=run_case(task=task,arm=args.arm,output=args.out,
                     top_repo=args.topp_repo,top_python=args.topp_python,
                     top_sha=args.topp_sha,original_effort=effort,
-                    budget=args.budget,time_budget_s=args.seconds)
+                    budget=args.budget,time_budget_s=args.seconds,
+                    study_root=args.study_root)
     print(json.dumps({k:v for k,v in result.items()
                       if k not in ("ledger","preliminary_best")},indent=2))
 
