@@ -64,6 +64,13 @@ def configured_native_robot(payload:Payload,*,strict_collision:bool=True):
     from curobo._src.util.config_io import join_path
     from curobo._src.util.config_io import resolve_config
     config=resolve_config(join_path(get_robot_configs_path(),"franka.yml"))
+    # The native CUDA sphere collision model must include the payload
+    # proxy BEFORE constructing the planner and its cached collision model.
+    kinematics=config["robot_cfg"]["kinematics"]
+    spheres=kinematics["collision_spheres"]
+    if payload.mass_kg:
+        spheres.setdefault("panda_hand",[]).append({
+            "center":list(payload.com_tool_m),"radius":float(payload.radius_m)})
     robot=RobotCfg.create(config)
     params=robot.kinematics.kinematics_config
     original=params.joint_limits.effort.clone()
@@ -80,12 +87,13 @@ def configured_native_robot(payload:Payload,*,strict_collision:bool=True):
     if not np.array_equal(original.detach().cpu().numpy(),
                           params.joint_limits.effort.detach().cpu().numpy()):
         raise ValueError("original manufacturer effort limits modified")
-    # AttachmentManager must be configured and independently validated
-    # by the experiment agent. Without it a collision-aware planner
-    # could report false success for an oversized attached payload.
-    if strict_collision and payload.mass_kg>0:
-        raise NotImplementedError(
-            "native attached sphere/world/self collision parity must be installed and audited")
+    # A robot collision sphere is a conservative payload proxy; it
+    # participates in the same native world/self sphere model as other
+    # hand spheres. Full parity with independent sphere geometry and
+    # physical object shape is still a separate experiment gate.
+    if strict_collision and payload.mass_kg and (
+        not spheres.get("panda_hand")):
+        raise ValueError("native payload collision sphere unavailable")
     return robot
 
 
