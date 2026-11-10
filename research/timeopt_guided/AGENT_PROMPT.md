@@ -55,7 +55,13 @@ branch, and push only this branch.
      `seed_feasible`. The pilot measured 96.7%, below the 99% bar: find the
      cause (grid points, stationary spans, float32, captured lanes vs reported
      lanes, the boolean dtype of the stored flag) and fix or explain it.
-   * Investigate `TOPPRA_FEASIBLE_NEWTON_START_FAILED` (34% of pilot lanes):
+   * `TOPPRA_FEASIBLE_NEWTON_START_FAILED` was audited on the pilot (PLAN
+     2.4: real second-order laws, swing-through-overload, K107 start
+     restoration by slowing is the cause). Rerun `toppra_audit.py` on the full
+     campaign to confirm at scale, then prototype an overload-aware K107 start
+     (restore toward the TOPP-RA law instead of scaling x down) and report
+     how many lanes then pass the full K107 route and independent validation.
+     The original investigation steps, for reference:
      - extract the raw TOPP-RA profile;
      - validate it independently on a dense grid;
      - retry with stride 1 and a larger `fit_k`;

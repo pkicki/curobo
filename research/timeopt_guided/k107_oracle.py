@@ -215,6 +215,17 @@ class K107Oracle:
         kt = None if knots is None else torch.as_tensor(np.asarray(knots, float), device=_DEVICE, dtype=torch.float32)
         return self.k["BSplinePath"](c, degree=degree, knots=kt)
 
+    def polish_terms(self, controls, *, degree: int = 5, knots=None, samples: int | None = None):
+        """K107 path terms (same problem and contract as ``retime``) for diagnostics."""
+        k = self.k
+        path = self.make_path(controls, degree, knots)
+        problem = k["RetimingProblem"](
+            path, self.limits, torch.linspace(0, 1, 1025, device=_DEVICE), self.model.dynamics,
+            mode=k["ConstraintMode"].c3_no_torque_rate(), initial_speed=0.0, final_speed=0.0,
+            feasibility_tolerance=5e-4,
+        )
+        return k["prepare_polish_terms"](problem, self.K, samples=samples or self.grid)
+
     # --------------------------------------------------------------- retime
     def retime(
         self, controls: np.ndarray, *, degree: int = 5, knots: np.ndarray | None = None,

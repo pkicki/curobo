@@ -116,6 +116,47 @@ Search on 40 development cells (28 native failures, 12 success controls),
 * The retimer-only decomposition is missing from this pilot: the native runs
   predate selected-lane capture.
 
+### 2.4 Are the TOPP-RA laws behind `TOPPRA_FEASIBLE_NEWTON_START_FAILED` real? (P1 item 3, done)
+
+Tool: `toppra_audit.py`. Inputs: 178 lanes in 46 pilot cells, which reduce to
+59 unique geometries. Each was re-solved on the oracle grid (2049, stride 3),
+stride 1, and a fine grid (8193, stride 1), audited 8× between nodes with
+cuRobo RNEA, and checked independently with Pinocchio.
+
+* **56/59 geometries (45/46 cells) have a REAL second-order law.**
+  * Feasible on all grids; duration converges (median change 0.4%, max 3.4%).
+  * Between nodes: torque/velocity/acceleration utilization ≤ 0.995 of Scaled95.
+  * Pinocchio agrees: 56/56 torque, velocity and acceleration ≤ Scaled95.
+* **3/59 are grid artefacts:** TOPP-RA becomes infeasible after refinement.
+* **The laws "swing through" a static gravity overload.** Median overload is
+  5.7% (max 34.9%), lasting a median 0.30 s (max 1.24 s). Minimum path speed
+  inside the overload is median 0.34 (min 0.11).
+* **Jerk is not the blocker.**
+  * The reconstructed law reaches 2.49× the jerk limit, but only at the final
+    rest instant. That is a generic artefact of piecewise-linear x near rest.
+  * Excluding the first and last 5% of time: median 0.42×, max 1.02×. Inside
+    the overload region: max 0.43×.
+* **Root cause of the K107 failure:** its Newton start is restored to the
+  strict interior by scaling the law down (x → λx). Under gravity overload,
+  slowing down *raises* torque, because the dynamic term was compensating
+  gravity. Fraction of laws still torque-feasible after slowing:
+  * 1.00 at λ = 0.99, 0.68 at 0.95, 0.54 at 0.9, 0.16 at 0.8, 0.02 at 0.5;
+  * a larger `fit_k` (29/55/107) and stride 1 do not help (0/56).
+  * This is the SAME "slower is always safer" assumption as native TimeOpt's
+    constant-speed seed (see 2.2). Both initializations are incomplete for
+    paths that cross a static overload.
+* **Practical reading.**
+  * Native TimeOpt (and K107) failed on paths that DO admit a timing.
+  * Those timings have zero torque slack through the overload. A 5% slowdown
+    (e.g. tracking lag) makes 32% of them torque-infeasible.
+  * They are physically real but fragile. Geometry that avoids the overload
+    (the guided search) is the robust fix.
+  * Retiming candidates: an overload-aware start for K107 (restore by moving
+    toward the TOPP-RA law, not toward x = 0); for native, the opt-in
+    non-uniform seed of P1 item 4.
+* Two of the 56 native geometries also collide in the independent world audit
+  (consistent with 2.3).
+
 ## 3. Software (all in `research/timeopt_guided/`)
 
 | Module | Env | Role |
