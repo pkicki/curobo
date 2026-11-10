@@ -122,6 +122,27 @@ def qualify(payload:Payload,*,scene:str|None,seed:int=20261110,n:int=24)->dict:
             "scope":"sampled four-sphere payload collision and torque model parity; not hardware safety"}
 
 
+def verify_task_payload_receipt(task:dict)->dict:
+    """Fail-closed source attestation for every qualified payload planning call."""
+    if task.get("payload_collision_qualified") is not True:
+        raise ValueError("payload collision model has not been independently parity qualified")
+    file=Path(task["payload_collision_receipt_file"])
+    if not file.is_file() or source_sha(file)!=task["payload_collision_receipt_sha256"]:
+        raise ValueError("missing/stale native/independent payload parity SHA")
+    receipt=json.loads(file.read_text())
+    mass=task["payload"]
+    if (receipt.get("status")!="PASS_NATIVE_PINOCCHIO_RNEA_AND_COLLISION_SPHERES"
+        or receipt.get("payload",{}).get("mass_kg")!=mass["mass_kg"]
+        or receipt.get("payload",{}).get("com_xyz_m")!=list(mass["com_xyz_m"])
+        or receipt.get("scene")!=task.get("scene")):
+        raise ValueError("task/receipt payload mass, COM, scene or status mismatch")
+    if task.get("joint_limit_scale")!=1.0 or not task.get("nominal_actuator_limits"):
+        raise ValueError("non-nominal original effort limits in payload task")
+    if canonical_sha({k:v for k,v in task.items() if k!="task_sha256"})!=task.get("task_sha256"):
+        raise ValueError("promoted task canonical digest mismatch")
+    return receipt
+
+
 def admit_task(task:dict,receipt:dict,receipt_file:Path)->dict:
     payload=Payload(**task["payload"])
     if receipt["status"]!="PASS_NATIVE_PINOCCHIO_RNEA_AND_COLLISION_SPHERES":
