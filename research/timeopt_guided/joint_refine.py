@@ -68,11 +68,11 @@ class JointRefiner:
         self.vmax, self.amax, self.jmax, self.tmax = (getattr(L, k).float() for k in
                                                        ("velocity", "acceleration", "jerk", "torque"))
 
-    def _bases(self, knots: np.ndarray, n: int, s: np.ndarray):
+    def _bases(self, knots: np.ndarray, n: int, s: np.ndarray, degree: int = 3):
         out = []
         for k in range(4):
             eye = np.eye(n)
-            vals = np.stack([BSpline(knots, eye[i], 3)(s, nu=k) for i in range(n)], axis=1)
+            vals = np.stack([BSpline(knots, eye[i], degree)(s, nu=k) for i in range(n)], axis=1)
             out.append(torch.as_tensor(vals, device="cuda", dtype=torch.float32))
         return out
 
@@ -95,13 +95,14 @@ class JointRefiner:
         terms = [qd.abs() / self.vmax, qdd.abs() / self.amax, jerk[1:-1].abs() / self.jmax, tau.abs() / self.tmax]
         return q, sum((torch.relu(t - 1.0) ** 2).sum() for t in terms), max(float(t.max()) for t in terms)
 
-    def refine(self, controls: np.ndarray, knots: np.ndarray, cfg: RefineConfig, *, start_result=None) -> RefineLog:
+    def refine(self, controls: np.ndarray, knots: np.ndarray, cfg: RefineConfig, *, start_result=None,
+               degree: int = 3) -> RefineLog:
         t0 = time.perf_counter()
         log = RefineLog()
         n = len(controls)
         s = np.linspace(0, 1, cfg.grid)
-        B = self._bases(knots, n, s)
-        res = start_result or self.o.retime(controls, degree=3, knots=knots, diagnose_infeasible=False)
+        B = self._bases(knots, n, s, degree)
+        res = start_result or self.o.retime(controls, degree=degree, knots=knots, diagnose_infeasible=False)
         log.oracle_calls += start_result is None
         if not res.feasible:
             log.wall_s = time.perf_counter() - t0
@@ -130,13 +131,14 @@ class JointRefiner:
                 th.grad *= free
                 opt.step()
             cand = th.detach().cpu().numpy().astype(float)
-            ok_geom = bool(self.checker.check_paths([cand], degree=3, knots=knots)[0])
-            new = self.o.retime(cand, degree=3, knots=knots, diagnose_infeasible=False) if ok_geom else None
+            ok_geom = bool(self.checker.check_paths([cand], degree=degree, knots=knots)[0])
+            new = self.o.retime(cand, degree=degree, knots=knots, diagnose_infeasible=False) if ok_geom else None
             log.oracle_calls += new is not None
             if new is not None and new.feasible and new.duration_s < log.durations[-1] - 1e-4:
                 log.best_controls, log.best_result = cand, new
                 log.durations.append(new.duration_s)
                 log.accepted += 1
+                sigma = min(cfg.sigma, 1.0 + 1.5 * (sigma - 1.0))  # regain step size after success
             else:
                 log.rejected += 1
                 sigma = 1.0 + 0.5 * (sigma - 1.0)
