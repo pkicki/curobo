@@ -76,6 +76,14 @@ def execute(root:Path,task:dict,payload_doc:dict,
 
     def callback(controls:np.ndarray,iteration:int)->dict:
         stamp=time.perf_counter()
+        # Preserve EVERY proposed geometry, including a collision-rejected
+        # one: feasibility and search attribution must be reproducible.
+        saved=case_dir/f"candidate_{iteration:04d}.npz"
+        if saved.exists():
+            with np.load(saved) as z:
+                np.testing.assert_array_equal(z["controls"],controls)
+        else:
+            np.savez_compressed(saved,controls=controls)
         path=QuinticGeometry(controls)
         q=path.evaluate(np.linspace(0,1,129))[0]
         assessment=auditor.check(q,min_clearance_m=.005)
@@ -98,7 +106,8 @@ def execute(root:Path,task:dict,payload_doc:dict,
         stage_times.append({"proposal":iteration,"wall_s":time.perf_counter()-stamp,
                             "retimer_called":geometry_ok,
                             "robot_world_clearance_m":assessment["world_clearance_m"],
-                            "robot_self_clearance_m":assessment["self_clearance_m"]})
+                            "robot_self_clearance_m":assessment["self_clearance_m"],
+                            "candidate_npz_sha256":hashlib.sha256(saved.read_bytes()).hexdigest()})
         return result
 
     search=run(case,base,callback,arm=arm,budget=budget)
