@@ -99,6 +99,9 @@ def run(bank_dir: Path, out: Path, *, restarts: int, scenes: list[str] | None, e
             if last.success and last.trajectory is not None:
                 tr = {k: v for k, v in last.trajectory.items() if isinstance(v, np.ndarray)}
                 np.savez_compressed(d / f"{tag}_traj.npz", **tr)
+                if last.timeopt_snapshots:  # all lanes of the successful solve (idea B)
+                    np.savez_compressed(d / f"{tag}_success_lanes.npz", **last.timeopt_snapshots[-1],
+                                        selected_lane=np.array(last.trajectory.get("lane", -1)))
                 lane = last.trajectory.get("lane")
                 if lane is not None and last.timeopt_snapshots:
                     snap = last.timeopt_snapshots[-1]
