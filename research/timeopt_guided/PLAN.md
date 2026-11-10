@@ -157,6 +157,41 @@ cuRobo RNEA, and checked independently with Pinocchio.
 * Two of the 56 native geometries also collide in the independent world audit
   (consistent with 2.3).
 
+### 2.5 Overload-aware K107 start: Phase-I LP in timing-spline space (done, opt-in)
+
+`K107Oracle(..., overload_aware_start=True, start_method="lp")`. It runs only
+after the standard start fails, so regular paths are unchanged.
+
+* **Idea.** The TOPP-RA feasible set is convex in x(s). K107's velocity²,
+  acceleration and torque rows are linear in its 107 timing coefficients; jerk
+  is linearized at the TOPP-RA law. One HiGHS LP on every 4th grid point
+  maximizes speed subject to ≥ 0.3% relative slack on all rows. That gives a
+  strictly interior Newton start without slowing the overload stretch down.
+  The few tiny between-point residuals are left to K107's own restoration,
+  which then slows down by ≪ 1%.
+* **Pilot result** (59 unique native geometries from 46 failed cells):
+  * 54/56 real-law geometries are now timed by the full K107 route, Newton
+    plus C3 screen. The 3 grid artefacts correctly still fail.
+  * 43/46 cells now have a K107-timed native path.
+  * Independent Pinocchio: 54/54 dynamically valid (V/A/J/τ max 0.9985 of
+    Scaled95); 2 fail only on world collision (the known colliding native
+    paths).
+  * Duration is a median 0.9% (max 1.6%) above the second-order TOPP-RA bound.
+* **Cost:** median 253 ms per call (LP ≈ 160 ms), vs ≈ 100 ms for a regular
+  K107 call. Rejected alternatives:
+  * tightened-margin TOPP-RA alone: 0/56 (spline-fit overshoot at bang-bang
+    kinks exceeds the slack);
+  * exact cutting planes: degenerate, slow;
+  * two-stage max-slack LP: same success, 1.8× slower.
+* **Caveat.** These laws keep only about 0.3% torque slack through a static
+  overload. Execution robustness (tracking lag, model error) still favours
+  geometry that avoids the overload. The fallback makes the retimer complete
+  on such paths; it does not make them good paths.
+* **Next** (agent): enable it as a search-oracle option and compare rescue and
+  robustness. Port the idea to native TimeOpt as an opt-in non-uniform seed
+  (P1 item 4). Speed up the LP: warm start, fewer rows outside overload
+  windows, or a GPU first-order LP.
+
 ## 3. Software (all in `research/timeopt_guided/`)
 
 | Module | Env | Role |

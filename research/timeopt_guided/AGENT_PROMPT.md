@@ -61,7 +61,13 @@ branch, and push only this branch.
      campaign to confirm at scale, then prototype an overload-aware K107 start
      (restore toward the TOPP-RA law instead of scaling x down) and report
      how many lanes then pass the full K107 route and independent validation.
-     The original investigation steps, for reference:
+     An overload-aware start already exists: the Phase-I LP (PLAN 2.5,
+     `overload_aware_start=True, start_method="lp"`; 54/56 on the pilot).
+     Confirm it at full scale. Add it as a search-oracle option (arms D and E
+     with and without it). Report rescue rates, the torque-slack distribution,
+     and robustness under a 2–5% execution slowdown. Prototype the same idea as
+     an opt-in native TimeOpt seed. The original investigation steps, for
+     reference:
      - extract the raw TOPP-RA profile;
      - validate it independently on a dense grid;
      - retry with stride 1 and a larger `fit_k`;

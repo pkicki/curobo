@@ -147,6 +147,10 @@ class K107Oracle:
         expansion_bisections: int = 8,
         n_profile: int = 257,
         warmup: bool = True,
+        overload_aware_start: bool = False,
+        start_method: str = "lp_then_tighten",
+        lp_options: dict | None = None,
+        inner_margins: tuple = (0.99, 0.98, 0.97, 0.95, 0.92, 0.9),
     ) -> None:
         if not torch.cuda.is_available():
             raise RuntimeError("K107 oracle requires CUDA")
@@ -157,6 +161,10 @@ class K107Oracle:
         self.K = coefficients
         self.bisections = expansion_bisections
         self.n_profile = n_profile
+        self.overload_aware_start = overload_aware_start
+        self.start_method = start_method
+        self.lp_options = dict(lp_options or {})
+        self.inner_margins = tuple(inner_margins)
         self.model, self.limits = self._prepare_model()
         self.calls = 0
         self.warmup_s = self._warmup() if warmup else 0.0
@@ -278,6 +286,8 @@ class K107Oracle:
             timings["total"] = (time.perf_counter() - t0) * 1e3
             res.timings_ms = timings
             return res
+        start_route = "toppra_slowdown_restore"
+        err_msg = ""
         try:
             result = k["polish_timing_law_pd_fast"](
                 terms, seed, margin=0.995, fixed_ends=True, max_iterations=self.iterations,
@@ -285,13 +295,18 @@ class K107Oracle:
                 restore_bisect=True,
             )
         except ValueError as error:
+            err_msg = f"{type(error).__name__}: {error}"
+            result = self._overload_aware_start(terms, ends) if self.overload_aware_start else None
+            if result is not None:
+                result, start_route = result
+        if result is None:
             # TOPP-RA (stride-3 grid, 2nd order + jerk cap) found a law, but its
             # K29 fit cannot be scaled into Newton's strict interior. Typical when
             # the path crosses a static gravity overload that must be "swung"
             # through at speed. Unresolved: neither a certificate nor a rescue.
             return OracleResult(
                 "NEWTON_START_FAILED", profile_s=s_prof, gravity_util=gravity_util,
-                reason=f"{type(error).__name__}: {error}"[:300],
+                reason=err_msg[:300],
                 timings_ms=timings | {"total": (time.perf_counter() - t0) * 1e3},
             )
         coeff = result.coefficients.to(torch.float32)
@@ -313,6 +328,7 @@ class K107Oracle:
         ok = bool(check.feasible[0]) and bool(check.positive_timing[0]) and math.isfinite(duration)
         util = {f: float(getattr(check, "rho_" + f)[0]) for f in ("velocity", "acceleration", "torque", "jerk")}
         timings.update(newton=(t3 - t2) * 1e3, screen=(t4 - t3) * 1e3, total=(time.perf_counter() - t0) * 1e3)
+        timings["start_route"] = start_route
         return OracleResult(
             "FEASIBLE" if ok else "SCREEN_REJECTED",
             duration_s=duration if math.isfinite(duration) else None,
@@ -321,6 +337,173 @@ class K107Oracle:
             coefficients=coeff.detach().cpu().numpy(), timings_ms=timings,
             torque_expansion=1.0 if ok else None,
         )
+
+    def _phase1_lp_start(self, terms, x_ref_grid: np.ndarray, *, min_slack: float = 0.003,
+                         rounds: int = 1, lp_stride: int = 4, max_cuts: int = 1,
+                         single_lp: bool = True):
+        """Phase-I start in K107's own timing-spline space (sequential LP, HiGHS).
+
+        Variables: the K timing coefficients c (ends fixed to 0) and a relative
+        slack t. Velocity^2, acceleration and torque rows of K107's barrier are
+        LINEAR in (x, x_u, x_uu) = basis @ c, hence in c. The jerk row is
+        lin * sqrt(x); it is linearized as |lin| <= (1 - t) * bound / sqrt(x_ref) and
+        re-linearized at the LP solution (``rounds`` times). LP 1 maximizes t; LP 2
+        maximizes the sum of x (speed) subject to t >= min(t*/2, min_slack).
+        Cutting planes: solve on every ``lp_stride``-th grid point, add the violated
+        rows of the full grid, re-solve (<= ``max_cuts`` times). Returns c or None.
+        Unlike scaling x down, this never leaves the convex feasible set to restore
+        interiority, so it works through static gravity overload.
+        """
+        from scipy.optimize import linprog
+        from scipy.sparse import coo_matrix, hstack, vstack
+
+        K = terms.coefficients
+        G_full = terms.grid.numel()
+        sel = np.arange(G_full)
+        if max_cuts == 1:  # coarse-only LP: build rows for the selected points only
+            sel = np.unique(np.r_[np.arange(0, G_full, lp_stride), G_full - 1])
+            lp_stride = 1
+        tsel = torch.as_tensor(sel, device=terms.grid.device)
+        basis = terms.basis[:, tsel].detach().cpu().numpy()  # (3, G, 4)
+        G = basis.shape[1]
+        idx = terms.start[tsel].detach().cpu().numpy()[:, None] + np.arange(4)[None]
+        coef = terms.coef[:, tsel].detach().cpu().numpy()  # (F, G, D, 3)
+        const = terms.const[:, tsel].detach().cpu().numpy()  # (F, G, D)
+        x_ref_grid = np.asarray(x_ref_grid, float)[sel]
+        lim = terms.limit.detach().cpu().numpy().copy()
+        bound = 0.995 * lim
+        bound[0] = 0.995**2 * lim[0]
+        F, _, D, _ = coef.shape
+        free = np.arange(1, K - 1)
+        colmap = -np.ones(K, dtype=int)
+        colmap[free] = np.arange(len(free))
+        nfree = len(free)
+
+        def rows(w, cols):  # w (N, R, 4) weights on columns cols (N, 4)
+            N, R, _ = w.shape
+            r = np.arange(N * R).reshape(N, R)
+            RR = np.broadcast_to(r[:, :, None], w.shape)
+            CC = np.broadcast_to(colmap[cols][:, None, :], w.shape)
+            keep = CC >= 0
+            return coo_matrix((w[keep], (RR[keep], CC[keep])), shape=(N * R, nfree)).tocsr()
+
+        x_rows = rows(basis[0][:, None, :], idx)
+        msel = torch.as_tensor(sel[:-1], device=terms.grid.device)
+        mid = terms.mid_basis[msel].detach().cpu().numpy()
+        mid_idx = terms.mid_start[msel].detach().cpu().numpy()[:, None] + np.arange(4)[None]
+        mid_rows = rows(mid[:, None, :], mid_idx)
+        lin_rows = [rows(np.einsum("gdk,kgj->gdj", coef[f], basis), idx) for f in range(F)]
+        point_of = np.repeat(np.arange(G), D)
+        x_ref = np.maximum(np.asarray(x_ref_grid, float), 1e-9)
+        coarse = (np.arange(G) % lp_stride == 0) | (np.arange(G) == G - 1)
+        c_best = None
+        self._lp_log = []
+        for _ in range(rounds):
+            A_ub, b_ub, slack, pts = [], [], [], []
+            for f in range(F):
+                cst = const[f].reshape(-1)
+                bnd = np.broadcast_to(bound[f][None], (G, D)).copy()
+                if f == 3:  # jerk: root family, linearized at x_ref
+                    bnd = bnd / np.sqrt(x_ref)[:, None]
+                    bnd[[0, -1]] = 1e9  # ends are not constrained (root_mask)
+                bnd = bnd.reshape(-1)
+                A_ub += [lin_rows[f], -lin_rows[f]]
+                b_ub += [bnd - cst, bnd + cst]
+                slack += [bnd, bnd]
+                pts += [point_of, point_of]
+            A_ub += [-x_rows[1:-1], -mid_rows]
+            b_ub += [np.zeros(G - 2), np.zeros(mid_rows.shape[0])]
+            slack += [np.full(G - 2, 1e-6), np.full(mid_rows.shape[0], 1e-6)]
+            pts += [np.arange(1, G - 1), np.minimum(np.arange(mid_rows.shape[0]), G - 1)]
+            A = hstack([vstack(A_ub), coo_matrix(np.concatenate(slack)[:, None])]).tocsr()
+            b = np.concatenate(b_ub)
+            active = coarse[np.concatenate(pts)]
+
+            def solve(obj, bounds):
+                act = active.copy()
+                for it in range(max_cuts):
+                    res = linprog(obj, A_ub=A[act], b_ub=b[act], bounds=bounds, method="highs")
+                    if res.status != 0:
+                        self._lp_log.append(("lp_status", it, res.status, int(act.sum())))
+                        return None
+                    if max_cuts == 1:
+                        return res.x  # coarse-grid LP only; tiny residuals are left to K107's restore
+                    viol = (A @ res.x - b) > 1e-12
+                    new = viol & ~act
+                    self._lp_log.append(("cut", it, int(act.sum()), int(new.sum())))
+                    if not new.any():
+                        return res.x
+                    act |= new
+                return None
+
+            obj2 = np.r_[-np.asarray(mid_rows.sum(axis=0)).ravel(), 0.0]
+            z = solve(obj2, [(None, None)] * nfree + [(min_slack, 0.5)]) if single_lp else None
+            if z is None:  # two-stage: find the achievable slack first
+                obj1 = np.zeros(nfree + 1)
+                obj1[-1] = -1.0
+                z1 = solve(obj1, [(None, None)] * nfree + [(None, 0.5)])
+                if z1 is None or z1[-1] <= 0:
+                    return c_best
+                t_req = min(0.5 * z1[-1], min_slack)
+                z2 = solve(obj2, [(None, None)] * nfree + [(t_req, 0.5)])
+                z = z2 if z2 is not None else z1
+            c = np.zeros(K)
+            c[free] = z[:-1]
+            c_best = c
+            x_ref = np.maximum(x_rows @ z[:-1], 1e-9)
+        return c_best
+
+    def _overload_aware_start(self, terms, ends):
+        """Newton start strictly inside the limits WITHOUT slowing down.
+
+        The TOPP-RA feasible set is convex in the squared speed x(s). Instead of
+        restoring the start toward x = 0 (infeasible under static gravity
+        overload), re-solve TOPP-RA with all limits tightened by r < 1; its law is
+        strictly interior w.r.t. the original limits. Largest r first (fastest law);
+        stop when TOPP-RA becomes infeasible (the overload band is thinner than r).
+        Cost: one TOPP-RA solve (+ fit) per tried r.
+        """
+        k = self.k
+        if self.start_method in ("lp", "lp_then_tighten"):
+            from .toppra_audit import toppra_profile
+
+            prof = toppra_profile(terms, 1)
+            if prof["feasible"]:
+                grid = terms.grid.detach().cpu().numpy()
+                c0 = self._phase1_lp_start(terms, np.interp(grid, prof["s"], prof["x"]), **self.lp_options)
+                if c0 is not None:
+                    try:
+                        res = k["polish_timing_law_pd_fast"](
+                            terms, torch.as_tensor(c0, device=terms.grid.device), margin=0.995,
+                            fixed_ends=True, max_iterations=self.iterations, max_decrease=3,
+                            linear_solver="banded", sync_mode="fused", kernel_variant="split",
+                            restore_bisect=True,
+                        )
+                        return res, "phase1_lp"
+                    except ValueError:
+                        pass
+            if self.start_method == "lp":
+                return None
+        base = terms.limit
+        for r in self.inner_margins:
+            scale = torch.tensor([r * r, r, r, r], device=base.device, dtype=base.dtype)[:, None]
+            tight = dataclasses.replace(terms, limit=base * scale)
+            seed, _ = k["toppra_newton_start_v2"](
+                tight, ends, margin=0.995, fixed_ends=True, stride=3, jerk_cap=True, fit_k=29,
+                batched_scale=True, scale_backend="torch",
+            )
+            if seed is None:
+                return None
+            try:
+                res = k["polish_timing_law_pd_fast"](
+                    terms, seed, margin=0.995, fixed_ends=True, max_iterations=self.iterations,
+                    max_decrease=3, linear_solver="banded", sync_mode="fused", kernel_variant="split",
+                    restore_bisect=True,
+                )
+                return res, f"tightened_toppra_r{r:g}"
+            except ValueError:
+                continue
+        return None
 
     def _torque_expansion(self, terms, ends) -> float:
         """Smallest torque-limit multiplier lambda in [1, 64] for which TOPP-RA succeeds."""

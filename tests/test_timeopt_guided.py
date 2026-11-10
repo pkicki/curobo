@@ -138,3 +138,28 @@ def test_independent_validator_static_and_payload_gravity():
     t0 = torques(*base, q, z, z)
     t1 = torques(*load, q, z, z)
     assert np.abs(t1 - t0).max() > 1.0
+
+
+@pytest.mark.skipif(not HAS_CUDA_STACK, reason="needs CUDA cuRobo env with time_optimal_curobo on PYTHONPATH")
+def test_phase1_lp_start_matches_standard_route_on_regular_path():
+    import torch
+
+    if not torch.cuda.is_available():
+        pytest.skip("CUDA unavailable")
+    from research.timeopt_guided.k107_oracle import K107Oracle
+    from research.timeopt_guided.toppra_audit import toppra_profile
+
+    o = K107Oracle(Payload(2.0, (0, 0, 0.12)), warmup=False)
+    q0 = np.array([0.0, -0.8, 0.0, -2.4, 0.0, 1.6, 0.8], np.float32)
+    q1 = np.array([1.2, 0.3, 0.4, -1.2, 0.3, 2.2, 0.0], np.float32)
+    path = rest_controls(q0, q1)
+    ref = o.retime(path)
+    assert ref.feasible
+    terms = o.polish_terms(path)
+    prof = toppra_profile(terms, 1)
+    c0 = o._phase1_lp_start(terms, np.interp(terms.grid.cpu().numpy(), prof["s"], prof["x"]))
+    assert c0 is not None and c0[0] == 0 and c0[-1] == 0
+    res = o.k["polish_timing_law_pd_fast"](
+        terms, torch.as_tensor(c0, device="cuda"), margin=0.995, fixed_ends=True, max_iterations=16,
+        max_decrease=3, linear_solver="banded", sync_mode="fused", kernel_variant="split", restore_bisect=True)
+    assert abs(float(res.duration) - ref.duration_s) < 0.03 * ref.duration_s
