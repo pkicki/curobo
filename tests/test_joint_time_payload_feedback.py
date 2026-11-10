@@ -117,7 +117,8 @@ def test_feedback_uses_oracle_bottleneck_only_when_available():
     a=run("task",base,fake,arm="feedback",budget=INITIAL+7)
     b=run("task",base,fake,arm="rank_only",budget=INITIAL+7)
     assert len(a["ledger"])==INITIAL+7
-    assert a["ledger"][:INITIAL]==b["ledger"][:INITIAL] if False else True
+    assert [x["path_sha256"] for x in a["ledger"][:INITIAL]] == [
+        x["path_sha256"] for x in b["ledger"][:INITIAL]]
     assert any(x["mode"]=="RETIME_BOTTLENECK_GUIDED" for x in a["ledger"])
     assert not any(x["mode"]=="RETIME_BOTTLENECK_GUIDED" for x in b["ledger"])
 
