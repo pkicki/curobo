@@ -60,7 +60,16 @@ def inputs(task:dict,payload_doc:dict,contract:dict)->tuple[Payload,dict,dict]:
 
 def execute(root:Path,task:dict,payload_doc:dict,
             contract:dict,engine:Oracle,*,arm:str,budget:int=BUDGET,
-            initial:np.ndarray|None=None)->dict:
+            initial:np.ndarray|None=None,holdout:bool=False)->dict:
+    from .payload_hardcase_registry import population_split
+    split=population_split(task["case_id"])
+    if split=="confirm":
+        if not holdout:
+            raise ValueError("confirmation task forbidden before development freeze")
+        from .payload_study_freeze import verify
+        verify(root)
+    elif holdout:
+        raise ValueError("--holdout cannot be applied to development task")
     p,model,limits=inputs(task,payload_doc,contract)
     if arm not in ARMS:
         raise ValueError("invalid arm")
@@ -138,13 +147,14 @@ def main():
     ap.add_argument("--engine-commit",required=True)
     ap.add_argument("--command",nargs="+",required=True)
     ap.add_argument("--budget",type=int,default=BUDGET)
+    ap.add_argument("--holdout",action="store_true")
     args=ap.parse_args()
     task=json.loads(args.task.read_text())
     payload=json.loads(args.payload.read_text())
     contract=json.loads(args.contract.read_text())
     retimer=Oracle(args.engine,tuple(args.command),args.engine_commit)
     summary=execute(args.root,task,payload,contract,retimer,
-                    arm=args.arm,budget=args.budget)
+                    arm=args.arm,budget=args.budget,holdout=args.holdout)
     print(json.dumps({"task":summary["task_id"],"arm":summary["arm"],
                       "evaluations":summary["oracle_evaluations"],
                       "wall_s":summary["wall_s_including_geometry_and_retimer"]}))
