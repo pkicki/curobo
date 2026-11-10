@@ -1,0 +1,31 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nominal payload TimeOpt-guided planning — NOT EXECUTED</title>
+<style>body{font:15px/1.6 system-ui;max-width:1200px;margin:2rem auto;padding:1rem;color:#213047}
+.warning{padding:1.1rem;background:#fff2de;border-left:5px solid #c8841a}
+th,td{border-bottom:1px solid #dce4eb;padding:.65rem;text-align:left}table{width:100%;border-collapse:collapse}
+th{background:#edf3f9}</style>
+<h1>TimeOpt-guided geometric planning under original actuator limits</h1>
+<p class="warning"><strong>RESEARCH IMPLEMENTATION — NOT EXECUTED.</strong> No nominal-effort payload hard cases,
+exact-path TOPP-RA+Newton rescues, or guided planner improvements have been experimentally
+established by this branch. The K107 JSON adapter must be implemented and independently
+qualified before scoring the coupled search.</p>
+<h2>Scientific questions</h2>
+<p>Can TOPP-RA+Newton retime geometries rejected by native TimeOpt's constant-speed seed?
+Can new physically attached payloads create hard cases under the ORIGINAL Panda actuator
+limits? Does retimer-based ranking and structured path-bottleneck feedback improve geometric
+exploration compared with the same blind global search?</p>
+<h2>Registered protocols</h2>
+<table><thead><tr><th>Study</th><th>Arms</th><th>Status</th></tr></thead><tbody>
+<tr><td>Native TimeOpt seed</td><td>Same-path constant-x seed / native TimeOpt / TOPP-RA+Newton</td><td>Not run</td></tr>
+<tr><td>Nominal payload cohort</td><td>180 tasks × 12 mass/COM profiles, subject to admission</td><td>Not generated</td></tr>
+<tr><td>Planning</td><td>Native complete / global blind / TimeOpt ranked / bottleneck feedback</td><td>Not run</td></tr>
+</tbody></table>
+<p>Prerequisite: pinned native and independent rigid payload inertia; RNEA comparison on
+identical states; attached collision sphere world/self-distance parity. Endpoint
+gravity-inadmissible tasks and incomplete model parity are not native planning failures.</p>
+<p>Primary common dynamic families: joint position, velocity, acceleration, jerk, signed torque;
+torque rate separately labeled. Every planning success requires independent dense S8193 and
+event-aware S32768 physical and collision checks. Sampled checks are not continuous-time safety
+certificates.</p>
+<p>Protocol: research/joint_time_oracle/TIMEOPT_GUIDED_NOMINAL_PAYLOAD_PROTOCOL_20261110.md.
+Historical synthetic derating and prior IPOPT margin-recovery reports remain unchanged.</p></html>
