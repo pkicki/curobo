@@ -52,7 +52,7 @@ class HardConfig:
     tight_min: float = 0.90
     min_segments: int = 3
     min_length_ratio: float = 1.3
-    endpoint_max: float = 0.9  # endpoint static util (vs 0.95 tau_max)
+    endpoint_max: float = 0.97  # endpoint static util (vs 0.95 tau_max); TIGHT may be endpoint-driven
     straight_min_peak: float = 1.0  # straight line must violate the static limit
     spline_controls: tuple = (30, 60, 100, 16)
     seed: int = 0
@@ -82,8 +82,9 @@ def bottleneck_route(adm: Admissibility, start, goal, n_samples: int, cfg: HardC
     n = len(nodes)
     X = torch.as_tensor(nodes, device="cuda", dtype=torch.float32)
     rows, cols = [], []
-    for i in range(0, n, 4096):
-        d = torch.cdist(X[i:i + 4096], X)
+    chunk = int(max(256, min(4096, 4e8 // max(n, 1))))  # keep the distance block <= ~1.6 GB
+    for i in range(0, n, chunk):
+        d = torch.cdist(X[i:i + chunk], X)
         d[torch.arange(d.shape[0]), torch.arange(i, i + d.shape[0])] = float("inf")
         vals, idx = torch.topk(d, min(cfg.k, n - 1), largest=False)
         keep = (vals <= cfg.max_edge).cpu().numpy()
@@ -140,8 +141,9 @@ def global_roadmap(adm: Admissibility, n_samples: int, cfg: HardConfig, rng, bat
     n = len(nodes)
     X = torch.as_tensor(nodes, device="cuda", dtype=torch.float32)
     rows, cols = [], []
-    for i in range(0, n, 4096):
-        d = torch.cdist(X[i:i + 4096], X)
+    chunk = int(max(256, min(4096, 4e8 // max(n, 1))))  # keep the distance block <= ~1.6 GB
+    for i in range(0, n, chunk):
+        d = torch.cdist(X[i:i + chunk], X)
         d[torch.arange(d.shape[0]), torch.arange(i, i + d.shape[0])] = float("inf")
         vals, idx = torch.topk(d, min(cfg.k, n - 1), largest=False)
         keep = (vals <= cfg.max_edge).cpu().numpy()
@@ -327,6 +329,7 @@ def main() -> None:
                             r1 = r2
                             rho = min(max(r2["rho_star"], float(eu.max())) + 1e-3, 0.999)
                     rec["rho_star_hat"] = r1["rho_star"]
+                    rec["tightness_driver"] = ("endpoint" if r1["rho_star"] - float(eu.max()) < 0.01 else "interior")
                     if r1["rho_star"] < cfg.tight_min:
                         label, reason = "EASY", "rho_star_below_tight_min"
                     else:

@@ -157,8 +157,9 @@ def lazy_prm(adm: Admissibility, start: np.ndarray, goal: np.ndarray, rho: float
     # k-NN (GPU, chunked)
     X = torch.as_tensor(nodes, device="cuda", dtype=torch.float32)
     rows, cols, dist = [], [], []
-    for i in range(0, n, 4096):
-        d = torch.cdist(X[i:i + 4096], X)
+    chunk = int(max(256, min(4096, 4e8 // max(n, 1))))
+    for i in range(0, n, chunk):
+        d = torch.cdist(X[i:i + chunk], X)
         d[torch.arange(d.shape[0]), torch.arange(i, i + d.shape[0])] = float("inf")
         vals, idx = torch.topk(d, min(cfg.k, n - 1), largest=False)
         rows.append(np.repeat(np.arange(i, i + d.shape[0]), vals.shape[1]))
