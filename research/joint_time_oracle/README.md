@@ -671,3 +671,38 @@ Report: reports/joint_time_oracle/torque_margin_retiming/index.html.
 **Status: NOT EXECUTED by assistant.** The pinned Pinocchio/CUDA tests,
 qualifications and numerical campaigns must be run by the coding
 agent. No PR, main merge or production default changes.
+
+
+## Coupled TimeOpt-guided geometric planning and nominal payload hard cases (2026-11-10)
+
+Read TIMEOPT_GUIDED_NOMINAL_PAYLOAD_PROTOCOL_20261110.md.
+
+The research direction returns to the original question: can fast retiming
+guide geometric changes to rescue native cuRoboV2-Fast failures and shorten
+native feasible motions? The previous 3 selected synthetic 30%-effort cases
+are numerical debugger tasks, not general evidence.
+
+New research modules:
+- native_uniform_seed_replay.py: reconstruct native CUDA TimeOpt
+  constant-squared-speed seed intersection; identify limiting joints and
+  path samples. Empty uniform seed does not prove nonuniform timing impossible.
+- payload_contract.py, payload_native.py, payload_geometry_audit.py
+  and payload_parity.py: original actuator limits, rigid payload mass/COM/
+  inertia and independent signed RNEA plus payload collision parity.
+- nominal_payload_task_bank.py: 180 prospective source-disjoint start/goal
+  tasks across broad and gravity-enriched strata, paired with 12 mass/COM
+  profiles; development/confirmation split by source task hash.
+- retimer_oracle.py: strict pinned K107/native TimeOpt model/revision and
+  constraint SHA request/response contract.
+- timeopt_feedback_search.py and run_timeopt_feedback.py: blind, ranking
+  and bottleneck-feedback geometric planning experiments.
+- payload_hardcase_registry.py: strict native failure vs witnessed
+  alternative and qualified suboptimality classification.
+- tests/test_joint_time_payload_feedback.py: numerical/provenance tests.
+
+STATUS: RESEARCH IMPLEMENTATION, NOT EXECUTED. A real cross-repository
+TOPP-RA+Newton adapter and native/Pinocchio payload/collision parity are
+mandatory before scored runs. Unsupported model or backend is BLOCKED,
+never interpreted as planner failure. No PR, no merge, no production
+default changes. HTML placeholder:
+reports/joint_time_oracle/timeopt_guided_nominal_payload/index.html.
