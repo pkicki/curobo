@@ -233,6 +233,52 @@ after the standard start fails, so regular paths are unchanged.
   frozen set is enriched with failures), and a ρ / cost-weight sweep for the
   standalone variant.
 
+### 2.7 Ideas B and C: better retiming and retimer-guided path refinement (done, development pilot)
+
+All numbers below are independently validated (Pinocchio; Scaled95 with 0.5%
+jerk sampling tolerance, collisions, endpoints), on the frozen idea-A cell set,
+on top of the hybrid planner.
+
+* **B, `lane_retime.py`.** K107 retimes all 4 candidate lanes of the
+  successful solve (exact cubic) and keeps the fastest collision-valid one.
+
+  | cells | median shorter | mean shorter | ≥ 5% shorter |
+  |---|---|---|---|
+  | rescued (gravity fallback) | 3.7% | 7.9% | 41% |
+  | heavy successes | 2.2% | 4.4% | 20% |
+  | light successes | 2.0% | 2.6% | 7% |
+
+  * Most of the gain is the retimer: same lane, K107 vs native TimeOpt is
+    2.1–3.5% shorter.
+  * Cost: 0.4 s sequential (4 lanes), which needs batching.
+  * 15 cells had no K107-timeable lane.
+* **C, `joint_refine.py`.** Starts from B's best lane, then alternates: K107
+  law → request it σ = 1.04 faster → Adam on the free cubic controls against
+  the V/A/J/τ excess at the faster law (differentiable cuRobo RNEA) plus
+  differentiable collision and joint limits → accept only if the collision
+  screen passes and K107 is feasible and faster. 20 cells per role, 8
+  iterations.
+
+  | cells | C vs B (median, p10) | C vs planner (median, mean, p10) | ≥ 5% shorter vs planner |
+  |---|---|---|---|
+  | rescued | 0.958, 0.693 | 0.934, 0.850, 0.580 | 58% |
+  | heavy successes | 0.999, 0.910 | 0.972, 0.940, 0.848 | 32% |
+  | light successes | 1.000, 0.995 | 0.979, 0.978, 0.975 | 0% |
+
+  * 54/54 refined paths pass validation.
+  * Cost: 1.4–1.9 s and 6–9 K107 calls per request; 16 iterations gain ≤ 1%
+    more.
+  * Reading: geometry refinement pays off where torque is active (heavy
+    payload, and especially the gravity-aware rescues, whose paths are
+    conservative). With light payloads the retimer alone gives the about-2%
+    gain.
+* **Next:**
+  * Latency: batched K107 over lanes; TOPP-RA-only inner scoring for C;
+    fewer inner steps.
+  * Compare C vs the population search (arms B/C/D of `guided_search`) at
+    matched wall time.
+  * Rerun A+B+C on the held-out confirmation split.
+
 ## 3. Software (all in `research/timeopt_guided/`)
 
 | Module | Env | Role |
