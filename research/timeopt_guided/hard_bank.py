@@ -54,7 +54,7 @@ class HardConfig:
     min_length_ratio: float = 1.3
     endpoint_max: float = 0.9  # endpoint static util (vs 0.95 tau_max)
     straight_min_peak: float = 1.0  # straight line must violate the static limit
-    spline_controls: tuple = (30, 60, 100)
+    spline_controls: tuple = (30, 60, 100, 16)
     seed: int = 0
 
 
@@ -176,6 +176,7 @@ def global_roadmap(adm: Admissibility, n_samples: int, cfg: HardConfig, rng, bat
     tree = minimum_spanning_tree(g)
     tree = (tree + tree.T).tocsr()
     return {"nodes": nodes, "util": util, "tree": tree, "edges": int(alive.sum()), "length": length,
+            "key": key, "w": w,
             "wall_s": time.perf_counter() - t0}
 
 

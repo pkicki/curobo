@@ -26,7 +26,7 @@ from pathlib import Path
 import numpy as np
 
 from .common import (
-    RESULTS, SCENES, Payload, canonical_hash, payload_grid, rest_controls, task_split, write_json,
+    RESULTS, Payload, canonical_hash, payload_grid, rest_controls, task_split, write_json,
 )
 from .geometry import evaluate
 
