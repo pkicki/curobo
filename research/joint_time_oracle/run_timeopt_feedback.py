@@ -20,8 +20,8 @@ import numpy as np
 
 from .cohort_geometry import QuinticGeometry
 from .cohort_retime import ROOT
-from .geometry_feasibility_scene import IndependentGeometryAuditor
-from .payload_contract import Payload, payload_sphere_world_clearance, sha256_file
+from .payload_geometry_audit import PayloadGeometryAuditor
+from .payload_contract import Payload
 from .retimer_oracle import Oracle, make_request, run_oracle
 from .timeopt_feedback_search import ARMS, BUDGET, run
 
@@ -67,7 +67,7 @@ def execute(root:Path,task:dict,payload_doc:dict,
     base=initial_quintic(task) if initial is None else np.asarray(initial,dtype=float)
     if base.shape!=(22,7):
         raise ValueError("unsupported initial spline representation")
-    auditor=IndependentGeometryAuditor(task["scene"])
+    auditor=PayloadGeometryAuditor(task["scene"],p)
     case=task["case_id"]
     case_dir=Path(root)/case/engine.name/arm
     case_dir.mkdir(parents=True,exist_ok=True)
@@ -79,13 +79,10 @@ def execute(root:Path,task:dict,payload_doc:dict,
         path=QuinticGeometry(controls)
         q=path.evaluate(np.linspace(0,1,129))[0]
         assessment=auditor.check(q,min_clearance_m=.005)
-        supplement=payload_sphere_world_clearance(auditor,p,q)
-        geometry_ok=(assessment["sampled_acceptable"] and
-                     (supplement is None or supplement>=.005))
+        geometry_ok=bool(assessment["sampled_acceptable"])
         if not geometry_ok:
             result={"status":"INFEASIBLE_HEURISTIC",
-                    "infeasibility_score":float(max(0.,.005-
-                          (supplement if supplement is not None else .005))+
+                    "infeasibility_score":float(
                           max(0.,.005-(assessment["world_clearance_m"]
                              if assessment["world_clearance_m"] is not None else -.1))+
                           max(0.,.005-(assessment["self_clearance_m"]
@@ -100,7 +97,6 @@ def execute(root:Path,task:dict,payload_doc:dict,
                 result["independent_qualification"]="PENDING_CPU_AND_GPU_AUDIT"
         stage_times.append({"proposal":iteration,"wall_s":time.perf_counter()-stamp,
                             "retimer_called":geometry_ok,
-                            "payload_world_clearance_m":supplement,
                             "robot_world_clearance_m":assessment["world_clearance_m"],
                             "robot_self_clearance_m":assessment["self_clearance_m"]})
         return result
