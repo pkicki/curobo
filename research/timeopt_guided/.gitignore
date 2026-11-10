@@ -1,0 +1,4 @@
+results/**/cells/
+results/**/*.npz
+results/**/*.npy
+results/**/search_*.json
