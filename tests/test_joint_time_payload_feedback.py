@@ -193,3 +193,21 @@ def test_exact_native_cubic_handoff_never_fits_quintic():
         make_native_cubic_request("case",native,source_sha="origin",
                                  model_contract=wrong["model_contract"],
                                  limit_contract=limits,engine=oracle)
+
+
+
+def test_payload_study_holdout_requires_prequalified_frozen_development(tmp_path):
+    from research.joint_time_oracle.payload_study_freeze import verify
+    with pytest.raises(ValueError,match="confirmation forbidden"):
+        verify(tmp_path)
+
+
+def test_payload_report_never_promotes_unrun_or_unknown_native_failure(tmp_path):
+    from research.joint_time_oracle.payload_feedback_report import collect,render
+    empty=collect([])
+    assert empty["status"]=="NO_RESULTS"
+    assert empty["case_count"]==0
+    render(empty,tmp_path)
+    assert (tmp_path/"index.html").exists()
+    assert (tmp_path/"summary.json").exists()
+    assert "not a confirmed hard case" in (tmp_path/"index.html").read_text()
