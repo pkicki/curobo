@@ -32,7 +32,9 @@ ROOT = Path(__file__).resolve().parents[2]
 URDF = ROOT / "curobo/content/assets/robot/franka_description/franka_panda.urdf"
 ROBOT_YML = ROOT / "curobo/content/configs/robot/franka.yml"
 SCENE_DIR = ROOT / "curobo/content/configs/scene"
-SCENES = {"free": None, "table": "collision_test.yml", "cluttered": "collision_primitives_3d.yml"}
+SCENES = {"free": None, "table": "collision_test.yml", "cluttered": "collision_primitives_3d.yml",
+          **{f"spoke_r{r}{b}": f"research/timeopt_guided/scenes/spoke_r{r}{b}.yml" for r in (55, 65, 75, 85)
+             for b in ("", "_b", "_c", "_b_c")}}
 PARITY_ABS_NM, PARITY_REL = 0.15, 0.01
 TOL = 1e-3  # relative tolerance on utilization (sampling/float32)
 
@@ -89,7 +91,9 @@ class Geometry:
         self.ia, self.ib = np.asarray(pairs).T
         self.self_limit = self.radii[self.ia] + self.radii[self.ib] + np.asarray(
             [pad.get(links[i], 0) + pad.get(links[j], 0) for i, j in pairs])
-        sc = yaml.safe_load((SCENE_DIR / SCENES[scene]).read_text()) if SCENES[scene] else {}
+        f = SCENES[scene]
+        path = None if f is None else (ROOT / f if "/" in f else SCENE_DIR / f)
+        sc = yaml.safe_load(path.read_text()) if path else {}
         self.cuboids = []
         for b in (sc.get("cuboid") or {}).values():
             p = b["pose"]

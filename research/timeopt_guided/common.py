@@ -35,7 +35,17 @@ SCENES = {
     "free": None,
     "table": "collision_test.yml",
     "cluttered": "collision_primitives_3d.yml",
+    # Research scenes (path relative to the repository root): radial wall ("spoke").
+    **{f"spoke_r{r}{b}": f"research/timeopt_guided/scenes/spoke_r{r}{b}.yml" for r in (55, 65, 75, 85) for b in ("", "_b", "_c", "_b_c")},
 }
+
+
+def scene_file(name: str):
+    """Absolute scene file (None for free space)."""
+    f = SCENES[name]
+    if f is None:
+        return None
+    return ROOT / f if "/" in f else ROOT / "curobo/content/configs/scene" / f
 
 
 def curobo_scene(name: str):
@@ -48,14 +58,14 @@ def curobo_scene(name: str):
     sphere in cuRobo's capsule kernel, so this conversion is exact. Returns None
     for the obstacle-free scene and a dict otherwise.
     """
-    file = SCENES[name]
+    file = scene_file(name)
     if file is None:
         return None
     import copy
 
     import yaml
 
-    data = copy.deepcopy(yaml.safe_load((ROOT / "curobo/content/configs/scene" / file).read_text()))
+    data = copy.deepcopy(yaml.safe_load(file.read_text()))
     spheres = data.pop("sphere", None) or {}
     caps = data.setdefault("capsule", {}) or {}
     for key, sph in spheres.items():

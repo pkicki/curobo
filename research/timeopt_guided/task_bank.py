@@ -48,7 +48,7 @@ def generate(output: Path, *, per_scene_broad: int, per_scene_enriched: int, see
     rng = np.random.default_rng(seed)
     oracle = K107Oracle(ENRICH_PAYLOAD)
     tasks, rejected = [], []
-    for scene in SCENES:
+    for scene in ("free", "table", "cluttered"):  # base scenes only
         checker = PathCollisionChecker(scene)
         checker.set_payload(Payload(0.0, (0.0, 0.0, 0.0)))
         pool = checker.checker.sample(max_samples, mask_valid=True).detach().cpu().numpy()[:, :7]
