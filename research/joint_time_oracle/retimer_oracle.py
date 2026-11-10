@@ -86,12 +86,58 @@ def make_request(case_id:str,controls:np.ndarray,*,source_sha:str,
             "engine_commit":engine.engine_commit,
             "source_task_sha256":source_sha,
             "path_controls_sha256":path_hash,
+            "path_type":"quintic_clamped_22",
             "quintic_controls":x.tolist(),
             "model_contract":model_contract,
             "constraint_contract":limit_contract,
             "note":"research-only retimer evaluation; not independently certified"}
     fields["request_sha256"]=digest(fields)
     return fields
+
+
+def make_native_cubic_request(case_id:str,buffers:dict,*,source_sha:str,
+                              model_contract:dict,limit_contract:dict,
+                              engine:Oracle)->dict:
+    """Exact native cubic export: NO conversion to a different quintic path.
+
+    The source arrays must be the original native finalizer's cubic
+    control/start/goal buffers from the SAME lane. The K107 adapter must
+    replay native q,qs,qss,qsss (including one-sided knot events) on
+    this exact geometry before comparing solver feasibility.
+    """
+    engine.validate()
+    required=("controls","start_boundary","goal")
+    if any(k not in buffers for k in required):
+        raise ValueError("native cubic buffers missing")
+    arrays={k:np.asarray(buffers[k],dtype=np.float64) for k in required}
+    if any(not np.isfinite(v).all() for v in arrays.values()):
+        raise ValueError("nonfinite native path buffers")
+    if arrays["controls"].ndim!=2 or arrays["controls"].shape[1]!=7:
+        raise ValueError("expected single-lane native cubic controls")
+    if arrays["goal"].shape!=(7,):
+        raise ValueError("expected single-lane native goal")
+    if model_contract.get("nominal_effort_scale")!=1.0:
+        raise ValueError("nominal payload cohort must retain original efforts")
+    if not model_contract.get("native_pinocchio_payload_parity_verified") or (
+        not model_contract.get("attached_collision_parity_verified")):
+        raise ValueError("model parity required")
+    if set(limit_contract.get("families",()))!=set(FAMILIES):
+        raise ValueError("dynamics family mismatch")
+    h=hashlib.sha256()
+    for key in required:
+        v=np.ascontiguousarray(arrays[key])
+        h.update(key.encode());h.update(v.dtype.str.encode());h.update(v.tobytes())
+    result={"schema":VERSION,"case_id":case_id,"engine":engine.name,
+            "engine_commit":engine.engine_commit,
+            "source_task_sha256":source_sha,
+            "path_type":"native_cubic_exact",
+            "path_controls_sha256":h.hexdigest(),
+            "native_cubic_buffers":{k:v.tolist() for k,v in arrays.items()},
+            "model_contract":model_contract,
+            "constraint_contract":limit_contract,
+            "note":"exact native cubic replay required; no approximate re-fitting"}
+    result["request_sha256"]=digest(result)
+    return result
 
 
 def validate_response(request:dict,response:dict)->dict:
@@ -103,6 +149,8 @@ def validate_response(request:dict,response:dict)->dict:
         raise ValueError("retimer engine revision mismatch")
     if response.get("path_controls_sha256")!=request["path_controls_sha256"]:
         raise ValueError("retimer silently changed geometric path")
+    if response.get("path_type")!=request.get("path_type"):
+        raise ValueError("retimer response changed exact path representation")
     if response.get("model_contract_sha256")!=digest(request["model_contract"]):
         raise ValueError("retimer used mismatched payload model")
     if response.get("constraint_contract_sha256")!=digest(request["constraint_contract"]):
