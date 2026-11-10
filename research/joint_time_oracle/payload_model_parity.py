@@ -14,6 +14,25 @@ from .payload_timeopt_contract import Payload, exact_effort_contract
 from .cohort_retime import dynamics as independent_nominal_dynamics
 
 
+def research_payload_spheres(payload:Payload)->list[dict]:
+    """Fixed four-sphere payload volume; independent/natives must match."""
+    center=np.asarray(payload.com_xyz_m,dtype=float)
+    offsets=(0.,.045,.090,.135)
+    radius=.065
+    return [{"center":(center+np.array([0.,0.,z])).tolist(),"radius":radius}
+            for z in offsets]
+
+
+def independent_payload_auditor(payload:Payload,scene:str|None):
+    from .geometry_feasibility_scene import IndependentGeometryAuditor
+    auditor=IndependentGeometryAuditor(
+        scene,extra_attached_spheres=research_payload_spheres(payload))
+    model,data,neutral,qi,vi=independent_payload_model(payload)
+    auditor.model=model;auditor.data=data;auditor.neutral=neutral
+    auditor.q=neutral.copy();auditor.qi=qi;auditor.vi=vi
+    return auditor
+
+
 def independent_payload_model(payload:Payload):
     import pinocchio as pin
 
@@ -29,13 +48,23 @@ def independent_payload_model(payload:Payload):
     return model,data,q,qi,vi
 
 
-def native_payload_robot(payload:Payload):
+def native_payload_robot(payload:Payload,*,with_payload_spheres:bool=False):
     import torch
     from curobo._src.types.robot import RobotCfg
     from curobo._src.util.config_io import join_path, resolve_config
     from curobo.content import get_robot_configs_path
 
     cfg=resolve_config(join_path(get_robot_configs_path(),"franka.yml"))
+    if with_payload_spheres:
+        # The SAME fixed identity-attached object in franka.yml. The
+        # native CUDA kinematics must independently demonstrate that
+        # the four spheres actually entered the collision query.
+        spec=cfg["robot_cfg"]["kinematics"]
+        if (spec["extra_links"]["attached_object"]["parent_link_name"]!="panda_hand" or
+            list(spec["extra_links"]["attached_object"]["fixed_transform"])!=[0,0,0,1,0,0,0]):
+            raise ValueError("native attached frame contract changed")
+        spec["collision_spheres"]["attached_object"]=research_payload_spheres(payload)
+        spec["extra_collision_spheres"]["attached_object"]=0
     robot=RobotCfg.create(cfg)
     kp=robot.kinematics.kinematics_config
     mass_link="attached_object"
@@ -61,7 +90,11 @@ def native_payload_robot(payload:Payload):
                   "native_new_mass_kg":float(m[idx,3]),
                   "native_com_local_xyz_m":list(payload.com_xyz_m),
                   "effort_parity":contract,
-                  "payload_collision_qualified":False}
+                  "payload_collision_qualified":False,
+                  "payload_collision_configured":with_payload_spheres,
+                  "payload_collision_definition":research_payload_spheres(payload)
+                        if with_payload_spheres else None,
+                  "warning":"native-vs-independent collision parity must be audited on paired robot poses"}
 
 
 def assert_native_independent_dynamics_parity(native_dynamics,independent,
