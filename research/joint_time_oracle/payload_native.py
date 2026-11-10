@@ -59,9 +59,10 @@ def combined_link_inertia(old_mass_com:np.ndarray,old_inertia6:np.ndarray,
 
 def configured_native_robot(payload:Payload,*,strict_collision:bool=True):
     """Create independent native RobotCfg; only output with collision gate."""
-    from curobo.robot.robot_cfg import RobotCfg
-    from curobo.util_file import get_robot_configs_path,join_path
-    from curobo.util_file import resolve_config
+    from curobo._src.types.robot import RobotCfg
+    from curobo.content import get_robot_configs_path
+    from curobo._src.util.config_io import join_path
+    from curobo._src.util.config_io import resolve_config
     config=resolve_config(join_path(get_robot_configs_path(),"franka.yml"))
     robot=RobotCfg.create(config)
     params=robot.kinematics.kinematics_config
