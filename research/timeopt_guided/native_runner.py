@@ -401,7 +401,9 @@ class HybridPlanner:
 
     TRIGGERS = ("timeopt_seed_infeasible_all_lanes", "success_flag_with_nonfinite_trajectory")
 
-    def __init__(self, scene: str, *, seed: int = 0, fallback: str = "gravity_aware_85") -> None:
+    def __init__(self, scene: str, *, seed: int = 0, fallback: str = "gravity_aware_85",
+                 native_after_fallback: bool = False) -> None:
+        self.native_after_fallback = native_after_fallback
         self.native = NativePlanner(scene, seed=seed, variant="native")
         self.fallback = NativePlanner(scene, seed=seed, variant=fallback)
         self.warmup_s = self.native.warmup_s + self.fallback.warmup_s
@@ -422,6 +424,10 @@ class HybridPlanner:
             route, out = "native_first", first
         elif first.failure_stage in self.TRIGGERS:
             route, out = "gravity_fallback", self.fallback.plan(start, goal, dense_samples=dense_samples)[-1]
+            if not out.success and self.native_after_fallback:
+                # v2: the fallback failed too; give native its remaining (graph-seeded) attempts
+                route, out = "gravity_fallback_then_native", self.native.plan(start, goal,
+                                                                             dense_samples=dense_samples)[-1]
         else:
             route, out = "native_rest", self.native.plan(start, goal, dense_samples=dense_samples)[-1]
         out.wall_s = time.perf_counter() - t

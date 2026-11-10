@@ -364,6 +364,39 @@ Subsets (independently certified witnesses only):
   2 was resumed after the speed refactor (`4e5d373`) with per-combination seeds; finished
   cells were kept. Both facts are noted in the manifest.
 
+### 2.10 Evaluation on the frozen benchmarks (development splits; v1 hybrid policy)
+
+Success = planner success AND independent validation (Scaled95, 0.5% sampling tolerance,
+collision free, endpoints/rest). All problems are certified solvable. Native and hybrid
+ran on the same GPU per benchmark: main on the A100, hard on the RTX 3090.
+
+| method | main (1134) valid | hard (138) valid | TIGHT 41 | DETOUR 97 | SWING 20 | median wall (success) |
+|---|---|---|---|---|---|---|
+| native cuRoboV2-Fast | 1023 (90.2%) | 17 (12.3%) | 10 | 7 | 5 | 16 ms |
+| hybrid (native + gravity fallback) | 1074 (94.7%) | 95 (68.8%) | 34 | 61 | 15 | 16 ms main / 39 ms hard |
+| B = hybrid + K107 all-lane retiming | 1080 (95.2%) | 95 | 34 | 61 | 15 | 0.37 s / 0.45 s |
+| C = B + retimer-guided refinement | 1086 (95.8%) | 95 | 34 | 61 | 15 | 0.52 s / 2.3 s (p95 2.7 s) |
+
+Durations on problems both methods solve:
+
+| comparison | median ratio | mean ratio | ≥ 5% shorter |
+|---|---|---|---|
+| main, B vs native | 0.986 | 0.983 | 7% |
+| main, C vs native | 0.984 | 0.976 | 12% |
+| hard, B vs hybrid | 0.891 | 0.855 | 75% |
+| hard, C vs hybrid | 0.766 | 0.760 | 85% |
+
+* On the SWING problems the planners' solutions are faster than both certified
+  witnesses (median ratio 0.76–0.89 vs the swing witness and 0.47–0.54 vs the
+  K107-timed static route). The witnesses are existence certificates, not optimised
+  references.
+* Hybrid v1 loses 11 native successes on main: when the gravity fallback failed, native
+  never got its remaining graph-seeded attempts. v2 (`hybrid2`) continues with native
+  in that case. Only the 29 main and 40 hard cells where the fallback failed differ;
+  they are rerun, and B/C are recomputed on them (`B2_R1`, `C2_R1`).
+* 43 hard problems (and about 48 main ones) remain unsolved by every method despite
+  being certified solvable.
+
 ## 3. Software (all in `research/timeopt_guided/`)
 
 | Module | Env | Role |

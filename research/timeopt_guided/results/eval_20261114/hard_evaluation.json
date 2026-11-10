@@ -1,0 +1,5407 @@
+{
+  "B_R1": {
+    "duration_ratio_vs_ref": {
+      "frac_5pct_shorter": 0.7473684210526316,
+      "mean": 0.855084038630565,
+      "median": 0.8911437189539457,
+      "n": 95
+    },
+    "lost_ref_successes": 0,
+    "n": 138,
+    "planned": 95,
+    "planned_but_invalid": 0,
+    "rescued_ref_failures": 0,
+    "valid": 95,
+    "valid_rate": 0.6884057971014492,
+    "wall_median_failure_s": 0.41020601498894393,
+    "wall_median_success_s": 0.4452548200497404,
+    "wall_p95_s": 0.4666178492538166
+  },
+  "C_R1": {
+    "duration_ratio_vs_ref": {
+      "frac_5pct_shorter": 0.8526315789473684,
+      "mean": 0.7596584891118939,
+      "median": 0.7658821709095922,
+      "n": 95
+    },
+    "lost_ref_successes": 0,
+    "n": 138,
+    "planned": 95,
+    "planned_but_invalid": 0,
+    "rescued_ref_failures": 0,
+    "valid": 95,
+    "valid_rate": 0.6884057971014492,
+    "wall_median_failure_s": 0.41020601498894393,
+    "wall_median_success_s": 2.3230659508844838,
+    "wall_p95_s": 2.5623229006188923
+  },
+  "by_payload": {
+    "m3_offset": {
+      "B_R1": "5/7",
+      "C_R1": "5/7",
+      "hybrid_R1": "5/7"
+    },
+    "m4_axial": {
+      "B_R1": "22/26",
+      "C_R1": "22/26",
+      "hybrid_R1": "22/26"
+    },
+    "m4_offset": {
+      "B_R1": "27/34",
+      "C_R1": "27/34",
+      "hybrid_R1": "27/34"
+    },
+    "m5_axial": {
+      "B_R1": "21/32",
+      "C_R1": "21/32",
+      "hybrid_R1": "21/32"
+    },
+    "m5_offset": {
+      "B_R1": "20/39",
+      "C_R1": "20/39",
+      "hybrid_R1": "20/39"
+    }
+  },
+  "by_scene": {
+    "cluttered": {
+      "B_R1": "20/28",
+      "C_R1": "20/28",
+      "hybrid_R1": "20/28"
+    },
+    "free": {
+      "B_R1": "50/77",
+      "C_R1": "50/77",
+      "hybrid_R1": "50/77"
+    },
+    "table": {
+      "B_R1": "25/33",
+      "C_R1": "25/33",
+      "hybrid_R1": "25/33"
+    }
+  },
+  "by_stratum": {
+    "DETOUR": {
+      "B_R1": "61/97",
+      "C_R1": "61/97",
+      "hybrid_R1": "61/97"
+    },
+    "SWING": {
+      "B_R1": "15/20",
+      "C_R1": "15/20",
+      "hybrid_R1": "15/20"
+    },
+    "SWING_MARGINAL": {
+      "B_R1": "2/3",
+      "C_R1": "2/3",
+      "hybrid_R1": "2/3"
+    },
+    "TIGHT_STATIC": {
+      "B_R1": "34/41",
+      "C_R1": "34/41",
+      "hybrid_R1": "34/41"
+    }
+  },
+  "cells": 138,
+  "hybrid_R1": {
+    "n": 138,
+    "planned": 95,
+    "planned_but_invalid": 0,
+    "valid": 95,
+    "valid_rate": 0.6884057971014492,
+    "wall_median_failure_s": 0.41020601498894393,
+    "wall_median_success_s": 0.039337110007181764,
+    "wall_p95_s": 0.4449818938272074
+  },
+  "reference": "hybrid_R1",
+  "rows": [
+    {
+      "B_R1": {
+        "duration_s": 1.387229785323143,
+        "planned": true,
+        "route": "native_first|k107_no_lane",
+        "valid": true,
+        "wall_s": 0.19791069498751312
+      },
+      "C_R1": {
+        "duration_s": 1.387229785323143,
+        "planned": true,
+        "route": "native_first|k107_no_lane|no_refine",
+        "valid": true,
+        "wall_s": 0.19791069498751312
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9421860575675964,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.387229785323143,
+        "planned": true,
+        "route": "native_first",
+        "valid": true,
+        "wall_s": 0.02349013602361083
+      },
+      "payload": "m4_axial",
+      "scene": "cluttered",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "cluttered_m4_axial_01a5bf5cf5"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.0041523296912669,
+        "planned": true,
+        "route": "native_first|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4096555389696732
+      },
+      "C_R1": {
+        "duration_s": 0.9694979196965818,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 3.9215785099659115
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9077361822128296,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.1035218089818954,
+        "planned": true,
+        "route": "native_first",
+        "valid": true,
+        "wall_s": 0.01687316398601979
+      },
+      "payload": "m4_axial",
+      "scene": "cluttered",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "cluttered_m4_axial_1ad4afd6ce"
+    },
+    {
+      "B_R1": {
+        "duration_s": 0.5906819701194763,
+        "planned": true,
+        "route": "native_first|k107_no_lane",
+        "valid": true,
+        "wall_s": 0.19058993295766413
+      },
+      "C_R1": {
+        "duration_s": 0.5906819701194763,
+        "planned": true,
+        "route": "native_first|k107_no_lane|no_refine",
+        "valid": true,
+        "wall_s": 0.19058993295766413
+      },
+      "hard": {
+        "detour_ratio": 2.0335842534148156,
+        "labels": [
+          "DETOUR",
+          "SWING"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.0570150846213133,
+        "static_witness_duration_s": 3.7078097756801442,
+        "swing_k107_s": 0.5849739173175166
+      },
+      "hybrid_R1": {
+        "duration_s": 0.5906819701194763,
+        "planned": true,
+        "route": "native_first",
+        "valid": true,
+        "wall_s": 0.01671004598028958
+      },
+      "payload": "m4_axial",
+      "scene": "cluttered",
+      "split": "development",
+      "stratum": "DETOUR+SWING",
+      "task_id": "cluttered_m4_axial_490a0835c7"
+    },
+    {
+      "B_R1": {
+        "duration_s": 0.6091011392770547,
+        "planned": true,
+        "route": "native_first|k107_lane0",
+        "valid": true,
+        "wall_s": 0.40885880298446864
+      },
+      "C_R1": {
+        "duration_s": 0.6065261021105008,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.0078433379530907
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9656639695167542,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 0.6259324103593826,
+        "planned": true,
+        "route": "native_first",
+        "valid": true,
+        "wall_s": 0.0167921120300889
+      },
+      "payload": "m4_axial",
+      "scene": "cluttered",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "cluttered_m4_axial_96b9add561"
+    },
+    {
+      "B_R1": {
+        "duration_s": 0.671386228495176,
+        "planned": true,
+        "route": "native_first|k107_lane0",
+        "valid": true,
+        "wall_s": 0.41143291804473847
+      },
+      "C_R1": {
+        "duration_s": 0.6687056319236351,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 1.756251520011574
+      },
+      "hard": {
+        "detour_ratio": 2.090062820590812,
+        "labels": [
+          "DETOUR",
+          "SWING"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 1.9397636939331462,
+        "static_witness_duration_s": 2.975720645276302,
+        "swing_k107_s": 0.8542909557445781
+      },
+      "hybrid_R1": {
+        "duration_s": 0.7102142330259085,
+        "planned": true,
+        "route": "native_first",
+        "valid": true,
+        "wall_s": 0.016715225065127015
+      },
+      "payload": "m4_axial",
+      "scene": "cluttered",
+      "split": "development",
+      "stratum": "DETOUR+SWING",
+      "task_id": "cluttered_m4_axial_e0d513f2d7"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 1.1481893990421668
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 1.1481893990421668
+      },
+      "hard": {
+        "detour_ratio": 2.0097377995265076,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.3820942532181917,
+        "static_witness_duration_s": 3.891162112167006,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 1.1481893990421668
+      },
+      "payload": "m4_offset",
+      "scene": "cluttered",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "cluttered_m4_offset_1cc8c72340"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.1364156880322538,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.44300712109543383
+      },
+      "C_R1": {
+        "duration_s": 1.021509589061996,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.5934167611412704
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9386979937553406,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.532492533326149,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.048040967085398734
+      },
+      "payload": "m4_offset",
+      "scene": "cluttered",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "cluttered_m4_offset_2fcb33ce30"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.2109465033648363,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.439834151067771
+      },
+      "C_R1": {
+        "duration_s": 1.074419247711655,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.659179988084361
+      },
+      "hard": {
+        "detour_ratio": 2.111258585360441,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.8028978497710137,
+        "static_witness_duration_s": 5.5192910625781275,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.252343449741602,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.04231502104084939
+      },
+      "payload": "m4_offset",
+      "scene": "cluttered",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "cluttered_m4_offset_45d62accf3"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.2161538584975988,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.43678969505708665
+      },
+      "C_R1": {
+        "duration_s": 1.127455797798101,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.186810671002604
+      },
+      "hard": {
+        "detour_ratio": 2.0287483223734935,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.9898350492064445,
+        "static_witness_duration_s": 6.579377644322997,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.472100853919983,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.04224805405829102
+      },
+      "payload": "m4_offset",
+      "scene": "cluttered",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "cluttered_m4_offset_80aaddb406"
+    },
+    {
+      "B_R1": {
+        "duration_s": 0.7558363657444715,
+        "planned": true,
+        "route": "gravity_fallback|k107_no_lane",
+        "valid": true,
+        "wall_s": 0.21321323211304843
+      },
+      "C_R1": {
+        "duration_s": 0.7558363657444715,
+        "planned": true,
+        "route": "gravity_fallback|k107_no_lane|no_refine",
+        "valid": true,
+        "wall_s": 0.21321323211304843
+      },
+      "hard": {
+        "detour_ratio": 2.518814692875187,
+        "labels": [
+          "DETOUR",
+          "SWING"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.367590311697639,
+        "static_witness_duration_s": 3.2738222283985947,
+        "swing_k107_s": 0.9955261506832975
+      },
+      "hybrid_R1": {
+        "duration_s": 0.7558363657444715,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.03914490807801485
+      },
+      "payload": "m4_offset",
+      "scene": "cluttered",
+      "split": "development",
+      "stratum": "DETOUR+SWING",
+      "task_id": "cluttered_m4_offset_96b23cf308"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.2725834070438664,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4349914959166199
+      },
+      "C_R1": {
+        "duration_s": 1.0732435781642176,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.5788185888668522
+      },
+      "hard": {
+        "detour_ratio": 2.105822602531164,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 3.145288841173511,
+        "static_witness_duration_s": 5.921930742352812,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.7527078073471785,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.042286047944799066
+      },
+      "payload": "m4_offset",
+      "scene": "cluttered",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "cluttered_m4_offset_bedf6a302f"
+    },
+    {
+      "B_R1": {
+        "duration_s": 0.7713410477693912,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.43478280887939036
+      },
+      "C_R1": {
+        "duration_s": 0.749882802190909,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.0691946478327736
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9635871052742004,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 0.8244232032448053,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.04216183093376458
+      },
+      "payload": "m4_offset",
+      "scene": "cluttered",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "cluttered_m4_offset_fd3391f18f"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.45197474502492696
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.45197474502492696
+      },
+      "hard": {
+        "detour_ratio": 2.0610663887719602,
+        "labels": [
+          "DETOUR",
+          "SWING"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.8233012555009434,
+        "static_witness_duration_s": 5.296442891243514,
+        "swing_k107_s": 1.7504720101653524
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.45197474502492696
+      },
+      "payload": "m5_axial",
+      "scene": "cluttered",
+      "split": "development",
+      "stratum": "DETOUR+SWING",
+      "task_id": "cluttered_m5_axial_0b10d7c627"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "native_rest|no_retime",
+        "valid": false,
+        "wall_s": 1.109482850995846
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "native_rest|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 1.109482850995846
+      },
+      "hard": {
+        "detour_ratio": 2.0538826838036743,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 1.8971306553925618,
+        "static_witness_duration_s": 2.740657548798672,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "native_rest",
+        "valid": false,
+        "wall_s": 1.109482850995846
+      },
+      "payload": "m5_axial",
+      "scene": "cluttered",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "cluttered_m5_axial_0fb7d3ade6"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.4644892873395021,
+        "planned": true,
+        "route": "native_first|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4098768690600991
+      },
+      "C_R1": {
+        "duration_s": 1.460492543796672,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 1.6710914690047503
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9527716040611267,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.9024849496781826,
+        "planned": true,
+        "route": "native_first",
+        "valid": true,
+        "wall_s": 0.01590351201593876
+      },
+      "payload": "m5_axial",
+      "scene": "cluttered",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "cluttered_m5_axial_134ce5d03b"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "native_rest|no_retime",
+        "valid": false,
+        "wall_s": 0.4088698689593002
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "native_rest|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.4088698689593002
+      },
+      "hard": {
+        "detour_ratio": 2.494140260894951,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 3.3442831619817377,
+        "static_witness_duration_s": 5.49084078356137,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "native_rest",
+        "valid": false,
+        "wall_s": 0.4088698689593002
+      },
+      "payload": "m5_axial",
+      "scene": "cluttered",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "cluttered_m5_axial_73c5b82398"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "native_rest|no_retime",
+        "valid": false,
+        "wall_s": 0.4073777290759608
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "native_rest|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.4073777290759608
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9080744385719299,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "native_rest",
+        "valid": false,
+        "wall_s": 0.4073777290759608
+      },
+      "payload": "m5_axial",
+      "scene": "cluttered",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "cluttered_m5_axial_b314ed2835"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.2966619849636276,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4346410019788891
+      },
+      "C_R1": {
+        "duration_s": 1.0992886174981231,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.346202430082485
+      },
+      "hard": {
+        "detour_ratio": 2.1283230559897004,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 1.8535926413894839,
+        "static_witness_duration_s": 2.6978829880781308,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.694293238222599,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.04223111202009022
+      },
+      "payload": "m5_axial",
+      "scene": "cluttered",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "cluttered_m5_axial_d49b8ae5e5"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.0125684394577044,
+        "planned": true,
+        "route": "native_first|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4151861460413784
+      },
+      "C_R1": {
+        "duration_s": 0.9571411203962362,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.5498791460413486
+      },
+      "hard": {
+        "detour_ratio": 2.2271082096362607,
+        "labels": [
+          "DETOUR",
+          "SWING"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.5415186270909507,
+        "static_witness_duration_s": 4.206016063078143,
+        "swing_k107_s": 1.79341913185447
+      },
+      "hybrid_R1": {
+        "duration_s": 1.1027743946760893,
+        "planned": true,
+        "route": "native_first",
+        "valid": true,
+        "wall_s": 0.01564764801878482
+      },
+      "payload": "m5_axial",
+      "scene": "cluttered",
+      "split": "development",
+      "stratum": "DETOUR+SWING",
+      "task_id": "cluttered_m5_axial_eaf3ae8840"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.44512409006711096
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.44512409006711096
+      },
+      "hard": {
+        "detour_ratio": 2.3056658625922237,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.103643504501325,
+        "static_witness_duration_s": 3.593684465711582,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.44512409006711096
+      },
+      "payload": "m5_offset",
+      "scene": "cluttered",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "cluttered_m5_offset_0d64388427"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.7756681886617967,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.44168329902458936
+      },
+      "C_R1": {
+        "duration_s": 1.2322074014931617,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.575486135086976
+      },
+      "hard": {
+        "detour_ratio": 2.4134277034359317,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 3.004589851587744,
+        "static_witness_duration_s": 5.855643190316966,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 2.331063497811556,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.04195373901166022
+      },
+      "payload": "m5_offset",
+      "scene": "cluttered",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "cluttered_m5_offset_11a6aa1a44"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.952551482053086,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4455362729495391
+      },
+      "C_R1": {
+        "duration_s": 1.5680086026079327,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.271612201933749
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9631062150001526,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 2.216206807643175,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.04244657000526786
+      },
+      "payload": "m5_offset",
+      "scene": "cluttered",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "cluttered_m5_offset_14e0e64b06"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.430999795702419,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.44070419599302113
+      },
+      "C_R1": {
+        "duration_s": 1.3402763527630568,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 1.56781117094215
+      },
+      "hard": {
+        "detour_ratio": 2.1915299386483884,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.7946168650621654,
+        "static_witness_duration_s": 4.23272756149967,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.9999514520168304,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.042184293968603015
+      },
+      "payload": "m5_offset",
+      "scene": "cluttered",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "cluttered_m5_offset_6ec1a5b5b7"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.3898120077545397,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.439728151075542
+      },
+      "C_R1": {
+        "duration_s": 1.3898120077545397,
+        "planned": true,
+        "route": "refine_no_improvement",
+        "valid": true,
+        "wall_s": 1.6044682140927762
+      },
+      "hard": {
+        "detour_ratio": 2.6202558434617513,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.068766946634682,
+        "static_witness_duration_s": 3.736391892488464,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 2.05723468773067,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.04205086198635399
+      },
+      "payload": "m5_offset",
+      "scene": "cluttered",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "cluttered_m5_offset_80611510da"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.44495740497950464
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.44495740497950464
+      },
+      "hard": {
+        "detour_ratio": 2.63936628895641,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.7238367368516205,
+        "static_witness_duration_s": 6.553320793985594,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.44495740497950464
+      },
+      "payload": "m5_offset",
+      "scene": "cluttered",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "cluttered_m5_offset_914195eecf"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.213694062527796,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.44551323913037777
+      },
+      "C_R1": {
+        "duration_s": 0.958410177348394,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.5858962651109323
+      },
+      "hard": {
+        "detour_ratio": 2.533622156558745,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 3.292121375418769,
+        "static_witness_duration_s": 5.54841477813929,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 2.072712730616331,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.04363707103766501
+      },
+      "payload": "m5_offset",
+      "scene": "cluttered",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "cluttered_m5_offset_d0f883deaf"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.4451206639641896
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.4451206639641896
+      },
+      "hard": {
+        "detour_ratio": 2.101445353918292,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 3.3906108222981532,
+        "static_witness_duration_s": 5.882385535607951,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.4451206639641896
+      },
+      "payload": "m5_offset",
+      "scene": "cluttered",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "cluttered_m5_offset_e3b70c6466"
+    },
+    {
+      "B_R1": {
+        "duration_s": 2.030607426957456,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4423800359945744
+      },
+      "C_R1": {
+        "duration_s": 1.8919106084796509,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 1.5677828699117526
+      },
+      "hard": {
+        "detour_ratio": 2.3719982245481943,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 3.6714253887314054,
+        "static_witness_duration_s": 5.746758474604008,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 2.1877627968788147,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.04225634003523737
+      },
+      "payload": "m5_offset",
+      "scene": "cluttered",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "cluttered_m5_offset_fd8a069749"
+    },
+    {
+      "B_R1": {
+        "duration_s": 2.0738452359371564,
+        "planned": true,
+        "route": "native_first|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4268066470976919
+      },
+      "C_R1": {
+        "duration_s": 2.045345857651041,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 1.4131436221068725
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9573845267295837,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 2.8907653465867043,
+        "planned": true,
+        "route": "native_first",
+        "valid": true,
+        "wall_s": 0.02273376507218927
+      },
+      "payload": "m3_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "free_m3_offset_36563aa101"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.7990139790344983
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.7990139790344983
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9539889693260193,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.7990139790344983
+      },
+      "payload": "m3_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "free_m3_offset_5104179eab"
+    },
+    {
+      "B_R1": {
+        "duration_s": 2.5170058037484453,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4477684850571677
+      },
+      "C_R1": {
+        "duration_s": 1.935422610990646,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.5583547800779343
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9512940049171448,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 3.1511306073516607,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.04467527405358851
+      },
+      "payload": "m3_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "free_m3_offset_a1fd335731"
+    },
+    {
+      "B_R1": {
+        "duration_s": 3.351201396435499,
+        "planned": true,
+        "route": "native_first|k107_no_lane",
+        "valid": true,
+        "wall_s": 0.19409899797756225
+      },
+      "C_R1": {
+        "duration_s": 3.351201396435499,
+        "planned": true,
+        "route": "native_first|k107_no_lane|no_refine",
+        "valid": true,
+        "wall_s": 0.19409899797756225
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9516617655754089,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 3.351201396435499,
+        "planned": true,
+        "route": "native_first",
+        "valid": true,
+        "wall_s": 0.015189731027930975
+      },
+      "payload": "m3_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "free_m3_offset_c893117dd5"
+    },
+    {
+      "B_R1": {
+        "duration_s": 2.30112138142155,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.43908394093159586
+      },
+      "C_R1": {
+        "duration_s": 2.2986229847899735,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 1.8767528319731355
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9031838774681091,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 2.3358649536967278,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.036502328934147954
+      },
+      "payload": "m3_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "free_m3_offset_c9372e54fd"
+    },
+    {
+      "B_R1": {
+        "duration_s": 2.3092667130362408,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.44273472600616515
+      },
+      "C_R1": {
+        "duration_s": 1.9071841970209096,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.3216116710100323
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9363288283348083,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 3.030903022736311,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.03969222097657621
+      },
+      "payload": "m3_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "free_m3_offset_fec723ee28"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.1448738009943151,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4473195559112355
+      },
+      "C_R1": {
+        "duration_s": 0.9418565028160729,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.3513254339341074
+      },
+      "hard": {
+        "detour_ratio": 2.1515907963925094,
+        "labels": [
+          "DETOUR",
+          "SWING_MARGINAL"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 1.7208494061562953,
+        "static_witness_duration_s": 4.734932866212665,
+        "swing_k107_s": 1.4103431196075211
+      },
+      "hybrid_R1": {
+        "duration_s": 1.3912835121154785,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.0399404619820416
+      },
+      "payload": "m4_axial",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR+SWING_MARGINAL",
+      "task_id": "free_m4_axial_071f1f1eb3"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.1713599489765767,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.44764511997345835
+      },
+      "C_R1": {
+        "duration_s": 1.0592739482391726,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.3084028440061957
+      },
+      "hard": {
+        "detour_ratio": 2.182161214385697,
+        "labels": [
+          "DETOUR",
+          "SWING"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 1.8956368664800978,
+        "static_witness_duration_s": 2.8083609131568315,
+        "swing_k107_s": 1.7921396534713765
+      },
+      "hybrid_R1": {
+        "duration_s": 1.3631136808544397,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.039303096011281013
+      },
+      "payload": "m4_axial",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR+SWING",
+      "task_id": "free_m4_axial_08d0fd35a7"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.6744122560008103,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.44646639295388013
+      },
+      "C_R1": {
+        "duration_s": 1.488194884171369,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.3150804409524426
+      },
+      "hard": {
+        "detour_ratio": 2.5663767961902137,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.4119874038507247,
+        "static_witness_duration_s": 4.944974698078552,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.7469321936368942,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.03936014394275844
+      },
+      "payload": "m4_axial",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m4_axial_2454e9e26f"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.41553916898556054
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.41553916898556054
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9565565586090088,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.41553916898556054
+      },
+      "payload": "m4_axial",
+      "scene": "free",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "free_m4_axial_378100c18c"
+    },
+    {
+      "B_R1": {
+        "duration_s": 2.0000242890608786,
+        "planned": true,
+        "route": "native_first|k107_lane0",
+        "valid": true,
+        "wall_s": 0.423737263889052
+      },
+      "C_R1": {
+        "duration_s": 1.881686077606371,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 1.6241458569420502
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9612812399864197,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 2.5203070174902678,
+        "planned": true,
+        "route": "native_first",
+        "valid": true,
+        "wall_s": 0.015544110909104347
+      },
+      "payload": "m4_axial",
+      "scene": "free",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "free_m4_axial_4a78f8b3cf"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.1127388490583476,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.599291767925024
+      },
+      "C_R1": {
+        "duration_s": 0.9952263677957593,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.4764155759476125
+      },
+      "hard": {
+        "detour_ratio": 2.1444332929599623,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.055362122323287,
+        "static_witness_duration_s": 4.58105890474621,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.20155568420887,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.03946303902193904
+      },
+      "payload": "m4_axial",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m4_axial_52f45d7d49"
+    },
+    {
+      "B_R1": {
+        "duration_s": 0.8785705174073845,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.45023850398138165
+      },
+      "C_R1": {
+        "duration_s": 0.7848421625453794,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.3204412759514526
+      },
+      "hard": {
+        "detour_ratio": 2.1397405651485677,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.609809055058739,
+        "static_witness_duration_s": 6.948003715943875,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 0.9672619197517633,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.03927699604537338
+      },
+      "payload": "m4_axial",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m4_axial_533dc446b2"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.40867698297370225
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.40867698297370225
+      },
+      "hard": {
+        "detour_ratio": 2.04711348203716,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.4525378926699943,
+        "static_witness_duration_s": 4.628959515304825,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.40867698297370225
+      },
+      "payload": "m4_axial",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m4_axial_5a7e6512ca"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.41163879295345396
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.41163879295345396
+      },
+      "hard": {
+        "detour_ratio": 2.6233479044949704,
+        "labels": [
+          "DETOUR",
+          "SWING_MARGINAL"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.0415754232913503,
+        "static_witness_duration_s": 3.402864694447892,
+        "swing_k107_s": 1.9924918541335637
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.41163879295345396
+      },
+      "payload": "m4_axial",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR+SWING_MARGINAL",
+      "task_id": "free_m4_axial_5db049d5ce"
+    },
+    {
+      "B_R1": {
+        "duration_s": 2.0170264215452325,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.44356951594818383
+      },
+      "C_R1": {
+        "duration_s": 1.503718324363388,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.3423547509592026
+      },
+      "hard": {
+        "detour_ratio": 2.3832395335557788,
+        "labels": [
+          "DETOUR",
+          "SWING"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.8500399535918475,
+        "static_witness_duration_s": 5.276161082352413,
+        "swing_k107_s": 3.3040467209754514
+      },
+      "hybrid_R1": {
+        "duration_s": 2.4573966655880213,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.03926900203805417
+      },
+      "payload": "m4_axial",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR+SWING",
+      "task_id": "free_m4_axial_6a800d8850"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.4107809809502214
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.4107809809502214
+      },
+      "hard": {
+        "detour_ratio": 2.0534033668532903,
+        "labels": [
+          "DETOUR",
+          "SWING"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 1.9196979266754788,
+        "static_witness_duration_s": 5.301998697970825,
+        "swing_k107_s": 2.4888348682756636
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.4107809809502214
+      },
+      "payload": "m4_axial",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR+SWING",
+      "task_id": "free_m4_axial_88c8b62ea0"
+    },
+    {
+      "B_R1": {
+        "duration_s": 0.8308966644108295,
+        "planned": true,
+        "route": "native_first|k107_no_lane",
+        "valid": true,
+        "wall_s": 0.193803217029199
+      },
+      "C_R1": {
+        "duration_s": 0.8308966644108295,
+        "planned": true,
+        "route": "native_first|k107_no_lane|no_refine",
+        "valid": true,
+        "wall_s": 0.193803217029199
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9582587480545044,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 0.8308966644108295,
+        "planned": true,
+        "route": "native_first",
+        "valid": true,
+        "wall_s": 0.016803801991045475
+      },
+      "payload": "m4_axial",
+      "scene": "free",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "free_m4_axial_9437e57232"
+    },
+    {
+      "B_R1": {
+        "duration_s": 2.4930443975367647,
+        "planned": true,
+        "route": "native_first|k107_lane0",
+        "valid": true,
+        "wall_s": 0.41900669992901385
+      },
+      "C_R1": {
+        "duration_s": 1.806770338405666,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.350488416966982
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9658433198928833,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 3.3622833620756865,
+        "planned": true,
+        "route": "native_first",
+        "valid": true,
+        "wall_s": 0.01668518001679331
+      },
+      "payload": "m4_axial",
+      "scene": "free",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "free_m4_axial_c15bd9eb8c"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.8464886746053062,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4642080490011722
+      },
+      "C_R1": {
+        "duration_s": 1.6955687653214186,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.3576309039490297
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.955477774143219,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.8850928023457527,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.03750180103816092
+      },
+      "payload": "m4_axial",
+      "scene": "free",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "free_m4_axial_d512e2e901"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.991673856973648,
+        "planned": true,
+        "route": "gravity_fallback|k107_no_lane",
+        "valid": true,
+        "wall_s": 0.4439922529272735
+      },
+      "C_R1": {
+        "duration_s": 1.991673856973648,
+        "planned": true,
+        "route": "gravity_fallback|k107_no_lane|no_refine",
+        "valid": true,
+        "wall_s": 0.4439922529272735
+      },
+      "hard": {
+        "detour_ratio": 2.2367093199544477,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 1.7745505711929839,
+        "static_witness_duration_s": 3.0604962228821053,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.991673856973648,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.0401964649790898
+      },
+      "payload": "m4_axial",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m4_axial_dff85359d2"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.945975892303908,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4455659299856052
+      },
+      "C_R1": {
+        "duration_s": 1.7363369684643115,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.1170779019594193
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9652087092399597,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 2.639993168413639,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.04150685400236398
+      },
+      "payload": "m4_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "free_m4_offset_01bb6696a1"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.645107268674022,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4464264550479129
+      },
+      "C_R1": {
+        "duration_s": 1.4424687416709192,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.465413829078898
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9690992832183838,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 3.8694946467876434,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.0401583620114252
+      },
+      "payload": "m4_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "free_m4_offset_1575b31078"
+    },
+    {
+      "B_R1": {
+        "duration_s": 2.87054190854342,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.44579987903125584
+      },
+      "C_R1": {
+        "duration_s": 2.5341242487479714,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.3879325840389356
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9571759104728699,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 4.013863498345017,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.040361957042478025
+      },
+      "payload": "m4_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "free_m4_offset_1656f2b720"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.41907538496889174
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.41907538496889174
+      },
+      "hard": {
+        "detour_ratio": 2.5184439796087905,
+        "labels": [
+          "DETOUR",
+          "SWING"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 3.013473081216922,
+        "static_witness_duration_s": 4.326302693125866,
+        "swing_k107_s": 1.565671537396295
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.41907538496889174
+      },
+      "payload": "m4_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR+SWING",
+      "task_id": "free_m4_offset_393b674ae9"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.48228092626936,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.445096630952321
+      },
+      "C_R1": {
+        "duration_s": 1.1986909925666522,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.269566977978684
+      },
+      "hard": {
+        "detour_ratio": 2.253558026691433,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 1.6301233143211986,
+        "static_witness_duration_s": 2.2198776179322235,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.9482577554881573,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.03975471993908286
+      },
+      "payload": "m4_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m4_offset_399a9c76ab"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.40859153191559017
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.40859153191559017
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9599959254264832,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.40859153191559017
+      },
+      "payload": "m4_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "free_m4_offset_4ea935636a"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.2725834070438664,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4448966128984466
+      },
+      "C_R1": {
+        "duration_s": 1.0732435781642176,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.3513439228991047
+      },
+      "hard": {
+        "detour_ratio": 2.105822602531164,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 3.145288841173511,
+        "static_witness_duration_s": 5.921930742352812,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.7527078073471785,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.03918368893209845
+      },
+      "payload": "m4_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m4_offset_506cc10cf6"
+    },
+    {
+      "B_R1": {
+        "duration_s": 0.6972224935889244,
+        "planned": true,
+        "route": "native_first|k107_no_lane",
+        "valid": true,
+        "wall_s": 0.1938938299426809
+      },
+      "C_R1": {
+        "duration_s": 0.6972224935889244,
+        "planned": true,
+        "route": "native_first|k107_no_lane|no_refine",
+        "valid": true,
+        "wall_s": 0.1938938299426809
+      },
+      "hard": {
+        "detour_ratio": 2.4470880400397004,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 1.8565832807539846,
+        "static_witness_duration_s": 2.584635278683927,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 0.6972224935889244,
+        "planned": true,
+        "route": "native_first",
+        "valid": true,
+        "wall_s": 0.015151889994740486
+      },
+      "payload": "m4_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m4_offset_51c3000575"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.4119525670539588
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.4119525670539588
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9558456540107727,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.4119525670539588
+      },
+      "payload": "m4_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "free_m4_offset_89e6fda286"
+    },
+    {
+      "B_R1": {
+        "duration_s": 2.859556700534432,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.44470704498235136
+      },
+      "C_R1": {
+        "duration_s": 2.4512896165338587,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.271688057924621
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9644515514373779,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 3.1010834500193596,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.039557487005367875
+      },
+      "payload": "m4_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "free_m4_offset_a03eabfb1c"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.3820640919480403,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.45868092705495656
+      },
+      "C_R1": {
+        "duration_s": 1.1830945936861117,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.3383539800997823
+      },
+      "hard": {
+        "detour_ratio": 2.017988147168162,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 1.8362442689781973,
+        "static_witness_duration_s": 2.6271930968871726,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.7275699973106384,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.039068132056854665
+      },
+      "payload": "m4_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m4_offset_a1559e4140"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.6471002359291844,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4431776129640639
+      },
+      "C_R1": {
+        "duration_s": 1.6009652114896809,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 1.6683572200126946
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9595128297805786,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 2.076845660805702,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.03909326996654272
+      },
+      "payload": "m4_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "free_m4_offset_a333a6021e"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.3750934302806854,
+        "planned": true,
+        "route": "gravity_fallback|k107_no_lane",
+        "valid": true,
+        "wall_s": 0.4426055521471426
+      },
+      "C_R1": {
+        "duration_s": 1.3750934302806854,
+        "planned": true,
+        "route": "gravity_fallback|k107_no_lane|no_refine",
+        "valid": true,
+        "wall_s": 0.4426055521471426
+      },
+      "hard": {
+        "detour_ratio": 2.1209979272935513,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 1.5167913569976568,
+        "static_witness_duration_s": 1.6942719396915606,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.3750934302806854,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.03922495909500867
+      },
+      "payload": "m4_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m4_offset_b1255c05b4"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.4078100239858031
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.4078100239858031
+      },
+      "hard": {
+        "detour_ratio": 2.4414115071876843,
+        "labels": [
+          "DETOUR",
+          "SWING"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.253017117609054,
+        "static_witness_duration_s": 4.498347213785824,
+        "swing_k107_s": 3.6255839558075245
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.4078100239858031
+      },
+      "payload": "m4_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR+SWING",
+      "task_id": "free_m4_offset_b364833854"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.4091765779303387
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.4091765779303387
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9591307044029236,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.4091765779303387
+      },
+      "payload": "m4_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "free_m4_offset_b93869a2d6"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.1664546389625219,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4447115419898182
+      },
+      "C_R1": {
+        "duration_s": 0.9624417387143356,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.2156684329966083
+      },
+      "hard": {
+        "detour_ratio": 2.0253081233163917,
+        "labels": [
+          "DETOUR",
+          "SWING"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 1.9317798665124275,
+        "static_witness_duration_s": 2.710555440732191,
+        "swing_k107_s": 1.1119269942548664
+      },
+      "hybrid_R1": {
+        "duration_s": 1.186878114938736,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.039105852018110454
+      },
+      "payload": "m4_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR+SWING",
+      "task_id": "free_m4_offset_ce3f23f5a2"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.7476756236075526,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4465861151693389
+      },
+      "C_R1": {
+        "duration_s": 1.6048995969670465,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.3023830231977627
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9602036476135254,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 2.8042708169668913,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.03904374409466982
+      },
+      "payload": "m4_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "free_m4_offset_d98a74fb4a"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.5221292655915022,
+        "planned": true,
+        "route": "native_first|k107_no_lane",
+        "valid": true,
+        "wall_s": 0.19218966807238758
+      },
+      "C_R1": {
+        "duration_s": 1.5221292655915022,
+        "planned": true,
+        "route": "native_first|k107_no_lane|no_refine",
+        "valid": true,
+        "wall_s": 0.19218966807238758
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9615591168403625,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.5221292655915022,
+        "planned": true,
+        "route": "native_first",
+        "valid": true,
+        "wall_s": 0.015097017050720751
+      },
+      "payload": "m4_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "free_m4_offset_e65e523abc"
+    },
+    {
+      "B_R1": {
+        "duration_s": 2.895553835832695,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4412130468990654
+      },
+      "C_R1": {
+        "duration_s": 2.3938828683682107,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.3230659508844838
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9621068239212036,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 3.404050087556243,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.03902038198430091
+      },
+      "payload": "m4_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "free_m4_offset_ffbf5de8ca"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.4092866770224646
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.4092866770224646
+      },
+      "hard": {
+        "detour_ratio": 2.6022277729003322,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.269317365134958,
+        "static_witness_duration_s": 3.5982634798806514,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.4092866770224646
+      },
+      "payload": "m5_axial",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m5_axial_0e48fbd838"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.1517267047339081,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4453647070331499
+      },
+      "C_R1": {
+        "duration_s": 0.8568669570259189,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.330773505032994
+      },
+      "hard": {
+        "detour_ratio": 2.199019399988258,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 1.820666632379325,
+        "static_witness_duration_s": 3.3990601661509348,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.2561523653566837,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.03899242798797786
+      },
+      "payload": "m5_axial",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m5_axial_14f5cbb1f1"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.4070015950128436
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.4070015950128436
+      },
+      "hard": {
+        "detour_ratio": 2.015210088940297,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.2403213842188388,
+        "static_witness_duration_s": 4.336989734042547,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.4070015950128436
+      },
+      "payload": "m5_axial",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m5_axial_2a0c7d5d3e"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.7527271179020523,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.44582508807070553
+      },
+      "C_R1": {
+        "duration_s": 1.3434328427651203,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.3866738420911133
+      },
+      "hard": {
+        "detour_ratio": 2.1424088735009197,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.247940202807061,
+        "static_witness_duration_s": 3.6573122987270787,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.9269058965146542,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.03902136196848005
+      },
+      "payload": "m5_axial",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m5_axial_3291a6332f"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.1250625155654286,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.45062905095983297
+      },
+      "C_R1": {
+        "duration_s": 1.0152006798387299,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.3510561449220404
+      },
+      "hard": {
+        "detour_ratio": 2.2239298928764426,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.47451490350556,
+        "static_witness_duration_s": 4.211955278249691,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.1529820077121258,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.03898063499946147
+      },
+      "payload": "m5_axial",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m5_axial_4f6d3d1808"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.6450529183109406,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4456074269255623
+      },
+      "C_R1": {
+        "duration_s": 1.2798504915766749,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.132662783842534
+      },
+      "hard": {
+        "detour_ratio": 3.074376859289217,
+        "labels": [
+          "DETOUR",
+          "SWING"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.6241415643683523,
+        "static_witness_duration_s": 3.748671177536103,
+        "swing_k107_s": 1.7123207134083898
+      },
+      "hybrid_R1": {
+        "duration_s": 2.1249431930482388,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.03910589392762631
+      },
+      "payload": "m5_axial",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR+SWING",
+      "task_id": "free_m5_axial_507c8ece8e"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.1872875718497125,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.44358508207369596
+      },
+      "C_R1": {
+        "duration_s": 1.0821168506057437,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.1833911101566628
+      },
+      "hard": {
+        "detour_ratio": 2.050786490087453,
+        "labels": [
+          "DETOUR",
+          "SWING"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.281173681871781,
+        "static_witness_duration_s": 3.856897515636194,
+        "swing_k107_s": 1.2237549895478268
+      },
+      "hybrid_R1": {
+        "duration_s": 1.22416234575212,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.039278820040635765
+      },
+      "payload": "m5_axial",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR+SWING",
+      "task_id": "free_m5_axial_6106e156ba"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.3244169931743797,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.44621188996825367
+      },
+      "C_R1": {
+        "duration_s": 1.0463863521799979,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.3220990609843284
+      },
+      "hard": {
+        "detour_ratio": 2.4113222992499233,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.315441520273207,
+        "static_witness_duration_s": 4.459326493381623,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.641310516744852,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.03903284401167184
+      },
+      "payload": "m5_axial",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m5_axial_8a02ffc73c"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.40749153203796595
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.40749153203796595
+      },
+      "hard": {
+        "detour_ratio": 2.376234683049061,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.0790752063265368,
+        "static_witness_duration_s": 3.5814325851325384,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.40749153203796595
+      },
+      "payload": "m5_axial",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m5_axial_b796b1d8a5"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.560359152116857,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4457758138887584
+      },
+      "C_R1": {
+        "duration_s": 1.309310270017997,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 1.8944339358713478
+      },
+      "hard": {
+        "detour_ratio": 2.196981069677628,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 1.8151976543695392,
+        "static_witness_duration_s": 3.131377604088565,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 2.221297273412347,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.039382955990731716
+      },
+      "payload": "m5_axial",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m5_axial_b9ed00f2d0"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.1238142694572886,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.44584268203470856
+      },
+      "C_R1": {
+        "duration_s": 1.0470983352492533,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.3308546469779685
+      },
+      "hard": {
+        "detour_ratio": 2.0777577588804483,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.1963401839531196,
+        "static_witness_duration_s": 3.1559655562483426,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.1873449981212616,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.0391499160323292
+      },
+      "payload": "m5_axial",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m5_axial_c6dedcf385"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.6784659222305807,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4452548200497404
+      },
+      "C_R1": {
+        "duration_s": 1.2824068129360353,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.371562318992801
+      },
+      "hard": {
+        "detour_ratio": 2.1827333624088143,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.31703080647065,
+        "static_witness_duration_s": 3.4938373156097495,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.8763976991176605,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.03927495307289064
+      },
+      "payload": "m5_axial",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m5_axial_ce9b687a49"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.3355203749065174,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4432272460544482
+      },
+      "C_R1": {
+        "duration_s": 1.2082352621235706,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.0891704770037904
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9103976488113403,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.4819906651973724,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.039127093041315675
+      },
+      "payload": "m5_axial",
+      "scene": "free",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "free_m5_axial_dccfae93bd"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.3245357854997386,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.45157860696781427
+      },
+      "C_R1": {
+        "duration_s": 1.0243959190000862,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.338594829896465
+      },
+      "hard": {
+        "detour_ratio": 2.2863594753899803,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 3.100987770651051,
+        "static_witness_duration_s": 4.7968520319193875,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.4430811293423176,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.03912368603050709
+      },
+      "payload": "m5_axial",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m5_axial_de1e31db35"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.1436175057571916,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4482940770685673
+      },
+      "C_R1": {
+        "duration_s": 1.0091554003111172,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.2998418550705537
+      },
+      "hard": {
+        "detour_ratio": 2.0678056311215007,
+        "labels": [
+          "DETOUR",
+          "SWING"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 1.613766905979804,
+        "static_witness_duration_s": 2.058377782142371,
+        "swing_k107_s": 1.1185133960079927
+      },
+      "hybrid_R1": {
+        "duration_s": 1.182786226272583,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.03909327008295804
+      },
+      "payload": "m5_axial",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR+SWING",
+      "task_id": "free_m5_axial_eedec85b67"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.4105177540332079
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.4105177540332079
+      },
+      "hard": {
+        "detour_ratio": 2.5065112051516643,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.2030788318182086,
+        "static_witness_duration_s": 3.7944118544865346,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.4105177540332079
+      },
+      "payload": "m5_axial",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m5_axial_f6c7c315dd"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.41020601498894393
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.41020601498894393
+      },
+      "hard": {
+        "detour_ratio": 2.299773641675227,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.1727820896465255,
+        "static_witness_duration_s": 4.189203919481978,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.41020601498894393
+      },
+      "payload": "m5_axial",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m5_axial_fa52b6decb"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.3081871993026346,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4448444121517241
+      },
+      "C_R1": {
+        "duration_s": 1.3081871993026346,
+        "planned": true,
+        "route": "refine_no_improvement",
+        "valid": true,
+        "wall_s": 1.435956540168263
+      },
+      "hard": {
+        "detour_ratio": 2.4270507424017733,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 1.7499842433832613,
+        "static_witness_duration_s": 2.4615959849453026,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.4878863841295242,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.039124277071096
+      },
+      "payload": "m5_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m5_offset_1a035c898f"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.03924783147696,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.44697199505753815
+      },
+      "C_R1": {
+        "duration_s": 0.9435859478992522,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 1.912823774968274
+      },
+      "hard": {
+        "detour_ratio": 2.1604611451975693,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 3.0126977591319353,
+        "static_witness_duration_s": 5.555246268076151,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.3846787214279175,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.039013036992400885
+      },
+      "payload": "m5_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m5_offset_2e823be050"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.4084495439892635
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.4084495439892635
+      },
+      "hard": {
+        "detour_ratio": 2.7146516524757622,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 3.265340729501241,
+        "static_witness_duration_s": 5.982139107827528,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.4084495439892635
+      },
+      "payload": "m5_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m5_offset_30264d73e8"
+    },
+    {
+      "B_R1": {
+        "duration_s": 0.850942011103995,
+        "planned": true,
+        "route": "native_first|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4328654028940946
+      },
+      "C_R1": {
+        "duration_s": 0.850942011103995,
+        "planned": true,
+        "route": "refine_no_improvement",
+        "valid": true,
+        "wall_s": 1.19813809893094
+      },
+      "hard": {
+        "detour_ratio": 2.7193881952840493,
+        "labels": [
+          "DETOUR",
+          "SWING"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 3.1030435108584635,
+        "static_witness_duration_s": 5.427082288806724,
+        "swing_k107_s": 1.0309328808143354
+      },
+      "hybrid_R1": {
+        "duration_s": 0.9133503437042236,
+        "planned": true,
+        "route": "native_first",
+        "valid": true,
+        "wall_s": 0.01511465897783637
+      },
+      "payload": "m5_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR+SWING",
+      "task_id": "free_m5_offset_48e548b2ae"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.4091858359752223
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.4091858359752223
+      },
+      "hard": {
+        "detour_ratio": 2.0381933462717825,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 3.885102215451151,
+        "static_witness_duration_s": 6.647212906388401,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.4091858359752223
+      },
+      "payload": "m5_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m5_offset_4ee86b694b"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.40939208609052
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.40939208609052
+      },
+      "hard": {
+        "detour_ratio": 2.1805175335412508,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.619716310015872,
+        "static_witness_duration_s": 3.641397568835551,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.40939208609052
+      },
+      "payload": "m5_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m5_offset_7804a75ddc"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.4101063460111618
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.4101063460111618
+      },
+      "hard": {
+        "detour_ratio": 2.1929287952256606,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 3.522430562025723,
+        "static_witness_duration_s": 7.459167871331767,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.4101063460111618
+      },
+      "payload": "m5_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m5_offset_78dc027b0e"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.4086938149994239
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.4086938149994239
+      },
+      "hard": {
+        "detour_ratio": 2.131200271013976,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.660110856286675,
+        "static_witness_duration_s": 5.660559814886717,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.4086938149994239
+      },
+      "payload": "m5_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m5_offset_9a97889e2a"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.4085313880350441
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.4085313880350441
+      },
+      "hard": {
+        "detour_ratio": 2.002288184279511,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.6448541055564876,
+        "static_witness_duration_s": 5.231987480452345,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.4085313880350441
+      },
+      "payload": "m5_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m5_offset_a08bc9a827"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.4086472560884431
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.4086472560884431
+      },
+      "hard": {
+        "detour_ratio": 2.8615494855842227,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.780949211881004,
+        "static_witness_duration_s": 4.306951604931083,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.4086472560884431
+      },
+      "payload": "m5_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m5_offset_a1ee9e96b2"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.4089604690670967
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.4089604690670967
+      },
+      "hard": {
+        "detour_ratio": 2.325448162747457,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 3.830363966172901,
+        "static_witness_duration_s": 7.588751068696431,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.4089604690670967
+      },
+      "payload": "m5_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m5_offset_a21874426b"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.4086965100141242
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.4086965100141242
+      },
+      "hard": {
+        "detour_ratio": 2.1359516880888583,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.2732624603254816,
+        "static_witness_duration_s": 3.1038847338760602,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.4086965100141242
+      },
+      "payload": "m5_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m5_offset_a7e5dd040f"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.4082038171338274,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4461381098954007
+      },
+      "C_R1": {
+        "duration_s": 1.249233861862432,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.336168330977671
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9657454490661621,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 2.8227721229195595,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.03922926599625498
+      },
+      "payload": "m5_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "free_m5_offset_b2f6c73c38"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.6619973071667886,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4407220770372078
+      },
+      "C_R1": {
+        "duration_s": 1.0618579040271245,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.3704685950651765
+      },
+      "hard": {
+        "detour_ratio": 2.6445815149222716,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.86919853645034,
+        "static_witness_duration_s": 5.558255822207359,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.8621794879436493,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.039057560032233596
+      },
+      "payload": "m5_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m5_offset_d3311dde9c"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.407192625105381
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.407192625105381
+      },
+      "hard": {
+        "detour_ratio": 2.0451758129917823,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 1.7440942155661636,
+        "static_witness_duration_s": 2.4534188427934307,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.407192625105381
+      },
+      "payload": "m5_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m5_offset_d41467297e"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.2522623269433282,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4497463119914755
+      },
+      "C_R1": {
+        "duration_s": 1.0470586976671061,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.323970185010694
+      },
+      "hard": {
+        "detour_ratio": 3.0355241599385026,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 3.753955730510056,
+        "static_witness_duration_s": 5.891970536398158,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.4052304923534393,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.03885769401676953
+      },
+      "payload": "m5_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m5_offset_dfbbc23fa8"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.4077296620234847
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.4077296620234847
+      },
+      "hard": {
+        "detour_ratio": 2.4751537824218834,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.512940903365105,
+        "static_witness_duration_s": 4.364700372159785,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.4077296620234847
+      },
+      "payload": "m5_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m5_offset_e71013a1d9"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.40920470003038645
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.40920470003038645
+      },
+      "hard": {
+        "detour_ratio": 2.995695232873059,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 3.9378783129627943,
+        "static_witness_duration_s": 7.929530613287722,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.40920470003038645
+      },
+      "payload": "m5_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m5_offset_eb75b16f9e"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.609198417620976,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.45527282205875963
+      },
+      "C_R1": {
+        "duration_s": 1.2302155862556081,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.489525630022399
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9331358671188354,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 2.5963920950889587,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.039337110007181764
+      },
+      "payload": "m5_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "free_m5_offset_efcc94bd4e"
+    },
+    {
+      "B_R1": {
+        "duration_s": 0.9720148489915668,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.44895123899914324
+      },
+      "C_R1": {
+        "duration_s": 0.8497358189303456,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.352801700006239
+      },
+      "hard": {
+        "detour_ratio": 2.0988887478401472,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.0472140402936407,
+        "static_witness_duration_s": 3.7556599753087703,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.104446668177843,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.039110261015594006
+      },
+      "payload": "m5_offset",
+      "scene": "free",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "free_m5_offset_f4dea308b4"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.8275662130909041
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.8275662130909041
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9682896733283997,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.8275662130909041
+      },
+      "payload": "m3_offset",
+      "scene": "table",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "table_m3_offset_cd98beb498"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.0161277679141865,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4532512390287593
+      },
+      "C_R1": {
+        "duration_s": 0.8841175376898981,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.5301986139966175
+      },
+      "hard": {
+        "detour_ratio": 2.05489273777607,
+        "labels": [
+          "DETOUR",
+          "SWING"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 1.637066157595405,
+        "static_witness_duration_s": 2.6810115631715377,
+        "swing_k107_s": 1.445160672884003
+      },
+      "hybrid_R1": {
+        "duration_s": 1.149633727967739,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.045790803036652505
+      },
+      "payload": "m4_axial",
+      "scene": "table",
+      "split": "development",
+      "stratum": "DETOUR+SWING",
+      "task_id": "table_m4_axial_15ec506716"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.0264579419412794,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.5650817300193012
+      },
+      "C_R1": {
+        "duration_s": 0.9391468042595242,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.6333634790498763
+      },
+      "hard": {
+        "detour_ratio": 2.1076577402486656,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.3091454007233754,
+        "static_witness_duration_s": 2.9749916044005347,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.1637810375541449,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.04053207905963063
+      },
+      "payload": "m4_axial",
+      "scene": "table",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "table_m4_axial_35d46ceffd"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.0661066431055164,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.48027338401880115
+      },
+      "C_R1": {
+        "duration_s": 0.9149724687549056,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.5428722869837657
+      },
+      "hard": {
+        "detour_ratio": 2.0134305128800443,
+        "labels": [
+          "DETOUR",
+          "SWING"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 1.8790391611624893,
+        "static_witness_duration_s": 3.6304173779979756,
+        "swing_k107_s": 1.5757377311089487
+      },
+      "hybrid_R1": {
+        "duration_s": 1.2027978636324406,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.03993361897300929
+      },
+      "payload": "m4_axial",
+      "scene": "table",
+      "split": "development",
+      "stratum": "DETOUR+SWING",
+      "task_id": "table_m4_axial_498c2495da"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.1020032121403465,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.45878219709265977
+      },
+      "C_R1": {
+        "duration_s": 1.0198589250081773,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.273558365064673
+      },
+      "hard": {
+        "detour_ratio": 2.4126877828425046,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 1.909614219863219,
+        "static_witness_duration_s": 2.4243848675853803,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.1641757749021053,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.04048449103720486
+      },
+      "payload": "m4_axial",
+      "scene": "table",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "table_m4_axial_53e15f988c"
+    },
+    {
+      "B_R1": {
+        "duration_s": 0.8274461962282658,
+        "planned": true,
+        "route": "native_first|k107_no_lane",
+        "valid": true,
+        "wall_s": 0.20269634202122688
+      },
+      "C_R1": {
+        "duration_s": 0.8274461962282658,
+        "planned": true,
+        "route": "native_first|k107_no_lane|no_refine",
+        "valid": true,
+        "wall_s": 0.20269634202122688
+      },
+      "hard": {
+        "detour_ratio": 2.136744693678607,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.101213166916519,
+        "static_witness_duration_s": 3.16471180784046,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 0.8274461962282658,
+        "planned": true,
+        "route": "native_first",
+        "valid": true,
+        "wall_s": 0.02144797402434051
+      },
+      "payload": "m4_axial",
+      "scene": "table",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "table_m4_axial_6080ded1cd"
+    },
+    {
+      "B_R1": {
+        "duration_s": 0.6556492801755667,
+        "planned": true,
+        "route": "native_first|k107_no_lane",
+        "valid": true,
+        "wall_s": 0.19338070810772479
+      },
+      "C_R1": {
+        "duration_s": 0.6556492801755667,
+        "planned": true,
+        "route": "native_first|k107_no_lane|no_refine",
+        "valid": true,
+        "wall_s": 0.19338070810772479
+      },
+      "hard": {
+        "detour_ratio": 2.138922026340599,
+        "labels": [
+          "DETOUR",
+          "SWING"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 1.975658267067789,
+        "static_witness_duration_s": 3.047265285327594,
+        "swing_k107_s": 0.6438423912156759
+      },
+      "hybrid_R1": {
+        "duration_s": 0.6556492801755667,
+        "planned": true,
+        "route": "native_first",
+        "valid": true,
+        "wall_s": 0.01582383003551513
+      },
+      "payload": "m4_axial",
+      "scene": "table",
+      "split": "development",
+      "stratum": "DETOUR+SWING",
+      "task_id": "table_m4_axial_668b5a0098"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.1527735187825239,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.45133461500518024
+      },
+      "C_R1": {
+        "duration_s": 0.8878518032999845,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.5067830269690603
+      },
+      "hard": {
+        "detour_ratio": 2.0708838988657394,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.3257389627366662,
+        "static_witness_duration_s": 3.862500958578856,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.252670992165804,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.04027456301264465
+      },
+      "payload": "m4_offset",
+      "scene": "table",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "table_m4_offset_2d8b34f0fa"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.2622053333241343,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4617460399167612
+      },
+      "C_R1": {
+        "duration_s": 1.18077979512421,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.1766009039711207
+      },
+      "hard": {
+        "detour_ratio": 2.1350015272004526,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.524074411165969,
+        "static_witness_duration_s": 3.4958289939413696,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.2991969734430313,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.03998874197714031
+      },
+      "payload": "m4_offset",
+      "scene": "table",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "table_m4_offset_3feffbaf05"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.3907896385145806,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.44559101411141455
+      },
+      "C_R1": {
+        "duration_s": 1.1547086941082356,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.3901950400322676
+      },
+      "hard": {
+        "detour_ratio": 2.5252115219075635,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 1.7507390053557095,
+        "static_witness_duration_s": 2.662069902549838,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.6580914985388517,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.04003212403040379
+      },
+      "payload": "m4_offset",
+      "scene": "table",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "table_m4_offset_5dc04ee918"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.42054430092684925
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.42054430092684925
+      },
+      "hard": {
+        "detour_ratio": 2.3291935868499984,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 1.666346517375866,
+        "static_witness_duration_s": 2.7956768497568616,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.42054430092684925
+      },
+      "payload": "m4_offset",
+      "scene": "table",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "table_m4_offset_8a41f1f583"
+    },
+    {
+      "B_R1": {
+        "duration_s": 2.2167439128575244,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.45383667398709804
+      },
+      "C_R1": {
+        "duration_s": 1.4632742128859104,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.5498984180158004
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9643359780311584,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 3.3055285774171352,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.04036986199207604
+      },
+      "payload": "m4_offset",
+      "scene": "table",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "table_m4_offset_b8aad47c57"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.1162234334308587,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.44741620495915413
+      },
+      "C_R1": {
+        "duration_s": 1.0103134736599246,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.531469773966819
+      },
+      "hard": {
+        "detour_ratio": 2.129461108270437,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.2633742329046354,
+        "static_witness_duration_s": 4.475226384848852,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.158689722418785,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.0399643270066008
+      },
+      "payload": "m4_offset",
+      "scene": "table",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "table_m4_offset_c59781e3fe"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.0843941282226743,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.45080378104466945
+      },
+      "C_R1": {
+        "duration_s": 0.9468417201283434,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.54342781403102
+      },
+      "hard": {
+        "detour_ratio": 2.1106315870553987,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.2416147094872025,
+        "static_witness_duration_s": 3.336300410665495,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.1447701789438725,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.04011820803862065
+      },
+      "payload": "m4_offset",
+      "scene": "table",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "table_m4_offset_d8f9221995"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.3060474313730945,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.44503663503564894
+      },
+      "C_R1": {
+        "duration_s": 0.9586812336511469,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.5556089840829372
+      },
+      "hard": {
+        "detour_ratio": 2.3572327188669755,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 1.8544745573265682,
+        "static_witness_duration_s": 2.743645158722769,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.4155849032104015,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.040542398928664625
+      },
+      "payload": "m4_offset",
+      "scene": "table",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "table_m4_offset_fe3d77753b"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.3186760379899176,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4432220348389819
+      },
+      "C_R1": {
+        "duration_s": 1.1004161172107771,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.4417259239125997
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9671952128410339,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.627587452530861,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.04002422990743071
+      },
+      "payload": "m5_axial",
+      "scene": "table",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "table_m5_axial_123fba9624"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.5194829135653394,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4488477729028091
+      },
+      "C_R1": {
+        "duration_s": 1.2292053039557556,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.5319277888629586
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9585085511207581,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 2.459253776818514,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.04048054292798042
+      },
+      "payload": "m5_axial",
+      "scene": "table",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "table_m5_axial_2624db0e9d"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.3444496741000347,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4472318469779566
+      },
+      "C_R1": {
+        "duration_s": 1.1602700016841296,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.481936623924412
+      },
+      "hard": {
+        "detour_ratio": 2.0878011032522052,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.478408449650485,
+        "static_witness_duration_s": 3.8593996518185687,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.6537064984440804,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.04074464098084718
+      },
+      "payload": "m5_axial",
+      "scene": "table",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "table_m5_axial_558d2916f5"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.1470085892249708,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.44962196599226445
+      },
+      "C_R1": {
+        "duration_s": 0.9647064184907025,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.533844170975499
+      },
+      "hard": {
+        "detour_ratio": 2.0116390304493548,
+        "labels": [
+          "DETOUR",
+          "SWING_MARGINAL"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.4788489609702413,
+        "static_witness_duration_s": 4.2285733665866445,
+        "swing_k107_s": 1.5348165283116788
+      },
+      "hybrid_R1": {
+        "duration_s": 1.1811462342739105,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.04054199799429625
+      },
+      "payload": "m5_axial",
+      "scene": "table",
+      "split": "development",
+      "stratum": "DETOUR+SWING_MARGINAL",
+      "task_id": "table_m5_axial_653281a86a"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.5251402501734144,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4494214180158451
+      },
+      "C_R1": {
+        "duration_s": 1.2026157337017978,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.525158890057355
+      },
+      "hard": {
+        "detour_ratio": 2.344549534318559,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.472011432355928,
+        "static_witness_duration_s": 3.5977917220042626,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.7044256273657084,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.0405342549784109
+      },
+      "payload": "m5_axial",
+      "scene": "table",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "table_m5_axial_8a884aeeb8"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.4298274340108037
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.4298274340108037
+      },
+      "hard": {
+        "detour_ratio": 2.1787004414458844,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.0025518706543513,
+        "static_witness_duration_s": 3.275267838734944,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.4298274340108037
+      },
+      "payload": "m5_axial",
+      "scene": "table",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "table_m5_axial_bf208a1508"
+    },
+    {
+      "B_R1": {
+        "duration_s": 2.0522734881293916,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4560873209265992
+      },
+      "C_R1": {
+        "duration_s": 1.9372424212070387,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.5599999768892303
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9580221772193909,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 4.1579003762453794,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.04104538098908961
+      },
+      "payload": "m5_axial",
+      "scene": "table",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "table_m5_axial_de50860b1c"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.42386218497995287
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.42386218497995287
+      },
+      "hard": {
+        "detour_ratio": 2.281063520001319,
+        "labels": [
+          "DETOUR",
+          "SWING"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.1774002911112915,
+        "static_witness_duration_s": 3.374903416669852,
+        "swing_k107_s": 1.123999622224686
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.42386218497995287
+      },
+      "payload": "m5_axial",
+      "scene": "table",
+      "split": "development",
+      "stratum": "DETOUR+SWING",
+      "task_id": "table_m5_axial_f6d9586225"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.7768303006887436,
+        "planned": true,
+        "route": "gravity_fallback|k107_no_lane",
+        "valid": true,
+        "wall_s": 0.22838530596345663
+      },
+      "C_R1": {
+        "duration_s": 1.7768303006887436,
+        "planned": true,
+        "route": "gravity_fallback|k107_no_lane|no_refine",
+        "valid": true,
+        "wall_s": 0.22838530596345663
+      },
+      "hard": {
+        "detour_ratio": 2.9292399879188626,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.2018579174109143,
+        "static_witness_duration_s": 4.182387555765765,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.7768303006887436,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.042779047973454
+      },
+      "payload": "m5_offset",
+      "scene": "table",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "table_m5_offset_02610deb0c"
+    },
+    {
+      "B_R1": {
+        "duration_s": 0.7366202951665644,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.44755873281974345
+      },
+      "C_R1": {
+        "duration_s": 0.697939215390956,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.2895075648557395
+      },
+      "hard": {
+        "detour_ratio": 2.1200573802936797,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 1.3051414159391643,
+        "static_witness_duration_s": 1.577365568060611,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 0.890838660299778,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.04157848691102117
+      },
+      "payload": "m5_offset",
+      "scene": "table",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "table_m5_offset_1c46c6d3d6"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.42499921401031315
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.42499921401031315
+      },
+      "hard": {
+        "detour_ratio": 2.4463638254112934,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 1.9529329832133389,
+        "static_witness_duration_s": 2.562136492006772,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.42499921401031315
+      },
+      "payload": "m5_offset",
+      "scene": "table",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "table_m5_offset_5675463032"
+    },
+    {
+      "B_R1": {
+        "duration_s": 0.8824484236222713,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.4452860269229859
+      },
+      "C_R1": {
+        "duration_s": 0.8510423632824782,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.026566694956273
+      },
+      "hard": {
+        "detour_ratio": 2.113972254221011,
+        "labels": [
+          "DETOUR",
+          "SWING"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.2370537167458124,
+        "static_witness_duration_s": 3.2496608350903124,
+        "swing_k107_s": 1.1970358369235514
+      },
+      "hybrid_R1": {
+        "duration_s": 1.1080340389162302,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.04127230797894299
+      },
+      "payload": "m5_offset",
+      "scene": "table",
+      "split": "development",
+      "stratum": "DETOUR+SWING",
+      "task_id": "table_m5_offset_976dd14204"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.5808686757695318,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.445904356893152
+      },
+      "C_R1": {
+        "duration_s": 1.4566011364636948,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.3554079598980024
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9265999794006348,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 1.6805527955293655,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.041129488963633776
+      },
+      "payload": "m5_offset",
+      "scene": "table",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "table_m5_offset_99b44d5ab9"
+    },
+    {
+      "B_R1": {
+        "duration_s": 1.8810503791130175,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.44597884896211326
+      },
+      "C_R1": {
+        "duration_s": 1.3812536303119385,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.540175340953283
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9227266311645508,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 2.0400554835796356,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.04149556194897741
+      },
+      "payload": "m5_offset",
+      "scene": "table",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "table_m5_offset_b619392743"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.42227828805334866
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.42227828805334866
+      },
+      "hard": {
+        "detour_ratio": 2.7598663143780993,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 2.2121492724002145,
+        "static_witness_duration_s": 3.1448012760929895,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.42227828805334866
+      },
+      "payload": "m5_offset",
+      "scene": "table",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "table_m5_offset_be27719c55"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.42567756795324385
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.42567756795324385
+      },
+      "hard": {
+        "detour_ratio": 2.105296202460261,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 3.0904237002014785,
+        "static_witness_duration_s": 5.112082746289522,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.42567756795324385
+      },
+      "payload": "m5_offset",
+      "scene": "table",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "table_m5_offset_ed0c89d7cd"
+    },
+    {
+      "B_R1": {
+        "duration_s": 2.677320811714173,
+        "planned": true,
+        "route": "gravity_fallback|k107_lane0",
+        "valid": true,
+        "wall_s": 0.44459024094976485
+      },
+      "C_R1": {
+        "duration_s": 2.382373568970918,
+        "planned": true,
+        "route": "refined",
+        "valid": true,
+        "wall_s": 2.510278709931299
+      },
+      "hard": {
+        "detour_ratio": null,
+        "labels": [
+          "TIGHT_STATIC"
+        ],
+        "rho_star_hat": 0.9607968926429749,
+        "static_route_k107_s": null,
+        "static_witness_duration_s": null,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": 3.144700437784195,
+        "planned": true,
+        "route": "gravity_fallback",
+        "valid": true,
+        "wall_s": 0.040595317957922816
+      },
+      "payload": "m5_offset",
+      "scene": "table",
+      "split": "development",
+      "stratum": "TIGHT_STATIC",
+      "task_id": "table_m5_offset_f3f0f80bc6"
+    },
+    {
+      "B_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime",
+        "valid": false,
+        "wall_s": 0.42145199701189995
+      },
+      "C_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback|no_retime|no_refine",
+        "valid": false,
+        "wall_s": 0.42145199701189995
+      },
+      "hard": {
+        "detour_ratio": 2.18165093872479,
+        "labels": [
+          "DETOUR"
+        ],
+        "rho_star_hat": null,
+        "static_route_k107_s": 3.880374552471599,
+        "static_witness_duration_s": 6.3851926084644965,
+        "swing_k107_s": null
+      },
+      "hybrid_R1": {
+        "duration_s": null,
+        "planned": false,
+        "route": "gravity_fallback",
+        "valid": false,
+        "wall_s": 0.42145199701189995
+      },
+      "payload": "m5_offset",
+      "scene": "table",
+      "split": "development",
+      "stratum": "DETOUR",
+      "task_id": "table_m5_offset_fd482ac07b"
+    }
+  ],
+  "swing": {
+    "B_R1": {
+      "median_duration_vs_swing_witness": 0.7858987900790931,
+      "n": 20,
+      "valid": 15
+    },
+    "C_R1": {
+      "median_duration_vs_swing_witness": 0.7592330600514005,
+      "n": 20,
+      "valid": 15
+    },
+    "hybrid_R1": {
+      "median_duration_vs_swing_witness": 0.8859454972303986,
+      "n": 20,
+      "valid": 15
+    }
+  },
+  "tags": [
+    "hybrid_R1",
+    "B_R1",
+    "C_R1"
+  ]
+}

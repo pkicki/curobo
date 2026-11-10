@@ -66,7 +66,7 @@ def run(bank_dir: Path, out: Path, *, restarts: int, scenes: list[str] | None, e
             from .native_runner import HybridPlanner
 
             planner = HybridPlanner(scene, seed=seed, fallback=variant.split(":", 1)[1] if ":" in variant
-                                    else "gravity_aware_85")
+                                    else "gravity_aware_85", native_after_fallback=variant.startswith("hybrid2"))
         else:
             planner = NativePlanner(scene, seed=seed, variant=variant)
         items.sort(key=lambda x: x[1].label)  # group by payload to limit updates

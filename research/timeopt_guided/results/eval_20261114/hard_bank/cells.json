@@ -1,0 +1,2978 @@
+[
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9421860575675964,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m4_axial",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m4_axial_01a5bf5cf5"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9077361822128296,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m4_axial",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m4_axial_1ad4afd6ce"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.7900720834732056,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m4_axial",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m4_axial_490a0835c7"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9656639695167542,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m4_axial",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m4_axial_96b9add561"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.875645637512207,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m4_axial",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m4_axial_e0d513f2d7"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.809058666229248,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m4_offset_1cc8c72340"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9386979937553406,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m4_offset_2fcb33ce30"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8437523245811462,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m4_offset_3d0ae9208c"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8988145589828491,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m4_offset_45d62accf3"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.7588866949081421,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m4_offset_80aaddb406"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8778550624847412,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m4_offset_96b23cf308"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8871135115623474,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m4_offset_bedf6a302f"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.7880216836929321,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m4_offset_cd82cb9390"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.789064884185791,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m4_offset_d078cea948"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9635871052742004,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m4_offset_fd3391f18f"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8933089971542358,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m5_axial_0b10d7c627"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8311027884483337,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m5_axial_0fb7d3ade6"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9527716040611267,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m5_axial_134ce5d03b"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9601476788520813,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m5_axial_13a715ed33"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.7875864505767822,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m5_axial_42540bd1dd"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8970634937286377,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m5_axial_5337dca1f5"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.7659511566162109,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m5_axial_73c5b82398"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8847024440765381,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m5_axial_b12bd7c76a"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9080744385719299,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m5_axial_b314ed2835"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9553521275520325,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m5_axial_d036089fa1"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8293231725692749,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m5_axial_d49b8ae5e5"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.7506459355354309,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m5_axial_eaf3ae8840"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8616917133331299,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m5_axial_ecbe426196"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8990210294723511,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m5_axial_f241b23413"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8500276803970337,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m5_offset_0becedd7cb"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8236542344093323,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m5_offset_0d64388427"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8761197328567505,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m5_offset_11a6aa1a44"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9631062150001526,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m5_offset_14e0e64b06"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8038042187690735,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m5_offset_6ec1a5b5b7"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.7719371914863586,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m5_offset_80611510da"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8943930864334106,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m5_offset_914195eecf"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8968968391418457,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m5_offset_c0b5b56ed1"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8895512223243713,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m5_offset_d0b59b8cdc"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8181664943695068,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m5_offset_d0f883deaf"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.7433706521987915,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m5_offset_e3b70c6466"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8860347270965576,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m5_offset_ee3bab6838"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.557998538017273,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m5_offset_f60c34e0cd"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8840517997741699,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "cluttered_m5_offset_fd8a069749"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9573845267295837,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m3_offset",
+      "mass_kg": 3.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m3_offset_36563aa101"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9539889693260193,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m3_offset",
+      "mass_kg": 3.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m3_offset_5104179eab"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9512940049171448,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m3_offset",
+      "mass_kg": 3.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m3_offset_a1fd335731"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9516617655754089,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m3_offset",
+      "mass_kg": 3.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m3_offset_c893117dd5"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9031838774681091,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m3_offset",
+      "mass_kg": 3.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m3_offset_c9372e54fd"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9625601768493652,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m3_offset",
+      "mass_kg": 3.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m3_offset_ce86ed7f4b"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9363288283348083,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m3_offset",
+      "mass_kg": 3.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m3_offset_fec723ee28"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9520643353462219,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m4_axial",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_axial_0258767b2c"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8452646732330322,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m4_axial",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_axial_071f1f1eb3"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8885571956634521,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m4_axial",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_axial_08d0fd35a7"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8691532611846924,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m4_axial",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_axial_2454e9e26f"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9565565586090088,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m4_axial",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_axial_378100c18c"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9662730097770691,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m4_axial",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_axial_38d1322020"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9612812399864197,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m4_axial",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_axial_4a78f8b3cf"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8881030678749084,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m4_axial",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_axial_52f45d7d49"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8724319338798523,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m4_axial",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_axial_533dc446b2"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.893805742263794,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m4_axial",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_axial_5a7e6512ca"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8587062954902649,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m4_axial",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_axial_5db049d5ce"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8869011998176575,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m4_axial",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_axial_6a800d8850"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.7961151003837585,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m4_axial",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_axial_88c8b62ea0"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9582587480545044,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m4_axial",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_axial_9437e57232"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9658433198928833,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m4_axial",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_axial_c15bd9eb8c"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.955477774143219,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m4_axial",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_axial_d512e2e901"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8784297704696655,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m4_axial",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_axial_dff85359d2"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9526561498641968,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m4_axial",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_axial_fd1dc064d9"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9619559645652771,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_offset_0012cf49a6"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9652087092399597,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_offset_01bb6696a1"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9521510601043701,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_offset_097f3af7b7"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9690992832183838,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_offset_1575b31078"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9571759104728699,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_offset_1656f2b720"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8797879815101624,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_offset_1812b1b709"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.964650571346283,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_offset_353b1e0ca6"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9534756541252136,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_offset_36ff8977ca"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8894274830818176,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_offset_393b674ae9"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8408252000808716,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_offset_399a9c76ab"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9599959254264832,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_offset_4ea935636a"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8871135115623474,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_offset_506cc10cf6"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8428106904029846,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_offset_51c3000575"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.7181522250175476,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_offset_77cb088de1"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9558456540107727,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_offset_89e6fda286"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9193334579467773,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_offset_99f55d2337"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9543237686157227,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_offset_9c5790eabd"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9644515514373779,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_offset_a03eabfb1c"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8875605463981628,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_offset_a1559e4140"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9595128297805786,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_offset_a333a6021e"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.895298421382904,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_offset_b1255c05b4"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.69797682762146,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_offset_b364833854"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9591307044029236,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_offset_b93869a2d6"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8964707851409912,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_offset_ce3f23f5a2"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.7889643907546997,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_offset_d1a039981a"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9602036476135254,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_offset_d98a74fb4a"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9615591168403625,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_offset_e65e523abc"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9673179388046265,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_offset_ef82f7274f"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9628614187240601,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_offset_fdfbbc5812"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9621068239212036,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m4_offset_ffbf5de8ca"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8025763034820557,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_axial_0e48fbd838"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8843249082565308,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_axial_14f5cbb1f1"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8981015086174011,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_axial_2a0c7d5d3e"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.836592435836792,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_axial_3291a6332f"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.7724285125732422,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_axial_4f6d3d1808"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8919464349746704,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_axial_507c8ece8e"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8331465125083923,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_axial_6106e156ba"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8922973871231079,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_axial_8a02ffc73c"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8862485885620117,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_axial_962e6624d4"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9220676422119141,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_axial_a59301efc8"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8866258263587952,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_axial_b796b1d8a5"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8975799083709717,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_axial_b9ed00f2d0"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.7945960164070129,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_axial_c6dedcf385"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8512475490570068,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_axial_ce9b687a49"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9103976488113403,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_axial_dccfae93bd"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8561686873435974,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_axial_de1e31db35"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8019301891326904,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_axial_eedec85b67"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8432225584983826,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_axial_f6c7c315dd"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.6788169741630554,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_axial_fa52b6decb"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8749886751174927,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_offset_1a035c898f"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8872190713882446,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_offset_23d1869e73"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8032113909721375,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_offset_2e823be050"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8496372699737549,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_offset_30264d73e8"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.809567391872406,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_offset_3fa7c59056"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8865890502929688,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_offset_48e548b2ae"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8954976201057434,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_offset_4ee86b694b"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8652942776679993,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_offset_7804a75ddc"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8872686624526978,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_offset_78dc027b0e"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.7220616936683655,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_offset_9a97889e2a"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8797704577445984,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_offset_9bbf0d001f"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8051881790161133,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_offset_a08bc9a827"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8807979822158813,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_offset_a1ee9e96b2"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8348956108093262,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_offset_a21874426b"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8183834552764893,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_offset_a7e5dd040f"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9657454490661621,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_offset_b2f6c73c38"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8468235731124878,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_offset_d3311dde9c"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.7472761869430542,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_offset_d41467297e"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.7652082443237305,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_offset_dfbbc23fa8"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8457255959510803,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_offset_e71013a1d9"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.868623673915863,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_offset_eb75b16f9e"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9331358671188354,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_offset_efcc94bd4e"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.7803874611854553,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "free_m5_offset_f4dea308b4"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9682896733283997,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m3_offset",
+      "mass_kg": 3.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m3_offset_cd98beb498"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9534305930137634,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m3_offset",
+      "mass_kg": 3.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m3_offset_d9b7885e43"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.7745401859283447,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m4_axial",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m4_axial_15ec506716"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8634748458862305,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m4_axial",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m4_axial_35d46ceffd"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8445526957511902,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m4_axial",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m4_axial_4625a3b748"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8725942969322205,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m4_axial",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m4_axial_498c2495da"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.89681476354599,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m4_axial",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m4_axial_53e15f988c"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8740229606628418,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m4_axial",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m4_axial_6080ded1cd"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8330034017562866,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m4_axial",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m4_axial_668b5a0098"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8255995512008667,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m4_axial",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m4_axial_c347b439d3"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8913584351539612,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m4_offset_2d8b34f0fa"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8661602735519409,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m4_offset_3feffbaf05"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.7964573502540588,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m4_offset_5dc04ee918"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8733607530593872,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m4_offset_68ed97ba3e"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.7202537059783936,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m4_offset_8a41f1f583"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9643359780311584,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m4_offset_b8aad47c57"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8707332015037537,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m4_offset_c59781e3fe"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.7376439571380615,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m4_offset_d8f9221995"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9575457572937012,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m4_offset_e32332de70"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8668761253356934,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m4_offset",
+      "mass_kg": 4.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m4_offset_fe3d77753b"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9671952128410339,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m5_axial_123fba9624"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8778387308120728,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m5_axial_15d2797c8e"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9585085511207581,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m5_axial_2624db0e9d"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8585554361343384,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m5_axial_558d2916f5"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8998709917068481,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m5_axial_653281a86a"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8455342650413513,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m5_axial_8a884aeeb8"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8993003368377686,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m5_axial_bf208a1508"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.7672111392021179,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m5_axial_c86e4fda00"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9580221772193909,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m5_axial_de50860b1c"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8943561315536499,
+    "payload": {
+      "com_m": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "label": "m5_axial",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m5_axial_f6d9586225"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8217462301254272,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m5_offset_018fdb59bf"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8421820402145386,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m5_offset_02610deb0c"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.7881656885147095,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m5_offset_1c46c6d3d6"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8405519127845764,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m5_offset_33923c7d4e"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9630407094955444,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m5_offset_36154de543"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8744344115257263,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m5_offset_5675463032"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.7309394478797913,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m5_offset_5ea2e4ff5b"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.5164481997489929,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m5_offset_8ac25ed400"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8958732485771179,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m5_offset_976dd14204"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9265999794006348,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m5_offset_99b44d5ab9"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.7594342231750488,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m5_offset_a1117ac830"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9227266311645508,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m5_offset_b619392743"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.8685807585716248,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m5_offset_be27719c55"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.6636490821838379,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m5_offset_ed0c89d7cd"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.9607968926429749,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m5_offset_f3f0f80bc6"
+  },
+  {
+    "admissible": true,
+    "endpoint_gravity_util": 0.7460695505142212,
+    "payload": {
+      "com_m": [
+        0.08,
+        0.0,
+        0.16
+      ],
+      "label": "m5_offset",
+      "mass_kg": 5.0,
+      "radius_m": 0.06
+    },
+    "reason": null,
+    "task_id": "table_m5_offset_fd482ac07b"
+  }
+]
