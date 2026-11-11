@@ -840,6 +840,44 @@ class MotionPlanner:
         graph_seed_fitter = getattr(self, "graph_seed_fitter", None)
         if graph_seed_fitter is not None:
             graph_seed_fitter.warmup()
+            if (
+                enable_graph
+                and self.graph_planner is not None
+                and graph_seed_fitter.config.use_cuda_graph
+            ):
+                # The first graph-seed fallback captures a second, layout-keyed
+                # executor around path selection and B-spline fitting. Warm the
+                # graph-waypoint layout here so its gc.collect()/capture cost is
+                # paid during startup, not by the first live fallback. Keep the
+                # success mask 1D: GraphPlannerResult.success is shaped (lanes,)
+                # and that shape is part of GraphExecutor's cache key.
+                num_seeds = self.trajopt_solver.config.num_seeds
+                dof = self.trajopt_solver.action_dim
+                warm_state = self.default_joint_state.clone().unsqueeze(0)
+                seed_config = (
+                    warm_state.position.view(1, 1, dof)
+                    .expand(1, num_seeds, dof)
+                    .contiguous()
+                )
+                graph_horizon = self.trajopt_solver.horizon
+                graph_waypoints = torch.zeros(
+                    num_seeds,
+                    graph_horizon,
+                    dof,
+                    device=seed_config.device,
+                    dtype=seed_config.dtype,
+                )
+                graph_success = torch.ones(
+                    num_seeds, device=seed_config.device, dtype=torch.bool
+                )
+                _prepare_seed_trajectories(
+                    warm_state,
+                    seed_config,
+                    graph_waypoints,
+                    graph_success,
+                    self.trajopt_solver.action_horizon,
+                    graph_seed_fitter,
+                )
 
         self.ik_solver.config.exit_early = og_exit_early
         # Warmup is not a user planning request; do not expose its synthetic
