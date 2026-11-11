@@ -121,6 +121,26 @@ class OracleResult:
         return d
 
 
+def clear_k107_caches() -> int:
+    """Drop every module-level cache of the K107 package (dicts/OrderedDicts named *cache*/_PERSISTENT).
+
+    Several are keyed by path or grid identity and grow without bound across many distinct
+    paths (observed: ~1.5 GB GPU per benchmark problem). Call between problems."""
+    import sys
+    from collections import OrderedDict
+
+    n = 0
+    for name, mod in list(sys.modules.items()):
+        if not name.startswith("curobo_timeopt") or mod is None:
+            continue
+        for attr, val in list(vars(mod).items()):
+            if isinstance(val, (dict, OrderedDict)) and ("CACHE" in attr.upper() or attr == "_PERSISTENT"):
+                n += len(val)
+                val.clear()
+    torch.cuda.empty_cache()
+    return n
+
+
 def apply_payload_to_dynamics(dynamics, payload: Payload) -> None:
     """Install the payload on a cuRobo ``Dynamics`` (or planner) via update_link_inertial."""
     p = payload.validate()

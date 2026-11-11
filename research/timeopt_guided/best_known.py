@@ -239,8 +239,16 @@ def main() -> None:
         rec.update(status="EXPORTED", exported=exported, wall_s=time.perf_counter() - t0,
                    best_candidate_s=scored[0]["duration_s"], best_final_s=finals[0]["duration_s"])
         write_json(d / "bks.json", rec)
+        import torch
+
+        from .k107_oracle import clear_k107_caches
+
+        cleared = clear_k107_caches()
         print(tid, pl, "cand %.3f -> final %.3f" % (scored[0]["duration_s"], finals[0]["duration_s"]),
-              finals[0]["name"], "%.0fs" % rec["wall_s"], flush=True)
+              finals[0]["name"], "%.0fs" % rec["wall_s"],
+              "gpu_reserved %.1fGB peak %.1fGB" % (torch.cuda.memory_reserved() / 1e9,
+                                                   torch.cuda.max_memory_reserved() / 1e9),
+              "cleared", cleared, flush=True)
 
 
 if __name__ == "__main__":
