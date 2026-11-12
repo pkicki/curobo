@@ -442,6 +442,26 @@ Methods vs BKS (duration ratio on problems the method solves; dev split):
   Native cuRobo output most often exceeds the Scaled95 jerk limit by a fraction of a
   percent. Planner success rates elsewhere use the 0.5% tolerance.
 
+### 2.12 Native jerk margin and export density (hard development set)
+
+Native trajectories that failed strict certification on main split into jerk excess
+(≤ 0.5% over Scaled95; 137 of 390) and inter-sample gap-check failures (about 250). The
+gap failures came from exporting at 2049 samples; K107-based exports use 8193.
+
+Hard development set (138 problems; native solves 17), all variants exported at 8193
+samples:
+
+| variant | planned | strictly certified | max jerk util | duration vs default |
+|---|---|---|---|---|
+| native (jerk scale 0.95) | 17 | 16 | 1.0021 | — |
+| native_jerk945 | 17 | 17 | 0.9967 | +0.01% (median) |
+| native_jerk940 | 17 | 17 | 0.9915 | +0.02% |
+
+* Dense export removes all gap-check failures, so those were sampling artefacts.
+* Jerk scale 0.945 removes the remaining jerk excess at no measurable duration cost.
+* Recommendation for strict comparisons: native_jerk945 with 8193-sample export.
+  The sample is small (17 problems).
+
 ## 3. Software (all in `research/timeopt_guided/`)
 
 | Module | Env | Role |
