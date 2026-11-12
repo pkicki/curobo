@@ -63,7 +63,10 @@ def run(bank_dir: Path, out: Path, *, restarts: int, scenes: list[str] | None, e
         by_scene.setdefault(t["scene"], []).append((t, p))
     for scene, items in by_scene.items():
         if variant.startswith("hybrid"):
-            from .native_runner import HybridPlanner
+            from .native_runner import HybridPlanner, set_timeopt_jerk_scale
+
+            if "_jerk" in variant:  # e.g. hybrid2_jerk945: TimeOpt jerk scale for both planners
+                set_timeopt_jerk_scale(int(variant.split("_jerk")[1].split(":")[0]) / 1000.0)
 
             planner = HybridPlanner(scene, seed=seed, fallback=variant.split(":", 1)[1] if ":" in variant
                                     else "gravity_aware_85", native_after_fallback=variant.startswith("hybrid2"))
