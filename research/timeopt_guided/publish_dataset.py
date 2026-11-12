@@ -29,7 +29,7 @@ import numpy as np
 from .common import ROOT, read_json
 
 R = ROOT / "research/timeopt_guided/results"
-VERSION = "1.0.0"
+VERSION = "1.1.0"
 NAME = "panda-payload-motion-benchmark"
 SCENE_FILES = {"free": None, "table": "collision_test.yml", "cluttered": "collision_primitives_3d.yml"}
 
@@ -40,6 +40,52 @@ def sha(path: Path) -> str:
         for chunk in iter(lambda: f.read(1 << 20), b""):
             h.update(chunk)
     return h.hexdigest()
+
+
+def hand_pose_fn():
+    """panda_hand pose (base frame) by Pinocchio on the shipped URDF; matches cuRobo FK to ~1e-7."""
+    import pinocchio as pin
+
+    from .independent_validate import build_model
+
+    model, data, state, qi, _ = build_model({"mass_kg": 0.0, "com_m": [0, 0, 0], "radius_m": 0.06})
+    fid = model.getFrameId("panda_hand")
+
+    def pose(q):
+        state[qi] = q
+        pin.framesForwardKinematics(model, data, state)
+        m = data.oMf[fid]
+        qq = pin.Quaternion(m.rotation)
+        quat = np.array([qq.w, qq.x, qq.y, qq.z])
+        if quat[0] < 0:
+            quat = -quat
+        return {"frame": "panda_hand", "position_xyz": [float(x) for x in m.translation],
+                "quaternion_wxyz": [float(x) for x in quat]}
+
+    return pose
+
+
+def curobo_obstacles(scene: str) -> dict:
+    """Scene as a cuRobo SceneCfg dict with sphere obstacles written as zero-length capsules."""
+    import copy
+
+    import yaml
+
+    f = SCENE_FILES[scene]
+    if f is None:
+        return {}
+    data = copy.deepcopy(yaml.safe_load((ROOT / "curobo/content/configs/scene" / f).read_text()))
+    spheres = data.pop("sphere", None) or {}
+    caps = data.setdefault("capsule", {}) or {}
+    for k, v in spheres.items():
+        c = list(v.get("position", (v.get("pose") or [0, 0, 0])[:3]))
+        caps[f"{k}__as_capsule"] = {"radius": float(v["radius"]), "base": [0.0, 0.0, 0.0], "tip": [0.0, 0.0, 0.0],
+                                    "pose": c + [1.0, 0.0, 0.0, 0.0]}
+    if caps:
+        data["capsule"] = caps
+    else:
+        data.pop("capsule", None)
+    return data
 
 
 def write_validator(out: Path) -> None:
@@ -77,9 +123,24 @@ from pathlib import Path
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from validate_core import validate  # noqa: E402
+from validate_core import build_model, validate  # noqa: E402
 
 DATASET = Path(__file__).resolve().parents[1]
+
+
+def hand_pose_error(q, goal_pose):
+    """Position [m] and rotation [rad] error of panda_hand at q w.r.t. goal_pose (base frame)."""
+    import pinocchio as pin
+
+    model, data, state, qi, _ = build_model({"mass_kg": 0.0, "com_m": [0, 0, 0], "radius_m": 0.06})
+    state[qi] = q
+    pin.framesForwardKinematics(model, data, state)
+    m = data.oMf[model.getFrameId("panda_hand")]
+    w, x, y, z = goal_pose["quaternion_wxyz"]
+    rg = pin.Quaternion(w, x, y, z).toRotationMatrix()
+    rot = float(np.linalg.norm(pin.log3(rg.T @ m.rotation)))
+    return {"position_m": float(np.linalg.norm(m.translation - np.asarray(goal_pose["position_xyz"]))),
+            "rotation_rad": rot}
 
 
 def main():
@@ -88,6 +149,10 @@ def main():
     ap.add_argument("--trajectories", type=Path, required=True)
     ap.add_argument("--out", type=Path, default=None)
     ap.add_argument("--ids", nargs="*", default=None)
+    ap.add_argument("--goal-mode", choices=("joint", "pose"), default="joint",
+                    help="joint: end at the goal configuration; pose: end with panda_hand at goal_pose")
+    ap.add_argument("--pos-tol", type=float, default=1e-3, help="pose mode: position tolerance [m]")
+    ap.add_argument("--rot-tol", type=float, default=1e-2, help="pose mode: rotation tolerance [rad]")
     a = ap.parse_args()
     contract = json.loads((DATASET / "contract.json").read_text())
     rows = []
@@ -101,9 +166,18 @@ def main():
             continue
         z = np.load(f)
         traj = {k: np.asarray(z[k], float) for k in ("time", "q", "qd", "qdd", "jerk")}
-        meta = {"payload": p["payload"], "scene": p["scene"], "start": p["start"], "goal": p["goal"],
+        goal = p["goal"]
+        pose_err = None
+        if a.goal_mode == "pose":
+            pose_err = hand_pose_error(traj["q"][-1], p["goal_pose"])
+            goal = traj["q"][-1].tolist()  # goal reached is judged by the hand pose below
+        meta = {"payload": p["payload"], "scene": p["scene"], "start": p["start"], "goal": goal,
                 "limits": contract["limits"], "gap_check": True}
         v = validate(traj, meta)
+        if pose_err is not None:
+            v["goal_pose_error"] = pose_err
+            v["certified"] = bool(v.get("certified") and pose_err["position_m"] <= a.pos_tol
+                                  and pose_err["rotation_rad"] <= a.rot_tol)
         d = float(traj["time"][-1] - traj["time"][0])
         rows.append({"problem_id": p["problem_id"], "submitted": True, "certified": bool(v.get("certified")),
                      "duration_s": d, "best_known_s": p["best_known"]["duration_s"],
@@ -167,6 +241,7 @@ def main() -> None:
     (out / "contract.json").write_text(json.dumps(contract, indent=2) + "\n")
     # problems + solutions
     counts = {}
+    hand = hand_pose_fn()
     for bench in ("main", "hard"):
         bks_m = read_json(R / f"bks_{bench}_20261115/best_known_manifest.json")
         bks = {(p["task_id"], p["payload"]): p for p in bks_m["problems"]}
@@ -199,16 +274,33 @@ def main() -> None:
                                                             "peak_free", "L_free", "L_static", "swing_ratio",
                                                             "peak_swing", "segments", "length_ratio")
                                    if info.get(k) is not None}}
+            row["goal_pose"] = hand(row["goal"])
+            row["start_pose"] = hand(row["start"])
+            row["goal_ik"] = [row["goal"]]
             pay = payloads[pl]
             row["payload"] = {"label": pl, "mass_kg": pay["mass_kg"], "com_m": pay["com_m"], "radius_m": pay["radius_m"]}
             kind = ("method_" + b["bks_candidate"].split("method_")[1].split("_R1")[0]
                     if b["bks_candidate"].startswith("method_") else "bks_" + b["bks_stage"])
             row["best_known"] = {"duration_s": float(np.load(dst)["time"][-1]), "file": f"solutions/{bench}/{pid}.npz",
                                  "sha256": sha(dst), "source": kind,
-                                 "note": "upper bound on the optimum (best certified trajectory found)"}
+                                 "note": ("upper bound on the optimum (best certified trajectory found) for the "
+                                          "joint-space goal; also a valid upper bound for the pose goal, which may "
+                                          "admit faster solutions through other IK branches")}
             rows.append(row)
         rows.sort(key=lambda r: r["problem_id"])
         (out / f"data/problems_{bench}.jsonl").write_text("".join(json.dumps(r) + "\n" for r in rows))
+        # robometrics / MotionBenchMaker-style export (dict: group -> list of problems)
+        import yaml
+
+        groups: dict = {}
+        for r in rows:
+            groups.setdefault(r["scene"], []).append({
+                "problem_id": r["problem_id"], "split": r["split"], "subsets": r["subsets"],
+                "start": r["start"], "goal_pose": {"position_xyz": r["goal_pose"]["position_xyz"],
+                                                   "quaternion_wxyz": r["goal_pose"]["quaternion_wxyz"]},
+                "goal_ik": r["goal_ik"], "obstacles": curobo_obstacles(r["scene"]), "collision_buffer_ik": 0.0,
+                "payload": r["payload"], "best_known_duration_s": r["best_known"]["duration_s"]})
+        (out / f"data/robometrics_{bench}.yaml").write_text(yaml.safe_dump(groups, sort_keys=False))
         counts[bench] = len(rows)
     head = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True).stdout.strip()
     (out / "data/provenance.json").write_text(json.dumps({
@@ -280,6 +372,31 @@ identity transform. `com_m` is in the panda_hand frame; the body is a solid sphe
 scene configs. Give spheres to cuRobo as zero-length capsules (base = tip) to plan in the
 same world the validator checks.
 
+## Pose goals and MotionBenchMaker / robometrics compatibility (v1.1)
+
+Every problem also has a **pose goal**: `goal_pose` is the `panda_hand` pose (base frame,
+`position_xyz` in m, `quaternion_wxyz`) reached at the goal configuration, and `goal_ik`
+is `[goal]`. Pinocchio on the shipped URDF reproduces cuRobo's forward kinematics to ~1e-7.
+
+`data/robometrics_{{main,hard}}.yaml` uses the robometrics MotionBenchMaker problem
+layout: `{{scene: [{{start, goal_pose, goal_ik, obstacles, collision_buffer_ik, ...}}]}}`,
+with `obstacles` as a cuRobo `SceneCfg` dict (sphere obstacles written as zero-length
+capsules). Extra keys: `problem_id`, `split`, `subsets`, `payload` and
+`best_known_duration_s`. Problems can be fed to cuRobo's
+`benchmark/motion_plan_benchmark.py`-style loops (`plan_pose` to `panda_hand`). Install
+the payload (mass, COM and inertia on `attached_object`, plus its sphere) before planning.
+
+* **Joint goal** (default): end at `goal` (≤ 1e-3 rad).
+* **Pose goal**: end with `panda_hand` at `goal_pose`. Default tolerances are 1 mm and
+  0.01 rad (`tools/validate.py --goal-mode pose`).
+* The BKS duration is an upper bound for both. With a pose goal another IK branch may
+  allow a faster motion, and in the hard sets a different goal configuration may also
+  change the difficulty (tightness is endpoint-driven).
+* **The hard sets are hard in their joint-goal form.** In a spot check, cuRobo's
+  `plan_pose` solved 9/9 sampled hard problems as pose goals, twice faster than the
+  joint-goal BKS, because a different, less gravity-loaded goal configuration was used.
+  Report joint- and pose-goal results separately.
+
 ## Hard subsets
 
 * `TIGHT_STATIC`: the minimax static gravity utilisation over collision-free routes is
@@ -308,7 +425,7 @@ same world the validator checks.
 ```python
 from huggingface_hub import snapshot_download
 import json, numpy as np
-root = snapshot_download("<namespace>/{NAME}", repo_type="dataset")
+root = snapshot_download("pkicki/{NAME}", repo_type="dataset", revision="v{VERSION}")
 problems = [json.loads(l) for l in open(f"{{root}}/data/problems_hard.jsonl")]
 p = problems[0]
 bks = np.load(f"{{root}}/{{p['best_known']['file']}}")
@@ -316,6 +433,7 @@ bks = np.load(f"{{root}}/{{p['best_known']['file']}}")
 
 ```bash
 python tools/validate.py --problems data/problems_hard.jsonl --trajectories my_trajs/ --out report.json
+python tools/validate.py --problems data/problems_hard.jsonl --trajectories my_trajs/ --goal-mode pose
 ```
 
 ## Provenance
