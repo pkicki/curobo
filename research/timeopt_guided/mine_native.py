@@ -30,13 +30,13 @@ def cell_dir(root: Path, task_id: str, payload: Payload) -> Path:
 
 def run(bank_dir: Path, out: Path, *, restarts: int, scenes: list[str] | None, escalate_from: int | None,
         split: str | None, limit: int | None, seed: int, variant: str = "native",
-        cells_file: Path | None = None) -> None:
+        cells_file: Path | None = None, dense_samples: int = 2049, tag_suffix: str = "") -> None:
     from .native_runner import NativePlanner
 
     bank = read_json(bank_dir / "tasks.json")
     cells = read_json(bank_dir / "cells.json")
     tasks = {t["task_id"]: t for t in bank["tasks"]}
-    tag = f"native_R{restarts}" if variant == "native" else f"{variant.replace(':', '-')}_R{restarts}"
+    tag = (f"native_R{restarts}" if variant == "native" else f"{variant.replace(':', '-')}_R{restarts}") + tag_suffix
     only = None
     if cells_file is not None:
         only = {(x["task_id"], x["payload"]) for x in read_json(cells_file)}
@@ -80,7 +80,8 @@ def run(bank_dir: Path, out: Path, *, restarts: int, scenes: list[str] | None, e
                 current = p.label
                 parity = planner.gravity_all_models(np.stack([t["start"], t["goal"]]))
             t0 = time.perf_counter()
-            attempts = planner.plan(np.asarray(t["start"]), np.asarray(t["goal"]), restarts=restarts)
+            attempts = planner.plan(np.asarray(t["start"]), np.asarray(t["goal"]), restarts=restarts,
+                                    dense_samples=dense_samples)
             wall = time.perf_counter() - t0
             last = attempts[-1]
             rec = {
@@ -136,9 +137,12 @@ def main() -> None:
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--variant", default="native")
     ap.add_argument("--cells", type=Path, default=None, help="JSON list of {task_id, payload} to run")
+    ap.add_argument("--dense-samples", type=int, default=2049, help="samples of the exported trajectory")
+    ap.add_argument("--tag-suffix", default="", help="appended to the record tag (e.g. _d8193)")
     a = ap.parse_args()
     run(a.bank, a.output, restarts=a.restarts, scenes=a.scenes, escalate_from=a.escalate_from,
-        split=a.split, limit=a.limit, seed=a.seed, variant=a.variant, cells_file=a.cells)
+        split=a.split, limit=a.limit, seed=a.seed, variant=a.variant, cells_file=a.cells,
+        dense_samples=a.dense_samples, tag_suffix=a.tag_suffix)
 
 
 if __name__ == "__main__":

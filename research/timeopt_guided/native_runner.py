@@ -53,8 +53,30 @@ class NativeAttempt:
 #   torque_aware_<rho>: full torque (gravity + dynamics at TrajOpt's provisional timing)
 #                 / rho in the optimizer rollouts, i.e. TrajOpt's bound is rho * tau_max
 #                 (plain ``torque_aware`` = rho 1.00 vs the UNSCALED nominal effort).
+#   native_jerk<NNN>: native planner whose TimeOpt uses jerk_limit_scale = NNN / 1000
+#                 (default 0.95), e.g. native_jerk945. Applied by overriding the
+#                 TrajectoryTimeOptCfg default before planner construction (process-wide,
+#                 research only; production defaults untouched).
 VARIANTS = ("native", "torque_aware", "torque_aware_95", "torque_aware_99",
-            "gravity_aware_85", "gravity_aware_90", "gravity_aware_95")
+            "gravity_aware_85", "gravity_aware_90", "gravity_aware_95",
+            "native_jerk945", "native_jerk940")
+
+
+def set_timeopt_jerk_scale(scale: float) -> None:
+    """Override the jerk_limit_scale used by every TimeOpt solver created afterwards."""
+    import dataclasses
+
+    import curobo._src.solver.solver_timeopt as st
+    from curobo._src.motion.motion_trajectory_timeopt_cfg import TrajectoryTimeOptCfg
+
+    base = TrajectoryTimeOptCfg
+
+    def cfg(*args, **kwargs):
+        kwargs.setdefault("jerk_limit_scale", scale)
+        return base(*args, **kwargs)
+
+    assert dataclasses.is_dataclass(base)
+    st.TrajectoryTimeOptCfg = cfg
 
 
 class GravityOnlyDynamics:
@@ -94,7 +116,7 @@ def install_gravity_cost(planner, rho: float, gravity_only: bool = True) -> int:
 
 
 def robot_config_for(variant: str):
-    if variant == "native":
+    if variant == "native" or variant.startswith("native_jerk"):
         return "franka.yml"
     from curobo._src.util.config_io import join_path, resolve_config
     from curobo.content import get_robot_configs_path
@@ -126,6 +148,8 @@ class NativePlanner:
             raise ValueError(f"unknown planner variant {variant}")
         self.scene = scene
         self.variant = variant
+        if variant.startswith("native_jerk"):
+            set_timeopt_jerk_scale(int(variant[len("native_jerk"):]) / 1000.0)
         self.planner = MotionPlanner(MotionPlannerCfg.create(
             robot=robot_config_for(variant), scene_model=curobo_scene(scene),
             collision_cache={"cuboid": 32, "mesh": 2},

@@ -38,7 +38,7 @@ def validated(f: Path) -> bool:
                 and all(np.isfinite(v) and v <= TOL for v in u.values()))
 
 
-def export(run: Path, bank: Path, tags: list[str]) -> None:
+def export(run: Path, bank: Path, tags: list[str], gap_check: bool = False) -> None:
     from curobo._src.robot.kinematics.kinematics_cfg import KinematicsCfg
 
     from .run_campaign import export as write
@@ -57,7 +57,8 @@ def export(run: Path, bank: Path, tags: list[str]) -> None:
             if Path(str(out) + ".traj.json").exists():
                 continue
             write(out, dict(np.load(f)), {"payload": rec["payload"], "scene": t["scene"], "start": t["start"],
-                                          "goal": t["goal"], "limits": lim, "variant": tag})
+                                          "goal": t["goal"], "limits": lim, "variant": tag,
+                                          "gap_check": gap_check})
             n += 1
     print("exported", n)
 
@@ -147,9 +148,10 @@ def main() -> None:
     ap.add_argument("--tags", nargs="+", default=["native_R1", "hybrid_R1"])
     ap.add_argument("--reference", default="native_R1")
     ap.add_argument("--manifest", type=Path, default=None)
+    ap.add_argument("--gap-check", action="store_true", help="export for strict (gap-checked) certification")
     a = ap.parse_args()
     if a.mode == "export":
-        export(a.run, a.bank, a.tags)
+        export(a.run, a.bank, a.tags, a.gap_check)
         return
     res = summarise(a.run, a.bank, a.tags, a.reference, a.manifest)
     write_json(a.run / "evaluation.json", res)
