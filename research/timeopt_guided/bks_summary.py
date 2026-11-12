@@ -35,17 +35,25 @@ def main() -> None:
         r = read_json(f)
         d = f.parent
         best = None
-        for e in r.get("exported", []):
-            v = d / f"bks_{e['rank']}.validation.json"
-            if v.exists() and read_json(v).get("certified"):
-                if best is None or e["duration_s"] < best["duration_s"]:
-                    best = e | {"sha256": sha256_file(d / f"bks_{e['rank']}.traj.npz")}
+        # every certified candidate counts: BKS exports (bks_k) and method trajectories (method_<tag>)
+        names = [f"bks_{e['rank']}" for e in r.get("exported", [])] + \
+                sorted(p.name[: -len(".traj.json")] for p in d.glob("method_*.traj.json"))
+        meta = {f"bks_{e['rank']}": e for e in r.get("exported", [])}
+        for name in names:
+            v = d / f"{name}.validation.json"
+            if not (v.exists() and read_json(v).get("certified")):
+                continue
+            dur = float(np.load(d / f"{name}.traj.npz")["time"][-1])
+            if best is None or dur < best["duration_s"]:
+                e = meta.get(name, {"rank": None, "name": name, "stage": "method"})
+                best = {"rank": e["rank"], "name": e["name"], "stage": e["stage"], "duration_s": dur,
+                        "candidate": name, "sha256": sha256_file(d / f"{name}.traj.npz")}
         if best is None:
             missing[r["status"] if r["status"] != "EXPORTED" else "NO_CERTIFIED_EXPORT"] += 1
             continue
         rows.append({"task_id": r["task_id"], "payload": r["payload"], "scene": r["scene"], "split": r["split"],
                      "bks_duration_s": best["duration_s"], "bks_source": best["name"], "bks_stage": best["stage"],
-                     "bks_rank": best["rank"], "bks_sha256": best["sha256"],
+                     "bks_rank": best["rank"], "bks_candidate": best["candidate"], "bks_sha256": best["sha256"],
                      "best_raw_candidate_s": r["best_candidate_s"], "wall_s": r["wall_s"]})
     out = {"bks_dir": str(a.bks.resolve().relative_to(ROOT)),
            "benchmark_manifest_sha256": read_json(a.benchmark_manifest).get("manifest_sha256"),

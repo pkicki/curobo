@@ -397,6 +397,51 @@ Durations on problems both methods solve:
 * 43 hard problems (and about 48 main ones) remain unsolved by every method despite
   being certified solvable.
 
+### 2.11 Best-known solutions (BKS) for both frozen benchmarks
+
+`best_known.py` produces candidates; `bks_summary.py` freezes the result.
+
+* **Candidates per problem:**
+  * roadmap routes under 7 gravity thresholds, plus edge-penalised alternatives;
+  * the planner paths (dev);
+  * the oracle witnesses;
+  * the planners' own trajectories.
+* **Pipeline:** quintic fits → K107 (overload-aware start) → long joint path-time
+  refinement of the 4 best (40 × 60 steps, 2 basin-hopping restarts) → strict
+  certification (gap check, no tolerance).
+* **BKS** = the fastest strictly certified trajectory from any source. Durations are
+  upper bounds on the optimum.
+* **Run issues** (fixed, documented in commits): a K107 cache leak (about 1.5 GB per
+  problem) led to out-of-memory crashes; HiGHS cycled indefinitely on degenerate
+  Phase-I LPs (now with a time limit).
+
+**Results.** Every problem has a BKS: main 1392/1392 (manifest 27ffd164…), hard
+186/186 (e82bb5fa…).
+
+| BKS source | main | hard |
+|---|---|---|
+| BKS refinement | 902 | 172 |
+| raw BKS candidate | 30 | 3 |
+| C2 trajectory | 270 | 10 |
+| B2 trajectory | 190 | 1 |
+
+Methods vs BKS (duration ratio on problems the method solves; dev split):
+
+| method | main median / mean | main within 5% | hard median / mean | hard within 5% |
+|---|---|---|---|---|
+| native | 1.021 / 1.071 | 76% | 1.155 / 1.27 (17 solved) | 29% |
+| hybrid v2 | 1.022 / 1.083 | 74% | 1.566 / 1.689 | 7% |
+| B2 | 1.011 / 1.059 | 79% | 1.336 / 1.389 | 10% |
+| C2 | 1.008 / 1.047 | 86% | 1.146 / 1.215 | 28% |
+
+* On ordinary problems every method is within about 2% of the BKS (median).
+* On the hard set the gravity-aware hybrid is a median 57% slower than the BKS; C2
+  closes most of that gap (15% slower).
+* **Strict certification of the methods' own trajectories** (no 0.5% jerk tolerance,
+  gap check), on main: native 639/1029, hybrid2 847/1085, B2 953/1091, C2 961/1090.
+  Native cuRobo output most often exceeds the Scaled95 jerk limit by a fraction of a
+  percent. Planner success rates elsewhere use the 0.5% tolerance.
+
 ## 3. Software (all in `research/timeopt_guided/`)
 
 | Module | Env | Role |

@@ -1,0 +1,30 @@
+{
+  "args": {
+    "bank": "research/timeopt_guided/results/eval_20261114/hard_bank",
+    "config": "{}",
+    "eval_run": "research/timeopt_guided/results/eval_20261114/hard",
+    "eval_tags": "['native_R1', 'hybrid_R1', 'hybrid2_R1', 'B_R1', 'B2_R1', 'C_R1', 'C2_R1']",
+    "hard_manifest": "research/timeopt_guided/results/hard_benchmark_20261114/manifest.json",
+    "limit": "None",
+    "nshards": "4",
+    "oracle_run": "None",
+    "output": "research/timeopt_guided/results/bks_hard_20261115",
+    "shard": "1",
+    "split": "all"
+  },
+  "bks": {
+    "export": 3,
+    "perturb_rad": 0.06,
+    "refine_budget_s": 600.0,
+    "refine_inner_steps": 60,
+    "refine_iterations": 40,
+    "restarts": 2,
+    "roadmap_samples": 300000,
+    "seed": 20261115,
+    "spline_controls": [
+      16,
+      30
+    ],
+    "top": 4
+  }
+}

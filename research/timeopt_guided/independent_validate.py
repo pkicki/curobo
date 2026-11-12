@@ -236,14 +236,18 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--root", type=Path, required=True)
     ap.add_argument("--overwrite", action="store_true")
+    ap.add_argument("--shard", type=int, default=0)
+    ap.add_argument("--nshards", type=int, default=1)
     a = ap.parse_args()
-    parity = [check_parity(p) for p in sorted(a.root.rglob("parity_*.npz"))]
+    parity = [check_parity(p) for p in sorted(a.root.rglob("parity_*.npz"))] if a.shard == 0 else []
     if parity:
         (a.root / "payload_parity.json").write_text(json.dumps(parity, indent=2) + "\n")
         print(f"parity: {sum(p['pass'] for p in parity)}/{len(parity)} pass, "
               f"max {max(p['max_abs_nm'] for p in parity):.4f} Nm")
     n = 0
-    for meta_file in sorted(a.root.rglob("*.traj.json")):
+    for i, meta_file in enumerate(sorted(a.root.rglob("*.traj.json"))):
+        if i % a.nshards != a.shard:
+            continue
         out = meta_file.with_name(meta_file.name.replace(".traj.json", ".validation.json"))
         if out.exists() and not a.overwrite:
             continue
