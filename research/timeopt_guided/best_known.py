@@ -49,6 +49,7 @@ class BKSConfig:
     refine_iterations: int = 40
     refine_inner_steps: int = 60
     export: int = 3
+    refine_budget_s: float = 600.0  # per refinement run (guard against pathological solver stalls)
     seed: int = 20261115
 
 
@@ -199,7 +200,7 @@ def main() -> None:
             if len(seeds) >= cfg.top:
                 break
         rcfg = RefineConfig(iterations=cfg.refine_iterations, inner_steps=cfg.refine_inner_steps, sigma=1.05,
-                            sigma_min=1.002)
+                            sigma_min=1.002, time_budget_s=cfg.refine_budget_s)
         finals = list(scored)
         for x in seeds:
             o = oracles[x["oracle"]]

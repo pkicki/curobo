@@ -360,7 +360,7 @@ class K107Oracle:
 
     def _phase1_lp_start(self, terms, x_ref_grid: np.ndarray, *, min_slack: float = 0.003,
                          rounds: int = 1, lp_stride: int = 4, max_cuts: int = 1,
-                         single_lp: bool = True):
+                         single_lp: bool = True, lp_time_limit_s: float = 20.0):
         """Phase-I start in K107's own timing-spline space (sequential LP, HiGHS).
 
         Variables: the K timing coefficients c (ends fixed to 0) and a relative
@@ -442,7 +442,10 @@ class K107Oracle:
             def solve(obj, bounds):
                 act = active.copy()
                 for it in range(max_cuts):
-                    res = linprog(obj, A_ub=A[act], b_ub=b[act], bounds=bounds, method="highs")
+                    # time_limit: HiGHS can cycle indefinitely on degenerate instances (observed);
+                    # a timeout is treated as "no Phase-I start" (status != 0).
+                    res = linprog(obj, A_ub=A[act], b_ub=b[act], bounds=bounds, method="highs",
+                                  options={"time_limit": float(lp_time_limit_s)})
                     if res.status != 0:
                         self._lp_log.append(("lp_status", it, res.status, int(act.sum())))
                         return None
