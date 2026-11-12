@@ -462,6 +462,20 @@ samples:
 * Recommendation for strict comparisons: native_jerk945 with 8193-sample export.
   The sample is small (17 problems).
 
+### 2.13 Published release
+
+`pkicki/panda-payload-motion-benchmark` on Hugging Face: a private dataset, tag
+`v1.0.0`, built by `publish_dataset.py`.
+
+* **Contents:** 1392 main + 186 hard problems (splits, subsets, metrics), best-known
+  trajectories (float32, 8193 samples), scenes, robot model with licences, the
+  constraint contract and a standalone validator (`tools/validate.py`; Pinocchio, no
+  cuRobo).
+* **Checks before upload:** all 1578 shipped trajectories certified by the standalone
+  validator in isolated mode.
+* **Checks after upload:** fresh download at `v1.0.0` passes every checksum, and
+  spot-checked problems certify.
+
 ## 3. Software (all in `research/timeopt_guided/`)
 
 | Module | Env | Role |
