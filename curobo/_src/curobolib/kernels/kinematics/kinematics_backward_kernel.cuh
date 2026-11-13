@@ -222,34 +222,56 @@ namespace kinematics{
       }
       __syncthreads();
 
-      for (int link_idx = threadIdx.x; link_idx < NumLinks;
-           link_idx += ThreadsPerBlock) {
-        float m0 = 0.0f, m1 = 0.0f, m2 = 0.0f, f0 = 0.0f, f1 = 0.0f, f2 = 0.0f;
-        if constexpr (NumSpheres > 0) {
-          for (int sphere_idx = 0; sphere_idx < NumSpheres; ++sphere_idx) {
-            if (link_sphere_map[sphere_idx] != link_idx) {
+      // Stage 2: one warp per link. Each lane sums a fixed, strided subset of
+      // the link's slots in ascending index order, then a fixed xor butterfly
+      // combines the lanes; lane 0 holds the (deterministic) total. A serial
+      // per-link scan of all slots was slower than the atomic original when
+      // most sphere gradients are zero (TrajOpt without contact).
+      {
+        constexpr int WarpsPerBlock = ThreadsPerBlock / 32;
+        const int warp = threadIdx.x / 32;
+        const int lane = threadIdx.x % 32;
+        for (int link_idx = warp; link_idx < NumLinks; link_idx += WarpsPerBlock) {
+          float v[CONTRIB_STRIDE] = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
+          if constexpr (NumSpheres > 0) {
+            for (int sphere_idx = lane; sphere_idx < NumSpheres; sphere_idx += 32) {
+              if (link_sphere_map[sphere_idx] != link_idx) {
+                continue;
+              }
+              const float *slot = &contrib[sphere_idx * CONTRIB_STRIDE];
+              #pragma unroll
+              for (int k = 0; k < CONTRIB_STRIDE; ++k) {
+                v[k] += slot[k];
+              }
+            }
+          }
+          for (int tool_idx = lane; tool_idx < NumToolFrames; tool_idx += 32) {
+            if (tool_frame_map[tool_idx] != link_idx) {
               continue;
             }
-            const float *slot = &contrib[sphere_idx * CONTRIB_STRIDE];
-            m0 += slot[0]; m1 += slot[1]; m2 += slot[2];
-            f0 += slot[3]; f1 += slot[4]; f2 += slot[5];
+            const float *slot = &contrib[(NumSpheres + tool_idx) * CONTRIB_STRIDE];
+            #pragma unroll
+            for (int k = 0; k < CONTRIB_STRIDE; ++k) {
+              v[k] += slot[k];
+            }
+          }
+          #pragma unroll
+          for (int k = 0; k < CONTRIB_STRIDE; ++k) {
+            #pragma unroll
+            for (int offset = 16; offset > 0; offset /= 2) {
+              v[k] += __shfl_xor_sync(0xffffffffu, v[k], offset);
+            }
+          }
+          if (lane == 0) {
+            const int wrench_offset = link_idx * WRENCH_STRIDE;
+            shared_wrench[wrench_offset + 0] = v[0];
+            shared_wrench[wrench_offset + 1] = v[1];
+            shared_wrench[wrench_offset + 2] = v[2];
+            shared_wrench[wrench_offset + 4] = v[3];
+            shared_wrench[wrench_offset + 5] = v[4];
+            shared_wrench[wrench_offset + 6] = v[5];
           }
         }
-        for (int tool_idx = 0; tool_idx < NumToolFrames; ++tool_idx) {
-          if (tool_frame_map[tool_idx] != link_idx) {
-            continue;
-          }
-          const float *slot = &contrib[(NumSpheres + tool_idx) * CONTRIB_STRIDE];
-          m0 += slot[0]; m1 += slot[1]; m2 += slot[2];
-          f0 += slot[3]; f1 += slot[4]; f2 += slot[5];
-        }
-        const int wrench_offset = link_idx * WRENCH_STRIDE;
-        shared_wrench[wrench_offset + 0] = m0;
-        shared_wrench[wrench_offset + 1] = m1;
-        shared_wrench[wrench_offset + 2] = m2;
-        shared_wrench[wrench_offset + 4] = f0;
-        shared_wrench[wrench_offset + 5] = f1;
-        shared_wrench[wrench_offset + 6] = f2;
       }
 
       if constexpr (ComputeCom) {
