@@ -323,13 +323,18 @@ class BiRRTPlanner:
         device = self.resources.device_cfg.device
         dtype = self.resources.device_cfg.dtype
         capacity = self.config.max_nodes_per_tree
+        # Zero-initialize the fixed-capacity storage (one-time allocation).
+        # Rows >= counts are never meaningful, but they were read: the nearest
+        # kernel tile-loads whole chunks (then masks them) and RRTGrowthStep
+        # snapshots/restores the full buffers around graph capture. With
+        # torch.empty those reads touched uninitialized memory (initcheck).
         return _RRTTree(
-            nodes=torch.empty(
+            nodes=torch.zeros(
                 (batch_size, capacity, self.resources.action_dim),
                 device=device,
                 dtype=dtype,
             ),
-            parents=torch.empty(
+            parents=torch.zeros(
                 (batch_size, capacity),
                 device=device,
                 dtype=torch.int64,
