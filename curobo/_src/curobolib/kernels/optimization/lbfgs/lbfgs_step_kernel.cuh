@@ -421,6 +421,13 @@ void kernel_lbfgs_step_circular(
     }
   }
 
+  // INTRA-WARP ALPHA HAND-OFF (exp/deterministic-link-wrench, commit 2).
+  // Thread 0 writes alpha_buffer[] in the first loop and every lane reads it
+  // in the second loop. For 32-thread blocks the reductions are shuffle-only,
+  // which does not order shared-memory accesses, so compute-sanitizer racecheck
+  // reports a write/read hazard (generated lines 443/603). __syncwarp() gives
+  // the required memory ordering; wider blocks already pass __syncthreads().
+  __syncwarp();
   ScalarType ss = ScalarType(0);
   ScalarType yy = ScalarType(0);
   if (active_count > 0) {
