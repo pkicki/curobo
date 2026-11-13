@@ -250,37 +250,64 @@ namespace kinematics{
       }
       const bool sorted_map = __syncthreads_or(map_unsorted) == 0;
 
-      for (int link_idx = threadIdx.x; link_idx < NumLinks;
-           link_idx += ThreadsPerBlock) {
-        float m0 = 0.0f, m1 = 0.0f, m2 = 0.0f, f0 = 0.0f, f1 = 0.0f, f2 = 0.0f;
-        if constexpr (NumSpheres > 0) {
-          // Same ascending order either way, so results are bit-identical.
-          const int first = sorted_map ? link_sphere_range[2 * link_idx] : 0;
-          const int last = sorted_map ? link_sphere_range[2 * link_idx + 1] : NumSpheres;
-          for (int sphere_idx = first; sphere_idx < last; ++sphere_idx) {
-            if (!sorted_map && link_sphere_map[sphere_idx] != link_idx) {
-              continue;
+      // Stage 2: LINK_GROUP threads per link. Thread j of a group sums slots
+      // first+j, first+j+LINK_GROUP, ... in ascending order (spheres, then tool
+      // frames); a fixed width-LINK_GROUP xor butterfly combines the group and
+      // its lane 0 writes the wrench. Fixed order everywhere: deterministic.
+      // This shortens the dependent add chain of large links (latency-bound
+      // kernel) compared with one thread summing a whole link.
+      {
+        constexpr int LINK_GROUP = 8;
+        constexpr int GroupsPerBlock = ThreadsPerBlock / LINK_GROUP;
+        const int group = threadIdx.x / LINK_GROUP;
+        const int member = threadIdx.x % LINK_GROUP;
+        for (int first_link = 0; first_link < NumLinks; first_link += GroupsPerBlock) {
+          const int link_idx = first_link + group;
+          float v[CONTRIB_STRIDE] = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
+          if (link_idx < NumLinks) {
+            if constexpr (NumSpheres > 0) {
+              const int first = sorted_map ? link_sphere_range[2 * link_idx] : 0;
+              const int last = sorted_map ? link_sphere_range[2 * link_idx + 1] : NumSpheres;
+              for (int sphere_idx = first + member; sphere_idx < last;
+                   sphere_idx += LINK_GROUP) {
+                if (!sorted_map && link_sphere_map[sphere_idx] != link_idx) {
+                  continue;
+                }
+                const float *slot = &contrib[sphere_idx * CONTRIB_STRIDE];
+                #pragma unroll
+                for (int k = 0; k < CONTRIB_STRIDE; ++k) {
+                  v[k] += slot[k];
+                }
+              }
             }
-            const float *slot = &contrib[sphere_idx * CONTRIB_STRIDE];
-            m0 += slot[0]; m1 += slot[1]; m2 += slot[2];
-            f0 += slot[3]; f1 += slot[4]; f2 += slot[5];
+            for (int tool_idx = member; tool_idx < NumToolFrames; tool_idx += LINK_GROUP) {
+              if (tool_frame_map[tool_idx] != link_idx) {
+                continue;
+              }
+              const float *slot = &contrib[(NumSpheres + tool_idx) * CONTRIB_STRIDE];
+              #pragma unroll
+              for (int k = 0; k < CONTRIB_STRIDE; ++k) {
+                v[k] += slot[k];
+              }
+            }
+          }
+          #pragma unroll
+          for (int k = 0; k < CONTRIB_STRIDE; ++k) {
+            #pragma unroll
+            for (int offset = LINK_GROUP / 2; offset > 0; offset /= 2) {
+              v[k] += __shfl_xor_sync(0xffffffffu, v[k], offset, LINK_GROUP);
+            }
+          }
+          if (link_idx < NumLinks && member == 0) {
+            const int wrench_offset = link_idx * WRENCH_STRIDE;
+            shared_wrench[wrench_offset + 0] = v[0];
+            shared_wrench[wrench_offset + 1] = v[1];
+            shared_wrench[wrench_offset + 2] = v[2];
+            shared_wrench[wrench_offset + 4] = v[3];
+            shared_wrench[wrench_offset + 5] = v[4];
+            shared_wrench[wrench_offset + 6] = v[5];
           }
         }
-        for (int tool_idx = 0; tool_idx < NumToolFrames; ++tool_idx) {
-          if (tool_frame_map[tool_idx] != link_idx) {
-            continue;
-          }
-          const float *slot = &contrib[(NumSpheres + tool_idx) * CONTRIB_STRIDE];
-          m0 += slot[0]; m1 += slot[1]; m2 += slot[2];
-          f0 += slot[3]; f1 += slot[4]; f2 += slot[5];
-        }
-        const int wrench_offset = link_idx * WRENCH_STRIDE;
-        shared_wrench[wrench_offset + 0] = m0;
-        shared_wrench[wrench_offset + 1] = m1;
-        shared_wrench[wrench_offset + 2] = m2;
-        shared_wrench[wrench_offset + 4] = f0;
-        shared_wrench[wrench_offset + 5] = f1;
-        shared_wrench[wrench_offset + 6] = f2;
       }
 
       if constexpr (ComputeCom) {
