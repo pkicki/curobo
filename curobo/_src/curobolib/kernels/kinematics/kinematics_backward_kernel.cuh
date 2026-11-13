@@ -140,6 +140,11 @@ namespace kinematics{
            index += ThreadsPerBlock) {
         shared_wrench[index] = 0.0f;
       }
+      // [start, end) of each link's spheres when link_sphere_map is sorted.
+      __shared__ int link_sphere_range[2 * NumLinks];
+      for (int index = threadIdx.x; index < 2 * NumLinks; index += ThreadsPerBlock) {
+        link_sphere_range[index] = 0;
+      }
       for (int index = threadIdx.x; index < NumLinks * MATRIX_STRIDE;
            index += ThreadsPerBlock) {
         cumul_mat[index] = global_cumul_mat[batch_matrix_offset + index];
@@ -220,14 +225,40 @@ namespace kinematics{
         slot[0] = moment.x; slot[1] = moment.y; slot[2] = moment.z;
         slot[3] = position_grad.x; slot[4] = position_grad.y; slot[5] = position_grad.z;
       }
-      __syncthreads();
+      // Mark each link's contiguous sphere range (unique writer per entry when
+      // the map is sorted) and detect an unsorted map block-wide; the OR is
+      // also the barrier between the two stages.
+      int map_unsorted = 0;
+      if constexpr (NumSpheres > 0) {
+        for (int sphere_idx = threadIdx.x; sphere_idx < NumSpheres;
+             sphere_idx += ThreadsPerBlock) {
+          const int link = link_sphere_map[sphere_idx];
+          const int prev = sphere_idx > 0 ? link_sphere_map[sphere_idx - 1] : -1;
+          const int next = sphere_idx + 1 < NumSpheres ? link_sphere_map[sphere_idx + 1] : -1;
+          if (sphere_idx > 0 && prev > link) {
+            map_unsorted = 1;
+          }
+          if (link >= 0 && link < NumLinks) {
+            if (prev != link) {
+              link_sphere_range[2 * link] = sphere_idx;
+            }
+            if (next != link) {
+              link_sphere_range[2 * link + 1] = sphere_idx + 1;
+            }
+          }
+        }
+      }
+      const bool sorted_map = __syncthreads_or(map_unsorted) == 0;
 
       for (int link_idx = threadIdx.x; link_idx < NumLinks;
            link_idx += ThreadsPerBlock) {
         float m0 = 0.0f, m1 = 0.0f, m2 = 0.0f, f0 = 0.0f, f1 = 0.0f, f2 = 0.0f;
         if constexpr (NumSpheres > 0) {
-          for (int sphere_idx = 0; sphere_idx < NumSpheres; ++sphere_idx) {
-            if (link_sphere_map[sphere_idx] != link_idx) {
+          // Same ascending order either way, so results are bit-identical.
+          const int first = sorted_map ? link_sphere_range[2 * link_idx] : 0;
+          const int last = sorted_map ? link_sphere_range[2 * link_idx + 1] : NumSpheres;
+          for (int sphere_idx = first; sphere_idx < last; ++sphere_idx) {
+            if (!sorted_map && link_sphere_map[sphere_idx] != link_idx) {
               continue;
             }
             const float *slot = &contrib[sphere_idx * CONTRIB_STRIDE];
