@@ -146,91 +146,110 @@ namespace kinematics{
       }
       __syncthreads();
 
-      // DETERMINISTIC LINK-WRENCH ACCUMULATION (exp/deterministic-link-wrench).
-      // Previously every sphere/tool-frame thread did float atomicAdd into its
-      // link's shared wrench; the addition order then depended on warp
-      // scheduling, so the joint-space gradient differed by ~1 ULP between
-      // identical launches. Here one thread owns each link and sums its
-      // spheres, then its tool frames, in ascending index order.
+      // DETERMINISTIC LINK-WRENCH ACCUMULATION, two stages.
+      // Float atomicAdd into the link wrench made the addition order depend
+      // on warp scheduling (joint gradients differed by ~1 ULP between
+      // identical launches). Stage 1 keeps the transforms parallel and writes
+      // each sphere/tool-frame contribution to its own shared slot; stage 2
+      // sums each link's slots in ascending index order (one thread per link).
+      constexpr int CONTRIB_STRIDE = 6;
+      float *contrib = &cumul_mat[NumLinks * MATRIX_STRIDE];
+      if constexpr (NumSpheres > 0) {
+        const int env_idx = num_envs > 1 ? env_query_idx[batch / horizon] : 0;
+        const int sphere_config_offset = env_idx * NumSpheres * 4;
+        const int batch_sphere_offset = batch * NumSpheres * 4;
+
+        for (int sphere_idx = threadIdx.x; sphere_idx < NumSpheres;
+             sphere_idx += ThreadsPerBlock) {
+          float *slot = &contrib[sphere_idx * CONTRIB_STRIDE];
+          const int sphere_offset = sphere_idx * 4;
+          float4 sphere_grad =
+            *(const float4 *)&grad_spheres[batch_sphere_offset + sphere_offset];
+          if (grad_spheres_addend != nullptr) {
+            const float4 addend = *(const float4 *)&grad_spheres_addend[
+              batch_sphere_offset + sphere_offset];
+            sphere_grad.x += addend.x;
+            sphere_grad.y += addend.y;
+            sphere_grad.z += addend.z;
+          }
+          if (sphere_grad.x == 0.0f && sphere_grad.y == 0.0f &&
+              sphere_grad.z == 0.0f) {
+            slot[0] = 0.0f; slot[1] = 0.0f; slot[2] = 0.0f;
+            slot[3] = 0.0f; slot[4] = 0.0f; slot[5] = 0.0f;
+            continue;
+          }
+
+          const int link_idx = link_sphere_map[sphere_idx];
+          float4 sphere_world;
+          transform_sphere_float4(
+            &global_cumul_mat[batch_matrix_offset + link_idx * MATRIX_STRIDE],
+            &robot_spheres[sphere_config_offset + sphere_offset],
+            sphere_world);
+          const float3 force = make_float3(sphere_grad);
+          const float3 moment = cross(make_float3(sphere_world), force);
+          slot[0] = moment.x; slot[1] = moment.y; slot[2] = moment.z;
+          slot[3] = force.x;  slot[4] = force.y;  slot[5] = force.z;
+        }
+      }
+
+      const int batch_tool_offset = batch * NumToolFrames;
+      for (int tool_idx = threadIdx.x; tool_idx < NumToolFrames;
+           tool_idx += ThreadsPerBlock) {
+        float *slot = &contrib[(NumSpheres + tool_idx) * CONTRIB_STRIDE];
+        const float3 position_grad = *(const float3 *)&grad_nlinks_pos[
+          (batch_tool_offset + tool_idx) * 3];
+        __align__(16) float quaternion_grad[4];
+        *(float4 *)&quaternion_grad[0] = *(const float4 *)&grad_nlinks_quat[
+          (batch_tool_offset + tool_idx) * 4];
+        if (position_grad.x == 0.0f && position_grad.y == 0.0f &&
+            position_grad.z == 0.0f && quaternion_grad[0] == 0.0f &&
+            quaternion_grad[1] == 0.0f && quaternion_grad[2] == 0.0f &&
+            quaternion_grad[3] == 0.0f) {
+          slot[0] = 0.0f; slot[1] = 0.0f; slot[2] = 0.0f;
+          slot[3] = 0.0f; slot[4] = 0.0f; slot[5] = 0.0f;
+          continue;
+        }
+
+        const int link_idx = tool_frame_map[tool_idx];
+        const common::CuPose pose = common::CuPose::from_transform_matrix(
+          &global_cumul_mat[batch_matrix_offset + link_idx * MATRIX_STRIDE]);
+        float3 orientation_grad = make_float3(0.0f, 0.0f, 0.0f);
+        common::quaternion_cotangent_to_angular_cotangent(
+          pose.quaternion, &quaternion_grad[0], orientation_grad);
+        const float3 moment = cross(pose.position, position_grad) + orientation_grad;
+        slot[0] = moment.x; slot[1] = moment.y; slot[2] = moment.z;
+        slot[3] = position_grad.x; slot[4] = position_grad.y; slot[5] = position_grad.z;
+      }
+      __syncthreads();
+
       for (int link_idx = threadIdx.x; link_idx < NumLinks;
            link_idx += ThreadsPerBlock) {
-        float3 moment_sum = make_float3(0.0f, 0.0f, 0.0f);
-        float3 force_sum = make_float3(0.0f, 0.0f, 0.0f);
+        float m0 = 0.0f, m1 = 0.0f, m2 = 0.0f, f0 = 0.0f, f1 = 0.0f, f2 = 0.0f;
         if constexpr (NumSpheres > 0) {
-          const int env_idx = num_envs > 1 ? env_query_idx[batch / horizon] : 0;
-          const int sphere_config_offset = env_idx * NumSpheres * 4;
-          const int batch_sphere_offset = batch * NumSpheres * 4;
           for (int sphere_idx = 0; sphere_idx < NumSpheres; ++sphere_idx) {
             if (link_sphere_map[sphere_idx] != link_idx) {
               continue;
             }
-            const int sphere_offset = sphere_idx * 4;
-            float4 sphere_grad =
-              *(const float4 *)&grad_spheres[batch_sphere_offset + sphere_offset];
-            if (grad_spheres_addend != nullptr) {
-              const float4 addend = *(const float4 *)&grad_spheres_addend[
-                batch_sphere_offset + sphere_offset];
-              sphere_grad.x += addend.x;
-              sphere_grad.y += addend.y;
-              sphere_grad.z += addend.z;
-            }
-            if (sphere_grad.x == 0.0f && sphere_grad.y == 0.0f &&
-                sphere_grad.z == 0.0f) {
-              continue;
-            }
-            float4 sphere_world;
-            transform_sphere_float4(
-              &global_cumul_mat[batch_matrix_offset + link_idx * MATRIX_STRIDE],
-              &robot_spheres[sphere_config_offset + sphere_offset],
-              sphere_world);
-            const float3 force = make_float3(sphere_grad);
-            const float3 moment = cross(make_float3(sphere_world), force);
-            moment_sum.x += moment.x;
-            moment_sum.y += moment.y;
-            moment_sum.z += moment.z;
-            force_sum.x += force.x;
-            force_sum.y += force.y;
-            force_sum.z += force.z;
+            const float *slot = &contrib[sphere_idx * CONTRIB_STRIDE];
+            m0 += slot[0]; m1 += slot[1]; m2 += slot[2];
+            f0 += slot[3]; f1 += slot[4]; f2 += slot[5];
           }
         }
-
-        const int batch_tool_offset = batch * NumToolFrames;
         for (int tool_idx = 0; tool_idx < NumToolFrames; ++tool_idx) {
           if (tool_frame_map[tool_idx] != link_idx) {
             continue;
           }
-          const float3 position_grad = *(const float3 *)&grad_nlinks_pos[
-            (batch_tool_offset + tool_idx) * 3];
-          __align__(16) float quaternion_grad[4];
-          *(float4 *)&quaternion_grad[0] = *(const float4 *)&grad_nlinks_quat[
-            (batch_tool_offset + tool_idx) * 4];
-          if (position_grad.x == 0.0f && position_grad.y == 0.0f &&
-              position_grad.z == 0.0f && quaternion_grad[0] == 0.0f &&
-              quaternion_grad[1] == 0.0f && quaternion_grad[2] == 0.0f &&
-              quaternion_grad[3] == 0.0f) {
-            continue;
-          }
-          const common::CuPose pose = common::CuPose::from_transform_matrix(
-            &global_cumul_mat[batch_matrix_offset + link_idx * MATRIX_STRIDE]);
-          float3 orientation_grad = make_float3(0.0f, 0.0f, 0.0f);
-          common::quaternion_cotangent_to_angular_cotangent(
-            pose.quaternion, &quaternion_grad[0], orientation_grad);
-          const float3 moment = cross(pose.position, position_grad) + orientation_grad;
-          moment_sum.x += moment.x;
-          moment_sum.y += moment.y;
-          moment_sum.z += moment.z;
-          force_sum.x += position_grad.x;
-          force_sum.y += position_grad.y;
-          force_sum.z += position_grad.z;
+          const float *slot = &contrib[(NumSpheres + tool_idx) * CONTRIB_STRIDE];
+          m0 += slot[0]; m1 += slot[1]; m2 += slot[2];
+          f0 += slot[3]; f1 += slot[4]; f2 += slot[5];
         }
-
         const int wrench_offset = link_idx * WRENCH_STRIDE;
-        shared_wrench[wrench_offset + 0] = moment_sum.x;
-        shared_wrench[wrench_offset + 1] = moment_sum.y;
-        shared_wrench[wrench_offset + 2] = moment_sum.z;
-        shared_wrench[wrench_offset + 4] = force_sum.x;
-        shared_wrench[wrench_offset + 5] = force_sum.y;
-        shared_wrench[wrench_offset + 6] = force_sum.z;
+        shared_wrench[wrench_offset + 0] = m0;
+        shared_wrench[wrench_offset + 1] = m1;
+        shared_wrench[wrench_offset + 2] = m2;
+        shared_wrench[wrench_offset + 4] = f0;
+        shared_wrench[wrench_offset + 5] = f1;
+        shared_wrench[wrench_offset + 6] = f2;
       }
 
       if constexpr (ComputeCom) {

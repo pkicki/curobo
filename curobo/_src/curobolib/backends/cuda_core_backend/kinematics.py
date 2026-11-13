@@ -316,10 +316,19 @@ def launch_kinematics_link_wrench_backward(
         )
     if backward_threads not in (32, 64, 96, 128):
         log_and_raise("backward_threads must be one of 32, 64, 96, or 128")
+    backward_shmem_bytes = (num_links * (8 + 12) + (num_spheres + n_tool_frames) * 6) * 4
+    if backward_shmem_bytes > 48 * 1024:
+        log_and_raise(
+            "kinematics link-wrench backward needs "
+            f"{backward_shmem_bytes} bytes of shared memory (> 48 KiB default); "
+            "too many spheres/tool frames for the deterministic reduction"
+        )
     config = LaunchConfig(
         grid=batch_size,
         block=backward_threads,
-        shmem_size=num_links * (8 + 12) * 4,
+        # wrench (8) + cumulative matrix (12) per link, plus one 6-float
+        # deterministic-reduction slot per sphere and tool frame.
+        shmem_size=(num_links * (8 + 12) + (num_spheres + n_tool_frames) * 6) * 4,
     )
     kernel_name = (
         "curobo::kinematics::kinematics_link_wrench_backward_kernel"
